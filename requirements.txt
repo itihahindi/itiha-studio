@@ -1,0 +1,10 @@
+playwright==1.48.0
+pyyaml==6.0.2
+watchfiles==0.24.0
+# Used by src/notion_sync.py (optional Notion content-plan integration).
+requests>=2.31
+python-dotenv>=1.0
+# Used by /api/remove-bg in src/studio.py (BG removal button in the editor).
+# rembg pulls onnxruntime + PIL + numpy. ~700 MB on disk after install.
+rembg>=2.0.55
+onnxruntime>=1.16

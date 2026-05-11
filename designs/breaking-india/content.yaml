@@ -1,0 +1,124 @@
+name: breaking-india
+format: instagram-portrait
+caption: |
+  In 2011, Rajiv Malhotra and Aravindan Neelakandan published a book with a blunt title — Breaking India.
+
+  Its argument: a network of Western governments, evangelical churches, and academic institutions is engineering separatist identities inside India to fracture its civilisational unity.
+
+  A 9-part read on the thesis, the players, and the inheritance of colonial race science.
+
+  @itiha29 · itiha.info
+
+  #IndianHistory #BreakingIndia #Itiha
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: BREAKING
+slides:
+- layout: split-story
+  eyebrow_meta: Breaking India · 9 Parts
+  headline: "The Hidden Forces\nWorking To \nBreak *India.*\n"
+  subline: Rajiv Malhotra · Aravindan Neelakandan · 2011
+  swipe_meta: Swipe ▸ · 9 Slides · 2 min read
+  theme: dark
+  image: https://pbs.twimg.com/profile_images/1566798241458716672/UNUDdGuZ_400x400.jpg
+  image_overlay: 0.7
+  headline_size: 160
+  texture: halftone
+  body_y: 100
+  headline_y: 500
+- layout: story
+  chapter: Chapter 01 · The Thesis
+  headline: |
+    A Civilisation
+    Under *Audit.*
+  body: The argument of [Breaking India] is that the Indian republic is the target of a well-funded global
+    network. The actors named include [Western government bodies], [evangelical churches], and a constellation
+    of [academic institutions] and [private think-tanks]. The stated objective, as the authors read it,
+    is not reform. It is the manufacture of [separatist identities] capable of fracturing the civilisational
+    unity of the subcontinent.
+  body_size: 45
+  theme: light
+  texture: halftone
+- layout: story
+  chapter: Chapter 02 · The Invention
+  headline: |
+    How *Dravidian*
+    Became A Race.
+  body: In [1856], the missionary-scholar [Robert Caldwell] published _A Comparative Grammar of the Dravidian
+    Languages_. The book established a linguistic family. It also, the authors argue, attached to that
+    family a [racial narrative] — South Indians as a distinct people, [Brahmins] recast as cunning [Aryan
+    invaders], the temple tradition recast as a foreign imposition. The category [Dravidian] entered politics
+    from a grammar book.
+  body_size: 45
+  theme: light
+  texture: paper
+- layout: story
+  chapter: Chapter 03 · The Measuring Tape
+  headline: |
+    When Jati
+    Became *Race.*
+  body: '[Herbert Hope Risley] was the British administrator who ran the [Census of India in 1901]. He
+    believed caste could be read off the body. Using the [Nasal Index] — a ratio of nose width to height
+    borrowed from European [race science] — he sorted Indians into [Aryan] and [non-Aryan] types. A fluid,
+    localised social order of [jati] was frozen into legal categories. The categories outlived the empire.'
+  body_size: 45
+  theme: light
+  texture: halftone
+- layout: quote
+  chapter: Chapter 04 · The Method
+  headline: |
+    The Word For It
+    Is *Digestion.*
+  quote: |
+    Digestion is the process by which a civilisation absorbs another — stripping it of its source, repackaging its parts, and erasing the original.
+  attribution: Rajiv Malhotra · the central metaphor of the thesis
+  theme: light
+- layout: story
+  chapter: Chapter 05 · Atrocity Literature
+  headline: |
+    India As The
+    *Permanent Crime Scene.*
+  body: The authors use the term [atrocity literature] for a recurring genre of Western reporting on India.
+    The country is rendered as a landscape of [caste war], [communal violence], and [human rights abuse],
+    with little context and less proportion. The narrative, they argue, performs two functions. It justifies
+    [international intervention]. It opens funding pipelines for [evangelical] and [activist] networks
+    operating inside India.
+  theme: light
+  body_size: 40
+  texture: halftone
+- layout: story
+  chapter: Chapter 06 · The Red Corridor
+  headline: |
+    Money Follows
+    The *Faultline.*
+  body: The book maps the flow of foreign funding into what it calls India's [identity faultlines] — the
+    [Dravidian] question in the south, the [Dalit] question across the heartland, the [tribal] question
+    along the [Red Corridor] from [Jharkhand] through [Chhattisgarh] to [Andhra]. The same corridor, the
+    authors note, that houses India's most sustained [Maoist insurgency]. The argument is not that the
+    grievances are invented. It is that the [machinery] amplifying them is foreign.
+  theme: light
+  body_size: 45
+- layout: story
+  chapter: Chapter 07 · The Warning
+  headline: |
+    Sri Lanka.
+    Rwanda. *India?*
+  body: The book closes with two case studies of identity engineering that ended in catastrophe. [Sri
+    Lanka], where colonial race theory hardened [Sinhala] and [Tamil] into permanent enemies. [Rwanda],
+    where Belgian administrators sorted [Hutu] and [Tutsi] by [nose] and [height] and issued identity
+    cards. In both, the categories were [colonial]. The killing was [native]. The authors argue the same
+    machinery is now being trained on India.
+  theme: light
+  body_size: 45
+- layout: closing
+  headline: |
+    Know The Map.
+    Before You Are
+    *On It.*
+  body: |
+    [Breaking India] is a polemic. Its readers do not have to accept every claim to accept its central provocation — that the [categories] through which a country understands itself are rarely neutral, rarely native, and rarely accidental. The authors' demand is simple. Read the [map] of who is funding what, and why, before agreeing to be located on it.
+  handle: Follow @itiha29 · itiha.info

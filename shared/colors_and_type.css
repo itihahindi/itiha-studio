@@ -1,0 +1,268 @@
+/* ============================================================
+   ITIHA — Core Tokens
+   Colors + Typography (Bebas Neue + DM Sans)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---------- CORE PALETTE ---------- */
+  --itiha-jet-black:    #000000;  /* video / motion bgs */
+  --itiha-ink-black:    #0D0D0D;  /* static design bgs */
+  --itiha-sindoor-red:  #C0392B;  /* THE accent */
+  --itiha-parchment:    #E8DCC8;  /* default fg on dark */
+
+  /* ---------- SUPPORTING ---------- */
+  --itiha-charcoal:     #1C1C1C;  /* secondary bg / depth */
+  --itiha-dark-gray:    #2C2C2C;  /* borders / dividers */
+  --itiha-mid-gray:     #8A8A8A;  /* secondary text */
+  --itiha-off-white:    #FAF5EE;  /* light-mode bg */
+  --itiha-pure-white:   #FFFFFF;  /* in-video pills only */
+  --itiha-near-black:   #1A1A1A;  /* body text on light bg */
+  --itiha-map-brown:    #2A1810;  /* ocean fill on maps */
+
+  /* ---------- SEMANTIC (dark, default) ---------- */
+  --bg:           var(--itiha-ink-black);
+  --bg-elevated:  var(--itiha-charcoal);
+  --bg-video:     var(--itiha-jet-black);
+  --fg:           var(--itiha-parchment);
+  --fg-muted:     rgba(232, 220, 200, 0.60);  /* parchment 60% */
+  --fg-secondary: var(--itiha-mid-gray);
+  --border:       var(--itiha-dark-gray);
+  --accent:       var(--itiha-sindoor-red);
+
+  /* ---------- LIGHT MODE ---------- */
+  --bg-light:           var(--itiha-off-white);
+  --fg-light:           var(--itiha-near-black);
+  --fg-light-secondary: var(--itiha-mid-gray);
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-display: 'Bebas Neue', 'Oswald', 'Impact', sans-serif;
+  --font-sans:    'DM Sans', system-ui, -apple-system, sans-serif;
+
+  /* Display sizes (Bebas Neue — ALWAYS UPPERCASE) */
+  --type-xl:  120px;  /* hero (range 96–120) */
+  --type-lg:  90px;   /* section header (range 72–90) */
+  --type-md:  60px;   /* sub-section (range 48–60) */
+  --type-sm:  36px;   /* end card, pull quote (range 28–36) */
+  --type-xs:  20px;   /* brand stamp (range 18–22) */
+
+  /* Body sizes (DM Sans) */
+  --body-lg:  18px;
+  --body-md:  15px;
+  --body-sm:  13px;
+  --body-xs:  11px;
+
+  /* Line heights */
+  --lh-display: 0.95;
+  --lh-tight:   1.15;
+  --lh-body:    1.75;     /* range 1.7–1.85 */
+
+  /* Letter spacing */
+  --track-display:    0.02em;   /* 1–3px at display sizes */
+  --track-display-lg: -0.01em;  /* tighter at very large */
+  --track-body:       0;
+  --track-ui:         0.18em;   /* 2–4px for ALL CAPS UI */
+  --track-eyebrow:    0.30em;   /* 4–6px for taglines / eyebrows */
+
+  /* ---------- LAYOUT ---------- */
+  --divider-width:  48px;
+  --divider-height: 3px;
+
+  --radius-pill:    4px;   /* in-video subtitle pills */
+  --radius-none:    0;     /* default — sharp corners */
+
+  --border-accent: 3px solid var(--itiha-sindoor-red);
+}
+
+/* ============================================================
+   SEMANTIC TYPE PRESETS
+   ============================================================ */
+
+.itiha-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow);
+  color: var(--itiha-sindoor-red);
+}
+
+.itiha-divider {
+  display: block;
+  width: var(--divider-width);
+  height: var(--divider-height);
+  background: var(--itiha-sindoor-red);
+  border: 0;
+}
+
+.itiha-h1,
+h1.itiha {
+  font-family: var(--font-display);
+  font-size: var(--type-xl);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display-lg);
+  text-transform: uppercase;
+  color: var(--itiha-parchment);
+  margin: 0;
+}
+
+.itiha-h2,
+h2.itiha {
+  font-family: var(--font-display);
+  font-size: var(--type-lg);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
+  text-transform: uppercase;
+  color: var(--itiha-parchment);
+  margin: 0;
+}
+
+.itiha-h3,
+h3.itiha {
+  font-family: var(--font-display);
+  font-size: var(--type-md);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-display);
+  text-transform: uppercase;
+  color: var(--itiha-parchment);
+  margin: 0;
+}
+
+.itiha-h4,
+h4.itiha {
+  font-family: var(--font-display);
+  font-size: var(--type-sm);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-display);
+  text-transform: uppercase;
+  color: var(--itiha-parchment);
+  margin: 0;
+}
+
+.itiha-accent {
+  color: var(--itiha-sindoor-red);
+}
+
+.itiha-subtitle {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 17px;
+  text-transform: uppercase;
+  letter-spacing: var(--track-ui);
+  color: rgba(232, 220, 200, 0.55); /* parchment 55–60% */
+}
+
+.itiha-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--body-lg);
+  line-height: var(--lh-body);
+  color: var(--itiha-parchment);
+}
+
+.itiha-body-secondary {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--body-md);
+  line-height: var(--lh-body);
+  color: var(--itiha-mid-gray);
+}
+
+.itiha-caption,
+.itiha-meta {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--body-sm);
+  color: var(--itiha-mid-gray);
+  letter-spacing: 0;
+}
+
+.itiha-ui-label {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: var(--track-ui);
+  color: var(--itiha-parchment);
+}
+
+.itiha-tagline {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: var(--track-eyebrow);
+  color: var(--itiha-mid-gray);
+}
+
+/* ---------- IN-VIDEO SUBTITLE PILL ---------- */
+.itiha-pill {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--itiha-pure-white);
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 4px;
+  padding: 6px 14px;
+  letter-spacing: 0.3px;
+}
+
+/* ---------- LIGHT MODE OVERRIDES ---------- */
+.itiha-light {
+  background: var(--itiha-off-white);
+  color: var(--itiha-near-black);
+}
+.itiha-light .itiha-h1,
+.itiha-light .itiha-h2,
+.itiha-light .itiha-h3,
+.itiha-light .itiha-h4,
+.itiha-light h1.itiha,
+.itiha-light h2.itiha,
+.itiha-light h3.itiha,
+.itiha-light h4.itiha { color: var(--itiha-ink-black); }
+.itiha-light .itiha-body { color: var(--itiha-near-black); }
+.itiha-light .itiha-subtitle { color: var(--itiha-mid-gray); }
+
+/* ---------- BRAND WORDMARK ---------- */
+.itiha-wordmark {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--itiha-parchment);
+  line-height: 1;
+}
+.itiha-wordmark .dot { color: var(--itiha-sindoor-red); }
+
+/* ---------- CTA BUTTON ---------- */
+.itiha-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: var(--track-ui);
+  color: var(--itiha-pure-white);
+  background: var(--itiha-sindoor-red);
+  border: 0;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease;
+}
+.itiha-btn:hover { background: #A8322534; background: #A83225; }
+.itiha-btn:active { transform: translateY(1px); }
+
+.itiha-btn-ghost {
+  background: transparent;
+  color: var(--itiha-parchment);
+  border: 1px solid var(--itiha-dark-gray);
+}
+.itiha-btn-ghost:hover {
+  border-color: var(--itiha-sindoor-red);
+  color: var(--itiha-sindoor-red);
+  background: transparent;
+}

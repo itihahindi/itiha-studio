@@ -1,0 +1,157 @@
+name: no-communist-party-of-india
+format: instagram-portrait
+caption: |
+  In 1954, a pamphlet asked a simple question — was the Communist Party of India actually Indian?
+
+  Sita Ram Goel's answer: there was no such party. Only a Soviet section operating under an Indian name.
+
+  A 9-part read on what the CPI's own constitution said, what Stalin demanded, and what Ajoy Ghosh admitted.
+
+  @itiha29 · itiha.info
+
+  #IndianHistory #ColdWar #Itiha
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 72
+  showGrain: true
+  seriesLabel: COMMUNIST party of india
+slides:
+- layout: cover
+  eyebrow: on Communist party of india
+  eyebrow_meta: sita ram goel
+  headline: |
+    There Is No
+    *Communist Party Of India.*
+  subline: Sita Ram Goel · 1954
+  swipe_meta: Swipe ▸ · 9 Slides · 4 min read
+  image_bw: true
+  headline_size: 150
+  image: _cache/79a0ebfd3f6cb934.jpg
+  image_position: '25'
+  image_overlay: 0.8
+- layout: story
+  chapter: Chapter 01 · The Provocation
+  headline: |
+    A Pamphlet With
+    A Strange *Title.*
+  body: In the mid-[1950s], a small press in [Delhi] published a pamphlet by [Sita Ram Goel] for the _Society
+    for Defence of Freedom in Asia_. Its claim was blunt. The party calling itself the [Communist Party
+    of India] was not a party. It was not Indian. It was the [Soviet Communist Party's Section] operating
+    under an Indian name.
+  image: screenshot-2026-05-11-at-1-01-27-am.png
+  image_overlay: 0.85
+  block_y: middle
+  body_size: 40
+  image_position: '9'
+- layout: story
+  chapter: Chapter 02 · The Test
+  headline: |
+    The Only
+    *Criterion.*
+  quote: |
+    The one and only determining criterion of revolutionary internationalism is — are you for or against the USSR.
+  attribution: A. P. Vyshinsky · Voprosy Filosofii
+  body: Goel argued that communism could not be defined by [Marxism], by [equality], or by [revolution].
+    The Soviet jurist [Vyshinsky] had already defined it. So had [Stalin]. The test was [loyalty to Moscow]
+    — measured, in Stalin's phrase, by readiness to defend the USSR _unconditionally, frankly and honestly_.
+  image_bw: true
+  quote_size: 50
+  body_size: 40
+  image: _cache/00d0d707b74a65e0.jpg
+  image_overlay: 1
+  block_y: middle
+- layout: story
+  chapter: Chapter 03 · The Confession
+  headline: |
+    What The General
+    Secretary *Admitted.*
+  body: 'The popular image of communism was a movement of the poor. The [CPI''s] own General Secretary
+    said otherwise. Writing in the _Cominform Journal_, [Ajoy Ghosh] confessed that the party''s position
+    among the [working class], the [agricultural workers], and the [poor peasants]  the classes meant
+    to be its granite foundation, remained [extremely weak]. Goel''s reading: the CPI drew its strength
+    from the educated urban professional, not the labouring villager.'
+  image_overlay: 1
+  block_y: bottom
+  body_size: 40
+- layout: story
+  chapter: Chapter 04 · The Constitution
+  headline: |
+    In Their Own
+    *Words.*
+  quote: |
+    The Communist Party of India, being a Section of the Communist International, is the most advanced organised detachment of the proletariat of India.
+  attribution: CPI Constitution · 1934 Preamble
+  body: Until [1943], the [CPI's own constitution] described the party as a [Section of the Communist
+    International]. The clause was quietly dropped when the [Comintern] was formally dissolved that year
+    — a dissolution designed, Goel writes, to please [America] and [Britain] then allied with the Soviet
+    Union against Hitler. The constitution changed. The relationship did not.
+  image: _cache/06e902a4ccb6184d.jpg
+  image_overlay: 1.7
+  image_bw: false
+  block_y: bottom
+  body_size: 45
+- layout: story
+  chapter: Chapter 05 · The Three Prongs
+  headline: |
+    Open. Front.
+    *Underground.*
+  body: Goel described the CPI as a [three-pronged organisation]. The [open party] contested elections
+    and published newspapers. The [front organisations] — _AITUC_, _Kisan Sabha_, _IPTA_, the _Progressive
+    Writers' Association_, the _Indo-Soviet Cultural Society_ — politicised every non-political space.
+    The [secret underground] worked inside the Army, the Police, and the policy-making organs, preparing
+    for the final bid for power.
+  image_overlay: 1
+  body_size: 45
+  theme: dark
+- layout: stat
+  chapter: Chapter 06 · The Money
+  headline: |
+    Twenty Crores.
+    Every *Year.*
+  stats:
+  - label: Goel's estimate of Soviet funding
+    value: 20 cr
+    sublabel: Annual flow into the CPI organisation
+    value_red: true
+  - label: Wholetimers maintained
+    value: 70,000
+    sublabel: Stipends from Rs. 50 to several thousand
+    value_red: true
+  body: By Goel's estimate, [twenty crore rupees] a year flowed from [Moscow] into the CPI apparatus.
+    The money paid [seventy thousand wholetimers], subsidised papers like the _Blitz_, financed festivals
+    and foreign delegations, and — where persuasion failed — bought off writers, poets, and journalists
+    outright.
+  image_bw: true
+- layout: story
+  chapter: Chapter 07 · The Tissue
+  headline: |
+    A Cancer In
+    The *Body.*
+  body: Goel quoted the French specialist [Suzanne Labin]. Whatever tactical face the [Communist Party]
+    wore in a given decade, it remained — in her phrase — a [cancer within the body of the nation], whose
+    function was to destroy healthy tissue and replace it. Those who imagined it could one day be assimilated,
+    she wrote, were the [victims of the most dangerous political illusion]. Goel applied the diagnosis
+    to India.
+  quote_size: 35
+  image_bw: true
+  image_overlay: 1
+  body_size: 45
+- layout: story
+  headline: |
+    A Section,
+    Not A *Party.*
+  body: |
+    The argument of the pamphlet was not that [Indian communists] were foreign agents in disguise. It was that the [organisation] they belonged to had been built, funded, and directed from outside — and that no amount of [Indian] vocabulary could change what it was. The name on the door read [Communist Party of India]. The address, Goel insisted, was [Moscow].
+  handle: Follow @itiha29 · itiha.info
+  image: _cache/e5df54940b1f6ba2.jpg
+  body_size: 45
+  headline_size: 100
+  image_bw: true
+  chapter: 'Lenin with M.N Roy '
+  theme: dark
+  image_overlay: 1.6
+- layout: end-card
+  headline: New slide
+  tagline: origins of CPI video live on our youtube

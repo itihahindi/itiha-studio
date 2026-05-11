@@ -1,0 +1,19 @@
+name: "Itiha — Reel Title"
+format: instagram-reel
+caption: |
+  Watch the full episode — link in bio.
+
+  #IndianHistory #Somnath #Itiha
+tweaks:
+  showStamp: false       # ReelTitle paints its own stamp
+  showPageNum: false
+
+slides:
+  - layout: reel-title
+    eyebrow: "Episode 04"
+    headline: |
+      The Last
+      *Somnath.*
+    subline: "1026 AD · Gujarat"
+    pill: "\"A temple older than the empire that came for it.\""
+    handle: "@itiha29"

@@ -1,0 +1,121 @@
+name: project-itiha
+format: instagram-portrait
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+slides:
+- layout: cover
+  eyebrow: Series 01
+  eyebrow_meta: Indenture · 9 Parts
+  headline: |
+    A New Name
+    For An
+    Old *Chain.*
+  subline: How the empire re-labelled slavery
+  swipe_meta: Swipe ▸ · 9 Slides · 4 min read
+  image: a1-cover-bgremoved.png
+  theme: dark
+  image_bw: true
+  texture: halftone
+- layout: story
+  headline: |
+    The Crisis
+    After *Emancipation.*
+  body: When slavery was abolished across the British Empire, plantations in the Caribbean, [Mauritius],
+    [Fiji], and South Africa faced a labour crisis. The empire's solution was elegant in its bureaucratic
+    simplicity — and brutal in its human consequences.
+  image: a2-crisis.webp
+  texture: halftone
+- layout: quote-card
+  headline: |
+    A Label Imposed,
+    *Never* Chosen.
+  body: Derived from the Tamil [kuli] — meaning [wages] — the word was forced onto an enormously diverse
+    group of workers from many castes, regions, and faiths. Most would never have used it themselves.
+    They registered their protest in folk songs.
+  texture: halftone
+  theme: dark
+  body_size: 58
+  block_y: top
+  image_overlay: 0.65
+  quote: This is an amazing quote by Mohan. In which he is quoting the obvious, which means [obviously
+    what he is quoting]
+  attribution: -mohan vorganti
+  variant: light
+- layout: story
+  headline: |
+    Manufactured
+    *Desperation.*
+  body: British colonial policy had devastated the Indian countryside — driving farmers off land for [opium
+    cultivation], destroying traditional industries. The desperation that recruiters found in villages
+    was not accidental. It was manufactured.
+  image: a4-desperation.webp
+  theme: light
+- layout: quote
+  headline: |
+    Built On
+    *Deception.*
+  body: 'Recruiters paid per head exaggerated wages, promised weekend trips home. Their prime targets:
+    [widows], women who had left marriages — those with no one to prevent them from going.'
+  quote: |
+    "Work as easy as
+    sifting sugar."
+  attribution: — Recruiter's pitch, 1860s
+  image: a5-deception.webp
+- layout: stat
+  headline: |
+    Death Rates
+    *At Sea.*
+  body: For indentured Indians on British ships, the odds of surviving the crossing were [often worse]
+    than those of enslaved Africans on the Middle Passage.
+  stats:
+  - label: Middle Passage · Enslaved Africans
+    value: ~12.5%
+    sublabel: Mortality, transatlantic
+  - label: British Indenture Ships
+    value: Worse.
+    sublabel: Indians, often higher
+    value_red: true
+- layout: story
+  headline: |
+    The Logies
+    Of *Narak.*
+  subline: नरक · The Word They Used
+  body: Estate quarters with no latrines, no privacy, no clean water. More than[ 20% of all indentured
+    labourers] were convicted as "criminals" each year — most often for arriving late or walking off the
+    estate without permission.
+  image: a7-logies.webp
+- layout: dates-grid
+  headline: |
+    Freedom That
+    *Wasn't* Free.
+  body: Hindu marriages were illegal — making most Hindu children technically illegitimate.
+  items:
+  - date: Until 1945
+    text: Hindu marriages were illegal — making most Hindu children technically illegitimate.
+  - date: Late 1940s
+    text: No state funding for Hindu schools in Trinidad.
+  - date: 1956 — 1986
+    text: Under PNM governments, not a single Hindu Trinidadian held Cabinet office.
+  - date: And Yet
+    text: The "cow sheds" they were mocked for produced lawyers, doctors, and a Prime Minister.
+  image: a8-freedom.webp
+  theme: dark
+- layout: closing
+  headline: |
+    Not The
+    Empire's.
+    *Theirs.*
+  body: New languages. New music. New cuisines. [New identities forged from dislocation.]The system that
+    tried to erase them ended up creating something that had never existed before.
+  stats:
+  - label: The system in motion
+    value: 1825–1917
+  - label: Workers moved
+    value: 1.9–3.5M
+  - label: British colonies
+    value: '12'
+  image: a9-theirs.webp

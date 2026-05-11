@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="colors_and_type.css" />
+<style>
+  :root {
+    --slide-width: 1080px; --slide-height: 1350px;
+    --editor-w: 460px;
+    --preview-scale: 0.45;   /* Default ~feed size on desktop. Override per-zoom-level via JS. */
+  }
+  html,body{margin:0;padding:0;background:#000}
+
+  /* Capture mode: viewport matches slide dimensions exactly. */
+  body.capture { width: var(--slide-width); height: var(--slide-height); overflow: hidden; }
+  body.capture #root { width: var(--slide-width); height: var(--slide-height); position: relative; transform: none !important; }
+  body.capture .stage { width: var(--slide-width); height: var(--slide-height); }
+  body.capture #prev-toolbar, body.capture #editor { display: none !important; }
+
+  /* Preview mode: scrollable, slide scaled down to feed-ish size.
+     The .stage wrapper reserves the SCALED dimensions for layout, while
+     #root renders at native size and is shrunk via CSS transform. This
+     keeps the slide's internal pixel measurements untouched (no zoom-
+     induced wrap differences) while letting the user see Instagram-feed-
+     size text legibility. */
+  body:not(.capture) {
+    min-height: 100vh; display: flex; align-items: flex-start; justify-content: center;
+    padding: 76px 24px 80px; box-sizing: border-box;
+  }
+  body:not(.capture).editor-open { padding-right: calc(var(--editor-w) + 24px); }
+  body:not(.capture) .stage {
+    width: calc(var(--slide-width) * var(--preview-scale));
+    height: calc(var(--slide-height) * var(--preview-scale));
+    position: relative;
+    outline: 1px solid #1c1c1c;
+    overflow: hidden;
+    flex: 0 0 auto;
+  }
+  body:not(.capture) #root {
+    width: var(--slide-width); height: var(--slide-height);
+    position: absolute; left: 0; top: 0;
+    transform: scale(var(--preview-scale));
+    transform-origin: top left;
+  }
+
+  /* Top navigation bar */
+  #top-nav{position:fixed;left:0;right:0;top:0;height:52px;background:#0a0a0a;color:#888;
+    font:12px/52px 'JetBrains Mono',monospace;display:flex;align-items:center;gap:18px;padding:0 18px;
+    border-bottom:1px solid #1a1a1a;z-index:9999;letter-spacing:1.2px;text-transform:uppercase}
+  #top-nav a.home{color:#888;text-decoration:none;display:flex;align-items:center;gap:8px}
+  #top-nav a.home:hover{color:#E8DCC8}
+  #top-nav .wordmark{font-family:'Bebas Neue',Impact,sans-serif;font-size:22px;letter-spacing:2px;color:#E8DCC8;line-height:1}
+  #top-nav .wordmark .dot{color:#C0392B}
+  #top-nav .sep{width:1px;height:20px;background:#222}
+  #top-nav .proj{color:#E8DCC8;font-weight:600;letter-spacing:1.6px;text-transform:uppercase}
+  #top-nav .badge{display:inline-block;padding:3px 9px;background:#0a0a0a;border:1px solid #222;color:#aaa;font-size:10px;letter-spacing:1.6px}
+  #top-nav .counter{color:#666;font-size:11px}
+  #top-nav .spacer{flex:1}
+  #top-nav button{background:#1a1a1a;color:#ddd;border:1px solid #333;padding:7px 14px;
+    font:11px 'JetBrains Mono',monospace;letter-spacing:1.4px;text-transform:uppercase;cursor:pointer}
+  #top-nav button:hover{background:#222;color:#fff}
+  #top-nav button.primary{background:#C0392B;color:#fff;border-color:#C0392B}
+  #top-nav button.primary:hover{background:#A83225}
+  #top-nav button:disabled{opacity:0.4;cursor:not-allowed}
+  body.editor-open #top-nav { right: var(--editor-w); }
+
+  /* Bottom preview toolbar */
+  #prev-toolbar{position:fixed;left:0;right:0;bottom:0;height:44px;background:#0a0a0a;color:#888;
+    font:12px/44px 'JetBrains Mono',monospace;display:flex;align-items:center;gap:16px;padding:0 14px;
+    border-top:1px solid #222;z-index:9998;letter-spacing:1.2px;text-transform:uppercase}
+  #prev-toolbar button{background:#1a1a1a;color:#ddd;border:1px solid #333;padding:6px 12px;
+    font:11px 'JetBrains Mono',monospace;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer}
+  #prev-toolbar button:hover{background:#222;color:#fff}
+  body.editor-open #prev-toolbar { right: var(--editor-w); }
+
+  /* Editor mount point */
+  #editor:empty { display: none; }
+</style>
+</head>
+<body>
+<nav id="top-nav" style="display:none">
+  <a class="home" href="/" title="Back to project picker">← <span class="wordmark">ITIHA<span class="dot">.</span></span></a>
+  <span class="sep"></span>
+  <span class="proj" id="nav-proj">—</span>
+  <span class="badge" id="nav-format">—</span>
+  <span class="counter" id="nav-counter">—</span>
+  <span class="spacer"></span>
+  <button id="nav-save">Save</button>
+  <button id="nav-render" class="primary">Render</button>
+</nav>
+<div class="stage"><div id="root"></div></div>
+<div id="editor"></div>
+<div id="prev-toolbar" style="display:none">
+  <button id="btn-prev">◀</button>
+  <button id="btn-next">▶</button>
+  <span id="prev-label">—</span>
+  <button id="btn-edit" style="margin-left:auto">Edit</button>
+  <span id="prev-status" style="color:#555;margin-left:14px">loading…</span>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="slides-shared.jsx"></script>
+<script type="text/babel" src="layouts.jsx"></script>
+<script src="manifest.js"></script>
+<script type="text/babel" src="editor.jsx"></script>
+
+<script type="text/babel">
+async function loadContent() {
+  const r = await fetch('content.json?t=' + Date.now());
+  if (!r.ok) throw new Error('content.json missing');
+  return r.json();
+}
+
+function applyDimensions(c) {
+  if (c && c.format_dims) {
+    document.documentElement.style.setProperty('--slide-width',  c.format_dims.width  + 'px');
+    document.documentElement.style.setProperty('--slide-height', c.format_dims.height + 'px');
+  }
+}
+
+function App() {
+  const [content, setContentState] = React.useState(null);   // editable in-memory state
+  const [savedSnapshot, setSavedSnapshot] = React.useState(null); // last-saved-to-disk version
+  const [idx, setIdx] = React.useState(0);
+  const [editorOpen, setEditorOpen] = React.useState(false);
+  const [savedAt, setSavedAt] = React.useState(null);
+  const [saveError, setSaveError] = React.useState(null);
+  const [loadError, setLoadError] = React.useState(null);
+
+  const setContent = (next) => {
+    setContentState(next);
+    applyDimensions(next);
+  };
+
+  const reloadFromDisk = React.useCallback(() => {
+    loadContent().then(c => {
+      setContentState(c);
+      setSavedSnapshot(JSON.stringify(c));
+      applyDimensions(c);
+      setLoadError(null);
+    }).catch(e => setLoadError(String(e)));
+  }, []);
+
+  React.useEffect(() => { reloadFromDisk(); }, [reloadFromDisk]);
+
+  // Suppress reload on our own writes by tracking the version we just saved.
+  const ownVersionRef = React.useRef(null);
+
+  // Poll /version.txt for *external* changes. If the version matches the one
+  // we just saved (or the editor is open and dirty), don't clobber state.
+  React.useEffect(() => {
+    if (!window.__previewMode) return;
+    let live = true;
+    let last = null;
+    const tick = async () => {
+      try {
+        const r = await fetch('version.txt?t=' + Date.now());
+        const v = (await r.text()).trim();
+        if (last !== null && v !== last && v !== ownVersionRef.current) {
+          // External edit. If user has unsaved changes, leave them alone.
+          const dirty = JSON.stringify(content) !== savedSnapshot;
+          if (!dirty) reloadFromDisk();
+        }
+        last = v;
+      } catch (e) { /* ignore */ }
+      if (live) setTimeout(tick, 500);
+    };
+    tick();
+    return () => { live = false; };
+  }, [content, savedSnapshot, reloadFromDisk]);
+
+  // Expose capture / nav API.
+  React.useEffect(() => {
+    window.__setSlide = n => setIdx(n);
+    window.__reload = reloadFromDisk;
+    window.__step = d => {
+      if (!content) return;
+      setIdx(i => Math.max(0, Math.min(content.slides.length - 1, i + d)));
+    };
+  });
+
+  const [rendering, setRendering] = React.useState(false);
+
+  const render = async () => {
+    setRendering(true);
+    try {
+      if (dirty) await save();
+      const r = await fetch('api/render', { method: 'POST' });
+      if (!r.ok) throw new Error(await r.text());
+    } catch (e) {
+      setSaveError(String(e.message || e));
+    } finally {
+      setRendering(false);
+    }
+  };
+
+  // Wire toolbars (preview only).
+  React.useEffect(() => {
+    if (!window.__previewMode) return;
+    // Top nav
+    const nav = document.getElementById('top-nav');
+    nav.style.display = 'flex';
+    const proj = document.getElementById('nav-proj');
+    const format = document.getElementById('nav-format');
+    const counter = document.getElementById('nav-counter');
+    if (content) {
+      proj.textContent = content.name || '—';
+      format.textContent = content.format || '—';
+      counter.textContent = `${String(idx + 1).padStart(2,'0')} / ${String(content.slides.length).padStart(2,'0')} · ${content.slides[idx]?.layout || ''}`;
+    }
+    const navSave = document.getElementById('nav-save');
+    const navRender = document.getElementById('nav-render');
+    navSave.disabled = !dirty;
+    navSave.textContent = dirty ? 'Save *' : (savedAt ? 'Saved' : 'Save');
+    navSave.onclick = save;
+    navRender.disabled = rendering;
+    navRender.textContent = rendering ? 'Rendering…' : 'Render';
+    navRender.onclick = render;
+
+    // Bottom toolbar
+    const tb = document.getElementById('prev-toolbar');
+    tb.style.display = 'flex';
+    const lbl = document.getElementById('prev-label');
+    const status = document.getElementById('prev-status');
+    if (content) lbl.textContent = `${String(idx + 1).padStart(2,'0')} / ${String(content.slides.length).padStart(2,'0')} · ${content.slides[idx]?.layout || ''}`;
+    if (loadError) { status.textContent = loadError; status.style.color = '#c0392b'; }
+    else if (saveError) { status.textContent = saveError; status.style.color = '#c0392b'; }
+    else { status.textContent = 'live'; status.style.color = '#5a8'; }
+    document.getElementById('btn-prev').onclick = () => window.__step(-1);
+    document.getElementById('btn-next').onclick = () => window.__step(+1);
+    document.getElementById('btn-edit').onclick = () => setEditorOpen(o => !o);
+  });
+
+  // Toggle body class for layout shift when editor is open.
+  React.useEffect(() => {
+    document.body.classList.toggle('editor-open', editorOpen);
+  }, [editorOpen]);
+
+  const dirty = content ? (JSON.stringify(content) !== savedSnapshot) : false;
+
+  const save = async () => {
+    setSaveError(null);
+    try {
+      const r = await fetch('api/save', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(content),
+      });
+      if (!r.ok) throw new Error(await r.text());
+      const { version } = await r.json();
+      ownVersionRef.current = version;
+      setSavedSnapshot(JSON.stringify(content));
+      setSavedAt(Date.now());
+    } catch (e) {
+      setSaveError(String(e.message || e));
+    }
+  };
+
+  // Keyboard: ←/→ for prev/next, Cmd-S to save.
+  React.useEffect(() => {
+    const onKey = e => {
+      if (!window.__previewMode) return;
+      if (e.metaKey && e.key === 's') { e.preventDefault(); if (dirty) save(); return; }
+      // Don't grab arrow keys when typing in the editor.
+      if (document.activeElement && ['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+      if (e.key === 'ArrowLeft')  window.__step(-1);
+      if (e.key === 'ArrowRight') window.__step(+1);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  });
+
+  if (loadError && !content) return <div style={{ color: '#c0392b', padding: 40, fontFamily: 'monospace' }}>load error: {loadError}</div>;
+  if (!content) return <div style={{ color: '#888', padding: 40, fontFamily: 'monospace' }}>loading…</div>;
+
+  const slide = content.slides[idx];
+  const Comp = slide ? window.LAYOUTS[slide.layout] : null;
+  const TWEAKS = Object.assign({
+    showChapterLabels: false, showStamp: true, showPageNum: true, overlayDarkness: 62, showGrain: true,
+    seriesLabel: '', totalSlides: content.slides.length,
+  }, content.tweaks || {});
+
+  return (
+    <>
+      {Comp ? (
+        <window.ItihaContext.Provider value={TWEAKS}>
+          <Comp slide={slide} index={idx} />
+        </window.ItihaContext.Provider>
+      ) : (
+        <div style={{ color: '#c0392b', padding: 40, fontFamily: 'monospace' }}>
+          {slide ? `unknown layout: ${slide.layout}` : `slide ${idx} out of range`}
+        </div>
+      )}
+      {window.__previewMode && editorOpen && ReactDOM.createPortal(
+        <window.Editor
+          content={content} setContent={setContent}
+          currentIdx={idx} setCurrentIdx={setIdx}
+          onSave={save} savedAt={savedAt} dirty={dirty} error={saveError}
+        />,
+        document.getElementById('editor'),
+      )}
+    </>
+  );
+}
+
+if (new URLSearchParams(location.search).get('capture') === '1') {
+  document.body.classList.add('capture');
+}
+if (new URLSearchParams(location.search).get('preview') === '1') {
+  window.__previewMode = true;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

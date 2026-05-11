@@ -1,0 +1,65 @@
+name: "My Post"
+format: instagram-portrait
+
+# IG caption used by `bin/publish`. Multi-line via YAML's | block scalar.
+caption: |
+  Replace this with your IG caption.
+
+  #hashtags #here
+
+# Optional global tweaks. Per-slide overrides win.
+tweaks:
+  showChapterLabels: false   # chapter eyebrow on each non-cover slide
+  showStamp: true            # ITIHA. wordmark, bottom-right
+  showPageNum: true          # "0X / 0Y · LABEL" footer, bottom-left
+  overlayDarkness: 62        # 0–100; default darkening over images
+  showGrain: true            # subtle film grain over slides that opt in
+
+# Each slide picks a layout from:
+#   cover · story · split-story · quote · stat · dates-grid · closing
+#
+# Inline text micro-syntax:
+#   In headlines:  *word*  →  Sindoor red accent
+#   In body text:  [word]  →  red emphasis     _word_  →  italic     **word**  →  bold
+#   Newlines inside YAML block scalars become <br/> in the rendered slide.
+#
+# Image field accepts either:
+#   - a local filename in this folder's images/  (e.g. "cover.jpg")
+#   - a full http(s):// URL  (downloaded on first render, cached locally)
+
+slides:
+  - layout: cover
+    eyebrow: "Series 01"
+    eyebrow_meta: "My Post · 3 Parts"
+    headline: |
+      Your Big
+      Headline With An
+      *Accent.*
+    subline: "One-line subtitle"
+    swipe_meta: "Swipe ▸ · 3 Slides · 1 min read"
+    # image: "cover.jpg"     # uncomment when you drop an image
+
+  - layout: story
+    headline: |
+      The Story
+      Begins *Here.*
+    body: |
+      Your body copy goes here. Use [red emphasis] for key terms,
+      _italics_ for foreign words, and **bold** for selective stress.
+    # image: "https://example.com/some-archival-photo.jpg"
+    image_bw: true
+
+  - layout: closing
+    headline: |
+      The Closing
+      *Line.*
+    stats:
+      - value: "1825"
+        label: "Year it began"
+      - value: "100K"
+        label: "People affected"
+      - value: "12"
+        label: "Colonies involved"
+    body: |
+      A short, declarative paragraph that lands the final point. Optional.
+    handle: "Follow @yourhandle"

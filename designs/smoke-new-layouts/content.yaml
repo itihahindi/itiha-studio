@@ -1,0 +1,66 @@
+name: smoke-new-layouts
+format: instagram-portrait
+tweaks:
+  seriesLabel: SMOKE
+slides:
+- layout: numbered-list
+  chapter: Chapter 02 · The Pamphlet
+  headline: |
+    Four *Reasons*
+  items:
+  - headline: Constitution
+    body: The 1934 CPI document explicitly named the party as "a Section of the Communist International."
+  - headline: Loyalty test
+    body: Stalin and [Vyshinsky] held that defending the USSR was the definition of a communist.
+  - headline: Money flow
+    body: Goel estimated ₹2 cr/yr from Moscow funding 70,000 wholetimers.
+  - headline: Outside direction
+    body: Leaders trained at Comintern schools; Soviet agents advised at congresses.
+- layout: comparison
+  chapter: Chapter 03 · The Verdict
+  headline: |
+    Goel vs The
+    *Historians.*
+  left_label: GOEL'S CLAIM
+  left_headline: 'Not a party,
+
+    an *apparatus*.
+
+    '
+  left_body: 'Funded from Moscow, directed by Soviet agents, ideologically locked
+
+    to the loyalty test. The party label was a fiction.
+
+    '
+  right_label: MAINSTREAM VIEW
+  right_headline: 'A *real* party
+
+    with limits.
+
+    '
+  right_body: 'Regional bases. Internal factions. Moments of defying Moscow.
+
+    Funding does not erase autonomy.
+
+    '
+  image_bw: false
+  body_size: 40
+  sub_size: 70
+- layout: portrait
+  name: 'Sita Ram *Goel*
+
+    '
+  dates: 1921 – 2003
+  role: 'Bharatiya Vidya Bhavan pamphleteer.
+
+    Former communist turned anti-Soviet polemicist.
+
+    '
+  quote: |
+    "There is no
+    Communist Party
+    of India."
+  attribution: — Nehru's Fatal Friendship, 1955
+  body_size: 20
+  texture: noise
+  theme: light

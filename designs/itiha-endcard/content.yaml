@@ -1,0 +1,16 @@
+name: "Itiha — Video End Card"
+format: youtube-end-card
+tweaks:
+  showStamp: false
+  showPageNum: false
+
+slides:
+  - layout: end-card
+    tagline: "History Simplified"
+    handles:
+      - platform: YT
+        text: "@itiha"
+      - platform: IG
+        text: "@itiha29"
+      - platform: WEB
+        text: "itiha.info"

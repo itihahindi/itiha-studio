@@ -1,0 +1,20 @@
+name: tesr
+format: instagram-reel
+caption: |
+  Replace this with your IG Reel caption.
+
+  #hashtags #here
+tweaks:
+  showStamp: true
+  showGrain: true
+  showChapterLabels: false
+  showPageNum: false
+slides:
+- layout: reel-title
+  headline: |
+    Maharan Pratap *Remained undeafted*
+  handle: '@itiha29'
+  image: _cache/0521c6da4e2524b2.jpg
+  image_overlay: 1
+  texture: halftone
+  image_bw: false

@@ -1,0 +1,25 @@
+# Secrets (NEVER commit)
+.env
+.env.local
+.env.*.local
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Rendered output (large PNGs)
+designs/*/output/
+
+# Editor / OS cruft
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Optional Claude API source registry (regenerated locally)
+sources.json
+
+# Logs
+*.log

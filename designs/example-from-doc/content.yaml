@@ -1,0 +1,127 @@
+name: seventy-twenty-ten
+format: instagram-portrait
+caption: |
+  October 1937. Japanese armies were burning their way through China. Mao Zedong issued an order to the Eighth Route Army.
+
+  Seventy percent expansion. Twenty percent dealing with the Kuomintang. Ten percent resisting Japan.
+
+  A 9-part read on the directive that rewrote a war — and the arithmetic that has governed every communist "united front" since.
+
+  @itiha29 · itiha.info
+
+  #IndianHistory #ColdWar #Itiha
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  seriesLabel: SEVENTY
+slides:
+- layout: cover
+  eyebrow: Series 10
+  eyebrow_meta: The United Front · 9 Parts
+  headline: |
+    Seventy. Twenty.
+    *Ten.*
+  subline: Mao's directive · October 1937
+  swipe_meta: Swipe ▸ · 9 Slides · 4 min read
+  image: https://upload.wikimedia.org/wikipedia/commons/5/5e/Mao_Zedong_1950_Portrait_%283x4_cropped%29%282%29.jpg
+  image_overlay: 1
+- layout: story
+  chapter: Chapter 01 · The War
+  headline: |
+    China Was *Burning.*
+  body: By the autumn of [1937], the [Imperial Japanese Army] had taken [Beijing] and [Tianjin] and was
+    marching on [Shanghai] and [Nanjing]. The [Republic of China] under [Chiang Kai-shek] was fighting
+    for survival. In [September], the [Chinese Communist Party] announced its [second united front] with
+    the [Kuomintang], abolished its land confiscation programme, and renamed its forces the _National
+    Revolutionary Army_. The country exhaled.
+  body_size: 45
+  theme: light
+- layout: quote
+  chapter: Chapter 02 · The Order
+  headline: |
+    The Directive In
+    Mao's Own *Words.*
+  quote: |
+    The Sino-Japanese war affords our Party an excellent opportunity for expansion. Our fixed policy should be seventy percent expansion, twenty percent dealing with the Kuomintang, and ten percent resisting Japan.
+  attribution: Mao Zedong · directive to the Eighth Route Army · October 1937
+  texture: noise
+  theme: light
+  image_bw: true
+  quote_size: 70
+- layout: stat
+  chapter: Chapter 03 · The Arithmetic
+  headline: |
+    The Ratio
+    Of *Betrayal.*
+  stats:
+  - label: Expansion of the Party
+    value: 70%
+    sublabel: Build cells, recruit, occupy territory
+  - label: Dealing with the Kuomintang
+    value: 20%
+    sublabel: Penetrate, isolate, disperse
+  - label: Resisting Japan
+    value: 10%
+    value_red: true
+    sublabel: The stated reason for the alliance
+  body: The communists had asked for [unity] against a foreign invader. The directive showed what unity
+    meant. [Seventy percent] of the war effort would be spent growing the Party. [Twenty percent] would
+    be spent hollowing out the partner. [Ten percent] — barely a tenth — would be spent on the [Japanese].
+  texture: scanlines
+  theme: dark
+- layout: story
+  chapter: Chapter 04 · The Method
+  headline: |
+    Penetrate.
+    Isolate. *Disperse.*
+  body: Mao's directive spelled out the operation. Communist forces were to [penetrate deeply] into [Central
+    China], cut the communications of the [Central Government] in various sectors, and [isolate and disperse]
+    the forces under its command. The Party would [prepare for the counter-offensive] — not against [Tokyo],
+    but against [Chongqing]. The war with Japan was an [opportunity]. The war with the Kuomintang was
+    the [point].
+  body_size: 45
+- layout: story
+  chapter: Chapter 05 · The Cost
+  headline: |
+    A Republic
+    Bled From *Within.*
+  body: For eight years, [Nationalist] divisions absorbed the [Japanese] onslaught at [Shanghai], at [Wuhan],
+    at [Changsha]. Behind their lines, communist cells did what Mao had ordered — [expanded] into the
+    countryside, [infiltrated] the administration, [stockpiled] arms. The [Kuomintang] suffered speedy
+    defeats. The [communists] grew. The Party that had pledged to fight the invader had spent the war
+    fighting the [ally].
+  body_size: 45
+- layout: story
+  chapter: Chapter 06 · The Handover
+  headline: |
+    Manchuria In
+    Soviet *Hands.*
+  body: In [August 1945], with Japan surrendering, the [Soviet Army] entered [Manchuria]. By the terms
+    of the [Sino-Soviet Treaty of Friendship] signed the same month, Moscow had pledged all moral and
+    material support to the [Central Government of China]. Instead, the Soviet command [blocked the entry]
+    of Kuomintang forces, gave the [Chinese communists] the surrendered [Japanese arsenals], and handed
+    them the American stores piled at [Siberian ports]. The treaty was [seventy-twenty-ten] at the level
+    of states.
+  body_size: 40
+- layout: stat
+  chapter: Chapter 07 · The Outcome
+  headline: |
+    From Cells To
+    A *State.*
+  stats:
+  - label: People's Republic proclaimed
+    value: Oct 1, 1949
+    sublabel: Twelve years after the directive
+  - label: Soviet recognition
+    value: Next day.
+    value_red: true
+    sublabel: October 2, 1949 — first state to recognise
+- layout: story
+  headline: |
+    The Math Of
+    Every *Front.*
+  body: |
+    [Sita Ram Goel] read the directive as a template. [Spain], [France], [Czechoslovakia] — every [united front] the communists ever offered followed the same arithmetic. A small percentage for the [stated enemy]. A larger percentage for the [stated ally]. The largest, always, for the [Party itself]. The number that mattered was never the [ten]. It was the [seventy].
+  handle: Follow @itiha29 · itiha.info
+  body_size: 48

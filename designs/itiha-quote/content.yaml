@@ -1,0 +1,21 @@
+name: "Itiha — Quote Card"
+format: instagram-square
+caption: |
+  From the archives — the Mughal court treasury at its zenith.
+
+  #IndianHistory #Mughals #Itiha
+
+slides:
+  - layout: quote-card
+    variant: dark
+    eyebrow: "From the Archives"
+    quote: |
+      "The treasury at Madurai held more gold than the Mughal capital."
+    attribution: "— Ain-i-Akbari, Bk. III, §47"
+
+  - layout: quote-card
+    variant: light
+    eyebrow: "A Note on Method"
+    quote: |
+      "Conclusions belong to historians. Curiosities belong to the rest of us."
+    attribution: "— Itiha Editorial"

@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+# Itiha Studio — daemonized start/stop.
+#
+#   bin/itiha start     launch in background, open the browser, print the URL
+#   bin/itiha stop      kill the running server
+#   bin/itiha restart
+#   bin/itiha status
+#
+# For foreground / live-log mode, use bin/studio instead.
+
+set -euo pipefail
+
+HERE="$(cd "$(dirname "$0")" && pwd)"
+ROOT="$(cd "$HERE/.." && pwd)"
+PID_FILE="$ROOT/.itiha-studio.pid"
+LOG_FILE="$ROOT/.itiha-studio.log"
+PY="$ROOT/.venv/bin/python"
+
+_running() {
+  [[ -f "$PID_FILE" ]] && kill -0 "$(cat "$PID_FILE" 2>/dev/null)" 2>/dev/null
+}
+
+_url() {
+  grep -m1 -oE "http://[^ ]+" "$LOG_FILE" 2>/dev/null || true
+}
+
+cmd="${1:-status}"
+
+case "$cmd" in
+  start)
+    if _running; then
+      echo "Already running (PID $(cat "$PID_FILE")). $(_url)"
+      exit 0
+    fi
+    # Clean up any stale stragglers from a previous crash.
+    pkill -f "src/studio.py" 2>/dev/null || true
+    rm -f "$PID_FILE"
+
+    nohup "$PY" -u "$ROOT/src/studio.py" >"$LOG_FILE" 2>&1 &
+    echo $! > "$PID_FILE"
+
+    # Wait briefly for the URL to land in the log.
+    for _ in $(seq 1 20); do
+      url="$(_url)"
+      [[ -n "$url" ]] && break
+      sleep 0.2
+    done
+    echo "Started (PID $(cat "$PID_FILE")). ${url:-(URL not yet logged — see $LOG_FILE)}"
+    ;;
+
+  stop)
+    if _running; then
+      pid="$(cat "$PID_FILE")"
+      kill "$pid" 2>/dev/null || true
+      rm -f "$PID_FILE"
+      echo "Stopped (PID $pid)."
+    elif pkill -f "src/studio.py" 2>/dev/null; then
+      rm -f "$PID_FILE"
+      echo "Stopped stray process."
+    else
+      echo "Not running."
+    fi
+    ;;
+
+  restart)
+    "$0" stop
+    "$0" start
+    ;;
+
+  status)
+    if _running; then
+      echo "Running (PID $(cat "$PID_FILE")). $(_url)"
+    else
+      echo "Not running."
+    fi
+    ;;
+
+  *)
+    echo "usage: $(basename "$0") {start|stop|restart|status}"
+    exit 1
+    ;;
+esac

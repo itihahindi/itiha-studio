@@ -1,14 +1,13 @@
 name: project-itiha
 format: instagram-portrait
 tweaks:
-  showChapterLabels: false
+  showChapterLabels: true
   showStamp: true
   showPageNum: true
   overlayDarkness: 62
   showGrain: true
 slides:
 - layout: cover
-  eyebrow: Series 01
   eyebrow_meta: Indenture · 9 Parts
   headline: |
     A New Name
@@ -16,10 +15,12 @@ slides:
     Old *Chain.*
   subline: How the empire re-labelled slavery
   swipe_meta: Swipe ▸ · 9 Slides · 4 min read
-  image: a1-cover-bgremoved.png
-  theme: dark
+  image: newly_arrived_coolies_in_trinidad.jpg
+  theme: light
   image_bw: true
-  texture: halftone
+  texture: scanlines
+  image_overlay: 0.7
+  headline_size: 230
 - layout: story
   headline: |
     The Crisis
@@ -28,43 +29,37 @@ slides:
     [Fiji], and South Africa faced a labour crisis. The empire's solution was elegant in its bureaucratic
     simplicity — and brutal in its human consequences.
   image: a2-crisis.webp
-  texture: halftone
-- layout: quote-card
-  headline: |
-    A Label Imposed,
-    *Never* Chosen.
-  body: Derived from the Tamil [kuli] — meaning [wages] — the word was forced onto an enormously diverse
-    group of workers from many castes, regions, and faiths. Most would never have used it themselves.
-    They registered their protest in folk songs.
-  texture: halftone
-  theme: dark
-  body_size: 58
-  block_y: top
-  image_overlay: 0.65
-  quote: This is an amazing quote by Mohan. In which he is quoting the obvious, which means [obviously
-    what he is quoting]
-  attribution: -mohan vorganti
-  variant: light
-- layout: story
+  texture: vignette
+  body_size: 55
+  image_overlay: 1
+  theme: light
+  chapter: 'Indentured labour: Slavery re-branded'
+- layout: split-story
   headline: |
     Manufactured
     *Desperation.*
-  body: British colonial policy had devastated the Indian countryside — driving farmers off land for [opium
+  body: British colonial policy had devastated the Indian countryside, driving farmers off land for [opium
     cultivation], destroying traditional industries. The desperation that recruiters found in villages
     was not accidental. It was manufactured.
   image: a4-desperation.webp
   theme: light
-- layout: quote
+  body_size: 55
+  body_y: 100
+  texture: vignette
+  image_overlay: 1
+- layout: story
   headline: |
     Built On
     *Deception.*
   body: 'Recruiters paid per head exaggerated wages, promised weekend trips home. Their prime targets:
-    [widows], women who had left marriages — those with no one to prevent them from going.'
-  quote: |
-    "Work as easy as
-    sifting sugar."
-  attribution: — Recruiter's pitch, 1860s
+    [widows], women who had left marriages, those with no one to prevent them from going.'
   image: a5-deception.webp
+  image_bw: true
+  quote_size: 20
+  body_size: 60
+  texture: vignette
+  image_overlay: 1
+  theme: light
 - layout: stat
   headline: |
     Death Rates
@@ -79,6 +74,11 @@ slides:
     value: Worse.
     sublabel: Indians, often higher
     value_red: true
+  image_bw: true
+  body_size: 46
+  stat_size: 150
+  texture: grain
+  theme: light
 - layout: story
   headline: |
     The Logies
@@ -88,6 +88,9 @@ slides:
     labourers] were convicted as "criminals" each year — most often for arriving late or walking off the
     estate without permission.
   image: a7-logies.webp
+  image_overlay: 1
+  body_size: 52
+  theme: light
 - layout: dates-grid
   headline: |
     Freedom That
@@ -103,7 +106,11 @@ slides:
   - date: And Yet
     text: The "cow sheds" they were mocked for produced lawyers, doctors, and a Prime Minister.
   image: a8-freedom.webp
-  theme: dark
+  theme: light
+  image_overlay: 1
+  date_size: 100
+  text_size: 30
+  texture: vignette
 - layout: closing
   headline: |
     Not The
@@ -119,3 +126,7 @@ slides:
   - label: British colonies
     value: '12'
   image: a9-theirs.webp
+  image_overlay: 1
+  body_size: 28
+  theme: light
+  texture: vignette

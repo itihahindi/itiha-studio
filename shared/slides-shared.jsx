@@ -192,16 +192,20 @@ function MaybePageNum(props) {
 
 // URL-based image layer (YAML-driven mode). Uses an <img> sized to "cover"
 // so headless renderers wait on real network/decode events.
-function ImageLayer({ url, bw, overlay, position = 'center', vignette = true }) {
+function ImageLayer({ url, bw, overlay, position = 'center', vignette = true, light = false }) {
   const t = useItiha();
   const o = overlay != null ? overlay : ((t && t.overlayDarkness != null) ? t.overlayDarkness / 100 : 0.62);
   if (!url) {
-    return <div style={{ position: 'absolute', inset: 0, background: '#1a1a1a' }} />;
+    return <div style={{ position: 'absolute', inset: 0, background: light ? '#FAF5EE' : '#1a1a1a' }} />;
   }
   const filter = bw ? 'grayscale(1) contrast(1.08)' : undefined;
   // Bare filenames or "_cache/<name>" → served under /images/. URLs pass through.
   const isUrl = url.startsWith('http://') || url.startsWith('https://');
   const src = isUrl ? url : `images/${url}`;
+  // Dark theme: dark gradient veil (keeps parchment text readable).
+  // Light theme: off-white veil (keeps near-black text readable on photos).
+  const veil = light ? '250,245,238' : '0,0,0';
+  const vignetteRgba = light ? 'rgba(250,245,238,0.55)' : 'rgba(0,0,0,0.55)';
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
       <img src={src} style={{
@@ -210,12 +214,12 @@ function ImageLayer({ url, bw, overlay, position = 'center', vignette = true }) 
       }} />
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: `linear-gradient(180deg, rgba(0,0,0,${o * 0.7}) 0%, rgba(0,0,0,${o * 0.45}) 38%, rgba(0,0,0,${o}) 70%, rgba(0,0,0,${Math.min(o + 0.15, 0.95)}) 100%)`,
+        background: `linear-gradient(180deg, rgba(${veil},${o * 0.7}) 0%, rgba(${veil},${o * 0.45}) 38%, rgba(${veil},${o}) 70%, rgba(${veil},${Math.min(o + 0.15, 0.95)}) 100%)`,
       }} />
       {vignette && (
         <div style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%)',
+          background: `radial-gradient(ellipse at center, transparent 40%, ${vignetteRgba} 100%)`,
         }} />
       )}
     </div>

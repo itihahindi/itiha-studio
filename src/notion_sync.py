@@ -109,14 +109,14 @@ def _query_db(body: dict) -> dict:
     UUID instead of the database ID. Returns the parsed response."""
     r = requests.post(
         f"{NOTION_API}/databases/{NOTION_DB_ID}/query",
-        json=body, headers=_headers(), timeout=15,
+        json=body, headers=_headers(), timeout=30,
     )
     if r.status_code == 404:
         # User likely pasted a data-source ID rather than a database ID.
         # The new API path works for both single-source and multi-source DBs.
         r = requests.post(
             f"{NOTION_API}/data_sources/{NOTION_DB_ID}/query",
-            json=body, headers=_headers(), timeout=15,
+            json=body, headers=_headers(), timeout=30,
         )
     r.raise_for_status()
     return r.json()
@@ -160,7 +160,7 @@ def fetch_page(page_id: str) -> dict | None:
         return None
     r = requests.get(
         f"{NOTION_API}/pages/{page_id}",
-        headers=_headers(), timeout=15,
+        headers=_headers(), timeout=30,
     )
     if r.status_code == 404:
         return None
@@ -173,7 +173,7 @@ def update_status(page_id: str, status: str) -> None:
     body = {"properties": {"Status": {"status": {"name": status}}}}
     r = requests.patch(
         f"{NOTION_API}/pages/{page_id}",
-        json=body, headers=_headers(), timeout=15,
+        json=body, headers=_headers(), timeout=30,
     )
     r.raise_for_status()
 
@@ -183,7 +183,7 @@ def set_studio_slug(page_id: str, slug: str) -> None:
     body = {"properties": {"Studio slug": {"rich_text": [{"text": {"content": slug}}]}}}
     r = requests.patch(
         f"{NOTION_API}/pages/{page_id}",
-        json=body, headers=_headers(), timeout=15,
+        json=body, headers=_headers(), timeout=30,
     )
     r.raise_for_status()
 
@@ -205,7 +205,7 @@ def attach_image(page_id: str, image_path: Path) -> None:
     r1 = requests.post(
         f"{NOTION_API}/file_uploads",
         json={"filename": image_path.name, "content_type": "image/png"},
-        headers=_headers(), timeout=15,
+        headers=_headers(), timeout=30,
     )
     r1.raise_for_status()
     upload = r1.json()

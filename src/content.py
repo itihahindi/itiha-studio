@@ -130,6 +130,7 @@ def load_content(design_dir: Path) -> dict:
         "format": fmt_name,
         "format_dims": {"width": fmt_dims["width"], "height": fmt_dims["height"]},
         "caption": data.get("caption", ""),
+        "hashtags": data.get("hashtags", ""),
         "tweaks": data.get("tweaks", {}),
         "slides": resolved_slides,
     }

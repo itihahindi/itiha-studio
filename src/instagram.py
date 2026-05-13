@@ -109,8 +109,15 @@ def publish_design(design_dir: Path) -> str:
                 f"Missing env var {var}. See docs/INSTAGRAM_SETUP.md for setup."
             )
 
-    config = json.loads((design_dir / "design.json").read_text())
-    caption = config.get("caption", "")
+    import yaml as _yaml
+    yaml_path = design_dir / "content.yaml"
+    if not yaml_path.exists():
+        raise RuntimeError(f"No content.yaml in {design_dir}")
+    config = _yaml.safe_load(yaml_path.read_text()) or {}
+    caption = config.get("caption", "") or ""
+    hashtags = (config.get("hashtags") or "").strip()
+    if hashtags:
+        caption = (caption.rstrip() + "\n\n" + hashtags) if caption else hashtags
     output_dir = design_dir / "output"
     images = sorted(output_dir.glob("*.png"))
     if not images:

@@ -23,3 +23,6 @@ sources.json
 
 # Logs
 *.log
+
+# bin/itiha daemon state
+.itiha-studio.pid

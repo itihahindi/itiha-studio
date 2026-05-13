@@ -85,8 +85,23 @@
     text-decoration: none; color: var(--fg);
     transition: background 120ms ease, border-color 120ms ease;
     display: flex; flex-direction: column; gap: 14px;
+    position: relative;
   }
   .card:hover { background: var(--bg-card-h); border-color: #333; }
+  .card .delete-btn {
+    position: absolute; top: 10px; right: 10px;
+    width: 26px; height: 26px;
+    background: transparent; color: var(--fg-dim); border: 1px solid transparent;
+    padding: 0; margin: 0;
+    font: 16px/1 'DM Sans', system-ui; letter-spacing: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 120ms ease, color 120ms ease, border-color 120ms ease, background 120ms ease;
+    cursor: pointer;
+  }
+  .card:hover .delete-btn { opacity: 1; }
+  .card .delete-btn:hover {
+    color: #fff; background: var(--red); border-color: var(--red);
+  }
   .card .name {
     font-family: 'Bebas Neue', Impact, sans-serif;
     font-size: 30px; letter-spacing: 1px; line-height: 1;
@@ -211,10 +226,32 @@ function renderGrid(projects) {
     a.className = 'card';
     a.href = `d/${encodeURIComponent(p.slug)}/`;
     a.innerHTML = `
+      <button class="delete-btn" title="Delete project" aria-label="Delete project">×</button>
       <div class="name">${escapeHtml(p.name || p.slug)}</div>
       <div class="format"><span class="badge">${escapeHtml(FORMAT_LABELS[p.format] || p.format || 'unknown')}</span></div>
     `;
+    a.querySelector('.delete-btn').onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      deleteProject(p);
+    };
     grid.appendChild(a);
+  }
+}
+
+async function deleteProject(p) {
+  const label = p.name || p.slug;
+  if (!confirm(`Delete "${label}"?\n\nThis removes designs/${p.slug}/ from disk — content.yaml, images, and rendered PNGs. Cannot be undone.`)) return;
+  try {
+    const r = await fetch('api/projects/delete', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: p.slug }),
+    });
+    if (!r.ok) throw new Error(await r.text());
+    const projects = await loadProjects();
+    renderGrid(projects);
+  } catch (e) {
+    alert(`delete failed: ${e.message || e}`);
   }
 }
 

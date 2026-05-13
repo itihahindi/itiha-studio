@@ -27,6 +27,7 @@ import cgi
 import json
 import os
 import re
+import shutil
 import socket
 import subprocess
 import sys
@@ -174,6 +175,21 @@ def _read_notion_id(slug: str) -> str | None:
     return str(pid) if pid else None
 
 
+def _delete_project(slug: str) -> None:
+    """Remove a design folder. Refuses anything that doesn't resolve inside DESIGNS."""
+    if not slug or "/" in slug or "\\" in slug or slug in (".", ".."):
+        raise ValueError(f"invalid slug: {slug!r}")
+    target = (DESIGNS / slug).resolve()
+    designs_root = DESIGNS.resolve()
+    if designs_root not in target.parents:
+        raise ValueError(f"slug escapes designs root: {slug!r}")
+    if not target.is_dir():
+        raise FileNotFoundError(f"no such design: {slug}")
+    shutil.rmtree(target)
+    with _STATES_LOCK:
+        _STATES.pop(slug, None)
+
+
 def _create_project(name: str, fmt: str) -> str:
     """Create a new design folder; return the slug."""
     base = _slugify(name)
@@ -301,6 +317,9 @@ def _build_server() -> ThreadingHTTPServer:
             if path == "/api/projects/new":
                 return self._create_project()
 
+            if path == "/api/projects/delete":
+                return self._delete_project_route()
+
             if path == "/api/notion/open":
                 return self._open_notion()
 
@@ -322,6 +341,21 @@ def _build_server() -> ThreadingHTTPServer:
                 self._send_bytes(json.dumps({"slug": slug}).encode(), "application/json")
             except Exception as e:
                 self._send_bytes(f"create failed: {e}".encode(), "text/plain", code=500)
+
+        def _delete_project_route(self):
+            try:
+                body = self._read_json_body()
+                slug = (body.get("slug") or "").strip()
+                if not slug:
+                    self._send_bytes(b"slug is required", "text/plain", code=400); return
+                _delete_project(slug)
+                self._send_bytes(b'{"ok":true}', "application/json")
+            except FileNotFoundError as e:
+                self._send_bytes(str(e).encode(), "text/plain", code=404)
+            except ValueError as e:
+                self._send_bytes(str(e).encode(), "text/plain", code=400)
+            except Exception as e:
+                self._send_bytes(f"delete failed: {e}".encode(), "text/plain", code=500)
 
         def _open_notion(self):
             """Create a Studio project from a Notion backlog row, link them both ways."""

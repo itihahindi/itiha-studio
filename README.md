@@ -54,6 +54,19 @@ python src\studio.py
 
 The studio prints a `http://127.0.0.1:<port>/` URL and opens your browser. That's the home page — your project picker.
 
+### Daemon mode (macOS / Linux)
+
+`bin/studio` runs in the foreground — closing the terminal stops the server. If you'd rather leave it running and free up the terminal, use `bin/itiha`:
+
+```bash
+bin/itiha start      # launch in background, opens browser, prints URL
+bin/itiha stop       # kill it
+bin/itiha restart
+bin/itiha status     # check if it's up + show the current URL
+```
+
+PID + log live at `.itiha-studio.pid` / `.itiha-studio.log` in the repo root (both gitignored). On Windows, use `python src\studio.py` and `Ctrl-C` to stop.
+
 ---
 
 ## Daily workflow
@@ -160,7 +173,7 @@ The **Remove BG** button on uploaded images uses local [rembg](https://github.co
 
 ```
 motion-graphics/
-├── bin/                 setup · new · preview · render · publish · studio   (bash; Windows: run src/<name>.py directly)
+├── bin/                 setup · new · preview · render · publish · studio · itiha (start/stop)   (bash; Windows: run src/<name>.py directly)
 ├── src/
 │   ├── studio.py        multi-project server with home page (entry point)
 │   ├── preview.py       single-project live-reload server (legacy)

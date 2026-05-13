@@ -290,6 +290,7 @@ def parse_markdown_text(text: str, doc_dir: Path | None = None, name_hint: str =
         "name": fm.get("name", name_hint),
         "format": fm.get("format", "instagram-portrait"),
         "caption": fm.get("caption", ""),
+        "hashtags": fm.get("hashtags", ""),
         "tweaks": fm.get("tweaks", {}),
         "slides": slides,
         "_images": images_to_copy,

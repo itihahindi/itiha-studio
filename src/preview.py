@@ -46,7 +46,7 @@ def _ephemeral_port() -> int:
 
 # Keys whose values are intentionally multi-line and should use YAML's | block
 # style for human-readable output.
-_BLOCK_KEYS = {"headline", "body", "subline", "quote", "caption"}
+_BLOCK_KEYS = {"headline", "body", "subline", "quote", "caption", "hashtags"}
 
 
 def _normalize_for_yaml(obj):

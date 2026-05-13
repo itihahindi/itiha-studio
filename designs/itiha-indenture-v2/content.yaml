@@ -11,7 +11,7 @@ caption: |
 
   #IndianHistory #ColdWar #Itiha
 tweaks:
-  showChapterLabels: false
+  showChapterLabels: true
   showStamp: true
   showPageNum: true
   overlayDarkness: 72
@@ -31,6 +31,8 @@ slides:
   image: _cache/79a0ebfd3f6cb934.jpg
   image_position: '25'
   image_overlay: 0.8
+  theme: dark
+  texture: halftone
 - layout: story
   chapter: Chapter 01 · The Provocation
   headline: |
@@ -41,11 +43,14 @@ slides:
     of India] was not a party. It was not Indian. It was the [Soviet Communist Party's Section] operating
     under an Indian name.
   image: screenshot-2026-05-11-at-1-01-27-am.png
-  image_overlay: 0.85
-  block_y: middle
-  body_size: 40
+  block_y: top
+  body_size: 50
   image_position: '9'
-- layout: story
+  theme: light
+  image_bw: false
+  image_overlay: 1.2
+  texture: halftone
+- layout: split-story
   chapter: Chapter 02 · The Test
   headline: |
     The Only
@@ -54,27 +59,32 @@ slides:
     The one and only determining criterion of revolutionary internationalism is — are you for or against the USSR.
   attribution: A. P. Vyshinsky · Voprosy Filosofii
   body: Goel argued that communism could not be defined by [Marxism], by [equality], or by [revolution].
-    The Soviet jurist [Vyshinsky] had already defined it. So had [Stalin]. The test was [loyalty to Moscow]
-    — measured, in Stalin's phrase, by readiness to defend the USSR _unconditionally, frankly and honestly_.
-  image_bw: true
+    The Soviet jurist [Vyshinsky] had already defined it. So had [Stalin]. The test was [loyalty to Moscow],  measured,
+    in Stalin's phrase, by readiness to defend the USSR _unconditionally, frankly and honestly_.
+  image_bw: false
   quote_size: 50
-  body_size: 40
+  body_size: 49
   image: _cache/00d0d707b74a65e0.jpg
-  image_overlay: 1
+  image_overlay: 1.7
   block_y: middle
+  texture: halftone
+  headline_size: 100
+  theme: light
 - layout: story
   chapter: Chapter 03 · The Confession
   headline: |
     What The General
     Secretary *Admitted.*
-  body: 'The popular image of communism was a movement of the poor. The [CPI''s] own General Secretary
-    said otherwise. Writing in the _Cominform Journal_, [Ajoy Ghosh] confessed that the party''s position
-    among the [working class], the [agricultural workers], and the [poor peasants]  the classes meant
-    to be its granite foundation, remained [extremely weak]. Goel''s reading: the CPI drew its strength
-    from the educated urban professional, not the labouring villager.'
+  body: "The popular image of communism was a movement of the poor. The [CPI's] own General Secretary\
+    \ said otherwise. Writing in the _Cominform Journal_, [Ajoy Ghosh] confessed that the party's position\
+    \ among the [working class],  & the [poor peasants]  the classes meant to be its granite foundation,\
+    \ remained [extremely weak]. \nGoel's reading: the CPI drew its strength from the educated urban professional,\
+    \ not the laboring villager.\n"
   image_overlay: 1
   block_y: bottom
-  body_size: 40
+  body_size: 45
+  theme: light
+  headline_size: 79
 - layout: story
   chapter: Chapter 04 · The Constitution
   headline: |
@@ -85,13 +95,15 @@ slides:
   attribution: CPI Constitution · 1934 Preamble
   body: Until [1943], the [CPI's own constitution] described the party as a [Section of the Communist
     International]. The clause was quietly dropped when the [Comintern] was formally dissolved that year
-    — a dissolution designed, Goel writes, to please [America] and [Britain] then allied with the Soviet
-    Union against Hitler. The constitution changed. The relationship did not.
+    by USSR, a dissolution designed, Goel writes, to please [America] and [Britain] then allied with the
+    Soviet Union against Hitler. The constitution changed. The relationship did not.
   image: _cache/06e902a4ccb6184d.jpg
   image_overlay: 1.7
   image_bw: false
   block_y: bottom
-  body_size: 45
+  body_size: 48
+  theme: light
+  texture: halftone
 - layout: story
   chapter: Chapter 05 · The Three Prongs
   headline: |
@@ -103,8 +115,9 @@ slides:
     The [secret underground] worked inside the Army, the Police, and the policy-making organs, preparing
     for the final bid for power.
   image_overlay: 1
-  body_size: 45
-  theme: dark
+  body_size: 46
+  theme: light
+  texture: halftone
 - layout: stat
   chapter: Chapter 06 · The Money
   headline: |
@@ -124,8 +137,11 @@ slides:
     and foreign delegations, and — where persuasion failed — bought off writers, poets, and journalists
     outright.
   image_bw: true
+  theme: light
+  texture: halftone
+  body_size: 30
+  stat_size: 200
 - layout: story
-  chapter: Chapter 07 · The Tissue
   headline: |
     A Cancer In
     The *Body.*
@@ -137,21 +153,25 @@ slides:
   quote_size: 35
   image_bw: true
   image_overlay: 1
-  body_size: 45
+  body_size: 44
+  theme: light
+  texture: halftone
 - layout: story
   headline: |
     A Section,
     Not A *Party.*
   body: |
-    The argument of the pamphlet was not that [Indian communists] were foreign agents in disguise. It was that the [organisation] they belonged to had been built, funded, and directed from outside — and that no amount of [Indian] vocabulary could change what it was. The name on the door read [Communist Party of India]. The address, Goel insisted, was [Moscow].
+    The argument of the pamphlet was not that [Indian communists] were foreign agents in disguise. It was that the [organisation] they belonged to had been built, funded, and directed from outside & that no amount of [Indian] vocabulary could change what it was. The name on the door read [Communist Party of India]. The address, Goel insisted, was [Moscow].
   handle: Follow @itiha29 · itiha.info
   image: _cache/e5df54940b1f6ba2.jpg
-  body_size: 45
+  body_size: 47
   headline_size: 100
   image_bw: true
   chapter: 'Lenin with M.N Roy '
-  theme: dark
-  image_overlay: 1.6
+  theme: light
+  image_overlay: 1.45
+  texture: halftone
 - layout: end-card
   headline: New slide
   tagline: origins of CPI video live on our youtube
+  texture: halftone

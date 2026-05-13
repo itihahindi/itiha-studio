@@ -1,65 +1,114 @@
-name: "My Post"
+name: 1971-nyt-bangladesh
 format: instagram-portrait
-
-# IG caption used by `bin/publish`. Multi-line via YAML's | block scalar.
 caption: |
-  Replace this with your IG caption.
+  In the year 1971. The New York Times published what Pakistan tried to hide , the systematic hunting of Hindus in East Pakistan w
 
-  #hashtags #here
 
-# Optional global tweaks. Per-slide overrides win.
+  @itiha29 · itiha.info
+
+  #IndianHistory #Bangladesh1971 #Itiha
 tweaks:
-  showChapterLabels: false   # chapter eyebrow on each non-cover slide
-  showStamp: true            # ITIHA. wordmark, bottom-right
-  showPageNum: true          # "0X / 0Y · LABEL" footer, bottom-left
-  overlayDarkness: 62        # 0–100; default darkening over images
-  showGrain: true            # subtle film grain over slides that opt in
-
-# Each slide picks a layout from:
-#   cover · story · split-story · quote · stat · dates-grid · closing
-#
-# Inline text micro-syntax:
-#   In headlines:  *word*  →  Sindoor red accent
-#   In body text:  [word]  →  red emphasis     _word_  →  italic     **word**  →  bold
-#   Newlines inside YAML block scalars become <br/> in the rendered slide.
-#
-# Image field accepts either:
-#   - a local filename in this folder's images/  (e.g. "cover.jpg")
-#   - a full http(s):// URL  (downloaded on first render, cached locally)
-
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: 1971
 slides:
-  - layout: cover
-    eyebrow: "Series 01"
-    eyebrow_meta: "My Post · 3 Parts"
-    headline: |
-      Your Big
-      Headline With An
-      *Accent.*
-    subline: "One-line subtitle"
-    swipe_meta: "Swipe ▸ · 3 Slides · 1 min read"
-    # image: "cover.jpg"     # uncomment when you drop an image
-
-  - layout: story
-    headline: |
-      The Story
-      Begins *Here.*
-    body: |
-      Your body copy goes here. Use [red emphasis] for key terms,
-      _italics_ for foreign words, and **bold** for selective stress.
-    # image: "https://example.com/some-archival-photo.jpg"
-    image_bw: true
-
-  - layout: closing
-    headline: |
-      The Closing
-      *Line.*
-    stats:
-      - value: "1825"
-        label: "Year it began"
-      - value: "100K"
-        label: "People affected"
-      - value: "12"
-        label: "Colonies involved"
-    body: |
-      A short, declarative paragraph that lands the final point. Optional.
-    handle: "Follow @yourhandle"
+- layout: cover
+  eyebrow: Series 03
+  eyebrow_meta: 1971 Bangladesh · 5 Parts
+  headline: |
+    When The Times
+    Printed The *Genocide.*
+  subline: 'New York Times · June 1971 '
+  swipe_meta: Swipe ▸ · 6 Slides · 3 min read
+  headline_offset_y: -120
+  theme: dark
+  texture: halftone
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTinIc9UsXxV8K6AUzpt6VbW4kwAodiaS4jeg&s
+  image_overlay: 1.2
+- layout: quote
+  chapter: Chapter 01 · The Yellow Mark
+  headline: |
+    Marked
+    For The *Slaughter.*
+  quote: |
+    "The Pakistani Army has painted big yellow 'H's' on the Hindu shops still standing in this town to identify the property of the minority eighth of the population that it has made its special targets."
+  attribution: Sydney H. Schanberg · The New York Times · [Faridpur], 29 June 1971
+  body: In [Faridpur], the [Pakistani Army] painted the letter on doorways before the men with guns arrived.
+    The [Hindu] eighth of the population had been pre-selected for destruction.
+  body_size: 35
+  texture: halftone
+  headline_offset_y: -70
+  body_offset_y: 30
+- layout: quote
+  chapter: Chapter 02 · Village By Village
+  headline: |
+    A Hunt,
+    Not A *War.*
+  quote: |
+    "The campaign against the Hindus was  and in some cases still is systematic. Soldiers fanned through virtually every village asking where the Hindus lived."
+  attribution: Sydney H. Schanberg · The New York Times · [Faridpur], 29 June 1971
+  body: This was not the chaos of war. It was an [administrative] operation. [Hindu] properties were confiscated
+    and handed to **loyal** citizens , A transfer of wealth executed at gunpoint.
+  body_size: 40
+  theme: dark
+  texture: halftone
+  body_offset_y: 40
+- layout: quote
+  chapter: Chapter 03 · The Public Square
+  headline: |
+    Beheaded
+    In *Faridpur.*
+  quote: |
+    "In April, as a public example, two Hindus were beheaded in a central square in Faridpur and their bodies were soaked in kerosene and burned. When some Hindus, trying to save their lives, begged to convert to Islam, they were shot as unworthy nonbelievers."
+  attribution: Sydney H. Schanberg · The New York Times · [Faridpur], 29 June 1971
+  body: Terror was the method. In [April 1971], the central square of Faridpur became a stage. Even [conversion]
+    was refused — the killings were not about faith, they were about extermination.
+  body_size: 35
+  body_offset_y: 120
+  texture: halftone
+- layout: quote
+  chapter: Chapter 04 · Bodidangi
+  headline: |
+    Three Hundred
+    At *Bodidangi.*
+  quote: |
+    "Reliable local reports say, as many as 300 Hindus were massacred. Two soldiers beat her, ripped off her jewelry, fired a shot at point-blank range into her neck and left her for dead."
+  attribution: Sydney H. Schanberg · The New York Times · [Bodidangi], 29 June 1971
+  body: The village of [Bodidangi] had been a refuge. [Three hundred] Hindus were killed there. A [seventy]-year-old
+    woman survived a bullet to the neck and lived to testify.
+  body_size: 35
+  headline_offset_y: 50
+  body_offset_y: 90
+  texture: halftone
+- layout: quote
+  chapter: Chapter 05 · The Camps
+  headline: |
+    What Reached
+    *Calcutta.*
+  quote: |
+    "Soldiers picked six of our boys, tied their hands behind their backs and made them stand in a line. Then they mowed them down with their guns. The soldiers first raped her in front of her husband and then killed him."
+  attribution: Khushwant Singh · refugee testimony · [Calcutta] border, 1971
+  body: Four months into the war, the refugee camps near [Calcutta] held the witnesses. [Six] boys mown
+    down in a line. A husband murdered after his wife's rape. The reports were not rumour — they were
+    filed by named journalists in named newspapers.
+  body_size: 30
+  image_bw: false
+  body_offset_y: 50
+  texture: halftone
+- layout: closing
+  headline: |
+    The Record
+    Was *Printed.*
+  body: |
+    The [New York Times] carried the dispatches. [Sydney Schanberg] filed from Faridpur. [Khushwant Singh] filed from the border. The genocide of [1971] is not a matter of memory. It is a matter of record. yet,  It is missing from discourse of our country.
+  handle: '@itiha29 '
+  body_size: 45
+  headline_offset_y: 40
+  body_offset_y: -50
+- layout: end-card
+  headline: New slide
+  image_bw: true
+  texture: halftone

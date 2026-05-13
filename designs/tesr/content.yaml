@@ -12,9 +12,12 @@ tweaks:
 slides:
 - layout: reel-title
   headline: |
-    Maharan Pratap *Remained undeafted*
+    THE GREAT  *TEMPLE * ROBBERY
   handle: '@itiha29'
-  image: _cache/0521c6da4e2524b2.jpg
+  image: https://upload.wikimedia.org/wikipedia/commons/4/4e/Tirumala_090615.jpg
   image_overlay: 1
-  texture: halftone
+  texture: vignette
   image_bw: false
+  subline: FREE HINDU TEMPLES
+  headline_size: 190
+  text_y: 65

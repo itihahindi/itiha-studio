@@ -232,12 +232,13 @@ function FieldInput({ field, value, onChange, slideIndex }) {
 
 // ── Slide form ────────────────────────────────────────────────
 
-function SlideForm({ slide, slideIndex, onChange }) {
+function SlideForm({ slide, slideIndex, onChange, content, setContent }) {
   const layoutKey = slide.layout;
   const layoutDef = window.MANIFEST[layoutKey] || window.MANIFEST.story;
   const allLayouts = Object.keys(window.MANIFEST);
 
   const set = (key, v) => onChange({ ...slide, [key]: v });
+  const setMeta = (key, v) => setContent({ ...content, [key]: v });
 
   return (
     <div>
@@ -245,6 +246,25 @@ function SlideForm({ slide, slideIndex, onChange }) {
         <SelectInput value={layoutKey} onChange={v => set('layout', v)} options={allLayouts} />
       </Field>
       <div style={{ height: 1, background: '#2c2c2c', margin: '4px 0 18px' }} />
+      {layoutKey === 'cover' && content && setContent && (
+        <div style={{ marginBottom: 22, padding: '14px 14px 4px', background: 'rgba(192,57,43,0.06)', border: '1px solid rgba(192,57,43,0.35)' }}>
+          <div style={{ fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', color: '#d4a39a', marginBottom: 12, fontWeight: 600 }}>
+            Post metadata · used on publish
+          </div>
+          <Field label="IG caption" help="Open with the hook; name the book + author for SEO when relevant. End with @itiha29 · itiha.info.">
+            <FieldInput
+              field={{ key: 'caption', type: 'textarea' }}
+              value={content.caption}
+              onChange={v => setMeta('caption', v)} />
+          </Field>
+          <Field label="Hashtags" help="6–10 space-separated #tags. Include topic + book/author + place tags. Appended to the caption on publish.">
+            <FieldInput
+              field={{ key: 'hashtags', type: 'textarea' }}
+              value={content.hashtags}
+              onChange={v => setMeta('hashtags', v)} />
+          </Field>
+        </div>
+      )}
       {layoutDef.fields.map(f => (
         <Field key={f.key} label={f.label} help={f.help}>
           <FieldInput field={f} value={slide[f.key]} onChange={v => set(f.key, v)} slideIndex={slideIndex} />
@@ -333,11 +353,11 @@ Inside the code fence, your content MUST look exactly like this skeleton. Field 
 name: <kebab-case slug>
 format: instagram-portrait
 caption: |
-  Caption paragraph one.
+  Caption paragraph one — open with the hook, name the book + author if your sources are a specific work (this is the search-engine signal).
 
-  Caption paragraph two with @itiha29 · itiha.info
-
-  #IndianHistory #Itiha
+  Caption paragraph two — context, stakes, what the carousel argues. End with @itiha29 · itiha.info.
+hashtags: |
+  #IndianHistory #Itiha #<TopicTag> #<BookOrAuthorTag> #<PlaceOrPeriodTag>
 tweaks:
   showChapterLabels: false
   showStamp: true
@@ -378,7 +398,7 @@ Handle: Follow @itiha29 · itiha.info
 PART 2 — ALLOWED FIELDS (closed list)
 ═══════════════════════════════════════════════════════
 
-Front-matter only: name, format, caption, tweaks
+Front-matter only: name, format, caption, hashtags, tweaks
 Tweaks block only: showChapterLabels, showStamp, showPageNum, seriesLabel
 
 Slide fields only (depending on layout):
@@ -451,6 +471,33 @@ PART 5 — FACTUAL BASIS
 Use the project's uploaded sources (books, PDFs, images, links) as the factual basis. Every claim must be supportable from those sources. Do not invent dates, names, or quantities. If a fact is unclear in the sources, omit it rather than guess.
 
 ═══════════════════════════════════════════════════════
+PART 5.5 — CAPTION + HASHTAGS (SEO-OPTIMIZED)
+═══════════════════════════════════════════════════════
+
+The \`caption\` and \`hashtags\` front-matter fields are the post-level metadata for Instagram. They are also the only search-engine surface this carousel will ever have, so they must be written for discovery, not just for the slot below the image.
+
+CAPTION (3–4 paragraphs, block scalar with \`caption: |\`) — this is the only text-indexable surface of the post, so it must serve as a STANDALONE SUMMARY of the carousel that someone can read and understand without ever opening the slides:
+
+- Paragraph 1: the hook. Open with the central claim, the surprise, or the question. One or two sentences. If a book or named author underpins the carousel (Sita Ram Goel, Al-Biruni, R.C. Majumdar, etc.), name them here — "Drawing on _The Story of Civilisation_ by Will Durant…" or "Sita Ram Goel argued in [book title]…". The book title and author surname are the SEO signal that lets people searching that work find this post.
+
+- Paragraph 2 (REQUIRED — this is the index): the substantive summary. Cover what the carousel actually argues — the main claim, the 2–3 key facts (with their dates / numbers / proper names), and the conclusion. Anything an algorithm or a search engine would need to know "what is this post about" must appear here. Treat this as the abstract for the carousel; if you only had this paragraph, the reader should still understand the argument. Use specific terms (proper nouns, place names, regnal years, treaty names) — those are the keywords search engines pick up.
+
+- Paragraph 3 (optional): stakes / why it matters / what we got wrong about it. One or two sentences. Skip if the summary already carries this.
+
+- Last paragraph: \`@itiha29 · itiha.info\` (handle + site).
+
+- Do NOT put hashtags inside the caption — they live in the \`hashtags\` field.
+
+HASHTAGS (one block scalar with \`hashtags: |\`, all on one or two lines, separated by spaces):
+- Always include: \`#IndianHistory #Itiha\`.
+- Include 1–2 tags for the SPECIFIC topic: e.g. \`#Somnath\`, \`#Plassey\`, \`#PartitionOfBengal\`. PascalCase, no spaces.
+- Include 1–2 tags for any book / author you cited in the caption: \`#SitaRamGoel\`, \`#AlBiruni\`, \`#Mahabharata\`. This is the SEO payload.
+- Include 1–2 tags for the place / period / dynasty: \`#Gujarat\`, \`#11thCentury\`, \`#Mughals\`.
+- 6–10 hashtags total. Quality over volume.
+
+If the topic has no clear named source (general history), skip the book/author tags rather than invent fakes.
+
+═══════════════════════════════════════════════════════
 PART 6 — WORKED EXAMPLE (study the rhythm and produce work at this density)
 ═══════════════════════════════════════════════════════
 
@@ -458,13 +505,15 @@ PART 6 — WORKED EXAMPLE (study the rhythm and produce work at this density)
 name: somnath
 format: instagram-portrait
 caption: |
-  1026 AD. Mahmud of Ghazni razed the temple at Somnath — and rewrote the script of South Asian history.
+  In the winter of 1025–26 AD, Mahmud of Ghazni led a column of thirty thousand south through the Thar desert toward the temple at Somnath on the Gujarat coast. Al-Biruni, the Khwarezmian scholar travelling with Mahmud's court, recorded what happened next.
 
-  A 4-part series on the sack, the legend, and what it meant.
+  Mahmud's raid removed an estimated twenty tons of gold, silver, and jewels from the Somnath treasury — a figure later witnesses suggest is conservative. The temple was razed; the central lingam, broken and shipped back to Ghazni. The raid wasn't unprecedented (Mahmud had crossed the Thar before) but it was the most consequential: it set the template for centuries of treasury-driven raids into the subcontinent, and it became the foundational story for how medieval Indian states understood the threat from the northwest. R.C. Majumdar's _History and Culture of the Indian People_ and Al-Biruni's _Tarikh al-Hind_ are the primary sources this carousel draws on.
+
+  Somnath is now a pilgrimage site again — rebuilt in 1951 under Sardar Patel. The story the Ghaznavid scribes recorded was never quite the story the temple remembered.
 
   @itiha29 · itiha.info
-
-  #IndianHistory #Somnath #Itiha
+hashtags: |
+  #IndianHistory #Itiha #Somnath #Mahmud #AlBiruni #GhaznavidEmpire #Gujarat #11thCentury
 tweaks:
   showChapterLabels: false
   showStamp: true
@@ -524,7 +573,9 @@ PART 7 — SELF-CHECK before sending (run through every item)
 
 1. My reply opens with \`\`\`yaml on its own line and closes with \`\`\` on its own line (PART 0).
 2. Inside the fence, the first line is \`---\` (front-matter opens).
-3. Front-matter block has name / format / caption / tweaks.seriesLabel.
+3. Front-matter block has name / format / caption / hashtags / tweaks.seriesLabel.
+3a. Caption is a STANDALONE SUMMARY of the carousel (3–4 paragraphs): hook + book/author, substantive abstract with dates/numbers/proper names, optional stakes, then @itiha29 · itiha.info. A reader who never opens the slides should understand the argument.
+3b. Hashtags include the book/author tag plus topic + place/period tags. 6–10 hashtags total.
 4. Every slide header is exactly \`## Slide N\` (no em-dash, no title suffix, no colon).
 5. Every slide's first field is \`Layout:\` followed by one of the allowed layout names.
 6. No forbidden fields anywhere (Kicker, Marker, Footer, Footer left, Footer right, Hook, Tagline, CTA, Title, Subtitle).
@@ -541,8 +592,13 @@ If any check fails, fix it before sending.`;
 const TOPIC_PROMPT = `Topic: <<<REPLACE WITH YOUR TOPIC>>>
 Slides: 9
 Series label (ALL CAPS, short — e.g. SOMNATH, PLASSEY, INDENTURE): <<<REPLACE>>>
+Primary source(s) to cite (book + author, if applicable): <<<REPLACE — e.g. "The Story of Civilisation, Will Durant" — or leave blank>>>
 
 Produce the carousel now in the EXACT schema from the project instructions.
+
+Front-matter requirements (PART 5.5):
+- \`caption: |\` — 3–4 paragraphs. Must function as a STANDALONE SUMMARY of the carousel — written so a reader (or a search algorithm) understands the argument without opening the slides. Paragraph 1: hook + central claim + name the book/author from the line above if applicable. Paragraph 2: the substantive summary — the main argument, 2–3 key facts with dates/numbers/proper names, the conclusion. This is the indexing signal. Paragraph 3 (optional): stakes / why it matters. Close with @itiha29 · itiha.info. No hashtags inside the caption.
+- \`hashtags: |\` — 6–10 space-separated #tags. Always include #IndianHistory #Itiha. Include #<TopicTag>, the book/author tag (e.g. #SitaRamGoel, #AlBiruni), and place/period tag.
 
 Before replying, run through the Part 7 self-check. In particular:
 - Wrap the ENTIRE reply in a single \`\`\`yaml ... \`\`\` code fence (PART 0). This is critical — without the fence, claude.ai strips Markdown structure when I copy.
@@ -569,11 +625,12 @@ function PasteTab({ content, setContent, setCurrentIdx }) {
       const parsed = await r.json();
       setContent({
         ...content,
-        name:    parsed.name    || content.name,
-        format:  parsed.format  || content.format,
-        caption: parsed.caption || content.caption,
-        tweaks:  { ...(content.tweaks || {}), ...(parsed.tweaks || {}) },
-        slides:  parsed.slides,
+        name:     parsed.name     || content.name,
+        format:   parsed.format   || content.format,
+        caption:  parsed.caption  || content.caption,
+        hashtags: parsed.hashtags || content.hashtags,
+        tweaks:   { ...(content.tweaks || {}), ...(parsed.tweaks || {}) },
+        slides:   parsed.slides,
       });
       setCurrentIdx(0);
       setStatus({ type: 'ok', msg: `loaded ${parsed.slides.length} slide(s) — switch to the Slide tab to refine` });
@@ -769,7 +826,8 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
       <div style={{ flex: 1, overflowY: 'auto', padding: 18 }}>
         {tab === 'slide' && (
           <SlideForm slide={content.slides[currentIdx]} slideIndex={currentIdx}
-            onChange={s => updateSlide(currentIdx, s)} />
+            onChange={s => updateSlide(currentIdx, s)}
+            content={content} setContent={setContent} />
         )}
         {tab === 'project' && <MetaForm content={content} onChange={setContent} />}
         {tab === 'paste' && (

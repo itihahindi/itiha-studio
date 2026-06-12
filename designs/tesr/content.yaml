@@ -11,13 +11,12 @@ tweaks:
   showPageNum: false
 slides:
 - layout: reel-title
-  headline: |
-    THE GREAT  *TEMPLE * ROBBERY
+  headline: "*CONGRESS* Leaders\nVs \n*Savarkar*\n"
   handle: '@itiha29'
-  image: https://upload.wikimedia.org/wikipedia/commons/4/4e/Tirumala_090615.jpg
-  image_overlay: 1
-  texture: vignette
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Swatyantra_Vir_Savarkar.jpg/500px-Swatyantra_Vir_Savarkar.jpg
+  image_overlay: 0.8
+  texture: halftone
   image_bw: false
-  subline: FREE HINDU TEMPLES
-  headline_size: 190
-  text_y: 65
+  subline: Vinayak Damodar Savarkar
+  headline_size: 120
+  text_y: 70

@@ -1,0 +1,96 @@
+name: smoke-filters
+format: instagram-portrait
+caption: |
+  Smoke test — image filter presets.
+tweaks:
+  showStamp: true
+  showPageNum: true
+slides:
+  - layout: story
+    chapter: "filter: none"
+    headline: |
+      No Filter
+    body: Original color image, no treatment applied.
+    image: cover.webp
+    image_overlay: 0.45
+    block_y: bottom
+
+  - layout: story
+    chapter: "filter: bw"
+    headline: |
+      Black & White
+    body: Pure grayscale with a subtle contrast bump.
+    image: cover.webp
+    image_filter: bw
+    image_overlay: 0.45
+    block_y: bottom
+
+  - layout: story
+    chapter: "filter: sepia"
+    headline: |
+      Sepia
+    body: Warm vintage cast.
+    image: cover.webp
+    image_filter: sepia
+    image_overlay: 0.45
+    block_y: bottom
+
+  - layout: story
+    chapter: "filter: archival"
+    headline: |
+      Archival
+    body: Faded film look — desaturated, slightly muted.
+    image: cover.webp
+    image_filter: archival
+    image_overlay: 0.45
+    block_y: bottom
+
+  - layout: story
+    chapter: "filter: warm"
+    headline: |
+      Warm
+    body: Pushes toward amber tones.
+    image: cover.webp
+    image_filter: warm
+    image_overlay: 0.45
+    block_y: bottom
+
+  - layout: story
+    chapter: "filter: cool"
+    headline: |
+      Cool
+    body: Pushes toward blue / cold tones.
+    image: cover.webp
+    image_filter: cool
+    image_overlay: 0.45
+    block_y: bottom
+
+  - layout: story
+    chapter: "filter: duotone-red"
+    headline: |
+      Duotone *Red*
+    body: B&W base, Sindoor-red multiply overlay. Strong brand signal.
+    image: cover.webp
+    image_filter: duotone-red
+    image_overlay: 0.35
+    block_y: bottom
+
+  - layout: story
+    chapter: "filter: duotone-parchment"
+    headline: |
+      Duotone *Parchment*
+    body: B&W base, parchment multiply overlay. Warm editorial vintage.
+    image: cover.webp
+    image_filter: duotone-parchment
+    image_overlay: 0.35
+    block_y: bottom
+
+  - layout: story
+    chapter: "filter: duotone-ink"
+    headline: |
+      Duotone *Ink*
+    body: B&W base, deep ink multiply overlay. Cinematic dark.
+    image: cover.webp
+    image_filter: duotone-ink
+    image_overlay: 0.35
+    block_y: bottom

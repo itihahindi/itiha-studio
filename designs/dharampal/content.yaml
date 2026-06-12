@@ -1,0 +1,170 @@
+name: indian-science-before-the-british
+format: instagram-portrait
+caption: |
+  In 1750, India and China together produced 73% of the world's industrial output. Seventy years later, the share had collapsed. The textbook explanation — that India was a backward agrarian society awaiting British modernisation — is the version the East India Company wrote about itself. The version preserved in the Company's own surveyors' reports tells a different story.
+
+  This carousel draws on Dharampal's _Indian Science and Technology in the Eighteenth Century_, a book assembled almost entirely from British colonial archives — the dispatches, surveys, and Royal Society papers the British wrote about what they actually found on the subcontinent. The findings: 10,000 iron and steel furnaces producing _wootz_ steel that British metallurgists conceded was superior to Sheffield's best, and produced in 2.5 hours against Britain's 4. Universal smallpox inoculation, decades before Edward Jenner. Practitioners who attributed epidemic disease to imperceptible "animalculae" in the atmosphere — germ theory, two centuries before Pasteur. Ice manufactured in the Indian plains without freezing temperatures, using porous clay pans and evaporative cooling. The seed drill, in continuous Indian use long before Jethro Tull's English version. Astronomical tables at Benares accurate back to 3102 BC. By the 1820s, all of it had been pulverised by Company taxation and trade policy.
+
+  Dharampal's archive is the rebuttal to the colonial myth, written in the coloniser's own hand.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Dharampal #IndianScience #PreColonialIndia #WootzSteel #EastIndiaCompany #IndigenousKnowledge #Deindustrialisation
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: DHARAMPAL
+slides:
+- layout: cover
+  eyebrow: 'Indian sciences before british by '
+  eyebrow_meta: Dharampal · 9 Parts
+  headline: |
+    Civilisation
+    The British Said
+    Did Not *Exist.*
+  subline: Indian science before the Company arrived
+  swipe_meta: Swipe ▸ · 9 Slides · 4 min read
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgZk3lQr5_1h5RhMwmSxZQvJY0NF9DxSLG0g&s
+  image_position: 38% 91%
+  headline_size: 150
+  image_overlay: 0.9
+  headline_offset_y: 110
+  texture: halftone
+- layout: stat
+  chapter: Chapter 01 · The Share Of The World
+  headline: |
+    Seventy-Three
+    *Percent.*
+  stats:
+  - label: Global industrial output, c. 1750
+    value: 73%
+    value_red: true
+    sublabel: Produced by India and China combined
+  - label: Britain's share, same year
+    value: <2%
+    sublabel: Before the Industrial Revolution
+    value_red: false
+  body: Before the [British] arrived to civilise it, the [India], together with [China], was producing
+    nearly three-quarters of everything the world manufactured. The story of [backwardness] was written
+    after the [extraction] had begun.
+  body_size: 40
+  body_offset_y: 60
+  image_bw: false
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 02 · The Steel
+  headline: |
+    Wootz Beat
+    *Sheffield.*
+  body: 'By the eighteenth century, India operated an estimated [10,000] iron and steel furnaces. They
+    produced [wootz], a crucible steel that British metallurgists, on examination, admitted was [decidedly
+    superior] to the best [Sheffield] steel for fine cutlery and surgical blades. The Indian smelter converted
+    iron to cast steel in [2.5 hours]. The British process took [4]. '
+  body_size: 45
+  body_y: 86
+  headline_y: 57
+  texture: halftone
+- layout: did-you-know
+  eyebrow: Did You Know?
+  theme: dark
+  headline: |
+    They Inoculated
+    Against *Smallpox.*
+  body: |
+    Long before [Edward Jenner], inoculation against [smallpox] was a [universal] and highly successful practice across large parts of India. Indian physicians also attributed epidemic disease to imperceptible [animalculae] floating in the atmosphere — anticipating [germ theory] by nearly [two centuries] before Pasteur and Koch confirmed it in European laboratories.
+  source: Dharampal, Indian Science and Technology in the Eighteenth Century
+  texture: halftone
+  show_mark: true
+  headline_size: 75
+  body_size: 44
+  body_offset_y: 70
+  image: https://pbs.twimg.com/media/GN6m3UKW4AA9anW.jpg
+  image_bw: false
+  image_overlay: 1.5
+  headline_offset_y: -80
+  image_position: 35% 100%
+- layout: split-story
+  chapter: Chapter 03 · The Impossible Trade
+  headline: |
+    Ice From A
+    *Tropical* Plain.
+  body: In the plains of northern India, where the air never froze, ice was manufactured every winter.
+    Boiled water was poured into shallow [unglazed clay] pans set over beds of [dry straw] in insulated
+    pits. On clear, still nights, rapid [evaporation] drew enough heat from the water to trigger [congelation].
+    The British, watching, could not at first believe what they were seeing.
+  body_size: 44
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 04 · The Field
+  headline: |
+    The Seed Drill,
+    *Time Immemorial.*
+  body: The [drill plough] , a device that dropped seed into evenly spaced rows, was in continuous use
+    across India from [time immemorial]. It was simple, efficient, and saved both [seed] and [labour].
+    Europe began to adopt the same technology only in the [late eighteenth century], after [Jethro Tull's]
+    version became known. The Indian cultivator had been using it for [centuries].
+  body_size: 47
+  body_y: 60
+  texture: halftone
+- layout: did-you-know
+  eyebrow: Chapter 05 · The Sky
+  theme: dark
+  headline: |
+    Planetary Tables To
+    *3102 BC.*
+  body: |
+    At the [Man Mandir] observatory in [Benares] and at [Jaipur], stone instruments tracked the sky with precision that astonished visiting European scientists. When eighteenth-century French and British astronomers analysed the Indian tables, they found the planetary positions had been calculated accurately back to [3102 BC] , the year the Indian astronomers marked as the start of the [Kali Yuga].
+  source: Dharampal, Indian Science and Technology in the Eighteenth Century
+  body_size: 45
+  headline_size: 100
+  headline_offset_y: -80
+  body_offset_y: 110
+- layout: stat
+  chapter: Chapter 06 · The Pulverisation
+  headline: |
+    How Long It
+    Took To *Erase.*
+  stats:
+  - label: India's share of world output, 1750
+    value: 24.5%
+    sublabel: Subcontinent alone, excluding China
+    value_red: true
+  - label: By 1830
+    value: 17.6%
+    sublabel: After tariff war and Company rule
+  - label: By 1900
+    value: 1.7%
+    value_red: true
+    sublabel: A 93% collapse in 150 years
+  body: The technologies did not [fade]. They were [dismantled] — by [exorbitant taxation], by [trade
+    policy] written in [London], and by the systematic [breaking] of the Indian artisan. The collapse
+    from [24.5%] to [1.7%] is the most rapid deindustrialisation in recorded history.
+  headline_size: 120
+  body_size: 38
+  stat_size: 150
+  headline_offset_y: -40
+  body_offset_y: 100
+  image_bw: false
+  image_overlay: 1.6
+  image: https://external-preview.redd.it/japanese-poster-urging-indians-to-rise-up-against-british-v0-UC-qqJc0EjKjFeBaUtzRYttjY7mm7cjvac77_tlDGOM.jpg?width=640&crop=smart&auto=webp&s=b34b109e878162cb039e134cca07be88ace21d7b
+  image_position: 20% 59%
+- layout: closing
+  headline: |
+    The Archive Is
+    In The Coloniser's
+    Own *Hand.*
+  body: |
+    Dharampal did not invent any of this. He read the [Company surveyors], the [Royal Society] papers, the missionary letters home. The [evidence] of what India was and what was [taken] from it, was sitting in the [British] archive all along.
+  handle: Follow @itiha29 · itiha.info
+  headline_size: 100
+  body_size: 49
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Dharampal.jpg/1280px-Dharampal.jpg
+  image_overlay: 1
+  body_offset_y: 130
+  image_position: 51% 83%
+  headline_offset_y: -160
+- layout: end-card
+  headline: New slide

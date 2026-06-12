@@ -96,7 +96,8 @@
   <button id="btn-prev">◀</button>
   <button id="btn-next">▶</button>
   <span id="prev-label">—</span>
-  <button id="btn-edit" style="margin-left:auto">Edit</button>
+  <button id="btn-phone" style="margin-left:auto">Phone</button>
+  <button id="btn-edit">Edit</button>
   <span id="prev-status" style="color:#555;margin-left:14px">loading…</span>
 </div>
 
@@ -123,19 +124,155 @@ function applyDimensions(c) {
   }
 }
 
+// ── Phone preview overlay ──────────────────────────────────────
+// A distraction-free, phone-shaped view of the current slide. The slide is
+// rendered at native size and shrunk via CSS transform so a ResizeObserver
+// keeps the scale tight to the inner screen as the viewport changes.
+function PhonePreview({ comp: Comp, slide, idx, tweaks, dims, total, onClose, onPrev, onNext }) {
+  const screenRef = React.useRef(null);
+  const [scale, setScale] = React.useState(0.3);
+  React.useEffect(() => {
+    if (!screenRef.current) return;
+    const calc = () => {
+      const el = screenRef.current; if (!el) return;
+      // Fit width — for 4:5 portrait slides in a 9:19.5 phone, height has room.
+      const w = el.clientWidth;
+      setScale(w / dims.width);
+    };
+    calc();
+    const ro = new ResizeObserver(calc);
+    ro.observe(screenRef.current);
+    return () => ro.disconnect();
+  }, [dims.width, dims.height]);
+
+  const slideH = dims.height * scale;
+  const btn = {
+    background: 'rgba(255,255,255,0.06)', color: '#E8DCC8',
+    border: '1px solid rgba(255,255,255,0.18)', padding: '14px 18px',
+    font: '20px "DM Sans", system-ui', cursor: 'pointer', borderRadius: 0,
+  };
+  return (
+    <div onClick={onClose} style={{
+      position: 'fixed', inset: 0, zIndex: 100000,
+      background: 'rgba(0,0,0,0.94)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      gap: 32, padding: 28,
+    }}>
+      <button onClick={e => { e.stopPropagation(); onPrev(); }} style={btn} title="Previous (←)">◀</button>
+
+      {/* Phone bezel */}
+      <div onClick={e => e.stopPropagation()} style={{
+        position: 'relative', height: 'min(86vh, 820px)', aspectRatio: '9 / 19.5',
+        background: '#0a0a0a', borderRadius: 52, padding: 10,
+        boxShadow: '0 30px 100px rgba(0,0,0,0.7), 0 0 0 1px #1a1a1a',
+      }}>
+        {/* Inner screen */}
+        <div ref={screenRef} style={{
+          position: 'relative', width: '100%', height: '100%',
+          borderRadius: 44, overflow: 'hidden', background: '#000',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          {/* Dynamic-island mock */}
+          <div style={{
+            position: 'absolute', top: 12, left: '50%', transform: 'translateX(-50%)',
+            width: 100, height: 28, background: '#000', borderRadius: 14, zIndex: 2,
+            border: '1px solid #1a1a1a',
+          }} />
+          {/* The slide — rendered at native size, scaled to inner-screen width.
+              Wrapped in a sized stage so flex-center can position it correctly;
+              `translateY(-50%) scale()` doesn't work with transform-origin top-left
+              because the percent translate references the un-scaled height. */}
+          <div style={{
+            width: dims.width * scale, height: dims.height * scale,
+            position: 'relative', overflow: 'hidden', flex: '0 0 auto',
+          }}>
+            <div style={{
+              position: 'absolute', left: 0, top: 0,
+              width: dims.width, height: dims.height,
+              transform: `scale(${scale})`,
+              transformOrigin: 'top left',
+            }}>
+              <window.ItihaContext.Provider value={tweaks}>
+                <Comp slide={slide} index={idx} />
+              </window.ItihaContext.Provider>
+            </div>
+          </div>
+          {/* Slide counter pill */}
+          <div style={{
+            position: 'absolute', bottom: 14, left: '50%', transform: 'translateX(-50%)',
+            background: 'rgba(0,0,0,0.55)', color: '#fff',
+            fontFamily: 'JetBrains Mono, monospace', fontSize: 11, letterSpacing: 1.4,
+            padding: '4px 10px', borderRadius: 12, zIndex: 2,
+          }}>{String(idx + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}</div>
+        </div>
+      </div>
+
+      <button onClick={e => { e.stopPropagation(); onNext(); }} style={btn} title="Next (→)">▶</button>
+
+      <button onClick={onClose} style={{
+        position: 'absolute', top: 18, right: 22,
+        background: 'transparent', color: '#888',
+        border: '1px solid #333', padding: '7px 14px',
+        font: '11px "JetBrains Mono", monospace', letterSpacing: 1.4,
+        textTransform: 'uppercase', cursor: 'pointer',
+      }}>Close · Esc</button>
+    </div>
+  );
+}
+
 function App() {
   const [content, setContentState] = React.useState(null);   // editable in-memory state
   const [savedSnapshot, setSavedSnapshot] = React.useState(null); // last-saved-to-disk version
   const [idx, setIdx] = React.useState(0);
   const [editorOpen, setEditorOpen] = React.useState(false);
+  const [phonePreview, setPhonePreview] = React.useState(false);
   const [savedAt, setSavedAt] = React.useState(null);
   const [saveError, setSaveError] = React.useState(null);
   const [loadError, setLoadError] = React.useState(null);
 
+  // ── Undo / redo stacks ──────────────────────────────────────
+  // Each user-driven setContent pushes the *prior* content onto undoStack and
+  // clears redoStack. We debounce rapid edits (typing in a textarea) so a 5-
+  // character burst is one undo entry, not five. undo() and redo() use
+  // setContentState directly to bypass the wrapper, so they don't accidentally
+  // push their own restoration onto the stack.
+  const undoStackRef  = React.useRef([]);
+  const redoStackRef  = React.useRef([]);
+  const lastPushAtRef = React.useRef(0);
+  const HISTORY_LIMIT = 50;
+  const PUSH_GAP_MS   = 500;
+
   const setContent = (next) => {
+    if (content !== null) {
+      const now = Date.now();
+      if (now - lastPushAtRef.current > PUSH_GAP_MS) {
+        undoStackRef.current.push(content);
+        if (undoStackRef.current.length > HISTORY_LIMIT) undoStackRef.current.shift();
+        redoStackRef.current = [];   // any new edit invalidates the redo branch
+      }
+      lastPushAtRef.current = now;
+    }
     setContentState(next);
     applyDimensions(next);
   };
+
+  const undo = React.useCallback(() => {
+    if (!undoStackRef.current.length) return;
+    const prev = undoStackRef.current.pop();
+    redoStackRef.current.push(content);
+    if (redoStackRef.current.length > HISTORY_LIMIT) redoStackRef.current.shift();
+    setContentState(prev);
+    applyDimensions(prev);
+  }, [content]);
+
+  const redo = React.useCallback(() => {
+    if (!redoStackRef.current.length) return;
+    const next = redoStackRef.current.pop();
+    undoStackRef.current.push(content);
+    if (undoStackRef.current.length > HISTORY_LIMIT) undoStackRef.current.shift();
+    setContentState(next);
+    applyDimensions(next);
+  }, [content]);
 
   const reloadFromDisk = React.useCallback(() => {
     loadContent().then(c => {
@@ -143,6 +280,10 @@ function App() {
       setSavedSnapshot(JSON.stringify(c));
       applyDimensions(c);
       setLoadError(null);
+      // External reload replaces in-memory state with disk state — drop the
+      // undo branch we no longer know how to relate to.
+      undoStackRef.current = [];
+      redoStackRef.current = [];
     }).catch(e => setLoadError(String(e)));
   }, []);
 
@@ -234,6 +375,7 @@ function App() {
     document.getElementById('btn-prev').onclick = () => window.__step(-1);
     document.getElementById('btn-next').onclick = () => window.__step(+1);
     document.getElementById('btn-edit').onclick = () => setEditorOpen(o => !o);
+    document.getElementById('btn-phone').onclick = () => setPhonePreview(p => !p);
   });
 
   // Toggle body class for layout shift when editor is open.
@@ -243,28 +385,52 @@ function App() {
 
   const dirty = content ? (JSON.stringify(content) !== savedSnapshot) : false;
 
+  const savingRef = React.useRef(false);
+
   const save = async () => {
+    if (savingRef.current) return;  // collapse redundant calls while one is in flight
+    savingRef.current = true;
     setSaveError(null);
+    const snapshot = JSON.stringify(content);   // capture so a save mid-edit records what we sent
     try {
       const r = await fetch('api/save', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(content),
+        body: snapshot,
       });
       if (!r.ok) throw new Error(await r.text());
       const { version } = await r.json();
       ownVersionRef.current = version;
-      setSavedSnapshot(JSON.stringify(content));
+      setSavedSnapshot(snapshot);
       setSavedAt(Date.now());
     } catch (e) {
       setSaveError(String(e.message || e));
+    } finally {
+      savingRef.current = false;
     }
   };
 
-  // Keyboard: ←/→ for prev/next, Cmd-S to save.
+  // Auto-save: after 1.5s of no further edits, write to disk. Skips when a
+  // prior save failed — the user has to manually click Save (or edit again,
+  // which re-triggers) so a broken server doesn't hammer the endpoint.
+  const AUTO_SAVE_MS = 1500;
+  const autoSaveTimerRef = React.useRef(null);
+  React.useEffect(() => {
+    if (!dirty || saveError) return;
+    if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
+    autoSaveTimerRef.current = setTimeout(() => { save(); }, AUTO_SAVE_MS);
+    return () => {
+      if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
+    };
+  }, [content, savedSnapshot, saveError]);
+
+  // Keyboard: ←/→ for prev/next, Cmd-S to save, Cmd-Z / Cmd-Shift-Z for undo/redo.
   React.useEffect(() => {
     const onKey = e => {
       if (!window.__previewMode) return;
-      if (e.metaKey && e.key === 's') { e.preventDefault(); if (dirty) save(); return; }
+      if ((e.metaKey || e.ctrlKey) && e.key === 's') { e.preventDefault(); if (dirty) save(); return; }
+      if ((e.metaKey || e.ctrlKey) && !e.shiftKey && e.key === 'z') { e.preventDefault(); undo(); return; }
+      if ((e.metaKey || e.ctrlKey) && ((e.shiftKey && (e.key === 'z' || e.key === 'Z')) || e.key === 'y')) { e.preventDefault(); redo(); return; }
+      if (e.key === 'Escape' && phonePreview) { setPhonePreview(false); return; }
       // Don't grab arrow keys when typing in the editor.
       if (document.activeElement && ['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
       if (e.key === 'ArrowLeft')  window.__step(-1);
@@ -296,12 +462,26 @@ function App() {
         </div>
       )}
       {window.__previewMode && editorOpen && ReactDOM.createPortal(
-        <window.Editor
-          content={content} setContent={setContent}
-          currentIdx={idx} setCurrentIdx={setIdx}
-          onSave={save} savedAt={savedAt} dirty={dirty} error={saveError}
-        />,
+        // Wrap the Editor in the same tweak context so the SlideStrip thumbnails
+        // pick up showStamp / showPageNum / overlayDarkness / seriesLabel.
+        <window.ItihaContext.Provider value={TWEAKS}>
+          <window.Editor
+            content={content} setContent={setContent}
+            currentIdx={idx} setCurrentIdx={setIdx}
+            onSave={save} savedAt={savedAt} dirty={dirty} error={saveError}
+          />
+        </window.ItihaContext.Provider>,
         document.getElementById('editor'),
+      )}
+      {window.__previewMode && phonePreview && Comp && content && (
+        <PhonePreview
+          comp={Comp} slide={slide} idx={idx}
+          tweaks={TWEAKS} dims={content.format_dims}
+          total={content.slides.length}
+          onClose={() => setPhonePreview(false)}
+          onPrev={() => window.__step(-1)}
+          onNext={() => window.__step(+1)}
+        />
       )}
     </>
   );

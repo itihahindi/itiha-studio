@@ -155,12 +155,10 @@ def main(argv: list[str]) -> int:
         print(f"already exists: {root}")
         return 1
     (root / "images").mkdir(parents=True)
-    (root / "output").mkdir()
     (root / "content.yaml").write_text(make_starter_yaml(title, "instagram-portrait"))
     print(f"created  designs/{slug}/")
     print(f"  content.yaml")
     print(f"  images/")
-    print(f"  output/")
     print()
     print(f"next:    bin/preview {slug}")
     return 0

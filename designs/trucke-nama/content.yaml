@@ -1,0 +1,189 @@
+name: the-tales-of-truschke
+format: instagram-portrait
+caption: |
+  She is an Associate Professor of Indian history at Rutgers. She has been cited by the Oxford Research Encyclopedia of Asian History. And in 2018, she claimed that in Valmiki's Ramayana, Sita called Lord Rama a "misogynist pig." When the world's foremost Sanskritist — the very translator she cited — publicly refuted her, calling the rendering "vulgar" and "inappropriate," she neither retracted nor apologised. She compared herself to Sita.
+
+  This carousel draws on _Truschke-nāma or The Tales of Truschke_ by Subhodeep Mukhopadhyay and Manogna Sastry, a chapter in the 2023 volume _Ten Heads of Ravana: A Critique of Hinduphobic Scholars_ from Infinity Foundation India. Mukhopadhyay and Sastry document a consistent methodology in Audrey Truschke's published work: cherry-picked evidence, intentional mistranslation, and victim-blaming dressed in academic language. She insists Aurangzeb destroyed "at most a few dozen" temples, leaning on Richard Eaton's count of 80 desecrations across five centuries — while dismissing the Maasir-i-Alamgiri, the 1710 Persian chronicle written with access to Aurangzeb's state archives, which records the destruction of 238 temples in just two months in 1680. She declares the same chronicle unreliable when it inflates numbers, then quotes a single line from it to claim temple destructions were "rare." She argues Aurangzeb's iconoclasm was not religious but a response to "deviant Brahmins" teaching "depraved knowledge" — producing zero historical evidence that any such investigation was ordered. She insists, against scholarly rebuttal, that Hindu and Islamic iconoclasm were the same thing. She dismissed the Ayodhya verdict without engaging with the Archaeological Survey of India's findings. She holds, against the genetic and archaeological consensus now consolidating against it, that the Aryan Migration Theory is "ironclad."
+
+  Mukhopadhyay and Sastry's verdict is direct: this is not scholarship. It is propaganda wearing the costume of scholarship.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #AudreyTruschke #TenHeadsOfRavana #SubhodeepMukhopadhyay #ManognaSastry #Aurangzeb #Hinduphobia #Ramayana
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 44
+  showGrain: true
+  seriesLabel: TRUSCHKE
+slides:
+- layout: cover
+  eyebrow: Subhodeep Mukhopadhyay & Manogna Sastry
+  eyebrow_meta: Truschke-nāma · 10 Parts
+  headline: |
+    The Internet's *Rage-Bait*
+    Historian
+  subline: The methodology of Audrey Truschke
+  swipe_meta: Swipe ▸ · 10 Slides · 4 min read
+  image: https://images.squarespace-cdn.com/content/v1/5fd8d19b84774a17d4cd0bf7/1608123748585-OLIWR3KH9UB8644TN6JM/Truschke+2019.jpg
+  headline_size: 140
+  headline_offset_y: 270
+  image_position: 45% 84%
+  texture: scanlines
+  image_bw: false
+- layout: split-story
+  headline: |
+    An American Scholar
+     *Rewriting India..*
+  body: Truschke holds a tenured chair in [early modern Indian history] at [Rutgers]. She has published
+    three books, including the [2017] Stanford volume on [Aurangzeb]. Her work has been cited by the [Oxford
+    Research Encyclopedia of Asian History]. The institutional credibility is real. The scholarship beneath
+    it is the subject of this [carousel].
+  chapter: 'Chapter: Chapter 01 · The Defendant'
+  headline_size: 85
+  body_size: 45
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxjGepIIDEP1_WxfVY46GNszHXDa4iVS4DWg&s
+  image_overlay: 1
+  body_y: 44
+- layout: stat
+  headline: |
+    238 Temples.
+    *Two Months.* 1680.
+  body: Truschke arrives at her [few dozen] by leaning on Richard Eaton's count of [80] desecrations across
+    [500 years]. She arrives there by [dismissing] the [Maasir-i-Alamgiri], the contemporary Persian chronicle
+    that contradicts her on a [single page].
+  chapter: Chapter 02 · The Aurangzeb Count
+  stats:
+  - label: Truschke's claim
+    value: ' A few dozen.'
+    value_red: true
+    sublabel: ' "At most" — across Aurangzeb''s 49-year reign'
+  - label: Maasir-i-Alamgiri, 1710
+    value: '238'
+    value_red: true
+    sublabel: Temples destroyed in just two months of 1680
+  - label: The chronicle's authority
+    value: Direct
+    sublabel: Written with access to Aurangzeb's state archives
+  body_size: 40
+  stat_size: 85
+  body_offset_y: 80
+  image: https://m.media-amazon.com/images/I/91h-uN5n-PL._AC_UF1000,1000_QL80_.jpg
+  image_overlay: 1
+  texture: vignette
+  headline_offset_y: -30
+  headline_size: 80
+- layout: comparison
+  chapter: Chapter 03 · The Cherry-Pick
+  left_label: When The Number Is Inconvenient
+  left_headline: 'The Chronicle
+
+    *Exaggerates.*
+
+    '
+  left_body: 'When the [Maasir-i-Alamgiri] records [238] temples destroyed in [two months], Truschke dismisses
+    it as a text prone to [exaggeration] and not to be trusted on numerical claims.
+
+    '
+  right_label: When The Number Is Useful
+  right_headline: 'The Chronicle
+
+    *Confirms.*'
+  right_body: When the same Maasir-i-Alamgiri describes the [1670] destruction of Mathura's [Keshava Deva]
+    temple as a [rare and impossible event], Truschke quotes the single line — to argue that temple destructions
+    were [highly unusual].
+  body_size: 40
+  headline_offset_y: 0
+  sub_size: 55
+  body_offset_y: -230
+  headline: The Cherry-Pick *Facts*
+  texture: halftone
+- layout: split-story
+  eyebrow: The Victim-Blame Theory
+  theme: dark
+  headline: |
+    The Brahmins
+    Made Him *Do It.*
+  body: |
+    To absolve Aurangzeb of [religious bigotry], Truschke argues that the temples were destroyed because they had become [centres of sedition]  [deviant Brahmins] teaching [depraved knowledge] to ordinary Hindus. The evidence she provides for any such [imperial investigation] is [zero]. The thesis is [conjectural]. Victim-blaming, presented as research.
+  source: Subhodeep Mukhopadhyay & Manogna Sastry, Truschke-nāma
+  texture: grain
+  body_size: 45
+  headline_size: 80
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0XCmxGItQZKng3G_tqZTr14016xXfjZHdpA&s
+  image_overlay: 1
+  body_y: 69
+- layout: split-story
+  chapter: Chapter 04 · The Engagement Strategy
+  headline: |
+    False Equivalence
+    As A *Brand.*
+  body: 'Beyond the academic journal, Truschke engagment farms on [social media] platform built on provocation,
+    that Islamic iconoclasm was no different from the [Hindu kings] who, she claims, [looted] and [defiled]
+    each other''s temples. Scholar [Girish Shahane] dismantled the thesis: it rested on a [fictive incident]
+    created by misunderstanding a bit of verse. When Hindu kings took deities as war trophies, they [preserved]
+    and [reconsecrated] them. Islamic iconoclasm aimed to [terminate] idolatry. The two practices are
+    [opposites]. The [false equivalence] is repeated daily, calibrated for the [outrage] '
+  headline_size: 80
+  body_size: 42
+  body_y: 67
+  headline_y: 21
+- layout: split-story
+  chapter: Chapter 05 · The Mistranslation
+  headline: |
+    Sita Called Rama
+    A *Misogynist Pig.*
+  body: In [2018], Truschke publicly claimed that during the [agnipariksha] episode in [Valmiki's Ramayana],
+    Sita addressed Lord Rama as a [misogynist pig and uncouth]. She attributed the vulgar translation
+    to the work of [Robert Goldman], the [University of California, Berkeley] Sanskritist who heads the
+    definitive English Ramayana translation project. The Indian internet erupted. So did Goldman himself.
+  headline_size: 80
+  body_size: 42
+  image_position: 27% 50%
+- layout: split-story
+  chapter: Chapter 07 · The Aftermath
+  headline: |
+    She Did Not Retract.
+    She Played The *Victim.*
+  body: Despite the unambiguous repudiation from the very scholar she had cited, Truschke [never withdrew]
+    the statement, never corrected the record, and never apologised. Instead, she compared the [backlash]
+    she received from Hindus to the [plight of Sita] herself , a comparison Mukhopadhyay and Sastry note
+    is as [absurd] as it is [revealing].
+  headline_size: 80
+  body_size: 45
+- layout: numbered-list
+  chapter: Chapter 08 · The Wider Erasure
+  headline: |
+    What Else She
+    Says Is *False.*
+  items:
+  - number: 1
+    headline: Ayodhya, without the archaeology
+    body: 'She accused the Supreme Court verdict of "Hindutva rewriting" while ignoring the [Archaeological
+      Survey of India''s 2003] findings of [temple pillars] beneath the Babri site. '
+  - number: 2
+    headline: The Upanishads are "not Hindu scripture"
+    body: She asserts that the [Upanishads], [Puranas], [Ramayana], and [Mahabharata] are not Hindu scriptures,
+      ignoring the foundational concept of [prasthanatrayi] that has anchored Vedanta for centuries.
+  - number: 3
+    headline: The Aryan migration is "ironclad"
+    body: Against accumulating [archaeological], [genetic], and [hydrological] evidence against the colonial-era
+      Aryan Migration Theory, Truschke labels it an [ironclad] scholarly consensus
+  headline_size: 80
+  body_offset_y: -140
+  item_size: 28
+- layout: closing
+  headline: |
+    Cherry-Picked.
+    Mistranslated.
+    *Tenured.*
+  body: |
+    Mukhopadhyay and Manogna Sastry
+     name what the citations conceal, a methodology of [twisting contexts], [fake citations], and the [superimposition] of modern political agendas onto ancient text. The [costume] is scholarship. The [contents] are something else.
+  handle: Follow @itiha29 · itiha.info
+  headline_size: 80
+  body_size: 45
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB6r4iXw00oy8URINZXy5vLPlFwmL2H8539Q&s
+  image_overlay: 1
+  body_offset_y: 60

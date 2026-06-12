@@ -1,0 +1,202 @@
+name: mother-teresa-the-fraud
+format: instagram-portrait
+caption: |
+  She was canonised in 2016. The evidence assembled by her own volunteers, her own financial trail, and her own recorded words tells a different story. Mother Teresa was not the saint of Calcutta. She was the Church's most effective publicist — a woman who turned the suffering of the Indian poor into a global fundraising apparatus, and the donations into Vatican Bank deposits.
+
+  This carousel draws on Christopher Hitchens' _The Missionary Position_, the investigative reporting of Aroup Chatterjee in _Mother Teresa: The Untold Story_, and contemporaneous accounts from volunteers at the Missionaries of Charity clinics. The pattern is consistent. Teresa took $1.25 million from convicted fraudster Charles Keating and refused to return it after his conviction. She laid a wreath on the tomb of Albanian communist dictator Enver Hoxha, who had outlawed religion. She kept her order's finances hidden from public scrutiny. Her dying patients received reused needles and aspirin while she was treated at the finest clinics in California and Rome. She called AIDS "just retribution for improper sexual conduct" at a 1989 WHO ceremony. She praised the suffering of the poor as "beautiful" while travelling the world to collect awards. Her 500 convents all bear her order's name. The clinics were never about healing — they were about saving souls for Rome, and Indians were the raw material.
+
+  This is not an attack on faith. It is a record of what was done in its name, on Indian soil, with Indian poverty as the backdrop.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #MotherTeresa #ChristopherHitchens #AroupChatterjee #MissionariesOfCharity #Calcutta #ConversionAgenda #CulturalColonialism
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  showGrain: true
+  seriesLabel: TERESA
+slides:
+- layout: cover
+  eyebrow: Series 05
+  eyebrow_meta: Teresa · 11 Parts
+  headline: |
+    The Saint Was
+    A *saleswoman.*
+  subline: Ten things Calcutta knew that Rome buried
+  swipe_meta: Swipe ▸ · 11 Slides · 5 min read
+  image: _cache/39a39dbbe191b4c8.jpg
+  headline_offset_y: 290
+  image_overlay: 0.7
+- layout: numbered-list
+  chapter: Chapter 01 · The Company She Kept
+  headline: |
+    The Friends Of
+    The *Saint.*
+  items:
+  - number: 1
+    headline: The Haitian dictators
+    body: Teresa accepted hospitality and honours from [Jean-Claude] and [Michelle Duvalier], who ran
+      [Haiti] as a police state from [1971 to 1986]. She publicly praised them.
+  - number: 2
+    headline: The communist who banned God
+    body: She laid a wreath of flowers on the tomb of [Enver Hoxha], the Albanian dictator who had outlawed
+      every religion within his borders. She did not protest the [persecution] of his clergy.
+  item_size: 40
+  headline_offset_y: -30
+  number_size: 12
+  headline_size: 104
+  image: _cache/38911e8d1e364b85.jpg
+  image_bw: false
+  image_filter: duotone-ink
+  image_position: 15% 45%
+  image_overlay: 0.9
+  texture: vignette
+- layout: stat
+  chapter: Chapter 02 · The Keating Money
+  headline: |
+    $1.25 *Million.*
+    Never Returned.
+  stats:
+  - label: From financier Charles Keating
+    value: $1.25M
+    value_red: true
+    sublabel: Donated before his S&L fraud conviction
+  - label: Letter from Teresa
+    value: Sent.
+    sublabel: She testified to his "good character" at trial
+  - label: $ returned
+    value: $0
+    sublabel: After the prosecutor requested it
+    value_red: true
+  body: When the [Los Angeles] prosecutor wrote to Teresa explaining that the [$1.25 million] had been
+    stolen from American pensioners, she did not reply. The money stayed with the order.
+  image: _cache/2bdaa85f93604890.jpg
+  image_bw: true
+  image_filter: warm
+  image_overlay: 1.4
+  image_position: 71% 100%
+  body_offset_y: 150
+  body_size: 45
+- layout: did-you-know
+  eyebrow: Did You Know?
+  theme: dark
+  headline: |
+    The Donations Went
+    To The *Vatican Bank.*
+  body: |
+    Funds [earmarked] by donors for charitable work in [Calcutta] were routinely transferred to the [Vatican Bank] for general use. Teresa never disclosed her order's finances beyond what the law required. The [Missionaries of Charity] received an estimated [hundreds of millions], almost none of it traceable to the clinics.
+  source: 'Source: Christopher Hitchens, The Missionary Position'
+  body_size: 47
+  headline_size: 100
+  headline_offset_y: -90
+  image: _cache/37f53c2713ccfd9a.jpg
+  image_bw: true
+  show_mark: true
+  image_filter: sepia
+  image_overlay: 1.5
+  texture: vignette
+  body_offset_y: 80
+- layout: comparison
+  chapter: Chapter 03 · Two Standards Of Care
+  left_label: The Dying In Calcutta
+  left_headline: 'Reused Needles.
+
+    *Aspirin.*
+
+    '
+  left_body: 'Volunteers testified that [terminal patients] at the Calcutta clinics received [reused syringes],
+    no diagnostic equipment, and no pain relief beyond [aspirin]. The suffering, Teresa said, was [beautiful].
+
+    '
+  right_label: Teresa Herself
+  right_headline: 'Scripps Clinic.
+
+    *California.*
+
+    '
+  right_body: When Teresa needed treatment, she flew to the [Scripps] Clinic in [California], to private
+    hospitals in [Rome], to the best [cardiologists] money could find. She never spent a night in one
+    of her own [homes for the dying].
+  body_size: 43
+  headline_offset_y: -60
+  body_offset_y: -420
+  sub_size: 79
+- layout: quote
+  chapter: Chapter 04 · In Her Own Words
+  headline: |
+    Beauty In
+    The *Suffering.*
+  quote: |
+    I think it is very beautiful for the poor
+    to accept their lot, to share it with
+    the passion of Christ. I think the world
+    is being much helped by the suffering
+    of the poor people.
+  attribution: Mother Teresa, on her ministry to the dying
+  quote_size: 72
+  body_offset_y: -30
+- layout: numbered-list
+  chapter: Chapter 06 · The Apolitical Lie
+  headline: |
+    The Politics Of
+    A *Saint.*
+  items:
+  - number: 1
+    headline: The global anti-contraception tour
+    body: She lobbied [worldwide] against the legality of [contraception] and [divorce]
+  - number: 2
+    headline: The Contras and the death squads
+    body: 'She supported the [Nicaraguan Contras], a faction that unleashed [death squads] in its attempt
+      to seize the country. '
+  - number: 3
+    headline: 500 convents, one name
+    body: Every one of her [500 convents] across the world bears her order's name. The vow of [humility]
+      applied to the patients, not the founder.
+  image_bw: false
+  item_size: 30
+  headline_offset_y: -10
+- layout: split-story
+  chapter: Chapter 07 · The Real Mission
+  headline: |
+    Souls, Not
+    *Bodies.*
+  body: The clinics were never built to heal. They were built to [baptise]. Volunteers reported staff
+    secretly performing [last-rites baptisms] on dying Hindus and Muslims who could not consent. The medical
+    neglect was not an oversight, it was [theology]. The body was a vehicle for the [soul], and the soul
+    belonged to [Rome].
+  body_size: 45
+  image: _cache/81cff331c9acd152.jpg
+  image_filter: sepia
+  image_overlay: 1
+  image_position: 49% 47%
+  texture: vignette
+- layout: story
+  chapter: Chapter 08 · The Anointed One
+  headline: |
+    The West Came
+    To *Save* Us.
+  body: Teresa placed herself on the pedestal of an [anointed one] , qualified by [Europe] to prescribe
+    what poor countries needed. She did not preserve the [cultural] dignity of those she served. She [westernised]
+    them. She [Catholicised] them. The civilisation she found in [Bengal] was, to her, the [problem].
+  body_size: 48
+  headline_size: 100
+  image: _cache/dece6e8bb20c4e16.jpg
+  image_filter: sepia
+  image_overlay: 1
+  texture: vignette
+- layout: closing
+  headline: |
+    Canonised By
+    *Rome.* Indicted
+    By The Record.
+  body: |
+    The [Vatican] declared her a saint in [2016]. The volunteers, the auditors, the dying she presided over — they wrote a different verdict. In [Calcutta], her name is no longer [unquestioned].
+  handle: Follow @itiha29 · itiha.info
+  body_size: 45
+  headline_size: 100
+  image: _cache/40ce489b604d65f6.jpg
+  image_overlay: 1
+  image_position: 36% 50%
+- layout: end-card
+  headline: New slide

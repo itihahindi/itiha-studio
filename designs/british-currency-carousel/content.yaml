@@ -1,0 +1,52 @@
+name: "British Currency Carousel "
+notion_page_id: 2b553877-6b0f-808b-8b1a-dfdb280e11fe
+format: instagram-portrait
+
+# IG caption used by `bin/publish`. Multi-line via YAML's | block scalar.
+caption: |
+  Replace this with your IG caption.
+
+  #hashtags #here
+
+# Optional global tweaks. Per-slide overrides win.
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+
+slides:
+  - layout: cover
+    eyebrow: "Series 01"
+    eyebrow_meta: "British Currency Carousel  · 3 Parts"
+    headline: |
+      Your Big
+      Headline With An
+      *Accent.*
+    subline: "One-line subtitle"
+    swipe_meta: "Swipe ▸ · 3 Slides · 1 min read"
+
+  - layout: story
+    headline: |
+      The Story
+      Begins *Here.*
+    body: |
+      Your body copy goes here. Use [red emphasis] for key terms,
+      _italics_ for foreign words, and **bold** for selective stress.
+    image_bw: true
+
+  - layout: closing
+    headline: |
+      The Closing
+      *Line.*
+    stats:
+      - value: "1825"
+        label: "Year it began"
+      - value: "100K"
+        label: "People affected"
+      - value: "12"
+        label: "Colonies involved"
+    body: |
+      A short, declarative paragraph that lands the final point. Optional.
+    handle: "Follow @yourhandle"

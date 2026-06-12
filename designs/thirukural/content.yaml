@@ -1,0 +1,158 @@
+name: thiruvalluvar-the-fabricated-conversion
+format: instagram-portrait
+caption: |
+  Thiruvalluvar wrote the _Thirukural_ around two thousand years ago. He invoked Vishnu measuring the world as Vamana. He warned that sloth disrespected Lakshmi. He devoted 250 couplets to _kama_ — one of the four Hindu purusharthas. Yet a Catholic conference in New York in 2005 distributed images of the Tamil sage sitting at the feet of St. Thomas, listening to the Gospel. This carousel is the record of how that image was manufactured.
+
+  The fabrication has a clear lineage. In the nineteenth century the missionary Indologist G.U. Pope claimed the _Thirukural_ was an echo of the Sermon on the Mount. In 1969, a Hindu convert to Christianity named M. Deivanayagam published _Was Thiruvalluvar a Christian?_, asserting that the Apostle Thomas had personally converted the sage. The book reinterpreted the Kural's praise of rain as praise of the Holy Ghost. It read the verses honouring renunciates as tributes to Jesus. It claimed the opening three chapters were a coded hymn to the Christian Trinity — Father, Son, and Holy Ghost. Tamil scholars, secular intellectuals, and even Tamil Christian theologians rejected the thesis for what it was: a text without textual evidence. Madras University awarded Deivanayagam a PhD anyway. The dissertation was later cited as "evidence" by Catholic filmmakers when they planned a feature depicting Thiruvalluvar as Thomas's disciple.
+
+  This is the digestion playbook documented by Rajiv Malhotra — and the _Thirukural_ is the most ambitious target it has ever attempted.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Thiruvalluvar #Thirukural #TamilHistory #RajivMalhotra #SaintThomasMyth #CulturalAppropriation #HinduDharma
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: THIRUKURAL
+slides:
+- layout: cover
+  eyebrow: Dravidianism
+  eyebrow_meta: Thirukural · 8 Parts
+  headline: |
+    How the Thirukural was claimed for the *Church*
+  subline: How the Thirukural was claimed for the Church
+  swipe_meta: Swipe ▸ · 8 Slides · 4 min read
+  headline_size: 150
+  headline_offset_y: 60
+  image: https://pbs.twimg.com/media/GD8DKppbAAAYRUg?format=png&name=900x900
+  texture: scanlines
+  image_bw: false
+  image_overlay: 0.8
+- layout: split-story
+  chapter: Chapter 01 · The Weaver Of Mylapore
+  name: Thiruvalluvar
+  dates: c. 1st century BCE
+  role: Author of the Thirukural
+  headline: |
+    A Sage Older Than
+    The *Apostle.*
+  body: By tradition, Thiruvalluvar lived around [two thousand] years ago. He was a [weaver] by profession,
+    a [Tamil] poet, and the author of the [Thirukural],  [1,330] couplets on ethics, statecraft, love,
+    and conduct. The Kural is the foundational text of [classical Tamil] literature.
+  body_size: 47
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Thirukkural_Madras_1812.JPG/1280px-Thirukkural_Madras_1812.JPG
+  image_overlay: 1
+  body_y: 92
+- layout: numbered-list
+  chapter: Chapter 02 · The Hindu Text
+  headline: |
+    The Kural In
+    Its Own *Words.*
+  items:
+  - number: 1
+    headline: Vishnu measures the world
+    body: The Kural invokes [Vamana], the Vishnu incarnation who measured the cosmos in three strides,  a
+      [Puranic] image at the heart of the Vaishnava tradition.
+  - number: 2
+    headline: Sloth offends Lakshmi
+    body: Thiruvalluvar warns that idleness is a disrespect to the goddess [Lakshmi]. The verse names
+      the deity directly.
+  - number: 3
+    headline: 250 couplets on Kama
+    body: An entire book of [250] couplets is devoted to [kama], one of the four [purusharthas] of Hindu
+      dharma. The Kural is structured on the [Dharmashastra] tradition.
+  image: https://upload.wikimedia.org/wikipedia/commons/b/bf/Thiruvalluvar_123.jpg
+  image_bw: false
+  item_size: 32
+  headline_offset_y: -80
+  body_offset_y: -200
+  texture: scanlines
+  image_overlay: 1
+- layout: split-story
+  chapter: Chapter 03 · The First Forger
+  headline: |
+    G.U. Pope. 19th
+    *Century.* Madras.
+  body: The fabrication began with [George Uglow Pope], a [nineteenth-century] missionary Indologist who
+    translated the Kural into English. Pope's thesis was that Thiruvalluvar had been [influenced by Christian
+    teachers], and that the Kural was an [echo] of Christ's [Sermon on the Mount]. He offered no [textual]
+    evidence , only assertion. The seed was planted.
+  body_y: 23
+  body_size: 45
+  image: https://upload.wikimedia.org/wikipedia/commons/3/3c/George_Uglow_Pope.jpg
+  texture: scanlines
+  image_overlay: 1.1
+- layout: split-story
+  chapter: Chapter 04 · The 1969 Book
+  headline: |
+    The Hindu Convert
+    Who Sealed The *Lie.*
+  body: 'In [1969], a Hindu convert to Christianity named [M. Deivanayagam] published a Tamil book titled
+    [Was Thiruvalluvar a Christian?]. Its central claim went further than Pope''s: that the Apostle [St.
+    Thomas] had [personally met] and [personally converted] Thiruvalluvar. There is no historical evidence
+    the two men were even contemporaries. The book sold on the assertion alone.'
+  headline_size: 100
+  body_size: 45
+  texture: scanlines
+  image: https://pbs.twimg.com/media/EIgNhLYUwAIEAUr?format=jpg&name=small
+  image_filter: archival
+  image_overlay: 1.2
+  body_y: 64
+  headline_y: 23
+- layout: numbered-list
+  chapter: Chapter 05 · The Reinterpretation
+  headline: |
+    How A Hindu Text
+    Becomes A Christian *Gospel.*
+  items:
+  - number: 1
+    headline: Rain becomes the Holy Ghost
+    body: The Kural's verses praising [rain] , central to Tamil agricultural and devotional life  are
+      reread as praise of the Christian [Holy Ghost].
+  - number: 2
+    headline: The renunciate becomes Jesus
+    body: Verses honouring those who [renounced] the world, a Hindu and Jain ideal of [sannyasa] are claimed
+      as tributes to [Jesus Christ].
+  - number: 3
+    headline: The Trinity hides in chapter one
+    body: The Kural's first three chapters are twisted into a coded hymn to the Christian [Trinity],  Father,
+      Son, and Holy Ghost.
+  item_size: 32
+  body_offset_y: -120
+- layout: split-story
+  eyebrow: New York, 2005
+  theme: dark
+  headline: |
+    The Conference That
+    Made It *Doctrine.*
+  body: |
+    At a 2005 conference in [New York] titled "History of Early Christianity in India," souvenir materials were distributed showing colour images of [Thiruvalluvar] sitting in [rapt attention] before St. Thomas. When the [Catholic Church] later planned a mega-budget feature film about Thomas, its scriptwriter cited Deivanayagam's [PhD dissertation] , controversially accepted by [Madras University]  as "evidence" that the two had met.
+  source: Rajiv Malhotra, on the digestion of Tamil tradition
+  body_size: 40
+  texture: scanlines
+  image: https://s3.ap-south-1.amazonaws.com/storage.commonfolks.in/docs/products/images_share/early-christianity-in-india-souvenir-first-international-conference-new-york_FrontImage_534.jpg
+  image_position: 51% 55%
+  image_bw: false
+  image_overlay: 0.6
+  body_y: 41
+- layout: closing
+  headline: |
+    The Sage Did Not
+    Convert. The *Forgery*
+    Did.
+  body: |
+    No [textual] evidence. No [historical] evidence. A [PhD] without a foundation, planned a [film] without a fact, a [conference] without a citation, built on a [missionary's] guess from 1880. The [Kural] still names [Vishnu], still names [Lakshmi]. The forgers must hope no one [reads] it.
+  handle: Follow @itiha29 · itiha.info
+  headline_size: 100
+  body_offset_y: 100
+  body_size: 45
+  image: https://upload.wikimedia.org/wikipedia/commons/7/7e/Screenshot_20221030-184328_Gallery.jpg
+  texture: scanlines
+  image_filter: archival
+  image_overlay: 1
+  headline_offset_y: -120
+- layout: end-card
+  headline: New slide

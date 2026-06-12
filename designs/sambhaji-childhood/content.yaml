@@ -1,0 +1,107 @@
+name: sambhaji-childhood
+format: instagram-portrait
+caption: |
+  History remembers Sambhaji Maharaj as a warrior and a martyr. It rarely remembers the child.
+
+  Motherless at two. A Mughal hostage at eight. Hidden in a sweetmeat basket at nine. A 5-part series on the childhood that forged a Chhatrapati.
+
+  @itiha29 · itiha.info
+
+  #IndianHistory #SambhajiMaharaj #Maratha #Itiha
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 20
+  showGrain: true
+  seriesLabel: CHHATRAPATI SAMBHAJI
+slides:
+- layout: cover
+  eyebrow: Series 05
+  eyebrow_meta: Sambhaji Maharaj · 5 Parts
+  headline: |
+    The Boy Who Never
+      Got A *Childhood.*
+  subline: 1657–1671 · the making of a Chhatrapati
+  swipe_meta: Swipe ▸ · 6 Slides · 3 min read
+  theme: dark
+  headline_offset_y: -80
+  image: magnific_can-you-regenerate-this-o_2978217401-1.png
+  image_overlay: 0.6
+  image_bw: false
+  image_position: 56% 18%
+  image_filter: warm
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 01 · A Tragic Loss
+  headline: |
+    Motherless
+    At *Two.*
+  body: |
+    Sambhaji was born on [14 May 1657]. He lost his mother, Queen [Saibai], when he was just [two] years old.
+      Other royal children were raised with care. He grew up in a [kingdom] always at war — his father away on the battlefield, fighting just to keep [Swarajya] alive.
+  body_size: 47
+  image: _cache/c33e04a9f5346194.jpg
+  image_overlay: 0.75
+  texture: vignette
+  headline_y: 20
+  body_y: 51
+  theme: light
+- layout: split-story
+  chapter: Chapter 02 · The Hostage
+  headline: |
+    A Hostage
+      At *Eight.*
+  body: |
+    In [1665], the Treaty of [Purandar] forced Shivaji Maharaj into a painful choice. To keep the peace, he sent his eight-year-old son to the camp of the Mughal general [Mirza Raja Jai Singh].
+      A small child was placed inside the [Mughal] war camp — and made a junior commander on paper, in charge of **5,000** soldiers.
+  body_size: 45
+  image: _cache/2d6da216b81d03a8.jpg
+  image_overlay: 1.2
+  body_y: 65
+  texture: vignette
+  image_bw: false
+  headline_y: 3
+  theme: light
+- layout: split-story
+  chapter: Chapter 03 · The Great Escape
+  headline: |
+    Hidden In A
+      Sweet *Basket.*
+  body: |
+    In [1666], the nine-year-old prince travelled [1,000] kilometres to Agra and stood before Emperor [Aurangzeb]. When father and son were put under house arrest, they escaped hidden inside baskets of sweets carried out past the guards. The road home was too dangerous for a child. Shivaji had to leave Sambhaji behind in [Mathura] for months, hidden with three [Brahmin] brothers.
+  body_size: 44
+  image: _cache/b94471138bbf9eb2.jpg
+  theme: light
+  image_overlay: 1.45
+  body_y: 77
+  image_bw: true
+  headline_y: 29
+  texture: vignette
+- layout: split-story
+  chapter: Chapter 04 · Forged In Fire
+  headline: |
+    No Time To Be A Child.
+  body: By [fourteen], Sambhaji was already handling the kingdom's affairs. By [sixteen], he was meeting
+    foreign envoys on his own  including the [English] visitor [Thomas Niccolls].
+  body_size: 45
+  body_y: 115
+  headline_y: 13
+  texture: vignette
+  image: _cache/51cace0f68fe9d47.jpeg
+  theme: light
+  image_overlay: 0.8
+- layout: closing
+  body: |2
+
+    The childhood of [Sambhaji Maharaj] was not lost to circumstance. It was [spent] — deliberately, painfully — to forge a successor capable of holding a kingdom that the empires of the age had vowed to destroy. What history calls a [warrior-king], the boy paid for in advance.
+  handle: ' @itiha29                  · itiha.info'
+  body_size: 43
+  image: magnific_can-you-regenerate-this-o_2978217401.png
+  image_overlay: 1.2
+  body_offset_y: 100
+  texture: vignette
+  theme: light
+- layout: end-card
+  headline: New slide
+  texture: vignette

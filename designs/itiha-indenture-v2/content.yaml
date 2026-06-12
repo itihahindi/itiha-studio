@@ -29,10 +29,10 @@ slides:
   image_bw: true
   headline_size: 150
   image: _cache/79a0ebfd3f6cb934.jpg
-  image_position: '25'
   image_overlay: 0.8
   theme: dark
   texture: halftone
+  headline_offset_y: -250
 - layout: story
   chapter: Chapter 01 · The Provocation
   headline: |
@@ -46,7 +46,7 @@ slides:
   block_y: top
   body_size: 50
   image_position: '9'
-  theme: light
+  theme: dark
   image_bw: false
   image_overlay: 1.2
   texture: halftone
@@ -69,7 +69,7 @@ slides:
   block_y: middle
   texture: halftone
   headline_size: 100
-  theme: light
+  theme: dark
 - layout: story
   chapter: Chapter 03 · The Confession
   headline: |
@@ -83,8 +83,9 @@ slides:
   image_overlay: 1
   block_y: bottom
   body_size: 45
-  theme: light
+  theme: dark
   headline_size: 79
+  texture: halftone
 - layout: story
   chapter: Chapter 04 · The Constitution
   headline: |
@@ -102,21 +103,21 @@ slides:
   image_bw: false
   block_y: bottom
   body_size: 48
-  theme: light
+  theme: dark
   texture: halftone
 - layout: story
   chapter: Chapter 05 · The Three Prongs
   headline: |
     Open. Front.
     *Underground.*
-  body: Goel described the CPI as a [three-pronged organisation]. The [open party] contested elections
-    and published newspapers. The [front organisations] — _AITUC_, _Kisan Sabha_, _IPTA_, the _Progressive
-    Writers' Association_, the _Indo-Soviet Cultural Society_ — politicised every non-political space.
+  body: 'Goel described the CPI as a [three-pronged organisation]. The [open party] contested elections
+    and published newspapers. The [front organisations]: _AITUC_, _Kisan Sabha_, _IPTA_, the _Progressive
+    Writers'' Association_, the _Indo-Soviet Cultural Society_  politicised every non-political space.
     The [secret underground] worked inside the Army, the Police, and the policy-making organs, preparing
-    for the final bid for power.
+    for the final bid for power.'
   image_overlay: 1
   body_size: 46
-  theme: light
+  theme: dark
   texture: halftone
 - layout: stat
   chapter: Chapter 06 · The Money
@@ -134,13 +135,13 @@ slides:
     value_red: true
   body: By Goel's estimate, [twenty crore rupees] a year flowed from [Moscow] into the CPI apparatus.
     The money paid [seventy thousand wholetimers], subsidised papers like the _Blitz_, financed festivals
-    and foreign delegations, and — where persuasion failed — bought off writers, poets, and journalists
-    outright.
+    and foreign delegations, and where persuasion failed, bought off writers, poets, and journalists outright.
   image_bw: true
-  theme: light
+  theme: dark
   texture: halftone
-  body_size: 30
-  stat_size: 200
+  body_size: 35
+  stat_size: 201
+  body_offset_y: 90
 - layout: story
   headline: |
     A Cancer In
@@ -154,7 +155,7 @@ slides:
   image_bw: true
   image_overlay: 1
   body_size: 44
-  theme: light
+  theme: dark
   texture: halftone
 - layout: story
   headline: |
@@ -168,10 +169,11 @@ slides:
   headline_size: 100
   image_bw: true
   chapter: 'Lenin with M.N Roy '
-  theme: light
+  theme: dark
   image_overlay: 1.45
   texture: halftone
+  image_filter: sepia
 - layout: end-card
   headline: New slide
-  tagline: origins of CPI video live on our youtube
+  tagline: Origins of CPI video live on youtube
   texture: halftone

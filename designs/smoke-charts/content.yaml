@@ -1,0 +1,53 @@
+name: smoke-charts
+format: instagram-portrait
+caption: |
+  Smoke test — pie-chart + line-graph.
+tweaks:
+  showStamp: true
+  showPageNum: true
+slides:
+- layout: pie-chart
+  chapter: Chapter 02 · The Treasury
+  headline: |
+    Where The Company's
+    *Revenue* Came From
+  segments:
+  - label: Land tax
+    value: 50
+  - label: Customs & trade
+    value: 21
+  - label: Salt monopoly
+    value: 17
+  center_label: '1858'
+  caption: Most of the [East India Company's] income was drawn from the land it taxed.
+- layout: pie-chart
+  theme: light
+  chapter: Light theme · full pie
+  headline: |
+    A *Full* Pie, Light
+  donut: false
+  segments:
+  - label: Bengal
+    value: 45
+  - label: Madras
+    value: 30
+  - label: Bombay
+    value: 25
+- layout: line-graph
+  chapter: Chapter 03 · The Drain
+  headline: |
+    Indian Cotton
+    *Exports* Collapse
+  y_suffix: M
+  points:
+  - label: '1820'
+    value: 42
+  - label: '1840'
+    value: 31
+  - label: '1860'
+    value: 18
+  - label: '1880'
+    value: 9
+  - label: '1900'
+    value: 4
+  caption: Measured in [million pounds] — British mill competition gutted the handloom trade.

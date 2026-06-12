@@ -184,10 +184,11 @@ def _build_server(design_dir: Path, state: dict) -> ThreadingHTTPServer:
                     if proc.returncode != 0:
                         msg = proc.stderr.strip() or proc.stdout.strip() or "render failed"
                         self._send_bytes(msg.encode(), "text/plain", code=500); return
-                    files = sorted((design_dir / "output").glob("*-slide.png"))
+                    output_dir = content_mod.output_dir_for(design_dir)
+                    files = sorted(output_dir.glob("*-slide.png"))
                     self._send_bytes(json.dumps({
                         "ok": True, "count": len(files),
-                        "output_dir": str(design_dir / "output"),
+                        "output_dir": str(output_dir),
                     }).encode(), "application/json")
                 except subprocess.TimeoutExpired:
                     self._send_bytes(b"render timed out (>180s)", "text/plain", code=504)
@@ -198,8 +199,7 @@ def _build_server(design_dir: Path, state: dict) -> ThreadingHTTPServer:
             if path == "/api/open-folder":
                 # Localhost-only, fixed path. macOS `open`; on Linux: xdg-open.
                 try:
-                    out = design_dir / "output"
-                    out.mkdir(exist_ok=True)
+                    out = content_mod.output_dir_for(design_dir)
                     opener = "open" if sys.platform == "darwin" else "xdg-open"
                     subprocess.Popen([opener, str(out)])
                     self._send_bytes(b'{"ok":true}', "application/json")

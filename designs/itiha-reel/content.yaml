@@ -9,11 +9,12 @@ tweaks:
   showPageNum: false
 slides:
 - layout: reel-title
-  headline: Britain Made Indian Ships *ILLEGAL*
-  subline: by 1800
+  headline: '*CREMATION* WAS A CRIME'
+  subline: How Hindus Cremated in Secret Under British Trinidad
   handle: '@itiha29'
-  image: https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Robert_Dodd_-_The_East_Indiaman_Delaford%2C_in_two_positions_%281787%29.jpg/3840px-Robert_Dodd_-_The_East_Indiaman_Delaford%2C_in_two_positions_%281787%29.jpg
+  image: https://culturalsamvaad.com//wp-content/uploads/2019/09/print1845.jpg
   image_overlay: 0.8
   texture: noise
   image_bw: false
   headline_size: 190
+  text_y: 75

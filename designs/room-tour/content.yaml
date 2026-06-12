@@ -1,0 +1,20 @@
+name: "Room tour"
+notion_page_id: 29353877-6b0f-81bd-b997-f5632e86e6ca
+format: instagram-reel
+
+caption: |
+  Replace this with your IG Reel caption.
+
+  #hashtags #here
+
+tweaks:
+  showStamp: true
+
+slides:
+  - layout: reel-title
+    eyebrow: "Series 01"
+    headline: |
+      Your Hook
+      In *Two Lines*
+    subline: "Optional one-line sub"
+    handle: "@itiha29"

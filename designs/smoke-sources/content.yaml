@@ -1,0 +1,50 @@
+name: smoke-sources
+format: instagram-portrait
+caption: |
+  Smoke test — document, annotated, sources.
+tweaks:
+  showStamp: true
+  showPageNum: true
+slides:
+- layout: document
+  chapter: Chapter 03 · The Record
+  headline: |
+    In His Own *Hand.*
+  image: doc.webp
+  quote: |
+    Let the temple be demolished, and a
+    mosque raised on its foundations.
+  translation: From the imperial farman of 1669, as recorded by the court chronicler.
+  attribution: Maasir-i-Alamgiri, c. 1710 · trans. Jadunath Sarkar
+  texture: halftone
+- layout: annotated
+  chapter: Chapter 05 · The Scene
+  headline: |
+    Reading The *Durbar.*
+  image: scene.webp
+  callouts:
+  - x: 30
+    y: 36
+    label: The emperor, seated but powerless by 1857.
+  - x: 64
+    y: 48
+    label: Officers of the [Company] — the real authority in the room.
+  - x: 46
+    y: 78
+    label: The petitioners, whose lands the durbar no longer controlled.
+- layout: sources
+  eyebrow: Sources
+  headline: |
+    The *Record.*
+  sources:
+  - title: Maasir-i-Alamgiri
+    author: Saqi Mustaad Khan
+    detail: trans. Jadunath Sarkar, 1947
+  - title: A History of Aurangzib
+    author: Jadunath Sarkar
+    detail: 5 vols., 1912–24
+  - title: The Mughal Empire
+    author: John F. Richards
+    detail: New Cambridge History of India, 1993
+  note: Primary sources in translation; secondary works for context.
+  handle: Follow @itiha29 · itiha.info

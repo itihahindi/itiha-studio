@@ -71,7 +71,6 @@ def main(argv: list[str]) -> int:
 
     # Materialize the design folder.
     (design_dir / "images").mkdir(parents=True)
-    (design_dir / "output").mkdir()
 
     for src_path, dest_name in data.get("_images", []):
         dest = design_dir / "images" / dest_name

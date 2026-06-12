@@ -1,13 +1,10 @@
-name: "Itiha — YouTube Thumbnail"
+name: Itiha — YouTube Thumbnail
 format: youtube-thumbnail
 tweaks:
   showStamp: false
   showPageNum: false
-
 slides:
-  - layout: youtube-thumbnail
-    eyebrow: "Episode 04 · The Sacking"
-    headline: |
-      The Last
-      *Somnath.*
-    subline: "1026 AD · Gujarat · A temple in flames"
+- layout: youtube-thumbnail
+  image: new-thumbnail.png
+  texture: halftone
+  image_position: 26% 51%

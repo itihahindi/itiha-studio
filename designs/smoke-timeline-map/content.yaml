@@ -1,0 +1,63 @@
+name: smoke-timeline-map
+format: instagram-portrait
+caption: |
+  Smoke test — Timeline + Map layouts.
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  seriesLabel: SMOKE
+slides:
+- layout: cover
+  eyebrow: Smoke Test
+  headline: |
+    New Layouts:
+    *Timeline* And *Map.*
+  subline: Layout regression test
+  swipe_meta: Swipe ▸ · 3 Slides
+- layout: timeline
+  chapter: Chapter 02 · The Sequence
+  headline: |
+    A Hundred Years
+    Of *Plunder.*
+  items:
+  - date: '1025'
+    headline: '*Somnath* sacked'
+    body: Mahmud of Ghazni razes the temple; the central lingam is shipped to [Ghazni].
+  - date: '1175'
+    headline: '*Multan* annexed'
+    body: Ghurid expansion begins. The northwest frontier becomes a permanent corridor.
+  - date: '1192'
+    headline: '*Tarain* — second battle'
+    body: Prithviraj defeated. The Delhi Sultanate is two years away from its founding charter.
+- layout: did-you-know
+  headline: |
+    The First Printing
+    Press In India
+    Arrived In *1556.*
+  body: |
+    It came with [Jesuit] priests at the [Portuguese] mission in Goa and printed a Tamil-language _Cartilha_ — Europe's
+    moveable type reached the subcontinent within a [century] of Gutenberg.
+  source: A. K. Priolkar · The Printing Press In India
+- layout: map
+  chapter: Chapter 04 · The Geography
+  headline: |
+    The Three
+    *Strongholds.*
+  markers:
+  - x: 28
+    y: 42
+    label: Ghazni
+    sublabel: Capital
+  - x: 52
+    y: 58
+    label: Multan
+    sublabel: 1175
+  - x: 55
+    y: 77
+    label: Somnath
+    sublabel: 1025
+  caption: |
+    Three [punctuation marks] in a century — each one a node on the same overland route.
+  image: https://m.media-amazon.com/images/I/81R4R0ZDyRL._AC_UF1000,1000_QL80_.jpg
+  image_position: 49% 50%

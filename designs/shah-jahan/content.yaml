@@ -1,0 +1,103 @@
+name: shah-jahan-scandals
+format: instagram-portrait
+caption: |
+  The Taj Mahal is the love story. The court chronicles are not.
+
+  European travellers — Manucci, Bernier, Tavernier — recorded a Shah Jahan that Mughal panegyrists scrubbed out. A 7-part series on what the foreign witnesses saw.
+
+  @itiha29 · itiha.info
+
+  #IndianHistory #ShahJahan #Mughals #Itiha
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: SHAH JAHAN
+slides:
+- layout: cover
+  eyebrow: Series 04
+  eyebrow_meta: Shah Jahan · 7 Parts
+  headline: |
+    The Emperor
+    Behind The
+    *Marble.*
+  subline: Mughal court · 17th century · the travellers' record
+  swipe_meta: Swipe ▸ · 7 Slides · 3 min read
+  theme: dark
+  image: https://upload.wikimedia.org/wikipedia/commons/4/4c/%27Jujhar_Singh_Bundela_Kneels_in_Submission_to_Shah_Jahan%27%2C_painted_by_Bichitr%2C_c._1630%2C_Chester_Beatty_Library_%28cropped2%29.jpg
+  image_overlay: 0.5
+  texture: vignette
+- layout: quote
+  chapter: Chapter 01 · After Mumtaz
+  headline: |
+    An Insatiable
+    *Appetite.*
+  quote: |
+    "The only thing Shahjahan cared for was the search for women to serve his pleasure."
+  attribution: Niccolao Manucci · Venetian traveller at the Mughal court
+  body: The grief of [Mumtaz Mahal] is the story the marble tells. The court the [Italian] traveller saw
+    was something else. [Manucci] served at the Mughal court for decades and recorded what the panegyrists
+    did not.
+  quote_size: 100
+  body_size: 35
+  headline_offset_y: -90
+  body_offset_y: 60
+- layout: split-story
+  chapter: Chapter 02 · The Wives Of Nobles
+  headline: |
+    Breakfast
+    And *Luncheon.*
+  body: |
+    No woman in the empire was placed beyond the emperor's reach. His liaisons with the wives of [Jafar Khan] and [Khalilullah Khan] — two of his most powerful nobles — were an open secret at court.
+    In the bazaars of the capital, beggars mocked these noblewomen as their palanquins passed, calling out to them as the **breakfast** or _luncheon_ of Shah Jahan.
+  image: https://openaccess-cdn.clevelandart.org/1987.153.a/1987.153.a_print.jpg
+  image_overlay: 0.9
+  body_size: 40
+- layout: story
+  chapter: Chapter 03 · The Kanchanis
+  headline: |
+    The Wednesday
+    Night *Dancers.*
+  body: |
+    Every Wednesday, the _Kanchanis_ — the [gilded ones], a respected class of singing and dancing women — came to court to pay their respects to the emperor.
+    The audience rarely ended at court. Shah Jahan detained the women in the [harem] through the night, kept there to amuse him with their "antics and follies" until [dawn].
+- layout: quote
+  chapter: Chapter 04 · The Darkest Rumour
+  headline: |
+    The Tree And
+    Its *Fruit.*
+  quote: |
+    "It would have been unjust to deny the king the privilege of gathering fruit from the tree he himself had planted."
+  attribution: Justification recorded by Bernier and Tavernier · attributed to court Mullas
+  body: The most disturbing allegation against Shah Jahan concerned his eldest daughter, Princess [Jahan
+    Ara]. [Bernier] and [Tavernier] — two Frenchmen at the court — both recorded the rumour, and recorded
+    the grotesque rationalisation the court clerics offered for it.
+- layout: split-story
+  chapter: Chapter 05 · The Captive Emperor
+  headline: |
+    The Laughing
+    Girls In The *Mirror.*
+  body: |
+    Deposed and imprisoned by his son [Aurangzeb], the old emperor was permitted to keep his female establishment, his dancers, and his cabinet of [aphrodisiacs]. The obsession did not fade with age.
+    Legend records his end as an act of pure vanity. Twirling his moustache before a mirror, he caught the reflection of two young slave girls — [Aftab] and [Mehtab] — laughing at his withered face. The humiliation is said to have killed him.
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/The_Emperor_Shah_Jahan_recumbent_Wellcome_V0046338.jpg/960px-The_Emperor_Shah_Jahan_recumbent_Wellcome_V0046338.jpg
+  image_overlay: 1
+  body_size: 35
+- layout: closing
+  headline: 'Layout: closing'
+  body: |
+    Headline: |
+
+    The Marble Endures.
+
+    The *Record* Survives.
+
+    Body: |
+
+    The [Taj Mahal] is one story the Mughals told about themselves. The dispatches of [Manucci], [Bernier], and [Tavernier] are another. History rarely keeps only the version that flatters the [throne].
+
+    Handle: Follow @itiha29 · itiha.info
+
+    ---

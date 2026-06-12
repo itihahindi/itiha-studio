@@ -7,7 +7,7 @@ The user is `itihahindi@gmail.com`. Brand voice is editorial and historical — 
 ---
 
 ## Running it
-
+`
 ```
 bin/itiha start     # background daemon, opens browser, prints URL
 bin/itiha stop
@@ -25,7 +25,7 @@ Daemon state lives in `.itiha-studio.pid` / `.itiha-studio.log` (gitignored). Fi
 
 - **Entry**: [src/studio.py](src/studio.py) — `ThreadingHTTPServer` with home page at `/`, per-design routes at `/d/<slug>/`, and a small REST surface (`/api/projects`, `/api/projects/new`, `/api/projects/delete`, `/api/notion/*`, plus `/d/<slug>/api/{save,render,upload,remove-bg,parse-markdown,open-folder}`).
 - **Renderer**: [src/render.py](src/render.py) — Playwright loads the editor page in capture mode and screenshots each slide at its native dimensions.
-- **Content**: One folder per project under [designs/](designs/) — `content.yaml` + `images/` + `output/` (gitignored).
+- **Content**: One folder per project under [designs/](designs/) — `content.yaml` + `images/`. Rendered PNGs live OUTSIDE the repo at `~/Instagram Itiha Renders/<slug>/` (override via `ITIHA_OUTPUT_ROOT` in `.env`). Resolve via `content.output_dir_for(design_dir)` — never hard-code `design_dir / "output"`.
 - **Layouts**: [shared/layouts.jsx](shared/layouts.jsx) — every slide is a React component. Registered in `window.LAYOUTS` at the bottom. Adding a layout means: component → manifest entry in [shared/manifest.js](shared/manifest.js) → name in `KNOWN_LAYOUTS` in [src/content.py](src/content.py).
 - **Editor**: [shared/editor.jsx](shared/editor.jsx) — Babel-in-browser, side-panel React form. The big `PROJECT_INSTRUCTIONS` string in here is what users paste into their Claude.ai Project as Custom Instructions.
 - **Per-slide knobs**: every carousel layout supports `theme: light|dark` and a `texture` overlay (`grain`, `noise`, `scanlines`, `paper`, `halftone`, `vignette`). Helpers in [shared/slides-shared.jsx](shared/slides-shared.jsx) (`themeFor`, `TextureOverlay`).
@@ -73,7 +73,7 @@ The yaml fence is load-bearing: claude.ai strips `*asterisks*` and `##` headers 
 - Repo: https://github.com/itihahindi/itiha-studio (private)
 - Main branch: `main`
 - Secrets live only in `.env` (gitignored). Pre-push, grep for `sk-ant-|ntn_|secret_|EAAA|ghp_|AKIA` to be safe.
-- Don't commit `designs/<slug>/output/` (rendered PNGs are ignored). `content.yaml` and `images/` are committed.
+- Rendered PNGs live at `~/Instagram Itiha Renders/<slug>/` (outside the repo) — set `ITIHA_OUTPUT_ROOT` in `.env` to relocate. `content.yaml` and `images/` are the only design assets that get committed.
 - Don't add `*.md` docs unless the user asks. Keep this file and `README.md` as the only top-level docs.
 
 ---

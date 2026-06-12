@@ -1,0 +1,137 @@
+name: how-the-british-built-dowry
+format: instagram-portrait
+caption: |
+  The British loved to denounce dowry as a barbaric Indian custom. They left out the part where they invented it. Before the Company arrived, dowry across most of India was voluntary — a gift, a mark of love, the moveable property a daughter carried into her new home. Within a few decades of British land revenue policy, it had become an extortionate demand that bankrupted families and turned daughters into liabilities. The transformation was not cultural. It was fiscal.
+
+  This carousel draws on Arvind Sharma's _The Ruler's Gaze: A Study of British Rule Over India from a Saidian Perspective_, which traces the mechanism step by step. Before colonial rule, land in Punjab and across much of India was held under forms of communal ownership — different groups held different rights to the same soil, and the burden of raising daughters was light. The ryotwari and similar settlements destroyed this. Land was converted to private property that could be bought, sold, and mortgaged. The British demanded fixed revenue payments on fixed dates, set higher than any previous regime, regardless of monsoon failure or crop collapse. Peasants borrowed from moneylenders. Moneylenders were given the legal right to auction the land when debts came due. To save the ancestral land from the auctioneer's block, families seized on every available source of wealth — and dowry was the largest one within reach. The voluntary gift became "dreaded payments on demand." Daughters became burdens. The husband's family learned to extract. And British administrators, having engineered the crisis, wrote essays blaming Hindu tradition for it.
+
+  Every modern dowry death has a paper trail. It leads to a Company land record.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #ArvindSharma #TheRulersGaze #BritishRaj #DowrySystem #ColonialHistory #Ryotwari #EastIndiaCompany
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: DOWRY
+slides:
+- layout: cover
+  eyebrow: Series 11
+  eyebrow_meta: Dowry · 8 Parts
+  headline: |
+    Dowry Was A
+    *British* Invention.
+  subline: How a tax code rewrote the Indian marriage
+  swipe_meta: Swipe ▸ · 8 Slides · 4 min read
+  theme: dark
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Wedding_Procession-_Bride_Under_a_Canopy_LACMA_37.28.9.jpg/1920px-Wedding_Procession-_Bride_Under_a_Canopy_LACMA_37.28.9.jpg
+  image_overlay: 0.7
+  headline_offset_y: -280
+  texture: scanlines
+- layout: split-story
+  chapter: Chapter 01 · Before The Company
+  headline: |
+    A Gift, Not
+    A *Debt.*
+  body: Before British rule, [dowry] across most of India was largely [voluntary] understood as a mark
+    of [love] for the daughter, the [moveable property] she carried into her new home. Women [inherited]
+    it. Raising daughters was not the [economic burden] it would later become. The reason sat in the [soil]
+    itself.
+  texture: scanlines
+  body_size: 45
+- layout: split-story
+  chapter: Chapter 02 · The Old Land
+  headline: |
+    Land Belonged
+    To The *Many.*
+  body: Across pre-colonial India, land was held in forms of [communal ownership]. Different groups held
+    [different rights] to the same field the cultivator, the village, the lineage, the lord. Land was
+    not strictly [private property]. Taxation was [flexible], adjusted to the harvest. The structure that
+    would later [crush] the peasant did not yet [exist].
+  body_size: 45
+- layout: stat
+  chapter: Chapter 03 · The Ryotwari Knife
+  headline: |
+    The Three British
+    *Innovations.*
+  stats:
+  - label: Communal land becomes
+    value: Private.
+    value_red: true
+    sublabel: Buyable, sellable, mortgageable
+  - label: Tax rate set
+    value: Higher.
+    sublabel: Above any previous Indian regime
+  - label: Payment dates
+    value: Fixed.
+    sublabel: Regardless of monsoon or crop failure
+  body: The [ryotwari] system in Punjab and Madras was the prototype. Three changes, applied together,
+    broke the old order. Land became a [commodity]. The tax demand became [unyielding]. And the calendar
+    of payment cared nothing for the [rain].
+  stat_size: 125
+  theme: light
+  body_size: 40
+  body_offset_y: 60
+- layout: split-story
+  chapter: Chapter 04 · The Moneylender's Door
+  headline: |
+    Borrow Or Lose
+    The *Land.*
+  body: To meet the fixed [revenue demand], cultivators were forced to the [moneylender's] door. Under
+    the new colonial [legal arrangement], the moneylender was empowered to [seize] and [auction] the peasant's
+    land if the debt was not paid. The British had created the perfect [trap]  a tax that could not be
+    missed, a [credit] system that could not be escaped, and a [court] that enforced the seizure.
+  body_size: 45
+  body_y: 47
+- layout: did-you-know
+  eyebrow: The Transformation
+  theme: light
+  headline: |
+    Suddenly The Bride
+    Was *Cash.*
+  body: |
+    As peasants fell into [massive debt] to save their ancestral land from the auctioneer, [dowry] became a [coveted financial prize] — as valuable to the groom's family as any inherited [right in land]. The voluntary gift evaporated. In its place came [dreaded payments on demand], grasped with [tenacity] even when wedding and funeral expenses were cut.
+  source: Arvind Sharma, The Ruler's Gaze
+  body_size: 45
+  body_offset_y: 100
+  headline_size: 120
+  headline_offset_y: -70
+- layout: comparison
+  chapter: Chapter 05 · Before And After
+  left_label: Pre-Colonial Dowry
+  left_headline: 'A Gift Of
+
+    *Love.*
+
+    '
+  left_body: '[Voluntary]. [Moveable property] the daughter [inherited]. A [mark of affection], not a
+    [contract]. The household celebrated the daughter''s marriage without [bankruptcy].
+
+    '
+  right_label: Colonial Dowry
+  right_headline: 'A Demand At
+
+    *Knifepoint.*
+
+    '
+  right_body: '[Extortionate]. A [lever] for the husband''s family to extract [wealth] needed to settle
+    their own [tax debt]. The daughter became an [economic burden] before she was born, a [liability]
+    the family could not afford.'
+  body_size: 40
+  headline_offset_y: -40
+  body_offset_y: -380
+- layout: split-story
+  headline: |
+    They Built The
+    Crisis. Then Blamed
+    Our *Religion.*
+  body: What [British administrators] loudly condemned as a [religious failing] of Indian society was
+    the [direct consequence] of their own [extortionate] tax. The dowry system was a foundational economic
+    and social practice across Europe for thousands of years before fading was ignored & they started
+    blaming Hinduism
+  handle: Follow @itiha29 · itiha.info
+  body_size: 45
+  headline_size: 100

@@ -108,8 +108,7 @@ async def _render_yaml_mode(design_dir: Path) -> list[Path]:
     content_bytes = json.dumps(content, ensure_ascii=False).encode()
     fmt = get_format(content["format"])
     slide_count = len(content["slides"])
-    output_dir = design_dir / "output"
-    output_dir.mkdir(exist_ok=True)
+    output_dir = content_mod.output_dir_for(design_dir)
 
     # Clear stale PNGs so a slide that no longer exists doesn't linger.
     for stale in output_dir.glob("*-slide.png"):
@@ -148,7 +147,7 @@ async def _render_yaml_mode(design_dir: Path) -> list[Path]:
                 }""")
                 out = output_dir / f"{i + 1:02d}-slide.png"
                 await page.locator("#root").screenshot(path=str(out))
-                print(f"  wrote {out.relative_to(ROOT)}")
+                print(f"  wrote {out}")
                 written.append(out)
             await browser.close()
     finally:
@@ -164,8 +163,7 @@ async def _render_legacy_mode(design_dir: Path) -> list[Path]:
     fmt = get_format(config["format"])
     entry = config.get("entry", "Itiha Capture.html")
     slide_count = config["slide_count"]
-    output_dir = design_dir / "output"
-    output_dir.mkdir(exist_ok=True)
+    output_dir = content_mod.output_dir_for(design_dir)
 
     for stale in output_dir.glob("*-slide.png"):
         stale.unlink()
@@ -209,7 +207,7 @@ async def _render_legacy_mode(design_dir: Path) -> list[Path]:
                 }""")
                 out = output_dir / f"{i + 1:02d}-slide.png"
                 await page.locator("#root").screenshot(path=str(out))
-                print(f"  wrote {out.relative_to(ROOT)}")
+                print(f"  wrote {out}")
                 written.append(out)
             await browser.close()
     finally:
@@ -232,7 +230,7 @@ def main(argv: list[str]) -> int:
         print(f"no such design: {design_dir}")
         return 1
     files = asyncio.run(render_design(design_dir))
-    print(f"\nrendered {len(files)} slide(s) → {design_dir / 'output'}")
+    print(f"\nrendered {len(files)} slide(s) → {content_mod.output_dir_for(design_dir)}")
     return 0
 
 

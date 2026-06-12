@@ -14,12 +14,35 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
 import yaml
+
+
+# Wikimedia (and some other CDNs) enforces a strict User-Agent policy and
+# returns HTTP 429 for generic UAs. Identify the tool + provide contact info
+# per https://meta.wikimedia.org/wiki/User-Agent_policy
+_UA = "ItihaStudio/0.1 (https://github.com/itihahindi/itiha-studio; itihahindi@gmail.com)"
+
+
+def output_root() -> Path:
+    """Where rendered PNGs live. Default: ~/Instagram Itiha Renders (outside repo).
+    Override with the ITIHA_OUTPUT_ROOT env var."""
+    raw = os.environ.get("ITIHA_OUTPUT_ROOT", "~/Instagram Itiha Renders")
+    return Path(raw).expanduser().resolve()
+
+
+def output_dir_for(design_dir: Path) -> Path:
+    """Return (and create) the per-design render directory."""
+    out = output_root() / design_dir.name
+    out.mkdir(parents=True, exist_ok=True)
+    return out
 
 
 class ContentError(Exception):
@@ -38,15 +61,53 @@ def _ext_from_url(url: str) -> str:
     return ".jpg"  # default; image element doesn't care about the extension
 
 
+# Query parameters that don't change the image content — strip before caching
+# so the same image fetched via different links dedupes in _cache/.
+_NOISE_PARAMS = {"utm_source", "utm_medium", "utm_campaign", "utm_content",
+                 "utm_term", "fbclid", "gclid", "ref_src", "ref"}
+
+
+def _canonical_url(url: str) -> str:
+    parts = urllib.parse.urlparse(url)
+    if not parts.query:
+        return url
+    kept = [(k, v) for k, v in urllib.parse.parse_qsl(parts.query, keep_blank_values=True)
+            if k not in _NOISE_PARAMS]
+    new_query = urllib.parse.urlencode(kept)
+    return urllib.parse.urlunparse(parts._replace(query=new_query))
+
+
 def _download(url: str, dest: Path) -> None:
-    req = urllib.request.Request(url, headers={
-        "User-Agent": "motion-graphics/0.1 (image fetcher)",
+    """GET `url` and write the body to `dest`. Retries 429/503 with backoff."""
+    headers = {
+        "User-Agent": _UA,
         "Accept": "image/*,*/*;q=0.8",
-    })
-    with urllib.request.urlopen(req, timeout=30) as r:
-        data = r.read()
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_bytes(data)
+    }
+    last_error: Exception | None = None
+    for attempt in range(3):
+        req = urllib.request.Request(url, headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                data = r.read()
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_bytes(data)
+            return
+        except urllib.error.HTTPError as e:
+            last_error = e
+            # Honor Retry-After when the server provides one; otherwise back off
+            # exponentially. Only retry transient codes.
+            if e.code in (429, 503) and attempt < 2:
+                ra = e.headers.get("Retry-After") if e.headers else None
+                try:
+                    wait = max(1, int(ra)) if ra else (attempt + 1) * 2
+                except ValueError:
+                    wait = (attempt + 1) * 2
+                print(f"  …{e.code}; retrying in {wait}s")
+                time.sleep(wait)
+                continue
+            raise
+    if last_error is not None:
+        raise last_error
 
 
 def resolve_image(value: str | None, design_dir: Path) -> str | None:
@@ -61,15 +122,16 @@ def resolve_image(value: str | None, design_dir: Path) -> str | None:
     images_dir = design_dir / "images"
     if _is_url(value):
         cache_dir = images_dir / "_cache"
-        h = hashlib.sha1(value.encode()).hexdigest()[:16]
-        ext = _ext_from_url(value)
+        canonical = _canonical_url(value)
+        h = hashlib.sha1(canonical.encode()).hexdigest()[:16]
+        ext = _ext_from_url(canonical)
         local = cache_dir / f"{h}{ext}"
         if not local.exists():
-            print(f"  fetch  {value}")
+            print(f"  fetch  {canonical}")
             try:
-                _download(value, local)
+                _download(canonical, local)
             except Exception as e:
-                raise ContentError(f"failed to download {value}: {e}")
+                raise ContentError(f"failed to download {canonical}: {e}")
         return f"_cache/{local.name}"
 
     # Tolerate either bare filename or "images/<name>"
@@ -86,7 +148,9 @@ def resolve_image(value: str | None, design_dir: Path) -> str | None:
 KNOWN_LAYOUTS = {
     # Carousel layouts (1080×1350 etc.)
     "cover", "story", "split-story", "quote", "stat", "dates-grid", "closing",
-    "numbered-list", "comparison", "portrait",
+    "numbered-list", "comparison", "portrait", "timeline", "map", "did-you-know",
+    "pie-chart", "line-graph", "bar-chart", "dynasty", "before-after",
+    "document", "annotated", "sources",
     "interior-light", "cta-red",
     # Standalone formats
     "quote-card",         # 1080×1080

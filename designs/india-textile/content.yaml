@@ -1,0 +1,153 @@
+name: how-britain-killed-indian-cotton
+format: instagram-portrait
+caption: |
+  Before the East India Company arrived, India clothed the world. By the time the British left, Indians could not afford to clothe themselves. The destruction of the world's largest textile industry was not an accident of industrialisation — it was engineered, line by line, in tariff schedules and excise duties.
+
+  This carousel draws on R.C. Dutt's _Economic History of India_ and the tariff records of the East India Company to lay out the mechanics. Between 1797 and 1813, British duties on Indian calicoes entering London rose from 18% to 85%. Inside India, British cloth paid a nominal 2.5% duty while Indian cloth was crushed by a cumulative 17.5% inland tax. British cotton exports to India climbed from £156 in 1794 to over £16 million by 1876. In 1772, Company weavers were forced under armed guard to sign contracts at 15–40% below market rates. By 1896, when Indian mills finally rose, Lancashire forced a 3.5% countervailing excise on every yard they wove. The endpoint was measurable: Indian per-capita cotton consumption fell from 13.25 yards in 1914 to 9.5 yards by 1931.
+
+  This was not free trade. It was a closed circuit, designed in Manchester and enforced in Madras.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #BritishRaj #EconomicHistory #RCDutt #IndianCotton #EastIndiaCompany #Deindustrialisation #ColonialEconomy
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: COTTON
+slides:
+- layout: cover
+  eyebrow: Series 03
+  eyebrow_meta: Cotton · 9 Parts
+  headline: |
+    How Britain
+    Killed The Loom
+    That Clothed The *World.*
+  subline: 1772–1931 · The Engineered Collapse
+  swipe_meta: Swipe ▸ · 9 Slides · 4 min read
+- layout: story
+  chapter: Chapter 01 · The Inheritance
+  headline: |
+    A Trade Older
+    Than The *Company.*
+  body: In [1677], the annual import of Indian [calicoes] into Great Britain alone was valued at [£160,000]
+    — a colossal sum for the seventeenth century. Indian cottons and silks could be sold in London at
+    a [50–60%] discount to English-made cloth and still turn a profit. The looms of [Bengal], [Coromandel],
+    and [Gujarat] were the workshop of the world.
+- layout: stat
+  chapter: Chapter 02 · The Wall At London
+  headline: |
+    Tariffs Built
+    To *Choke.*
+  stats:
+  - label: Calicoes (Chintz)
+    value: 18% → 85%
+    value_red: true
+    sublabel: Duty rise, 1797–1813
+  - label: Muslins
+    value: 18% → 44%
+    sublabel: Duty rise, 1797–1813
+  - label: Nankeens
+    value: 19% → 27%
+    sublabel: Duty rise, 1797–1813
+    value_red: false
+  body: Between [1797] and [1813], British Parliament raised the wall on Indian cloth slab by slab. By
+    the time it was finished, a bolt of Bengal [calico] paid more in duty than it cost to weave. The London
+    market. sealed.
+  body_size: 38
+  stat_size: 110
+  body_offset_y: 220
+  theme: light
+- layout: comparison
+  chapter: Chapter 03 · The Double Standard
+  left_label: British Cloth In India
+  left_headline: 'Waved Through
+
+    At *2.5%.*
+
+    '
+  left_body: 'By [1835], British cotton manufactures entering India paid a nominal import duty of [2.5%].
+    One flat charge at the port. Nothing after.
+
+    '
+  right_label: Indian Cloth In India
+  right_headline: 'Taxed At Every
+
+    *Stage.*
+
+    '
+  right_body: Indian cloth sold inside India paid a cumulative [17.5%] — [5%] on raw cotton, [7.5%] on
+    yarn, [2.5%] on the finished bolt, [2.5%] if dyed. Seven times the burden on British goods.
+- layout: stat
+  chapter: Chapter 04 · The Flood
+  headline: |
+    £156 To
+    £16 *Million.*
+  stats:
+  - label: 1794
+    value: £156
+    sublabel: British cotton exports to India
+  - label: 1813
+    value: £108,824
+    sublabel: After the tariff wall went up
+  - label: 1859
+    value: £8.08M
+    sublabel: The market is now Lancashire's
+  - label: 1876
+    value: £16.45M
+    value_red: true
+    sublabel: A hundred-thousand-fold rise
+  body: In [eighty-two years], British cotton sold to India multiplied by a factor of over [one hundred
+    thousand]. The looms of [Dhaka] and [Murshidabad] fell silent in the same span.
+- layout: did-you-know
+  eyebrow: Did You Know?
+  theme: light
+  headline: |
+    The Weaver Signed
+    At *Gunpoint.*
+  body: |
+    In [1772], East India Company agents forced Bengal weavers, under [armed guard], to sign contracts agreeing to deliver cloth at prices fixed [15% to 40%] below the open market. Refusal meant imprisonment. The Company was not buying cloth. It was confiscating labour.
+  source: R.C. Dutt, Economic History of India
+- layout: timeline
+  chapter: Chapter 05 · The Mills Strike Back
+  headline: |
+    And Then India
+    Built *Its Own.*
+  items:
+  - date: 1854
+    headline: The first mill at Bombay
+    body: Cowasji Davar's mill opens. Indian capital, Indian labour, mechanised production.
+  - date: 1877
+    headline: 1.23 million spindles
+    body: By March, an estimated [1,231,284] spindles were turning in Indian mills. Lancashire took notice.
+  - date: 1894
+    headline: The tariff is cut to 3.5%
+    body: To please [Scottish] and [Lancashire] mill-owners, import duties on British cloth are slashed.
+  - date: 1896
+    headline: The countervailing excise
+    body: A matching [3.5%] excise duty is placed on every yard Indian mills produce. Domestic advantage
+      — erased.
+- layout: stat
+  chapter: Chapter 06 · The Body Count
+  headline: |
+    Measured In
+    Yards Per *Head.*
+  stats:
+  - label: 1913–1914
+    value: 13.25 yds
+    sublabel: Indian cotton consumption per person
+  - label: 1930–1931
+    value: 9.50 yds
+    value_red: true
+    sublabel: A 28% collapse in seventeen years
+  body: The country that had clothed [Europe] and [Africa] in the seventeenth century could no longer
+    clothe itself in the twentieth. The decline was not from war or famine. It was from [policy].
+- layout: closing
+  headline: |
+    Free Trade Was
+    Never *Free.*
+  body: |
+    The looms of [Bengal] were not outcompeted. They were [legislated] out of existence — by [tariff] in London, by [excise] in Calcutta, by [bayonet] in the weaver's village.
+  handle: Follow @itiha29 · itiha.info

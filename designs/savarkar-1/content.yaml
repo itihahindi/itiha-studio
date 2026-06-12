@@ -1,0 +1,153 @@
+name: ten-things-about-savarkar
+format: instagram-portrait
+caption: |
+  He met Lenin in London in 1909 and kept the conversation secret for twenty-eight years. He wrote thousands of lines of poetry on the walls of the Cellular Jail with thorns when the British denied him pen and paper. He coined the Marathi word for "director" — _digdarshak_ — that every Hindi film credit still uses. He ended his own life at eighty-three by refusing food and medicine, conscious for twenty-two days. Vinayak Damodar Savarkar was many men, and the textbook version flattens almost all of them.
+
+  This carousel draws on Vikram Sampath's two-volume biography _Savarkar: Echoes from a Forgotten Past_ and _Savarkar: A Contested Legacy_, the most comprehensive archival reconstruction of his life to date. Ten facts: the 1909 meeting with Lenin at India House; the prison-wall poetry composed under threat of whitewash; the Patit Pavan Mandir at Ratnagiri, where Savarkar installed a scavenger-caste priest decades before independence; _The Indian War of Independence of 1857_, secretly republished by both Bhagat Singh and Subhas Chandra Bose; the 1940 meeting at Savarkar Sadan where he told Bose to leave India and raise an army abroad — the conversation that seeded the INA; the "D-class" dangerous-prisoner mark stitched into his Cellular Jail uniform; his published poetry at age twelve; the women's collective he helped form at Nashik; and the Atmarpan by which he chose to end his life in 1966.
+
+  The man the textbook reduces to a footnote was the strategist who briefed Netaji, the linguist who renamed the cinema, and the prisoner who refused to be silenced even when stripped of paper.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Savarkar #VikramSampath #CellularJail #IndianRevolutionaries #Hindutva #NetajiSubhasChandraBose #FreedomStruggle
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: SAVARKAR
+slides:
+- layout: cover
+  eyebrow: Series 06
+  eyebrow_meta: Savarkar · 11 Parts
+  headline: '10 rare Facts About *Savarkar* '
+  subline: From Vikram Sampath's two-volume archive
+  swipe_meta: Swipe ▸ · 11 Slides · 5 min read
+  headline_size: 168
+  headline_offset_y: 330
+  image: _cache/799ed2f3ad490cee.png
+  image_filter: sepia
+  image_overlay: 1
+  image_position: 49% 54%
+- layout: did-you-know
+  body: |2
+
+    During his years at [India House] in London, Savarkar held a historic meeting with [Vladimir Lenin] in [mid-March 1909]. What passed between the two revolutionaries remained sealed for [twenty-eight years] — Savarkar did not disclose the details of the conversation until [1937].
+
+    Source: Vikram Sampath, Savarkar: Echoes from a Forgotten Past
+  body_size: 48
+  theme: light
+  texture: halftone
+- layout: split-story
+  chapter: Fact 02 · The Cellular Jail
+  headline: |
+    Poetry Written
+    In *Thorns.*
+  body: When the British denied him pen and paper at [Kala Pani], Savarkar wrote [thousands of lines]
+    of poetry on the [whitewashed walls] of his cell, using [thorns] and [stones] as a stylus. He committed
+    every verse to memory before the [guards] could whitewash the walls clean. The poems survived in his
+    head, not in the prison.
+  image: _cache/a74c44587ae3412c.webp
+  image_overlay: 1
+  body_size: 45
+  body_y: 47
+  image_filter: archival
+  texture: halftone
+  theme: dark
+- layout: split-story
+  headline: |
+    The Temple Where The
+    *Dalit* Was Priest.
+  body: |
+    At [Ratnagiri], Savarkar built the [Patit Pavan Mandir]  "Saviour of the Downtrodden"  open to [all castes]. He appointed a man from the [scavenger] community to officiate as priest, [decades] before the Constitution outlawed untouchability. He was a [rationalist] who built temples to break them open.
+  image: _cache/7e19bb37f2050378.jpg
+  image_filter: sepia
+  image_overlay: 1.4
+  body_size: 50
+  image_position: 58% 50%
+  headline_size: 100
+  body_y: 9
+  texture: halftone
+- layout: split-story
+  chapter: Fact 04 · The Banned Book
+  headline: |
+    The Book For The
+    *Revolutionaries.*
+  body: _The Indian War of Independence of 1857_ was banned by the British before it was even printed.
+    For [three decades] it served as the [veritable Bible] of the underground. Both [Bhagat Singh] and
+    [Subhas Chandra Bose] secretly republished it — the only Indian historical work both men reissued
+    by their own hand.
+  image: _cache/efdecebec04e5a9c.jpg
+  image_filter: archival
+  image_overlay: 1.7
+  body_size: 50
+  body_y: 31
+  texture: halftone
+  headline_y: -22
+- layout: did-you-know
+  headline: did-you-know
+  body: |
+    In Marathi Savarkar coined the words [digdarshak] (director), [chitrapat] (movie), and [chhayachitran] (photography) — suggesting them as replacements for the [English] and [Urdu] terms then in use. Every Hindi and Marathi film credit roll still carries his vocabulary. The revolutionary was also a [linguist].
+  body_size: 50
+  headline_offset_y: -90
+  body_offset_y: 120
+  source: 'Vikram Sampath, Savarkar: A Contested Legacy'
+  theme: light
+  texture: halftone
+- layout: split-story
+  chapter: Fact 06 · The Women's Wing
+  headline: |
+    Strong Bodies,
+    Sharp *Minds.*
+  body: Savarkar argued that women must be [physically strong], [mentally alert], and [politically aware]
+    for the nation to rise. At [Nashik] he helped form the [Atmanishtha Yuvati Sangha], where women debated
+    politics and organised for the [swadeshi] movement. He pushed for girls' education from the [youngest]
+    age, and asked them to serve the [motherland] when called.
+  image: _cache/3f71dd25b53b13bb.jpg
+  image_overlay: 1.4
+  body_size: 45
+  body_y: 38
+- layout: split-story
+  chapter: Fact 07 · Savarkar Sadan, 1940
+  headline: |
+    The Meeting That
+    Seeded The *INA.*
+  body: '[Subhas Chandra Bose] arrived at Savarkar Sadan in [Bombay] for a [three-hour] conversation.
+    Savarkar''s advice was specific: leave [India], reach [Germany] and [Japan], raise an armed force
+    from Indian [prisoners of war] held abroad. Bose followed the route exactly. The [Indian National
+    Army] is the answer to that meeting.'
+  image: _cache/84a5a2377f274820.jpg
+  image_position: 45% 50%
+  body_size: 50
+  image_overlay: 1
+  body_y: 43
+  headline_size: 100
+  headline_y: 18
+  texture: halftone
+- layout: did-you-know
+  body: |
+    At the [Cellular Jail], Savarkar was initially the [only] prisoner classified as [Class D] — "Dangerous." The letter was inscribed on his prison [clothing] itself. The British never doubted what he was. They marked him.
+  source: 'Vikram Sampath, Savarkar: Echoes from a Forgotten Past'
+  body_size: 50
+  theme: light
+  headline: Dangerous Prisoner
+- layout: numbered-list
+  chapter: Facts 09 & 10
+  headline: |
+    The First Poem.
+    The Last *Fast.*
+  items:
+  - number: '9'
+    headline: A published poet at twelve
+    body: His poem [Swadeshi ki Phatkaar] appeared in the newspaper [Jagat Hitecchu] when he was [twelve
+      years old]. The editor had no idea the author was a [schoolboy] in Nashik.
+  - number: '10'
+    headline: Atmarpan at eighty-three
+    body: In [1966], at [eighty-three], Savarkar chose to end his life through [Atmarpan] — voluntary
+      self-sacrifice. He stopped all [food] and [medicine] and remained [alert] for [twenty-two days]
+      until his body gave up. He chose the hour.
+  item_size: 40
+  headline_offset_y: -70
+  body_offset_y: -220
+  headline_size: 75

@@ -1,0 +1,93 @@
+name: the-plots-to-free-savarkar
+format: instagram-portrait
+caption: |
+  The British called him the most dangerous man in the empire. The world's revolutionaries agreed — and four times, on three continents, they tried to break him out of the Cellular Jail. A German submarine was to be dispatched to Port Blair. An armed ship sailed from East Asia and was sunk by a British cruiser. A merchant-spy was sent to disable the wireless and arm the prisoners. The British, watching all of it, became convinced a bomb factory was running inside the jail itself.
+
+  This carousel draws on Vikram Sampath's two-volume biography _Savarkar: Echoes from a Forgotten Past_ and _Savarkar: A Contested Legacy_, which reconstructs the four documented rescue attempts from colonial intelligence files, Ghadr Party correspondence, and German wartime archives. In each plan, the name at the top of the extraction list was the same: Vinayak Damodar Savarkar, with his brother Babarao close behind. The plots failed. The fact that they existed at all is the measure of who Savarkar was to the world outside the prison wall — and what the British were prepared to drown a ship to prevent.
+
+  No Indian political prisoner of the twentieth century had four international rescue operations mounted on his behalf. The textbook does not mention one of them.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Savarkar #VikramSampath #CellularJail #KalaPani #GhadrParty #RashBehariBose #FreedomStruggle
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 19
+  showGrain: true
+  seriesLabel: SAVARKAR
+slides:
+- layout: cover
+  eyebrow: Series 06
+  eyebrow_meta: Savarkar · 5 Parts
+  headline: |
+    Four Plots.
+    Three Continents.
+    One *Prisoner.*
+  subline: The international rescue missions for Savarkar
+  swipe_meta: Swipe ▸ · 5 Slides · 3 min read
+  headline_size: 150
+  headline_offset_y: 230
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwcZwZX1NNkocmRLJvncdXrmDI5sC1o7b04w&s
+  image_position: 54% 50%
+  theme: light
+  image_overlay: 0.5
+  texture: vignette
+- layout: split-story
+  chapter: Plot 01 · Berlin
+  headline: |
+    The *Kaiser's*
+    Submarine.
+  body: 'In [Europe], Indian revolutionary societies persuaded the [German Kaiser] to attempt a rescue
+    by sea. The plan was specific: dispatch a [submarine] directly to [Port Blair], bomb the jail, and
+    liberate the political prisoners. At the top of the extraction list — named explicitly in the German
+    files — was [Vinayak Damodar Savarkar].'
+  body_size: 45
+  theme: light
+  texture: halftone
+- layout: split-story
+  chapter: Plot 02 · East Asia
+  headline: |
+    The Merchant Who
+    Was A *Spy.*
+  body: 'The [Ghadr Party] and [German] agents drew up a parallel plan. An agent would land in the Andamans
+    disguised as a [simple merchant]. His real task was three-fold: deliver [German-supplied weapons],
+    disable the [wireless] station, and free the prisoners. Two names sat at the top of the rescue manifest
+    — [Vinayak] and [Babarao Savarkar].'
+  theme: light
+  texture: halftone
+  body_size: 45
+- layout: story
+  chapter: Plot 03 · The High Seas
+  headline: |
+    The Ship That
+    Sailed For *Burma.*
+  body: '[Rash Behari Bose] orchestrated the most ambitious attempt of all,  an [armed ship] dispatched
+    to attack the Andamans, liberate the political prisoners, and transport them to [Burma]. The mission
+    was intercepted at sea. The ship was sunk by the British heavy cruiser [HMS Cornwall]. A daring objective.
+    A devastating end.'
+  body_size: 49
+  texture: halftone
+  theme: light
+- layout: story
+  headline: |
+    A Bomb Factory
+    Inside *Kala Pani?*
+  body: |
+    British authorities were so convinced of Savarkar's reach that they came to believe a [clandestine bomb factory] was operating inside the [Cellular Jail] settlement itself. No factory was ever found. The fear was the point, the colonial state could not believe that locking the man on an island had actually [contained] him.
+
+    Source: Vikram Sampath, Savarkar: Echoes from a Forgotten Past
+  body_size: 44
+  theme: light
+  texture: halftone
+- layout: split-story
+  headline: |
+    The Empire Put him on
+    *Kalapani*
+  body: |
+    Four plots. A [Kaiser's submarine]. A [Ghadr] agent. An armed ship sunk by [HMS Cornwall]. A phantom [bomb factory]. The Modern politician calls him a British agent. The [British Raj] called him a target and the world's revolutionaries called him a [priority].
+  handle: Follow @itiha29 · itiha.info
+  theme: light
+  texture: halftone
+  body_size: 50

@@ -1,0 +1,106 @@
+name: smoke-charts2
+format: instagram-portrait
+caption: |
+  Smoke test — bar-chart, multi-series line, dynasty, before-after.
+tweaks:
+  showStamp: true
+  showPageNum: true
+slides:
+  - layout: bar-chart
+    chapter: Chapter 02 · The Toll
+    headline: |
+      Famine Deaths
+      By *Decade.*
+    value_suffix: M
+    bars:
+      - label: 1770s
+        value: 10
+      - label: 1870s
+        value: 6
+      - label: 1890s
+        value: 5
+      - label: 1940s
+        value: 3
+    caption: Each [million] is an estimate from [colonial revenue records].
+
+  - layout: bar-chart
+    theme: light
+    chapter: Horizontal · ranked
+    headline: |
+      Troops At *Plassey*
+    horizontal: true
+    bars:
+      - label: Siraj-ud-Daulah
+        value: 50000
+      - label: East India Company
+        value: 3000
+
+  - layout: line-graph
+    chapter: Chapter 03 · The Drain
+    headline: |
+      Cotton Exports —
+      *Britain* vs *India*
+    y_suffix: M
+    series:
+      - label: British mills
+        points:
+          - label: "1820"
+            value: 4
+          - label: "1850"
+            value: 26
+          - label: "1880"
+            value: 44
+      - label: Indian handloom
+        points:
+          - label: "1820"
+            value: 42
+          - label: "1850"
+            value: 21
+          - label: "1880"
+            value: 8
+    caption: Two trends, one cause — [mill competition] and [tariff policy].
+
+  - layout: dynasty
+    chapter: Chapter 04 · The Line
+    headline: |
+      The *Mughal*
+      Succession.
+    nodes:
+      - name: Babur
+        dates: 1526–30
+      - name: Humayun
+        dates: 1530–56
+      - name: Akbar
+        dates: 1556–1605
+        highlight: true
+      - name: Jahangir
+        dates: 1605–27
+    caption: The main line of succession from [Babur] to [Jahangir].
+
+  - layout: dynasty
+    chapter: Branching · rival sons
+    headline: |
+      The War Of *Succession*
+    nodes:
+      - name: Shah Jahan
+        dates: 1628–58
+        generation: 1
+      - name: Dara Shukoh
+        dates: 1615–59
+        generation: 2
+      - name: Aurangzeb
+        dates: 1618–1707
+        generation: 2
+        highlight: true
+
+  - layout: before-after
+    chapter: Chapter 05 · The Site
+    headline: |
+      Ruin And
+      *Restoration.*
+    image_before: before.webp
+    image_after: after.webp
+    label_before: 1900
+    label_after: Today
+    filter_before: archival
+    caption: The temple complex, photographed across a [century].

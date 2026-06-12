@@ -1,0 +1,184 @@
+name: the-coronation-of-shivaji
+format: instagram-portrait
+caption: |
+  On 6 June 1674, seventy-two minutes before sunrise, a Maratha king ascended a throne of gold and jewels at Raigad fort and took the title Kshatriya-Kulawatansa Shri Raja Shivachhatrapati. The ceremony, designed by the Banaras scholar Gagabhatt and codified in a treatise written specifically for the occasion, was the first time in centuries that a Hindu sovereign had been formally enthroned on the subcontinent according to full Vedic rite. The English East India Company sent a delegation. Henry Oxenden recorded what he saw.
+
+  This carousel reconstructs the coronation from the contemporary sources: the _Rajabhishekaprayoga_ — the treatise commissioned to specify each rite — and the diary of Henry Oxenden, the English envoy who arrived from Surat with diamond rings and pearl necklaces and watched the new Chhatrapati assume his throne. The preparations spanned weeks. On 29 May, Shivaji underwent the _maunjibandhanam_ — the sacred thread ceremony — and was weighed against gold, silver, copper, iron, cloth, spices, butter, sugar, and fruits. On 30 May, because his earlier marriages had taken place before his thread ceremony, he was re-married to his queens by full Vedic rite. From 31 May to 4 June, the priests performed the Aindrishantividhi, the Grahayajna, the Nakshatrahoma, and the Nivrittiyag. The total expenditure ran between 150,000 and 14.2 million Hons — so vast that a new tax, the Sinhasan Patti, was instituted to cover it. Twelve days after the throne was claimed, Jijabai — the mother who had raised the king — died. A Tantrik priest declared the first coronation ritually flawed. On 24 September 1674, Shivaji was crowned again, by Tantrik rite this time, to set the record straight before the gods.
+
+  The coronation at Raigad was not just the founding of a state. It was the restoration of a sovereignty that the subcontinent had not formally claimed for itself in five hundred years.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Shivaji #MarathaEmpire #Raigad #Coronation #Chhatrapati #HinduHistory #Gagabhatt
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: RAIGAD
+slides:
+- layout: cover
+  eyebrow: Swarajya
+  eyebrow_meta: Raigad · 9 Parts
+  headline: |
+    The Throne A *Hindu*
+    King Reclaimed
+    After *Centuries.*
+  subline: Raigad · 6 June 1674
+  swipe_meta: Swipe ▸ · 9 Slides · 5 min read
+  headline_size: 120
+  image: _cache/7b1fe51e386213db.jpg
+  texture: noise
+  image_overlay: 0.8
+  headline_offset_y: 300
+- layout: split-story
+  chapter: Chapter 01 · The Scholar From Banaras
+  headline: |
+    The Pandit Who
+    Travelled *South.*
+  body: 'The esteemed scholar [Gagabhatt] travelled from [Banaras] to Raigad with a single argument: the
+    Maratha king must formally ascend the throne and become a [Chhatrapati], a [sovereign king] in full
+    Vedic right. Preparations began [months] in advance. A magnificent [throne] was commissioned, adorned
+    with [gold] and [jewels]. Brahmins were summoned from across India, to be rewarded with [elephants],
+    [horses], and money.'
+  headline_size: 75
+  body_y: 39
+  body_size: 42
+  image: _cache/98a622748f5b634f.jpg
+  image_filter: warm
+  image_overlay: 1
+  texture: vignette
+- layout: split-story
+  chapter: Chapter 02 · The English Arrive
+  headline: |
+    The Company Sent
+    Its *Diplomats.*
+  body: The [East India Company], eager to finalise a treaty for reparations over its [Rajapur] factory,
+    sent a delegation of three, [Henry Oxenden], [George Robinson], & [Thomas Mitchell]. They reached
+    the foot of [Raigad] on [19 May 1674]. Shivaji was at [Pratapgad], dedicating a pure gold sombrero
+    weighing [1.25 maunds] at the shrine of [Goddess Bhavani]. The Company would wait.
+  headline_size: 75
+  image: _cache/5951c64ae2c2eb38.jpg
+  body_size: 40
+  texture: vignette
+  body_y: 47
+- layout: split-story
+  eyebrow: Did You Know?
+  theme: dark
+  headline: |
+    The Diamond Rings.
+    The Ruby *Bracelets.*
+  body: |
+    On [26 May 1674], the English delegates were granted their audience. They presented Shivaji, his son [Sambhaji], and his key ministers with gifts of [diamond rings], [pearl necklaces], and [ruby bracelets]. The Company had come to bargain over [reparations]. It would also become an [eyewitness] to the most consequential Hindu coronation in [five hundred years].
+  source: Henry Oxenden's diary, 1674 — Bombay Factory Records
+  image: magnific__colorize-this-image-and-improve-quality__27685.png
+  image_bw: false
+  texture: halftone
+  image_overlay: 1
+  headline_size: 75
+  body_size: 40
+  body_y: 43
+- layout: timeline
+  chapter: Chapter 03 · The Preparations
+  headline: |
+    Eight Days Of
+    Vedic *Rite.*
+  items:
+  - date: 29 May
+    headline: The thread and the scales
+    body: Shivaji underwent the [maunjibandhanam] — the sacred thread ceremony, followed by the [Tula],
+      where he was weighed against [gold], [silver], [copper], [iron], cloth, spices, butter, sugar, and
+      fruits.
+  - date: 30 May
+    headline: Re-married by Vedic rite
+    body: Because his earlier marriages had taken place before his thread ceremony, Shivaji was [re-married]
+      to his queens by full [Vedic] rite , the [Mantra-Vivah]  alongside the Ganesh Pujan and Punyahavachan.
+  - date: 31 May – 4 June
+    headline: The great sacrifices
+    body: The Brahmins performed the [Aindrishantividhi], the [Grahayajna], the [Nakshatrahoma], the [Nakshatrayajna],
+      and the [Nivrittiyag]. No rite was conducted on [2 June], a Tuesday, and a lunar phase considered
+      inauspicious.
+  item_headline_size: 30
+  item_body_size: 30
+  headline_size: 70
+  headline_offset_y: -80
+  body_offset_y: -240
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 04 · The Moment
+  headline: |
+    Seventy-Two Minutes
+    Before *Sunrise.*
+  body: On [6 June 1674], at the most auspicious moment the [Rajabhishekaprayoga] could calculate , [three
+    Ghatikas], or [seventy-two minutes] before sunrise, Shivaji ascended the throne. He took the title
+    [Kshatriya-Kulawatansa Shri Raja Shivachhatrapati]. He embarked on a [chariot ride], the [Ratharohan],
+    and rode an [elephant] to a local temple. A [new calendar era] began from that hour.
+  headline_y: 21
+  body_y: 9
+  body_size: 45
+  headline_size: 75
+  image: https://i.pinimg.com/736x/90/06/da/9006da7d6655f8d2c89711f695587563.jpg
+  image_overlay: 1
+  texture: vignette
+- layout: quote
+  chapter: Chapter 05 · The English Witness
+  headline: |
+    What Oxenden
+    *Saw.*
+  quote: |
+    Seated on a magnificent throne,
+    surrounded by nobles in exceedingly rich attire —
+    two great fish heads of gold,
+    horses' tails, and an equally poised
+    pair of gold scales representing justice.
+  attribution: Henry Oxenden, English East India Company envoy — diary entry, 6 June 1674
+- layout: split-story
+  chapter: Chapter 06 · The Cost
+  headline: "*Jijabai's* Last  \n*Wish.*\n"
+  stats:
+  - label: Total expenditure (low estimate)
+    value: 150,000
+    sublabel: Hons — the gold coin of the Deccan
+  - label: Total expenditure (high estimate)
+    value: 14.2M
+    value_red: true
+    sublabel: Hons — by upper-bound contemporary count
+  - label: The new levy that followed
+    value: Sinhasan Patti
+    sublabel: A special "coronation tax" to recover the spend
+  body: |
+    The coronation had been delayed for years — the [Mughals] in the north, the [Adilshahi] in the south, the campaigns that left [Shivaji] no hour to spare for ceremony. [Jijabai], nearly [eighty], would not wait any longer. She made the journey to [Raigad] herself. She had spent a [lifetime] preparing him for that throne. She intended to [witness] him claim it.
+  headline_size: 75
+  body_size: 45
+  body_y: 44
+  image: https://i.pinimg.com/originals/91/95/e5/9195e5ba3f37f4821fc142c058b54a9e.jpg
+  image_position: 42% 100%
+  image_filter: sepia
+  image_overlay: 1
+  headline_y: 36
+- layout: split-story
+  chapter: Chapter 07 · The Second Coronation
+  headline: |
+    Twelve Days Later,
+    *Jijabai* Died.
+  body: Twelve days after the throne was claimed, [Jijabai], the mother who had raised the king, passed
+    away at [Pachad]. The deaths of Queen [Kashibai] and the commander [Prataprao Gujar], along with [lightning]
+    striking Pratapgad, were taken as omens. The Tantrik priest [Nischalpuri] declared the first coronation
+    [ritually flawed]. On [24 September 1674], Shivaji was crowned again, this time by [Tantrik] rite.
+    The throne would be claimed [twice], to settle the matter before the gods.
+  headline_size: 75
+  body_size: 42
+  texture: halftone
+- layout: closing
+  headline: |
+    A Sovereignty
+    *Reclaimed.*
+  body: |
+    Before that morning at [Raigad], the subcontinent had not formally enthroned a [Hindu sovereign] by full Vedic rite for a while. After it, the [Swarajya] was a kingdom, not a [rebellion], not a [chieftaincy], but a [Chhatrapati's] domain, with its own [calendar], its own [coinage], and its own [seat].
+  handle: Follow @itiha29 · itiha.info
+  body_size: 45
+  headline_size: 75
+  image: https://images.saymedia-content.com/.image/t_share/MTc2MjQ2MzczNjc4MTMwNjAx/rare-paintings-of-shivaji.jpg
+  body_offset_y: 130
+  image_overlay: 1

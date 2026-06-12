@@ -1,0 +1,209 @@
+name: hinduisation-of-southeast-asia
+format: instagram-portrait
+caption: |
+  Angkor Wat is the largest religious monument on Earth. It was built in the twelfth century by a Khmer king to honour Vishnu. Borobudur, on the island of Java, is the largest Buddhist stupa ever raised — its terraces map the cosmology of the Mahayana with a precision no Indian site has ever matched. The Ramayana is performed nightly in Bali, in shadow-play, in the original metres. Across a region the ancient texts called Suvarnabhumi — the Land of Gold — Indian civilisation took root, flourished, and built monuments larger than anything it built at home. The most extraordinary fact about this expansion is that it happened without an army.
+
+  This carousel draws on the foundational work of R.C. Majumdar's _Ancient Indian Colonisation in South-East Asia_, which documents the process he called "Hinduisation." Beginning around the start of the Christian Era, Indian merchants sailed from Tamralipti in Bengal, Gopalpur in Orissa, Masulipatam, and Broach, braving the Bay of Bengal and the Straits of Malacca to reach Suvarnabhumi. They were followed by Brahmin and Buddhist missionaries, by Kshatriya adventurers, by craftsmen and scholars. They married local women. They taught Sanskrit. They translated the Ramayana and the Mahabharata into Old Javanese, Khmer, and Cham. Kings adopted the Arthashastra and the Manu-Samhita as the basis of statecraft. The chaturvarna was introduced and modified for local conditions. A Brahmin named Kaundinya arrived in Cambodia on a trading vessel, married the queen Lieu-ye, and founded Fu-nan — the first Hindu kingdom in Southeast Asia. By the time European explorers arrived, the region's architecture, language, religion, and political theory were Indian. No conquest. No expulsion. No empire in the Roman sense. Just merchants, monks, and a thousand years of patient cultural transmission.
+
+  The Hinduisation of Southeast Asia is the great counter-example to every theory of civilisational expansion built on conquest. It is what cultural influence looks like when it earns its place.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #RCMajumdar #Suvarnabhumi #AngkorWat #Borobudur #GreaterIndia #SoutheastAsia #HinduCivilisation
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: SUVARNABHUMI
+slides:
+- layout: cover
+  eyebrow: r.c majumdar
+  eyebrow_meta: Suvarnabhumi · 10 Parts
+  headline: |
+    How *HInduism* Conquered
+    Southeast Asia
+    *Without* An Army.
+  subline: Two thousand years of Suvarnabhumi
+  swipe_meta: Swipe ▸ · 10 Slides · 5 min read
+  image: https://nerdnomads.com/wp-content/uploads/DSC04131.jpg
+  image_position: 58% 50%
+  texture: scanlines
+  image_overlay: 0.6
+  headline_size: 150
+  headline_offset_y: 60
+  image_bw: false
+- layout: split-story
+  chapter: Chapter 01 · The Land Of Gold
+  headline: |
+    They Called It
+    *Suvarnabhumi.*
+  body: 'The ancient Hindus knew the lands across the Bay of Bengal by two names:  [Suvarnabhumi], the
+    [Land of Gold], and [Suvarnadvipa], the [Island of Gold]. The first Indian voyages were [commercial].
+    What followed was [civilisational].'
+  body_size: 45
+  body_y: 73
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Hinduism_Expansion_in_Asia.svg/1920px-Hinduism_Expansion_in_Asia.svg.png
+  image_filter: archival
+  image_overlay: 1
+  headline_y: 80
+- layout: numbered-list
+  chapter: Chapter 02 · Why They Sailed
+  headline: |
+    The Forces That
+    Pushed *East.*
+  items:
+  - number: 1
+    headline: The merchant's prospect
+    body: The foundational catalyst was [economic]. In every age, the prospect of [gold] and [spices]
+      tempted Indian traders to brave the [Bay of Bengal] and the [Straits of Malacca].
+  - number: 2
+    headline: The missionary's zeal
+    body: Commerce was joined by the [missionary zeal] of the [Dharmic Religions], who carried the philosophical
+      and religious systems of India across the seas.
+  - number: 3
+    headline: The adventurer's spirit
+    body: 'Demographic pressure, foreign invasions in the subcontinent, & the [spirit of adventure] of
+      the [Kshatriya] princes created a steady flow of emigrants to the [Indo-Chinese] peninsula '
+  headline_offset_y: -130
+  body_offset_y: -260
+  item_size: 35
+  headline_size: 75
+  number_size: 50
+  theme: dark
+  texture: halftone
+- layout: map
+  chapter: Chapter 03 · The Routes
+  headline: |
+    The Ports That
+    Sent A *Civilisation.*
+  markers:
+  - x: 45
+    y: 32
+    label: Tamralipti
+    sublabel: Bengal
+  - x: 35
+    y: 45
+    label: Gopalpur
+    sublabel: Orissa
+  - x: 30
+    y: 54
+    label: Masulipatam
+    sublabel: Andhra coast
+  - x: 17
+    y: 42
+    label: Broach
+    sublabel: Gujarat
+  - x: 64
+    y: 52
+    label: Fu-nan
+    sublabel: Cambodia
+  - x: 66
+    y: 94
+    label: Java
+    sublabel: Borobudur
+  caption: From four Indian ports, regular voyages crossed the [Bay of Bengal] and the [Straits of Malacca]
+    to Suvarnabhumi.
+  image: screenshot-2026-06-11-at-9-07-00-am.png
+  image_position: 52% 0%
+  image_overlay: 0.4
+  texture: paper
+  image_filter: archival
+  marker_size: 25
+  caption_size: 35
+- layout: split-story
+  chapter: Chapter 04 · The Mechanism
+  headline: |
+    No Conquest.
+    Just *Marriage.*
+  body: The primary mechanism of Hinduisation was [peaceful settlement] and [intermarriage]. Indian emigrants
+    permanently settled in foreign lands and married [local women]. The fusion was so complete that the
+    historical record frequently cannot distinguish between the two populations. The locals adopted [Hindu
+    names], [Sanskrit] and [Pali], and Hindu religious practices. The Indian colonists imbibed [local
+    habits] and merged into the [local communities].
+  body_size: 45
+  headline_size: 75
+  body_y: 90
+- layout: did-you-know
+  eyebrow: Did You Know?
+  theme: light
+  headline: |
+    A Brahmin Founded
+    *Cambodia.*
+  body: |
+    A Brahmin named [Kaundinya] arrived in what is now Cambodia on a [trading vessel] near the start of the [Christian era]. He defeated the local sovereign [Queen Lieu-ye] in a brief encounter, then [married] her. Their union founded [Fu-nan] — the first [Hindu kingdom] in Southeast Asia. A second Kaundinya followed and completely [Brahmanised] the country, introducing Indian [laws], [manners], and [customs].
+  source: R.C. Majumdar, Ancient Indian Colonisation in South-East Asia
+  texture: halftone
+  body_size: 45
+  headline_size: 80
+  headline_offset_y: -80
+  body_offset_y: 110
+- layout: numbered-list
+  chapter: Chapter 05 · The Cultural Conquest
+  headline: |
+    What Indian
+    Civilisation *Built.*
+  items:
+  - number: 1
+    headline: Sanskrit became the language of record
+    body: 'Almost every early inscription across Suvarnabhumi was written in [almost flawless] Sanskrit.
+      The [Ramayana] and [Mahabharata] were translated into [Old Javanese], [Khmer], and [Cham] & adapted
+      for the shadow-play tradition '
+  - number: 2
+    headline: The chaturvarna travelled too
+    body: Indian colonists introduced the [chaturvarna], though the system was [modified] for local conditions.
+      Intermarriage between varnas was [frequent].
+  - number: 3
+    headline: Kings ruled by the Arthashastra
+    body: 'Political administration was modelled on Indian treatises. The [divine right] of kings was
+      upheld; '
+  headline_offset_y: -125
+  headline_size: 75
+  item_size: 35
+  body_offset_y: -290
+- layout: stat
+  chapter: Chapter 06 · The Monuments
+  headline: |
+    The Largest Religious
+    Building On *Earth.*
+  stats:
+  - label: Angkor Wat, Cambodia
+    value: 162 hacters
+    sublabel: Largest Temple in the world Built for Vishnu
+  - label: Borobudur, Java
+    value: 504 statues
+    sublabel: Largest Buddhist stupa ever raised  built
+  - label: Prambanan, Java
+    value: 240 temples
+    value_red: true
+    sublabel: Shaivite complex — built within sight of Borobudur
+  body: The largest [Hindu] temple and the largest [Buddhist] stupa in the world are both in [Southeast
+    Asia], not India. The colonists built [larger] than the homeland. The art was the [hand-maid of religion].
+    The genius was [shared].
+  headline_size: 78
+  stat_size: 100
+  body_size: 40
+  body_offset_y: 140
+  headline_offset_y: 40
+- layout: did-you-know
+  eyebrow: A Civilisational Signature
+  theme: light
+  headline: |
+    Shiva And The Buddha
+    Were The *Same God.*
+  body: |
+    Across Suvarnabhumi, [Brahmanical] religion and [Buddhism] flourished side by side. A characteristic of Hinduisation was [profound religious toleration]. In [Javanese] theology, [Shiva] and the [Buddha] were closely associated & at moments, openly [identified] as the same divinity. The religious wars Europe took for normal were unimaginable in [Suvarnabhumi].
+  source: R.C. Majumdar, Ancient Indian Colonisation in South-East Asia
+  headline_size: 75
+  body_offset_y: 110
+  body_size: 45
+- layout: closing
+  headline: |
+    Civilisation Without
+    An *Army.*
+  body: |
+    The [Greeks] sailed to conquer. The [Romans] sailed to garrison. India sailed to [trade], to [teach], and to [marry]. Across a thousand years and three thousand miles, the [Ramayana] became local, [Sanskrit] became sacred, and [Angkor] became the largest temple on Earth  without one Indian battalion ever crossing the [Bay of Bengal].
+  handle: Follow @itiha29 · itiha.info
+  headline_size: 75
+  body_size: 45

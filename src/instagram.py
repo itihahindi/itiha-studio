@@ -23,6 +23,8 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+import content as content_mod
+
 GRAPH = "https://graph.facebook.com/v23.0"
 
 
@@ -118,7 +120,7 @@ def publish_design(design_dir: Path) -> str:
     hashtags = (config.get("hashtags") or "").strip()
     if hashtags:
         caption = (caption.rstrip() + "\n\n" + hashtags) if caption else hashtags
-    output_dir = design_dir / "output"
+    output_dir = content_mod.output_dir_for(design_dir)
     images = sorted(output_dir.glob("*.png"))
     if not images:
         raise RuntimeError(f"No rendered PNGs in {output_dir} — run render first.")

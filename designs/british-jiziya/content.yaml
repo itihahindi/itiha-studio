@@ -1,0 +1,151 @@
+name: the-british-jiziya
+format: instagram-portrait
+caption: |
+  Every year for decades after 1858, the British Government in India extracted £200,000 from a starving, overwhelmingly Hindu and Muslim peasantry to pay the salaries of Anglican clergy and maintain the Bishop of Calcutta's palace. The arrangement had a name in British accounts: the Ecclesiastical Charge. It had a more accurate name in the colonial archive's own critics: the British Jiziya.
+
+  This carousel draws on Reginald Reynolds's _The White Sahibs in India_ and contemporary fiscal critiques of the Raj. The arithmetic is brutal in its clarity. Over the final 35 years of the reported period, £7 million was drained from the Indian treasury to fund the Church of India — an Anglican offshoot serving the ruling class alone. The tax was levied across a population of more than 250 million non-Christian Indians whose average income was £2 per head, while the entire beneficiary class numbered 116,916 Europeans. India's own Christian community, mostly Syrian Christians of Travancore, were excluded — the British state-church declared the Syrian faith "heretical," so even Indian Christians paid for a religion they were not allowed to join. This extraction continued through famines that killed millions; Lord Salisbury wrote in his 1875 minute on fiscal policy that "India must be bled," and the "Lancet" of the tax-gatherer was directed even at the "enfeebled" parts of the population. The charge was one extracted line in a much larger Home Charge drain of £16 million per year.
+
+  The British abolished the Mughal Jiziya in 1858 with great moral fanfare. They replaced it with their own.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #WhiteSahibs #ReginaldReynolds #BritishRaj #ColonialEconomy #EcclesiasticalCharge #ChurchOfEngland #ColonialHistory
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: JIZIYA
+slides:
+- layout: cover
+  eyebrow: White Sahibs
+  eyebrow_meta: The British Jiziya · 8 Parts
+  headline: |
+    The British Raj's
+    Own *Jizya.*
+  subline: 'How a starving India funded Church of India '
+  swipe_meta: Swipe ▸ · 8 Slides · 4 min read
+  headline_offset_y: 360
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Lord_Clive_meeting_with_Mir_Jafar_after_the_Battle_of_Plassey.jpg/500px-Lord_Clive_meeting_with_Mir_Jafar_after_the_Battle_of_Plassey.jpg
+  image_bw: false
+  theme: dark
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 01 · The Hidden Line
+  headline: |
+    A Tax  For
+    *Church of India*
+  body: In the official ledgers of the [British Indian] administration, after the [1858] transition from
+    Company to Crown, one line ran every year, the [Ecclesiastical Charge]. It funded the [Church of India],
+    the [Anglican] offshoot that served as the [state church] of the Raj. Every [rupee] of it was extracted
+    from a [non-Christian] peasantry. Every [pound] of it left India.
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRflc8_jaNMc4buKYMw-J7KhJYy4bgzspE0Yw&s
+  image_overlay: 1
+  body_size: 45
+  body_y: 33
+  headline_y: 11
+- layout: stat
+  chapter: Chapter 02 · The Arithmetic
+  headline: |
+    Seven Million Pounds.
+    Thirty-Five *Years.*
+  stats:
+  - label: Annual Ecclesiastical Charge
+    value: £200k
+    sublabel: Drawn from the Indian treasury,
+  - label: Total over 35 years
+    value: £7M
+    value_red: true
+    sublabel: Extracted during famines that killed millions
+  - label: Average Indian peasant income
+    value: £2
+    sublabel: Per head, per year
+    value_red: true
+  body: The arithmetic is plain. [Two hundred thousand pounds] a year, drawn from a peasantry earning
+    [two pounds a year]. [Seven million pounds] across the period, during which the British administration
+    [violently] kept up revenue collections through the [hideous economical catastrophe] of recurring
+    famine.
+  body_size: 38
+  body_offset_y: 180
+  theme: dark
+  texture: halftone
+- layout: comparison
+  chapter: Chapter 03 · Who Paid, Who Benefited
+  left_label: The Taxpayers
+  left_headline: 'Two Hundred
+
+    *Fifty Million.*
+
+    '
+  left_body: 'The tax was levied on an [overwhelming majority] of more than [250 million] non-Christian
+    Indians [Hindus] and [Muslims]. Their average income was [two pounds] per head. They funded a religious
+    establishment whose [god], [language], and [clergy] were all foreign to them.
+
+    '
+  right_label: The Beneficiaries
+  right_headline: 'One Hundred
+
+    *Sixteen* Thousand.
+
+    '
+  right_body: The funds maintained an [Anglican] clergy serving exactly [116,916] Europeans  the ruling
+    class of the Raj. The salaries, the palaces, the [Bishop of Calcutta's] residence, all paid for by
+    Indians who were never permitted to enter the [Church] their tax built.
+  body_size: 40
+  body_offset_y: -390
+  sub_size: 75
+  texture: halftone
+- layout: did-you-know
+  eyebrow: Did You Know?
+  theme: dark
+  headline: |
+    Even Indian Christians
+    Were *Excluded.*
+  body: |
+    Roughly [three million] Indian Christians lived under the Raj, most of them [Syrian Christians] of [Travancore], whose tradition predated the British arrival by over [a thousand years]. They received [nothing] from the Ecclesiastical Charge. British administrators officially declared the Syrian faith [heretical]. The state-church was not a service for [Christians in India]. It was a restricted benefit for the [White Sahibs].
+  source: Reginald Reynolds, The White Sahibs in India
+  image: https://anglicanhistory.org/india/barton_syrian1872a.jpg
+  image_filter: sepia
+  image_overlay: 1.4
+  body_size: 40
+  body_offset_y: 100
+  headline_offset_y: -60
+  texture: halftone
+- layout: quote
+  chapter: Chapter 04 · Salisbury, 1875
+  headline: |
+    The *Minister's*
+    Own Words.
+  quote: |2
+     India must be bled, the lancet should be directed to the parts where the blood is congested, or at least sufficient, not to those which are already enfeebled from want of it.
+  attribution: Lord Salisbury, Secretary of State for India, minute on fiscal policy, 1875
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Robert-Gascoyne-Cecil-3rd-Marquess-of-Salisbury_%28cropped%29.jpg/1280px-Robert-Gascoyne-Cecil-3rd-Marquess-of-Salisbury_%28cropped%29.jpg
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 05 · The Palace And The Famine
+  headline: |
+    The *Bishop's* Palace
+    The *Skeleton* Field.
+  body: Between [1875] and [1900], an estimated [26 million] Indians died in colonial-era famines. Across
+    the same years, the Ecclesiastical Charge funded the maintenance of the [Bishop of Calcutta's palace],
+    the salaries of the Anglican [clergy], and the religious comfort of the [ruling class]. The famine
+    relief budget was [withheld] on grounds of [fiscal prudence]. The Christian clergy's budget was [protected].
+  image: https://collectionapi.metmuseum.org/api/collection/v1/iiif/287821/608108/main-image
+  image_filter: archival
+  image_overlay: 1
+  image_position: 20% 44%
+  body_size: 40
+  body_y: 53
+  headline_y: 75
+- layout: cta-red
+  headline: "Follow itiha \nFor more history\nNuggets\n"
+  body: |
+    When the [British] abolished the [Mughal Jiziya] in 1858, they made it a [moral] event — proof that the [Crown] had brought justice where the [Sultan] had not. They then levied [£200,000 a year] from a [non-Christian] peasantry to fund their [state church]. The [name] was new. The [tribute] was older than the [empire] that collected it.
+  handle: Follow @itiha29 · itiha.info
+  theme: dark
+  texture: halftone
+  cta: youtube.com/@itiha
+  image_bw: false
+  image_filter: sepia
+  eyebrow: 'www.itiha.info '

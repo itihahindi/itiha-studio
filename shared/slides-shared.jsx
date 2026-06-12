@@ -190,15 +190,38 @@ function MaybePageNum(props) {
   return <PageNum {...props} />;
 }
 
+// CSS filter presets for `image_filter`. `bw` preserves the legacy effect of
+// `image_bw: true`; the duotone modes desaturate the image and a colored
+// `multiply` overlay tints what remains.
+const _IMAGE_FILTERS = {
+  '':                  null,
+  bw:                  { css: 'grayscale(1) contrast(1.08)' },
+  sepia:               { css: 'sepia(1) saturate(1.15) contrast(1.05)' },
+  archival:            { css: 'sepia(0.72) saturate(0.85) contrast(0.95) brightness(0.95)' },
+  warm:                { css: 'sepia(0.3) saturate(1.2) hue-rotate(-8deg) contrast(1.05)' },
+  cool:                { css: 'saturate(0.7) hue-rotate(160deg) contrast(1.1) brightness(0.95)' },
+  'duotone-red':       { css: 'grayscale(1) contrast(1.25) brightness(0.85)', overlay: 'rgba(192,57,43,0.55)', blend: 'multiply' },
+  'duotone-parchment': { css: 'grayscale(1) contrast(1.1) brightness(1.05)',  overlay: 'rgba(232,220,200,0.5)', blend: 'multiply' },
+  'duotone-ink':       { css: 'grayscale(1) contrast(1.3) brightness(0.65)',  overlay: 'rgba(13,13,13,0.45)',   blend: 'multiply' },
+};
+
+// Resolve which filter to apply given the slide's `image_filter` (new) and
+// `image_bw` (legacy boolean). Filter wins if set; otherwise bw maps to "bw".
+function _resolveImageFilter(filterKey, bw) {
+  const key = filterKey || (bw ? 'bw' : '');
+  return _IMAGE_FILTERS[key] || null;
+}
+
 // URL-based image layer (YAML-driven mode). Uses an <img> sized to "cover"
 // so headless renderers wait on real network/decode events.
-function ImageLayer({ url, bw, overlay, position = 'center', vignette = true, light = false }) {
+function ImageLayer({ url, bw, filter, overlay, position = 'center', vignette = true, light = false }) {
   const t = useItiha();
   const o = overlay != null ? overlay : ((t && t.overlayDarkness != null) ? t.overlayDarkness / 100 : 0.62);
   if (!url) {
     return <div style={{ position: 'absolute', inset: 0, background: light ? '#FAF5EE' : '#1a1a1a' }} />;
   }
-  const filter = bw ? 'grayscale(1) contrast(1.08)' : undefined;
+  const fx = _resolveImageFilter(filter, bw);
+  const cssFilter = fx ? fx.css : undefined;
   // Bare filenames or "_cache/<name>" → served under /images/. URLs pass through.
   const isUrl = url.startsWith('http://') || url.startsWith('https://');
   const src = isUrl ? url : `images/${url}`;
@@ -210,8 +233,14 @@ function ImageLayer({ url, bw, overlay, position = 'center', vignette = true, li
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
       <img src={src} style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%',
-        objectFit: 'cover', objectPosition: position, filter,
+        objectFit: 'cover', objectPosition: position, filter: cssFilter,
       }} />
+      {fx && fx.overlay && (
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: fx.overlay, mixBlendMode: fx.blend || 'multiply',
+        }} />
+      )}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
         background: `linear-gradient(180deg, rgba(${veil},${o * 0.7}) 0%, rgba(${veil},${o * 0.45}) 38%, rgba(${veil},${o}) 70%, rgba(${veil},${Math.min(o + 0.15, 0.95)}) 100%)`,

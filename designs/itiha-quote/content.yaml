@@ -1,21 +1,23 @@
-name: "Itiha — Quote Card"
+name: Itiha — Quote Card
 format: instagram-square
 caption: |
   From the archives — the Mughal court treasury at its zenith.
 
   #IndianHistory #Mughals #Itiha
-
 slides:
-  - layout: quote-card
-    variant: dark
-    eyebrow: "From the Archives"
-    quote: |
-      "The treasury at Madurai held more gold than the Mughal capital."
-    attribution: "— Ain-i-Akbari, Bk. III, §47"
-
-  - layout: quote-card
-    variant: light
-    eyebrow: "A Note on Method"
-    quote: |
-      "Conclusions belong to historians. Curiosities belong to the rest of us."
-    attribution: "— Itiha Editorial"
+- layout: quote-card
+  variant: dark
+  eyebrow: From the Archives
+  quote: '"While the Hindu elaborates his argument, the Moslem sharpens his sword." '
+  attribution: Winston Churchill
+  image_overlay: 1
+  image_filter: sepia
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Sir_Winston_Churchill_-_19086236948_%28restored%29.jpg/1280px-Sir_Winston_Churchill_-_19086236948_%28restored%29.jpg
+  image_bw: false
+  texture: halftone
+- layout: quote-card
+  variant: light
+  eyebrow: A Note on Method
+  quote: |
+    "Conclusions belong to historians. Curiosities belong to the rest of us."
+  attribution: — Itiha Editorial

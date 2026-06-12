@@ -204,7 +204,6 @@ def _create_project(name: str, fmt: str) -> str:
         i += 1
     root = DESIGNS / slug
     (root / "images").mkdir(parents=True)
-    (root / "output").mkdir()
     (root / "content.yaml").write_text(make_starter_yaml(name, fmt or "instagram-portrait"))
     return slug
 
@@ -426,7 +425,8 @@ def _build_server() -> ThreadingHTTPServer:
                     if proc.returncode != 0:
                         msg = proc.stderr.strip() or proc.stdout.strip() or "render failed"
                         self._send_bytes(msg.encode(), "text/plain", code=500); return
-                    files = sorted((design_dir / "output").glob("*-slide.png"))
+                    output_dir = content_mod.output_dir_for(design_dir)
+                    files = sorted(output_dir.glob("*-slide.png"))
 
                     # If this design is linked to a Notion row, bump status + attach thumbnail.
                     notion_id = _read_notion_id(slug)
@@ -443,7 +443,7 @@ def _build_server() -> ThreadingHTTPServer:
 
                     self._send_bytes(json.dumps({
                         "ok": True, "count": len(files),
-                        "output_dir": str(design_dir / "output"),
+                        "output_dir": str(output_dir),
                         "notion_synced": notion_synced,
                         "notion_error": notion_error,
                     }).encode(), "application/json")
@@ -455,8 +455,7 @@ def _build_server() -> ThreadingHTTPServer:
 
             if endpoint == "open-folder":
                 try:
-                    out = design_dir / "output"
-                    out.mkdir(exist_ok=True)
+                    out = content_mod.output_dir_for(design_dir)
                     if sys.platform == "darwin":
                         subprocess.Popen(["open", str(out)])
                     elif sys.platform == "win32":

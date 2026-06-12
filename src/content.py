@@ -38,6 +38,16 @@ def output_root() -> Path:
     return Path(raw).expanduser().resolve()
 
 
+def designs_root() -> Path:
+    """Where per-project folders (content.yaml + images/) live.
+    Defaults to <repo>/designs. Override via ITIHA_DESIGNS_ROOT — needed in
+    cloud deploys where /designs must live on a persistent volume."""
+    raw = os.environ.get("ITIHA_DESIGNS_ROOT")
+    if raw:
+        return Path(raw).expanduser().resolve()
+    return Path(__file__).resolve().parents[1] / "designs"
+
+
 def output_dir_for(design_dir: Path) -> Path:
     """Return (and create) the per-design render directory."""
     out = output_root() / design_dir.name

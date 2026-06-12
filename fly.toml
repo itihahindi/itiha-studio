@@ -1,0 +1,33 @@
+# Fly.io config for Itiha Studio.
+#
+# First-time setup:
+#   1. fly launch --no-deploy --copy-config        # claims app name, edits this file
+#   2. fly volumes create itiha_data --region bom --size 3
+#   3. fly secrets set STUDIO_USER=… STUDIO_PASS=…
+#   4. fly deploy
+#
+# Region "bom" = Mumbai. Pick "sin" / "fra" / "iad" if latency is worse for you.
+# Volume size 3 GB = ~100 finished carousels worth of PNGs; grow with `fly volumes extend`.
+
+app = "itiha-studio"
+primary_region = "bom"
+
+[build]
+
+[env]
+  # Non-secret defaults. STUDIO_USER / STUDIO_PASS come from `fly secrets`.
+
+[[mounts]]
+  source = "itiha_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "1gb"

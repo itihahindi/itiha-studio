@@ -52,7 +52,7 @@ import notion_sync
 
 ROOT = Path(__file__).resolve().parents[1]
 SHARED = ROOT / "shared"
-DESIGNS = ROOT / "designs"
+DESIGNS = content_mod.designs_root()
 
 MIME = {
     ".html": "text/html",
@@ -210,10 +210,47 @@ def _create_project(name: str, fmt: str) -> str:
 
 # ── Request handler ────────────────────────────────────────────
 
+def _basic_auth_creds() -> tuple[str, str] | None:
+    """Return (user, pass) if STUDIO_USER/STUDIO_PASS are set; else None.
+    Unset → no auth (local dev). Set → every request must carry matching
+    HTTP Basic credentials."""
+    u = os.environ.get("STUDIO_USER")
+    p = os.environ.get("STUDIO_PASS")
+    if u and p:
+        return u, p
+    return None
+
+
 def _build_server() -> ThreadingHTTPServer:
+    creds = _basic_auth_creds()
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *_): pass
+
+        def _check_auth(self) -> bool:
+            """Return True if request passes basic-auth (or auth disabled)."""
+            if creds is None:
+                return True
+            import base64, hmac
+            header = self.headers.get("Authorization", "")
+            if not header.startswith("Basic "):
+                self._send_auth_challenge(); return False
+            try:
+                got = base64.b64decode(header[6:]).decode("utf-8", "replace")
+                got_u, _, got_p = got.partition(":")
+            except Exception:
+                self._send_auth_challenge(); return False
+            ok = (hmac.compare_digest(got_u, creds[0])
+                  and hmac.compare_digest(got_p, creds[1]))
+            if not ok:
+                self._send_auth_challenge(); return False
+            return True
+
+        def _send_auth_challenge(self):
+            self.send_response(401)
+            self.send_header("WWW-Authenticate", 'Basic realm="Itiha Studio"')
+            self.send_header("Content-Length", "0")
+            self.end_headers()
 
         def _send_bytes(self, data: bytes, ct: str, code: int = 200):
             self.send_response(code)
@@ -242,6 +279,7 @@ def _build_server() -> ThreadingHTTPServer:
 
         # ── GET routing ────────────────────────────────────────
         def do_GET(self):
+            if not self._check_auth(): return
             path = urllib.parse.urlparse(self.path).path
 
             if path == "/" or path == "/index.html":
@@ -311,6 +349,7 @@ def _build_server() -> ThreadingHTTPServer:
 
         # ── POST routing ───────────────────────────────────────
         def do_POST(self):
+            if not self._check_auth(): return
             path = urllib.parse.urlparse(self.path).path
 
             if path == "/api/projects/new":
@@ -541,21 +580,28 @@ def _build_server() -> ThreadingHTTPServer:
 
             self.send_error(404)
 
-    port = _ephemeral_port()
-    return ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    host = os.environ.get("STUDIO_HOST", "127.0.0.1")
+    port_env = os.environ.get("STUDIO_PORT")
+    port = int(port_env) if port_env else _ephemeral_port()
+    return ThreadingHTTPServer((host, port), Handler)
 
 
 def main(argv: list[str]) -> int:
-    DESIGNS.mkdir(exist_ok=True)
+    DESIGNS.mkdir(parents=True, exist_ok=True)
     server = _build_server()
-    port = server.server_address[1]
-    url = f"http://127.0.0.1:{port}/"
-    print(f"\n  Itiha Studio: {url}")
+    host, port = server.server_address[0], server.server_address[1]
+    # Show a clickable loopback URL even when bound to 0.0.0.0; the actual
+    # public hostname is fronted by the platform (Fly / reverse proxy).
+    display_host = "127.0.0.1" if host in ("0.0.0.0", "::") else host
+    url = f"http://{display_host}:{port}/"
+    print(f"\n  Itiha Studio: {url}  (bound on {host}:{port})")
     print("  Ctrl-C to stop\n")
-    try:
-        webbrowser.open(url)
-    except Exception:
-        pass
+    # Only auto-open a browser when running locally on the loopback.
+    if host in ("127.0.0.1", "localhost"):
+        try:
+            webbrowser.open(url)
+        except Exception:
+            pass
     try:
         server.serve_forever()
     except KeyboardInterrupt:

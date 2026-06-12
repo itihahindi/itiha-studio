@@ -344,8 +344,33 @@ def _build_server() -> ThreadingHTTPServer:
             if rel.startswith("images/"):
                 self._send_file(design_dir / rel); return
 
+            if rel == "api/download-zip":
+                self._send_zip(slug, design_dir); return
+
             # Otherwise serve from shared/
             self._send_file(SHARED / rel)
+
+        def _send_zip(self, slug: str, design_dir: Path):
+            """Stream a ZIP of all rendered PNGs for this design. Used by the web UI
+            'Download ZIP' button — replaces 'Open Folder' when there's no Finder."""
+            import io, zipfile
+            out = content_mod.output_dir_for(design_dir)
+            files = sorted(out.glob("*-slide.png"))
+            if not files:
+                self._send_bytes(b"no rendered slides yet -- render first", "text/plain", code=404)
+                return
+            buf = io.BytesIO()
+            with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+                for f in files:
+                    z.write(f, arcname=f.name)
+            data = buf.getvalue()
+            self.send_response(200)
+            self.send_header("Content-Type", "application/zip")
+            self.send_header("Content-Length", str(len(data)))
+            self.send_header("Content-Disposition", f'attachment; filename="{slug}.zip"')
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(data)
 
         # ── POST routing ───────────────────────────────────────
         def do_POST(self):

@@ -1639,7 +1639,12 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
         }}>
           <span style={{ color: '#5a8', fontWeight: 600 }}>✓</span>
           <span>Rendered {renderState.count} slide{renderState.count === 1 ? '' : 's'}</span>
-          <button onClick={openFolder} style={{ ...btnSm, marginLeft: 'auto' }}>Open in Finder</button>
+          <a
+            href="api/download-zip"
+            download
+            style={{ ...btnSm, marginLeft: 'auto', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+          >Download ZIP</a>
+          <button onClick={openFolder} style={btnSm}>Open in Finder</button>
         </div>
       )}
       {renderState.phase === 'error' && (

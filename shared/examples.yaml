@@ -1,0 +1,266 @@
+# ITIHA — worked examples. Reference for layout selection + exact field shapes.
+# Upload as Project Knowledge in claude.ai. The main instructions tell Claude
+# WHAT to produce; this file shows HOW each layout's fields are structured.
+#
+# Layout picker (use the layout whose row fits the argument):
+#
+#   cover         → opening slide. Eyebrow, Eyebrow-Meta, Headline, Subline, Swipe-Meta.
+#   story         → narrative beat. Chapter, Headline, Body.
+#   split-story   → image-left text-right (or vice versa). story fields + Image.
+#   quote         → pull quote. Quote, Attribution.
+#   stat          → numeric punch. Stats array of { Label, Value, Value-Red?, Sublabel }.
+#   numbered-list → "N reasons / N truths". Items array of { Number?, Headline, Body }.
+#   comparison    → Myth vs Reality / Claim vs Counter. Left-/Right- fields.
+#   portrait      → biographical subject. Name, Dates, Role, Quote?, Attribution?, Image.
+#   timeline      → chronological progression (regnal years, conquest dates). Items array of { Date, Headline, Body }. 3-6 events.
+#   map           → geographic story (raid route, empire extent). Image (map), Markers array of { X, Y, Label, Sublabel } where X/Y are percentages 0=left/top, 100=right/bottom.
+#   did-you-know  → surprising-fact breather. Eyebrow (defaults "Did You Know?"), Headline, Body, Source?. 1 per carousel max.
+#   pie-chart     → proportions / shares. Segments array of { Label, Value }. Optional Center-Label for donut. 2-6 segments.
+#   line-graph    → trend over time (exports, casualties across years). Points array of { Label, Value } left to right. Y-Suffix?. 4-8 points. For TWO trends compared: Series array of { Label, Points }.
+#   bar-chart     → compare a value across categories. Bars array of { Label, Value }. Set Horizontal: true for ranked rows when labels are long. 2-7 bars.
+#   dynasty       → succession / genealogy tree (Mughal emperors, Maratha Peshwas). Nodes array of { Name, Dates, Note?, Generation?, Highlight? }. Same Generation puts rival siblings on one row.
+#   before-after  → two images split diagonally (ruins vs reconstruction, 1900 vs now). Image-Before, Image-After, Label-Before, Label-After. Optional Filter-Before / Filter-After.
+#   document      → primary source (manuscript, treaty, inscription). Image (scan), Quote, Translation?, Attribution.
+#   annotated     → close-reading of a painting or photo. Image, Callouts array of { X, Y, Label } where X/Y are percentages. 2-5 callouts.
+#   sources       → bibliography slide near the end. Sources array of { Title, Author, Detail }.
+#   closing       → final slide. Headline, Body, Handle.
+#   cta-red       → red action-prompt slide. Headline, Subline?.
+
+
+# ════════════════════════════════════════════════════════════════
+# 1. COMPLETE WORKED CAROUSEL — Somnath, 4 slides.
+#    Mirror this density: short Headlines with *accent*, Body with
+#    [bracket key terms], factual specifics, no filler.
+# ════════════════════════════════════════════════════════════════
+
+---
+name: somnath
+format: instagram-portrait
+caption: |
+  In the winter of 1025-26 AD, Mahmud of Ghazni led a column of thirty thousand south through the Thar desert toward the temple at Somnath on the Gujarat coast. Al-Biruni, the Khwarezmian scholar travelling with Mahmud's court, recorded what happened next.
+
+  Mahmud's raid removed an estimated twenty tons of gold, silver, and jewels from the Somnath treasury - a figure later witnesses suggest is conservative. The temple was razed; the central lingam, broken and shipped back to Ghazni. The raid wasn't unprecedented (Mahmud had crossed the Thar before) but it was the most consequential: it set the template for centuries of treasury-driven raids into the subcontinent, and it became the foundational story for how medieval Indian states understood the threat from the northwest. R.C. Majumdar's _History and Culture of the Indian People_ and Al-Biruni's _Tarikh al-Hind_ are the primary sources this carousel draws on.
+
+  Somnath is now a pilgrimage site again - rebuilt in 1951 under Sardar Patel. The story the Ghaznavid scribes recorded was never quite the story the temple remembered.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Somnath #Mahmud #AlBiruni #GhaznavidEmpire #Gujarat #11thCentury
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  seriesLabel: SOMNATH
+---
+
+## Slide 1
+Layout: cover
+Eyebrow: Series 02
+Eyebrow-Meta: Somnath · 4 Parts
+Headline: |
+  A Temple Older
+  Than The Empire
+  That Came For *It.*
+Subline: 1026 AD · Gujarat
+Swipe-Meta: Swipe ▸ · 4 Slides · 2 min read
+
+## Slide 2
+Layout: story
+Chapter: Chapter 02 · The March
+Headline: |
+  The March Of
+  *Mahmud.*
+Body: |
+  In the winter of [1025-26], Mahmud of Ghazni turned south with a column of thirty thousand. He had crossed the [Thar] before. He had not crossed it for a temple.
+
+## Slide 3
+Layout: stat
+Chapter: Chapter 03 · The Treasury
+Headline: |
+  The Gold
+  Of *Somnath.*
+Stats:
+  - Label: Recorded by Al-Biruni
+    Value: 20 tons
+    Sublabel: Silver, gold, jewels removed
+  - Label: Witnesses count
+    Value: Higher.
+    Value-Red: true
+    Sublabel: Sources suggest under-reporting
+Body: |
+  The treasury at Somnath rivalled the [Mughal] capital five centuries later - and [twenty tons] is the conservative estimate.
+
+## Slide 4
+Layout: closing
+Headline: |
+  The Stone That
+  Broke An *Empire.*
+Body: |
+  [Somnath] is now a pilgrimage site again. The story the [Ghaznavid] scribes recorded was not the story the temple remembered.
+Handle: Follow @itiha29 · itiha.info
+
+
+# ════════════════════════════════════════════════════════════════
+# 2. DATA-DRIVEN LAYOUT SNIPPETS — copy these field shapes exactly.
+#    Each block is ONE slide. Drop into a carousel where the
+#    argument calls for it (not every carousel needs every layout).
+# ════════════════════════════════════════════════════════════════
+
+## Slide N
+Layout: timeline
+Chapter: Chapter 03 · The Sequence
+Headline: |
+  A Hundred Years
+  Of *Plunder.*
+Items:
+  - Date: 1025
+    Headline: "*Somnath* sacked"
+    Body: Mahmud razes the temple; the lingam is shipped to [Ghazni].
+  - Date: 1175
+    Headline: "*Multan* annexed"
+    Body: Ghurid expansion turns the northwest into a permanent corridor.
+  - Date: 1192
+    Headline: "*Tarain* falls"
+    Body: Prithviraj is defeated; the [Delhi Sultanate] is two years away.
+
+## Slide N
+Layout: map
+Chapter: Chapter 04 · The Geography
+Headline: |
+  The Three
+  *Strongholds.*
+Markers:
+  - X: 28
+    Y: 40
+    Label: Ghazni
+    Sublabel: Capital
+  - X: 54
+    Y: 58
+    Label: Multan
+    Sublabel: 1175
+  - X: 66
+    Y: 72
+    Label: Somnath
+    Sublabel: 1025
+Caption: Three nodes on the same overland route, struck across a [century].
+
+## Slide N
+Layout: pie-chart
+Chapter: Chapter 02 · The Treasury
+Headline: |
+  Where The *Revenue*
+  Came From.
+Segments:
+  - Label: Land tax
+    Value: 62
+  - Label: Customs and trade
+    Value: 21
+  - Label: Salt monopoly
+    Value: 17
+Center-Label: 1858
+Caption: Most of the [East India Company's] income was drawn from the land it taxed.
+
+## Slide N
+Layout: line-graph
+Chapter: Chapter 05 · The Drain
+Headline: |
+  Indian Cotton
+  *Exports* Collapse.
+Y-Suffix: M
+Points:
+  - Label: 1820
+    Value: 42
+  - Label: 1840
+    Value: 31
+  - Label: 1860
+    Value: 18
+  - Label: 1880
+    Value: 9
+Caption: Measured in [million pounds] - British mill competition gutted the [handloom] trade.
+
+## Slide N
+Layout: bar-chart
+Chapter: Chapter 02 · The Toll
+Headline: |
+  Famine Deaths
+  By *Decade.*
+Value-Suffix: M
+Bars:
+  - Label: 1770s
+    Value: 10
+  - Label: 1870s
+    Value: 6
+  - Label: 1890s
+    Value: 5
+  - Label: 1940s
+    Value: 3
+Caption: Each [million] is an estimate drawn from [colonial revenue records].
+
+## Slide N
+Layout: dynasty
+Chapter: Chapter 04 · The Line
+Headline: |
+  The *Mughal*
+  Succession.
+Nodes:
+  - Name: Babur
+    Dates: 1526-30
+  - Name: Humayun
+    Dates: 1530-56
+  - Name: Akbar
+    Dates: 1556-1605
+    Highlight: true
+  - Name: Jahangir
+    Dates: 1605-27
+
+## Slide N
+Layout: did-you-know
+Headline: |
+  Printing Reached India
+  In *1556.*
+Body: |
+  It arrived with [Jesuit] priests at the [Portuguese] mission in Goa, which printed a Tamil _Cartilha_ within a [century] of Gutenberg.
+Source: A. K. Priolkar, The Printing Press In India
+
+## Slide N
+Layout: document
+Chapter: Chapter 03 · The Record
+Headline: |
+  In His Own *Hand.*
+Image: aurangzeb-farman.jpg
+Quote: |
+  Let the temple be demolished, and a mosque
+  raised on its foundations.
+Translation: From the imperial farman of 1669, as recorded in the Maasir-i-Alamgiri.
+Attribution: Maasir-i-Alamgiri, c. 1710 · trans. Jadunath Sarkar
+
+## Slide N
+Layout: annotated
+Chapter: Chapter 05 · The Scene
+Headline: |
+  Reading The *Durbar.*
+Image: bahadur-shah-durbar.jpg
+Callouts:
+  - X: 30
+    Y: 38
+    Label: The emperor, seated but powerless by 1857.
+  - X: 62
+    Y: 45
+    Label: Officers of the [Company] - the real authority in the room.
+  - X: 48
+    Y: 78
+    Label: The petitioners, whose lands the durbar no longer controlled.
+
+## Slide N
+Layout: sources
+Eyebrow: Sources
+Headline: |
+  The *Record.*
+Sources:
+  - Title: Maasir-i-Alamgiri
+    Author: Saqi Mustaad Khan
+    Detail: trans. Jadunath Sarkar, 1947
+  - Title: A History of Aurangzib
+    Author: Jadunath Sarkar
+    Detail: 5 vols., 1912-24
+Handle: Follow @itiha29 · itiha.info

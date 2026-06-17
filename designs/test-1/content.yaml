@@ -11,8 +11,7 @@ tweaks:
   overlayDarkness: 62
   showGrain: true
 slides:
-- layout: map
-  eyebrow: Series 01
+- layout: youtube-cta
   eyebrow_meta: test-1 · 3 Parts
   headline: Archology *Discovery*
   subline: One-line subtitle
@@ -21,6 +20,11 @@ slides:
   image_position: 43% 9%
   quote: 'Recent Discovery of '
   image_filter: sepia
+  thumbnail: pabitra-thumbnail-1.png
+  cta: watch
+  handle: '@itiha'
+  url_label: www.youtube.com/@itiha
+  headline_size: -2
 - layout: story
   headline: |
     The Story

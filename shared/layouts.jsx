@@ -83,8 +83,14 @@ function Headline({ text, size = 132, style }) {
 }
 
 function Body({ text, size = 28, maxWidth = 880, style, className }) {
+  // Line-height tightens as size grows — at body text 45px+, the CSS-class
+  // default 1.75 pushes paragraphs off the slide. Stays loose at small sizes
+  // where the eye needs the rest.
+  const lineHeight = size <= 36 ? 1.7
+                   : size <= 48 ? 1.55
+                   :              1.4;
   return (
-    <p className={`itiha-body${className ? ' ' + className : ''}`} style={{ fontSize: size, maxWidth, ...style }}>
+    <p className={`itiha-body${className ? ' ' + className : ''}`} style={{ fontSize: size, lineHeight, maxWidth, ...style }}>
       {renderBody(text)}
     </p>
   );
@@ -126,7 +132,8 @@ function Cover({ slide, index }) {
 // The block can be anchored top / middle / bottom. Image gets a fade-to-black at the bottom by default.
 function Story({ slide, index }) {
   const { chapter, headline, subline, body, image, image_bw, image_overlay, image_position,
-          headline_size = 104, body_size = 34, block_y = 'bottom', custom_overlay } = slide;
+          headline_size = 100, body_size = 45, block_y = 'bottom', custom_overlay,
+          body_offset_y = 0 } = slide;
   const t = themeFor(slide);
   // Light theme: fade image to off-white at the text edge instead of black.
   const overlayCss = custom_overlay || (t.isLight
@@ -153,7 +160,7 @@ function Story({ slide, index }) {
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
         {subline && <div className="itiha-sub" style={{ marginTop: 22 }}>{subline}</div>}
-        {body && <Body text={body} size={body_size} style={{ marginTop: 30 }} />}
+        {body && <Body text={body} size={body_size} style={{ marginTop: 30 + body_offset_y }} />}
       </div>
       <MaybePageNum n={index + 1} color={t.pageNumColor} />
       <MaybeStamp color={t.stampFg} />
@@ -164,15 +171,24 @@ function Story({ slide, index }) {
 // Image full-bleed, headline pinned high (or middle), body pinned low.
 function SplitStory({ slide, index }) {
   const { chapter, headline, subline, body, image, image_bw, image_overlay, image_position,
-          headline_size = 116, body_size = 34, headline_y = 140, body_y = 200 } = slide;
+          headline_size = 100, body_size = 45, headline_y = 140, body_y = 200 } = slide;
   const t = themeFor(slide);
+  const ctx = useItiha();
+  // Only show the chapter-eyebrow + divider pair when the eyebrow will
+  // actually render — otherwise the divider hangs alone above the headline
+  // and reads like a stray coat-lapel detail.
+  const showEyebrowBlock = !!chapter && !!ctx.showChapterLabels;
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} />}
       <TextureOverlay texture={slide.texture} />
       <div style={{ position: 'absolute', left: 72, top: headline_y, right: 72 }}>
-        {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
-        <Divider style={{ marginBottom: 28 }} />
+        {showEyebrowBlock && (
+          <>
+            <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>
+            <Divider style={{ marginBottom: 28 }} />
+          </>
+        )}
         <Headline text={headline} size={headline_size} />
         {subline && <div className="itiha-sub" style={{ marginTop: 22 }}>{subline}</div>}
       </div>
@@ -190,7 +206,7 @@ function SplitStory({ slide, index }) {
 // Pull-quote layout: headline up top, large quote in middle with red left border, body below.
 function Quote({ slide, index }) {
   const { chapter, headline, quote, attribution, body, image, image_bw, image_overlay, image_position,
-          headline_size = 108, quote_size = 64, body_size = 32,
+          headline_size = 108, quote_size = 64, body_size = 42,
           headline_offset_y = 0, body_offset_y = 0 } = slide;
   const t = themeFor(slide);
   return (
@@ -226,7 +242,7 @@ function Quote({ slide, index }) {
 // Two-column stat comparison (e.g. "12.5%" vs "Worse.")
 function Stat({ slide, index }) {
   const { chapter, headline, stats = [], body, image, image_bw, image_overlay, image_position,
-          headline_size = 108, body_size = 32, stat_size = 168,
+          headline_size = 108, body_size = 42, stat_size = 168,
           headline_offset_y = 0, body_offset_y = 0 } = slide;
   const t = themeFor(slide);
   return (
@@ -310,7 +326,7 @@ function DatesGrid({ slide, index }) {
 // Closing slide: big headline, horizontal stats row, body, handle line.
 function Closing({ slide, index }) {
   const { chapter, headline, stats = [], body, handle, image, image_bw, image_overlay, image_position,
-          headline_size = 148, body_size = 32,
+          headline_size = 148, body_size = 42,
           headline_offset_y = 0, body_offset_y = 0 } = slide;
   const t = themeFor(slide);
   return (
@@ -537,7 +553,7 @@ function EndCard({ slide, index }) {
 
 // Carousel variant: Off-White interior slide w/ red left border + slide number top-right.
 function InteriorLight({ slide, index }) {
-  const { num, eyebrow, headline, body, headline_size = 96, body_size = 32,
+  const { num, eyebrow, headline, body, headline_size = 96, body_size = 42,
           image, image_bw, image_overlay, image_position } = slide;
   return (
     <div className="itiha-slide" style={{ background: ITIHA.offWhite, color: ITIHA.nearBlack }}>
@@ -572,6 +588,135 @@ function InteriorLight({ slide, index }) {
       <div className="itiha-stamp" style={{ right: 56, bottom: 48 }}>
         <span className="w" style={{ color: ITIHA.ink }}>ITIHA</span><span className="d">.</span>
       </div>
+    </div>
+  );
+}
+
+// Final-slide CTA pointing to a full YouTube documentary. Jet black so the
+// thumbnail and the red play-mark carry the eye. Uses Big Shoulders Display
+// for the video title + CTA — heavier than Bebas Neue, reads as a movie
+// poster credit rather than another slide.
+function YouTubeCTA({ slide, index }) {
+  const {
+    eyebrow = 'Watch The Full Documentary',
+    thumbnail, headline,
+    duration, channel_label = 'Itiha Documentaries',
+    cta = 'Watch on YouTube',
+    handle = '@itihahindi',
+    url_label,
+    headline_size = 84,
+    cta_size = 64,
+    headline_offset_y = 0,
+  } = slide;
+
+  // Word-by-word renderer that lights "YouTube" in Sindoor Red.
+  const renderCta = (text) => {
+    const tokens = (text || '').split(/(\s+)/);
+    return tokens.map((tok, i) => {
+      const isYT = /^you?-?tube$/i.test(tok);
+      return isYT
+        ? <span key={i} style={{ color: ITIHA.red }}>{tok}</span>
+        : <span key={i}>{tok}</span>;
+    });
+  };
+
+  // Match ImageLayer's URL convention: bare filename → served under images/,
+  // full URL passes through unchanged.
+  const thumbSrc = thumbnail
+    ? (/^https?:\/\//.test(thumbnail) ? thumbnail : `images/${thumbnail}`)
+    : null;
+
+  return (
+    <div className="itiha-slide" style={{ background: ITIHA.jet, color: ITIHA.parchment }}>
+      <TextureOverlay texture={slide.texture} />
+
+      {/* Eyebrow + small red divider — Eyebrow (not ChapterEyebrow) so the
+          tweaks toggle for showChapterLabels doesn't hide it. */}
+      <div style={{ position: 'absolute', left: 72, top: 130, right: 72 }}>
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <Divider style={{ marginTop: 18 }} />
+      </div>
+
+      {/* Thumbnail — always rendered (so the layout reads even without an
+          image yet), 16:9, parchment hairline border, stamped red play mark. */}
+      <div style={{
+        position: 'absolute', left: 72, top: 240 + headline_offset_y, right: 72,
+        aspectRatio: '16 / 9',
+        overflow: 'hidden',
+        boxShadow: `inset 0 0 0 1px rgba(232,220,200,0.20)`,
+        background: thumbnail
+          ? ITIHA.charcoal
+          : 'repeating-linear-gradient(135deg, #131313 0 14px, #0c0c0c 14px 28px)',
+      }}>
+        {thumbSrc && (
+          <img src={thumbSrc} style={{
+            width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+          }} />
+        )}
+        {/* Sindoor-red play mark — square corners stay editorial. */}
+        <svg width="168" height="118" viewBox="0 0 168 118" style={{
+          position: 'absolute', left: '50%', top: '50%',
+          transform: 'translate(-50%, -50%)',
+          filter: 'drop-shadow(0 6px 20px rgba(0,0,0,0.55))',
+        }}>
+          <rect x="0" y="0" width="168" height="118" fill={ITIHA.red} />
+          <polygon points="64,30 64,88 116,59" fill={ITIHA.parchment} />
+        </svg>
+      </div>
+
+      {/* Video title (Big Shoulders Display ExtraBlack) — sits below the
+          thumbnail (thumbnail ends around y=766 with default offset). */}
+      <div style={{ position: 'absolute', left: 72, top: 830 + headline_offset_y, right: 72 }}>
+        <h2 style={{
+          fontFamily: ITIHA.heavy,
+          fontWeight: 900,
+          fontSize: headline_size,
+          lineHeight: 0.95,
+          letterSpacing: '-0.005em',
+          textTransform: 'uppercase',
+          color: ITIHA.parchment,
+          margin: 0,
+        }}>{renderHeadline(headline)}</h2>
+
+        {(duration || channel_label) && (
+          <div style={{
+            marginTop: 32,
+            fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 16,
+            letterSpacing: '0.28em', textTransform: 'uppercase',
+            color: 'rgba(232,220,200,0.6)',
+          }}>
+            {duration && <span>{duration}</span>}
+            {duration && channel_label && <span style={{ margin: '0 14px', color: ITIHA.red }}>·</span>}
+            {channel_label && <span>{channel_label}</span>}
+          </div>
+        )}
+      </div>
+
+      {/* CTA block — pinned to bottom. */}
+      <div style={{ position: 'absolute', left: 72, bottom: 140, right: 72 }}>
+        <Divider style={{ marginBottom: 24 }} />
+        <div style={{
+          fontFamily: ITIHA.heavy,
+          fontWeight: 900,
+          fontSize: cta_size,
+          lineHeight: 1,
+          letterSpacing: '0.005em',
+          textTransform: 'uppercase',
+          color: ITIHA.parchment,
+        }}>{renderCta(cta)}</div>
+        {(handle || url_label) && (
+          <div style={{
+            marginTop: 20,
+            fontFamily: ITIHA.sans, fontWeight: 500, fontSize: 18,
+            letterSpacing: 0, color: 'rgba(232,220,200,0.72)',
+          }}>
+            {handle}{url_label && <span style={{ color: 'rgba(232,220,200,0.45)' }}>{` · ${url_label}`}</span>}
+          </div>
+        )}
+      </div>
+
+      <MaybePageNum n={index + 1} color="rgba(232,220,200,0.5)" />
+      <MaybeStamp color={ITIHA.parchment} />
     </div>
   );
 }
@@ -621,7 +766,7 @@ function CtaRed({ slide, index }) {
 function NumberedList({ slide, index }) {
   const { chapter, headline, items = [],
           image, image_bw, image_overlay, image_position,
-          headline_size = 88, item_size = 28, number_size = 80,
+          headline_size = 88, item_size = 38, number_size = 80,
           headline_offset_y = 0, body_offset_y = 0 } = slide;
   const t = themeFor(slide);
   return (
@@ -667,7 +812,7 @@ function Comparison({ slide, index }) {
           left_label, left_headline, left_body,
           right_label, right_headline, right_body,
           image, image_bw, image_overlay, image_position,
-          headline_size = 88, sub_size = 38, body_size = 28,
+          headline_size = 88, sub_size = 38, body_size = 38,
           headline_offset_y = 0, body_offset_y = 0 } = slide;
   const t = themeFor(slide);
   return (
@@ -719,7 +864,7 @@ function Comparison({ slide, index }) {
 function Portrait({ slide, index }) {
   const { chapter, image, image_bw, image_overlay, image_position,
           name, dates, role, quote, attribution,
-          name_size = 132, body_size = 28,
+          name_size = 132, body_size = 38,
           headline_offset_y = 0 } = slide;
   const t = themeFor(slide);
   return (
@@ -772,7 +917,7 @@ function Portrait({ slide, index }) {
 function Timeline({ slide, index }) {
   const { chapter, headline, items = [],
           image, image_bw, image_overlay, image_position,
-          headline_size = 88, date_size = 56, item_headline_size = 28, item_body_size = 26,
+          headline_size = 88, date_size = 56, item_headline_size = 28, item_body_size = 36,
           headline_offset_y = 0, body_offset_y = 0 } = slide;
   const t = themeFor(slide);
   return (
@@ -912,7 +1057,7 @@ function DidYouKnow({ slide, index }) {
     eyebrow = 'Did You Know?',
     headline, body, source,
     image, image_bw, image_overlay, image_position,
-    headline_size = 108, body_size = 32,
+    headline_size = 108, body_size = 42,
     headline_offset_y = 0, body_offset_y = 0,
     show_mark = true,
   } = slide;
@@ -1520,6 +1665,7 @@ window.LAYOUTS = {
   // Carousel variants from the design system templates
   'interior-light': InteriorLight,
   'cta-red': CtaRed,
+  'youtube-cta': YouTubeCTA,
   // Standalone formats
   'quote-card': QuoteCard,
   'reel-title': ReelTitle,

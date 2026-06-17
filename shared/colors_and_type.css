@@ -3,7 +3,7 @@
    Colors + Typography (Bebas Neue + DM Sans)
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@800;900&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 :root {
   /* ---------- CORE PALETTE ---------- */
@@ -38,6 +38,7 @@
 
   /* ---------- TYPOGRAPHY ---------- */
   --font-display: 'Bebas Neue', 'Oswald', 'Impact', sans-serif;
+  --font-heavy:   'Big Shoulders Display', 'Bebas Neue', 'Impact', sans-serif;
   --font-sans:    'DM Sans', system-ui, -apple-system, sans-serif;
 
   /* Display sizes (Bebas Neue — ALWAYS UPPERCASE) */

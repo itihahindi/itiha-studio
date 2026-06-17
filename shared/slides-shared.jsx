@@ -13,6 +13,7 @@ const ITIHA = {
   white: '#FFFFFF',
   nearBlack: '#1A1A1A',
   bebas: "'Bebas Neue', Impact, sans-serif",
+  heavy: "'Big Shoulders Display', 'Bebas Neue', Impact, sans-serif",
   sans: "'DM Sans', system-ui, sans-serif",
   mono: "'JetBrains Mono', ui-monospace, monospace",
 };

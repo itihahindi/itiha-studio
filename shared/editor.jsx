@@ -23,6 +23,22 @@ function Field({ label, help, children, error }) {
   );
 }
 
+// Small inline counter — sits below a Field's input. Stays muted while you
+// have room, turns Sindoor red the moment you cross the platform limit.
+function LimitCounter({ current, max, unit, overLabel }) {
+  const over = current > max;
+  return (
+    <div style={{
+      fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase', fontWeight: 600,
+      color: over ? '#c0392b' : '#6f6957', marginTop: 6,
+      display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
+    }}>
+      <span>{current.toLocaleString()} / {max.toLocaleString()} {unit}</span>
+      {over && overLabel && <span>{overLabel}</span>}
+    </div>
+  );
+}
+
 const inputBase = {
   width: '100%', boxSizing: 'border-box', font: '13px/1.5 "DM Sans", system-ui',
   background: '#0f0f0f', color: '#E8DCC8', border: '1px solid #2c2c2c',
@@ -755,12 +771,14 @@ function SlideForm({ slide, slideIndex, onChange, content, setContent }) {
               field={{ key: 'caption', type: 'textarea' }}
               value={content.caption}
               onChange={v => setMeta('caption', v)} />
+            <LimitCounter current={(content.caption || '').length} max={2200} unit="chars" overLabel="too long for IG" />
           </Field>
           <Field label="Hashtags" help="6–10 space-separated #tags. Include topic + book/author + place tags. Appended to the caption on publish.">
             <FieldInput
               field={{ key: 'hashtags', type: 'textarea' }}
               value={content.hashtags}
               onChange={v => setMeta('hashtags', v)} />
+            <LimitCounter current={((content.hashtags || '').match(/#\w+/g) || []).length} max={30} unit="hashtags" overLabel="IG silently drops > 30" />
           </Field>
         </div>
       )}
@@ -1303,6 +1321,16 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
   const [renderState, setRenderState] = React.useState({ phase: 'idle' });
   // phase: 'idle' | 'saving' | 'rendering' | 'done' | 'error'
 
+  const [autoRender, setAutoRender] = React.useState(() =>
+    typeof localStorage !== 'undefined' && localStorage.getItem('itiha:autoRender') === '1'
+  );
+  React.useEffect(() => {
+    try { localStorage.setItem('itiha:autoRender', autoRender ? '1' : '0'); } catch {}
+  }, [autoRender]);
+
+  // Keep render() callable from the auto-render effect without stale closures.
+  const renderRef = React.useRef(null);
+
   const render = async () => {
     setRenderState({ phase: 'saving' });
     try {
@@ -1317,6 +1345,17 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
       setRenderState({ phase: 'error', msg: String(e.message || e) });
     }
   };
+  renderRef.current = render;
+
+  // Auto-render: 2.5s after the last save settles (dirty → false). Cancels
+  // itself if you start typing again or kick off a manual render.
+  const renderBusyFlag = renderState.phase === 'saving' || renderState.phase === 'rendering';
+  React.useEffect(() => {
+    if (!autoRender) return;
+    if (dirty || !savedAt || renderBusyFlag) return;
+    const t = setTimeout(() => { renderRef.current && renderRef.current(); }, 2500);
+    return () => clearTimeout(t);
+  }, [autoRender, savedAt, dirty, renderBusyFlag]);
 
   const openFolder = async () => {
     try { await fetch('api/open-folder', { method: 'POST' }); } catch {}
@@ -1414,6 +1453,17 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
           padding: '10px 18px', cursor: renderBusy ? 'wait' : 'pointer',
           font: '11px "DM Sans", system-ui', letterSpacing: 2, textTransform: 'uppercase', fontWeight: 600,
         }}>{renderLabel}</button>
+        <label
+          title="Re-render automatically 2.5s after every save settles. Costs CPU on each edit."
+          style={{
+            display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer',
+            fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase', fontWeight: 600,
+            color: autoRender ? '#E8DCC8' : '#6f6957', userSelect: 'none',
+          }}>
+          <input type="checkbox" checked={autoRender} onChange={e => setAutoRender(e.target.checked)}
+                 style={{ accentColor: '#C0392B', cursor: 'pointer' }} />
+          Auto
+        </label>
         <div style={{ fontSize: 11, color: error ? '#c0392b' : '#666', letterSpacing: 1, marginLeft: 'auto', textAlign: 'right' }}>
           {savedLabel}
         </div>

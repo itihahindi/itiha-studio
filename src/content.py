@@ -161,7 +161,7 @@ KNOWN_LAYOUTS = {
     "numbered-list", "comparison", "portrait", "timeline", "map", "did-you-know",
     "pie-chart", "line-graph", "bar-chart", "dynasty", "before-after",
     "document", "annotated", "sources",
-    "interior-light", "cta-red",
+    "interior-light", "cta-red", "youtube-cta",
     # Standalone formats
     "quote-card",         # 1080×1080
     "reel-title",         # 1080×1920
@@ -192,8 +192,13 @@ def load_content(design_dir: Path) -> dict:
                 f"known: {sorted(KNOWN_LAYOUTS)}"
             )
         out = dict(slide)
-        if "image" in out:
-            out["image"] = resolve_image(out["image"], design_dir)
+        # Any string field on a slide that holds a file/URL needs to go
+        # through resolve_image (so URLs download to images/_cache/ and bare
+        # filenames are verified). Extend this set when a new layout
+        # introduces another image-typed field.
+        for field in ("image", "image_before", "image_after", "thumbnail"):
+            if field in out:
+                out[field] = resolve_image(out[field], design_dir)
         resolved_slides.append(out)
 
     from formats import get as get_format

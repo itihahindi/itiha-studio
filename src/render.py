@@ -111,8 +111,11 @@ async def _render_yaml_mode(design_dir: Path) -> list[Path]:
     output_dir = content_mod.output_dir_for(design_dir)
 
     # Clear stale PNGs so a slide that no longer exists doesn't linger.
+    # `missing_ok=True`: two concurrent renders (auto-render + a manual
+    # click) race on the same output dir — without it, the loser hits
+    # FileNotFoundError after the winner has already swept the file.
     for stale in output_dir.glob("*-slide.png"):
-        stale.unlink()
+        stale.unlink(missing_ok=True)
 
     server, port, _ = _serve_overlay(design_dir, content_bytes)
     url = f"http://127.0.0.1:{port}/render-host.html?capture=1"
@@ -166,7 +169,7 @@ async def _render_legacy_mode(design_dir: Path) -> list[Path]:
     output_dir = content_mod.output_dir_for(design_dir)
 
     for stale in output_dir.glob("*-slide.png"):
-        stale.unlink()
+        stale.unlink(missing_ok=True)
 
     class H(SimpleHTTPRequestHandler):
         def __init__(self, *a, **kw): super().__init__(*a, directory=str(design_dir), **kw)

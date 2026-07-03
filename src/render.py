@@ -228,7 +228,7 @@ def main(argv: list[str]) -> int:
     if len(argv) != 2:
         print("usage: render.py <design-name>")
         return 2
-    design_dir = content_mod.designs_root() / argv[1]
+    design_dir = ROOT / "designs" / argv[1]
     if not design_dir.is_dir():
         print(f"no such design: {design_dir}")
         return 1

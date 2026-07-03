@@ -124,6 +124,7 @@ window.MANIFEST = {
       { key: "body_size",     type: "number",   label: "Body size (px)", default: 42 },
       { key: "stat_size",     type: "number",   label: "Stat value size (px)", default: 168 },
       { key: "headline_offset_y", type: "number", label: "Headline offset Y (px)", default: 0, step: 10, help: "Nudge headline. Negative = up, positive = down." },
+      { key: "stats_offset_y",    type: "number", label: "Stats offset Y (px)",    default: 0, step: 10, help: "Nudge the stat numerals + labels. Negative = up, positive = down." },
       { key: "body_offset_y",     type: "number", label: "Body offset Y (px)",     default: 0, step: 10, help: "Nudge body. Negative = up, positive = down." },
     ],
   },

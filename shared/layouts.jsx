@@ -243,7 +243,7 @@ function Quote({ slide, index }) {
 function Stat({ slide, index }) {
   const { chapter, headline, stats = [], body, image, image_bw, image_overlay, image_position,
           headline_size = 108, body_size = 42, stat_size = 168,
-          headline_offset_y = 0, body_offset_y = 0 } = slide;
+          headline_offset_y = 0, body_offset_y = 0, stats_offset_y = 0 } = slide;
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
@@ -255,7 +255,7 @@ function Stat({ slide, index }) {
         <Headline text={headline} size={headline_size} />
       </div>
       <div style={{
-        position: 'absolute', left: 72, top: 580, right: 72,
+        position: 'absolute', left: 72, top: 580 + stats_offset_y, right: 72,
         display: 'grid',
         gridTemplateColumns: stats.length === 2 ? '1fr 1px 1fr' : `repeat(${stats.length}, 1fr)`,
         gap: 48, alignItems: 'start',

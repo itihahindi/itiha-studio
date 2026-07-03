@@ -1,0 +1,166 @@
+name: nana-saheb-peshwa-the-rise
+format: instagram-portrait
+caption: |
+  In 1758, the saffron flag of the Maratha Empire was planted on the Fort of Attock, on the banks of the Indus. From Cuttack in the east to Attock in the west, the subcontinent answered to one power — and that power was directed from a desk in Pune, by a Peshwa who had taken office at nineteen. Balaji Baji Rao, known to history as Nana Saheb, took the Maratha Empire to its absolute geographical zenith through a combination of administrative reform, diplomatic precision, and a partnership with his cousin Sadashivrao Bhau that ran the empire for two decades.
+
+  This carousel is the story of his rise. He inherited the office in 1740 against the opposition of senior commanders who thought him too young. By 1750, the Sangola Agreement had stripped the royal court at Satara of its administrative power and made Shaniwar Wada in Pune the de facto capital of the subcontinent. In 1752, the Ahmadiyya Treaty made the Marathas the official military protectors of the Mughal Emperor, with the right to collect Chauth and Sardeshmukhi across Punjab, Sindh, and Rajputana. The 1760 victory at Udgir forced the Nizam of Hyderabad to cede Asirgarh, Daulatabad, and territories generating six million rupees annually. Sadashivrao Bhau modernised the army with a Western-style cannon battery under Ibrahim Khan Gardi. By 1758, the empire ruled 250 million people. Then came Panipat — and the empire that had taken three decades to build was broken in a single afternoon. Nana Saheb died five months later on Parvati Hill in Pune, at forty.
+
+  The administrative system he built survived him. It would carry his son Madhavrao I to the Maratha resurrection within a decade. But Nana Saheb himself never recovered from what he lost on a single field, in a single hour.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #NanaSaheb #BalajiBajirao #MarathaEmpire #Peshwa #ShaniwarWada #Attock #Panipat
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: NANA-SAHEB
+slides:
+- layout: cover
+  eyebrow: Series 35
+  eyebrow_meta: Nana Saheb · 8 Parts
+  headline: |
+    Peshwa Nana Saheb:
+    From *Cuttack*
+    To *Attock.*
+  subline: Nana Saheb Peshwa · the Swarajya's geographical zenith
+  swipe_meta: Swipe ▸ · 8 Slides · 4 min read
+  headline_size: 140
+  headline_offset_y: 270
+  image: https://pbs.twimg.com/media/GtkmyrgbEAAsBLp?format=png&name=small
+  texture: halftone
+  image_overlay: 0.8
+- layout: split-story
+  chapter: Chapter 01 · The Young Peshwa
+  name: Balaji Baji Rao
+  dates: 1721–1761
+  role: Third Peshwa · known as Nana Saheb
+  headline: |
+    Peshwa At
+    *Nineteen.*
+  body: When [Bajirao I] died in [1740], the Maratha court was in [factional chaos] due to long campaigns
+    to subdue Mughals. Senior commanders opposed appointing a [nineteen-year-old] to the office of Peshwa.
+    They believed he lacked his father's [martial instinct]. They underestimated his [administrative genius].
+  image: screenshot-2026-06-22-at-6-36-28-pm.png
+  image_overlay: 1
+  body_y: 85
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 02 · Sangola, 1750
+  headline: |
+    The Coup That Made
+    Pune The *Capital.*
+  body: 'When [Chhatrapati Shahu I] died in [1749], The Great Matriarch [Maharani Tarabai] tried to seize
+    executive power. Nana Saheb defended his authority & shifted governance permanently to [Shaniwar Wada]
+    in [Pune].  Under him Pune raised in prestige to become De Facto Capital Of subcontinent '
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdO9KdywVIrQZlGHVkhpaMcN4NrYOhp5HXmeV9-G7G_NCZjpxNQOvcqpA&s=10
+  image_position: 53% 75%
+  body_size: 45
+  image_overlay: 0.9
+  body_y: 55
+  texture: halftone
+- layout: split-story
+  eyebrow: The Ahmadiyya Treaty, 1752
+  headline: |
+    He Made The Mughal
+    Emperor His *Vassal.*
+  body: |
+    In [1752], Nana Saheb's diplomats executed the [Treaty]. The Marathas became the official [military protectors] of the [Mughal Emperor]. In exchange, they won the right to collect [Chauth] and [Sardeshmukhi] across muhgal provinces. The [Mughal Emperor] became a well-kept prisoner of [Maratha foreign policy].
+  source: Contemporary Maratha and Mughal treaty records
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/AhmadShah.png/250px-AhmadShah.png
+  image_overlay: 0.9
+  body_y: 27
+- layout: split-story
+  chapter: Chapter 03 · The Two Pearls
+  headline: |
+    Brothers, Not
+    *Cousins.*
+  body: 'Behind the empire''s success lay the partnership of Nana Saheb and his cousin [Sadashivrao Bhau]
+    . the son of [Chimaji Appa], orphaned young and raised by Nana Saheb''s mother [Radhabhai] alongside
+    Nana Saheb himself. The Peshwa was the [public face]:  the diplomat. Bhau was the [internal engine].
+    the auditor,  General, the financier, the [administrative mind] of the empire. '
+  texture: halftone
+  headline_size: 75
+- layout: split-story
+  chapter: Chapter 04 · The Modern Army
+  headline: |
+    A Cannon Battery
+    Bhau *Built.*
+  body: Bhau realised that traditional [light cavalry] could no longer hold permanent northern cities.
+    He funded a modernised [infantry] and [artillery wing], and hired [Ibrahim Khan Gardi], a commander
+    trained by the [French]  to establish a Western-style [cannon battery]. The Maratha army was transformed
+    into the most [modernised] force in India.
+  image: https://upload.wikimedia.org/wikipedia/commons/d/d2/Bust_portrait_in_an_oval_of_the_Bhao%2C_Sadhashir_Rao%2C.jpg
+  image_position: 7% 100%
+  image_overlay: 1
+  body_y: 30
+  headline_size: 75
+- layout: split-story
+  chapter: Chapter 05 · The Nizam Falls
+  headline: |
+    Udgir, 1760. Six
+    Million A *Year.*
+  body: At the [Battle of Udgir] in [1760], Bhau trapped the [Nizam's] army. Nana Saheb leveraged the
+    victory into a [devastating diplomatic surrender], the Nizam ceded the historic forts of [Asirgarh]
+    and [Daulatabad], along with territories generating [six million rupees] in annual revenue. The Deccan
+    was [secured] without a massacre. Peshwa Become master of Deccan
+  image: https://qph.cf2.quoracdn.net/main-qimg-64c103966a9791c838a887e5ef38bed9
+  image_overlay: 1
+  body_y: 30
+  image_position: 25% 100%
+  headline_size: 75
+- layout: stat
+  chapter: Chapter 06 · The Zenith
+  headline: |
+    The Flag On
+    The *Indus.*
+  stats:
+  - label: 1758, the Fort of Attock
+    value: Captured.
+    value_red: true
+    sublabel: The saffron flag planted on the banks of the Indus
+  - label: Empire's east-to-west extent
+    value: Cuttack to Attock
+    sublabel: From the Bay of Bengal to the Indus
+  - label: Population under Maratha control
+    value: 250 million
+    sublabel: The undisputed master of the subcontinent
+    value_red: false
+  body: By [1758], the Maratha empire ruled an estimated [250 million] people  from [Cuttack] in the east
+    to [Attock] in the west. The flag the [Holkars] and [Raghunath Rao] planted on the [Indus] was the
+    highest point any [Indian power] had reached in centuries.
+  stat_size: 84
+  body_offset_y: 170
+  headline_offset_y: -50
+  stats_offset_y: -120
+  theme: light
+  body_size: 45
+  headline_size: 100
+- layout: split-story
+  chapter: Chapter 07 · Panipat And After
+  headline: |
+    Three Decades. One
+    *Afternoon.*
+  body: In late [1760], [Ahmad Shah Abdali] crossed the [Indus] seeking vengeance. [Sadashivrao Bhau]
+    was leading the maratha army. Which was under blockaded at [Panipat] for two months and reduced to
+    [eating raw grain]. On [14 January 1761], the Marathas marched out and were broken. Nana Saheb lost
+    his cousin [Bhau] and his son [Vishwasrao] in a single afternoon. Five months later, he died on [Parvati
+    Hill] at the age of [forty].
+  texture: vignette
+  theme: dark
+  image: https://upload.wikimedia.org/wikipedia/commons/6/6a/Portrait_of_Ahmad-Shah_Durrani._Mughal_miniature._ca._1757%2C_Biblioth%C3%A8que_nationale_de_France_%28cropped%29.jpg
+  headline_size: 75
+  image_overlay: 1.2
+  body_y: 33
+- layout: split-story
+  headline: "Modest *Samadhi* \nof NanaSahib\n"
+  body: |
+    The Sudden Death of Peshwa, Sadashiva Rao, left an immense leadership void. Loss at Panipat is single most consequential battle. The [administrative system] survived him. His son [Madhavrao I] would lead the [Maratha resurrection] within a decade  on the [bureaucracy], the [treasury], and the [army] Nana Saheb had built.
+  handle: Follow @itiha29 · itiha.info
+  headline_y: 50
+  headline_size: 75
+  image: https://upload.wikimedia.org/wikipedia/commons/b/b0/Nanasaheb_peshawe_samadhi_%281%29.JPG
+  body_y: 27
+  image_overlay: 1

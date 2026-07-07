@@ -140,7 +140,7 @@ function StripedPlaceholder({ note, width = '100%', height = '100%', mono = true
 // A full-bleed image-slot with cinematic dark overlay for Variation A.
 // `id` must be unique per slide so the drop persists.
 function FullBleedSlot({ id, placeholder, overlay, vignette = true, bw = false }) {
-  const t = (typeof React !== 'undefined' && React.useContext) ? React.useContext(ItihaContext) : null;
+  const t = (typeof React !== 'undefined' && React.useContext) ? React.useContext(BrandContext) : null;
   const o = overlay != null ? overlay : ((t && t.overlayDarkness != null) ? t.overlayDarkness / 100 : 0.62);
   const filter = bw ? 'grayscale(1) contrast(1.08)' : undefined;
   return (
@@ -165,14 +165,14 @@ function FullBleedSlot({ id, placeholder, overlay, vignette = true, bw = false }
 
 // ── Tweak context ─────────────────────────────────────────────
 // Slides read from this so the Tweaks panel can drive their chrome.
-const ItihaContext = React.createContext({
+const BrandContext = React.createContext({
   showChapterLabels: false,
   showStamp: true,
   showPageNum: true,
   overlayDarkness: 62,
   accentRed: true,
 });
-function useItiha() { return React.useContext(ItihaContext); }
+function useItiha() { return React.useContext(BrandContext); }
 
 // Wrappers that respect tweaks
 function ChapterEyebrow({ children, style }) {
@@ -311,4 +311,4 @@ function themeFor(slide) {
   };
 }
 
-Object.assign(window, { ITIHA, Stamp, PageNum, Eyebrow, Divider, StripedPlaceholder, FullBleedSlot, ImageLayer, ItihaContext, useItiha, ChapterEyebrow, MaybeStamp, MaybePageNum, themeFor, TextureOverlay });
+Object.assign(window, { ITIHA, Stamp, PageNum, Eyebrow, Divider, StripedPlaceholder, FullBleedSlot, ImageLayer, BrandContext, useItiha, ChapterEyebrow, MaybeStamp, MaybePageNum, themeFor, TextureOverlay });

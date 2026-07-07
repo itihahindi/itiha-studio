@@ -1,4 +1,4 @@
-"""Itiha Studio — multi-design server with home page.
+"""Kavi Studios — multi-brand, multi-design server with home page.
 
   bin/studio
 
@@ -47,6 +47,7 @@ from preview import (
 )
 from scaffold import _slugify, make_starter_yaml
 from formats import FORMATS
+from brands import BRANDS, DEFAULT_BRAND
 import notion_sync
 
 
@@ -142,6 +143,7 @@ def _list_projects() -> list[dict]:
             "slug":   entry.name,
             "name":   data.get("name") or entry.name,
             "format": data.get("format") or "instagram-portrait",
+            "brand":  data.get("brand") or DEFAULT_BRAND,
         })
     return out
 
@@ -192,13 +194,15 @@ def _delete_project(slug: str) -> None:
         _STATES.pop(slug, None)
 
 
-def _create_project(name: str, fmt: str) -> str:
+def _create_project(name: str, fmt: str, brand: str = DEFAULT_BRAND) -> str:
     """Create a new design folder; return the slug."""
     base = _slugify(name)
     if not base:
         raise ValueError("project name must contain letters or numbers")
     if fmt and fmt not in FORMATS:
         raise ValueError(f"unknown format: {fmt}")
+    if brand and brand not in BRANDS:
+        raise ValueError(f"unknown brand: {brand}")
     slug = base
     i = 2
     while (DESIGNS / slug).exists():
@@ -206,7 +210,8 @@ def _create_project(name: str, fmt: str) -> str:
         i += 1
     root = DESIGNS / slug
     (root / "images").mkdir(parents=True)
-    (root / "content.yaml").write_text(make_starter_yaml(name, fmt or "instagram-portrait"))
+    (root / "content.yaml").write_text(
+        make_starter_yaml(name, fmt or "instagram-portrait", brand or DEFAULT_BRAND))
     return slug
 
 
@@ -311,6 +316,17 @@ def _build_server() -> ThreadingHTTPServer:
             if rel == "api/download-zip":
                 self._send_zip(slug, design_dir); return
 
+            if rel == "render-host.html":
+                # The host page loads its brand pack via the __BRAND__
+                # placeholder — substitute the design's brand slug.
+                try:
+                    brand = json.loads(st["content"]).get("brand") or DEFAULT_BRAND
+                except Exception:
+                    brand = DEFAULT_BRAND
+                page = (SHARED / rel).read_bytes().replace(b"__BRAND__", brand.encode())
+                self._send_bytes(page, "text/html")
+                return
+
             # Otherwise serve from shared/
             self._send_file(SHARED / rel)
 
@@ -361,9 +377,10 @@ def _build_server() -> ThreadingHTTPServer:
                 body = self._read_json_body()
                 name = (body.get("name") or "").strip()
                 fmt = (body.get("format") or "instagram-portrait").strip()
+                brand = (body.get("brand") or DEFAULT_BRAND).strip()
                 if not name:
                     self._send_bytes(b"name is required", "text/plain", code=400); return
-                slug = _create_project(name, fmt)
+                slug = _create_project(name, fmt, brand)
                 self._send_bytes(json.dumps({"slug": slug}).encode(), "application/json")
             except Exception as e:
                 self._send_bytes(f"create failed: {e}".encode(), "text/plain", code=500)
@@ -577,7 +594,7 @@ def main(argv: list[str]) -> int:
     server = _build_server()
     port = server.server_address[1]
     url = f"http://127.0.0.1:{port}/"
-    print(f"\n  Itiha Studio: {url}")
+    print(f"\n  Kavi Studios: {url}")
     print("  Ctrl-C to stop\n")
     try:
         webbrowser.open(url)

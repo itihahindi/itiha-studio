@@ -36,10 +36,11 @@ def _ephemeral_port() -> int:
 
 
 def _serve_overlay(design_dir: Path, content_json_bytes: bytes,
+                   brand: str = "itiha",
                    version: str = "v1") -> tuple[ThreadingHTTPServer, int]:
     """Serve a virtual filesystem: shared/ + design's images + content.json + version.txt."""
 
-    state = {"content": content_json_bytes, "version": version}
+    state = {"content": content_json_bytes, "version": version, "brand": brand}
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, *_):
@@ -82,6 +83,12 @@ def _serve_overlay(design_dir: Path, content_json_bytes: bytes,
             rel = urllib.parse.unquote(path.lstrip("/"))
             if not rel:
                 rel = "render-host.html"
+            if rel == "render-host.html":
+                # Substitute the brand-pack placeholder (see studio.py).
+                data = (SHARED / rel).read_bytes().replace(
+                    b"__BRAND__", state["brand"].encode())
+                self._send_bytes(data, "text/html")
+                return
             target = SHARED / rel
             # Light MIME mapping; Chromium tolerates missing content-type.
             mime = {
@@ -117,7 +124,8 @@ async def _render_yaml_mode(design_dir: Path) -> list[Path]:
     for stale in output_dir.glob("*-slide.png"):
         stale.unlink(missing_ok=True)
 
-    server, port, _ = _serve_overlay(design_dir, content_bytes)
+    server, port, _ = _serve_overlay(design_dir, content_bytes,
+                                     content.get("brand", "itiha"))
     url = f"http://127.0.0.1:{port}/render-host.html?capture=1"
     print(f"  serving on http://127.0.0.1:{port}")
 

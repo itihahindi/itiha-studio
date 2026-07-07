@@ -192,10 +192,15 @@ def load_content(design_dir: Path) -> dict:
         resolved_slides.append(out)
 
     from formats import get as get_format
+    from brands import BRANDS, DEFAULT_BRAND
     fmt_name = data.get("format", "instagram-portrait")
     fmt_dims = get_format(fmt_name)
-    return {
+    brand = data.get("brand") or DEFAULT_BRAND
+    if brand not in BRANDS:
+        raise ContentError(f"unknown brand {brand!r}. known: {sorted(BRANDS)}")
+    out = {
         "name": data.get("name", design_dir.name),
+        "brand": brand,
         "format": fmt_name,
         "format_dims": {"width": fmt_dims["width"], "height": fmt_dims["height"]},
         "caption": data.get("caption", ""),
@@ -203,6 +208,13 @@ def load_content(design_dir: Path) -> dict:
         "tweaks": data.get("tweaks", {}),
         "slides": resolved_slides,
     }
+    # The save endpoint writes back exactly what the editor posts, and the
+    # editor's state is hydrated from this dict — any top-level key omitted
+    # here is silently dropped from content.yaml on the next save. So keys
+    # like notion_page_id must round-trip through content.json.
+    if data.get("notion_page_id"):
+        out["notion_page_id"] = str(data["notion_page_id"])
+    return out
 
 
 def write_content_json(content: dict, design_dir: Path) -> Path:

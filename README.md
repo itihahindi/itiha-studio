@@ -1,8 +1,13 @@
-# Itiha Studio · motion-graphics
+# Kavi Studios · motion-graphics
 
-Local pipeline for producing Itiha-brand assets at volume — Instagram carousels, Reel title cards, YouTube thumbnails, quote cards, end cards. Author content in a form-based editor (or paste Markdown), render pixel-precise PNGs, optionally sync status to Notion or publish straight to Instagram.
+Local multi-brand pipeline for producing social assets at volume — Instagram carousels, Reel title cards, YouTube thumbnails, quote cards, end cards. Author content in a form-based editor (or paste Markdown), render pixel-precise PNGs, optionally sync status to Notion or publish straight to Instagram.
 
-Built around the canonical [`shared/colors_and_type.css`](shared/colors_and_type.css) tokens lifted from the ITIHA Design System bundle. Three colors per asset (Jet/Ink Black + Parchment + Sindoor Red). Two fonts (Bebas Neue + DM Sans). Sharp corners, no gradients.
+Two brands live here, each with its own asset pack under `shared/brands/<slug>/`:
+
+- **Itiha** (`itiha`) — Indian-history documentary brand. Tokens in [`shared/brands/itiha/tokens.css`](shared/brands/itiha/tokens.css): Jet/Ink Black + Parchment + Sindoor Red, Bebas Neue + DM Sans, sharp corners, no gradients.
+- **VAQ HQ** (`vaq-hq`) — new brand; the pack is currently a placeholder clone awaiting the VAQ brand kit and its own design language.
+
+Every design declares `brand:` in its `content.yaml` (defaults to `itiha`).
 
 ---
 
@@ -56,16 +61,18 @@ The studio prints a `http://127.0.0.1:<port>/` URL and opens your browser. That'
 
 ### Daemon mode (macOS / Linux)
 
-`bin/studio` runs in the foreground — closing the terminal stops the server. If you'd rather leave it running and free up the terminal, use `bin/itiha`:
+`bin/studio` runs in the foreground — closing the terminal stops the server. If you'd rather leave it running and free up the terminal, use `bin/kavi`:
 
 ```bash
-bin/itiha start      # launch in background, opens browser, prints URL
-bin/itiha stop       # kill it
-bin/itiha restart
-bin/itiha status     # check if it's up + show the current URL
+bin/kavi start      # launch in background, opens browser, prints URL
+bin/kavi stop       # kill it
+bin/kavi restart
+bin/kavi status     # check if it's up + show the current URL
 ```
 
-PID + log live at `.itiha-studio.pid` / `.itiha-studio.log` in the repo root (both gitignored). On Windows, use `python src\studio.py` and `Ctrl-C` to stop.
+(`bin/itiha` still works — it's a back-compat alias for `bin/kavi`.)
+
+PID + log live at `.kavi-studio.pid` / `.kavi-studio.log` in the repo root (both gitignored). On Windows, use `python src\studio.py` and `Ctrl-C` to stop.
 
 ---
 
@@ -99,7 +106,7 @@ For carousel-heavy workflows, the fastest authoring loop is to keep one Claude.a
 2. For each carousel: new chat in that Project → click **New topic** → paste the prompt → fill in your topic and series label → send.
 3. Claude replies with Markdown wrapped in a ```` ```yaml ``` ```` fence. Click the **Copy code** button → paste into the editor's Markdown textarea → click **Replace slides**.
 
-The system prompt enforces the Itiha voice (`*accent words*` in headlines, `[bracket key terms]` in body, `_italics_` for foreign words) and the schema the parser accepts.
+The system prompt enforces the brand's voice (`*accent words*` in headlines, `[bracket key terms]` in body, `_italics_` for foreign words) and the schema the parser accepts. Each brand ships its own prompts in `shared/brands/<slug>/prompts.js`, so the buttons copy the right instructions for the project's brand.
 
 ---
 
@@ -141,7 +148,7 @@ Each design names a `format:` in `content.yaml`. The renderer sets the viewport 
 | `youtube-thumbnail` | `youtube-thumbnail` | Big-type thumbnail. |
 | `end-card` | `youtube-end-card` | Video end card with wordmark + handles. |
 
-Layout source: [`shared/layouts.jsx`](shared/layouts.jsx). Field definitions: [`shared/manifest.js`](shared/manifest.js). To add a new layout, add the component to `layouts.jsx`, register it in `window.LAYOUTS` at the bottom, add a manifest entry, and add the name to `KNOWN_LAYOUTS` in [`src/content.py`](src/content.py).
+Layout source: [`shared/brands/<slug>/layouts.jsx`](shared/brands/itiha/layouts.jsx). Field definitions: [`shared/brands/<slug>/manifest.js`](shared/brands/itiha/manifest.js). To add a new layout, add the component to the brand's `layouts.jsx`, register it in `window.LAYOUTS` at the bottom, add a manifest entry, and add the name to `KNOWN_LAYOUTS` in [`src/content.py`](src/content.py).
 
 ---
 
@@ -173,12 +180,13 @@ The **Remove BG** button on uploaded images uses local [rembg](https://github.co
 
 ```
 motion-graphics/
-├── bin/                 setup · new · preview · render · publish · studio · itiha (start/stop)   (bash; Windows: run src/<name>.py directly)
+├── bin/                 setup · new · preview · render · publish · studio · kavi (start/stop; bin/itiha = alias)   (bash; Windows: run src/<name>.py directly)
 ├── src/
 │   ├── studio.py        multi-project server with home page (entry point)
 │   ├── preview.py       single-project live-reload server (legacy)
 │   ├── render.py        headless-Chromium PNG renderer
 │   ├── content.py       YAML loader + image resolver
+│   ├── brands.py        brand registry (slug → display name)
 │   ├── formats.py       platform format presets
 │   ├── scaffold.py      starter content.yaml templates per format
 │   ├── instagram.py     Graph API publisher
@@ -186,13 +194,16 @@ motion-graphics/
 │   ├── import_cli.py    Markdown / Claude Design importer dispatch
 │   └── importers/       importer plug-ins
 ├── shared/
-│   ├── home.html               Studio home page (project picker + backlog)
-│   ├── render-host.html        editor / preview shell
-│   ├── editor.jsx              side-panel React editor
-│   ├── layouts.jsx             every slide layout
-│   ├── manifest.js             layout field definitions (drives the editor forms)
-│   ├── slides-shared.jsx       React primitives (Stamp, Divider, ImageLayer, …)
-│   └── colors_and_type.css     canonical design tokens
+│   ├── home.html               Studios home page (project picker + backlog), brand-agnostic
+│   ├── render-host.html        editor / preview shell — loads brands/__BRAND__/… (server substitutes)
+│   ├── editor.jsx              side-panel React editor, brand-agnostic (reads window.BRAND)
+│   └── brands/<slug>/          per-brand asset pack (itiha, vaq-hq):
+│       ├── layouts.jsx             every slide layout
+│       ├── manifest.js             layout field definitions (drives the editor forms)
+│       ├── slides-shared.jsx       tokens + React primitives (Stamp, ImageLayer, BrandContext, …)
+│       ├── prompts.js              window.BRAND identity + Claude-Project prompts
+│       ├── tokens.css              palette vars + brand font @import
+│       └── examples.yaml           worked examples for the Claude Project
 ├── docs/
 │   └── INSTAGRAM_SETUP.md      one-time Graph API setup
 ├── designs/             one folder per piece of content (your work lives here)

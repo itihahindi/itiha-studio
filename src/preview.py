@@ -147,6 +147,15 @@ def _build_server(design_dir: Path, state: dict) -> ThreadingHTTPServer:
                 rel = urllib.parse.unquote(path[len("/images/"):])
                 self._send_file(design_dir / "images" / rel, None); return
             rel = urllib.parse.unquote(path.lstrip("/")) or "render-host.html"
+            if rel == "render-host.html":
+                # Substitute the brand-pack placeholder (see studio.py).
+                try:
+                    brand = json.loads(state["content"]).get("brand") or "itiha"
+                except Exception:
+                    brand = "itiha"
+                data = (SHARED / rel).read_bytes().replace(b"__BRAND__", brand.encode())
+                self._send_bytes(data, "text/html")
+                return
             target = SHARED / rel
             mime = {
                 ".html": "text/html", ".jsx": "text/babel; charset=utf-8",

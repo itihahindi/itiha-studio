@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <title>Carousel</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="colors_and_type.css" />
+<link rel="stylesheet" href="brands/__BRAND__/tokens.css" />
 <style>
   :root {
     --slide-width: 1080px; --slide-height: 1350px;
@@ -81,7 +81,7 @@
 </head>
 <body>
 <nav id="top-nav" style="display:none">
-  <a class="home" href="/" title="Back to project picker">← <span class="wordmark">ITIHA<span class="dot">.</span></span></a>
+  <a class="home" href="/" title="Back to project picker">← <span class="wordmark" id="nav-wordmark">STUDIO<span class="dot">.</span></span></a>
   <span class="sep"></span>
   <span class="proj" id="nav-proj">—</span>
   <span class="badge" id="nav-format">—</span>
@@ -105,9 +105,14 @@
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
-<script type="text/babel" src="slides-shared.jsx"></script>
-<script type="text/babel" src="layouts.jsx"></script>
-<script src="manifest.js"></script>
+<!-- Brand pack: __BRAND__ is substituted server-side (studio.py / render.py /
+     preview.py) with the design's `brand:` slug. Every pack must define the
+     window globals: ITIHA-style token object (pack-internal name), LAYOUTS,
+     MANIFEST, MANIFEST_META, MANIFEST_TWEAKS, BrandContext, BRAND. -->
+<script src="brands/__BRAND__/prompts.js"></script>
+<script type="text/babel" src="brands/__BRAND__/slides-shared.jsx"></script>
+<script type="text/babel" src="brands/__BRAND__/layouts.jsx"></script>
+<script src="brands/__BRAND__/manifest.js"></script>
 <script type="text/babel" src="editor.jsx"></script>
 
 <script type="text/babel">
@@ -205,9 +210,9 @@ function PhonePreview({ comp: Comp, slide, idx, tweaks, dims, total, onClose, on
               transform: `scale(${scale})`,
               transformOrigin: 'top left',
             }}>
-              <window.ItihaContext.Provider value={tweaks}>
+              <window.BrandContext.Provider value={tweaks}>
                 <Comp slide={slide} index={idx} />
-              </window.ItihaContext.Provider>
+              </window.BrandContext.Provider>
             </div>
           </div>
           {/* Slide counter pill */}
@@ -374,6 +379,10 @@ function App() {
     // Top nav
     const nav = document.getElementById('top-nav');
     nav.style.display = 'flex';
+    if (window.BRAND) {
+      document.getElementById('nav-wordmark').innerHTML =
+        `${window.BRAND.wordmark}<span class="dot">.</span>`;
+    }
     const proj = document.getElementById('nav-proj');
     const format = document.getElementById('nav-format');
     const counter = document.getElementById('nav-counter');
@@ -481,9 +490,9 @@ function App() {
   return (
     <>
       {Comp ? (
-        <window.ItihaContext.Provider value={TWEAKS}>
+        <window.BrandContext.Provider value={TWEAKS}>
           <Comp slide={slide} index={idx} />
-        </window.ItihaContext.Provider>
+        </window.BrandContext.Provider>
       ) : (
         <div style={{ color: '#c0392b', padding: 40, fontFamily: 'monospace' }}>
           {slide ? `unknown layout: ${slide.layout}` : `slide ${idx} out of range`}
@@ -492,13 +501,13 @@ function App() {
       {window.__previewMode && editorOpen && ReactDOM.createPortal(
         // Wrap the Editor in the same tweak context so the SlideStrip thumbnails
         // pick up showStamp / showPageNum / overlayDarkness / seriesLabel.
-        <window.ItihaContext.Provider value={TWEAKS}>
+        <window.BrandContext.Provider value={TWEAKS}>
           <window.Editor
             content={content} setContent={setContent}
             currentIdx={idx} setCurrentIdx={setIdx}
             onSave={save} savedAt={savedAt} dirty={dirty} error={saveError}
           />
-        </window.ItihaContext.Provider>,
+        </window.BrandContext.Provider>,
         document.getElementById('editor'),
       )}
       {window.__previewMode && phonePreview && Comp && content && (

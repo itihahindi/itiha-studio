@@ -18,6 +18,7 @@ from pathlib import Path
 _CAROUSEL_STARTER = """\
 name: "{title}"
 format: {fmt}
+brand: {brand}
 
 # IG caption used by `bin/publish`. Multi-line via YAML's | block scalar.
 caption: |
@@ -73,6 +74,7 @@ slides:
 _REEL_STARTER = """\
 name: "{title}"
 format: {fmt}
+brand: {brand}
 
 caption: |
   Replace this with your IG Reel caption.
@@ -96,6 +98,7 @@ slides:
 _THUMBNAIL_STARTER = """\
 name: "{title}"
 format: {fmt}
+brand: {brand}
 
 slides:
   - layout: youtube-thumbnail
@@ -110,6 +113,7 @@ slides:
 _END_CARD_STARTER = """\
 name: "{title}"
 format: {fmt}
+brand: {brand}
 
 slides:
   - layout: end-card
@@ -126,10 +130,11 @@ _STARTERS_BY_FORMAT = {
 }
 
 
-def make_starter_yaml(title: str, fmt: str = "instagram-portrait") -> str:
-    """Return the starter content.yaml text for a (title, format) pair."""
+def make_starter_yaml(title: str, fmt: str = "instagram-portrait",
+                      brand: str = "itiha") -> str:
+    """Return the starter content.yaml text for a (title, format, brand)."""
     template = _STARTERS_BY_FORMAT.get(fmt, _CAROUSEL_STARTER)
-    return template.format(title=title, fmt=fmt)
+    return template.format(title=title, fmt=fmt, brand=brand)
 
 
 # Legacy alias — old code referenced this directly.

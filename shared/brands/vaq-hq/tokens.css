@@ -1,0 +1,45 @@
+/* ============================================================
+   VAQ HQ — Instagram System tokens
+   Source of truth: reference/vaq-hq-instagram-system.html +
+   reference/vaq-hq-verticals.html (brand kit, 2026-07-07).
+   Flat colour tiles, four vertical accents, orange stays hero.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Serif+Devanagari:wght@600;700&display=swap');
+
+:root {
+  /* ---------- CHANNEL ---------- */
+  --vh-bg:         #0A1119;   /* page / closing bg (near-black navy) */
+  --vh-tile-dark:  #0E1A29;   /* dark slide surface */
+  --vh-surface:    #1B2735;   /* UI surface / gutter */
+  --vh-card:       #101D2E;   /* contained card body */
+  --vh-ink:        #FFFFFF;   /* headlines */
+  --vh-body:       #9FB0C0;   /* muted body copy */
+  --vh-body-2:     #C7D2DD;   /* primary body copy */
+  --vh-muted:      #6E8093;   /* kickers / meta */
+  --vh-muted-2:    #5C6E80;
+  --vh-hairline:   rgba(255,255,255,.07);
+  --vh-hairline-2: rgba(255,255,255,.10);
+  --vh-hairline-3: rgba(255,255,255,.12);
+
+  /* ---------- VERTICAL ACCENTS (one per beat) ---------- */
+  --acc-live:       #F4631E;  /* Current Affairs — hero orange, never changes */
+  --acc-live-ink:   #3A1402;  /* text on orange */
+  --acc-live-ink-2: #7A2C08;  /* muted text on orange */
+  --acc-geo:        #2F6BE0;  /* Geopolitics — The Briefing */
+  --acc-geo-tint:   #CFE0FB;
+  --acc-hist:       #9A3F73;  /* Political History — The Long View */
+  --acc-hist-tint:  #F2D6E6;
+  --acc-hist-mut:   #C77FA8;
+  --acc-india:      #0FA08C;  /* Indian Politics — Ground Report */
+  --acc-india-tint: #CFF3EC;
+
+  /* ---------- TYPE ---------- */
+  --vh-serif:   'Newsreader', Georgia, serif;            /* headline voice */
+  --vh-sans:    'Hanken Grotesk', system-ui, sans-serif;  /* body + Ground Report display */
+  --vh-display: 'Archivo', 'Hanken Grotesk', sans-serif;  /* Live: heavy uppercase */
+  --vh-mono:    'Space Mono', ui-monospace, monospace;    /* kickers / meta */
+  --vh-deva:    'Noto Serif Devanagari', serif;           /* Hindi companions */
+
+  --vh-radius: 16px;
+}

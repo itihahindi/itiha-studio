@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaq HQ · Instagram System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Archivo:wght@600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Serif+Devanagari:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     VAQ HQ — INSTAGRAM SYSTEM TOKENS
+     ============================================================ */
+  :root{
+    /* channel */
+    --vh-bg:        #0A1119;   /* page bg */
+    --vh-tile-dark: #0E1A29;   /* dark grid tile */
+    --vh-surface:   #1B2735;   /* UI surface / grid gutter */
+    --vh-ink:       #FFFFFF;
+    --vh-body:      #9FB0C0;
+    --vh-body-2:    #C7D2DD;
+    --vh-muted:     #6E8093;
+    --vh-muted-2:   #5C6E80;
+
+    /* vertical accents — one per beat */
+    --acc-live:     #F4631E;   /* Current Affairs — hero orange */
+    --acc-live-ink: #3A1402;   /* text on orange */
+    --acc-geo:      #2F6BE0;   /* Geopolitics */
+    --acc-geo-tint: #CFE0FB;
+    --acc-hist:     #9A3F73;   /* Political History */
+    --acc-hist-tint:#F2D6E6;
+    --acc-hist-mut: #C77FA8;
+    --acc-india:    #0FA08C;   /* Indian Politics */
+    --acc-india-tint:#CFF3EC;
+
+    /* type */
+    --serif:  'Newsreader', Georgia, serif;
+    --sans:   'Hanken Grotesk', system-ui, sans-serif;
+    --display:'Archivo', sans-serif;
+    --mono:   'Space Mono', ui-monospace, monospace;
+    --deva:   'Noto Serif Devanagari', serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:var(--sans);background:var(--vh-bg);color:#E6ECF2;padding:52px 32px 90px;}
+  .layout{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 470px;gap:54px;align-items:start;}
+
+  /* left explainer */
+  .explainer{position:sticky;top:40px;}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc-live);font-weight:700;}
+  h1{font-family:var(--serif);font-size:46px;font-weight:600;letter-spacing:-.015em;margin:8px 0 14px;line-height:1.04;color:#fff;}
+  .lede{font-size:15.5px;line-height:1.65;color:var(--vh-body);margin:0 0 30px;}
+  .lede strong{color:#fff;}
+  .key{display:flex;flex-direction:column;gap:14px;}
+  .key-row{display:flex;align-items:center;gap:14px;}
+  .key-swatch{width:26px;height:26px;border-radius:7px;flex:none;}
+  .key-name{font-weight:800;font-size:14px;color:#fff;}
+  .key-name span{color:var(--vh-muted);font-weight:500;}
+  .key-spec{font-family:var(--mono);font-size:10.5px;color:var(--vh-muted);}
+  .footnote{font-family:var(--mono);font-size:11.5px;color:var(--vh-muted);line-height:1.7;margin:30px 0 0;border-top:1px solid rgba(255,255,255,.1);padding-top:20px;}
+
+  /* phone */
+  .phone{background:#000;border-radius:30px;padding:10px;box-shadow:0 30px 70px -30px rgba(0,0,0,.8);}
+  .screen{background:#000;border-radius:22px;overflow:hidden;}
+  .statusbar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px 6px;}
+  .topbar{display:flex;justify-content:space-between;align-items:center;padding:8px 18px 14px;}
+  .handle{font-weight:800;font-size:18px;color:#fff;letter-spacing:-.01em;}
+
+  .profile{padding:4px 18px 0;}
+  .profile-row{display:flex;align-items:center;gap:24px;}
+  .avatar{width:84px;height:84px;border-radius:50%;background:var(--acc-live);display:flex;align-items:center;justify-content:center;flex:none;}
+  .stats{display:flex;gap:26px;flex:1;justify-content:space-around;text-align:center;}
+  .stat-n{font-weight:800;font-size:17px;color:#fff;}
+  .stat-l{font-size:12px;color:var(--vh-body);}
+  .bio-name{font-weight:800;font-size:14px;color:#fff;}
+  .bio-cat{font-size:11.5px;color:var(--vh-muted);}
+  .bio{font-size:13px;color:var(--vh-body-2);line-height:1.5;margin-top:3px;}
+  .bio a{color:#5E9BF0;text-decoration:none;}
+  .btns{display:flex;gap:8px;margin-top:14px;}
+  .btn{flex:1;text-align:center;padding:8px;border-radius:9px;font-weight:700;font-size:13.5px;color:#fff;background:var(--vh-surface);}
+  .btn--follow{background:var(--acc-live);}
+
+  .highlights{display:flex;gap:18px;padding:18px 18px 14px;}
+  .hl{display:flex;flex-direction:column;align-items:center;gap:5px;}
+  .hl-ring{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;border:1.5px solid;}
+  .hl span{font-size:11px;color:var(--vh-body-2);}
+
+  .tabs{display:flex;border-top:1px solid var(--vh-surface);}
+  .tab{flex:1;text-align:center;padding:11px;font-size:15px;color:var(--vh-muted-2);}
+  .tab--active{border-top:1.5px solid #fff;color:#fff;}
+
+  /* grid tiles */
+  .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--vh-surface);}
+  .tile{aspect-ratio:1;padding:11px;display:flex;flex-direction:column;justify-content:space-between;}
+  .tile--dark{background:var(--vh-tile-dark);}
+  .tile-kicker{font-weight:800;font-size:7.5px;letter-spacing:.1em;}
+  /* per-vertical headline treatments */
+  .h-live{font-family:var(--display);font-weight:900;font-size:16px;line-height:.98;color:#fff;text-transform:uppercase;}
+  .h-geo{font-family:var(--serif);font-weight:600;font-size:16px;line-height:1.04;color:#fff;}
+  .h-hist{font-family:var(--serif);font-style:italic;font-weight:500;font-size:17px;line-height:1.02;color:#fff;}
+  .h-india{font-weight:800;font-size:16px;line-height:1.0;color:#fff;letter-spacing:-.01em;}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <!-- ============ LEFT: SYSTEM EXPLAINER ============ -->
+  <div class="explainer">
+    <span class="kicker">Instagram System</span>
+    <h1>Four beats, one grid.</h1>
+    <p class="lede">Each vertical owns an <strong>accent</strong> and a <strong>type treatment</strong>. The mark sits white on colour tiles; orange stays the channel's hero (avatar + Live). Scroll the phone — the grid feels varied but coheres.</p>
+
+    <div class="key">
+      <div class="key-row">
+        <span class="key-swatch" style="background:var(--acc-live);"></span>
+        <div><div class="key-name">Current Affairs <span>— Live</span></div><div class="key-spec">#F4631E · Archivo Black, UPPERCASE</div></div>
+      </div>
+      <div class="key-row">
+        <span class="key-swatch" style="background:var(--acc-geo);"></span>
+        <div><div class="key-name">Geopolitics <span>— The Briefing</span></div><div class="key-spec">#2F6BE0 · Newsreader Semibold</div></div>
+      </div>
+      <div class="key-row">
+        <span class="key-swatch" style="background:var(--acc-hist);"></span>
+        <div><div class="key-name">Political History <span>— The Long View</span></div><div class="key-spec">#9A3F73 · Newsreader Italic</div></div>
+      </div>
+      <div class="key-row">
+        <span class="key-swatch" style="background:var(--acc-india);"></span>
+        <div><div class="key-name">Indian Politics <span>— Ground Report</span></div><div class="key-spec">#0FA08C · Hanken Grotesk 800 + Devanagari</div></div>
+      </div>
+    </div>
+
+    <p class="footnote">Accents share one saturation/value family and steer clear of party colours, so the brand reads neutral and intentional.</p>
+  </div>
+
+  <!-- ============ RIGHT: INSTAGRAM PROFILE MOCK ============ -->
+  <div class="phone">
+    <div class="screen">
+
+      <div class="statusbar">
+        <span style="font-size:13px;font-weight:700;color:#fff;">9:41</span>
+        <span style="font-size:12px;color:#fff;letter-spacing:.04em;">▂▄▆ ▶ ▮▮</span>
+      </div>
+
+      <div class="topbar">
+        <span class="handle">vaqhq</span>
+        <span style="color:#fff;font-size:18px;letter-spacing:.05em;">＋ ☰</span>
+      </div>
+
+      <div class="profile">
+        <div class="profile-row">
+          <div class="avatar">
+            <svg width="46" height="46" viewBox="0 0 100 100" fill="none"><path d="M75 17 A12 12 0 0 1 87 29" stroke="#fff" stroke-width="7" stroke-linecap="round"/><path d="M19 29 L47 75 L75 29" stroke="#fff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="stats">
+            <div><div class="stat-n">428</div><div class="stat-l">posts</div></div>
+            <div><div class="stat-n">214K</div><div class="stat-l">followers</div></div>
+            <div><div class="stat-n">12</div><div class="stat-l">following</div></div>
+          </div>
+        </div>
+        <div style="margin-top:12px;">
+          <div style="display:flex;align-items:baseline;gap:7px;">
+            <span class="bio-name">Vaq HQ</span>
+            <span class="bio-cat">News &amp; Media</span>
+          </div>
+          <div class="bio">Politics, decoded — live. 🇮🇳<br>Geopolitics · History · Ground reports<br><a href="#">vaqhq.com/live</a></div>
+        </div>
+        <div class="btns">
+          <div class="btn btn--follow">Follow</div>
+          <div class="btn">Message</div>
+          <div class="btn" style="flex:0 0 auto;padding:8px 13px;">⌄</div>
+        </div>
+      </div>
+
+      <div class="highlights">
+        <div class="hl"><div class="hl-ring" style="border-color:var(--acc-geo);color:var(--acc-geo);">◆</div><span>Briefing</span></div>
+        <div class="hl"><div class="hl-ring" style="border-color:var(--acc-hist);color:var(--acc-hist);">⧗</div><span>History</span></div>
+        <div class="hl"><div class="hl-ring" style="border-color:var(--acc-india);color:var(--acc-india);">▣</div><span>Ground</span></div>
+        <div class="hl"><div class="hl-ring" style="border-color:var(--acc-live);color:var(--acc-live);">●</div><span>Live</span></div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab tab--active">▦</div>
+        <div class="tab">▷</div>
+        <div class="tab">⛶</div>
+      </div>
+
+      <!-- ======= GRID ======= -->
+      <div class="grid">
+
+        <!-- r1c1 CURRENT AFFAIRS solid -->
+        <div class="tile" style="background:var(--acc-live);">
+          <span class="tile-kicker" style="font-size:8px;color:var(--acc-live-ink);">● LIVE</span>
+          <div class="h-live">Budget vote chaos</div>
+        </div>
+        <!-- r1c2 GEOPOLITICS dark -->
+        <div class="tile tile--dark" style="border-bottom:2px solid var(--acc-geo);">
+          <span class="tile-kicker" style="color:var(--acc-geo);">THE BRIEFING</span>
+          <div class="h-geo">Why the region watches Delhi</div>
+        </div>
+        <!-- r1c3 HISTORY plum -->
+        <div class="tile" style="background:var(--acc-hist);">
+          <span class="tile-kicker" style="font-weight:700;color:var(--acc-hist-tint);">THE LONG VIEW</span>
+          <div class="h-hist">The midnight republic</div>
+        </div>
+
+        <!-- r2c1 INDIAN teal -->
+        <div class="tile" style="background:var(--acc-india);">
+          <span style="font-family:var(--deva);font-weight:600;font-size:9px;color:var(--acc-india-tint);">ज़मीनी हक़ीक़त</span>
+          <div class="h-india">Coalition math, 2026</div>
+        </div>
+        <!-- r2c2 CURRENT dark -->
+        <div class="tile tile--dark" style="border-bottom:2px solid var(--acc-live);">
+          <span class="tile-kicker" style="color:var(--acc-live);">● LIVE</span>
+          <div class="h-live" style="font-weight:800;font-size:15px;line-height:1.0;">Cabinet reshuffle</div>
+        </div>
+        <!-- r2c3 GEOPOLITICS solid -->
+        <div class="tile" style="background:var(--acc-geo);">
+          <span class="tile-kicker" style="color:var(--acc-geo-tint);">THE BRIEFING</span>
+          <div class="h-geo">The Quad, recalibrated again</div>
+        </div>
+
+        <!-- r3c1 HISTORY dark -->
+        <div class="tile tile--dark" style="border-bottom:2px solid var(--acc-hist);">
+          <span class="tile-kicker" style="font-weight:700;color:var(--acc-hist-mut);">THE LONG VIEW</span>
+          <div class="h-hist" style="font-size:16px;line-height:1.04;">When the Emergency fell</div>
+        </div>
+        <!-- r3c2 INDIAN dark -->
+        <div class="tile tile--dark" style="border-bottom:2px solid var(--acc-india);">
+          <span class="tile-kicker" style="letter-spacing:.08em;color:var(--acc-india);">GROUND REPORT</span>
+          <div class="h-india" style="font-size:15px;line-height:1.02;">Inside the state machine</div>
+        </div>
+        <!-- r3c3 CURRENT solid -->
+        <div class="tile" style="background:var(--acc-live);">
+          <span class="tile-kicker" style="font-size:8px;color:var(--acc-live-ink);">● LIVE</span>
+          <div class="h-live">Floor test today</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

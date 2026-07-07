@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaq HQ · Vertical Type System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Archivo:wght@500;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     VAQ HQ — DESIGN TOKENS
+     ============================================================ */
+  :root{
+    /* Palette */
+    --vh-bg:            #0A1119;  /* page background (near-black navy) */
+    --vh-surface:       #101D2E;  /* card body */
+    --vh-surface-alt:   #15263B;  /* card sidebar / strip */
+    --vh-surface-deep:  #0E1A29;  /* history sidebar */
+    --vh-accent:        #F4631E;  /* HERO orange — never changes */
+    --vh-accent-ink:    #3A1402;  /* text on orange */
+    --vh-accent-ink-2:  #7A2C08;  /* muted text on orange */
+    --vh-ink:           #FFFFFF;  /* headlines */
+    --vh-body:          #9FB0C0;  /* body copy */
+    --vh-muted:         #6E8093;  /* kickers / meta */
+    --vh-muted-2:       #5C6E80;
+    --vh-hairline:      rgba(255,255,255,.07);
+    --vh-hairline-2:    rgba(255,255,255,.10);
+    --vh-hairline-3:    rgba(255,255,255,.12);
+
+    /* Type families */
+    --vh-serif:  'Newsreader', Georgia, serif;      /* headline voice */
+    --vh-sans:   'Hanken Grotesk', system-ui, sans-serif; /* body + one display */
+    --vh-display:'Archivo', 'Hanken Grotesk', sans-serif; /* heavy uppercase */
+    --vh-mono:   'Space Mono', ui-monospace, monospace;   /* kickers / labels */
+    --vh-deva:   'Noto Serif Devanagari', serif;    /* Hindi supers */
+
+    /* Radius */
+    --vh-radius: 16px;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:var(--vh-sans);
+    background:var(--vh-bg);
+    color:#E6ECF2;
+    min-height:100vh;
+    padding:52px 32px 90px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1100px;margin:0 auto;}
+
+  /* ---- Header ---- */
+  .head{display:flex;align-items:center;gap:16px;margin-bottom:8px;}
+  .head .kicker{font-family:var(--vh-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--vh-accent);font-weight:700;}
+  .head .rule{height:1px;flex:1;background:var(--vh-hairline-2);}
+  .head .meta{font-family:var(--vh-mono);font-size:12px;color:var(--vh-muted);}
+  h1.title{font-family:var(--vh-serif);font-size:52px;font-weight:600;letter-spacing:-.015em;margin:0 0 14px;line-height:1.02;color:var(--vh-ink);}
+  p.lede{font-size:16.5px;line-height:1.65;color:var(--vh-body);max-width:680px;margin:0 0 16px;}
+  p.lede strong{color:var(--vh-ink);}
+
+  /* ---- Legend ---- */
+  .legend{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:38px;font-family:var(--vh-mono);font-size:11px;color:var(--vh-muted);}
+
+  /* ---- Card system ---- */
+  .cards{display:flex;flex-direction:column;gap:22px;}
+  .card{
+    display:grid;grid-template-columns:230px 1fr;
+    background:var(--vh-surface);
+    border:1px solid var(--vh-hairline);
+    border-radius:var(--vh-radius);
+    overflow:hidden;
+  }
+  .card__side{padding:30px 26px;display:flex;flex-direction:column;justify-content:space-between;}
+  .card__side .idx{font-family:var(--vh-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;}
+  .card__side .face{font-size:10px;margin:14px 0 0;letter-spacing:.06em;font-family:var(--vh-mono);color:var(--vh-muted-2);}
+  .card__body{padding:28px 32px;}
+  .card__cue{display:flex;align-items:center;gap:9px;margin-bottom:14px;}
+  .card__show{font-family:var(--vh-sans);font-weight:700;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--vh-muted);}
+  .card__body h2{margin:0 0 12px;color:var(--vh-ink);}
+  .card__body p{font-family:var(--vh-sans);font-size:15px;line-height:1.55;color:var(--vh-body);margin:0;}
+
+  /* Vertical 01 — CURRENT AFFAIRS: Archivo Black, uppercase, orange sidebar */
+  .v-live .card__side{background:var(--vh-accent);}
+  .v-live .idx{color:var(--vh-accent-ink);}
+  .v-live .side-name{font-family:var(--vh-display);font-weight:900;font-size:30px;line-height:.95;letter-spacing:-.02em;color:#fff;text-transform:uppercase;}
+  .v-live .face{color:var(--vh-accent-ink-2);}
+  .v-live h2{font-family:var(--vh-display);font-weight:800;font-size:34px;line-height:1;letter-spacing:-.025em;text-transform:uppercase;}
+  .badge-live{color:var(--vh-accent);font-family:var(--vh-sans);font-weight:800;font-size:11px;letter-spacing:.1em;}
+
+  /* Vertical 02 — GEOPOLITICS: Newsreader semibold, orange left-border */
+  .v-geo .card__side{background:var(--vh-surface-alt);border-right:3px solid var(--vh-accent);}
+  .v-geo .idx{color:var(--vh-accent);}
+  .v-geo .side-name{font-family:var(--vh-serif);font-weight:600;font-size:32px;line-height:1;letter-spacing:-.01em;color:#fff;}
+  .v-geo h2{font-family:var(--vh-serif);font-weight:600;font-size:34px;line-height:1.06;letter-spacing:-.01em;}
+  .badge-solid{background:var(--vh-accent);color:#fff;font-family:var(--vh-sans);font-weight:800;font-size:9.5px;letter-spacing:.12em;padding:3px 7px;border-radius:3px;}
+
+  /* Vertical 03 — POLITICAL HISTORY: Newsreader ITALIC, deep sidebar */
+  .v-hist .card__side{background:var(--vh-surface-deep);}
+  .v-hist .idx{color:var(--vh-accent);}
+  .v-hist .side-name{font-family:var(--vh-serif);font-style:italic;font-weight:500;font-size:34px;line-height:1;letter-spacing:-.01em;color:#fff;}
+  .v-hist h2{font-family:var(--vh-serif);font-weight:500;font-size:34px;line-height:1.06;letter-spacing:-.01em;}
+  .v-hist h2 em{font-style:italic;color:var(--vh-accent);}
+  .badge-outline{border:1px solid var(--vh-accent);color:var(--vh-accent);font-family:var(--vh-sans);font-weight:700;font-size:9.5px;letter-spacing:.12em;padding:3px 7px;border-radius:3px;}
+
+  /* Vertical 04 — INDIAN POLITICS: Hanken Grotesk 800, Devanagari companion */
+  .v-india .card__side{background:var(--vh-surface-alt);}
+  .v-india .idx{color:var(--vh-accent);}
+  .v-india .side-name{font-family:var(--vh-sans);font-weight:800;font-size:30px;line-height:1;letter-spacing:-.02em;color:#fff;}
+  .v-india h2{font-family:var(--vh-sans);font-weight:800;font-size:32px;line-height:1.05;letter-spacing:-.02em;}
+  .deva{font-family:var(--vh-deva);font-weight:600;font-size:13px;color:#8DA0B2;}
+
+  /* ---- Shared mark strip ---- */
+  .mark-strip{margin-top:30px;background:var(--vh-surface-alt);border:1px solid var(--vh-hairline);border-radius:var(--vh-radius);padding:26px 32px;display:flex;align-items:center;gap:26px;flex-wrap:wrap;}
+  .mark-strip .wordmark{font-family:var(--vh-serif);font-weight:600;font-size:30px;letter-spacing:-.01em;}
+  .mark-strip .wordmark .v{color:#fff;}
+  .mark-strip .wordmark .hq{color:var(--vh-accent);}
+  .mark-strip .divider{height:34px;width:1px;background:var(--vh-hairline-3);}
+  .mark-strip p{font-family:var(--vh-sans);font-size:14px;line-height:1.55;color:var(--vh-body);margin:0;flex:1;min-width:240px;}
+  .mark-strip p em{color:#fff;font-style:italic;}
+
+  .footnote{font-family:var(--vh-mono);font-size:12px;color:var(--vh-muted);text-align:center;margin:34px 0 0;line-height:1.8;}
+  .footnote .accent{color:var(--vh-accent);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <div class="head">
+      <span class="kicker">Vertical System</span>
+      <span class="rule"></span>
+      <span class="meta">one system · four voices</span>
+    </div>
+    <h1 class="title">One brand. Four signatures.</h1>
+    <p class="lede">Every show shares the same two fonts — <strong>Newsreader</strong> (serif) and <strong>Archivo / Hanken Grotesk</strong> (sans) — so the channel always reads as Vaq&nbsp;HQ. Each vertical is told apart by its <strong>treatment</strong>: which face, what weight, the case, and a fixed accent cue. Orange stays the hero throughout.</p>
+
+    <!-- LEGEND -->
+    <div class="legend">
+      <span><span style="color:var(--vh-accent);">▮</span> shared mark</span>
+      <span><span style="color:#fff;">▮</span> display = headline voice</span>
+      <span><span style="color:var(--vh-body);">▮</span> sans = kicker / body</span>
+    </div>
+
+    <div class="cards">
+
+      <!-- 01 CURRENT AFFAIRS -->
+      <div class="card v-live">
+        <div class="card__side">
+          <span class="idx">01 · Live</span>
+          <div>
+            <div class="side-name">Current<br>Affairs</div>
+            <p class="face">Archivo Black · UPPERCASE</p>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="card__cue">
+            <span class="badge-live">● LIVE</span>
+            <span class="card__show">Vaq HQ Breaking</span>
+          </div>
+          <h2>Parliament erupts over budget vote</h2>
+          <p>Urgent, loud, built for thumbnails &amp; lower-thirds. The face you read at a glance while scrolling.</p>
+        </div>
+      </div>
+
+      <!-- 02 GEOPOLITICS -->
+      <div class="card v-geo">
+        <div class="card__side">
+          <span class="idx">02 · The Briefing</span>
+          <div>
+            <div class="side-name">Geo&shy;politics</div>
+            <p class="face">Newsreader · Semibold</p>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="card__cue">
+            <span class="badge-solid">GEOPOLITICS</span>
+            <span class="card__show">The Briefing</span>
+          </div>
+          <h2>Why the neighbourhood watches Delhi</h2>
+          <p>Authoritative and composed — masthead gravitas for analysis that needs to feel credible and considered.</p>
+        </div>
+      </div>
+
+      <!-- 03 POLITICAL HISTORY -->
+      <div class="card v-hist">
+        <div class="card__side">
+          <span class="idx">03 · The Long View</span>
+          <div>
+            <div class="side-name">Political<br>History</div>
+            <p class="face">Newsreader · Italic</p>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="card__cue">
+            <span class="badge-outline">HISTORY</span>
+            <span class="card__show">The Long View</span>
+          </div>
+          <h2>The midnight that made a republic, <em>retold</em></h2>
+          <p>Reflective and editorial — the italic signals "step back in time." Same serif, a softer register.</p>
+        </div>
+      </div>
+
+      <!-- 04 INDIAN POLITICS -->
+      <div class="card v-india">
+        <div class="card__side">
+          <span class="idx">04 · Ground Report</span>
+          <div>
+            <div class="side-name">Indian<br>Politics</div>
+            <p class="face">Hanken Grotesk · 800</p>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="card__cue">
+            <span class="badge-solid">GROUND REPORT</span>
+            <span class="deva">ज़मीनी हक़ीक़त</span>
+          </div>
+          <h2>Inside the coalition math of 2026</h2>
+          <p>Clean, modern, direct — sans for the home turf, with a Devanagari companion for Hindi supers.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SHARED MARK STRIP -->
+    <div class="mark-strip">
+      <svg width="50" height="50" viewBox="0 0 100 100" fill="none" aria-label="Vaq HQ mark">
+        <path d="M75 8 A21 21 0 0 1 96 29" stroke="#4A6076" stroke-width="6" stroke-linecap="round"/>
+        <path d="M75 17 A12 12 0 0 1 87 29" stroke="#F4631E" stroke-width="6" stroke-linecap="round"/>
+        <path d="M19 29 L47 75 L75 29" stroke="#F4631E" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="wordmark"><span class="v">Vaq</span> <span class="hq">HQ</span></div>
+      <span class="divider"></span>
+      <p>The mark and wordmark never change between shows — that constant is what lets the four voices feel like variety <em>within</em> one channel, not four channels.</p>
+    </div>
+
+    <p class="footnote">One system, four signatures. Orange is the constant hero; the <span class="accent">typeface treatment</span> is what tells each vertical apart.</p>
+
+  </div>
+</body>
+</html>

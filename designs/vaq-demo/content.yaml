@@ -1,0 +1,53 @@
+name: vaq-demo
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Layout system demo — one carousel, four verticals, six layouts.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Demo
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: true
+  seriesLabel: SYSTEM
+slides:
+- layout: closing
+  vertical: live
+  subline: What the floor test means, in five slides
+  swipe_meta: Swipe ▸ · 6 slides · 2 min
+  surface: dark
+  image: https://static01.nyt.com/images/2023/05/28/multimedia/28india-parliament-01-mvct/28india-parliament-01-mvct-mediumSquareAt3X.jpg
+  image_position: 52% 41%
+  quote: ssss
+- layout: story
+  vertical: briefing
+  headline: |
+    Why the region
+    watches *Delhi*
+  body: |
+    Three capitals adjusted policy within [48 hours] of the announcement. The pattern is not deference — it is [hedging], and it has a price. _Realpolitik_ rarely announces itself; **it compounds**.
+- layout: quote
+  vertical: longview
+  quote: The midnight that made a republic was drafted at noon, in committee, by men who disagreed.
+  attribution: The Long View, Ep. 12
+- layout: stat
+  vertical: ground
+  label: The number that decides it
+  value: '272'
+  sublabel: seats to a simple majority
+  body: |
+    Every coalition script this year is written against [one number]. Cross it and the rest is ceremony.
+- layout: split-story
+  vertical: briefing
+  image: _cache/976011f73917f0d7.jpg
+  headline: |
+    The map is not
+    the *territory*
+  body: |
+    Placeholder image — split-story pairs a flat photo block with the briefing voice below an accent divider.
+- layout: closing
+  headline: |
+    Politics, decoded — live.
+  handle: Follow @vaqhq · vaqhq.com

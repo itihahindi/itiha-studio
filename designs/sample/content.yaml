@@ -32,7 +32,10 @@ slides:
     _italics_ for foreign words, and **bold** for selective stress.
   image_bw: true
   surface: dark
-- layout: closing
+  vertical: ground
+  image: _cache/8a8efdcd48205d42.jpg
+  image_position: 46% 55%
+- layout: cover
   headline: |
     The Closing
     *Line.*
@@ -46,3 +49,10 @@ slides:
   body: |
     A short, declarative paragraph that lands the final point. Optional.
   handle: Follow @yourhandle
+  texture: grid
+  vertical: live
+  surface: solid
+  image_caption: ssss
+  image: https://www.reuters.com/resizer/v2/TRYWQIUD7VKG5KFX22BAI45KDI.jpg?auth=bef0da54332bbb3b36e0f3f911d7d61996cee5d33be001c27f15df0094a44235&width=640&quality=80
+  image_height: 500
+  image_position: 68% 0%

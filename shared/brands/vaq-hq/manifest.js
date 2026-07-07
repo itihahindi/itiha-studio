@@ -10,8 +10,13 @@ const _VERTICAL_FIELD = {
 };
 const _SURFACE_FIELD = {
   key: "surface", type: "select", label: "Surface",
-  options: ["", "solid", "dark"], default: "",
-  help: "solid = the vertical's accent colour tile. dark = navy tile with accent rule.",
+  options: ["", "light", "solid"], default: "",
+  help: "light = paper interior with the vertical's top rule. solid = accent poster tile (use for photo-less slides).",
+};
+const _TEXTURE_FIELD = {
+  key: "texture", type: "select", label: "Texture",
+  options: ["", "grid", "riso", "dots", "signal"], default: "",
+  help: "VAQ-native overlays: grid = ruled newsroom paper · riso = print grain · dots = Ben-Day corner field · signal = ghosted mark arcs. Combine with commas.",
 };
 const _KICKER_META = {
   key: "kicker_meta", type: "text", label: "Kicker meta",
@@ -21,31 +26,35 @@ const _KICKER_META = {
 window.MANIFEST = {
   "cover": {
     label: "Cover",
-    summary: "Solid accent opener — badge row, huge vertical-voice headline, subline.",
+    summary: "Poster-tile opener — ghost index, badge row, huge vertical-voice headline.",
     fields: [
       _VERTICAL_FIELD,
-      { ..._SURFACE_FIELD, help: "Covers default to solid (accent tile)." },
+      { ..._SURFACE_FIELD, help: "Covers default to solid (accent poster tile); light = newsroom cover." },
       _KICKER_META,
-      { key: "headline",   type: "textarea", label: "Headline", help: "*word* = emphasis (tint on solid, accent highlight on dark)." },
+      { key: "headline",   type: "textarea", label: "Headline", help: "*word* = emphasis (white/tint on solid; highlighter block on light)." },
       { key: "subline",    type: "text",     label: "Subline" },
-      { key: "swipe_meta", type: "text",     label: "Swipe meta", help: "e.g. Swipe ▸ · 8 slides · 3 min" },
-      { key: "headline_size",     type: "number", label: "Headline size (px)", help: "Blank = per-vertical default (122–148)." },
+      { key: "show_index", type: "bool",     label: "Ghost index numeral", default: true },
+      _TEXTURE_FIELD,
+      { key: "headline_size",     type: "number", label: "Headline size (px)", help: "Blank = per-vertical default (106–118)." },
       { key: "headline_offset_y", type: "number", label: "Headline offset Y (px)", default: 0, step: 10 },
     ],
   },
 
   "story": {
     label: "Story",
-    summary: "Interior workhorse — kicker, headline, body, optional contained image card.",
+    summary: "Light interior workhorse — kicker, headline, body, optional framed image with caption/credit. surface: solid = type poster.",
     fields: [
       _VERTICAL_FIELD,
       _SURFACE_FIELD,
       _KICKER_META,
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "body",          type: "textarea", label: "Body", help: "[word] = accent emphasis · _italic_ · **bold**." },
-      { key: "image",         type: "image",    label: "Image (contained card)" },
+      { key: "image",         type: "image",    label: "Image (framed)" },
       { key: "image_position",type: "image-position", label: "Image crop" },
-      { key: "image_caption", type: "text",     label: "Image caption", help: "Mono caption under the card." },
+      { key: "image_height",  type: "number",   label: "Image height (px)", default: 470, step: 20 },
+      { key: "image_caption", type: "text",     label: "Image caption", help: "Mono caption under the frame (left)." },
+      { key: "image_credit",  type: "text",     label: "Image credit", help: "e.g. PTI · under the frame (right)." },
+      _TEXTURE_FIELD,
       { key: "headline_size",     type: "number", label: "Headline size (px)", help: "Blank = per-vertical default (84–92)." },
       { key: "body_size",         type: "number", label: "Body size (px)", default: 41 },
       { key: "headline_offset_y", type: "number", label: "Headline offset Y (px)", default: 0, step: 10 },
@@ -55,13 +64,15 @@ window.MANIFEST = {
 
   "split-story": {
     label: "Split Story",
-    summary: "Flat photo block on top with accent divider; kicker + headline + body below.",
+    summary: "Flat photo block on top with accent divider; paper text block below.",
     fields: [
       _VERTICAL_FIELD,
       _KICKER_META,
       { key: "image",         type: "image",    label: "Image (top block)" },
       { key: "image_position",type: "image-position", label: "Image crop" },
-      { key: "image_height",  type: "number",   label: "Image height (px)", default: 600, step: 20 },
+      { key: "image_height",  type: "number",   label: "Image height (px)", default: 580, step: 20 },
+      { key: "image_credit",  type: "text",     label: "Image credit", help: "Pill overlay, bottom-right of the photo." },
+      _TEXTURE_FIELD,
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "body",          type: "textarea", label: "Body" },
       { key: "headline_size", type: "number",   label: "Headline size (px)" },
@@ -77,6 +88,7 @@ window.MANIFEST = {
       _VERTICAL_FIELD,
       _SURFACE_FIELD,
       _KICKER_META,
+      _TEXTURE_FIELD,
       { key: "quote",        type: "textarea", label: "Quote" },
       { key: "attribution",  type: "text",     label: "Attribution" },
       { key: "quote_size",   type: "number",   label: "Quote size (px)", default: 72 },
@@ -91,6 +103,7 @@ window.MANIFEST = {
       _VERTICAL_FIELD,
       _SURFACE_FIELD,
       _KICKER_META,
+      _TEXTURE_FIELD,
       { key: "label",    type: "text",     label: "Label (above, mono)" },
       { key: "value",    type: "text",     label: "Value (big)" },
       { key: "sublabel", type: "text",     label: "Sub-label (below)" },
@@ -103,8 +116,9 @@ window.MANIFEST = {
 
   "closing": {
     label: "Closing",
-    summary: "Channel signature — mark, wordmark, four accent dots, follow line.",
+    summary: "Paper channel signature — mark, wordmark, four accent dots, follow line.",
     fields: [
+      _TEXTURE_FIELD,
       { key: "headline",      type: "textarea", label: "Headline (optional)" },
       { key: "body",          type: "textarea", label: "Body (optional)" },
       { key: "handle",        type: "text",     label: "Handle line", help: "e.g. Follow @vaqhq · vaqhq.com" },

@@ -47,7 +47,9 @@ MICRO-SYNTAX:
 - Body: [word] → accent key term · _word_ → italic · **word** → bold.
 
 VOICE: declarative, concrete, non-partisan. Numbers, names, dates. No emoji,
-no clickbait, no hedging. Headlines ≤ 8 words. Body ≤ 3 sentences per slide.`,
+no clickbait, no hedging. NEVER use em dashes (—) or semicolons; write short
+plain sentences instead. Headlines ≤ 8 words. Body ≤ 2 short sentences per
+slide (≤ ~20 words total). One idea per slide. Low cognitive load wins.`,
 
   topicPrompt: `Topic: <<<REPLACE WITH YOUR TOPIC>>>
 Vertical (live | briefing | longview | ground): <<<REPLACE>>>

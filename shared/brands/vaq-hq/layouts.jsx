@@ -16,21 +16,43 @@ function CoverSlide({ slide, index }) {
   const surface = surfaceFor(slide, v, 'solid');
   const {
     headline = '', subline, kicker_meta, texture,
+    image, image_position, image_height = 560, image_credit,
     headline_size, headline_offset_y = 0, show_index,
   } = slide;
-  const hSize = headline_size || headlineDefaultSize(v, 'cover');
+  // With an image panel the headline drops to interior scale so the
+  // composition still fits the tile.
+  const hSize = headline_size || headlineDefaultSize(v, image ? 'inner' : 'cover');
   const pal = surface.onSolid ? solidPalette(v) : null;
   return (
     <VSlide v={v} surface={surface} texture={texture}>
-      {show_index !== false && <VGhostIndex n={index + 1} v={v} onSolid={surface.onSolid} />}
+      {show_index === true && <VGhostIndex n={index + 1} v={v} onSolid={surface.onSolid} />}
       <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column' }}>
         <VKicker v={v} onSolid={surface.onSolid} meta={kicker_meta} />
+        {image && (
+          <div style={{
+            marginTop: 44, position: 'relative', borderRadius: 14, overflow: 'hidden',
+            border: `1px solid ${surface.onSolid ? 'rgba(255,255,255,.35)' : VAQ.hairL}`,
+            height: image_height, background: 'rgba(0,0,0,.15)',
+          }}>
+            <img src={image.startsWith('http') ? image : `images/${image}`} style={{
+              width: '100%', height: '100%', objectFit: 'cover',
+              objectPosition: image_position || 'center',
+            }} />
+            {image_credit && (
+              <div style={{
+                position: 'absolute', right: 18, bottom: 18,
+                fontFamily: VAQ.mono, fontSize: 18, letterSpacing: '.1em', textTransform: 'uppercase',
+                color: '#fff', background: 'rgba(10,17,25,.55)', padding: '5px 12px', borderRadius: 6,
+              }}>{image_credit}</div>
+            )}
+          </div>
+        )}
         <div style={{ flex: 1 }} />
-        <div style={{ transform: `translateY(${headline_offset_y - 40}px)` }}>
+        <div style={{ transform: `translateY(${headline_offset_y - (image ? 20 : 40)}px)` }}>
           <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} />
           {subline && (
             <div style={{
-              marginTop: 36, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 34, lineHeight: 1.4,
+              marginTop: 36, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 38, lineHeight: 1.4,
               color: surface.onSolid ? pal.body : VAQ.bodyL,
               maxWidth: 840,
             }}>{subline}</div>
@@ -54,7 +76,7 @@ function StorySlide({ slide, index }) {
   const {
     headline = '', body, kicker_meta, texture,
     image, image_caption, image_credit, image_position, image_height = 470,
-    headline_size, body_size = 41, headline_offset_y = 0, body_offset_y = 0,
+    headline_size, body_size = 46, headline_offset_y = 0, body_offset_y = 0,
   } = slide;
   const hSize = headline_size || headlineDefaultSize(v, 'inner');
   const capParts = [image_caption, image_credit].filter(Boolean);
@@ -112,7 +134,7 @@ function SplitStorySlide({ slide, index }) {
   const {
     headline = '', body, kicker_meta, texture,
     image, image_position, image_height = 580, image_credit,
-    headline_size, body_size = 40, body_offset_y = 0,
+    headline_size, body_size = 45, body_offset_y = 0,
   } = slide;
   const hSize = headline_size || Math.round(headlineDefaultSize(v, 'inner') * 0.94);
   return (
@@ -197,7 +219,7 @@ function StatSlide({ slide, index }) {
   const surface = surfaceFor(slide, v, 'light');
   const {
     label, value = '', sublabel, body, kicker_meta, texture,
-    stat_size = 250, body_size = 38, stats_offset_y = 0,
+    stat_size = 250, body_size = 43, stats_offset_y = 0,
   } = slide;
   const pal = surface.onSolid ? solidPalette(v) : null;
   return (
@@ -266,7 +288,7 @@ function ClosingSlide({ slide, index }) {
         )}
         {body && (
           <div style={{ marginTop: 34, maxWidth: 760 }}>
-            <VBody text={body} v={v} size={34} color={VAQ.bodyL} style={{ textAlign: 'center' }} />
+            <VBody text={body} v={v} size={38} color={VAQ.bodyL} style={{ textAlign: 'center' }} />
           </div>
         )}
         {handle && (

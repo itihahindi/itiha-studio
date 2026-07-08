@@ -162,7 +162,7 @@ function VBody({ text, v, size = 40, onSolid, color, style }) {
   const pal = onSolid ? solidPalette(v) : null;
   const base = {
     margin: 0, fontFamily: VAQ.sans, fontWeight: 400, fontSize: size,
-    lineHeight: size <= 36 ? 1.65 : size <= 46 ? 1.6 : 1.45,
+    lineHeight: size <= 38 ? 1.65 : size <= 50 ? 1.58 : 1.45,
     color: color || (onSolid ? pal.body : VAQ.bodyL),
     textWrap: 'pretty',
   };

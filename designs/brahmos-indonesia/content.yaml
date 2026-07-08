@@ -1,0 +1,76 @@
+name: brahmos-indonesia
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  India and Indonesia sealed a major defense deal in Jakarta. Indonesia will acquire the BrahMos supersonic cruise missile, becoming its third foreign buyer after the Philippines and Vietnam.
+
+  The agreement was one of more than a dozen signed during Prime Minister Narendra Modi's three-day visit. It came a day after China test-launched a long-range ballistic missile. The BrahMos flies at three times the speed of sound and launches from land, ships, submarines and aircraft. President Prabowo Subianto called the visit a "historic milestone." The two sides also agreed to deepen maritime security cooperation along the routes linking the Indian and Pacific oceans.
+
+  Modi addresses Indonesia's Parliament next, then travels to Yogyakarta before flying on to Australia.
+hashtags: |
+  #VaqHQ #BrahMos #India #Indonesia #Modi #Prabowo #Geopolitics #Defence #IndoPacific
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: true
+  seriesLabel: BRAHMOS
+slides:
+- layout: cover
+  surface: solid
+  texture: riso
+  headline: |
+    India Sells
+    *BrahMos* To
+    Indonesia
+  subline: Modi and Prabowo seal the deal in Jakarta
+  image: cover-collage.jpg
+  image_credit: REUTERS · AGENCIES
+- layout: story
+  texture: grid
+  headline: |
+    A dozen deals.
+    One *missile.*
+  body: |
+    Signed Tuesday at [Merdeka Palace]. One of [a dozen deals] from Modi's three-day visit.
+  image: _cache/a9ba775456c598a9.jpg
+  image_caption: BrahMos test launch, Chandipur
+  image_credit: PIB · GODL-IN
+  image_position: 50% 27%
+- layout: stat
+  label: Supersonic cruise missile
+  value: 3×
+  sublabel: the speed of sound
+  body: |
+    Too fast to comfortably [intercept]. Launches from [land, sea and air].
+  texture: grid
+- layout: story
+  surface: solid
+  texture: dots
+  headline: |
+    Third buyer.
+    One *message.*
+  body: |
+    Indonesia joins the [Philippines] and [Vietnam]. Coastal defense for the [South China Sea] chokepoints.
+- layout: quote
+  texture: signal
+  quote: |
+    We are two of the world's largest democracies. Cooperation between our countries will certainly bring benefits to the region.
+  attribution: President Prabowo Subianto · Merdeka Palace
+- layout: story
+  texture: grid
+  headline: |
+    The *timing* is
+    the message
+  body: |
+    It came [a day after] China tested a long-range ballistic missile.
+
+    Next for Modi: [Indonesia's Parliament], then the [Prambanan] temple in Yogyakarta.
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbefHn5DsDTPARCPOXUitEjugATi3NJ9ylN5PkbGrCKQ&s=10
+  image_position: 0% 16%
+- layout: closing
+  texture: grid
+  headline: |
+    Politics, decoded. Live.
+  body: |
+    Source: Associated Press, Jakarta.
+  handle: 'Follow @vaqhq '

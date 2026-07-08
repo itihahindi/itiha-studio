@@ -1,0 +1,33 @@
+name: us-iran-hormuz
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  The ceasefire just met its hardest test.
+
+  CENTCOM began what it calls a series of powerful strikes on Iran on Tuesday. The trigger: Iranian attacks on three commercial ships in the Strait of Hormuz. Washington calls it a clear violation of the ceasefire.
+
+  The June memorandum ended the war and reopened the strait. It now has to survive this. Earlier in the day, the US also revoked Iran's oil sales authorization. Oil futures jumped. Trump is in Ankara for the NATO summit, one border away from Iran.
+
+  One of the world's most critical oil chokepoints is back in play. Watch it.
+
+  Source: CNBC.
+
+  Follow @vaqhq for live coverage · vaqhq.com
+hashtags: |
+  #VaqHQ #Iran #Hormuz #CENTCOM #OilPrices #BreakingNews #Geopolitics
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: story
+  surface: solid
+  texture: riso
+  kicker_meta: HORMUZ · 07 JUL
+  headline: |
+    US resumes
+    strikes on *Iran*
+  vertical: live
+  image: https://pbs.twimg.com/media/HMqCl6nWAAApfcc?format=jpg&name=large
+  image_height: 540
+  headline_size: 130

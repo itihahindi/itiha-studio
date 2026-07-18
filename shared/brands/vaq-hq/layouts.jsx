@@ -300,6 +300,66 @@ function ClosingSlide({ slide, index }) {
   );
 }
 
+// ── REEL-FRAME ────────────────────────────────────────────────
+// 1080×1920 header panel for reposted video (Tatva-style, in VAQ language):
+// paper panel up top — wordmark row, kicker, highlighter headline, subline,
+// via-credit — and a placeholder video zone below. src/reel.py crops the
+// panel strip from the rendered PNG and stacks the fetched video under it,
+// so everything above `panel_height` is the frame; below it is replaced.
+function ReelFrameSlide({ slide, index }) {
+  const t = useTweaks();
+  const v = verticalFor(slide, t);
+  const surface = surfaceFor(slide, v, 'light');
+  const {
+    headline = '', subline, kicker_meta, texture, credit, video_url,
+    panel_height = 560, headline_size = 66, headline_offset_y = 0,
+  } = slide;
+  return (
+    <VSlide v={v} surface={surface} texture={texture}>
+      {/* Video zone — placeholder only; the composer replaces this region. */}
+      <div style={{
+        position: 'absolute', left: 0, right: 0, top: panel_height, bottom: 0,
+        background: '#0E141C', display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center', gap: 20,
+      }}>
+        <VMark size={64} mono />
+        <div style={{
+          fontFamily: VAQ.mono, fontSize: 22, letterSpacing: '.2em',
+          textTransform: 'uppercase', color: 'rgba(255,255,255,.4)',
+          maxWidth: 800, textAlign: 'center',
+        }}>{video_url ? 'video linked · compose to fill' : 'paste a link in Video URL'}</div>
+      </div>
+      {/* Header panel — everything the composer keeps. */}
+      <div style={{
+        position: 'absolute', left: 0, right: 0, top: 0, height: panel_height,
+        padding: `${PAD - 20}px ${PAD - 8}px 30px`, boxSizing: 'border-box',
+        display: 'flex', flexDirection: 'column',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <VWordmark size={34} />
+          <VKicker v={v} onSolid={false} meta={kicker_meta} />
+        </div>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center',
+                      transform: `translateY(${headline_offset_y}px)` }}>
+          <VHeadline text={headline} v={v} size={headline_size} />
+          {subline && (
+            <div style={{
+              marginTop: 26, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 34,
+              lineHeight: 1.4, color: VAQ.bodyL, maxWidth: 900,
+            }}>{subline}</div>
+          )}
+        </div>
+        {credit && (
+          <div style={{
+            fontFamily: VAQ.mono, fontSize: 20, letterSpacing: '.1em',
+            textTransform: 'uppercase', color: VAQ.mutedL, textAlign: 'right',
+          }}>{credit}</div>
+        )}
+      </div>
+    </VSlide>
+  );
+}
+
 window.LAYOUTS = {
   'cover':       CoverSlide,
   'story':       StorySlide,
@@ -307,4 +367,5 @@ window.LAYOUTS = {
   'quote':       QuoteSlide,
   'stat':        StatSlide,
   'closing':     ClosingSlide,
+  'reel-frame':  ReelFrameSlide,
 };

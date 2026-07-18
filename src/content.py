@@ -110,10 +110,34 @@ def _download(url: str, dest: Path) -> None:
         raise last_error
 
 
+_HTML_SIGNATURES = (b"<!doctype", b"<html", b"<!DOCTYPE", b"<HTML")
+
+
+def _extract_og_image(page_url: str) -> str:
+    """Fetch a web page and return its og:image URL (Instagram posts etc.)."""
+    import html as _html
+    import re as _re
+    import tempfile
+
+    with tempfile.NamedTemporaryFile(suffix=".html", delete=False) as tmp:
+        tmp_path = Path(tmp.name)
+    try:
+        _download(page_url, tmp_path)
+        text = tmp_path.read_text(encoding="utf-8", errors="ignore")
+    finally:
+        tmp_path.unlink(missing_ok=True)
+    m = _re.search(r'property="og:image"\s+content="([^"]+)"', text)
+    if not m:
+        raise ContentError(f"no og:image found on {page_url}")
+    return _html.unescape(m.group(1))
+
+
 def resolve_image(value: str | None, design_dir: Path) -> str | None:
     """Return the page-relative path to the image, idempotent over saves.
 
     URLs → download to images/_cache/, return "_cache/<file>".
+    Instagram post/reel page links → the page's og:image is fetched instead
+    (logged-out Instagram serves ~640px; drop a file in images/ for full res).
     Local filename → verify it exists, return bare filename (no "images/" prefix).
     Tolerate inputs that already start with "images/" (from older YAML files).
     """
@@ -124,14 +148,25 @@ def resolve_image(value: str | None, design_dir: Path) -> str | None:
         cache_dir = images_dir / "_cache"
         canonical = _canonical_url(value)
         h = hashlib.sha1(canonical.encode()).hexdigest()[:16]
-        ext = _ext_from_url(canonical)
+        host = urllib.parse.urlparse(canonical).netloc
+        is_page_link = "instagram.com" in host
+        ext = ".jpg" if is_page_link else _ext_from_url(canonical)
         local = cache_dir / f"{h}{ext}"
         if not local.exists():
             print(f"  fetch  {canonical}")
             try:
-                _download(canonical, local)
+                target = _extract_og_image(canonical) if is_page_link else canonical
+                _download(target, local)
+            except ContentError:
+                raise
             except Exception as e:
                 raise ContentError(f"failed to download {canonical}: {e}")
+            if local.read_bytes()[:512].lstrip().startswith(_HTML_SIGNATURES):
+                local.unlink()
+                raise ContentError(
+                    f"{canonical} returned a web page, not an image — "
+                    f"paste a direct image URL or drop the file into images/"
+                )
         return f"_cache/{local.name}"
 
     # Tolerate either bare filename or "images/<name>"
@@ -155,6 +190,7 @@ KNOWN_LAYOUTS = {
     # Standalone formats
     "quote-card",         # 1080×1080
     "reel-title",         # 1080×1920
+    "reel-frame",         # 1080×1920 — vaq-hq header panel for reposted video (src/reel.py)
     "youtube-thumbnail",  # 1280×720
     "end-card",           # 1920×1080
 }

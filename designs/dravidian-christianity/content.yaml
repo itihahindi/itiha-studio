@@ -1,0 +1,136 @@
+name: dravidian-christianity-the-fabrication
+brand: itiha
+format: instagram-portrait
+caption: |
+  In the nineteenth century, an Anglican missionary named Bishop Robert Caldwell formulated the concept of a separate "Dravidian race" — a linguistic-turned-racial narrative claiming that cunning, fair-skinned Aryan Brahmins from the North had invaded and enslaved the innocent, dark-skinned Dravidians of the South. He was explicit about the goal. Detaching the masses from Hinduism, he wrote, would prepare them for "the propagation of the grand and soul-stirring truths of Christianity." One hundred and fifty years later, the framework Caldwell built is being deployed at scale — through academic institutions, evangelical networks, and international human-rights bodies — to construct what its proponents now openly call "Dravidian Christianity."
+
+  This carousel documents the five components of the strategy. First, the inversion of Indian history through Caldwell's Aryan-Dravidian race theory. Second, the fabrication of the St. Thomas myth — the historically baseless claim that the Apostle Thomas visited South India in 52 CE and personally converted the Tamil sage Thiruvalluvar, formalised in evangelical training manuals that declare "India is a Thomas-Dravidian Christian Nation." Third, the digestion of Tamil classics — G.U. Pope's nineteenth-century claim that the Thirukural is an echo of the Sermon on the Mount, the projection of Saiva Siddhanta as a stepping-stone monotheism approximating Christianity, and the assertion that ancient Tamil bridal mysticism was derived from the Song of Solomon. Fourth, the appropriation of Hindu art — Catholic priests inventing "Christian mudras" for Bharatanatyam, and Dravidian Christian propagandists reinterpreting the Somaskanda sculpture as a revelation of the Trinity. Fifth, the weaponisation of the Dravidian-Dalit identity by the Lutheran World Federation, the World Council of Churches, and the Dalit Freedom Network — lobbying the UN, EU, and US government to equate the Indian caste system with racial apartheid, and justify international intervention in India's domestic affairs.
+
+  Dravidian Christianity is not a religion. It is a five-part method for detaching a civilisation from itself. The method is visible. The specific institutions running it are named in the record.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #DravidianChristianity #RobertCaldwell #Thiruvalluvar #Bharatanatyam #RajivMalhotra #CulturalAppropriation #TamilHistory
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  seriesLabel: DRAVIDIAN
+slides:
+- layout: cover
+  eyebrow: Aryan Invasion of India
+  eyebrow_meta: Dravidian Christianity · 7 Parts
+  headline: |
+    The Fabrication Of
+    Dravidian *Christianity.*
+  subline: A five-part method to detach South India from itself
+  swipe_meta: Swipe ▸ · 9 Slides · 5 min read
+  image: _cache/c87993b8ce93a7f6.jpeg
+  image_position: 47% 78%
+  headline_offset_y: 220
+- layout: split-story
+  chapter: Method 01 · The Architect
+  name: Bishop Robert Caldwell
+  dates: 1814–1891
+  role: The Anglican missionary who invented the "Dravidian race"
+  headline: |
+    He Turned A Language
+    Into A *Race.*
+  body: 'In the [19th century], the Anglican missionary [Robert Caldwell] formulated the concept of a
+    separate [Dravidian race]. He [weaponised] linguistic differences to construct a [racial narrative],
+    claiming that cunning, fair-skinned [Aryan Brahmins] from the North had [invaded] and [enslaved] the
+    [innocent, dark-skinned Dravidians] of the South. '
+  image: caldwell.jpg
+  image_filter: archival
+  body_y: 25
+  image_overlay: 1.2
+  image_bw: true
+  body_size: 50
+- layout: split-story
+  chapter: Chapter 02 · The Missionary's Own Words
+  headline: |
+    Caldwell Was
+    *Explicit.*
+  attribution: Bishop Robert Caldwell — on the purpose of the Dravidian-race thesis
+  body: |
+    By framing Hinduism as an [oppressive, alien Aryan construct], missionaries positioned themselves as the [true liberators]. Detaching the masses from [Hinduism]
+    would prepare them for the propagation
+    of the one true faith [Christianity.]
+  image: _cache/5ab23470353ed73f.jpg
+  image_overlay: 1
+  headline_y: 24
+  body_size: 50
+  body_y: 42
+- layout: split-story
+  chapter: Method 02 · The St. Thomas Myth
+  headline: |
+    A Christian Nation
+    Since *52 CE?*
+  body: To give Dravidianism a [Christian historical foundation], evangelists have vigorously revived
+    the historically [baseless myth] that the Apostle [St. Thomas] visited South India in [52 CE] & converted
+    the revered Tamil sage [Thiruvalluvar] & label the [Sanskrit] language and [Vedic] traditions as evil,
+    [post-Christian conspiracies] invented by the Cunning [Aryan Brahmins]
+  image: thiruvalluvar.jpg
+  image_filter: archival
+  image_overlay: 1
+  image_position: 50% 100%
+  body_offset_y: 60
+  body_y: 11
+- layout: numbered-list
+  chapter: Method 03 · The Digestion Of The Classics
+  headline: |
+    Rewriting The
+    Tamil *Canon.*
+  items:
+  - number: 1
+    headline: The Thirukural as a Christian text
+    body: The nineteenth-century missionary [G.U. Pope] initiated the claim that the ancient ethical treatise
+      the [Thirukural] was an echo of the [Sermon on the Mount] — heavily influenced by [Christian teachers].
+  - number: 2
+    headline: Saiva Siddhanta as a stepping-stone
+    body: '[Saiva Siddhanta], a profound South Indian spiritual tradition, is projected by the Church
+      as a localised form of [monotheism] that [approximates Christianity] — serving as a convenient [stepping-stone]
+      to convert Hindus.'
+  - number: 3
+    headline: Andal from the Song of Solomon
+    body: Christian scholars claim that the ancient Tamil tradition of [bridal mysticism] , the devotion
+      of [Andal] and the [Alwars] , was entirely derived from the Bible's [Song of Solomon].
+  headline_size: 84
+  item_size: 28
+  number_size: 64
+  body_offset_y: -120
+- layout: split-story
+  eyebrow: Method 04 · The Art
+  theme: light
+  headline: |
+    Christian Mudras.
+    A Christian *Trinity.*
+  body: |
+    Traditional Hindu classical dance , [Bharatanatyam], historically condemned by colonial missionaries as a [heathen practice], is now being subtly appropriated. Catholic priests have invented [Christian mudras] to replace ancient Hindu hand gestures , depicting [Shiva], [Parvati], and the child [Murugan] , is falsely reinterpreted by Dravidian Christian propagandists as a revelation of the [Christian Trinity].
+  source: Rajiv Malhotra, on the digestion of Tamil tradition
+- layout: split-story
+  chapter: Method 05 · The Global Alliance
+  headline: |
+    The UN. The EU.
+    The *US* Congress.
+  body: 'At the political level, the Church has fused the [Dravidian] identity with the [Dalit] movement,  framing
+    both as the [oppressed Blacks of India]. Transnational evangelical bodies  the [Lutheran World Federation],
+    the [World Council of Churches], and the [Dalit Freedom Network] , fund and coordinate this. These
+    groups mass-produce [atrocity literature] and persistently lobby the [United Nations], the [EU], and
+    the [US government] '
+  image: un-hall.jpg
+  image_filter: bw
+  body_size: 45
+  image_overlay: 0.92
+  theme: dark
+  body_y: 26
+- layout: split-story
+  headline: |
+    Five Methods. One
+    *Civilisation* At Risk.
+  body: '[Caldwell''s race theory]. [St. Thomas''] fabricated arrival. The digested [Thirukural]. The
+    Christianised [mudra]. The [UN] lobby for international intervention. [Dravidian Christianity] is
+    not a religion. It is a [five-part method] for detaching a civilisation from itself. The [method]
+    is visible. The [institutions] running it are named in the [record].'
+- layout: end-card
+  headline: Breaking India

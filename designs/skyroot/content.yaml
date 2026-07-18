@@ -1,0 +1,19 @@
+name: Skyroot
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Kalam 1200 fired for the first time. Vikram-1's first stage is named for Dr. A.P.J. Abdul Kalam.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #Skyroot #Vikram1 #VaqHQ
+tweaks:
+  vertical: live
+slides:
+- layout: reel-frame
+  video_url: https://www.youtube.com/shorts/ZEs_6Q1IwCk
+  headline: |
+    Skyroot founders call Prime Minister *Narendra Modi* after Vikram-1 launch.
+  credit: via @skyrootaerospace
+  texture: dots
+  vertical: live

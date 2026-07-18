@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Kavi Studios</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,600&family=Hanken+Grotesk:wght@700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:        #0a0a0a;
+    --bg-card:   #141414;
+    --bg-card-h: #1a1a1a;
+    --border:    #222;
+    --fg:        #E8DCC8;
+    --fg-mute:   #888;
+    --fg-dim:    #555;
+    --red:       #C0392B;
+  }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: 'DM Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+
+  /* Wordmark / header */
+  header {
+    padding: 56px 64px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+  }
+
+  /* Brand switcher — each tab is a mini wordmark in its own identity */
+  .brand-tabs {
+    display: flex; align-items: stretch;
+    border: 1px solid var(--border); background: #0e0e0e;
+  }
+  .brand-tabs button {
+    display: flex; align-items: center; justify-content: center;
+    min-width: 110px; padding: 12px 26px;
+    background: transparent; border: 0; border-bottom: 3px solid transparent;
+    cursor: pointer; letter-spacing: 0; text-transform: none;
+    opacity: 0.42; transition: opacity 120ms ease, background 120ms ease;
+  }
+  .brand-tabs button + button { border-left: 1px solid var(--border); }
+  .brand-tabs button:hover { opacity: 0.8; background: #141414; }
+  .brand-tabs button.active { opacity: 1; background: #161616; }
+  .brand-tabs button.active[data-brand="all"]    { border-bottom-color: #E8DCC8; }
+  .brand-tabs button.active[data-brand="itiha"]  { border-bottom-color: #C0392B; }
+  .brand-tabs button.active[data-brand="vaq-hq"] { border-bottom-color: #F4631E; }
+  .brand-tabs .t-all {
+    font: 600 13px 'JetBrains Mono', monospace; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--fg);
+  }
+  .brand-tabs .t-itiha {
+    font-family: 'Bebas Neue', Impact, sans-serif; font-size: 22px;
+    letter-spacing: 1.5px; color: var(--fg); line-height: 1;
+  }
+  .brand-tabs .t-itiha .dot { color: #C0392B; }
+  .brand-tabs .t-vaq {
+    font-family: 'Newsreader', Georgia, serif; font-weight: 600; font-size: 20px;
+    letter-spacing: -0.01em; color: #fff; line-height: 1;
+  }
+  .brand-tabs .t-vaq .hq { color: #F4631E; }
+  .wordmark {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 36px; letter-spacing: 2px;
+    color: var(--fg);
+  }
+  .wordmark .dot { color: var(--red); }
+  .wordmark .tag {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 3px; color: var(--fg-mute); margin-left: 18px;
+  }
+
+  /* Layout */
+  main { padding: 24px 64px 80px; max-width: 1400px; }
+
+  /* Section labels */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 3px; text-transform: uppercase; color: var(--fg-mute);
+    margin: 40px 0 18px;
+  }
+
+  /* New-project form */
+  .new-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    padding: 28px 32px;
+    display: grid; grid-template-columns: 1fr 160px 1fr auto; gap: 16px; align-items: end;
+  }
+  label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--fg-mute);
+    margin-bottom: 8px;
+  }
+  input, select {
+    width: 100%;
+    background: #0a0a0a; color: var(--fg); border: 1px solid var(--border);
+    padding: 12px 14px;
+    font: 14px 'DM Sans', system-ui;
+    outline: none;
+  }
+  input:focus, select:focus { border-color: var(--red); }
+  button {
+    background: var(--red); color: #fff; border: 0;
+    padding: 13px 28px; cursor: pointer;
+    font: 11px 'DM Sans', system-ui; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  button:hover { background: #A83225; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* Project grid */
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    padding: 24px 28px;
+    text-decoration: none; color: var(--fg);
+    transition: background 120ms ease, border-color 120ms ease;
+    display: flex; flex-direction: column; gap: 14px;
+    position: relative;
+  }
+  .card:hover { background: var(--bg-card-h); border-color: #333; }
+  .card .delete-btn {
+    position: absolute; top: 10px; right: 10px;
+    width: 26px; height: 26px;
+    background: transparent; color: var(--fg-dim); border: 1px solid transparent;
+    padding: 0; margin: 0;
+    font: 16px/1 'DM Sans', system-ui; letter-spacing: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 120ms ease, color 120ms ease, border-color 120ms ease, background 120ms ease;
+    cursor: pointer;
+  }
+  .card:hover .delete-btn { opacity: 1; }
+  .card .delete-btn:hover {
+    color: #fff; background: var(--red); border-color: var(--red);
+  }
+  .card .name {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 30px; letter-spacing: 1px; line-height: 1;
+    text-transform: uppercase;
+  }
+  /* Vaq HQ cards speak Vaq: Hanken Grotesk 800, sentence case */
+  .card[data-brand="vaq-hq"] .name {
+    font-family: 'Hanken Grotesk', system-ui, sans-serif;
+    font-weight: 800; font-size: 24px; letter-spacing: -0.3px;
+    line-height: 1.1; text-transform: none;
+  }
+  .card .format {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--fg-mute);
+  }
+  .card .format .badge {
+    display: inline-block; padding: 4px 10px;
+    background: #0a0a0a; border: 1px solid var(--border); color: var(--fg);
+  }
+
+  .empty {
+    border: 1px dashed var(--border); padding: 40px 32px;
+    color: var(--fg-mute); font-size: 13px; line-height: 1.7;
+  }
+
+  /* Backlog cards — slightly different from project cards so they're scannable */
+  #backlog-grid .card {
+    background: #0e0e0e; border-color: #232323;
+  }
+  #backlog-grid .card:hover { border-color: var(--red); }
+  #backlog-grid .card .name { font-size: 22px; line-height: 1.15; letter-spacing: 0.5px; }
+  #backlog-grid .card .meta {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 1.6px; text-transform: uppercase; color: var(--fg-mute);
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+  }
+  #backlog-grid .status {
+    display: inline-block; padding: 3px 9px; font-size: 9.5px;
+    border: 1px solid; letter-spacing: 1.6px;
+  }
+  #backlog-grid .status[data-s="Idea"]              { color: #d4c9b6; border-color: #3a3a3a; }
+  #backlog-grid .status[data-s="In Development"]    { color: #8dc0ff; border-color: #2a4060; }
+  #backlog-grid .status[data-s="Write Post"]        { color: #ffb070; border-color: #4a3220; }
+  #backlog-grid .status[data-s="Write Caption"]     { color: #ffd870; border-color: #4a4020; }
+  #backlog-grid .status[data-s="Ready to publish"]  { color: #6cc88e; border-color: #2a4a35; }
+  #backlog-grid .tag {
+    display: inline-block; padding: 3px 8px; font-size: 9.5px;
+    background: #1a1a1a; color: var(--fg); border: 1px solid #2a2a2a;
+  }
+
+  .err {
+    background: rgba(192,57,43,0.12); border: 1px solid var(--red);
+    color: #fbb; padding: 12px 16px; margin-bottom: 16px;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">KAVI<span class="dot">.</span><span class="tag">Studios</span></div>
+  <nav class="brand-tabs" id="brand-tabs" aria-label="Brand">
+    <button data-brand="all"    type="button"><span class="t-all">All</span></button>
+    <button data-brand="itiha"  type="button"><span class="t-itiha">ITIHA<span class="dot">.</span></span></button>
+    <button data-brand="vaq-hq" type="button"><span class="t-vaq">Vaq <span class="hq">HQ</span></span></button>
+  </nav>
+</header>
+
+<main>
+
+  <div class="section-label">New project</div>
+  <div class="new-card">
+    <div>
+      <label for="np-name">Project name</label>
+      <input id="np-name" placeholder="e.g. somnath-temple" autocomplete="off" />
+    </div>
+    <div>
+      <label for="np-brand">Brand</label>
+      <select id="np-brand">
+        <option value="itiha">Itiha</option>
+        <option value="vaq-hq">VAQ HQ</option>
+      </select>
+    </div>
+    <div>
+      <label for="np-format">Format</label>
+      <select id="np-format">
+        <option value="instagram-portrait">Instagram Carousel · Portrait · 1080×1350</option>
+        <option value="instagram-square">Instagram Carousel · Square · 1080×1080</option>
+        <option value="instagram-reel">Instagram Reel · 1080×1920</option>
+        <option value="youtube-thumbnail">YouTube Thumbnail · 1280×720</option>
+        <option value="youtube-end-card">YouTube End Card · 1920×1080</option>
+      </select>
+    </div>
+    <button id="np-create">Create &amp; open</button>
+  </div>
+  <div id="np-err" class="err" style="display:none; margin-top:12px"></div>
+
+  <div id="backlog-wrap" style="display:none">
+    <div class="section-label" style="display:flex;align-items:baseline;gap:14px">
+      Notion backlog
+      <span id="backlog-count" style="color:#666;font-size:10px;letter-spacing:2px">—</span>
+    </div>
+    <div id="backlog-grid" class="grid"></div>
+  </div>
+
+  <div id="backlog-setup" class="empty" style="display:none">
+    <b style="color:#E8DCC8">Notion backlog is not configured.</b><br>
+    Add <code style="color:#E8DCC8">NOTION_TOKEN</code> and <code style="color:#E8DCC8">NOTION_DB_ID</code> to <code>.env</code> in the repo root and restart Studio. See README for the 5-min setup.
+  </div>
+
+  <div class="section-label">Your projects</div>
+  <div id="grid" class="grid"></div>
+  <div id="empty" class="empty" style="display:none">No projects yet. Use the form above to create your first one.</div>
+
+</main>
+
+<script>
+const FORMAT_LABELS = {
+  'instagram-portrait': 'IG Carousel · 4:5',
+  'instagram-square':   'IG Carousel · 1:1',
+  'instagram-reel':     'IG Reel · 9:16',
+  'youtube-thumbnail':  'YT Thumbnail · 16:9',
+  'youtube-end-card':   'YT End Card · 16:9',
+};
+
+// Keep in sync with src/brands.py (BRANDS).
+const BRAND_LABELS = { 'itiha': 'ITIHA', 'vaq-hq': 'VAQ HQ' };
+const BRAND_COLORS = { 'itiha': '#C0392B', 'vaq-hq': '#F4631E' };
+
+let allProjects = [];
+let brandFilter = (() => {
+  try { return localStorage.getItem('kavi:brandFilter') || 'all'; } catch { return 'all'; }
+})();
+
+// Header brand switcher: filters the grid, pre-selects the New-project brand,
+// and scopes the (Itiha-only) Notion backlog.
+function applyBrandTabs() {
+  document.querySelectorAll('#brand-tabs button').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.brand === brandFilter);
+  });
+  if (brandFilter !== 'all') {
+    document.getElementById('np-brand').value = brandFilter;
+  }
+  // The Notion backlog feeds Itiha carousels — hide it in Vaq HQ focus.
+  const backlogWrap = document.getElementById('backlog-wrap');
+  const backlogSetup = document.getElementById('backlog-setup');
+  const hideBacklog = brandFilter === 'vaq-hq';
+  if (backlogWrap && backlogWrap.dataset.configured === '1') {
+    backlogWrap.style.display = hideBacklog ? 'none' : 'block';
+  }
+  if (backlogSetup && backlogSetup.dataset.unconfigured === '1') {
+    backlogSetup.style.display = hideBacklog ? 'none' : 'block';
+  }
+}
+
+document.querySelectorAll('#brand-tabs button').forEach(btn => {
+  btn.onclick = () => {
+    brandFilter = btn.dataset.brand;
+    try { localStorage.setItem('kavi:brandFilter', brandFilter); } catch {}
+    applyBrandTabs();
+    renderGrid(allProjects);
+  };
+});
+
+async function loadProjects() {
+  const r = await fetch('api/projects');
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+function renderGrid(projects) {
+  allProjects = projects;
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  grid.innerHTML = '';
+  const shown = brandFilter === 'all'
+    ? projects
+    : projects.filter(p => (p.brand || 'itiha') === brandFilter);
+  if (!shown.length) { empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+  for (const p of shown) {
+    const brand = p.brand || 'itiha';
+    const a = document.createElement('a');
+    a.className = 'card';
+    a.dataset.brand = brand;
+    a.href = `d/${encodeURIComponent(p.slug)}/`;
+    a.innerHTML = `
+      <button class="delete-btn" title="Delete project" aria-label="Delete project">×</button>
+      <div class="name">${escapeHtml(p.name || p.slug)}</div>
+      <div class="format">
+        <span class="badge" style="color:${BRAND_COLORS[brand] || '#888'};border-color:#2a2a2a">${escapeHtml(BRAND_LABELS[brand] || brand)}</span>
+        <span class="badge">${escapeHtml(FORMAT_LABELS[p.format] || p.format || 'unknown')}</span>
+      </div>
+    `;
+    a.querySelector('.delete-btn').onclick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      deleteProject(p);
+    };
+    grid.appendChild(a);
+  }
+}
+
+async function deleteProject(p) {
+  const label = p.name || p.slug;
+  if (!confirm(`Delete "${label}"?\n\nThis removes designs/${p.slug}/ from disk — content.yaml, images, and rendered PNGs. Cannot be undone.`)) return;
+  try {
+    const r = await fetch('api/projects/delete', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: p.slug }),
+    });
+    if (!r.ok) throw new Error(await r.text());
+    const projects = await loadProjects();
+    renderGrid(projects);
+  } catch (e) {
+    alert(`delete failed: ${e.message || e}`);
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+document.getElementById('np-create').onclick = async () => {
+  const btn = document.getElementById('np-create');
+  const err = document.getElementById('np-err');
+  err.style.display = 'none';
+  const name = document.getElementById('np-name').value.trim();
+  const format = document.getElementById('np-format').value;
+  const brand = document.getElementById('np-brand').value;
+  if (!name) { err.textContent = 'name is required'; err.style.display = 'block'; return; }
+  btn.disabled = true; btn.textContent = 'Creating…';
+  try {
+    const r = await fetch('api/projects/new', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, format, brand }),
+    });
+    if (!r.ok) throw new Error(await r.text());
+    const { slug } = await r.json();
+    location.href = `d/${encodeURIComponent(slug)}/`;
+  } catch (e) {
+    err.textContent = String(e.message || e); err.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Create & open';
+  }
+};
+
+applyBrandTabs();
+loadProjects().then(renderGrid).catch(e => {
+  document.getElementById('grid').innerHTML = `<div class="err">load failed: ${escapeHtml(String(e.message || e))}</div>`;
+});
+
+// ── Notion backlog ──────────────────────────────────────────────
+
+const TYPE_LABEL = {
+  'carousel':     'IG Carousel',
+  'reel (insta)': 'IG Reel',
+  'Photo (post)': 'IG Photo',
+  'Story':        'IG Story',
+};
+
+async function loadBacklog() {
+  const r = await fetch('api/notion/backlog');
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+function renderBacklog({ configured, rows }) {
+  const wrap = document.getElementById('backlog-wrap');
+  const setup = document.getElementById('backlog-setup');
+  const grid = document.getElementById('backlog-grid');
+  const counter = document.getElementById('backlog-count');
+  // Record configured state so the brand switcher can re-derive visibility.
+  setup.dataset.unconfigured = configured ? '0' : '1';
+  wrap.dataset.configured = configured ? '1' : '0';
+  const hideBacklog = brandFilter === 'vaq-hq';
+  if (!configured) {
+    setup.style.display = hideBacklog ? 'none' : 'block';
+    wrap.style.display = 'none';
+    return;
+  }
+  setup.style.display = 'none';
+  wrap.style.display = hideBacklog ? 'none' : 'block';
+  counter.textContent = `(${rows.length})`;
+  grid.innerHTML = '';
+  if (!rows.length) {
+    grid.innerHTML = `<div class="empty">No active items. Add ideas in Notion → they'll show up here.</div>`;
+    return;
+  }
+  for (const row of rows) {
+    const card = document.createElement('a');
+    card.className = 'card';
+    card.href = 'javascript:void(0)';
+    card.onclick = () => openFromBacklog(row);
+    const status = row.status || 'Idea';
+    const typeLabel = TYPE_LABEL[row.type] || row.type || 'unknown';
+    const tags = (row.tags || []).slice(0, 3).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
+    const topics = (row.topic || []).slice(0, 2).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
+    const dateStr = row.publish_date ? `<span>📅 ${escapeHtml(row.publish_date)}</span>` : '';
+    card.innerHTML = `
+      <div class="name">${escapeHtml(row.post || 'Untitled')}</div>
+      <div class="meta">
+        <span class="status" data-s="${escapeHtml(status)}">${escapeHtml(status)}</span>
+        <span>${escapeHtml(typeLabel)}</span>
+        ${dateStr}
+      </div>
+      ${topics || tags ? `<div class="meta">${topics}${tags}</div>` : ''}
+    `;
+    grid.appendChild(card);
+  }
+}
+
+async function openFromBacklog(row) {
+  try {
+    const r = await fetch('api/notion/open', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ page_id: row.id }),
+    });
+    if (!r.ok) throw new Error(await r.text());
+    const { slug } = await r.json();
+    location.href = `d/${encodeURIComponent(slug)}/`;
+  } catch (e) {
+    alert(`open failed: ${e.message || e}`);
+  }
+}
+
+loadBacklog().then(renderBacklog).catch(e => {
+  console.error('backlog load failed', e);
+});
+
+</script>
+
+</body>
+</html>

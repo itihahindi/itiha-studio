@@ -320,6 +320,18 @@ def _build_server() -> ThreadingHTTPServer:
             if rel == "api/download-zip":
                 self._send_zip(slug, design_dir); return
 
+            if rel.startswith("output/"):
+                # Serve files from the design's render dir (outside the repo):
+                # the downloaded source video, composed reel/square MP4s, PNGs.
+                # <video> needs byte-range support (Safari refuses without it).
+                name = rel[len("output/"):]
+                if "/" in name or name.startswith("."):
+                    self.send_error(404); return
+                f = content_mod.output_dir_for(design_dir) / name
+                if f.suffix.lower() not in {".mp4", ".png", ".jpg", ".jpeg"} or not f.is_file():
+                    self.send_error(404); return
+                self._send_range_file(f); return
+
             if rel == "render-host.html":
                 # The host page loads its brand pack via the __BRAND__
                 # placeholder — substitute the design's brand slug.
@@ -333,6 +345,45 @@ def _build_server() -> ThreadingHTTPServer:
 
             # Otherwise serve from shared/
             self._send_file(SHARED / rel)
+
+        def _send_range_file(self, f: Path):
+            """Serve a file honoring a single `Range: bytes=…` header (video seeking)."""
+            ctype = {
+                ".mp4": "video/mp4", ".png": "image/png",
+                ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
+            }[f.suffix.lower()]
+            size = f.stat().st_size
+            start, end = 0, size - 1
+            status = 200
+            m = re.match(r"bytes=(\d*)-(\d*)$", self.headers.get("Range", ""))
+            if m and (m.group(1) or m.group(2)):
+                if m.group(1):
+                    start = int(m.group(1))
+                    if m.group(2):
+                        end = min(int(m.group(2)), size - 1)
+                else:  # suffix range: last N bytes
+                    start = max(0, size - int(m.group(2)))
+                if start > end or start >= size:
+                    self.send_error(416); return
+                status = 206
+            length = end - start + 1
+            self.send_response(status)
+            self.send_header("Content-Type", ctype)
+            self.send_header("Content-Length", str(length))
+            self.send_header("Accept-Ranges", "bytes")
+            if status == 206:
+                self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            with open(f, "rb") as fh:
+                fh.seek(start)
+                remaining = length
+                while remaining > 0:
+                    chunk = fh.read(min(1 << 20, remaining))
+                    if not chunk:
+                        break
+                    self.wfile.write(chunk)
+                    remaining -= len(chunk)
 
         def _send_zip(self, slug: str, design_dir: Path):
             """Stream a ZIP of all rendered PNGs for this design. Used by the web UI

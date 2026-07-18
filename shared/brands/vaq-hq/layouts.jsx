@@ -300,6 +300,40 @@ function ClosingSlide({ slide, index }) {
   );
 }
 
+// Video zone for reel-frame: <video> of the yt-dlp download when it exists,
+// dark placeholder otherwise (and always in capture mode). The source file is
+// cache-keyed server-side on the URL, so after changing Video URL the old clip
+// may keep playing until the next Compose refreshes the download.
+function ReelVideoZone({ top, videoUrl }) {
+  const isCapture = document.body.classList.contains('capture');
+  const [failed, setFailed] = React.useState(false);
+  React.useEffect(() => { setFailed(false); }, [videoUrl]);
+  const showVideo = !isCapture && videoUrl && !failed;
+  return (
+    <div style={{
+      position: 'absolute', left: 0, right: 0, top, bottom: 0,
+      background: '#0E141C', display: 'flex', flexDirection: 'column',
+      alignItems: 'center', justifyContent: 'center', gap: 20, overflow: 'hidden',
+    }}>
+      {showVideo ? (
+        <video src="output/source.mp4" autoPlay muted loop playsInline
+          onError={() => setFailed(true)}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      ) : (
+        <React.Fragment>
+          <VMark size={64} mono />
+          <div style={{
+            fontFamily: VAQ.mono, fontSize: 22, letterSpacing: '.2em',
+            textTransform: 'uppercase', color: 'rgba(255,255,255,.4)',
+            maxWidth: 800, textAlign: 'center',
+          }}>{videoUrl ? (isCapture ? 'video linked' : 'compose once to preview the video')
+              : 'paste a link in Video URL'}</div>
+        </React.Fragment>
+      )}
+    </div>
+  );
+}
+
 // ── REEL-FRAME ────────────────────────────────────────────────
 // 1080×1920 header panel for reposted video (Tatva-style, in VAQ language):
 // paper panel up top — wordmark row, kicker, highlighter headline, subline,
@@ -316,19 +350,11 @@ function ReelFrameSlide({ slide, index }) {
   } = slide;
   return (
     <VSlide v={v} surface={surface} texture={texture}>
-      {/* Video zone — placeholder only; the composer replaces this region. */}
-      <div style={{
-        position: 'absolute', left: 0, right: 0, top: panel_height, bottom: 0,
-        background: '#0E141C', display: 'flex', flexDirection: 'column',
-        alignItems: 'center', justifyContent: 'center', gap: 20,
-      }}>
-        <VMark size={64} mono />
-        <div style={{
-          fontFamily: VAQ.mono, fontSize: 22, letterSpacing: '.2em',
-          textTransform: 'uppercase', color: 'rgba(255,255,255,.4)',
-          maxWidth: 800, textAlign: 'center',
-        }}>{video_url ? 'video linked · compose to fill' : 'paste a link in Video URL'}</div>
-      </div>
+      {/* Video zone. In the live preview this plays the downloaded source
+          (served from the design's output dir) so the framing is judgeable
+          before compose. Capture mode keeps the flat placeholder — the
+          composer only uses the panel strip above `panel_height` anyway. */}
+      <ReelVideoZone top={panel_height} videoUrl={video_url} />
       {/* Header panel — everything the composer keeps. */}
       <div style={{
         position: 'absolute', left: 0, right: 0, top: 0, height: panel_height,

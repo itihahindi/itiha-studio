@@ -1273,7 +1273,12 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
           fontSize: 12, color: '#aef', letterSpacing: 0.5,
         }}>
           <span style={{ color: '#5a8', fontWeight: 600 }}>✓</span>
-          <span>Composed {(reelState.outputs || ['reel.mp4']).join(' + ')}{reelState.duration ? ` · ${reelState.duration}s` : ''}</span>
+          <span>Composed{reelState.duration ? ` · ${reelState.duration}s` : ''}</span>
+          {(reelState.outputs || []).map(o => (
+            <a key={o} href={`output/${o}`} target="_blank" rel="noreferrer"
+              style={{ ...btnSm, textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+            >▶ {o.replace('.mp4', '')}</a>
+          ))}
           <button onClick={openFolder} style={{ ...btnSm, marginLeft: 'auto' }}>Open in Finder</button>
         </div>
       )}

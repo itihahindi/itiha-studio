@@ -1,4 +1,5 @@
 name: breaking-india
+brand: itiha
 format: instagram-portrait
 caption: |
   In 2011, Rajiv Malhotra and Aravindan Neelakandan published a book with a blunt title — Breaking India.
@@ -24,7 +25,7 @@ slides:
   subline: Rajiv Malhotra · Aravindan Neelakandan · 2011
   swipe_meta: Swipe ▸ · 9 Slides · 2 min read
   theme: dark
-  image: https://pbs.twimg.com/profile_images/1566798241458716672/UNUDdGuZ_400x400.jpg
+  image: _cache/07d0cd957b0d325a.jpg
   image_overlay: 0.7
   headline_size: 160
   texture: halftone

@@ -140,6 +140,28 @@ def resolve_image(value, doc_dir: Path, slide_n: int) -> tuple[str | None, list[
     return None, []
 
 
+# ── Leading-bracket rescue ─────────────────────────────────────────
+
+_BRACKET_VALUE_RE = re.compile(r"^(\s*(?:- )?[A-Za-z][\w-]*):\s+(\[[^\n]*)$")
+
+
+def _quote_leading_bracket_values(raw: str) -> str:
+    """Quote single-line values that start with '[' so YAML sees a string.
+
+    `Body: [Term], rest` is invalid YAML (flow sequence followed by junk),
+    but it's the red-emphasis micro-syntax users actually mean. Block
+    scalars (`Body: |`) are untouched — only single-line values match.
+    """
+    out = []
+    for ln in raw.split("\n"):
+        m = _BRACKET_VALUE_RE.match(ln)
+        if m:
+            val = m.group(2).replace("'", "''")
+            ln = f"{m.group(1)}: '{val}'"
+        out.append(ln)
+    return "\n".join(out)
+
+
 # ── Smart layout defaults ──────────────────────────────────────────
 
 def _default_layout(index: int, total: int) -> str:
@@ -259,7 +281,14 @@ def parse_markdown_text(text: str, doc_dir: Path | None = None, name_hint: str =
         try:
             parsed = yaml.safe_load(raw)
         except yaml.YAMLError:
-            parsed = None
+            # Most common LLM slip: a single-line value starting with a
+            # [bracket] ("Body: [Term], rest…"), which YAML reads as a flow
+            # sequence. Quote those values and retry before giving up —
+            # the loose fallback below silently mangles structured slides.
+            try:
+                parsed = yaml.safe_load(_quote_leading_bracket_values(raw))
+            except yaml.YAMLError:
+                parsed = None
         if isinstance(parsed, dict):
             normalized = _norm(parsed)
             if any(k in normalized for k in expected_keys):

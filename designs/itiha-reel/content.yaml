@@ -1,4 +1,5 @@
 name: Itiha — Reel Title
+brand: itiha
 format: instagram-reel
 caption: |
   Watch the full episode — link in bio.
@@ -9,12 +10,15 @@ tweaks:
   showPageNum: false
 slides:
 - layout: reel-title
-  headline: '*CREMATION* WAS A CRIME'
-  subline: How Hindus Cremated in Secret Under British Trinidad
+  headline: |
+    Deindustrialization
+    of *Kanpur*
+  subline: 'Kanpur: How India''s Textile Capital Lost Everything in the 1970s'
   handle: '@itiha29'
-  image: https://culturalsamvaad.com//wp-content/uploads/2019/09/print1845.jpg
+  image: screenshot-2026-07-11-at-12-58-01-am.png
   image_overlay: 0.8
-  texture: noise
+  texture: vignette
   image_bw: false
-  headline_size: 190
-  text_y: 75
+  headline_size: 130
+  text_y: 73
+  image_filter: warm

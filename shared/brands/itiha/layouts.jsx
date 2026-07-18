@@ -268,12 +268,11 @@ function Stat({ slide, index }) {
                 fontFamily: ITIHA.bebas, fontSize: stat_size, lineHeight: 0.9,
                 color: s.value_red ? ITIHA.red : t.h1, marginTop: 12,
               }}>
-                {(() => {
-                  const v = s.value == null ? '' : String(s.value);
-                  return v.split('%').length === 2
-                    ? <>{v.split('%')[0]}<span style={{ color: ITIHA.red }}>%</span></>
-                    : v;
-                })()}
+                {/* YAML parses bare numbers (value: 240) as ints — coerce
+                    before splitting or the whole editor tree crashes. */}
+                {s.value != null && String(s.value).split('%').length === 2
+                  ? <>{String(s.value).split('%')[0]}<span style={{ color: ITIHA.red }}>%</span></>
+                  : s.value}
               </div>
               {s.sublabel && <div className="itiha-meta" style={{ marginTop: 8 }}>{s.sublabel}</div>}
             </div>
@@ -520,6 +519,7 @@ function EndCard({ slide, index }) {
       { platform: 'WEB', text: 'itiha.info' },
     ],
     wordmark_size = 280,
+    handle_size = 42,
     image, image_bw, image_overlay, image_position,
   } = slide;
   return (
@@ -541,13 +541,15 @@ function EndCard({ slide, index }) {
         fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 22,
         letterSpacing: '0.45em', textTransform: 'uppercase', color: ITIHA.midGray,
       }}>{tagline}</div>
+      {/* Stacked handles — one per row, sized to read from a video end screen. */}
       <div style={{
-        marginTop: 80, display: 'flex', gap: 80,
-        fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 22,
-        letterSpacing: '0.3em', textTransform: 'uppercase', color: ITIHA.parchment,
+        marginTop: 70, display: 'flex', flexDirection: 'column', gap: 30,
+        alignItems: 'center',
+        fontFamily: ITIHA.sans, fontWeight: 600, fontSize: handle_size,
+        letterSpacing: '0.18em', textTransform: 'uppercase', color: ITIHA.parchment,
       }}>
         {handles.map((h, i) => (
-          <div key={i}><span style={{ color: ITIHA.red, marginRight: 14 }}>{h.platform}</span>{h.text}</div>
+          <div key={i}><span style={{ color: ITIHA.red, marginRight: 22 }}>{h.platform}</span>{h.text}</div>
         ))}
       </div>
     </div>

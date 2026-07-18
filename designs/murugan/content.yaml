@@ -1,0 +1,132 @@
+name: how-they-are-appropriating-murugan
+brand: itiha
+format: instagram-portrait
+caption: |
+  Lord Murugan — the Tamil god of celestial armies and wisdom, son of Shiva and Parvati, husband of Valli and Devasena, whose vehicle is the peacock and whose name literally means "Beauty" — is one of the most cherished Hindu deities in South India. He is now being systematically appropriated. Christian evangelists and Dravidianist scholars are, through academic conferences, iconographic distortion, and rewritten folk songs, working to reclassify him first as a non-Hindu figure, then as a "corrupt form" of a Christian saint. This carousel is the record of how the appropriation is being executed — and where its specific fingerprints can be identified.
+
+  Four documented methods. First, de-Hinduising through academic forums: figures like John Samuel of the Institute of Asian Studies and the Western scholar Patrick Harrigan have organised international conferences that deliberately explain Murugan outside of his Hindu context — creating the academic distance required to later claim he is a "misidentified Christian saint." Second, appropriating the Somaskanda iconography: the traditional sculpture of the child-god Skanda flanked by Shiva and Parvati is being falsely reinterpreted as a revelation of the Christian Trinity. Evangelical writer M. Deivanayagam has asserted that Murugan originally had no father — an invention deployed to argue that Trinitarian teachings in Saivism were "stolen from early Christianity." Third, distorting folk literature: the scholar S.D. Lourdu equated a traditional Tamil folk song about Murugan searching for Valli hidden near a mountain with a newly composed Christian song — "Jesus ran and hid himself in the bush. Mary searched for Jesus" — deliberately collapsing the mystical bridegroom-bride dynamic of Murugan and Valli into the mother-child dynamic of Jesus and Mary. Fourth, stealing visual symbols: at the San Thome Church in Chennai, Jesus is depicted standing on a lotus surrounded by peacocks — a bird uniquely associated with Murugan in Tamil Hindu iconography.
+
+  These are not accidental overlaps. They are coordinated textual, academic, and iconographic manipulations — designed to strip Murugan of his Hindu origins and repurpose his immense popularity as an evangelical tool.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Murugan #Skanda #TamilHistory #HinduDharma #CulturalAppropriation #Somaskanda #SanThome
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: MURUGAN
+slides:
+- layout: cover
+  eyebrow: Kartikeya
+  eyebrow_meta: Murugan · 9 Slides
+  headline: |
+    Christianisation
+    Of *Lord Murugan*
+  subline: The four methods of a coordinated campaign
+  swipe_meta: Swipe ▸ · 7 Slides · 4 min read
+  image: https://pbs.twimg.com/media/DVMk74iWAAAvdoH?format=jpg&name=small
+  texture: scanlines
+  headline_offset_y: 370
+  image_position: 100% 64%
+  theme: dark
+- layout: split-story
+  chapter: Chapter 01 · The Deity
+  name: Lord Murugan
+  dates: Also known as Skanda in the Sanskritic tradition
+  role: God of celestial armies and wisdom
+  headline: |
+    Son Of Shiva.
+    Husband Of *Valli.*
+  body: '[Murugan] is a highly popular Hindu deity in across India , revered as the God of [celestial
+    armies] and [wisdom], whose name literally translates to [Beauty]. He is the son of [Shiva] and [Parvati],
+    the slayer of the demon kings [Sura] and [Tharaka]. '
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/The_Holy_Family%2C_Shiva%2C_Parvati%2C_with_their_sons_Ganesha_and_Karttikeya%2C_National_Museum%2C_New_Delhi_%28cropped2%29.jpg/960px-The_Holy_Family%2C_Shiva%2C_Parvati%2C_with_their_sons_Ganesha_and_Karttikeya%2C_National_Museum%2C_New_Delhi_%28cropped2%29.jpg
+  headline_y: 26
+  body_y: 38
+  image_overlay: 0.9
+  texture: paper
+- layout: split-story
+  headline: His two *consorts*
+  body: His brides include [Valli], a [tribal girl], and [Devasena], daughter of the celestial king [Indra]
+    , making Murugan a profound symbol of the [confluence of diverse elements] harmonised within Divinity.
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Murugan_by_Raja_Ravi_Varma.jpg/960px-Murugan_by_Raja_Ravi_Varma.jpg
+  image_overlay: 0.75
+  body_y: 54
+  subline: two consorts
+  texture: paper
+- layout: story
+  chapter: Method 01 · Academic Distancing
+  headline: |
+    De-Hinduising In The
+    *Conference Hall.*
+  body: Figures like [John Samuel] of the [Institute of Asian Studies] and the Western scholar [Patrick
+    Harrigan] have organised [international conferences] that deliberately explain Murugan [outside of
+    his Hindu context]. This [academic distancing] paves the way for the eventual claim that the deity
+    is actually a [corrupt form of the Christian deity] or a [misidentified Christian saint].
+  texture: paper
+- layout: split-story
+  headline: '*Dravidian* Playbook'
+  body: |
+    Evangelical propagandists like [M. Deivanayagam] falsely assert that originally Murugan had [no father] — using this to argue that [Trinitarian teachings] in [Saivism] were [stolen] from early Christianity. The birth of [Kumarakkadavul]  another name for Murugan  is directly equated with the birth of [Christ].
+  image: https://ishwarsharan.com/wp-content/uploads/2010/05/deivanayagam.jpg?w=250&h=330
+  image_overlay: 0.9
+  headline_size: -3
+  body_size: 42
+  body_y: 34
+  texture: paper
+- layout: comparison
+  chapter: Method 03 · The Folk Song
+  left_label: The Original Tamil Song
+  left_headline: 'Murugan Seeks
+
+    *Valli.*
+
+    '
+  left_body: 'The traditional folk song describes Lord [Murugan] searching for his [bride Valli] after
+    she hid near a [mountain]. It is a beloved fragment of the [bridegroom-bride mysticism] that pervades
+    [Tamil devotional literature].
+
+    '
+  right_label: The Rewritten Christian Version
+  right_headline: 'Mary Searches
+
+    For *Jesus.*
+
+    '
+  right_body: '[S.D. Lourdu] equated the Murugan song to a newly formulated Christian song, [Jesus ran
+    and hid himself in the bush. Mary searched for Jesus]. Distorted Murugan and Valli is [deliberately
+    confused] with the [mother-child] dynamic of Jesus and Mary.'
+  body_offset_y: -360
+  sub_size: 80
+  headline_offset_y: -60
+  texture: noise
+- layout: split-story
+  chapter: Method 04 · San Thome, Chennai
+  headline: |
+    Jesus with Murgan's
+    *Iconography.*
+  body: 'At the [San Thome Church] in [Chennai], Jesus is depicted standing on a [lotus] surrounded by
+    [peacocks], a bird that is [uniquely associated] as the [vehicle] and [symbol] of Lord Murugan in
+    [Tamil Hindu iconography]. '
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnkQHG3nWbBewGwdcRpzs1eW-n_pbH_yCVc-r4okl7QQ&s=10
+  body_y: 10
+- layout: document
+  headline: '*Murugan* is my ancestor '
+  image: screenshot-2026-07-11-at-9-44-36-pm.png
+  image_position: 54% 6%
+  quote: By  reducing the divinity of Murugan to a mortal ancestor, Dravidian-Missionary nexus strip him
+    of his place in the pantheon of gods
+- layout: closing
+  headline: |
+    Four Methods.
+    One *Target.*
+  body: |
+    [Academic distancing]. [Somaskanda] recast as [Trinity]. [Folk songs] rewritten with [Jesus] and [Mary]. [Peacocks] transplanted onto a [church wall]. Through these coordinated [textual], [academic], and [iconographic] manipulations, evangelical nexuses aim to strip [Murugan] of his [Hindu origins], present him as an ancestor & repurpose his immense [popularity] as an [evangelical tool]. The [god] is the same. The [target] is his [worshipper].
+  handle: Follow @itiha29 · itiha.info
+  image_position: 57% 50%
+  body_offset_y: 90
+- layout: end-card
+  headline: New slide

@@ -714,6 +714,7 @@ window.MANIFEST = {
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.7, step: 0.05 },
       { key: "image_position",type: "image-position", label: "Image crop" },
       { key: "wordmark_size", type: "number",   label: "Wordmark size (px)", default: 280 },
+      { key: "handle_size",   type: "number",   label: "Handle size (px)",   default: 42 },
     ],
   },
 };

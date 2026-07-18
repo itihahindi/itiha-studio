@@ -86,6 +86,10 @@ def _ephemeral_port() -> int:
 _STATES: dict[str, dict] = {}
 _STATES_LOCK = threading.Lock()
 
+# Designs with an Instagram publish in flight — guards double-clicks.
+_PUBLISHING: set[str] = set()
+_PUBLISHING_LOCK = threading.Lock()
+
 
 def _design_state(slug: str) -> dict:
     """Return the cached state for a design. Rebuild only when the YAML's
@@ -495,6 +499,48 @@ def _build_server() -> ThreadingHTTPServer:
                     self._send_bytes(b"render timed out (>180s)", "text/plain", code=504)
                 except Exception as e:
                     self._send_bytes(f"render failed: {e}".encode(), "text/plain", code=500)
+                return
+
+            if endpoint == "publish-ig":
+                with _PUBLISHING_LOCK:
+                    if slug in _PUBLISHING:
+                        self._send_bytes(b"a publish is already running for this design",
+                                         "text/plain", code=409)
+                        return
+                    _PUBLISHING.add(slug)
+                try:
+                    import instagram as instagram_mod
+                    result = instagram_mod.publish_design(design_dir, log=lambda *_: None)
+                    self._send_bytes(json.dumps({
+                        "ok": True,
+                        "post_id": result.get("post_id"),
+                        "permalink": result.get("permalink"),
+                    }).encode(), "application/json")
+                except Exception as e:
+                    self._send_bytes(f"publish failed: {e}".encode(), "text/plain", code=500)
+                finally:
+                    with _PUBLISHING_LOCK:
+                        _PUBLISHING.discard(slug)
+                return
+
+            if endpoint == "compose-reel":
+                key = f"reel:{slug}"
+                with _PUBLISHING_LOCK:
+                    if key in _PUBLISHING:
+                        self._send_bytes(b"a compose is already running for this design",
+                                         "text/plain", code=409)
+                        return
+                    _PUBLISHING.add(key)
+                try:
+                    import reel as reel_mod
+                    result = reel_mod.compose_reel(design_dir, log=lambda *_: None)
+                    self._send_bytes(json.dumps({"ok": True, **result}).encode(),
+                                     "application/json")
+                except Exception as e:
+                    self._send_bytes(f"compose failed: {e}".encode(), "text/plain", code=500)
+                finally:
+                    with _PUBLISHING_LOCK:
+                        _PUBLISHING.discard(key)
                 return
 
             if endpoint == "open-folder":

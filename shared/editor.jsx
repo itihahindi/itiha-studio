@@ -1200,6 +1200,51 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
     try { await fetch('api/open-folder', { method: 'POST' }); } catch {}
   };
 
+  const [publishState, setPublishState] = React.useState({ phase: 'idle' });
+  // phase: 'idle' | 'publishing' | 'done' | 'error'
+
+  const publishIG = async () => {
+    const n = (content.slides || []).length;
+    const ok = window.confirm(
+      `Post ${n} slide${n === 1 ? '' : 's'} to Instagram NOW?\n\n` +
+      `This publishes the last rendered PNGs publicly to the connected account.`
+    );
+    if (!ok) return;
+    setPublishState({ phase: 'publishing' });
+    try {
+      if (dirty) await onSave();
+      const r = await fetch('api/publish-ig', { method: 'POST' });
+      if (!r.ok) throw new Error(await r.text());
+      const result = await r.json();
+      setPublishState({ phase: 'done', permalink: result.permalink });
+    } catch (e) {
+      setPublishState({ phase: 'error', msg: String(e.message || e) });
+    }
+  };
+  const publishBusy = publishState.phase === 'publishing';
+
+  // Reel composing — only offered when the design carries a reel-frame slide.
+  const hasReelFrame = (content.slides || []).some(s => s && s.layout === 'reel-frame');
+  const [reelState, setReelState] = React.useState({ phase: 'idle' });
+  // phase: 'idle' | 'rendering' | 'composing' | 'done' | 'error'
+
+  const composeReel = async () => {
+    setReelState({ phase: 'rendering' });
+    try {
+      if (dirty || !savedAt) await onSave();
+      let r = await fetch('api/render', { method: 'POST' });
+      if (!r.ok) throw new Error(await r.text());
+      setReelState({ phase: 'composing' });
+      r = await fetch('api/compose-reel', { method: 'POST' });
+      if (!r.ok) throw new Error(await r.text());
+      const result = await r.json();
+      setReelState({ phase: 'done', duration: result.duration, outputs: result.outputs });
+    } catch (e) {
+      setReelState({ phase: 'error', msg: String(e.message || e) });
+    }
+  };
+  const reelBusy = reelState.phase === 'rendering' || reelState.phase === 'composing';
+
   const savedLabel = error ? `error: ${error}`
                    : dirty ? 'auto-saving…'
                    : savedAt ? `saved · ${new Date(savedAt).toLocaleTimeString()}` : 'no changes yet';
@@ -1269,6 +1314,47 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
           <button onClick={openFolder} style={btnSm}>Open in Finder</button>
         </div>
       )}
+      {reelState.phase === 'done' && (
+        <div style={{
+          padding: '10px 14px', background: 'rgba(90,168,127,0.10)',
+          borderTop: '1px solid #2c2c2c', display: 'flex', alignItems: 'center', gap: 10,
+          fontSize: 12, color: '#aef', letterSpacing: 0.5,
+        }}>
+          <span style={{ color: '#5a8', fontWeight: 600 }}>✓</span>
+          <span>Composed {(reelState.outputs || ['reel.mp4']).join(' + ')}{reelState.duration ? ` · ${reelState.duration}s` : ''}</span>
+          <button onClick={openFolder} style={{ ...btnSm, marginLeft: 'auto' }}>Open in Finder</button>
+        </div>
+      )}
+      {reelState.phase === 'error' && (
+        <div style={{
+          padding: '10px 14px', background: 'rgba(192,57,43,0.15)',
+          borderTop: '1px solid #2c2c2c', fontSize: 12, color: '#fbb', letterSpacing: 0.5,
+          maxHeight: 120, overflowY: 'auto', whiteSpace: 'pre-wrap',
+        }}>{reelState.msg}</div>
+      )}
+      {publishState.phase === 'done' && (
+        <div style={{
+          padding: '10px 14px', background: 'rgba(90,168,127,0.10)',
+          borderTop: '1px solid #2c2c2c', display: 'flex', alignItems: 'center', gap: 10,
+          fontSize: 12, color: '#aef', letterSpacing: 0.5,
+        }}>
+          <span style={{ color: '#5a8', fontWeight: 600 }}>✓</span>
+          <span>Posted to Instagram</span>
+          {publishState.permalink && (
+            <a href={publishState.permalink} target="_blank" rel="noreferrer"
+              style={{ ...btnSm, marginLeft: 'auto', textDecoration: 'none',
+                       display: 'inline-flex', alignItems: 'center' }}
+            >View post</a>
+          )}
+        </div>
+      )}
+      {publishState.phase === 'error' && (
+        <div style={{
+          padding: '10px 14px', background: 'rgba(192,57,43,0.15)',
+          borderTop: '1px solid #2c2c2c', fontSize: 12, color: '#fbb', letterSpacing: 0.5,
+          maxHeight: 120, overflowY: 'auto', whiteSpace: 'pre-wrap',
+        }}>{publishState.msg}</div>
+      )}
       {renderState.phase === 'error' && (
         <div style={{
           padding: '10px 14px', background: 'rgba(192,57,43,0.15)',
@@ -1292,6 +1378,27 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
           padding: '10px 18px', cursor: renderBusy ? 'wait' : 'pointer',
           font: '11px "DM Sans", system-ui', letterSpacing: 2, textTransform: 'uppercase', fontWeight: 600,
         }}>{renderLabel}</button>
+        <button onClick={publishIG} disabled={publishBusy || renderBusy}
+          title="Publish the last render to Instagram via the API (needs IG credentials in .env)"
+          style={{
+            background: publishBusy ? '#1a1a1a' : '#0f0f0f',
+            color: publishBusy ? '#888' : '#E8DCC8',
+            border: '1px solid #2c2c2c',
+            padding: '10px 14px', cursor: publishBusy ? 'wait' : 'pointer',
+            font: '11px "DM Sans", system-ui', letterSpacing: 2, textTransform: 'uppercase', fontWeight: 600,
+          }}>{publishBusy ? 'Posting…' : 'Post IG'}</button>
+        {hasReelFrame && (
+          <button onClick={composeReel} disabled={reelBusy || renderBusy}
+            title="Fetch the Video URL with yt-dlp and stack it under the rendered header panel (ffmpeg)"
+            style={{
+              background: reelBusy ? '#1a1a1a' : '#0f0f0f',
+              color: reelBusy ? '#888' : '#E8DCC8',
+              border: '1px solid #2c2c2c',
+              padding: '10px 14px', cursor: reelBusy ? 'wait' : 'pointer',
+              font: '11px "DM Sans", system-ui', letterSpacing: 2, textTransform: 'uppercase', fontWeight: 600,
+            }}>{reelState.phase === 'rendering' ? 'Rendering…'
+               : reelState.phase === 'composing' ? 'Composing…' : 'Compose Reel'}</button>
+        )}
         <label
           title="Re-render automatically 2.5s after every save settles. Costs CPU on each edit."
           style={{

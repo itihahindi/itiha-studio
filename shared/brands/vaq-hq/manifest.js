@@ -118,6 +118,25 @@ window.MANIFEST = {
     ],
   },
 
+  "reel-frame": {
+    label: "Reel Frame",
+    summary: "1080×1920 header panel over a reposted video — paste a link, render, Compose Reel.",
+    fields: [
+      _VERTICAL_FIELD,
+      _KICKER_META,
+      { key: "video_url",  type: "text",     label: "Video URL",
+        help: "YouTube / Shorts / Instagram link. Fetched at best quality by Compose Reel." },
+      { key: "headline",   type: "textarea", label: "Headline", help: "*word* = highlighter emphasis." },
+      { key: "subline",    type: "text",     label: "Subline" },
+      { key: "credit",     type: "text",     label: "Credit", help: "e.g. via @channel — bottom-right of the panel." },
+      _TEXTURE_FIELD,
+      { key: "panel_height",      type: "number", label: "Panel height (px)", default: 560, step: 20,
+        help: "The video fills everything below this line." },
+      { key: "headline_size",     type: "number", label: "Headline size (px)", default: 66 },
+      { key: "headline_offset_y", type: "number", label: "Headline offset Y (px)", default: 0, step: 10 },
+    ],
+  },
+
   "closing": {
     label: "Closing",
     summary: "Paper channel signature — mark, wordmark, four accent dots, follow line.",

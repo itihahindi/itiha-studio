@@ -1,0 +1,43 @@
+name: protest
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Replace this with your IG caption.
+
+  #hashtags #here
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+slides:
+- layout: cover
+  eyebrow: Series 01
+  eyebrow_meta: protest · 3 Parts
+  headline: |
+    The protest was about NEET. Where did Brahmins and Hindutva come into this?
+  subline: CJP PROTEST
+  swipe_meta: Swipe ▸ · 3 Slides · 1 min read
+  vertical: ground
+  image: https://pbs.twimg.com/media/HNb87UAa0AEoRmw?format=jpg&name=large
+  image_position: 30% 53%
+  show_index: false
+  texture: grid
+  headline_size: 80
+  headline_offset_y: 80
+  surface: dark
+- layout: closing
+  headline: |
+    The Closing
+    *Line.*
+  stats:
+  - value: '1825'
+    label: Year it began
+  - value: 100K
+    label: People affected
+  - value: '12'
+    label: Colonies involved
+  body: |
+    A short, declarative paragraph that lands the final point. Optional.
+  handle: Follow @yourhandle

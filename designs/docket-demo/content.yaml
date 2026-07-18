@@ -1,0 +1,41 @@
+name: docket-demo
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  The Docket — layout proof for the legal vertical.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #TheDocket #Legal
+tweaks:
+  vertical: legal
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE DOCKET
+slides:
+- layout: cover
+  kicker_meta: New Delhi · July 17
+  headline: |
+    Court blocks the
+    emergency data rule
+    *hours* before it bites
+  subline: A judge paused the measure late Thursday, siding with states that said it skipped notice-and-comment.
+- layout: story
+  kicker_meta: The Ruling
+  headline: The judge found no *imminent harm*
+  body: |
+    In fourteen pages the court held the government had not shown the [urgency] that justifies bypassing ordinary rulemaking.
+- layout: quote
+  kicker_meta: Reaction
+  quote: The line between the courts and the agencies just moved.
+  attribution: Prof. J. Lin, constitutional law
+- layout: stat
+  kicker_meta: The Filing
+  label: States in the coalition
+  value: "24"
+  sublabel: Attorneys general signed on
+  body: The coalition filed for an emergency injunction and had an order [within a day].
+- layout: closing
+  headline: An appeal is expected within days.
+  body: Follow [Vaq HQ] for what happens next.
+  handle: '@vaqhq · vaqhq.com'

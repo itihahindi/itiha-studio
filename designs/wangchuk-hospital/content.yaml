@@ -1,0 +1,39 @@
+name: wangchuk-hospital
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  DEVELOPING — On the 21st day of his indefinite hunger strike, Delhi Police
+  shifted activist Sonam Wangchuk from Jantar Mantar to hospital on July 18,
+  triggering chaotic scenes as supporters tried to block the move. The protest
+  site remained active after he was taken away.
+
+  Concerns about force-feeding have been raised by supporters and are not
+  independently confirmed.
+
+  Source: The Tribune.
+
+  Follow @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #SonamWangchuk #JantarMantar #Delhi #BreakingNews #CurrentAffairs
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: cover
+  surface: dark
+  texture: riso
+  kicker_meta: 'JANTAR MANTAR · 18 JUL '
+  headline: |
+    Police remove
+    *Wangchuk* from
+    Jantar Mantar
+  subline: Day 21 of the hunger strike ends in chaos as Delhi Police shift the activist to hospital. Supporters
+    raise force-feeding fears — as yet unconfirmed.
+  vertical: live
+  headline_size: 80
+  image: https://images.indianexpress.com/2026/07/Sonam-Wangchuk-1.jpg?w=1200
+  image_position: 45% 0%
+  image_height: 400
+  body: |
+    The CJP drama at Jantar Mantar appears to have come to an end. Delhi Police have taken Sonam Wangchuk to Ram Manohar Lohia Hospital, where he is reportedly likely to be force-fed.

@@ -1,0 +1,74 @@
+name: puri-rath-yatra-2026
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  India's largest chariot festival opened on Thursday with a death.
+
+  Lakhs of devotees filled the Grand Road in Puri on July 16 as Lord Jagannath, Lord
+  Balabhadra and Goddess Subhadra were carried out of the sanctum in the Pahandi ritual
+  and placed on three chariots. It is the one day of the year the deities leave the
+  temple. The Gajapati Maharaja of Puri swept the decks with a golden broom, and the
+  pulling began.
+
+  Then the crowd broke. A surge near the Singhadwara, the temple's main gate, left at
+  least one devotee dead after he collapsed with breathing difficulty. Fire crews pulled
+  around 100 people out of the crush. About 50 were admitted to hospital. Reports differ
+  on the toll, and some outlets put it at two.
+
+  Odisha had built for this. More than 12,000 police, 19 senior IPS officers, CRPF, BSF
+  and NSG units, drones, 65 LED screens, and 470 AI-enabled cameras along the Bada Danda,
+  installed specifically to detect overcrowding and trigger corrective action. Former
+  Chief Minister Naveen Patnaik said he hoped the state would ensure the safety of
+  devotees by properly managing the crowds.
+
+  The chariots are now at the Gundicha Temple, three kilometres away. They return on
+  July 24.
+
+  File photos: Prashant Kharote, Radeeh, Bernard Gagnon, Krupasindhu Muduli via
+  Wikimedia Commons, CC BY-SA.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #RathYatra #Puri #Jagannath #Odisha #India
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: true
+  seriesLabel: PURI
+slides:
+- layout: cover
+  surface: light
+  kicker_meta: Puri · July 16
+  headline: |
+    470 CAMERAS
+    WATCHED THE
+    *CRUSH*
+  subline: Odisha wired the Rath Yatra with AI to stop overcrowding. On day one, a devotee died in it.
+  image: grand-road.jpg
+  image_position: center 62%
+- layout: split-story
+  kicker_meta: The Scene
+  image: chariot-pull.jpg
+  image_position: center 58%
+  headline: Lakhs Came To Pull The *Chariots*
+  body: |
+    Rath Yatra is the one day the deities leave the sanctum. Three chariots roll [three kilometres] to the Gundicha Temple.
+- layout: story
+  kicker_meta: The Surge
+  headline: Then It Broke At The *Lion Gate*
+  body: |
+    Devotees packed the [Singhadwara] as the chariots moved. Fire crews pulled out about [100 people], and roughly 50 were admitted.
+  image: singhadwara.jpg
+  image_position: center 30%
+- layout: story
+  kicker_meta: The Watch
+  headline: The State Was *Watching*
+  body: |
+    [12,000 police] and [470 AI cameras] were deployed to catch overcrowding. At least one devotee still died.
+  image: police.jpg
+  image_position: center 55%
+- layout: closing
+  headline: The chariots return on July 24.
+  body: Follow [Vaq HQ] for what happens next.
+  handle: '@vaqhq · vaqhq.com'
+  texture: grid

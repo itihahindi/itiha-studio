@@ -1,0 +1,78 @@
+name: ins-mahendragiri
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Defence Minister Rajnath Singh commissioned INS Mahendragiri into the Indian Navy at Mumbai — the seventh and final stealth frigate of Project 17A (the Nilgiri class).
+
+  Built by Mazagon Dock Shipbuilders, the 6,670-tonne warship is designed almost entirely in India by the Navy's Warship Design Bureau. It carries 8 BrahMos supersonic cruise missiles, 32 Barak-8 air-defence missiles, a 76mm main gun and anti-submarine torpedoes, and hits 28 knots. Enhanced stealth shaping keeps its radar signature low. Named after a peak in the Eastern Ghats, Mahendragiri closes out one of India's most ambitious indigenous warship programmes.
+hashtags: |
+  #VaqHQ #INSMahendragiri #IndianNavy #RajnathSingh #P17A #BrahMos #MakeInIndia #Defence #StealthFrigate
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: true
+  seriesLabel: NAVY
+slides:
+- layout: cover
+  surface: solid
+  texture: riso
+  kicker_meta: LIVE
+  headline: |
+    India Commissions
+    INS *Mahendragiri*
+  subline: The last stealth frigate of Project 17A joins the fleet
+  image: _cache/816bde2fce72f5e6.jpg
+  image_credit: NEW INDIAN EXPRESS
+- layout: story
+  texture: grid
+  headline: |
+    Commissioned
+    in *Mumbai*
+  body: |
+    Defence Minister [Rajnath Singh] inducted INS Mahendragiri into the [Indian Navy] today — the [seventh and final] ship of Project 17A, built by [Mazagon Dock Shipbuilders].
+  image: _cache/6626f1527d1e984d.jpg
+  image_caption: INS Mahendragiri during sea trials
+  image_credit: MoD (INDIA) · GODL
+  image_position: 50% 45%
+- layout: stat
+  texture: grid
+  label: Supersonic strike
+  value: 8×
+  sublabel: BrahMos cruise missiles
+  body: |
+    Plus [32 Barak-8] air-defence missiles, a [76mm] main gun and anti-submarine torpedoes.
+- layout: story
+  surface: solid
+  texture: dots
+  headline: |
+    Designed and
+    built in *India*
+  body: |
+    A [6,670-tonne] warship drawn up by the Navy's own [Warship Design Bureau] — one of the most heavily [indigenous] frigates India has ever floated.
+- layout: story
+  texture: grid
+  headline: |
+    Stealth is
+    the *point*
+  body: |
+    Enhanced hull shaping and a [low radar signature] let it slip closer, unseen. Top speed: [28 knots]. Crew: [226].
+  image: _cache/816bde2fce72f5e6.jpg
+  image_caption: The P-17A stealth frigate
+  image_credit: NEW INDIAN EXPRESS
+  image_position: 50% 40%
+  surface: light
+- layout: story
+  surface: solid
+  texture: signal
+  headline: |
+    Named for a
+    *mountain*
+  body: |
+    Mahendragiri takes its name from a peak in the [Eastern Ghats] — and closes out the [Nilgiri class], the last of seven Project 17A frigates.
+- layout: closing
+  texture: riso
+  headline: |
+    Politics, decoded. Live.
+  body: |
+    Source: Times Now, MoD.
+  handle: 'Follow @vaqhq '

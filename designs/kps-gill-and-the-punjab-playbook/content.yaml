@@ -1,0 +1,104 @@
+name: kps-gill-and-the-punjab-playbook
+brand: itiha
+format: instagram-portrait
+caption: |
+  Between 1988 and 1995, the Punjab Police under K.P.S. Gill dismantled the Khalistan insurgency — one of the most heavily armed, cross-border-funded militancies in modern Indian history. The playbook that broke it was not the frontal assault that had failed in 1984. It was a patient, intelligence-driven, ground-up counter-insurgency that would later be studied in police academies from Kashmir to Chhattisgarh.
+
+  This carousel documents the six operational strategies that turned the tide. Operation Black Thunder II in May 1988 saw Gill lead a coordinated siege of the Golden Temple complex — cordoning the shrine, using elite snipers, cutting off supplies, and forcing the militants to surrender in full view of the international media. Operation Night Dominance reversed the militants' traditional control of the rural countryside after dark by mandating aggressive night patrols, ambushes, and focal-point deception. The Punjab Police initiated a massive intelligence overhaul to map the militants' cross-border infiltration and exfiltration routes into Pakistan. Tens of thousands of Special Police Officers — armed civilian youths — were deployed at the village level to provide micro-level intelligence. Captured or surrendered militants were co-opted as Covert Apprehension Techniques — the "CATs" — who worked with police tactical teams to identify active militants and inject paranoia into the insurgent networks. And joint interrogation teams comprising the Punjab Police and the CRPF ended the coordination failures that had plagued earlier operations, allowing state and central forces to operate cohesively as a single unit.
+
+  The Punjab model is now the reference point for every subsequent Indian counter-insurgency. Its architect knew that the war was won by intelligence at the village level, not by artillery at the shrine.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #KPSGill #Punjab #Khalistan #CounterInsurgency #IndianPolice #BlackThunder #ModernIndia
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: PUNJAB
+slides:
+- layout: cover
+  headline: |
+    How *K.P.S. Gill*
+    Broke The *Khalistan*
+    Insurgency.
+  subline: The six-part playbook · 1988 to 1995
+  swipe_meta: Swipe ▸ · 8 Slides · 4 min read
+  image: https://media.gettyimages.com/id/88883990/photo/india-kanwar-pal-singh-gill-or-kps-gill-director-general-of-police-punjab.jpg?s=612x612&w=0&k=20&c=UFL3MazJtDJaSAgkdG_CjW9q9-MJLxxA61PZ9DppkC8=
+  image_position: 0% 50%
+  image_overlay: 1
+  headline_offset_y: 300
+  headline_size: 120
+- layout: split-story
+  chapter: Operation 01 · Black Thunder II
+  headline: |
+    A Siege, Not
+    An *Assault.*
+  body: In [May 1988], Gill led a patient, highly coordinated siege of the [Golden Temple] complex. Instead
+    of launching a [destructive frontal assault], security forces [cordoned off] the shrine, utilised
+    [elite snipers], and [cut off supplies]. This forced the militants to [surrender] in full view of
+    the [international media], severely damaging their [aura of invincibility].
+  body_y: 20
+  image: https://images.travelandleisureasia.com/wp-content/uploads/sites/2/2024/06/14092037/Golden-Temple-At-Night-.jpg
+  image_bw: false
+  image_overlay: 1
+- layout: split-story
+  chapter: Operation 02 · Night Dominance
+  headline: |
+    They Owned The Night.
+    Gill Took It *Back.*
+  body: Militants traditionally controlled the [rural Punjab countryside] after dark. Gill reversed this
+    by mandating [aggressive], [continuous night patrols] and [ambush operations]. By utilising [focal
+    point patrolling] and [deception], the police disrupted the militants' [freedom of movement] and reclaimed
+    [territorial control] of the rural hinterlands at [night].
+  image_bw: false
+  body_y: 16
+  image: https://images.hindustantimes.com/rf/image_size_640x362/HT/p2/2017/05/26/Pictures/kps-gill_15a9f3f8-421a-11e7-b7e5-3de2b6485255.jpg
+  image_filter: bw
+  image_overlay: 1
+- layout: split-story
+  chapter: Operation 03 · The Routes
+  headline: |
+    Mapping The
+    *Border.*
+  body: Under Gill's leadership, the [Punjab Police] initiated a massive [intelligence overhaul]. The
+    police systematically gathered intelligence to identify militant [safe houses], [combat strength],
+    and the specific [cross-border routes] used for [infiltration] and [exfiltration] into [Pakistan].
+    The war became a [map] before it became a [gun-battle].
+  image: https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2017/05/27/Pictures/encounter-terrorist-director-intervening-ammunition-recovered-inspecting_63db4d48-42c3-11e7-b7e5-3de2b6485255.jpg
+  image_overlay: 1
+  body_y: 30
+- layout: split-story
+  eyebrow: Operation 04 · The SPOs
+  headline: |
+    Fifty Thousand
+    *Village Eyes.*
+  body: |
+    To embed counter-insurgency at the [grassroots], Gill oversaw the mass recruitment of [Special Police Officers]. Tens of thousands of [civilian youths] were armed and deployed across [villages] to provide [micro-level intelligence] on insurgent [movements] and [logistical networks]. The insurgent's greatest asset, [local anonymity], was [destroyed] from within.
+  source: Contemporary Punjab Police operational records
+  body_y: 14
+  image: https://images.indianexpress.com/2017/05/kps-gill-759.jpg
+  image_overlay: 1
+- layout: split-story
+  chapter: Operation 05 · The CATs
+  headline: |
+    The Militants Who
+    Turned *Informant.*
+  body: |
+    Gill's forces [co-opted] surrendered militants in exchange for [cooperation]. The [CATs] helped [identify militants], [dismantle networks], and spread [paranoia], turning every insurgent into a [possible informant].
+  image: https://akm-img-a-in.tosshub.com/sites/dailyo//story/embed/201705/bhindranwale_052817041425.jpg?size=480:*
+  image_position: 44% 100%
+  image_overlay: 1
+- layout: split-story
+  headline: |2+
+
+  body: |
+    The Playbook India Still [Uses]. Siege, not assault. [Night dominance]. [Intelligence] over [artillery]. [Village-level] recruitment. [Turned] informants. [Joint] command. The [six operations] that broke [Khalistan] became the [reference model] for Indian counter-insurgency in [Kashmir], [Chhattisgarh], and the [Northeast]. The [war] was won in the [village], not the [shrine].
+  handle: Follow @itiha29 · itiha.info
+  body_y: 20
+  image: https://images.tribuneindia.com/cms/gall_content/2017/5/2017_5$largeimg30_Tuesday_2017_235428592.jpg
+  image_overlay: 1
+- layout: end-card
+  headline: New slide

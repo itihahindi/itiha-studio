@@ -1,0 +1,49 @@
+name: vaq-sports-demo
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Sports vertical demo — dark cinematic hero + light editorial grid.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Sports #TheArena
+tweaks:
+  vertical: sports
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE ARENA
+slides:
+- layout: cover
+  kicker_meta: Champions League Final
+  headline: |2+
+
+  subline: Ninety minutes to settle a decade of dominance.
+  image: hero.jpg
+  image_position: center
+  image_credit: Getty / placeholder
+- layout: split-story
+  kicker_meta: Match Report
+  headline: The *Comeback* Nobody Saw Coming
+  body: |
+    Down [two goals] at the hour mark, they scored [three] in [eleven minutes] to steal it. _Pure theatre_ under the lights.
+  image: action.jpg
+  image_credit: Placeholder
+- layout: stat
+  kicker_meta: By The Numbers
+  label: Distance covered
+  value: 11.4KM
+  sublabel: One midfielder. One match.
+  body: The engine room never stopped — [relentless] pressing from the first whistle to the last.
+- layout: quote
+  kicker_meta: In The Room
+  quote: We didn't come here to survive. We came to take it.
+  attribution: The Captain, full-time
+- layout: story
+  kicker_meta: What's Next
+  headline: The *Title Race* Goes Down To The Wire
+  body: |
+    Two clubs, [one point], and [two games] left. Every touch from here writes the ending.
+- layout: closing
+  headline: The Arena never sleeps.
+  body: Follow [Vaq HQ] for the stories behind the scoreline.
+  handle: '@vaqhq · vaqhq.com'

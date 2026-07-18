@@ -1,0 +1,103 @@
+name: delhi-hc-pecuniary-jurisdiction
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Delhi's High Court lawyers struck for three days over a single number.
+
+  The Delhi High Court is one of a handful in India with an Original Side. Civil suits
+  worth more than 2 crore are filed there directly, not in a district court. In July 2026
+  the Court's Full Court recommended raising the district courts' ceiling to 10 crore,
+  which would push everything below that figure out of the High Court. The Delhi High
+  Court Bar Association says nearly 70% of its Original Side docket would go. That figure
+  is the Bar's own, and no official breakdown has been published.
+
+  The Bar abstained from work on 14, 15 and 16 July, after a Division Bench refused on 10
+  July to stop the judges' committee from tabling its report. Senior Advocate J. Sai
+  Deepak, one of six senior lawyers quoted by Bar & Bench, said the change would tell
+  people that only those with deeper pockets can access the better services of the Delhi
+  High Court, and called it an elitism that could be avoided. He proposed a 5 crore
+  threshold instead, or a cap on court fees between 3 lakh and 5 lakh.
+
+  Two things are worth knowing. The High Court cannot do this itself. The limit sits in
+  Section 5(2) of the Delhi High Court Act, 1966, and only Parliament can change it,
+  exactly as it did in 2015 when it raised the figure from 20 lakh to 2 crore. And 10
+  crore is not the end of it. The district court bar associations asked the Law Ministry
+  for 20 crore in May 2025. They have called 10 crore a first step and want 20 crore or
+  unlimited jurisdiction.
+
+  The Bar suspended its strike on 16 July after meeting Arjun Ram Meghwal, the Minister of
+  State for Law and Justice, and attending a meeting called by Chief Justice Devendra
+  Kumar Upadhyaya. Suspended, not withdrawn. The writ petitions are listed for 24 July.
+
+  Photos: Ishanjyotibora (CC BY), Ramesh Lalwani (CC BY-SA) and Rijksmuseum (CC0) via
+  Wikimedia Commons. Meghwal portrait: PIB / Ministry of Law and Justice (GODL-India).
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #TheDocket #DelhiHighCourt #JSaiDeepak #Law #India
+tweaks:
+  vertical: legal
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE DOCKET
+slides:
+- layout: cover
+  kicker_meta: New Delhi · July 16
+  headline: |
+    Only *deeper pockets*
+    will reach this court
+  subline: Senior Advocate J. Sai Deepak on the plan to move 10 crore suits out of the Delhi High Court.
+    Its own Bar struck for three days.
+  image: sai-deepak.jpg
+  image_position: 47% 24%
+- layout: split-story
+  kicker_meta: The Setup
+  headline: Delhi's High Court is *unusual*
+  body: |
+    Most High Courts only hear appeals. Delhi hears civil suits worth over [2 crore] directly, on what it calls its Original Side.
+  image: https://th-i.thgim.com/public/incoming/3pih4u/article70648629.ece/alternates/LANDSCAPE_1200/INDEX%20DELHI%20HIGH%20COURT%20%20DELHI%202025_09_04_20.jpg
+- layout: stat
+  kicker_meta: The Bar's Estimate
+  label: Of the High Court's Original Side
+  value: 70%
+  stat_size: 230
+  sublabel: Would move to the district courts
+  body: The figure is the [Bar Association's own]. The Full Court has published no breakdown.
+- layout: story
+  kicker_meta: The Destination
+  headline: The suits would go *here*
+  body: |
+    Delhi's district courts already hold about [97,000] civil suits. The High Court's Original Side has roughly [16,000].
+  image: patiala-house.jpg
+  image_position: center 55%
+  image_caption: Patiala House Courts, New Delhi
+- layout: quote
+  kicker_meta: The Objection
+  quote: Only those with deeper pockets can access the better services of the Delhi High Court. That is
+    an elitism that we can avoid.
+  attribution: J. Sai Deepak, Senior Advocate, to Bar & Bench
+  quote_size: 62
+- layout: story
+  kicker_meta: The Catch
+  headline: The court cannot do this *itself*
+  body: |
+    The limit sits in the [Delhi High Court Act, 1966], and only [Parliament] can change it. This is a recommendation, not law.
+- layout: story
+  kicker_meta: The Other Bar
+  headline: The district bar asked for *20 crore*
+  body: |
+    The Full Court's 10 crore halves that ask. District bars call it a [first step] toward 20 crore or [unlimited] jurisdiction.
+  image_position: center 45%
+  image_caption: Lawyers in Delhi, photographed in the 1860s
+- layout: story
+  kicker_meta: Where It Stands
+  headline: Suspended, not *withdrawn*
+  body: |
+    The Bar returned to work after meeting the [Law Minister] and the Chief Justice. The writs are listed for [July 24].
+  image: meghwal.jpg
+  image_position: center 30%
+  image_caption: Arjun Ram Meghwal, Minister of State for Law and Justice
+- layout: closing
+  headline: Only Parliament can settle this.
+  body: Follow [Vaq HQ] for what happens next.
+  handle: '@vaqhq · vaqhq.com'

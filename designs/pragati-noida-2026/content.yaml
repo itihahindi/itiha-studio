@@ -1,0 +1,84 @@
+name: pragati-noida-2026
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Uttar Pradesh has approved a plan to build a robotics and AI park in Noida.
+
+  The project is called PRAGATI, short for Park for Robotics, Artificial Intelligence, GPU
+  Clusters and Advanced Technical Innovation. Chief Minister Yogi Adityanath cleared it at
+  a review meeting of the state IT and Electronics Department on July 16. It is planned
+  across about 75 acres and would house robotics testing, rapid prototyping, GPU clusters,
+  AI compute and physical-AI data centres.
+
+  The state bills it as India's first integrated robotics and advanced manufacturing
+  cluster and projects over one lakh direct and indirect jobs, plus more than Rs 2,000
+  crore in gross value added over five years. Those are government projections. No land
+  has been developed and no construction has begun.
+
+  The same roadmap sets aside Rs 100 crore in the FY27 budget for two deep-tech U Hubs, in
+  Noida and Lucknow, covering quantum computing, semiconductor design and physical AI. All
+  of it traces to a single state government announcement.
+
+  File photos: S211897polito, PiDatacenters and Divyendu Raj Sharma via Wikimedia Commons,
+  CC BY-SA.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Cathode #Noida #Robotics #AI #UttarPradesh
+tweaks:
+  vertical: tech
+  showStamp: true
+  showPageNum: true
+  seriesLabel: CATHODE
+slides:
+- layout: cover
+  headline: |
+    A 75-acre bet on
+    *robots and AI*
+  subline: Uttar Pradesh has approved PRAGATI, a robotics and AI park in Noida. For now it is a plan on
+    paper.
+  image: https://etimg.etb2bimg.com/photo/132455363.cms
+  surface: solid
+  texture: grid
+- layout: story
+  kicker_meta: The Plan
+  headline: It is called *PRAGATI*
+  body: |
+    Park for [Robotics], [AI], [GPU Clusters] and Advanced Technical Innovation. The state calls it India's [first] integrated robotics cluster.
+  image: robot-arm.jpg
+  image_position: center 40%
+  surface: solid
+  texture: grid
+- layout: story
+  kicker_meta: Inside
+  headline: Built for *compute*
+  body: |
+    Robotics testing, rapid prototyping, [GPU clusters], AI compute and [physical-AI data centres] on one 75-acre campus.
+  image: data-center.jpg
+  image_position: center 50%
+  surface: solid
+  texture: grid
+- layout: stat
+  kicker_meta: The Projection
+  label: The state's target
+  value: 1 LAKH
+  stat_size: 210
+  sublabel: Direct and indirect jobs
+  body: Plus [Rs 2,000 crore] in gross value added over five years. Both are government projections. Nothing
+    is built yet.
+  surface: dark
+  texture: grid
+- layout: story
+  kicker_meta: '-'
+  headline: Two *U Hubs*, Rs 100 crore
+  body: |
+    Separate deep-tech centres in [Noida] and [Lucknow], funded in the FY27 budget, for quantum, semiconductors and physical AI.
+  image: noida.jpg
+  image_position: center 60%
+  image_caption: Noida, Uttar Pradesh
+  surface: solid
+- layout: closing
+  headline: Approved on paper. Now it has to be built.
+  body: Follow [Vaq HQ] for what happens next.
+  handle: '@vaqhq · vaqhq.com'
+  texture: riso

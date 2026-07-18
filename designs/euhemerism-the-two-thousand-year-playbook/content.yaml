@@ -1,0 +1,120 @@
+name: the-two-thousand-year-playbook-against-murugan
+brand: itiha
+format: instagram-portrait
+caption: |
+  There is an ancient script for demoting a god. It was written in Greece around 300 BCE. It was weaponised by the early Christian empires against the pagans of Rome. It was carried by monks into medieval Europe. It crossed the Atlantic with Spanish missionaries and dismantled the theology of the Aztecs and Incas. Today it reaches Tamil Nadu — where a coordinated push seeks to reclassify the Hindu deity Murugan as merely "an ancestor of the Tamils." This is not a modern secular awakening. It is the same theological weapon, applied to a new target.
+
+  The script has a name: Euhemerism. In 300 BCE, the Greek writer Euhemerus proposed that the gods of Olympus had never been divine — they had been mortal kings whose deeds were exaggerated by grateful or terrified subjects until they were worshipped as gods. The pagans hated it. Early Christian writers weaponised it, dismissing Jupiter and Saturn as ancient human ancestors and stripping their divinity while conceding their historical existence. Medieval monks preserved beloved local folklore by using the same loophole — Snorri Sturluson rewrote Thor and Odin as a lineage of mortal kings from Troy, saving the Norse pantheon from erasure by demoting it into historical literature. Spanish friars in the Americas dismissed Inca sun-worship as a political tool invented by human rulers for social control, and reclassified the Aztec feathered-serpent Quetzalcoatl as a mortal man — some even claiming he was secretly a Christian missionary. In every case, the technique is identical: concede the historical existence, remove the divinity, reduce the god to an ancestor. The rest follows on its own.
+
+  When Murugan is reclassified from a divine figure to a Tamil ancestor, his divine authority is stripped and his indigenous culture is seamlessly appropriated. The vocabulary is modern. The technique is two thousand years old.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Euhemerism #Murugan #HinduDharma #TamilHistory #ComparativeReligion #CulturalAppropriation #Mythology
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: EUHEMERISM
+slides:
+- layout: cover
+  headline: |
+    The *2,000-Year-Old* Playbook to *Destroy a God*
+  subline: Zeus. Odin. Quetzalcoatl. Now Murugan.
+  swipe_meta: Swipe ▸ · 9 Slides · 4 min read
+  image: https://www.omspiritualshop.com/cdn/shop/articles/MicrosoftTeams-image_3_1200x1200.jpg?v=1720071088
+  headline_offset_y: 270
+  image_overlay: 1
+  headline_size: 130
+- layout: split-story
+  chapter: Chapter 01 · The Origin
+  headline: |
+    The Weapon.
+    *300 BCE.*
+  body: 'In [300 BCE], a Greek writer named [Euhemerus] created a radical concept: he claimed the gods
+    of [Olympus] were never [divine]. They were just [mortal], [flesh-and-blood kings] whose deeds were
+    exaggerated over centuries by [terrified] or [grateful subjects]. This strategy, reducing gods to
+    mere [historical ancestors], is called [Euhemerism]. It changed history forever.'
+  image: https://substackcdn.com/image/fetch/$s_!VBxe!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fb7bd4906-daf7-47a9-9ba4-1eb76e3d2974_614x1280.jpeg
+  image_position: 36% 13%
+  image_overlay: 1
+  body_y: 13
+- layout: split-story
+  chapter: Chapter 02 · Offensive Demotion
+  headline: |
+    The Patristic
+    *Power Move.*
+  body: Early Christian empires weaponised this theory to crush [paganism]. By arguing that gods like
+    [Jupiter] or [Saturn] were just [ancient human ancestors], they [conceded] their historical existence
+    while completely [demolishing their divinity]. The message was clear, [your gods are dead mortal kings].
+    They are not eligible for [worship].
+  image: https://t4.ftcdn.net/jpg/04/88/73/65/360_F_488736592_ANz06x9oV0HOkj0mKW0q9NViylGJye3C.jpg
+  image_overlay: 0.8
+  body_y: 26
+- layout: split-story
+  chapter: Chapter 03 · Medieval Loopholes
+  headline: |
+    The Medieval
+    *Rescue* Mission.
+  body: As Christianity spread, monks used this same loophole to [save] valuable [cultural epics] without
+    endorsing rival religions. Writers preserved [Norse myths] by claiming [Odin] and [Thor] were just
+    a [technologically advanced lineage] of [mortal kings] from [Troy]. The gods were safely demoted from
+    [dangerous religious figures] into [harmless historical literature].
+  body_y: 25
+  image: https://cdn.britannica.com/50/240250-050-43A805C1/Thors-Fight-with-the-giants-oil-painting-Marten-Winge-1872-jotun-jotnar-norse-mythology.jpg
+  image_position: 50% 69%
+  image_overlay: 0.8
+- layout: numbered-list
+  chapter: Chapter 04 · The Colonial Playbook
+  headline: |
+    The Same Script
+    Crossed The *Ocean.*
+  items:
+  - number: 1
+    headline: Incas — sun-worship dismissed
+    body: The Spanish missionaries reclassified [Inca sun-worship] as a [political tool] invented by [human
+      rulers] for [state control]. The divinity was removed. The theology was reduced to [statecraft].
+  - number: 2
+    headline: Aztecs — Quetzalcoatl reduced
+    body: The creator god [Quetzalcoatl] was reduced to a [mortal man]. Some friars even claimed he was
+      secretly a [Christian missionary] — [St. Thomas], come to convert the Americas centuries before
+      the Spanish arrived.
+  number_size: 40
+  headline_offset_y: -10
+  body_offset_y: -130
+- layout: split-story
+  eyebrow: Chapter 05 · Now It Comes For Murugan
+  headline: |
+    History Repeats
+    *Itself.*
+  body: |
+    Right now, there is a coordinated push to reclassify the Hindu deity [Murugan] as merely an [ancestor of the Tamils]. This is [not] a modern, [secular awakening]. It is the exact same [2,000-year-old theological weapon]. By reducing [Murugan] to a [human ancestor], his [divine authority] is stripped, and his [indigenous culture] is seamlessly [appropriated].
+  source: Historical scholarship on comparative religion and Euhemerism
+  body_y: 23
+  image: https://images.unsplash.com/photo-1569136143047-07c0fac16776?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bG9yZCUyMG11cnVnYW58ZW58MHx8MHx8fDA%3D
+  image_position: 45% 100%
+  image_overlay: 1
+- layout: closing
+  headline: |
+    One Weapon.
+    Two *Millennia.*
+  body: |
+    From ancient [Rome] to Viking [Iceland], from the [Aztec] capital to modern [India], the strategy remains [identical]. When you understand the [history], you see the [pattern] everywhere. A god the [textbook] can turn into an [ancestor] is a god the [next generation] will not [worship].
+  handle: Follow @itiha29 · itiha.info
+  image: https://t4.ftcdn.net/jpg/10/11/71/45/360_F_1011714596_SCF4Vv8iWDxu9GXH9llYAhMqSBe2O9hO.jpg
+  body_offset_y: 110
+  headline_size: 100
+  headline_offset_y: -100
+- layout: sources
+  headline: 'The *information* presented in this *carousel* is based on the following *source*:'
+  sources:
+  - title: '“Your Gods Were Once Men” - Christian Euhemerism Against Paganism : From Ancient Egypt to
+      Modern India'
+    author: Rama Seshan Chandrasekaran
+  note: 'https://substack.com/@ramaseshanc '
+  handle: Give a read
+  headline_offset_y: -30
+- layout: end-card
+  headline: New slide

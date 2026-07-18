@@ -313,8 +313,11 @@ function FieldInput({ field, value, onChange, slideIndex }) {
 // ── Layout picker modal ───────────────────────────────────────
 // Tiny CSS schematics of each layout. They hint at structure (where the image
 // sits, where the headline goes, etc.) without rendering the real React
-// component at thumbnail scale. The modal is opened from SlideForm via a small
-// "Browse" button next to the Layout select.
+// component at thumbnail scale. These are the FALLBACK for the layout picker,
+// which prefers a live render of the real slide — see LayoutPreview. A schematic
+// still shows when the brand pack has no component for a layout (vaq-hq
+// implements 6 of the KNOWN_LAYOUTS names) or when a preview throws.
+// Note the palette here is Itiha's; schematics are not brand-aware.
 
 // Native aspect ratio per layout. Most are 4:5 (carousel portrait); standalone
 // formats have their own native dimensions.
@@ -664,7 +667,44 @@ function LayoutSchematic({ layout, width = 132 }) {
   );
 }
 
-function LayoutPicker({ value, onPick, onClose }) {
+// The picker pushes one slide's content through every layout component at once,
+// so a combination the author never intended (a numeric stat value landing in a
+// layout that calls .split on it) can and does throw. Without a boundary that
+// takes the whole editor down, not just the tile. Fall back to the schematic.
+class PreviewBoundary extends React.Component {
+  constructor(props) { super(props); this.state = { failed: false }; }
+  static getDerivedStateFromError() { return { failed: true }; }
+  render() { return this.state.failed ? this.props.fallback : this.props.children; }
+}
+
+// One tile: THIS slide's real content rendered through a candidate layout, so the
+// choice gets judged on the actual copy and image instead of a generic wireframe.
+function LayoutPreview({ slide, layoutKey, index, dims, width = 150 }) {
+  const fallback = <LayoutSchematic layout={layoutKey} width={width} />;
+  const Comp = window.LAYOUTS && window.LAYOUTS[layoutKey];
+  if (!Comp) return fallback;
+  const W = (dims && dims.width)  || 1080;
+  const H = (dims && dims.height) || 1350;
+  const scale = width / W;
+  return (
+    <PreviewBoundary key={layoutKey} fallback={fallback}>
+      <div style={{
+        position: 'relative', width, height: Math.round(H * scale),
+        overflow: 'hidden', flex: '0 0 auto', background: '#0d0d0d',
+        pointerEvents: 'none',
+      }}>
+        <div style={{
+          position: 'absolute', left: 0, top: 0, width: W, height: H,
+          transform: `scale(${scale})`, transformOrigin: 'top left',
+        }}>
+          <Comp slide={{ ...slide, layout: layoutKey }} index={index} />
+        </div>
+      </div>
+    </PreviewBoundary>
+  );
+}
+
+function LayoutPicker({ value, slide, index, dims, onPick, onClose }) {
   const all = Object.keys(window.MANIFEST);
   const handleBackdrop = e => { if (e.target === e.currentTarget) onClose(); };
   React.useEffect(() => {
@@ -687,10 +727,15 @@ function LayoutPicker({ value, onPick, onClose }) {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '18px 24px', borderBottom: '1px solid #2c2c2c',
         }}>
-          <div style={{
-            fontFamily: '"Bebas Neue", Impact, sans-serif', fontSize: 22,
-            letterSpacing: 2, color: '#E8DCC8',
-          }}>Pick a layout</div>
+          <div>
+            <div style={{
+              fontFamily: '"Bebas Neue", Impact, sans-serif', fontSize: 22,
+              letterSpacing: 2, color: '#E8DCC8',
+            }}>Pick a layout</div>
+            <div style={{
+              font: '11px "DM Sans", system-ui', color: '#888', marginTop: 2,
+            }}>This slide's content, previewed in every layout.</div>
+          </div>
           <button onClick={onClose} style={{
             background: 'transparent', color: '#888', border: 0, fontSize: 22,
             cursor: 'pointer', padding: 0, lineHeight: 1,
@@ -698,7 +743,7 @@ function LayoutPicker({ value, onPick, onClose }) {
         </div>
         <div style={{
           flex: 1, overflowY: 'auto', padding: 20,
-          display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 14,
+          display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(196px, 1fr))', gap: 14,
         }}>
           {all.map(key => {
             const def = window.MANIFEST[key];
@@ -713,8 +758,9 @@ function LayoutPicker({ value, onPick, onClose }) {
               }}
               onMouseEnter={e => { if (!selected) e.currentTarget.style.borderColor = '#444'; }}
               onMouseLeave={e => { if (!selected) e.currentTarget.style.borderColor = '#2c2c2c'; }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 130 }}>
-                  <LayoutSchematic layout={key} width={104} />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <LayoutPreview slide={slide} layoutKey={key} index={index}
+                    dims={dims} width={150} />
                 </div>
                 <div style={{
                   fontFamily: '"DM Sans", system-ui', fontSize: 12, fontWeight: 600,
@@ -759,7 +805,9 @@ function SlideForm({ slide, slideIndex, onChange, content, setContent }) {
           }} title="Browse layouts visually">Browse</button>
         </div>
       </Field>
-      {pickerOpen && <LayoutPicker value={layoutKey} onPick={v => set('layout', v)} onClose={() => setPickerOpen(false)} />}
+      {pickerOpen && <LayoutPicker value={layoutKey} slide={slide} index={slideIndex}
+        dims={content && content.format_dims}
+        onPick={v => set('layout', v)} onClose={() => setPickerOpen(false)} />}
       <div style={{ height: 1, background: '#2c2c2c', margin: '4px 0 18px' }} />
       {layoutKey === 'cover' && content && setContent && (
         <div style={{ marginBottom: 22, padding: '14px 14px 4px', background: 'rgba(192,57,43,0.06)', border: '1px solid rgba(192,57,43,0.35)' }}>

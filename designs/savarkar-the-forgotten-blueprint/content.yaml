@@ -1,0 +1,121 @@
+name: savarkar-the-forgotten-blueprint
+brand: itiha
+format: instagram-portrait
+caption: |
+  The textbook remembers V.D. Savarkar as an ideologue. His own political blueprint for independent India, published across his writings from Ratnagiri onward, was that of a modern, secular, casteless, scientifically industrialised republic. He demanded absolute equality between all citizens irrespective of caste, creed, race, or religion. He called for merit-based recruitment across government services. He championed the "machine age," the nationalisation of key industries, and the mechanisation of agriculture. He advocated inter-caste marriage, the use of electric crematoriums, and the abolition of untouchability. He believed in a world commonwealth for global peace. And he saw the science of Yoga as India's highest civilisational contribution.
+
+  This carousel documents the modernist blueprint that survives in Savarkar's own political writings. He proposed one-man-one-vote as the foundation of the Indian state. He guaranteed minority safeguards for language, religion, and culture — with the qualification that no minority create a "State within a State." He argued for free and compulsory primary education. He recognised the peasant and the working classes as the chief source of national wealth, and demanded they share in the profits of the industries their labour built. He proposed state cultivation of agriculture using big machines at large scale to end India's food dependence. He put science at the centre of national life to "annihilate superstitions." He described a consolidated, casteless Hindu society open to voluntary inter-caste marriages and rational reform. And he saw all of this fitting inside a broader vision of world commonwealth — global peace and prosperity — with the awakening of Kundalini through Yoga as the highest ideal offered by India to mankind.
+
+  The modernist Savarkar is the one his critics and his hagiographers both routinely forget. The blueprint is in his own words.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Savarkar #HinduRashtra #IndianConstitution #Meritocracy #Modernism #IndustrialIndia #CastelessSociety
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: SAVARKAR
+slides:
+- layout: cover
+  headline: |
+    *Savarkar's* Blueprint
+    For A *Modern* India.
+  subline: Equality · Meritocracy · Industry · Science
+  swipe_meta: Swipe ▸ · 7 Slides · 4 min read
+  headline_size: 130
+  headline_offset_y: 380
+  image: https://justicemirror.com/wp-content/uploads/2022/02/veer-savarkar.webp
+  image_position: 80% 50%
+  image_bw: true
+- layout: split-story
+  chapter: Chapter 01 · The Republic
+  headline: |
+    One Man.
+    *One Vote.*
+  body: In Savarkar's vision for India, all citizens have [equal rights and obligations] — [irrespective
+    of caste], [creed], [race], or [religion]. The foundation of this democratic state is the rule of
+    [one man, one vote]. All [government services] are awarded by [merit] alone.
+  image: https://cf-images.assettype.com/theleaflet/2024-12-17/57hvhp1z/One-Nation.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true
+  image_position: 45% 50%
+  image_overlay: 1
+  body_y: 36
+  image_bw: true
+- layout: split-story
+  chapter: Chapter 02 · Minorities And Education
+  headline: |
+    Safeguards Without
+    A *State* Within.
+  body: '[Minorities] are given effective [safeguards] to protect their [language], [religion], and [culture],
+    provided they do not encroach upon the rights of the majority or create a [State within a State].
+    To uplift the population, [primary education] is both [free] and [compulsory].'
+  body_y: 28
+  image: https://media.istockphoto.com/id/1463894237/vector/indian-language-letters-tree-with-indian-map.jpg?s=612x612&w=0&k=20&c=hmK-eXJTnPvS9szs2pIU3YxaiIuuOQ2gVPME4_2jmg8=
+  image_overlay: 1
+  image_bw: true
+- layout: split-story
+  chapter: Chapter 03 · The Machine Age
+  headline: |
+    For The *Peasant.*
+    For The Worker.
+  body: Savarkar championed the [machine age] for national production. Recognising [peasants] and the
+    [working classes] as the [chief source of national wealth], his blueprint ensures that [labourers]
+    earn a [comfortable life] and [share in the profits] of the flourishing industries.
+  image: https://images.pexels.com/photos/34851566/pexels-photo-34851566/free-photo-of-brick-kiln-workers-in-dhaka-bangladesh.jpeg
+  image_bw: true
+  image_overlay: 1
+  body_y: 24
+- layout: split-story
+  chapter: Chapter 04 · The Industrial State
+  headline: |
+    Nationalised Industry.
+    Mechanised *Agriculture.*
+  body: To make India [self-sufficient] in [food], [clothing], [shelter], and [defence], key industries
+    would be [nationalised]. Agriculture would be transformed through [State cultivation] — utilising
+    [big machines] to farm on a [large], [scientific scale]. The Indian peasant would no longer be at
+    the mercy of the [monsoon] and the [moneylender].
+  image: https://img.magnific.com/premium-photo/power-plant-industrial-twilight_41204-21379.jpg?semt=ais_hybrid&w=740&q=80
+  image_position: 16% 50%
+  image_overlay: 1
+  body_y: 18
+  image_bw: true
+- layout: split-story
+  eyebrow: Chapter 05 · The Casteless Society
+  theme: dark
+  headline: |
+    He Championed
+    *Inter-Caste* Marriage.
+  body: |
+    [Science,] Savarkar believed, should drive material progress and replace superstition. He envisioned a [casteless Hindu society] that embraced [inter-caste marriages,] rational practices, and modern innovations such as electric crematoriums—one that was [scientific, modern, and united.]
+  source: Savarkar's own political writings
+  body_y: 25
+  image: https://images.livemint.com/img/2021/09/30/original/salil_1632972576022.jpg
+  image_overlay: 1
+  image_bw: true
+- layout: split-story
+  chapter: Chapter 06 · The World Commonwealth
+  headline: |
+    A World Commonwealth.
+    Yoga As India's *Gift.*
+  body: Looking beyond borders, Savarkar's political philosophy held faith in a [World Commonwealth] dedicated
+    to [global peace] and [prosperity]. Spiritually, he championed the science of [Yoga] and the awakening
+    of [Kundalini]' the [internal powers] of the human being, as the [highest ideal] and blessing India
+    could offer to [all mankind].
+  body_y: 20
+  image: https://images.news18.com/ibnlive/uploads/2025/07/yoga-2025-07-b991f89664f8b2f2295cef01947ff7e4.jpg
+  image_overlay: 0.7
+  image_bw: true
+  image_position: 49% 50%
+- layout: closing
+  headline: |2+
+
+  body: |
+    [One-man-one-vote]. [Free education]. [Nationalised industry]. [Mechanised agriculture]. [Casteless society]. [Inter-caste marriage]. [World commonwealth]. [Yoga] as India's civilisational gift. The [blueprint] is not in the [footnote]. It is in the [pages] the [textbook] chose not to [quote].
+  handle: Follow @itiha29 · itiha.info
+  body_offset_y: 110
+  image_overlay: 1
+  image: https://swarajya.gumlet.io/swarajya/2019-09/2e9afa86-64b7-4914-9ec3-5ddbca9df007/Sar.png?w=610&q=75&compress=true&format=auto
+- layout: end-card
+  headline: New slide

@@ -9,6 +9,7 @@ const VAQ = {
   navy:      '#0A1119',
   tileDark:  '#0E1A29',
   panel:     '#15263B',
+  ink:       '#1E1E1E',   // sports dark-hero surface
   // daylight ground
   paper:     '#F7F9FB',
   white:     '#FFFFFF',
@@ -22,8 +23,16 @@ const VAQ = {
   serif:   "'Newsreader', Georgia, serif",
   sans:    "'Hanken Grotesk', system-ui, sans-serif",
   display: "'Archivo', 'Hanken Grotesk', sans-serif",
+  athletic:"'Saira Condensed', 'Archivo', sans-serif",
   mono:    "'Space Mono', ui-monospace, monospace",
   deva:    "'Noto Serif Devanagari', serif",
+  // The Docket (legal) reading voice + UI — from its own design kit.
+  bodySerif: "'Source Serif 4', Georgia, serif",
+  ui:        "'Inter', system-ui, sans-serif",
+  // Cathode (tech) — engineered grotesk + humanist sans + the machine's monospace.
+  grotesk:  "'Space Grotesk', system-ui, sans-serif",
+  plex:     "'IBM Plex Sans', system-ui, sans-serif",
+  plexMono: "'IBM Plex Mono', ui-monospace, monospace",
 };
 
 // ── The four verticals ────────────────────────────────────────
@@ -56,6 +65,72 @@ const VERTICALS = {
     darkInk: false,
     face: 'sans',
   },
+  sports: {
+    key: 'sports', name: 'Sports', show: 'The Arena',
+    kicker: 'SPORTS', badge: 'solid',
+    accent: '#FF3333', onAccent: '#FFFFFF', onAccentMuted: 'rgba(255,255,255,.74)', tint: '#FFD6D6',
+    darkInk: false,
+    face: 'athletic',      // Saira Condensed — bold condensed uppercase
+    coverSurface: 'dark',  // sports covers default to the cinematic dark hero
+  },
+  // Legal news. Runs on its own "modern docket" kit rather than the daylight
+  // newsroom: dark end-to-end, Archivo in SENTENCE case (not the shouty caps the
+  // other verticals use), Source Serif 4 as the reading voice, and one controlled
+  // red. The kit's rule is that red only ever marks breaking, links and section
+  // rules — so emphasis here is red text, never a highlighter block.
+  legal: {
+    key: 'legal', name: 'Legal', show: 'The Docket',
+    kicker: 'LEGAL', badge: 'solid',
+    accent: '#E0554E', onAccent: '#FFFFFF', onAccentMuted: 'rgba(255,255,255,.72)', tint: '#F6D3D1',
+    darkInk: false,
+    face: 'docket',
+    bodyFont: VAQ.bodySerif,   // Source Serif 4 — never set body in Archivo
+    metaFont: VAQ.ui,          // Inter for kickers / meta / chrome
+    sentence: true,            // headlines are sentence case, kickers stay caps
+    coverSurface: 'dark',
+    interiorSurface: 'dark',   // the whole show is dark, not just the cover
+    dark: {
+      bg:    '#141413',        // kit --page
+      head:  '#F2F2EF',        // kit --ink
+      body:  '#B6B6B2',        // kit --text-2
+      muted: '#8A8A86',        // kit --muted
+      hair:  '#2E2E2B',        // kit --border
+      well:  '#252523',        // kit --surface-2
+    },
+  },
+  // Technology news. Runs on the "Cathode" kit: cool graphite-and-paper light
+  // interiors, one electric signal blue as the only accent (spent on emphasis,
+  // links, live states), Space Grotesk headlines in sentence case, IBM Plex Sans
+  // for the read, and IBM Plex Mono everywhere the machine speaks (kickers, meta,
+  // page numbers). Emphasis is signal-blue text, never a highlighter block. The
+  // cover is the one loud moment — a solid signal-blue poster tile.
+  tech: {
+    key: 'tech', name: 'Technology', show: 'Cathode',
+    kicker: 'TECH', badge: 'solid',
+    accent: '#2540FF', onAccent: '#FFFFFF', onAccentMuted: 'rgba(255,255,255,.72)', tint: '#C7CEFF',
+    darkInk: false,
+    face: 'cathode',
+    bodyFont: VAQ.plex,        // IBM Plex Sans — never set body in Space Grotesk
+    metaFont: VAQ.plexMono,    // IBM Plex Mono — the machine's voice
+    numFont: VAQ.grotesk,      // big stat numerals in the display grotesk
+    quoteFont: VAQ.grotesk,    // pull quotes are Space Grotesk, not italic serif
+    quoteItalic: false,
+    sentence: true,            // sentence-case headlines; blue text emphasis
+    light: {
+      bg:      '#F5F6F8',      // kit --canvas
+      surface: '#FFFFFF',      // kit --surface
+      head:    '#14161B',      // kit --ink (graphite, not the daylight navy)
+      body:    '#454951',      // kit --text-2
+      muted:   '#7A7E88',      // kit --muted
+      hair:    '#E2E4EA',      // kit --border
+      well:    '#EDEFF3',      // kit --surface-2 (image wells, blueprint grid)
+    },
+    // The kit ships a full dark theme too, so a slide can opt into surface: dark.
+    dark: {
+      bg:    '#0E0F13', head: '#F1F2F4', body: '#B4B8C0',
+      muted: '#7E828C', hair: '#262A31', well: '#1E2127',
+    },
+  },
 };
 
 // ── Base slide CSS (`.itiha-slide` = cross-brand capture contract) ──
@@ -82,12 +157,43 @@ function verticalFor(slide, t) {
   return VERTICALS[key] || VERTICALS.live;
 }
 
-// Surface: 'light' (paper interior, A) or 'solid' (accent poster tile, B).
-function surfaceFor(slide, v, fallback = 'light') {
-  const mode = (slide && slide.surface) || fallback;
+// Surface: 'light' (paper interior, A), 'solid' (accent poster tile, B), or
+// 'dark' (cinematic / docket). A vertical can set interiorSurface to move its
+// whole show off the daylight default — The Docket runs dark throughout, so
+// layouts pass no fallback and let the vertical decide.
+function surfaceFor(slide, v, fallback) {
+  const base = fallback || (v && v.interiorSurface) || 'light';
+  const mode = (slide && slide.surface) || base;
   if (mode === 'solid') return { mode, bg: v.accent, onSolid: true };
-  return { mode: 'light', bg: fallback === 'light' && slide && slide.paper === 'white' ? VAQ.white : VAQ.paper, onSolid: false };
+  if (mode === 'dark')  return { mode, bg: (v.dark && v.dark.bg) || VAQ.ink, onSolid: false, onDark: true };
+  const lp = (v && v.light) || {};
+  const bg = slide && slide.paper === 'white' ? (lp.surface || VAQ.white) : (lp.bg || VAQ.paper);
+  return { mode: 'light', bg, onSolid: false };
 }
+
+// Every text / rule / well colour for a surface, resolved in one place. Layouts
+// call this instead of reaching for VAQ.inkL & friends, which is what allows a
+// vertical to be dark end-to-end without every layout growing a light/dark fork.
+function inkFor(v, surface) {
+  if (surface.onSolid) {
+    const p = solidPalette(v);
+    return { head: p.head, body: p.body, muted: p.muted, em: p.em,
+             hair: 'rgba(255,255,255,.35)', well: 'rgba(0,0,0,.15)' };
+  }
+  if (surface.onDark) {
+    const d = (v && v.dark) || {};
+    return { head: d.head || '#FFFFFF', body: d.body || 'rgba(255,255,255,.86)',
+             muted: d.muted || 'rgba(255,255,255,.55)', em: d.em || v.accent,
+             hair: d.hair || 'rgba(255,255,255,.14)', well: d.well || '#20201E' };
+  }
+  const l = (v && v.light) || {};
+  return { head: l.head || VAQ.inkL, body: l.body || VAQ.bodyL, muted: l.muted || VAQ.mutedL,
+           em: v.accent, hair: l.hair || VAQ.hairL, well: l.well || '#E4EAF0' };
+}
+
+// Font helpers — a vertical may override the body / meta voice (The Docket).
+function bodyFontFor(v) { return (v && v.bodyFont) || VAQ.sans; }
+function metaFontFor(v) { return (v && v.metaFont) || VAQ.mono; }
 
 // Ink helpers for text sitting on a solid accent tile.
 function solidPalette(v) {
@@ -104,13 +210,26 @@ function solidPalette(v) {
 }
 
 // ── Headline treatment per vertical ───────────────────────────
-function headlineStyle(v, size, onSolid) {
-  const color = onSolid ? solidPalette(v).head : VAQ.inkL;
+function headlineStyle(v, size, onSolid, onDark) {
+  const color = onDark ? ((v.dark && v.dark.head) || '#FFFFFF')
+                       : (onSolid ? solidPalette(v).head : ((v.light && v.light.head) || VAQ.inkL));
   const base = { margin: 0, color, textWrap: 'balance' };
   switch (v.face) {
+    // The Docket: grotesque impact WITHOUT the caps. Its kit is explicit that
+    // headlines are sentence case and only kickers are uppercase.
+    case 'docket':
+      return { ...base, fontFamily: VAQ.display, fontWeight: 700, fontSize: size,
+               lineHeight: 1.04, letterSpacing: '-.025em' };
+    // Cathode: engineered grotesk, sentence case, very tight tracking.
+    case 'cathode':
+      return { ...base, fontFamily: VAQ.grotesk, fontWeight: 700, fontSize: size,
+               lineHeight: 1.02, letterSpacing: '-.03em' };
     case 'display':
       return { ...base, fontFamily: VAQ.display, fontWeight: 900, fontSize: size,
                lineHeight: 0.97, letterSpacing: '-.02em', textTransform: 'uppercase' };
+    case 'athletic':
+      return { ...base, fontFamily: VAQ.athletic, fontWeight: 800, fontSize: size,
+               lineHeight: 1.04, letterSpacing: '.005em', textTransform: 'uppercase' };
     case 'serif':
       return { ...base, fontFamily: VAQ.serif, fontWeight: 600, fontSize: size,
                lineHeight: 1.05, letterSpacing: '-.015em' };
@@ -124,8 +243,9 @@ function headlineStyle(v, size, onSolid) {
 }
 
 function headlineDefaultSize(v, kind) {
-  const cover = { display: 118, serif: 108, 'serif-italic': 106, sans: 110 };
-  const inner = { display: 88,  serif: 92,  'serif-italic': 92,  sans: 88 };
+  // docket runs smaller than the caps faces — sentence case sets wider per word.
+  const cover = { display: 118, serif: 108, 'serif-italic': 106, sans: 110, athletic: 140, docket: 100, cathode: 104 };
+  const inner = { display: 88,  serif: 92,  'serif-italic': 92,  sans: 88, athletic: 108, docket: 82, cathode: 84 };
   return (kind === 'cover' ? cover : inner)[v.face] || 96;
 }
 
@@ -134,12 +254,19 @@ function headlineDefaultSize(v, kind) {
 //   light + display face  → accent block, white text (A cover)
 //   light + serif/sans    → tint block, navy text (highlighter)
 //   solid                 → white (dark-ink tiles) / tint (white tiles)
-function VHeadline({ text, v, size, onSolid, style }) {
-  const st = headlineStyle(v, size, onSolid);
-  const emStyle = onSolid
+function VHeadline({ text, v, size, onSolid, onDark, style }) {
+  const st = headlineStyle(v, size, onSolid, onDark);
+  const blockFace = v.face === 'display' || v.face === 'athletic';
+  const emStyle = onDark
+    ? { color: v.accent }
+    : onSolid
     ? { color: solidPalette(v).em, fontStyle: v.face === 'serif' || v.face === 'serif-italic' ? 'italic' : undefined }
-    : (v.face === 'display'
-        ? { background: v.accent, color: '#fff', padding: '0 0.13em',
+    : v.sentence
+    // The Docket: red is a signal, never a highlighter slab behind text.
+    ? { color: v.accent }
+    : (blockFace
+        ? { background: `linear-gradient(180deg, transparent 10%, ${v.accent} 10%, ${v.accent} 82%, transparent 82%)`,
+            color: '#fff', padding: '0 0.12em',
             boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone' }
         : { background: v.tint, color: VAQ.inkL, padding: '0 0.11em',
             boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone' });
@@ -158,16 +285,17 @@ function VHeadline({ text, v, size, onSolid, style }) {
 }
 
 // Body: [word] → accent emphasis · _word_ → italic · **word** → bold ink.
-function VBody({ text, v, size = 40, onSolid, color, style }) {
+function VBody({ text, v, size = 40, onSolid, onDark, color, style }) {
   const pal = onSolid ? solidPalette(v) : null;
+  const dk = (v && v.dark) || {};
   const base = {
-    margin: 0, fontFamily: VAQ.sans, fontWeight: 400, fontSize: size,
+    margin: 0, fontFamily: bodyFontFor(v), fontWeight: 400, fontSize: size,
     lineHeight: size <= 38 ? 1.65 : size <= 50 ? 1.58 : 1.45,
-    color: color || (onSolid ? pal.body : VAQ.bodyL),
+    color: color || (onDark ? (dk.body || 'rgba(255,255,255,.86)') : onSolid ? pal.body : VAQ.bodyL),
     textWrap: 'pretty',
   };
-  const emColor = onSolid ? pal.bodyEm : v.accent;
-  const strongColor = onSolid ? pal.bodyStrong : VAQ.inkL;
+  const emColor = onDark ? v.accent : (onSolid ? pal.bodyEm : v.accent);
+  const strongColor = onDark ? (dk.head || '#FFFFFF') : (onSolid ? pal.bodyStrong : VAQ.inkL);
   const paras = String(text || '').split(/\n\n+/);
   const renderInline = (str, keyBase) =>
     str.split(/(\[[^\]]+\]|\*\*[^*]+\*\*|_[^_]+_)/g).filter(Boolean).map((p, i) => {
@@ -191,7 +319,7 @@ function VBody({ text, v, size = 40, onSolid, color, style }) {
 }
 
 // ── Kicker row ────────────────────────────────────────────────
-function VKicker({ v, onSolid, meta, style }) {
+function VKicker({ v, onSolid, onDark, meta, style }) {
   const pal = onSolid ? solidPalette(v) : null;
   const chip = (() => {
     if (v.badge === 'plain') {
@@ -220,9 +348,10 @@ function VKicker({ v, onSolid, meta, style }) {
     <div style={{ display: 'flex', alignItems: 'center', gap: 22, ...style }}>
       {chip}
       {!dupMeta && <span style={{
-        fontFamily: VAQ.mono, fontWeight: 700, fontSize: 22, letterSpacing: '.16em',
+        fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 22, letterSpacing: '.16em',
         textTransform: 'uppercase',
-        color: onSolid ? pal.muted : VAQ.mutedL,
+        color: onSolid ? pal.muted
+             : (onDark ? ((v.dark && v.dark.muted) || 'rgba(255,255,255,.72)') : VAQ.mutedL),
       }}>{metaText}</span>}
       {v.deva && (
         <span style={{ fontFamily: VAQ.deva, fontWeight: 600, fontSize: 27,
@@ -245,12 +374,16 @@ function VMark({ size = 44, mono = false }) {
   );
 }
 
-function VWordmark({ size = 30, onSolid = false, withMark = true }) {
-  const vaqColor = onSolid ? '#FFFFFF' : VAQ.inkL;
-  const hqColor  = onSolid ? 'rgba(255,255,255,.85)' : VAQ.orange;
+function VWordmark({ size = 30, onSolid = false, onDark = false, withMark = true }) {
+  // Any non-paper ground gets the mono wordmark. Keeping HQ orange on a dark
+  // slide would put a second accent next to the vertical's own — the exact thing
+  // The Docket's kit forbids — and would clash with the white cover stamp.
+  const light = onSolid || onDark;
+  const vaqColor = light ? '#FFFFFF' : VAQ.inkL;
+  const hqColor  = light ? 'rgba(255,255,255,.85)' : VAQ.orange;
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: Math.round(size * 0.42) }}>
-      {withMark && <VMark size={Math.round(size * 1.35)} mono={onSolid} />}
+      {withMark && <VMark size={Math.round(size * 1.35)} mono={light} />}
       <span style={{ fontFamily: VAQ.serif, fontWeight: 600, fontSize: size, letterSpacing: '-.01em', lineHeight: 1 }}>
         <span style={{ color: vaqColor }}>Vaq</span>{' '}
         <span style={{ color: hqColor }}>HQ</span>
@@ -260,22 +393,24 @@ function VWordmark({ size = 30, onSolid = false, withMark = true }) {
 }
 
 // Bottom chrome: page number left, wordmark right.
-function VChrome({ n, onSolid, v }) {
+function VChrome({ n, onSolid, onDark, v }) {
   const t = useTweaks();
   const total = (t && t.totalSlides) || 9;
   const lbl = (t && t.seriesLabel) || '';
-  const pageColor = onSolid ? solidPalette(v).muted : VAQ.mutedL;
+  const pageColor = onSolid ? solidPalette(v).muted
+                  : onDark ? ((v && v.dark && v.dark.muted) || 'rgba(255,255,255,.55)')
+                  : VAQ.mutedL;
   return (
     <div style={{
       position: 'absolute', left: 72, right: 72, bottom: 56,
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     }}>
       {t.showPageNum !== false && n != null ? (
-        <span style={{ fontFamily: VAQ.mono, fontSize: 22, letterSpacing: '.18em', color: pageColor }}>
+        <span style={{ fontFamily: metaFontFor(v), fontSize: 22, letterSpacing: '.18em', color: pageColor }}>
           {String(n).padStart(2, '0')} / {String(total).padStart(2, '0')}{lbl ? ` · ${lbl}` : ''}
         </span>
       ) : <span />}
-      {t.showStamp !== false ? <VWordmark size={30} onSolid={onSolid} /> : <span />}
+      {t.showStamp !== false ? <VWordmark size={30} onSolid={onSolid} onDark={onDark} /> : <span />}
     </div>
   );
 }
@@ -354,7 +489,7 @@ function VGhostIndex({ n, v, onSolid }) {
 function VSlide({ v, surface, texture, children }) {
   return (
     <div className="itiha-slide vaq-slide" style={{ background: surface.bg }}>
-      {!surface.onSolid && (
+      {!surface.onSolid && !surface.onDark && (
         <div style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 10, background: v.accent, zIndex: 3 }} />
       )}
       <VTexture texture={texture} v={v} onSolid={surface.onSolid} />

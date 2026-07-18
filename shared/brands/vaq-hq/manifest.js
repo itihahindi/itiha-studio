@@ -5,13 +5,13 @@
 
 const _VERTICAL_FIELD = {
   key: "vertical", type: "select", label: "Vertical (show)",
-  options: ["", "live", "briefing", "longview", "ground"], default: "",
-  help: "Blank inherits the project default from Tweaks. live=Current Affairs · briefing=Geopolitics · longview=Political History · ground=Indian Politics.",
+  options: ["", "live", "briefing", "longview", "ground", "sports", "legal", "tech"], default: "",
+  help: "Blank inherits the project default from Tweaks. live=Current Affairs · briefing=Geopolitics · longview=Political History · ground=Indian Politics · sports=Sports (The Arena) · legal=Legal (The Docket, dark) · tech=Technology (Cathode).",
 };
 const _SURFACE_FIELD = {
   key: "surface", type: "select", label: "Surface",
-  options: ["", "light", "solid"], default: "",
-  help: "light = paper interior with the vertical's top rule. solid = accent poster tile (use for photo-less slides).",
+  options: ["", "light", "solid", "dark"], default: "",
+  help: "Blank = the vertical's own default (legal runs dark throughout). light = paper interior with the vertical's top rule. solid = accent poster tile (photo-less slides). dark = cinematic hero (sports covers) / The Docket's #141413.",
 };
 const _TEXTURE_FIELD = {
   key: "texture", type: "select", label: "Texture",
@@ -165,7 +165,7 @@ window.MANIFEST_META = {
 window.MANIFEST_TWEAKS = {
   fields: [
     { key: "vertical",    type: "select", label: "Default vertical (show)",
-      options: ["live", "briefing", "longview", "ground"], default: "live",
+      options: ["live", "briefing", "longview", "ground", "sports", "legal", "tech"], default: "live",
       help: "Per-slide Vertical overrides this." },
     { key: "showStamp",   type: "bool",   label: "Show Vaq HQ wordmark" },
     { key: "showPageNum", type: "bool",   label: "Show page number" },

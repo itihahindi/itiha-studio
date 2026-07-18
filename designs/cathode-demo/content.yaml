@@ -1,0 +1,47 @@
+name: cathode-demo
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Cathode — layout proof for the technology vertical.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Cathode #Tech
+tweaks:
+  vertical: tech
+  showStamp: true
+  showPageNum: true
+  seriesLabel: CATHODE
+slides:
+- layout: cover
+  kicker_meta: Semiconductors
+  headline: |
+    The signal in
+    the *noise*
+  subline: A chipmaker ships its 2nm process months ahead of schedule, resetting a roadmap the industry treated as fixed.
+- layout: story
+  kicker_meta: The Claim
+  headline: Early yields *beat* projections
+  body: |
+    The company says defect rates came in under target, a rare bright spot after [two years] of shortages and delays.
+- layout: stat
+  kicker_meta: Reported Yield
+  label: First-run wafers
+  value: 71.4%
+  stat_size: 220
+  sublabel: Against a 60% internal target
+  body: Executives declined to share the [full defect data]. Independent researchers called the figure plausible.
+- layout: quote
+  kicker_meta: Reaction
+  quote: This resets the roadmap for everyone downstream.
+  attribution: L. Okafor, semiconductor analyst
+  quote_size: 66
+- layout: story
+  kicker_meta: The Catch
+  headline: The numbers are *unaudited*
+  body: |
+    No third party has verified the yield. The claim rests on a summary the company chose to release.
+- layout: closing
+  headline: The leading edge just moved.
+  body: Follow [Vaq HQ] for what happens next.
+  handle: '@vaqhq · vaqhq.com'

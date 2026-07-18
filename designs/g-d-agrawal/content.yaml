@@ -1,0 +1,93 @@
+name: the-monk-who-starved-for-the-ganga
+brand: itiha
+format: instagram-portrait
+caption: |2
+
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #GDAgrawal #SwamiSanand #Ganga #GangaRiver #Environment #Himalayas #IndianEcology
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: SANAND
+slides:
+- layout: cover
+  headline: He *Fasted* Unto Death for *111 Days* But *No One Cared*
+  subline: G.D. Agrawal · 111 days · for the Ganga
+  swipe_meta: Swipe ▸ · 6 Slides · 3 min read
+  headline_size: 120
+  headline_offset_y: 270
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREzw2k514CT-O1Uj-O7qu0OIZ0IRQgVztN6lrr6AV8sIMY8YY3srRG4MBL&s=10
+  image_position: 30% 50%
+  image_overlay: 0.8
+- layout: split-story
+  chapter: Chapter 01 · The Engineer
+  name: G.D. Agrawal
+  dates: 1932–2018
+  role: Environmental engineer, professor, and Hindu monk
+  headline: |
+    Not A Passing
+    *Activist.*
+  body: '[G.D. Agrawal] was not a passing activist. He was a brilliant [environmental engineer], a former
+    [professor], and a [Hindu monk] who saw the [River Ganga] as a [living, sacred entity]. While most
+    people might sign a petition or share a hashtag to show they care about the environment, Agrawal put
+    his actual [life on the line].'
+  image: https://m.thewire.in/sortd-service/imaginary/v22-01/jpg/large/high?url=dGhld2lyZS1pbi1wcm9kLXNvcnRkL21lZGlhMjZiZWNmODAtNGRmOS0xMWYwLWI1ZTUtYTFmMGIwMDBiNjBjLnBuZw==
+  image_position: 32% 50%
+  image_overlay: 0.8
+  body_y: 19
+- layout: split-story
+  chapter: Chapter 02 · The Demand
+  headline: |
+    Let The River
+    Flow *Free.*
+  body: He demanded that the [government] halt [destructive hydroelectric projects] and let the [river's
+    upper streams] flow [free] and [clean]. The [Ganga], he argued, was not a [resource] to be [fragmented]
+    into dam reservoirs before it left the [Himalayas], it was a [living being] with a [right] to its
+    own [flow].
+  image: https://static.toiimg.com/thumb/111502165/111502165.jpg?height=746&width=420&resizemode=76&imgsize=96052
+  image_position: 54% 100%
+  image_overlay: 0.8
+  body_y: 12
+- layout: split-story
+  chapter: Chapter 03 · The Fast
+  headline: |
+    A Fast
+    *Unto Death.*
+  body: In the summer of [2018], after his pleas to politicians went completely [ignored], he initiated
+    a brutal [fast unto death]. The days turned into [weeks], and the weeks into [months]. By the time
+    he crossed the [100-day mark], he was surviving on sheer [willpower]. Eventually, he refused even
+    a single drop of [water].
+  image: https://static.sanatanprabhat.org/wp-content/uploads/sites/7/2026/05/06144530/River_Ganga_purity.jpg
+  image_overlay: 1
+  headline_size: 100
+  body_y: 26
+- layout: document
+  eyebrow: 11 October 2018
+  theme: dark
+  headline: |
+    Day One Hundred
+    And *Eleven.*
+  source: Contemporary press reports and official records
+  body_y: 30
+  quote: |
+    On 11 October 2018, his 111th day without food, his body finally gave out. He was 86 years old. He had spent his final months writing to the Prime Minister and successive ministers. Not a single reply arrived in time to save the river he was dying for.
+  image: screenshot-2026-07-16-at-9-43-04-pm.png
+- layout: closing
+  headline: |
+    He Gave His Life.
+    The River Kept
+    *Dying.*
+  body: |
+    There was no [global outcry]. No [systemic overhaul]. No [sudden awakening]. [G.D. Agrawal] sacrificed his life for the [Ganges], and the world simply [scrolled past], [shrugged], and [moved on]. The [dams] he opposed still [rise]. The [headwaters] he demanded be [free] still [fragment]. The [record] of his [111 days] is what remains, and what asks the [question] his death did not [answer].
+  handle: Follow @itiha29 · itiha.info
+  headline_size: 1
+  body_offset_y: 110
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/G._D._Agrawal.jpg/960px-G._D._Agrawal.jpg
+  image_position: 31% 6%
+- layout: end-card
+  headline: New slide

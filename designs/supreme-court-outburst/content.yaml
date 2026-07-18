@@ -1,0 +1,70 @@
+name: supreme-court-outburst
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  A petitioner hurled papers at the Supreme Court bench and declared himself "the
+  sovereign." The court's answer wasn't contempt — it was sympathy. Here's what
+  actually happened, and why the response matters.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #SupremeCourt #India #Judiciary #CurrentAffairs
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: true
+  seriesLabel: SUPREME COURT
+slides:
+- layout: story
+  surface: dark
+  kicker_meta: Supreme Court · New Delhi
+  headline: |
+    'MR JUDICIAL
+    *SERVANT*'
+  subline: A hearing collapsed into chaos on July 10 — and the top court answered with restraint, not
+    contempt.
+  image: court.jpg
+  image_position: center
+  image_credit: Supreme Court of India
+  vertical: legal
+- layout: split-story
+  kicker_meta: The Scene
+  headline: Papers *Flung* At The Bench
+  body: |
+    Petitioner [Prabal Pratap] told the bench _"I order you… because I am the sovereign,"_ then hurled a [bundle of papers] at Justices [Viswanathan] and [Aradhe].
+  image: _cache/a04512bb2f7f5da0.jpg
+  image_height: 540
+  image_credit: Supreme Court of India
+  image_position: 40% 16%
+  vertical: legal
+- layout: story
+  kicker_meta: The Case
+  headline: What He Was *Fighting* For
+  body: |
+    Pratap wanted an [FIR] against a Lucknow police officer and [Duplex Technologies], alleging a nationwide [cybercrime syndicate] — a plea the [Allahabad High Court] had already declined to entertain.
+  surface: dark
+  vertical: legal
+- layout: quote
+  kicker_meta: Justice K.V. Viswanathan
+  quote: We only have sympathies.
+  attribution: Justice K.V. Viswanathan, on the bench
+  vertical: legal
+- layout: story
+  kicker_meta: The Response
+  headline: Contempt Was On The *Table*. They Passed.
+  body: |
+    The court could have moved for [contempt]. Instead it recorded his [incoherent] utterances, weighed his apparent [condition], and chose not to punish a man it judged to be in distress.
+  vertical: legal
+- layout: stat
+  kicker_meta: The Ruling
+  label: The petition
+  value: DISMISSED
+  stat_size: 138
+  sublabel: No ground to interfere with the High Court
+  body: No contempt. No arrest. Just a finding that there was [nothing to reopen] — and a bench that chose
+    empathy over escalation.
+  vertical: legal
+- layout: closing
+  headline: When a court chooses restraint.
+  body: The clip went viral as a meme. The bench turned it into a quiet lesson in [judicial temperament].
+  handle: '@vaqhq · vaqhq.com'

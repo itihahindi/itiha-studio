@@ -1,0 +1,76 @@
+name: vikram-1-launch
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  India just entered a new space age. Skyroot's Vikram-1 — mission "Aagaman" —
+  became the country's first privately built rocket to reach orbit, lifting off
+  from Sriharikota on July 18 and injecting its payloads into a ~450 km orbit.
+
+  On board: the SCOPE tech-demo satellite, rideshare and in-orbit experiments,
+  and symbolic payloads — a lab-grown "Cosmic Bloom" diamond and an 18-karat
+  gold micro-rocket.
+
+  Sources: Space.com · Al Jazeera · CNBC.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Cathode #Vikram1 #Skyroot #ISRO #SpaceTech #India #Aagaman
+tweaks:
+  vertical: tech
+  showStamp: true
+  showPageNum: true
+  seriesLabel: AAGAMAN
+slides:
+- layout: cover
+  surface: solid
+  texture: grid
+  kicker_meta: Spaceflight · 18 Jul 2026
+  headline: |
+    India's first *private*
+    rocket reaches orbit
+  subline: Skyroot's Vikram-1 — mission Aagaman — lifts off from Sriharikota and injects its payloads
+    into a 450 km orbit.
+  image: _cache/7ab1a634c1e1764d.jpg
+- layout: story
+  surface: light
+  texture: grid
+  kicker_meta: The Mission
+  headline: A *seven-storey* climb to orbit
+  body: |
+    The four-stage [Vikram-1] lifted off from the [Satish Dhawan Space Centre] at Sriharikota and reached a [450 km] orbit about 15 minutes later, carrying customer satellites and in-orbit experiments.
+  image: 'https://ddindia.co.in/wp-content/uploads/2023/10/vikram-1.jpg '
+- layout: stat
+  surface: solid
+  texture: grid
+  kicker_meta: The Milestone
+  label: Private-sector orbital launches
+  value: 3rd
+  stat_size: 240
+  sublabel: India joins the short list of nations with a home-grown private orbital rocket.
+- layout: story
+  surface: light
+  texture: grid
+  kicker_meta: Payloads · Satellites
+  headline: '*SCOPE* leads the manifest'
+  body: |
+    Skyroot's own [SCOPE] tech-demo satellite gathered flight-performance data. A second Indian-built satellite, [SOLARAS S3] from Grahaa Space, deployed alongside it.
+- layout: story
+  surface: light
+  texture: grid
+  kicker_meta: Payloads · Experiments
+  headline: A *robotic arm* for space junk
+  body: |
+    Upper-stage experiments stayed attached for in-orbit testing — a demo payload from Germany's [DCUBED], and [Embrace], a robotic arm from Cosmoserve Space built to capture orbital debris.
+- layout: story
+  surface: solid
+  texture: grid
+  kicker_meta: Payloads · Symbolic
+  headline: A diamond, gold, and a *postcard*
+  body: |
+    [Cosmic Bloom] — a lab-grown floral diamond by Cosmos Diamonds. An [18-karat gold micro-rocket]. And handwritten postcards, including one from PM Narendra Modi: [Vande Mataram].
+- layout: closing
+  surface: solid
+  texture: grid
+  headline: India's private space age has *liftoff*.
+  body: One rocket, domestic and global payloads — proof the country's new space economy can fly.
+  handle: '@vaqhq · vaqhq.com'

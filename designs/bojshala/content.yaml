@@ -27,7 +27,7 @@ slides:
     Or *Mosque*?
   subline: Dhar · 1034–1215 CE · the primary record
   swipe_meta: Swipe ▸ · 7 Slides · 4 min read
-  image: https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Bhoj_Shala_7_September_2021.jpg/960px-Bhoj_Shala_7_September_2021.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail
+  image: _cache/037d435de6f4c040.jpg
   texture: halftone
 - layout: split-story
   chapter: Chapter 01 · The Foundation Date
@@ -52,7 +52,7 @@ slides:
     Around [1210–15 CE], the royal preceptor [Madana] composed a Sanskrit drama called the _Pārijātamañjarī_. The text states plainly that the play was performed in the [Sarasvati] temple at Dharanagara.
     The drama calls the building _Bhāratī bhavana_ the hall of Bhāratī  & _Śāradā sadman_, the abode of Śāradā. Both are names of [Sarasvati]. Two inscribed slabs of this text were found inside the [Bhojshala] complex itself, one of them behind the [mihrab].
   body_size: 45
-  image: https://pbs.twimg.com/media/HIWyUtCbsAAX-Dx?format=jpg&name=large
+  image: _cache/21919464a132f34d.jpg
   image_filter: archival
   image_overlay: 1.3
   body_y: 70
@@ -71,7 +71,7 @@ slides:
   headline_size: 100
   body_y: 92
   headline_y: 15
-  image: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Dhar_inscription_at_KM.jpg/960px-Dhar_inscription_at_KM.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail
+  image: _cache/dc9aac7a1c528e79.jpg
   image_filter: sepia
   image_overlay: 1.65
   texture: vignette
@@ -83,7 +83,7 @@ slides:
   body: |
     Every Sanskrit and Prakrit inscription at the site predates every Arabic and Persian one. The oldest Islamic inscription at Bhojshala records [repairs] under [Dilawar Khan] — dated [1392–93 CE].
     The temple inscriptions are older by more than [three hundred] years. The mosque elements.
-  image: https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Dil%C4%81war_Kh%C4%81n.jpg/1920px-Dil%C4%81war_Kh%C4%81n.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail
+  image: _cache/0eb2794d7842a345.jpg
   image_bw: true
   image_filter: sepia
   texture: vignette
@@ -97,7 +97,7 @@ slides:
   body: The mihrab, the domes  were added in the [14th century], using the pillars and carvings of the
     pre-existing [temple].
   block_y: bottom
-  image: https://upload.wikimedia.org/wikipedia/commons/e/ec/Dh%C4%81r%2C_Madhya_Pradesh%2C_Kam%C4%81l_Maula_from_the_south-west.jpg
+  image: _cache/06b713398f50b50d.jpg
   image_position: 3% 50%
   body_size: 45
   image_overlay: 1
@@ -123,7 +123,7 @@ slides:
   body_size: 40
   body_offset_y: 180
   handle: '@itiha29'
-  image: https://upload.wikimedia.org/wikipedia/commons/9/92/Dh%C4%81r_%28Madhya_Pradesh%29._Part_of_the_Koda%E1%B9%87%E1%B8%8Dak%C4%81vya_inscription.jpg
+  image: _cache/a1ca75352a6b603a.jpg
   image_bw: true
   image_filter: sepia
   texture: vignette

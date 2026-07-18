@@ -1,0 +1,144 @@
+name: jayavarman-vii-the-indian-inheritance
+brand: itiha
+format: instagram-portrait
+caption: |
+  When the Khmer king Jayavarman VII took the throne in 1181, his kingdom had just been nearly destroyed by a Cham invasion. Over the next thirty-seven years, he launched an architectural programme on a scale never seen before in Southeast Asia — a rebuilding that was, in his own inscriptions, a restoration of Indian civilisational inheritance. He kept the Vedas at the heart of his court. He appointed Indian Brahmins as his chief priests. He built 102 hospitals across his kingdom. And he crowned his capital with a temple whose towers, carved with his own face as the Bodhisattva Lokeshvara, look outward in all four directions.
+
+  This carousel reconstructs Jayavarman VII's programme as an act of civilisational continuity, not innovation. His new capital Angkor Thom was designed as a miniature universe, with the Bayon at its geometric centre as a temple-mountain representing the axis of the world. He honoured his mother at Ta Prohm as Prajnaparamita — the Perfection of Insight — and his father at Preah Khan as the Bodhisattva of Compassion, following the Indian tradition of ancestral deification. He built 121 rest houses along the highways for travellers and pilgrims. He invited Brahmin scholars from India — including the priest Hrishikesha — and made them his chief priests, ensuring that the Vedas and other ancient Indian sciences remained at the core of Khmer life. His reign was marked by a syncretism the modern world has forgotten how to imagine — Buddhist devotion to Lokeshvara alongside Brahmin ritual at court, without conflict, without either tradition demanding the other's suppression.
+
+  Jayavarman VII did not build an original civilisation. He built the peak of an inherited one — and the stones that survive at Angkor are the evidence of how far the Indian inheritance had reached, and how completely it had taken root.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #JayavarmanVII #AngkorThom #Bayon #GreaterIndia #KhmerEmpire #Cambodia #Indianisation
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: JAYAVARMAN
+slides:
+- layout: cover
+  headline: The *King Who Built* India's Greatest Legacy *Beyond India*
+  subline: Jayavarman VII · 1181 to c. 1218
+  swipe_meta: Swipe ▸ · 8 Slides · 4 min read
+  image: https://i.pinimg.com/736x/4a/b0/c1/4ab0c1f57e3d446c730847445c48f604.jpg
+  headline_offset_y: 70
+  texture: scanlines
+- layout: split-story
+  chapter: Chapter 01 · The Restorer
+  name: Jayavarman VII
+  dates: r. 1181 – c. 1218
+  role: The Khmer Empire's Great Builder
+  headline: |
+    He Rebuilt After
+    The *Cham* Invasion.
+  body: '[Jayavarman VII] was the Khmer Empire''s [Great Builder]. After his kingdom was nearly destroyed
+    by [invasion] in [1177], he launched an [architectural programme] on a scale never seen before — not
+    to break from the past, but to [restore] the timeless glory of [Indian culture].'
+  headline_y: 80
+  image: https://media.gettyimages.com/id/584540168/photo/sunset-with-the-stone-of-bayon-angkor-thom-siem-reap-cambodia.jpg?s=612x612&w=0&k=20&c=lQCIM4f-6Dzmsv08DwN1jdlNrqU3SAxlVprprt7zNz8=
+  image_overlay: 1
+  image_position: 22% 50%
+  headline_size: 100
+  body_y: 40
+  texture: scanlines
+- layout: split-story
+  chapter: Chapter 02 · The Synthesis
+  headline: |
+    The Buddha And
+    The *Brahmin.*
+  body: For Jayavarman VII, the various [Indian paths] were one. While he was a fervent devotee of the
+    [Buddha], he kept the ancient [Brahmanic ceremonies] at the heart of his court. He viewed these traditions
+    as a [single], [refined culture] that defined his empire.
+  body_y: 32
+  headline_y: 80
+  image: https://i.pinimg.com/736x/8a/3e/4d/8a3e4d32e732c627f9528f227252ef26.jpg
+  image_overlay: 1
+  image_position: 39% 0%
+  texture: scanlines
+- layout: split-story
+  chapter: Chapter 03 · Angkor Thom
+  headline: |
+    A City As A
+    *Miniature Universe.*
+  body: At the heart of his capital stood the [Bayon], a [temple-mountain] representing the [centre of
+    the world]. Its iconic stone towers, featuring colossal [human faces], looked in every direction,
+    reflecting a kingdom unified under the broad umbrella of [Indian spiritual tradition]. The city itself
+    was designed as a [miniature universe].
+  image: https://cdn.pandaw.com/images/blog/blog_79_header.jpeg
+  image_position: 30% 50%
+  image_overlay: 1
+  body_y: 21
+  headline_y: 80
+  texture: scanlines
+- layout: numbered-list
+  chapter: Chapter 04 · The Deified Family
+  headline: |
+    He Elevated His
+    Parents Into
+    *Deities.*
+  items:
+  - number: 1
+    headline: Ta Prohm for his mother
+    body: Dedicated to his [mother] in the form of [Prajnaparamita], the [Perfection of Insight], one
+      of the foundational figures of Mahayana Buddhism.
+  - number: 2
+    headline: Preah Khan for his father
+    body: He dedicated it to his father as the [Bodhisattva] of Compassion, elevating him to divinity
+      in the [Indian tradition] that had defined Khmer royal lineage for generations.
+  item_size: 40
+  headline_size: 70
+  number_size: 50
+  body_offset_y: -60
+  texture: scanlines
+- layout: stat
+  chapter: Chapter 05 · The Welfare State
+  headline: |
+    Kingship As
+    *Protection.*
+  stats:
+  - label: Hospitals across the kingdom
+    value: 102
+    value_red: true
+    sublabel: Under the protection of the Healer Buddha
+  - label: Rest houses along the highways
+    value: 121
+    sublabel: To welcome travellers and pilgrims
+  body: Jayavarman VII took the [Indian] concept of the [king as protector] and applied it to his entire
+    people. He built [102 hospitals] distributed across the kingdom under the protection of the [Healer
+    Buddha]. He constructed [121 rest houses] along the major highways to welcome travellers and [pilgrims].
+    Kingship as [protection], not just [conquest].
+  body_offset_y: 170
+  stats_offset_y: -150
+  body_size: 43
+  texture: scanlines
+- layout: split-story
+  eyebrow: Did You Know?
+  theme: dark
+  headline: |
+    A Indian Brahmin His *Chief Priest.*
+  body: |
+    His court was a haven for [intellectual exchange]. He invited and employed [Brahmin scholars] from [India], such as the priest [Hrishikesha], and made them his [chief priests]. This ensured that the [Vedas] and other ancient [Indian sciences] remained at the [core] of Khmer life. The [Buddha] took the sanctuary. The [Brahmin] kept the [ritual].
+  source: Khmer temple inscriptions and contemporary Indian records
+  image: https://i.pinimg.com/736x/9b/5a/60/9b5a605c6dcab1f11f11502132e487ff.jpg
+  image_position: 58% 0%
+  image_overlay: 1
+  body_y: 7
+  headline_y: 65
+  texture: scanlines
+- layout: closing
+  headline: |
+    Not An Original
+    Civilisation. The
+    Peak Of An *Inherited* One.
+  body: |
+    Through his massive efforts, Jayavarman VII made [Angkor] a global [marvel]. By weaving together the different strands of [Indian thought] and [art], he ensured that his kingdom would be remembered as one of the [brightest lights] of the [ancient world]. The [stones] that survive at Angkor are the evidence of how far the [Indian inheritance] had reached — and how [completely] it had taken root in the [Khmer soil].
+  handle: Follow @itiha29 · itiha.info
+  headline_size: 80
+  body_size: 45
+  body_offset_y: 100
+  texture: scanlines
+- layout: end-card
+  headline: New slide

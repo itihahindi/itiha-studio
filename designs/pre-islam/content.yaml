@@ -1,0 +1,120 @@
+name: the-lost-gods-of-pre-islamic-arabia
+brand: itiha
+format: instagram-portrait
+caption: |2
+
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #PreIslamicArabia #Kaaba #Polytheism #Jahiliyyah #Hubal #AncientHistory #ComparativeReligion
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: ARABIA
+slides:
+- layout: cover
+  headline: |
+    The Lost Gods
+    Of Pre-Islamic
+    *Arabia.*
+  subline: The peninsula before the seventh century
+  swipe_meta: Swipe ▸ · 8 Slides · 4 min read
+  image: _cache/a03dea70513537b1.jpg
+  image_position: 45% 0%
+  image_overlay: 0.7
+  headline_offset_y: 190
+- layout: split-story
+  chapter: Chapter 01 · The Landscape
+  headline: |
+    A Peninsula Of
+    Many *Gods.*
+  body: |
+    Until about the [fourth century], the [Arabian Peninsula] was mostly [polytheistic], though [monotheistic religions] gained ground in [late antiquity]. Arab polytheism was not one organised religion. It consisted of [local] and [regional cults], where people worshipped [gods], [goddesses], and [spirits] for [health], [fertility], and [protection].
+  body_y: 21
+  image: _cache/fec7fafc051fdca3.jpeg
+  image_position: 6% 50%
+  image_bw: false
+  image_overlay: 1
+- layout: split-story
+  chapter: Chapter 02 · The Major Deities
+  headline: |
+    The Gods Of The
+    *Hejaz.*
+  body: |
+    [Hubal] was the chief deity of the [Kaaba] in [Mecca], represented by a large statue at its centre. The goddesses [Al-Lat], [Al-Uzza], and [Manat] were sometimes regarded as the [daughters of Allah] in pre-Islamic Meccan tradition. The term [Allah], meaning [the god], was already used in [pre-Islamic times], possibly as a title or for a [supreme creator deity]. His exact role remains a subject of [scholarly debate].
+  image: _cache/d7f61a8b7d867e45.png
+  body_y: 12
+  image_overlay: 1
+- layout: split-story
+  eyebrow: Did You Know?
+  headline: |
+    The Kaaba Housed
+    *360 Idols.*
+  body: |
+    The [Kaaba] in [Mecca] was the major sanctuary of pre-Islamic Arabia, reportedly housing up to [360 idols]. Deities were often represented by [unworked stone blocks] or [carved idols]. Worship involved [pilgrimages] to sacred shrines, [animal sacrifices], [offerings], and [divination], including the drawing of random [arrows] to make decisions.
+  source: Contemporary historical and archaeological records
+  image: _cache/cb57feea96a59f86.jpg
+  image_position: 29% 50%
+  image_overlay: 1
+  body_y: 14
+- layout: split-story
+  chapter: Chapter 03 · Beyond Polytheism
+  headline: |
+    Jews. Christians.
+    *Zoroastrians.*
+  body: |
+    The peninsula was religiously [diverse]. [Judaism] had a strong presence in [Yemen] and the [Hejaz], with many [Jewish tribes] and converts. [Christianity] was influential in [northeastern] and [northwestern Arabia], and at [Najran] in the south. [Iranian religions], such as [Zoroastrianism], also had a limited presence in the [eastern] and [southern regions] through [Persian influence].
+  image: _cache/036c666267e4e3f9.jpeg
+  image_position: 13% 0%
+  image_bw: false
+  image_overlay: 1
+  body_y: 1
+- layout: split-story
+  chapter: Chapter 04 · The Spirit World
+  headline: |
+    Jinn And
+    *Ghouls.*
+  body: |
+    Alongside the major deities, pre-Islamic Arabs believed in [minor spirits], such as [jinn], who could be [benevolent] or [malevolent], and could inspire [poets] and [soothsayers]. Communities relied on [priests] to care for sanctuaries and on [kahins], or [soothsayers], who used [intuition] or [ecstatic inspiration] to predict the future and find [lost items].
+  image: _cache/75c9d4147cbf326c.jpg
+  image_position: 23% 0%
+  image_overlay: 1
+  body_y: 5
+- layout: split-story
+  chapter: Chapter 05 · Regional Variations
+  headline: |
+    Different Sands.
+    Different *Gods.*
+  body: |
+    Beliefs varied across [Arabia]. [South Arabia] had [complex pantheons] linked to local kingdoms, while the [Nabataeans] in the north absorbed [Greco-Roman influences]. Nomadic [Bedouin tribes] focused more on [fetishism], [fate], and everyday concerns than on complex [theology].
+  image: _cache/a0cc9098cfe529ca.jpg
+  image_overlay: 1
+  body_y: 10
+- layout: split-story
+  chapter: Chapter 06 · The Turning Point
+  headline: |
+    The Sixth Century
+    *Crises.*
+  body: |
+    The rise of [Islam] led to the [eradication] of traditional [polytheistic practices]. Within a [single century], the [pantheon] that had shaped the peninsula for [millennia] had disappeared.
+  image: _cache/ba1c04df7023eff7.jpg
+  image_position: 51% 50%
+  image_overlay: 0.9
+  body_y: 25
+- layout: closing
+  headline: |
+    A Peninsula That
+    Once Prayed To
+    *Many.*
+  body: |
+    [Hubal] at Mecca. [Al-Lat], [Al-Uzza], [Manat]. The [Jewish tribes] of Yemen. The [Christian bishops] of Najran. The [Zoroastrian] fires on the eastern coast. The [kahins] who read the arrows. The [jinn] who inspired the poets. The [pluralist Arabia] of the [pre-Islamic] centuries survives now only in the [record] — and in the [names] that outlasted the [idols].
+  handle: Follow @itiha29 · itiha.info
+  image_overlay: 1
+  headline_offset_y: -70
+  body_offset_y: 110
+  image: _cache/883f0a36000f915c.jpg
+- layout: end-card
+  headline: New slide

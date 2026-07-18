@@ -1,0 +1,70 @@
+name: kamra-legal-notice
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Nine words at Jantar Mantar.
+
+  On July 15, Kunal Kamra told a protest crowd that the government takes "Sita ke pati ka
+  naam" and does "Nita ke pati ka kaam." Sita's husband is Lord Ram. Nita's husband is
+  Mukesh Ambani. His charge was blunt. Leaders invoke religion in public and serve
+  corporate interests in practice.
+
+  He said it at the sit-in over the NEET-UG paper leak, the same protest where Sonam
+  Wangchuk is deep into a hunger strike. The clip went viral within hours. An advocate
+  has since demanded that Kamra delete the video within 48 hours, post an unconditional
+  apology on X, and undertake never to repeat it. The alternative on offer is a police
+  complaint under the Bharatiya Nyaya Sanhita for outraging religious feelings.
+
+  Kamra has stood here before. The Supreme Court opened contempt proceedings over his
+  posts. A Maharashtra privilege committee summoned him over an Eknath Shinde jibe. He
+  declined to apologise both times, arguing that an insincere apology sets the worse
+  precedent. Where satire ends and religious sentiment begins is now a question for the
+  police.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #KunalKamra #JantarMantar #NEET #FreeSpeech #India
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: true
+  seriesLabel: JANTAR MANTAR
+slides:
+- layout: cover
+  surface: light
+  kicker_meta: New Delhi · July 15
+  headline: |
+    ONE LINE.
+    ONE LEGAL
+    *NOTICE*
+  subline: 'On July 15, comedian Kunal Kamra told a protest crowd:  "Sita ke pati ka naam, Nita ke pati
+    ka kaam." Now a lawyer wants an apology in 48 hours.'
+  image: kamra.jpg
+  image_position: center 25%
+- layout: quote
+  kicker_meta: The Line
+  quote: Sita ke pati ka naam le-lekar, Nita ke pati ka kaam kar rahe hain.
+  attribution: Kunal Kamra, at Jantar Mantar
+- layout: story
+  kicker_meta: What It Means
+  headline: Ram's Name, Ambani's *Work*
+  body: |
+    [Sita's husband] is Lord Ram. [Nita's husband] is Mukesh Ambani. Kamra's charge, in nine words — the government invokes [religion] in public while serving [corporate interests] in practice.
+- layout: story
+  kicker_meta: The Stage
+  headline: He Said It At A *Protest*
+  body: |
+    Kamra spoke at [Jantar Mantar] on [July 15], at the sit-in over the [NEET-UG] paper leak — the same protest where [Sonam Wangchuk] is deep into a hunger strike.
+- layout: story
+  kicker_meta: The Notice
+  headline: Then Came The *Ultimatum*
+  body: |
+    An advocate has demanded he [delete the video] within [48 hours], post an [unconditional apology] on X, and never repeat it — or face a police complaint under the [Bharatiya Nyaya Sanhita] for outraging religious feelings.
+- layout: story
+  kicker_meta: The Pattern
+  headline: He Has *Refused* Before
+  body: |
+    This is not new ground. Kamra faced the [Supreme Court] over contempt and a [privilege committee] over an Eknath Shinde jibe. Each time he [declined to apologise], arguing an insincere apology sets a worse precedent.
+- layout: closing
+  body: ' Follow [Vaq HQ] for what happens next.'
+  handle: '@vaqhq · vaqhq.com'

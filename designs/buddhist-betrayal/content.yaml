@@ -1,0 +1,132 @@
+name: the-buddhist-betrayals-at-nerun
+format: instagram-portrait
+caption: |
+  When Muhammad bin Qasim's Arab army marched from Debal toward the interior of Sindh in 712 CE, the city of Nerun opened its gates before the invaders arrived. The gates were opened not by the city's rulers but by its Buddhist priests — who, according to the historical record, had been in treasonable correspondence with al-Hajjaj, the Umayyad governor at Basra, long before Qasim's fleet ever reached the Sindhi coast. This carousel documents one of the earliest recorded instances of internal betrayal in the history of Islamic invasions of India, and the pattern it established.
+
+  This account draws on Sandeep Balakrishna's _Invaders and Infidels: From Sindh to Delhi: The 500-Year Journey of Islamic Invasions_. After the bestial horror inflicted on Debal, whose defenders had fought to the death, the leadership at Nerun — near modern-day Hyderabad in Pakistan — chose a different path. Two Buddhist priests were dispatched to meet Qasim with an appeal for peace, handing the city over without a single arrow being fired. The collaboration went beyond surrender. The Buddhist leadership supplied ample provisions to the Arab army and offered active assistance for the onward campaign into the heart of Sindh. The pattern repeated at Siwistan, where Buddhist fifth-columnists similarly welcomed the Arabs and entered into a pact with them to overthrow their own governor. The compromise saved nothing. Qasim followed a policy of iconoclasm at Nerun regardless — idols were broken, and mosques were founded upon the ruins of the existing temples.
+
+  The gates that opened for Qasim at Nerun would open for other invaders in the centuries that followed. Balakrishna's argument is that the pattern begins here — at the Buddhist welcome, on the road out of Debal.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #SandeepBalakrishna #InvadersAndInfidels #MuhammadBinQasim #Sindh #IslamicInvasions #MedievalIndia #Nerun
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: NERUN
+slides:
+- layout: cover
+  headline: |
+    How *Buddhists Betrayed* the Land of *the Buddha*
+  subline: The Buddhist betrayals at Nerun · 712 CE
+  swipe_meta: Swipe ▸ · 8 Slides · 4 min read
+  image: https://happylutheran.files.wordpress.com/2018/03/buddhist-myanmar.jpg?w=900&h=602&crop=1
+  image_position: 15% 50%
+  image_filter: warm
+  image_bw: false
+  image_overlay: 0.8
+  headline_size: 130
+  headline_offset_y: 270
+- layout: split-story
+  chapter: Chapter 01 · The Shadow Of Debal
+  headline: |
+    Two Cities. Two
+    *Choices.*
+  body: After the [bestial horror] inflicted upon the city of [Debal] by [Muhammad bin Qasim's] forces,
+    word spread quickly through the region. While the defenders of Debal had fought to the [death], the
+    leadership in [Nerun], near modern-day [Hyderabad, Pakistan], chose a different path.
+  image: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj8G3EiLCyOsP4hf2CiP_Z-0-Oft-7pBAszymJLqFsSDtXhZltEABHAi8MpyJQM9GTMWcS8Xtk5-xk5wfaNYRfk3jYWh-5iFDwKH3PBM29xmGQxLxHEkEk2JK-CSxU_zJ5bUgDuBwdHr_M/s2048/DSC_1905.jpg
+  image_overlay: 1
+  headline_y: 80
+  body_y: 51
+- layout: split-story
+  eyebrow: Chapter 02 · Before The Fleet Sailed
+  headline: |
+    Treason In
+    *Secret.*
+  body: |
+    The betrayal was not a sudden decision. According to the sources, [Buddhist priests] in [Nerun] had already been engaged in [treasonable correspondence] with [al-Hajjaj], the governor of the [Umayyad Caliphate], long before [Qasim's] arrival in Sindh. The city was already [compromised] before it was ever [threatened].
+  source: Sandeep Balakrishna, Invaders and Infidels
+  headline_y: 80
+  body_y: 41
+  image: https://i.pinimg.com/originals/02/fe/37/02fe373713acbd48d6578fa38444b262.jpg
+  image_position: 24% 50%
+  image_overlay: 1
+- layout: split-story
+  chapter: Chapter 03 · The Appeal For Peace
+  headline: |
+    No Stomach For
+    *Resistance.*
+  body: As [Qasim] approached, the people of [Nerun] showed [no stomach for resistance]. Two [Buddhist
+    priests] were dispatched to meet the invader with an [appeal for peace] — effectively handing over
+    the city [without a single arrow being fired].
+  image: https://images.squarespace-cdn.com/content/v1/5da5973c08314f1575d5457e/1647067312139-TG9DKIT6KUPJBUHFKRT3/37+x+51+in_9%2C000%24.JPG
+  image_overlay: 1
+  headline_y: 80
+  body_y: 30
+- layout: split-story
+  chapter: Chapter 04 · Provisions For The Invader
+  headline: |
+    They Fed The
+    *Army.*
+  body: The betrayal went beyond mere surrender. The [Buddhist leadership] in [Nerun] supplied ample [provisions]
+    to the [Arab army] and offered [active assistance] for [Qasim's] onward campaign into the [heart of
+    Sindh]. The gates were not only [opened]. The road ahead was [prepared].
+  image: https://images.antiquesatlas.com/dealer-stock-images/studiort/I_M_Orientalist_Oil_On_Canvas__as237a1977z-2.jpg
+  image_position: 0% 50%
+  image_overlay: 0.8
+  body_size: 45
+  headline_y: 80
+  body_y: 31
+- layout: split-story
+  chapter: Chapter 05 · Siwistan Repeats The Pattern
+  headline: |
+    Not An Isolated
+    *Case.*
+  body: '[Nerun] was not an isolated case. In [Siwistan], [Buddhist fifth-columnists] similarly welcomed
+    the [Arabs], entering into a [pact] with them to [overthrow] their own governor, who was subsequently
+    forced to [flee]. The betrayal was becoming a [strategy].'
+  image: https://i.pinimg.com/736x/02/37/97/0237975d07bb3f435a7a4eb5f1588724.jpg
+  image_overlay: 1
+  body_y: 45
+- layout: split-story
+  eyebrow: Chapter 06 · The Result
+  theme: dark
+  headline: |
+    Surrender Saved
+    *Nothing.*
+  body: |
+    Surrender did not preserve the city's [sanctity]. Despite their cooperation, [Qasim] followed a policy of [iconoclasm] in [Nerun]. [Idols] were broken. [Mosques] were founded upon the [ruins] of the existing [temples]. The [priests] who had opened the gates watched them close on their own [places of worship].
+  source: Sandeep Balakrishna, Invaders and Infidels
+  image: https://upload.wikimedia.org/wikipedia/commons/3/32/Nagasaki_temple_destroyed.jpg
+  image_overlay: 1
+  headline_y: 80
+  body_size: 45
+  body_y: 36
+  image_position: 30% 50%
+- layout: split-story
+  chapter: Chapter 07 · The Civilisational Cost
+  headline: |
+    Shortsighted
+    *Compromises.*
+  body: The sources describe these actions as [shortsighted compromises]. By aiding the invader, these
+    local groups established a recurring [historical theme] of [internal betrayal] that allowed [alien
+    forces] to penetrate the subcontinent at a heavy [civilisational cost].
+  image: https://madrascourier.com/wp-content/uploads/2018/06/Vijayanagara-Architecture-Madras-Courier-08.jpg
+  image_overlay: 1
+  body_y: 30
+- layout: closing
+  headline: |2+
+
+  body: |
+    The pattern began at [Nerun]. It repeated at [Siwistan]. It would repeat again — at [Tarain], at [Vijayanagara], at every gate where a [priest], a [minister], or a [chieftain] chose the [short peace] over the [long defence]. The [priests] who welcomed [Qasim] believed they were saving their [temples]. They lost them the same day.
+  handle: Follow @itiha29 · itiha.info
+  image: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXqc4M_SttpK_ymBfwZ3WTCFzfWl33g9Tu334p1qgONPvEyFQ0kqfAf6QXOckoMpx5hBB-InlpQQaD931YFLGfTCozWA9YdIT8cs6c2qIzHPAmJQncUQmKFQHOWEc2MqCEZgMyQagFOf9H/s1600/IMG_4325en-1800x1200.jpg
+  image_overlay: 1
+  body_size: 45
+  body_offset_y: 100
+- layout: end-card
+  headline: New slide

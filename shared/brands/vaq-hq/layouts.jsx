@@ -13,7 +13,7 @@ const CHROME_H = 130;
 function CoverSlide({ slide, index }) {
   const t = useTweaks();
   const v = verticalFor(slide, t);
-  const surface = surfaceFor(slide, v, 'solid');
+  const surface = surfaceFor(slide, v, v.coverSurface || 'solid');
   const {
     headline = '', subline, kicker_meta, texture,
     image, image_position, image_height = 560, image_credit,
@@ -23,11 +23,59 @@ function CoverSlide({ slide, index }) {
   // composition still fits the tile.
   const hSize = headline_size || headlineDefaultSize(v, image ? 'inner' : 'cover');
   const pal = surface.onSolid ? solidPalette(v) : null;
+
+  // Dark hero. With an image it's the cinematic sports cover (edge-to-edge photo
+  // + scrim). With no image it's The Docket's text poster, so the headline block
+  // balances mid-slide instead of hugging a scrim that isn't there.
+  if (surface.onDark) {
+    const dSize = headline_size || headlineDefaultSize(v, 'cover');
+    const dInk = inkFor(v, surface);
+    return (
+      <VSlide v={v} surface={surface} texture={texture}>
+        {image && (
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <img src={image.startsWith('http') ? image : `images/${image}`} style={{
+              width: '100%', height: '100%', objectFit: 'cover',
+              objectPosition: image_position || 'center',
+            }} />
+            <div style={{ position: 'absolute', inset: 0, background:
+              'linear-gradient(180deg, rgba(30,30,30,.62) 0%, rgba(30,30,30,0) 24%, rgba(30,30,30,0) 40%, rgba(30,30,30,.74) 72%, rgba(30,30,30,.97) 100%)' }} />
+          </div>
+        )}
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 10, background: v.accent, zIndex: 4 }} />
+        <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column', zIndex: 3 }}>
+          {show_index === true && <VGhostIndex n={index + 1} v={v} onSolid={false} />}
+          <VKicker v={v} onDark meta={kicker_meta} />
+          <div style={{ flex: image ? 1 : 0.62 }} />
+          <div style={{ transform: `translateY(${headline_offset_y}px)` }}>
+            <div style={{ width: 88, height: 9, background: v.accent, marginBottom: 30 }} />
+            <VHeadline text={headline} v={v} size={dSize} onDark />
+            {subline && (
+              <div style={{ marginTop: 30, fontFamily: bodyFontFor(v),
+                fontWeight: v.bodyFont ? 400 : 600, fontSize: 38,
+                lineHeight: 1.45, color: dInk.body, maxWidth: 860 }}>{subline}</div>
+            )}
+            {image_credit && (
+              <div style={{ marginTop: 26, fontFamily: metaFontFor(v), fontSize: 18, letterSpacing: '.1em',
+                textTransform: 'uppercase', color: dInk.muted }}>{image_credit}</div>
+            )}
+          </div>
+          {!image && <div style={{ flex: 1 }} />}
+          <div style={{ height: CHROME_H - 20 }} />
+        </div>
+        <div style={{ position: 'absolute', left: PAD, right: PAD, bottom: 56,
+          display: 'flex', justifyContent: 'flex-end', zIndex: 4 }}>
+          {t.showStamp !== false && <VWordmark size={30} onDark />}
+        </div>
+      </VSlide>
+    );
+  }
+
   return (
     <VSlide v={v} surface={surface} texture={texture}>
       {show_index === true && <VGhostIndex n={index + 1} v={v} onSolid={surface.onSolid} />}
       <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column' }}>
-        <VKicker v={v} onSolid={surface.onSolid} meta={kicker_meta} />
+        <VKicker v={v} onSolid={surface.onSolid} onDark={surface.onDark} meta={kicker_meta} />
         {image && (
           <div style={{
             marginTop: 44, position: 'relative', borderRadius: 14, overflow: 'hidden',
@@ -49,7 +97,7 @@ function CoverSlide({ slide, index }) {
         )}
         <div style={{ flex: 1 }} />
         <div style={{ transform: `translateY(${headline_offset_y - (image ? 20 : 40)}px)` }}>
-          <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} />
+          <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} onDark={surface.onDark} />
           {subline && (
             <div style={{
               marginTop: 36, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 38, lineHeight: 1.4,
@@ -72,28 +120,29 @@ function CoverSlide({ slide, index }) {
 function StorySlide({ slide, index }) {
   const t = useTweaks();
   const v = verticalFor(slide, t);
-  const surface = surfaceFor(slide, v, 'light');
+  const surface = surfaceFor(slide, v);
   const {
     headline = '', body, kicker_meta, texture,
     image, image_caption, image_credit, image_position, image_height = 470,
     headline_size, body_size = 46, headline_offset_y = 0, body_offset_y = 0,
   } = slide;
   const hSize = headline_size || headlineDefaultSize(v, 'inner');
+  const ink = inkFor(v, surface);
   const capParts = [image_caption, image_credit].filter(Boolean);
   return (
     <VSlide v={v} surface={surface} texture={texture}>
       <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column' }}>
-        <VKicker v={v} onSolid={surface.onSolid} meta={kicker_meta} />
+        <VKicker v={v} onSolid={surface.onSolid} onDark={surface.onDark} meta={kicker_meta} />
         {!image && <div style={{ flex: 0.8 }} />}
         <div style={{ marginTop: image ? 52 : 0, transform: `translateY(${headline_offset_y}px)` }}>
-          <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} />
+          <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} onDark={surface.onDark} />
         </div>
         {image && (
           <div style={{ marginTop: 44 }}>
             <div style={{
               borderRadius: 14, overflow: 'hidden',
-              border: `1px solid ${surface.onSolid ? 'rgba(255,255,255,.35)' : VAQ.hairL}`,
-              height: image_height, background: surface.onSolid ? 'rgba(0,0,0,.15)' : '#E4EAF0',
+              border: `1px solid ${ink.hair}`,
+              height: image_height, background: ink.well,
             }}>
               <img src={image.startsWith('http') ? image : `images/${image}`} style={{
                 width: '100%', height: '100%', objectFit: 'cover',
@@ -103,8 +152,8 @@ function StorySlide({ slide, index }) {
             {capParts.length > 0 && (
               <div style={{
                 marginTop: 16, display: 'flex', justifyContent: 'space-between', gap: 20,
-                fontFamily: VAQ.mono, fontSize: 20, letterSpacing: '.08em',
-                color: surface.onSolid ? solidPalette(v).muted : VAQ.mutedL,
+                fontFamily: metaFontFor(v), fontSize: 20, letterSpacing: '.08em',
+                color: ink.muted,
               }}>
                 <span>{image_caption || ''}</span>
                 <span style={{ textTransform: 'uppercase' }}>{image_credit || ''}</span>
@@ -114,13 +163,13 @@ function StorySlide({ slide, index }) {
         )}
         {body && (
           <div style={{ marginTop: image ? 46 : 52, transform: `translateY(${body_offset_y}px)` }}>
-            <VBody text={body} v={v} size={body_size} onSolid={surface.onSolid} />
+            <VBody text={body} v={v} size={body_size} onSolid={surface.onSolid} onDark={surface.onDark} />
           </div>
         )}
         <div style={{ flex: image ? 1 : 1.2 }} />
         <div style={{ height: CHROME_H - 40 }} />
       </div>
-      <VChrome n={index + 1} onSolid={surface.onSolid} v={v} />
+      <VChrome n={index + 1} onSolid={surface.onSolid} onDark={surface.onDark} v={v} />
     </VSlide>
   );
 }
@@ -130,16 +179,17 @@ function StorySlide({ slide, index }) {
 function SplitStorySlide({ slide, index }) {
   const t = useTweaks();
   const v = verticalFor(slide, t);
-  const surface = surfaceFor(slide, v, 'light');
+  const surface = surfaceFor(slide, v);
   const {
     headline = '', body, kicker_meta, texture,
     image, image_position, image_height = 580, image_credit,
     headline_size, body_size = 45, body_offset_y = 0,
   } = slide;
   const hSize = headline_size || Math.round(headlineDefaultSize(v, 'inner') * 0.94);
+  const ink = inkFor(v, surface);
   return (
     <VSlide v={v} surface={surface} texture={texture}>
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: image_height, background: '#E4EAF0' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: image_height, background: ink.well }}>
         {image && (
           <img src={image.startsWith('http') ? image : `images/${image}`} style={{
             width: '100%', height: '100%', objectFit: 'cover',
@@ -159,17 +209,17 @@ function SplitStorySlide({ slide, index }) {
         position: 'absolute', top: image_height + 10, left: 0, right: 0, bottom: 0,
         padding: `50px ${PAD}px 0`, display: 'flex', flexDirection: 'column',
       }}>
-        <VKicker v={v} onSolid={false} meta={kicker_meta} />
+        <VKicker v={v} onSolid={surface.onSolid} onDark={surface.onDark} meta={kicker_meta} />
         <div style={{ marginTop: 38 }}>
-          <VHeadline text={headline} v={v} size={hSize} onSolid={false} />
+          <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} onDark={surface.onDark} />
         </div>
         {body && (
           <div style={{ marginTop: 38, transform: `translateY(${body_offset_y}px)` }}>
-            <VBody text={body} v={v} size={body_size} />
+            <VBody text={body} v={v} size={body_size} onSolid={surface.onSolid} onDark={surface.onDark} />
           </div>
         )}
       </div>
-      <VChrome n={index + 1} onSolid={false} v={v} />
+      <VChrome n={index + 1} onSolid={surface.onSolid} onDark={surface.onDark} v={v} />
     </VSlide>
   );
 }
@@ -178,36 +228,40 @@ function SplitStorySlide({ slide, index }) {
 function QuoteSlide({ slide, index }) {
   const t = useTweaks();
   const v = verticalFor(slide, t);
-  const surface = surfaceFor(slide, v, 'light');
+  const surface = surfaceFor(slide, v);
   const { quote = '', attribution, kicker_meta, texture, quote_size = 72, quote_offset_y = 0 } = slide;
-  const pal = surface.onSolid ? solidPalette(v) : null;
+  const ink = inkFor(v, surface);
+  // A vertical can override the pull-quote voice (Cathode uses Space Grotesk,
+  // upright); the default is the reading serif, italic.
+  const qFont = v.quoteFont || v.bodyFont || VAQ.serif;
+  const qItalic = v.quoteItalic === false ? 'normal' : 'italic';
   return (
     <VSlide v={v} surface={surface} texture={texture}>
       <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column' }}>
-        <VKicker v={v} onSolid={surface.onSolid} meta={kicker_meta} />
+        <VKicker v={v} onSolid={surface.onSolid} onDark={surface.onDark} meta={kicker_meta} />
         <div style={{ flex: 1 }} />
         <div style={{ transform: `translateY(${quote_offset_y - 40}px)` }}>
           <div style={{
-            fontFamily: VAQ.serif, fontSize: 210, lineHeight: 0.4, fontWeight: 600,
-            color: surface.onSolid ? pal.em : v.accent, height: 96,
+            fontFamily: qFont, fontSize: 210, lineHeight: 0.4, fontWeight: 600,
+            color: ink.em, height: 96,
           }}>“</div>
           <div style={{
-            fontFamily: VAQ.serif, fontStyle: 'italic', fontWeight: 500,
+            fontFamily: qFont, fontStyle: qItalic, fontWeight: 500,
             fontSize: quote_size, lineHeight: 1.24, letterSpacing: '-.01em',
-            color: surface.onSolid ? pal.head : VAQ.inkL, textWrap: 'balance',
+            color: ink.head, textWrap: 'balance',
           }}>{quote}</div>
           {attribution && (
             <div style={{
-              marginTop: 44, fontFamily: VAQ.mono, fontSize: 25, letterSpacing: '.14em',
+              marginTop: 44, fontFamily: metaFontFor(v), fontSize: 25, letterSpacing: '.14em',
               textTransform: 'uppercase',
-              color: surface.onSolid ? pal.muted : VAQ.mutedL,
+              color: ink.muted,
             }}>— {attribution}</div>
           )}
         </div>
         <div style={{ flex: 1 }} />
         <div style={{ height: CHROME_H - 50 }} />
       </div>
-      <VChrome n={index + 1} onSolid={surface.onSolid} v={v} />
+      <VChrome n={index + 1} onSolid={surface.onSolid} onDark={surface.onDark} v={v} />
     </VSlide>
   );
 }
@@ -216,41 +270,41 @@ function QuoteSlide({ slide, index }) {
 function StatSlide({ slide, index }) {
   const t = useTweaks();
   const v = verticalFor(slide, t);
-  const surface = surfaceFor(slide, v, 'light');
+  const surface = surfaceFor(slide, v);
   const {
     label, value = '', sublabel, body, kicker_meta, texture,
     stat_size = 250, body_size = 43, stats_offset_y = 0,
   } = slide;
-  const pal = surface.onSolid ? solidPalette(v) : null;
+  const ink = inkFor(v, surface);
   return (
     <VSlide v={v} surface={surface} texture={texture}>
       <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column' }}>
-        <VKicker v={v} onSolid={surface.onSolid} meta={kicker_meta} />
+        <VKicker v={v} onSolid={surface.onSolid} onDark={surface.onDark} meta={kicker_meta} />
         <div style={{ flex: 1 }} />
         <div style={{ transform: `translateY(${stats_offset_y}px)` }}>
           {label && (
-            <div style={{ fontFamily: VAQ.mono, fontWeight: 700, fontSize: 26, letterSpacing: '.18em',
-              textTransform: 'uppercase', color: surface.onSolid ? pal.muted : VAQ.mutedL,
+            <div style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 26, letterSpacing: '.18em',
+              textTransform: 'uppercase', color: ink.muted,
               marginBottom: 26 }}>{label}</div>
           )}
           <div style={{
-            fontFamily: VAQ.display, fontWeight: 900, fontSize: stat_size, lineHeight: 0.92,
-            letterSpacing: '-.03em', color: surface.onSolid ? pal.head : v.accent,
+            fontFamily: v.numFont || (v.face === 'athletic' ? VAQ.athletic : VAQ.display), fontWeight: 900, fontSize: stat_size, lineHeight: 0.92,
+            letterSpacing: '-.03em', color: surface.onSolid ? ink.head : v.accent,
           }}>{value}</div>
           {sublabel && (
-            <div style={{ marginTop: 30, fontFamily: VAQ.sans, fontWeight: 700, fontSize: 42,
-              color: surface.onSolid ? pal.head : VAQ.inkL, letterSpacing: '-.01em' }}>{sublabel}</div>
+            <div style={{ marginTop: 30, fontFamily: bodyFontFor(v), fontWeight: 700, fontSize: 42,
+              color: ink.head, letterSpacing: '-.01em' }}>{sublabel}</div>
           )}
           {body && (
             <div style={{ marginTop: 40, maxWidth: 860 }}>
-              <VBody text={body} v={v} size={body_size} onSolid={surface.onSolid} />
+              <VBody text={body} v={v} size={body_size} onSolid={surface.onSolid} onDark={surface.onDark} />
             </div>
           )}
         </div>
         <div style={{ flex: 1 }} />
         <div style={{ height: CHROME_H - 50 }} />
       </div>
-      <VChrome n={index + 1} onSolid={surface.onSolid} v={v} />
+      <VChrome n={index + 1} onSolid={surface.onSolid} onDark={surface.onDark} v={v} />
     </VSlide>
   );
 }
@@ -261,7 +315,11 @@ function ClosingSlide({ slide, index }) {
   const t = useTweaks();
   const v = verticalFor(slide, t);
   const { headline, body, handle, headline_size = 58, texture } = slide;
-  const surface = { mode: 'light', bg: VAQ.paper, onSolid: false };
+  // Follows the vertical's surface so a dark show (The Docket) doesn't end on a
+  // white card. Still light for every daylight vertical.
+  const surface = surfaceFor(slide, v);
+  const ink = inkFor(v, surface);
+  const sFont = v.bodyFont || VAQ.serif;
   return (
     <VSlide v={v} surface={surface} texture={texture}>
       <div style={{
@@ -269,8 +327,8 @@ function ClosingSlide({ slide, index }) {
         alignItems: 'center', justifyContent: 'center', textAlign: 'center',
       }}>
         <VMark size={150} />
-        <div style={{ marginTop: 44, fontFamily: VAQ.serif, fontWeight: 600, fontSize: 92, letterSpacing: '-.01em', lineHeight: 1 }}>
-          <span style={{ color: VAQ.inkL }}>Vaq</span>{' '}
+        <div style={{ marginTop: 44, fontFamily: sFont, fontWeight: 600, fontSize: 92, letterSpacing: '-.01em', lineHeight: 1 }}>
+          <span style={{ color: ink.head }}>Vaq</span>{' '}
           <span style={{ color: VAQ.orange }}>HQ</span>
         </div>
         <div style={{ display: 'flex', gap: 22, marginTop: 46 }}>
@@ -280,20 +338,20 @@ function ClosingSlide({ slide, index }) {
         </div>
         {headline && (
           <div style={{ marginTop: 64, maxWidth: 840 }}>
-            <div style={{ fontFamily: VAQ.serif, fontWeight: 600, fontSize: headline_size,
-              lineHeight: 1.12, letterSpacing: '-.015em', color: VAQ.inkL, textWrap: 'balance' }}>
+            <div style={{ fontFamily: sFont, fontWeight: 600, fontSize: headline_size,
+              lineHeight: 1.12, letterSpacing: '-.015em', color: ink.head, textWrap: 'balance' }}>
               {String(headline).split('\n').map((l, i) => <div key={i}>{l}</div>)}
             </div>
           </div>
         )}
         {body && (
           <div style={{ marginTop: 34, maxWidth: 760 }}>
-            <VBody text={body} v={v} size={38} color={VAQ.bodyL} style={{ textAlign: 'center' }} />
+            <VBody text={body} v={v} size={38} onDark={surface.onDark} color={ink.body} style={{ textAlign: 'center' }} />
           </div>
         )}
         {handle && (
-          <div style={{ marginTop: 60, fontFamily: VAQ.mono, fontSize: 25, letterSpacing: '.2em',
-            textTransform: 'uppercase', color: VAQ.mutedL }}>{handle}</div>
+          <div style={{ marginTop: 60, fontFamily: metaFontFor(v), fontSize: 25, letterSpacing: '.2em',
+            textTransform: 'uppercase', color: ink.muted }}>{handle}</div>
         )}
       </div>
     </VSlide>

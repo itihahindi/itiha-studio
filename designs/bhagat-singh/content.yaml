@@ -1,0 +1,27 @@
+name: Bhagat Singh
+brand: itiha
+format: instagram-portrait
+caption: |2+
+
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+slides:
+- layout: quote
+  subline: One-line subtitle
+  swipe_meta: Swipe ▸ · 3 Slides · 1 min read
+  quote: 'World-lover is the hero whom we do not hesitate a little to call a fierce insurgent, staunch
+    anarchist—the same heroic Savarkar. Coming in the wave of world-love, he used to stop walking on the
+    grass thinking that the soft grass would be mowed under the feet. '
+  attribution: Matwala on 15 and 22 November 1926
+  body: '[— Bhagat Singh]'
+  body_offset_y: 180
+  image: https://upload.wikimedia.org/wikipedia/commons/5/54/Bhagat_Singh_1929.jpg
+  quote_size: 50
+  texture: vignette
+  image_bw: true
+  image_filter: bw
+  body_size: 45

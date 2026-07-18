@@ -1,0 +1,60 @@
+name: wangchuk-hunger-strike
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  India's most famous Ladakh activist is 19 days into a hunger strike at Jantar Mantar —
+  and it isn't about Ladakh. Sonam Wangchuk is fasting alongside a Gen Z sit-in demanding
+  the Education Minister resign over the exam paper leaks that hit 22 lakh students.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #SonamWangchuk #Ladakh #NEET #JantarMantar #India
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: true
+  seriesLabel: JANTAR MANTAR
+slides:
+- layout: cover
+  surface: light
+  kicker_meta: New Delhi · July 16
+  headline: |
+    HIS FAST
+    ISN'T ABOUT
+    *LADAKH*
+  subline: Sonam Wangchuk is 19 days without food at Jantar Mantar — over a leaked exam paper.
+  image: wangchuk.jpg
+  image_position: center 22%
+  image_credit: Wikimedia Commons
+- layout: story
+  kicker_meta: The Scene
+  headline: Nineteen Days At *Jantar Mantar*
+  body: |
+    [Sonam Wangchuk], 59 — the engineer who made Ladakh's cause national — has not eaten since [June 28]. He is fasting beside a [Gen Z-led] sit-in, not for the statehood campaign that made him famous.
+- layout: stat
+  kicker_meta: The Trigger
+  label: Sat the NEET-UG
+  value: 22 LAKH
+  stat_size: 190
+  sublabel: The exam was later cancelled
+  body: May's paper leaks hit one of India's largest examinations — and detonated a [student revolt] the
+    government has not contained.
+- layout: story
+  kicker_meta: The Demand
+  headline: 'One Ask: The *Minister* Goes'
+  body: |
+    The protest wants Education Minister [Dharmendra Pradhan] to resign over the leaks. The sit-in is run by the [Cockroach Janta Party] — a Gen Z outfit that has camped at Jantar Mantar for weeks.
+- layout: quote
+  kicker_meta: Delhi High Court
+  quote: Every life is precious.
+  attribution: Delhi High Court, ordering daily medical monitoring
+- layout: story
+  kicker_meta: What's Next
+  headline: A March On *Parliament*
+  body: |
+    On day 18 Wangchuk said his readings were _"quite normal for an 18-day fast."_ The court has put government doctors on watch. A march to [Parliament] is called for [July 20].
+- layout: closing
+  headline: A fast the state cannot ignore.
+  body: Nineteen days, one demand, and a movement the government did not see coming. Follow [Vaq HQ] for
+    what happens next.
+  handle: '@vaqhq · vaqhq.com'

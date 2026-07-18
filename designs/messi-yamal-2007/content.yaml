@@ -1,0 +1,44 @@
+name: messi-yamal-2007
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  In 2007, a family won a raffle.
+
+  The prize was a photo with a Barcelona player at Camp Nou, for a charity calendar
+  benefiting UNICEF and the FC Barcelona Foundation. A long-haired 20-year-old named
+  Lionel Messi drew the January page. The baby handed to him was six months old.
+  Photographer Joan Monfort had the idea to put the child in a tub of water. Messi,
+  by Monfort's account, did not know how to hold him at first.
+
+  That baby was Lamine Yamal. The picture sat in an archive for seventeen years until
+  Yamal's father posted it in July 2024. On Sunday the two of them walk out at MetLife
+  Stadium for the World Cup final. Messi is 39 and defending the title Argentina won in
+  Qatar, fresh off a 2-1 win over England. Yamal is 19, wears the number Messi once wore
+  at Barcelona, and arrives having topped the tournament's dribble charts for Spain.
+
+  Nineteen years between the bath and the final. Both are UNICEF Goodwill Ambassadors.
+  Both came through La Masia.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Messi #LamineYamal #WorldCupFinal #Argentina #Spain #LaMasia
+tweaks:
+  vertical: sports
+  showStamp: true
+  showPageNum: false
+  seriesLabel: WORLD CUP FINAL
+slides:
+- layout: story
+  kicker_meta: Fifa
+  headline: |
+    ONE BATH.
+    NINETEEN YEARS.
+    ONE *FINAL*.
+  image: messi-yamal-2007.png
+  image_position: 55% 45%
+  body: Messi bathed six-month-old Lamine Yamal for a 2007 charity calendar. On Sunday, they meet for
+    the World Cup.
+  body_offset_y: -40
+- layout: closing
+  headline: 'Follow for what happens next. '
+  texture: grid

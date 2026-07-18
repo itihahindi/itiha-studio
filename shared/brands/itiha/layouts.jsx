@@ -268,9 +268,12 @@ function Stat({ slide, index }) {
                 fontFamily: ITIHA.bebas, fontSize: stat_size, lineHeight: 0.9,
                 color: s.value_red ? ITIHA.red : t.h1, marginTop: 12,
               }}>
-                {s.value && s.value.split('%').length === 2
-                  ? <>{s.value.split('%')[0]}<span style={{ color: ITIHA.red }}>%</span></>
-                  : s.value}
+                {(() => {
+                  const v = s.value == null ? '' : String(s.value);
+                  return v.split('%').length === 2
+                    ? <>{v.split('%')[0]}<span style={{ color: ITIHA.red }}>%</span></>
+                    : v;
+                })()}
               </div>
               {s.sublabel && <div className="itiha-meta" style={{ marginTop: 8 }}>{s.sublabel}</div>}
             </div>

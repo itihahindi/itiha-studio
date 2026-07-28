@@ -1,0 +1,34 @@
+name: hundred-crore-club
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  India's hundred-crore club has more than quadrupled in five years.
+
+  The number. 576 individuals declared a gross total income of Rs 100 crore or more in AY 2025-26. Minister of State for Finance Pankaj Chaudhary gave Parliament the full series: 142 in AY 2021-22, then 301, then 284, then 415, now 576. More than four-fold in five assessment years, and 161 more people in the last year alone.
+
+  Note the dip. The climb was not a straight line. AY 2023-24 came in at 284, lower than the 301 the year before, and almost nobody reporting this number mentions it. A single year down does not break the trend, but a chart that only goes up is usually a chart with a year missing.
+
+  What this measures. Returns filed, not wealth held. It counts individuals whose declared gross total income crossed Rs 100 crore, so it moves with three things at once: real income growth at the top, a capital gains cycle that has been generous to anyone holding equity, and a tax administration that is far better at seeing income than it was five years ago. Part of this curve is new money. Part of it is money that was always there, now visible.
+
+  What it is not. It is not an inequality statistic on its own, and it is not a count of India's richest people, many of whom hold wealth through entities rather than personal income. Anyone using this number to prove a point about either is stretching it.
+
+  Why it matters anyway. A tax base with 576 nine-figure filers behaves differently from one with 142. It changes what a surcharge raises, what capital gains policy is worth, and how much of the direct tax take rests on how few shoulders.
+
+  Source: Minister of State for Finance Pankaj Chaudhary in a written reply to Parliament, 27 July 2026, as reported by ANI and The Tribune. Flagged via @REDBOXINDIA.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #IncomeTax #IndianEconomy #Taxpayers #Parliament #CBDT #FinanceMinistry #Wealth #DataPoint
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: stat
+  surface: dark
+  kicker_meta: PARLIAMENT · 27 JULY
+  label: Individuals declaring income above Rs 100 crore
+  value: '576'
+  sublabel: In AY 2025-26, up from 415 a year earlier.
+  body: |
+    142 in AY 2021-22. Then 301, then a dip to 284, then 415, now **576**. [More than four-fold] in five years, the Finance Ministry told Parliament.

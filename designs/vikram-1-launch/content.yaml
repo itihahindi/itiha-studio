@@ -61,6 +61,8 @@ slides:
   headline: A *robotic arm* for space junk
   body: |
     Upper-stage experiments stayed attached for in-orbit testing — a demo payload from Germany's [DCUBED], and [Embrace], a robotic arm from Cosmoserve Space built to capture orbital debris.
+  image: https://akm-img-a-in.tosshub.com/indiatoday/images/story/202502/vikram-1-rocket-053502776-3x4.jpeg?VersionId=bjH1TDfaM50woYMruj6lPHFdobXzBPRL
+  image_position: 28% 0%
 - layout: story
   surface: solid
   texture: grid
@@ -68,9 +70,10 @@ slides:
   headline: A diamond, gold, and a *postcard*
   body: |
     [Cosmic Bloom] — a lab-grown floral diamond by Cosmos Diamonds. An [18-karat gold micro-rocket]. And handwritten postcards, including one from PM Narendra Modi: [Vande Mataram].
+  image: https://www.deccanchronicle.com/h-upload/2024/02/02/1073850-aa-1475189.webp
 - layout: closing
   surface: solid
   texture: grid
-  headline: India's private space age has *liftoff*.
+  headline: India's private space age has liftoff.
   body: One rocket, domestic and global payloads — proof the country's new space economy can fly.
   handle: '@vaqhq · vaqhq.com'

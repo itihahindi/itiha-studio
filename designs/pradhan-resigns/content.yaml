@@ -1,0 +1,31 @@
+name: pradhan-resigns
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  It was the students' central demand, and today they got it. Union Education Minister Dharmendra Pradhan has resigned, handing his letter to Prime Minister Modi on 25 July, ten days into the protests over the NEET-UG paper leak.
+
+  In his stated reason, Pradhan said he was pained by the situation over the past ten days, and that considering the scenes at Jantar Mantar and across the country, and to prevent anti-national forces from exploiting it, he was tendering his resignation. The resignation is confirmed by Akashvani (the government broadcaster), The Week and others.
+
+  It caps a fast week. The NEET-UG 2026 exam was cancelled and the case handed to the CBI. On 24 July the Union Cabinet cleared a draft Bill to toughen the 2024 anti-paper-leak law, which still needs Parliament. Pradhan's exit was one of the three demands the Cockroach Janta Party and the opposition had set when the sit-in began.
+
+  The clip is the first reaction from Jantar Mantar, a CJP spokesperson at the protest speaking to the press. It is in Hindi and we have not translated it. The "we have done it" line is the protesters' own reaction, shared by journalist Mukesh Mathur.
+
+  Video via @mukesh1275.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #DharmendraPradhan #NEET #NEETUG #JantarMantar #CockroachJantaParty #PaperLeak #IndianPolitics
+tweaks:
+  vertical: live
+  showStamp: true
+slides:
+- layout: cover
+  kicker_meta: Jantar Mantar · 25 Jul 2026
+  headline: |2
+
+    Pradhan *resigns*.
+  subline: 'CJP reaction '
+  video_file: clip.mp4
+  panel_height: 560
+  headline_size: 72
+  texture: grid

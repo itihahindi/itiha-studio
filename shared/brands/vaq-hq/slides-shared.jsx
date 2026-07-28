@@ -140,6 +140,19 @@ if (typeof document !== 'undefined' && !document.getElementById('vaq-slide-style
   s.textContent = `
     .itiha-slide{position:relative;width:var(--slide-width,1080px);height:var(--slide-height,1350px);overflow:hidden;color:${VAQ.bodyL};font-family:${VAQ.sans};-webkit-font-smoothing:antialiased}
     .itiha-slide *{box-sizing:border-box}
+    /* ── Text alignment ────────────────────────────────────────────
+       alignBlock() stamps data-align-x on a text block. text-align moves the
+       type, but not boxes that carry their own width — those keep hanging off
+       the left edge. VAQ has two such shapes: the fixed-width accent rule that
+       sits above a dark-hero headline (.vaq-rule) and any measure-capped
+       column of copy (.vaq-measure for the maxWidth sublines / body wells,
+       .vaq-body for VBody's own root). Re-hang both on the chosen edge. */
+    [data-align-x="left"]   > .vaq-rule{margin-left:0;margin-right:auto}
+    [data-align-x="center"] > .vaq-rule{margin-left:auto;margin-right:auto}
+    [data-align-x="right"]  > .vaq-rule{margin-left:auto;margin-right:0}
+    [data-align-x="left"]   .vaq-measure,[data-align-x="left"]   .vaq-body{margin-left:0;margin-right:auto}
+    [data-align-x="center"] .vaq-measure,[data-align-x="center"] .vaq-body{margin-left:auto;margin-right:auto}
+    [data-align-x="right"]  .vaq-measure,[data-align-x="right"]  .vaq-body{margin-left:auto;margin-right:0}
   `;
   document.head.appendChild(s);
 }
@@ -308,7 +321,7 @@ function VBody({ text, v, size = 40, onSolid, onDark, color, style }) {
       return <span key={`${keyBase}-${i}`}>{p.replace(/\n/g, ' ')}</span>;
     });
   return (
-    <div style={{ ...base, ...style }}>
+    <div className="vaq-body" style={{ ...base, ...style }}>
       {paras.map((p, i) => (
         <p key={i} style={{ margin: i === 0 ? 0 : `${Math.round(size * 0.8)}px 0 0` }}>
           {renderInline(p, i)}
@@ -498,8 +511,92 @@ function VSlide({ v, surface, texture, children }) {
   );
 }
 
+// ── Text alignment ────────────────────────────────────────────
+// Two per-slide knobs, both optional (same contract as the Itiha pack):
+//   align_x: left | center | right   — horizontal, always safe to apply
+//   align_y: top  | middle | bottom  — vertical, OPT-IN
+//
+// align_y is deliberately opt-in. Every VAQ layout is a padded flex column
+// whose main block sits wherever the hand-tuned spacers put it. When align_y
+// is unset, alignBlock hands the caller's legacy geometry straight back, so
+// existing designs render pixel-identically — the only additions are
+// textAlign:'left' (already the inherited value) and inert left/right offsets
+// on a static box. Only when the author picks a value do we lift the block out
+// of the column flow and re-anchor it against the column's own box.
+//
+// Note the containing block: VAQ's text blocks live inside a padded column
+// that is itself position:absolute, so the re-anchor is measured from that
+// column — callers pass the column's own gutters as legacy left/right.
+
+const _AX_FLEX = { left: 'flex-start', center: 'center', right: 'flex-end' };
+
+// "Unset" and "explicitly left" are kept distinct: an unset slide emits no
+// attribute and inherits whatever alignment its layout already had, so every
+// design already in the repo renders untouched. Only an explicit value opts
+// into the alignment system. (Same contract as the Itiha pack.)
+function alignFor(slide) {
+  const raw = (slide && slide.align_x) || '';
+  const ax = raw || 'left';
+  const ay = (slide && slide.align_y) || '';
+  return {
+    ax,
+    axSet: !!raw,
+    ay,
+    textAlign: raw ? ax : undefined,
+    flexAlign: _AX_FLEX[ax] || 'flex-start',
+  };
+}
+
+// Build the props for a layout's text block.
+//   legacy — the block's existing style object. left/right are read from it to
+//     keep the block spanning its column once it goes absolute; on a static
+//     box they are inert, so passing them costs nothing.
+//   opts.top / opts.bottom — insets used when align_y re-anchors the block.
+//     Fold any *_offset_y into these, since the legacy transform is dropped.
+//   opts.stretch — pass true for blocks that must keep their box: rows that
+//     already set both edges, and pinned chrome. Those take align_x only.
+// Returns { style, 'data-align-x', 'data-align-y' } — spread onto the block.
+function alignBlock(slide, legacy = {}, opts = {}) {
+  const a = alignFor(slide);
+  const { top = 110, bottom = 140, stretch = false } = opts;
+  const { left, right } = legacy;
+
+  let pos = legacy;
+  if (!stretch && a.ay) {
+    if (a.ay === 'top')         pos = { position: 'absolute', left, right, top };
+    else if (a.ay === 'bottom') pos = { position: 'absolute', left, right, bottom };
+    else if (a.ay === 'middle') pos = { position: 'absolute', left, right, top: '50%', transform: 'translateY(-50%)' };
+    // Carry over the layout-specific display/margin bits, but drop the legacy
+    // vertical anchors (margins and transforms included) so they can't fight
+    // the new one.
+    const { top: _t, bottom: _b, transform: _tr, position: _p, left: _l, right: _r, marginTop: _m, ...rest } = legacy;
+    pos = { ...rest, ...pos };
+  }
+
+  const style = { ...pos };
+  // Every horizontal effect is gated on the author actually setting align_x,
+  // so an unset slide keeps whatever alignment its layout already had.
+  if (a.axSet) {
+    style.textAlign = a.textAlign;
+    // Flex and grid containers have to be told separately — text-align doesn't
+    // move flex items. A column aligns on the cross axis, a row on the main one.
+    if (style.display === 'flex') {
+      if (style.flexDirection === 'column') style.alignItems = a.flexAlign;
+      else style.justifyContent = a.flexAlign;
+    } else if (style.display === 'grid') {
+      style.justifyItems = a.ax;
+    }
+  }
+  return {
+    style,
+    'data-align-x': a.axSet ? a.ax : undefined,
+    'data-align-y': a.ay || undefined,
+  };
+}
+
 Object.assign(window, {
   VAQ, VERTICALS, BrandContext, useTweaks, verticalFor, surfaceFor, solidPalette,
   headlineStyle, headlineDefaultSize, VHeadline, VBody, VKicker,
   VMark, VWordmark, VChrome, VTexture, VGhostIndex, VSlide,
+  alignFor, alignBlock,
 });

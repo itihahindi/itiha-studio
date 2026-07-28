@@ -109,6 +109,10 @@
      preview.py) with the design's `brand:` slug. Every pack must define the
      window globals: ITIHA-style token object (pack-internal name), LAYOUTS,
      MANIFEST, MANIFEST_META, MANIFEST_TWEAKS, BrandContext, BRAND. -->
+<!-- Bundled world geometry. Synchronous on purpose: render.py screenshots as
+     soon as .itiha-slide appears, so a fetch() would race the capture. -->
+<script src="geo/world.js"></script>
+<script src="geo/geo.js"></script>
 <script src="brands/__BRAND__/prompts.js"></script>
 <script type="text/babel" src="brands/__BRAND__/slides-shared.jsx"></script>
 <script type="text/babel" src="brands/__BRAND__/layouts.jsx"></script>

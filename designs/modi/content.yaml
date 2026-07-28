@@ -1,0 +1,37 @@
+name: Modi
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Replace this with your IG caption.
+
+  #hashtags #here
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+slides:
+- layout: split-story
+  eyebrow: Series 01
+  eyebrow_meta: Modi · 3 Parts
+  headline: |
+    PM Modi announced fast-track courts to punish those behind the NEET-UG 2026 paper leaks.
+  subline: One-line subtitle
+  swipe_meta: Swipe ▸ · 3 Slides · 1 min read
+  image: screenshot-2026-07-23-at-3-49-35-pm.png
+  image_position: 38% 50%
+  body_offset_y: -10
+  body_size: 0
+  headline_size: 80
+- layout: closing
+  headline: |2+
+
+  stats:
+  - value: '1825'
+    label: Year it began
+  - value: 100K
+    label: People affected
+  - value: '12'
+    label: Colonies involved
+  handle: Follow @VaqHQ

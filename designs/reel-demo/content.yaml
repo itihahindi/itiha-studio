@@ -10,9 +10,9 @@ hashtags: |
 tweaks:
   vertical: live
 slides:
-  - layout: reel-frame
-    video_url: https://www.youtube.com/watch?v=F_2tr3ka-YI
-    headline: Chandrayaan 3 *Lifts Off* From Sriharikota
-    subline: LVM3 carried the lander into orbit in 16 minutes.
-    credit: via @isro
-    texture: grid
+- layout: reel-frame
+  video_url: 'https://youtube.com/shorts/etcARs2nhds?si=ui2AAZ81LpBh_fBn '
+  headline: Chandrayaan 3 *Lifts Off* From Sriharikota
+  subline: LVM3 carried the lander into orbit in 16 minutes.
+  credit: via @isro
+  texture: grid

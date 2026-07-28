@@ -1,0 +1,100 @@
+name: reservation-hatao-andolan
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  A page that did not exist last week is now the loudest account in Indian politics. It is asking for the one thing this government has already refused.
+
+  What it is. Reservation Hatao Andolan, an anonymous Instagram campaign with no stated party affiliation, has gone from nothing to millions of followers in days. Its demand is blunt: jaati hatao, aarakshan hatao. Remove caste, remove reservation, in every form of public life. Follower counts circulating on social media run from 1 million inside 24 hours to around 2 million within days. Treat all of them as claims: the page is anonymous and the numbers are not independently audited.
+
+  Where the anger comes from. It is not invented. NEET-UG 2026 was compromised for a cohort of more than two million candidates. A sitting CJI was reported to have called jobless youth cockroaches, which is where the Cockroach Janta Party page got its name and its millions. Jantar Mantar followed, then the violence of 20 July, a Cabinet-cleared draft anti-paper-leak Bill on 24 July, Dharmendra Pradhan's resignation on 25 July, and a Nilekani task force on exam reforms on 26 July. A generation watched a paper get sold and a system shrug.
+
+  Why the demand fails anyway. Amit Shah has said it about as plainly as it can be said: no one can remove reservation for SCs, STs and OBCs, and that is PM Modi's guarantee. This is not a reluctant concession, it is the party's stated position, repeated through two general elections. Scrapping caste reservation would need a two-thirds majority in both Houses that nobody in Indian politics is assembling. The courts have already fixed the perimeter: a 50 per cent ceiling from Indra Sawhney in 1992, a creamy layer test for OBCs, and the 10 per cent EWS quota upheld in 2022. Reform runs through those doors or it does not run.
+
+  What is actually winnable. Tighten the creamy layer and enforce it. One benefit per family, so the same households do not inherit the same advantage for three generations. Publish caste-wise outcome data so the argument runs on evidence instead of grievance. And treat exam security as a security problem, which is exactly what the Nilekani task force, with a former IB director and an ex-ISRO chief on it, is built to do.
+
+  Our position. The anger is legitimate. The target is wrong. The kid from a reserved category who cleared the exam did not steal the paper. The people who sold it did, and they are the ones who should be paying.
+
+  Sources: reporting on the Reservation Hatao Andolan surge; Amit Shah on the reservation guarantee (DT Next, Oneindia); Indra Sawhney (1992) on the 50 per cent ceiling; Janhit Abhiyan (2022) upholding the EWS quota; PMO statements on the Nilekani task force, 26 July 2026.
+
+  Images: Supreme Court of India by Subhashish Panigrahi (CC BY-SA 4.0); Sansad Bhavan by Nikhilb239 (CC BY-SA 4.0); West Bengal Joint Entrance Examination centre, 2011, by Biswarup Ganguly (CC BY 3.0). All via Wikimedia Commons.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #ReservationHatao #NEETUG #Reservation #MeritMatters #IndianPolitics #NTA #PaperLeak #GroundReport
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: true
+  seriesLabel: GROUND REPORT
+slides:
+- layout: cover
+  kicker_meta: 27 JULY 2026
+  headline: |
+    The page that wants to
+    *end* reservations.
+  subline: Days old. Millions of followers. One demand this government has already refused.
+  image: screenshot-2026-07-27-at-1-43-19-am.png
+  image_position: 39% 50%
+- layout: stat
+  surface: solid
+  kicker_meta: The Surge
+  label: Followers, from a standing start
+  value: 3M+
+  sublabel: In under a week.
+  body: Reported figures, not audited ones. The page is [anonymous] and claims no party. Same playbook
+    as the Cockroach Janta Party page in June, new demand.
+- layout: story
+  kicker_meta: The Demand
+  headline: Four Words, *No* Small Print
+  body: |
+    [Jaati hatao, aarakshan hatao.] Remove caste, remove reservation, in every form of public life. No phase-out, no carve-outs, no transition. The page is days old and nobody has put a name to it.
+- layout: story
+  kicker_meta: The Grievance
+  headline: The Anger Is *Earned*
+  body: |
+    NEET-UG 2026 was compromised for a cohort of **more than two million**. A sitting CJI was reported to have called jobless youth cockroaches. Then Jantar Mantar, the violence of 20 July, and a minister gone on the 25th.
+  image: exam-centre.jpg
+  image_position: 50% 45%
+  image_height: 380
+  image_caption: Candidates outside an entrance examination centre, West Bengal.
+- layout: quote
+  kicker_meta: The Party's Position
+  quote: |
+    No one can remove reservation for SCs, STs and OBCs. This is PM Modi's guarantee.
+  attribution: Amit Shah, Union Home Minister
+  quote_size: 64
+- layout: story
+  kicker_meta: The Perimeter
+  headline: The Courts Already *Drew* the Lines
+  body: |
+    A **50 per cent** ceiling since [Indra Sawhney,] 1992. A creamy layer test for OBCs. The **10 per cent** EWS quota upheld in 2022. Reform runs through those doors or it does not run.
+  image: supreme-court.jpg
+  image_position: 50% 42%
+  image_height: 380
+  image_caption: The Supreme Court of India, New Delhi.
+- layout: story
+  kicker_meta: The Arithmetic
+  headline: What Scrapping It Would *Actually* Take
+  body: |
+    A [two-thirds majority] in both Houses. Nobody in Indian politics is assembling that, in either direction. A hashtag is not an amendment.
+  image: parliament.jpg
+  image_position: 50% 50%
+  image_height: 380
+  image_caption: Sansad Bhavan, New Delhi.
+- layout: story
+  kicker_meta: The Precedent
+  headline: This Ran *Before*, in 2006
+  body: |
+    Medical students struck for weeks against OBC expansion in central institutions. [Youth for Equality] filled the streets and the news bulletins. The quota went through anyway. A surge is not a veto.
+- layout: story
+  kicker_meta: The Winnable Fight
+  headline: Aim at the *Edges*, Not the Wall
+  body: |
+    Enforce the creamy layer. [One benefit per family,] so the same households stop inheriting the same advantage for three generations. Publish caste-wise outcome data. And treat exam security as security, which is what a task force carrying an **ex-IB director** and an **ex-ISRO chief** is for.
+- layout: closing
+  headline: |
+    The paper was stolen.
+    The Constitution wasn't.
+  body: The student from a reserved category who cleared the exam did not sell the question paper. The
+    people who did are the ones who should be paying.
+  handle: 'Follow @vaqhq · '

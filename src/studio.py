@@ -315,7 +315,12 @@ def _build_server() -> ThreadingHTTPServer:
             if rel == "error.txt":
                 self._send_bytes(st.get("error", "").encode(), "text/plain"); return
             if rel.startswith("images/"):
-                self._send_file(design_dir / rel); return
+                f = design_dir / rel
+                # Uploaded reel videos live in images/ too; <video> needs byte-range
+                # serving (Safari refuses without it), images fall back to plain send.
+                if f.suffix.lower() in {".mp4", ".mov", ".webm"} and f.is_file():
+                    self._send_range_file(f); return
+                self._send_file(f); return
 
             if rel == "api/download-zip":
                 self._send_zip(slug, design_dir); return
@@ -349,8 +354,8 @@ def _build_server() -> ThreadingHTTPServer:
         def _send_range_file(self, f: Path):
             """Serve a file honoring a single `Range: bytes=…` header (video seeking)."""
             ctype = {
-                ".mp4": "video/mp4", ".png": "image/png",
-                ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
+                ".mp4": "video/mp4", ".mov": "video/quicktime", ".webm": "video/webm",
+                ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
             }[f.suffix.lower()]
             size = f.stat().st_size
             start, end = 0, size - 1

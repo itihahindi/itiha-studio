@@ -1,0 +1,48 @@
+name: neet-protests-fcra-bill
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Parliament's Monsoon Session opens with two fights running in parallel.
+
+  OUTSIDE: the Cockroach Janta Party — the satirical youth movement founded in
+  May after CJI Surya Kant called some activists "cockroaches" and "parasites of
+  society" — is demanding Education Minister Dharmendra Pradhan resign over the
+  NEET 2026 paper leak and CBSE on-screen marking irregularities. Sonam
+  Wangchuk, who called himself an "honorary cockroach", was moved to Safdarjung
+  Hospital on July 18 on day 21 of an indefinite hunger strike. The hospital says
+  he is severely dehydrated and refusing fluids and treatment; supporters say he
+  was removed from Jantar Mantar against his wishes. CJP founder Abhijeet Dipke
+  has begun a solidarity fast.
+
+  INSIDE: the government is re-introducing the Foreign Contribution (Regulation)
+  Amendment Bill, 2026. It creates a Designated Authority that can take over an
+  NGO's foreign contributions and assets once its FCRA registration is cancelled,
+  surrendered or left unrenewed, and bars foreign funds from being used for
+  religious conversion. Congress MP K.C. Venugopal called the move "downright
+  undemocratic"; the Kerala Assembly has demanded the Bill's full withdrawal.
+  Supporters argue it guards against foreign influence over Indian civil society.
+
+  Sources: Al Jazeera · CNN · PRS India · ANI · India TV.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #NEET #FCRA #Parliament #MonsoonSession #CockroachJantaParty
+  #SonamWangchuk #DharmendraPradhan #IndianPolitics
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: cover
+  texture: grid
+  headline: |
+    NEET Protests
+    Collide With The
+    *FCRA Bill*
+  headline_size: 92
+  subline: Parliament's Monsoon Session opens with students demanding the Education Minister's exit, and
+    the government reviving its law on foreign-funded NGOs.
+  align_y: bottom
+  align_x: center
+  image: https://fl-i.thgim.com/public/incoming/b9ubo5/article71145244.ece/alternates/LANDSCAPE_1200/abhijeet%20dipke%20cjp%20delhi.JPG
+  headline_offset_y: 70

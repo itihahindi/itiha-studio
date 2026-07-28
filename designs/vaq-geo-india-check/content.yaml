@@ -1,0 +1,33 @@
+name: vaq-geo-india-check
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Boundary check — India POV.
+hashtags: '#VaqHQ'
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: geo
+  kicker_meta: Boundary Check
+  headline: India — *Official* Boundaries
+  region: south-asia
+  map_height: 470
+  countries:
+  - name: India
+  - name: Pakistan
+    color: '#2F6BE0'
+  - name: China
+    color: '#9A3F73'
+  labels: false
+  markers:
+  - lon: 79.5
+    lat: 35.2
+    label: Aksai Chin
+    ring: true
+  - lon: 74.5
+    lat: 35.9
+    label: Gilgit-Baltistan
+    align: left
+  body: Aksai Chin and the whole of J&K render inside [India].

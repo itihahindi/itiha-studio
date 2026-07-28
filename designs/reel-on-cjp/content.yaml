@@ -1,0 +1,17 @@
+name: Reel on CJP
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Replace this with your IG Reel caption.
+
+  #hashtags #here
+tweaks:
+  showStamp: true
+slides:
+- layout: reel-frame
+  eyebrow: Series 01
+  headline: |
+    Several Delhi Police vehicles have been vandalised and shattered near CP, Janpath and Jantar Mantar by CJP protestors.
+  handle: '@itiha29'
+  vertical: ground
+  video_file: wjc_bwf1vx9fmi5s.mp4

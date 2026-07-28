@@ -1,0 +1,101 @@
+name: athena-and-odysseus-a-partnership-of-cunning
+brand: itiha
+format: instagram-portrait
+caption: |
+  In Homer's Odyssey — the ancient text at the centre of Christopher Nolan's new blockbuster film — the relationship between the goddess Athena and the mortal Odysseus is unlike any other in Greek mythology. Most gods demanded submission from mortals. Athena treated Odysseus as a peer. The reason was simple: they shared the same core trait, metis, the Greek word for cunning and strategic intelligence. Two masterful liars, two brilliant tacticians, one partnership. This carousel is the record of five lesser-known moments in that partnership, drawn from the Odyssey itself.
+
+  When Odysseus finally wakes on the shores of Ithaca, Athena approaches him disguised as a young shepherd. Instead of telling the truth, Odysseus spins an elaborate lie about being a fugitive from Crete. Athena shifts to her true form, smiles, and praises him — she loves him precisely because he is an unapologetic liar just like her. Yet for the first ten years of his journey after the Trojan War, she abandoned him completely. Odysseus had blinded the Cyclops Polyphemus, son of Poseidon, and Athena knew that helping him openly would spark a war between her and Poseidon. She stayed out of it until Poseidon was distracted on a trip to Ethiopia. She was also his tactical disguise artist — tapping him with her wand to turn him into a bald, filthy beggar to infiltrate his own palace, and later making him taller and muscular with hair "like hyacinth petals" to impress Penelope. She was his advance PR agent on the island of the Phaeacians, disguising herself as a herald and walking the city streets hyping the arrival of a "godlike stranger" before Odysseus ever entered the court. And at the very end of the Odyssey, after Odysseus slaughtered the 108 suitors of Penelope, Athena had to forcibly stop him from starting a civil war — dropping out of the sky, ordering him to stand down, and wiping the memories of the dead men's families to prevent Ithaca from tearing itself apart.
+
+  It is one of literature's oldest partnerships — a goddess and a mortal, bonded not by piety but by metis. The Odyssey survives because they do.
+
+  @itiha29 · itiha.info
+
+  Images: public-domain artworks (Rembrandt, Bottani, Turner, Hayez, Degeorge, Conca) via Wikimedia Commons.
+hashtags: |
+  #IndianHistory #Itiha #TheOdyssey #ChristopherNolan #Homer #Athena #Odysseus #GreekMythology #ComparativeReligion
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  seriesLabel: ATHENA
+slides:
+- layout: cover
+  headline: |
+    The Goddess Who *Loved*
+    Odysseus For His
+    *Lies.*
+  subline: Five moments from Homer's Odyssey
+  swipe_meta: Swipe ▸ · 6 Slides · 3 min read
+  image: https://pyxis.nymag.com/v1/imgs/a90/586/4aebac3b35ea2f052cdbe4e81cd43bc191-Odyssey.rhorizontal.w700.jpg
+  image_position: 50% 30%
+  headline_size: 120
+  headline_offset_y: 300
+  image_bw: false
+- layout: split-story
+  chapter: Fact 01 · The Shepherd On The Shore
+  headline: |
+    They Bonded Over
+    Being *Compulsive Liars.*
+  body: |
+    When Odysseus finally reached [Ithaca], [Athena] appeared disguised as a young [shepherd]. Instead of revealing his identity, Odysseus spun an elaborate lie about being a [fugitive from Crete]. Rather than punishing him, Athena revealed her [true form] and praised him, saying she admired him because he was a [masterful, unapologetic liar], just like her.
+  image: https://preview.redd.it/athena-and-odysseus-v0-whm5e35gjyvf1.png?width=640&crop=smart&auto=webp&s=dcbc75c4c9b8e44769cfc5018dd78388c946a2a9
+  image_overlay: 0.7
+  image_position: 71% 50%
+  body_y: 15
+- layout: split-story
+  chapter: Fact 02 · The Ten-Year Silence
+  headline: |
+    She Ghosted Him
+    For A *Decade.*
+  body: |
+    Despite being Odysseus' greatest protector, [Athena] completely [ghosted] him for the [first ten years] after the [Trojan War]. The reason? Odysseus had blinded the [Cyclops Polyphemus], son of [Poseidon]. Helping him would have sparked a [direct war] with her [uncle], so Athena stayed away until Poseidon left for [Ethiopia].
+  image: https://backend.artreview.com/wp-content/uploads/2026/07/mpv_snapshot_20260606_160132-copy.jpg
+  body_y: 9
+  image_position: 0% 50%
+- layout: split-story
+  chapter: Fact 03 · The Wand
+  headline: |
+    She Was His Tactical
+    *Disguise Artist.*
+  body: |
+    [Athena] didn't just advise Odysseus, she [altered his appearance] for tactical advantage. To help him infiltrate his palace, she [tapped him with her wand] and disguised him as a [wrinkled, bald, filthy beggar]. Later, to reunite with [Penelope], she made him [taller], more [muscular], with hair flowing [like hyacinth petals].
+  image: https://www.worldhistory.org/uploads/images/21907.jpg
+  image_position: 50% 35%
+  body_y: 20
+- layout: split-story
+  chapter: Fact 04 · The Phaeacian PR Agent
+  headline: |
+    She Hyped Him Before
+    He Even *Arrived.*
+  body: |
+    When Odysseus reached the island of the [Phaeacians], he needed their [king] to send him home. [Athena] disguised herself as a [town herald], [spread rumours] about a [godlike stranger], and by the time Odysseus arrived, the entire [court] was already [primed to be obsessed] with him.
+  image: _cache/7e5e412946329092.jpg
+  image_position: 50% 40%
+  align_x: center
+  body_y: 24
+- layout: split-story
+  eyebrow: Fact 05 · The Final Peace
+  theme: dark
+  headline: |
+    She Had To Stop Him
+    From Starting A
+    *Civil War.*
+  body: |
+    After Odysseus killed the [108 suitors], the [families of the dead] marched for revenge. Ready to keep [killing], Odysseus was stopped when [Athena] [dropped out of the sky], ordered him to [stand down], and [wiped the memories] of the suitors' families, forcing a [peace treaty] that saved [Ithaca] from a [blood feud].
+  source: Homer's Odyssey
+  headline_size: 80
+  image: _cache/49e50e255e3a2392.jpg
+  body_y: 9
+- layout: closing
+  headline: |2+
+
+  body: |
+    Most gods demanded [submission]. [Athena] treated Odysseus as a [peer]. They shared the same core trait, [metis], the Greek word for [cunning] and [strategic intelligence]. Two masterful [liars]. Two brilliant [tacticians].
+    One [partnership]. The [Odyssey] survives because [they] do.
+  handle: Follow @itiha29 · itiha.info
+  image: _cache/c1c3f54a7b6a1bfd.jpg
+  image_position: 50% 30%
+  align_x: center
+  body_offset_y: 120
+- layout: end-card
+  headline: New slide

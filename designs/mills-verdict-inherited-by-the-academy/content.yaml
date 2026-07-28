@@ -1,0 +1,132 @@
+name: mills-verdict-inherited-by-the-academy
+brand: itiha
+format: instagram-portrait
+caption: |
+  James Mill, the British utilitarian who never once visited India, wrote a six-volume History of British India in 1817 arguing that Indian civilisation was stagnant, sterile, and uniformly oppressed. He had no Sanskrit, no Persian, no direct observation, only a European reading room and a conclusion he had reached before he began. His verdict became the foundation on which the East India Company trained its administrators for the next half-century. Within a decade, the Encyclopaedia Britannica had rewritten its India article to match his scathing narrative. Two hundred years later, the framework has not died. It has been inherited by the academy.
+
+  This carousel identifies the pattern documented across a specific school of Indian historiography: the recasting of Indian civilisation as historically stagnant, its invasions as accidental unifications, and its own priesthood as the true villains of its story. Irfan Habib is described as arguing that India was not even "a country" until foreign empires unified it, echoing Mill's original scepticism about Indian civilisational unity. Audrey Truschke plays down the Gupta "Golden Age" and, when confronted with temples destroyed by medieval invaders, attempts to justify the destruction by blaming it on "deviant" Hindu priests. Romila Thapar is characterised as romanticising the medieval Islamic period while presenting ancient India strictly through the lens of caste warfare. The move in each case is Mill's move, translated into modern academic vocabulary: erase the achievement, romanticise the invader, blame the Hindu.
+
+  Mill's verdict was written from a London reading room. Its inheritors write from tenured chairs. The framework is the same. The subject that must not be permitted to defend itself is also the same.
+
+  Images via Wikimedia Commons: James Mill portrait, Mill's "History of British India" (1817) title page, and Rennell's 1782 map of Hindoostan (public domain); Shah Jahan in durbar, c.1650 (British Library, CC0); Martand Sun Temple ruins by Goutam1962 (CC BY-SA 4.0); Maughan Library Round Reading Room by The wub (CC BY-SA 4.0); Bibliothèque Sainte-Geneviève by Marie-Lan Nguyen (CC BY 2.0).
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #JamesMill #IrfanHabib #RomilaThapar #AudreyTruschke #Historiography #ColonialHistory #Historians
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  seriesLabel: MILL
+  overlayDarkness: 62
+  showGrain: true
+slides:
+- layout: cover
+  headline: |
+    How *British Racial* Contempt Still Shapes *Academia*
+  subline: How a colonial framework survived into the modern academy
+  swipe_meta: Swipe ▸ · 8 Slides · 3 min read
+  image: _cache/a39bc5798e1bcd9c.jpg
+  image_position: 50% 40%
+  image_bw: true
+  image_overlay: 0.6
+  headline_size: 120
+  headline_offset_y: 280
+- layout: split-story
+  headline: |
+    A History Written
+    Without *Seeing* India.
+  body: |
+    [James Mill] wrote his [History of British India] in [1817]. He had never [visited] India. He had no [Sanskrit]. He had no [Persian]. His conclusion, that Indian civilisation was [stagnant], [sterile], and [uniformly oppressed], became the [foundation] on which the [East India Company] trained its administrators. Within a decade, the [Encyclopaedia Britannica] had rewritten its India article to match.
+  image: book.jpg
+  image_position: 35% 0%
+  image_overlay: 1
+  body_size: 42
+  body_y: 21
+- layout: split-story
+  headline: |
+    India Was Never
+    A *Country.*
+  body: |
+    The Marxist historian [Irfan Habib] is described as arguing that India was [not even a country] until [foreign empires] unified it. The claim echoes Mill's original scepticism about Indian [civilisational unity]: that the subcontinent was a mere [geographical expression] awaiting an [outside] hand to give it [coherence]. The [Bharat] the [Ramayana], [Mahabharata], and [Puranas] describe across the same landmass, [millennia] earlier, is not [addressed].
+  image: _cache/062105572530a723.jpg
+  image_position: 62% 42%
+  image_bw: true
+  image_overlay: 1
+  body_size: 41
+  align_x: left
+  body_y: 23
+  align_y: top
+- layout: split-story
+  headline: |
+    Blame The Priests.
+    Not The *Invader.*
+  body: |
+    [Audrey Truschke] plays down the [Gupta Golden Age]. When confronted with [temples destroyed] by [medieval invaders], she attempts to [justify] the destruction by [blaming it on Hindu priests], the so-called [deviants] whose [depraved knowledge] supposedly [invited] the iconoclasm. The move erases the [invader's] agency and puts the responsibility on the [victim].
+  image: _cache/3ddfba1f42684354.jpg
+  image_position: 68% 55%
+  image_overlay: 1
+  body_size: 42
+  body_y: 24
+- layout: split-story
+  headline: |
+    Romanticise The Invader.
+    Reduce The *Past.*
+  body: |
+    [Romila Thapar] is characterised as romanticising the [medieval Islamic period] while presenting [ancient India] strictly through the lens of [caste warfare]. The [Sultanate] and [Mughal] centuries are read as an era of [syncretism] and [tolerance]. The [ancient] centuries are read as [Brahmanical oppression]. The [Golden Age] of the Guptas disappears. The [reign] of Aurangzeb is [rehabilitated].
+  image: _cache/657c061dcad4959c.jpg
+  image_position: 63% 28%
+  image_overlay: 1
+  body_size: 41
+  body_y: 18
+- layout: split-story
+  headline: |2+
+
+  body: |
+    The pattern is identical across the three cases: [erase] the [achievement], [romanticise] the [invader], [blame] the [Hindu]. India's past is recast as [historically stagnant], [sterile], and [uniformly oppressed]: the exact verdict [Mill] pronounced from a [London reading room] in [1817]. Only now, the verdict is delivered from a [tenured chair].
+  image: cover-mill.jpg
+  image_position: 50% 30%
+  image_bw: true
+  image_overlay: 0.72
+  body_size: 42
+  align_x: center
+  body_offset_y: 20
+  headline_size: -2
+  body_y: 25
+- layout: comparison
+  headline: |
+    The Same Verdict,
+    *Two Centuries* Apart.
+  left_label: James Mill · 1817
+  left_headline: The Colonial Verdict
+  left_body: 'India is [stagnant], [sterile], and [uniformly oppressed]: never a true civilisation, only
+    a [geographical expression] awaiting an [outside] hand. Judged without [Sanskrit], without [Persian],
+    without ever [seeing] it.
+
+    '
+  right_label: The Marxist Academy · Today
+  right_headline: The Footnoted Echo
+  right_body: 'India was [not even a country] until [foreign empires] made it one. Its ancient past is
+    [Brahmanical oppression]; its temples blamed on their own [priests]. The same verdict, now [peer-reviewed].
+
+    '
+  headline_size: 84
+  body_offset_y: -120
+  align_x: center
+- layout: closing
+  headline: |
+    The Verdict Is Old.
+    The Framework Is
+    *Unchanged.*
+  body: |
+    Mill wrote without ever [seeing] India. His inheritors write from within it. The [reading room] has changed. The [conclusion] the reader is instructed to reach has not. The [subject] of the verdict, a civilisation that must not be permitted to [defend itself], is also the same.
+  handle: Follow @itiha29 · itiha.info
+  image: closing-library.jpg
+  image_position: 50% 45%
+  image_bw: true
+  image_overlay: 1
+  headline_size: 130
+  headline_offset_y: -10
+  body_offset_y: 130
+- layout: end-card
+  headline: New slide

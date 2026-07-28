@@ -108,17 +108,18 @@ function Cover({ slide, index }) {
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} />}
       <TextureOverlay texture={slide.texture} />
       {(eyebrow || eyebrow_meta) && (
-        <div style={{ position: 'absolute', left: 72, top: 84, display: 'flex', alignItems: 'center', gap: 18 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 84, right: 72, display: 'flex', alignItems: 'center', gap: 18 }, { stretch: true })}>
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
           {eyebrow && eyebrow_meta && <span style={{ width: 24, height: 1, background: t.muted35 }} />}
           {eyebrow_meta && <span className="itiha-sub" style={{ fontSize: 13 }}>{eyebrow_meta}</span>}
         </div>
       )}
-      <div style={{ position: 'absolute', left: 72, top: 360 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 360 + headline_offset_y, right: 72 },
+                          { top: 200 + headline_offset_y, bottom: 380 - headline_offset_y })}>
         <Divider style={{ marginBottom: 56 }} />
         <Headline text={headline} size={headline_size || 156} style={{ textShadow: t.isLight ? 'none' : '0 2px 24px rgba(0,0,0,0.6)' }} />
       </div>
-      <div style={{ position: 'absolute', left: 72, bottom: 220, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 220, right: 72 }, { stretch: true })}>
         {subline && <div className="itiha-sub" style={{ marginBottom: 14 }}>{subline}</div>}
         {swipe_meta && <div className="itiha-meta" style={{ color: t.muted40 }}>{swipe_meta}</div>}
       </div>
@@ -135,12 +136,15 @@ function Story({ slide, index }) {
           headline_size = 100, body_size = 45, block_y = 'bottom', custom_overlay,
           body_offset_y = 0 } = slide;
   const t = themeFor(slide);
+  // align_y, when set, supersedes the older block_y knob — and the image
+  // gradient has to follow the text, or the fade lands on the wrong edge.
+  const anchor = slide.align_y || block_y;
   // Light theme: fade image to off-white at the text edge instead of black.
   const overlayCss = custom_overlay || (t.isLight
-    ? (block_y === 'bottom'
+    ? (anchor === 'bottom'
         ? 'linear-gradient(180deg, rgba(250,245,238,0.0) 0%, rgba(250,245,238,0.0) 45%, rgba(250,245,238,0.55) 62%, rgba(250,245,238,0.92) 78%, rgba(250,245,238,1) 100%)'
         : 'linear-gradient(180deg, rgba(250,245,238,0.55) 0%, rgba(250,245,238,0.4) 30%, rgba(250,245,238,0.7) 70%, rgba(250,245,238,0.95) 100%)')
-    : (block_y === 'bottom'
+    : (anchor === 'bottom'
         ? 'linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.0) 28%, rgba(0,0,0,0.0) 45%, rgba(0,0,0,0.55) 62%, rgba(13,13,13,0.92) 78%, rgba(13,13,13,1) 100%)'
         : 'linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.7) 70%, rgba(13,13,13,0.95) 100%)'));
 
@@ -149,13 +153,14 @@ function Story({ slide, index }) {
     : block_y === 'middle'
       ? { position: 'absolute', left: 72, top: 480, right: 72 }
       : { position: 'absolute', left: 72, bottom: 200, right: 72 };
+  const blockProps = alignBlock(slide, blockStyle, { top: 130, bottom: 200 });
 
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0} position={image_position} vignette={false} />}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: overlayCss }} />
       <TextureOverlay texture={slide.texture} />
-      <div style={blockStyle}>
+      <div {...blockProps}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
@@ -182,7 +187,8 @@ function SplitStory({ slide, index }) {
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: headline_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: headline_y, right: 72 },
+                          { top: headline_y, bottom: body_y })}>
         {showEyebrowBlock && (
           <>
             <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>
@@ -193,7 +199,7 @@ function SplitStory({ slide, index }) {
         {subline && <div className="itiha-sub" style={{ marginTop: 22 }}>{subline}</div>}
       </div>
       {body && (
-        <div style={{ position: 'absolute', left: 72, bottom: body_y, right: 72 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: body_y, right: 72 }, { stretch: true })}>
           <Body text={body} size={body_size} />
         </div>
       )}
@@ -213,12 +219,13 @@ function Quote({ slide, index }) {
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 130 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 130 + headline_offset_y, right: 72 },
+                          { top: 130 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
-      <div style={{ position: 'absolute', left: 72, bottom: 200 - body_offset_y, right: 72, display: 'flex', flexDirection: 'column', gap: 40 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 200 - body_offset_y, right: 72, display: 'flex', flexDirection: 'column', gap: 40 }, { stretch: true })}>
         {quote && (
           <div style={{ borderLeft: `3px solid ${ITIHA.red}`, paddingLeft: 28 }}>
             <div className="itiha-pull" style={{ fontSize: quote_size }}>
@@ -249,17 +256,18 @@ function Stat({ slide, index }) {
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 220 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
-      <div style={{
+      <div {...alignBlock(slide, {
         position: 'absolute', left: 72, top: 580 + stats_offset_y, right: 72,
         display: 'grid',
         gridTemplateColumns: stats.length === 2 ? '1fr 1px 1fr' : `repeat(${stats.length}, 1fr)`,
         gap: 48, alignItems: 'start',
-      }}>
+      }, { stretch: true })}>
         {stats.map((s, i) => (
           <React.Fragment key={i}>
             <div>
@@ -283,7 +291,7 @@ function Stat({ slide, index }) {
         ))}
       </div>
       {body && (
-        <div style={{ position: 'absolute', left: 72, bottom: 220 - body_offset_y, right: 72 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 220 - body_offset_y, right: 72 }, { stretch: true })}>
           <Body text={body} size={body_size} style={{ color: t.muted75 }} maxWidth={900} />
         </div>
       )}
@@ -303,15 +311,16 @@ function DatesGrid({ slide, index }) {
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.84} position={image_position} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
-      <div style={{
+      <div {...alignBlock(slide, {
         position: 'absolute', left: 72, top: 600, right: 72,
         display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 36, rowGap: 44,
-      }}>
+      }, { stretch: true })}>
         {items.map((it, i) => (
           <div key={i} style={{ borderTop: `1px solid ${t.divider}`, paddingTop: 20 }}>
             <div style={{ fontFamily: ITIHA.bebas, fontSize: date_size, color: ITIHA.red, lineHeight: 1, letterSpacing: 1 }}>{it.date}</div>
@@ -335,16 +344,17 @@ function Closing({ slide, index }) {
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 140 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 140 + headline_offset_y, right: 72 },
+                          { top: 140 + headline_offset_y, bottom: 250 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
       {stats.length > 0 && (
-        <div style={{
+        <div {...alignBlock(slide, {
           position: 'absolute', left: 72, top: 820, right: 72,
           display: 'grid', gridTemplateColumns: `repeat(${stats.length}, 1fr)`, gap: 28,
-        }}>
+        }, { stretch: true })}>
           {stats.map((s, i) => (
             <div key={i} style={{ borderTop: `1px solid ${t.divider}`, paddingTop: 16 }}>
               <div style={{ fontFamily: ITIHA.bebas, fontSize: 64, color: t.h1, lineHeight: 1 }}>{s.value}</div>
@@ -354,12 +364,12 @@ function Closing({ slide, index }) {
         </div>
       )}
       {body && (
-        <div style={{ position: 'absolute', left: 72, bottom: 250 - body_offset_y, right: 72 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 250 - body_offset_y, right: 72 }, { stretch: true })}>
           <Body text={body} size={body_size} maxWidth={920} />
         </div>
       )}
       {handle && (
-        <div style={{ position: 'absolute', left: 72, bottom: 130, right: 72, display: 'flex', alignItems: 'center', gap: 18 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 130, right: 72, display: 'flex', alignItems: 'center', gap: 18 }, { stretch: true })}>
           <span style={{ width: 8, height: 8, background: ITIHA.red, borderRadius: 0 }} />
           <span className="itiha-sub" style={{ color: t.h1, fontSize: 16 }}>{handle}</span>
         </div>
@@ -386,7 +396,10 @@ function QuoteCard({ slide, index }) {
     <div className="itiha-slide" style={{ background: bg, color: fg }}>
       {image && <ImageLayer light={isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.7} position={image_position} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 96, right: 96, top: `${text_y}%`, transform: 'translateY(-50%)', boxSizing: 'border-box' }}>
+      {/* text_y (percent of card height) stays the default anchor; align_y,
+          when the author sets it, supersedes it — same deal as Story/block_y. */}
+      <div {...alignBlock(slide, { position: 'absolute', left: 96, right: 96, top: `${text_y}%`, transform: 'translateY(-50%)', boxSizing: 'border-box' },
+                          { top: 120, bottom: 120 })}>
         <div style={{ borderLeft: `3px solid ${ITIHA.red}`, paddingLeft: 48 }}>
           {eyebrow && (
             <div style={{
@@ -395,9 +408,12 @@ function QuoteCard({ slide, index }) {
               color: ITIHA.red, marginBottom: 40,
             }}>{eyebrow}</div>
           )}
-          <div style={{
+          {/* itiha-body is what scopes `.key` (the [word] red emphasis) — without
+              it the body micro-syntax silently renders as plain text here. The
+              inline styles below still win over the class's own font/size/colour. */}
+          <div className="itiha-body" style={{
             fontFamily: ITIHA.sans, fontSize: quote_size, lineHeight: 1.45,
-            fontStyle: 'italic', color: fg,
+            fontStyle: 'italic', color: fg, maxWidth: 'none',
           }}>
             {quote && renderBody(quote)}
           </div>
@@ -424,7 +440,9 @@ function ReelTitle({ slide, index }) {
     <div className="itiha-slide" style={{ background: ITIHA.jet }}>
       {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.55} position={image_position} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 96, right: 96, top: `${text_y}%`, transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' }}>
+      {/* text_y stays the default anchor; align_y supersedes it when set. */}
+      <div {...alignBlock(slide, { position: 'absolute', left: 96, right: 96, top: `${text_y}%`, transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' },
+                          { top: 300, bottom: 620 })}>
         {eyebrow && (
           <div style={{
             fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 26,
@@ -451,12 +469,12 @@ function ReelTitle({ slide, index }) {
         }}>{pill}</div>
       )}
       {handle && (
-        <div style={{
-          position: 'absolute', left: 96, bottom: 80,
+        <div {...alignBlock(slide, {
+          position: 'absolute', left: 96, bottom: 80, right: 96,
           fontFamily: ITIHA.sans, fontWeight: 500, fontSize: 22,
           letterSpacing: '0.22em', textTransform: 'uppercase',
           color: ITIHA.midGray,
-        }}>{handle}</div>
+        }, { stretch: true })}>{handle}</div>
       )}
       <div className="itiha-stamp" style={{ right: 80, bottom: 80, fontSize: 44 }}>
         <span className="w">ITIHA</span><span className="d">.</span>
@@ -483,7 +501,7 @@ function YoutubeThumbnail({ slide, index }) {
           }} />
         )}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', inset: 0, padding: '120px 144px', display: 'flex', flexDirection: 'column', justifyContent: 'center', boxSizing: 'border-box' }}>
+      <div {...alignBlock(slide, { position: 'absolute', inset: 0, padding: '120px 144px', display: 'flex', flexDirection: 'column', justifyContent: 'center', boxSizing: 'border-box' }, { stretch: true })}>
         <div style={{ maxWidth: 920 }}>
           {eyebrow && (
             <div style={{
@@ -568,11 +586,13 @@ function InteriorLight({ slide, index }) {
         position: 'absolute', top: 56, right: 56,
         fontFamily: ITIHA.bebas, fontSize: 56, color: ITIHA.red, lineHeight: 1,
       }}>{num || String(index + 1).padStart(2, '0')}</div>
-      <div style={{
+      {/* inset:0 full-bleed box — the red rule is the container's own left
+          border, so this block takes align_x only, never a re-anchor. */}
+      <div {...alignBlock(slide, {
         position: 'absolute', inset: 0, padding: '120px 112px',
         borderLeft: `3px solid ${ITIHA.red}`,
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
-      }}>
+      }, { stretch: true })}>
         {eyebrow && (
           <div style={{
             fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 14,
@@ -637,7 +657,10 @@ function YouTubeCTA({ slide, index }) {
 
       {/* Eyebrow + small red divider — Eyebrow (not ChapterEyebrow) so the
           tweaks toggle for showChapterLabels doesn't hide it. */}
-      <div style={{ position: 'absolute', left: 72, top: 130, right: 72 }}>
+      {/* Every text block on this layout is geometrically tied to the 16:9
+          thumbnail frame below, and that frame must not move — so all three
+          take align_x only (stretch). */}
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 130, right: 72 }, { stretch: true })}>
         <Eyebrow>{eyebrow}</Eyebrow>
         <Divider style={{ marginTop: 18 }} />
       </div>
@@ -671,7 +694,7 @@ function YouTubeCTA({ slide, index }) {
 
       {/* Video title (Big Shoulders Display ExtraBlack) — sits below the
           thumbnail (thumbnail ends around y=766 with default offset). */}
-      <div style={{ position: 'absolute', left: 72, top: 830 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 830 + headline_offset_y, right: 72 }, { stretch: true })}>
         <h2 style={{
           fontFamily: ITIHA.heavy,
           fontWeight: 900,
@@ -698,7 +721,7 @@ function YouTubeCTA({ slide, index }) {
       </div>
 
       {/* CTA block — pinned to bottom. */}
-      <div style={{ position: 'absolute', left: 72, bottom: 140, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 140, right: 72 }, { stretch: true })}>
         <Divider style={{ marginBottom: 24 }} />
         <div style={{
           fontFamily: ITIHA.heavy,
@@ -734,10 +757,10 @@ function CtaRed({ slide, index }) {
     <div className="itiha-slide" style={{ background: ITIHA.red, color: ITIHA.white }}>
       {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{
+      <div {...alignBlock(slide, {
         position: 'absolute', inset: 0, padding: '120px 96px',
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
-      }}>
+      }, { stretch: true })}>
         {eyebrow && (
           <div style={{
             fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 22,
@@ -778,13 +801,17 @@ function NumberedList({ slide, index }) {
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
-      <div style={{ position: 'absolute', left: 72, top: 460 + body_offset_y, right: 72,
-                    display: 'flex', flexDirection: 'column', gap: 28 }}>
+      {/* Single-column grid, not a flex column: grid items stretch to the full
+          track width, so each item's top rule keeps spanning the gutter no
+          matter what alignBlock does with the horizontal alignment. */}
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 460 + body_offset_y, right: 72,
+                    display: 'grid', gap: 28 }, { stretch: true })}>
         {items.map((it, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 28,
                                 borderTop: `1px solid ${t.divider}`, paddingTop: 22 }}>
@@ -824,15 +851,16 @@ function Comparison({ slide, index }) {
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.9} position={image_position} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
-      <div style={{
+      <div {...alignBlock(slide, {
         position: 'absolute', left: 72, top: 540 + body_offset_y, right: 72, bottom: 200 - body_offset_y,
         display: 'grid', gridTemplateColumns: '1fr 1px 1fr', gap: 40, alignItems: 'start',
-      }}>
+      }, { stretch: true })}>
         <div>
           {left_label && (
             <div className="itiha-eyebrow" style={{ marginBottom: 18, color: t.muted75 }}>{left_label}</div>
@@ -880,11 +908,13 @@ function Portrait({ slide, index }) {
           <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.15} position={image_position} vignette={false} />
         </div>
       )}
-      <div style={{
+      {/* Type column spans top→bottom (the pull quote is pushed down with
+          margin-top:auto), so it only takes the horizontal treatment. */}
+      <div {...alignBlock(slide, {
         position: 'absolute',
         left: image ? '54%' : 72, top: 130 + headline_offset_y, right: 72, bottom: 140,
         display: 'flex', flexDirection: 'column',
-      }}>
+      }, { stretch: true })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         {name && (
@@ -929,12 +959,15 @@ function Timeline({ slide, index }) {
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.88} position={image_position} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
-      <div style={{ position: 'absolute', left: 96, top: 460 + body_offset_y, right: 72, bottom: 160 - body_offset_y }}>
+      {/* Outer wrapper only — the axis rail and its dots live in the inner
+          relative box and stay put. */}
+      <div {...alignBlock(slide, { position: 'absolute', left: 96, top: 460 + body_offset_y, right: 72, bottom: 160 - body_offset_y }, { stretch: true })}>
         <div style={{ position: 'relative', paddingLeft: 50, display: 'flex', flexDirection: 'column', gap: 32 }}>
           <div style={{ position: 'absolute', left: 6, top: 14, height: `calc(100% - ${30 + item_body_size * 1.5}px)`, width: 2, background: ITIHA.red, opacity: 0.55 }} />
           {items.map((it, i) => (
@@ -978,7 +1011,8 @@ function MapSlide({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
@@ -1038,11 +1072,11 @@ function MapSlide({ slide, index }) {
         })}
       </div>
       {caption && (
-        <div style={{
+        <div {...alignBlock(slide, {
           position: 'absolute',
           left: 72 + caption_offset_x, right: 72 - caption_offset_x,
           bottom: 130 - caption_offset_y,
-        }}>
+        }, { stretch: true })}>
           <Body text={caption} size={caption_size} maxWidth={920} style={{ lineHeight: 1.55 }} />
         </div>
       )}
@@ -1082,10 +1116,12 @@ function DidYouKnow({ slide, index }) {
         }}>?</div>
       )}
 
-      <div style={{
-        position: 'absolute', left: 72, top: 110 + headline_offset_y,
+      {/* right:72 added so the row has a width to align within — a no-op for
+          the default left alignment. */}
+      <div {...alignBlock(slide, {
+        position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72,
         display: 'flex', alignItems: 'center', gap: 16,
-      }}>
+      }, { stretch: true })}>
         <div style={{ width: 14, height: 14, background: ITIHA.red }} />
         <div style={{
           fontFamily: ITIHA.sans, fontWeight: 700, fontSize: 22,
@@ -1094,24 +1130,25 @@ function DidYouKnow({ slide, index }) {
         }}>{eyebrow}</div>
       </div>
 
-      <div style={{ position: 'absolute', left: 72, top: 240 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 240 + headline_offset_y, right: 72 },
+                          { top: 240 + headline_offset_y, bottom: 300 - headline_offset_y })}>
         <Divider style={{ marginBottom: 36 }} />
         <Headline text={headline} size={headline_size} />
       </div>
 
       {body && (
-        <div style={{ position: 'absolute', left: 72, bottom: (source ? 290 : 210) - body_offset_y, right: 72 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: (source ? 290 : 210) - body_offset_y, right: 72 }, { stretch: true })}>
           <Body text={body} size={body_size} maxWidth={920} />
         </div>
       )}
 
       {source && (
-        <div style={{
+        <div {...alignBlock(slide, {
           position: 'absolute', left: 72, bottom: 200, right: 72,
           fontFamily: ITIHA.sans, fontWeight: 500, fontSize: 14,
           letterSpacing: 2.5, textTransform: 'uppercase',
           color: t.muted55,
-        }}>— {source}</div>
+        }, { stretch: true })}>— {source}</div>
       )}
 
       <MaybePageNum n={index + 1} color={t.pageNumColor} />
@@ -1173,11 +1210,13 @@ function PieChart({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
+      {/* Chart geometry — the donut stays centred and un-anchored. */}
       <div style={{ position: 'absolute', left: 0, right: 0, top: 420, display: 'flex', justifyContent: 'center' }}>
         <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
           {arcs}
@@ -1187,8 +1226,8 @@ function PieChart({ slide, index }) {
           )}
         </svg>
       </div>
-      <div style={{ position: 'absolute', left: 72, right: 72, top: 900,
-                    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 36px' }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, right: 72, top: 900,
+                    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px 36px' }, { stretch: true })}>
         {segments.map((seg, i) => {
           const pct = Math.round((Number(seg.value) || 0) / total * 100);
           return (
@@ -1201,7 +1240,7 @@ function PieChart({ slide, index }) {
         })}
       </div>
       {caption && (
-        <div style={{ position: 'absolute', left: 72, bottom: 130, right: 72 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 130, right: 72 }, { stretch: true })}>
           <Body text={caption} size={caption_size} maxWidth={920} style={{ lineHeight: 1.55 }} />
         </div>
       )}
@@ -1244,13 +1283,14 @@ function LineGraph({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
       {multi && (
-        <div style={{ position: 'absolute', left: 72, right: 72, top: 430, display: 'flex', gap: 28, flexWrap: 'wrap' }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, right: 72, top: 430, display: 'flex', gap: 28, flexWrap: 'wrap' }, { stretch: true })}>
           {seriesList.map((s, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <span style={{ width: 22, height: 4, background: colorFor(s, i) }} />
@@ -1298,7 +1338,7 @@ function LineGraph({ slide, index }) {
         </svg>
       </div>
       {caption && (
-        <div style={{ position: 'absolute', left: 72, bottom: 150, right: 72 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 150, right: 72 }, { stretch: true })}>
           <Body text={caption} size={caption_size} maxWidth={920} style={{ lineHeight: 1.55 }} />
         </div>
       )}
@@ -1320,11 +1360,14 @@ function BarChart({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
+      {/* Both bar-plot containers below are chart geometry: the bars are sized
+          off the container's width, so neither is re-anchored or text-aligned. */}
       {horizontal ? (
         <div style={{ position: 'absolute', left: 72, right: 72, top: 480, bottom: caption ? 240 : 160,
                       display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 28 }}>
@@ -1368,7 +1411,7 @@ function BarChart({ slide, index }) {
         </div>
       )}
       {caption && (
-        <div style={{ position: 'absolute', left: 72, bottom: 130, right: 72 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 130, right: 72 }, { stretch: true })}>
           <Body text={caption} size={caption_size} maxWidth={920} style={{ lineHeight: 1.55 }} />
         </div>
       )}
@@ -1400,11 +1443,14 @@ function Dynasty({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} />
       </div>
+      {/* The tree itself is diagram geometry — the generations and their red
+          connectors are centred on the slide axis and are left un-aligned. */}
       <div style={{ position: 'absolute', left: 72, right: 72, top: 450, bottom: caption ? 210 : 140,
                     display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {rows.map((row, gi) => (
@@ -1430,7 +1476,7 @@ function Dynasty({ slide, index }) {
         ))}
       </div>
       {caption && (
-        <div style={{ position: 'absolute', left: 72, bottom: 120, right: 72 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 120, right: 72 }, { stretch: true })}>
           <Body text={caption} size={caption_size} maxWidth={920} style={{ lineHeight: 1.55 }} />
         </div>
       )}
@@ -1463,7 +1509,8 @@ function BeforeAfter({ slide, index }) {
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72, zIndex: 5 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72, zIndex: 5 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         <Headline text={headline} size={headline_size} style={{ textShadow: t.isLight ? 'none' : '0 2px 24px rgba(0,0,0,0.6)' }} />
@@ -1485,7 +1532,7 @@ function BeforeAfter({ slide, index }) {
         {label_after && tag(label_after, { right: 32, bottom: 28 })}
       </div>
       {caption && (
-        <div style={{ position: 'absolute', left: 72, bottom: 110, right: 72 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 110, right: 72 }, { stretch: true })}>
           <Body text={caption} size={caption_size} maxWidth={920} style={{ lineHeight: 1.55 }} />
         </div>
       )}
@@ -1507,7 +1554,8 @@ function DocumentSlide({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 96 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 96 + headline_offset_y, right: 72 },
+                          { top: 96 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 16 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 22 }} />
         <Headline text={headline} size={headline_size} />
@@ -1523,8 +1571,8 @@ function DocumentSlide({ slide, index }) {
           overlay={0} position={image_position} vignette={false} />
       </div>
       {quote && (
-        <div style={{ position: 'absolute', left: 110, right: 110, top: 880,
-                      borderLeft: `3px solid ${ITIHA.red}`, paddingLeft: 26 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 110, right: 110, top: 880,
+                      borderLeft: `3px solid ${ITIHA.red}`, paddingLeft: 26 }, { stretch: true })}>
           <div className="itiha-pull" style={{ fontSize: quote_size, lineHeight: 1.05 }}>
             {quote.split('\n').map((l, i, a) => <React.Fragment key={i}>{l}{i < a.length - 1 && <br/>}</React.Fragment>)}
           </div>
@@ -1532,9 +1580,9 @@ function DocumentSlide({ slide, index }) {
         </div>
       )}
       {attribution && (
-        <div style={{ position: 'absolute', left: 110, right: 110, bottom: 120,
+        <div {...alignBlock(slide, { position: 'absolute', left: 110, right: 110, bottom: 120,
                       fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 14, letterSpacing: 2.5,
-                      textTransform: 'uppercase', color: t.muted55 }}>
+                      textTransform: 'uppercase', color: t.muted55 }, { stretch: true })}>
           — {attribution}
         </div>
       )}
@@ -1553,11 +1601,13 @@ function Annotated({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 96 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 96 + headline_offset_y, right: 72 },
+                          { top: 96 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 16 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 22 }} />
         <Headline text={headline} size={headline_size} />
       </div>
+      {/* Image frame + numbered callout markers — coordinate space, left as is. */}
       <div style={{ position: 'absolute', left: 72, right: 72, top: 330, height: 520,
                     border: `1px solid ${t.divider}`, overflow: 'hidden' }}>
         <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={image_filter}
@@ -1575,8 +1625,8 @@ function Annotated({ slide, index }) {
           );
         })}
       </div>
-      <div style={{ position: 'absolute', left: 72, right: 72, top: 890,
-                    display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, right: 72, top: 890,
+                    display: 'flex', flexDirection: 'column', gap: 12 }, { stretch: true })}>
         {callouts.map((c, i) => (
           <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'baseline' }}>
             <span style={{ flex: '0 0 auto', width: 28, height: 28, borderRadius: '50%',
@@ -1588,7 +1638,7 @@ function Annotated({ slide, index }) {
         ))}
       </div>
       {caption && (
-        <div style={{ position: 'absolute', left: 72, bottom: 120, right: 72 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 120, right: 72 }, { stretch: true })}>
           <Body text={caption} size={18} maxWidth={920} style={{ color: t.muted75 }} />
         </div>
       )}
@@ -1607,13 +1657,17 @@ function Sources({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       <TextureOverlay texture={slide.texture} />
-      <div style={{ position: 'absolute', left: 72, top: 120 + headline_offset_y, right: 72 }}>
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 120 + headline_offset_y, right: 72 },
+                          { top: 120 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {eyebrow && <Eyebrow style={{ marginBottom: 18 }}>{eyebrow}</Eyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         {headline && <Headline text={headline} size={headline_size} />}
       </div>
-      <div style={{ position: 'absolute', left: 72, right: 72, top: headline ? 460 : 360, bottom: 200,
-                    display: 'flex', flexDirection: 'column', gap: 22, overflow: 'hidden' }}>
+      {/* Single-column grid rather than a flex column so each entry's top rule
+          keeps spanning the full gutter under any horizontal alignment;
+          alignContent:start reproduces the flex column's top packing. */}
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, right: 72, top: headline ? 460 : 360, bottom: 200,
+                    display: 'grid', gap: 22, alignContent: 'start', overflow: 'hidden' }, { stretch: true })}>
         {sources.map((s, i) => (
           <div key={i} style={{ borderTop: `1px solid ${t.divider}`, paddingTop: 16 }}>
             <div style={{ fontFamily: ITIHA.sans, fontSize: 24, fontWeight: 600, fontStyle: 'italic', color: t.h1, lineHeight: 1.3 }}>{s.title}</div>
@@ -1626,12 +1680,12 @@ function Sources({ slide, index }) {
         ))}
       </div>
       {note && (
-        <div style={{ position: 'absolute', left: 72, right: 72, bottom: handle ? 188 : 130 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, right: 72, bottom: handle ? 188 : 130 }, { stretch: true })}>
           <Body text={note} size={20} maxWidth={920} style={{ color: t.muted75 }} />
         </div>
       )}
       {handle && (
-        <div style={{ position: 'absolute', left: 72, bottom: 124, right: 72, display: 'flex', alignItems: 'center', gap: 18 }}>
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 124, right: 72, display: 'flex', alignItems: 'center', gap: 18 }, { stretch: true })}>
           <span style={{ width: 8, height: 8, background: ITIHA.red }} />
           <span className="itiha-sub" style={{ color: t.h1, fontSize: 16 }}>{handle}</span>
         </div>

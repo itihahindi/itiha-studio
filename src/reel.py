@@ -3,13 +3,19 @@ rendered VAQ header panel, encode a 1080×1920 MP4 ready for Instagram.
 
 Flow (design needs one `reel-frame` slide, format instagram-reel):
   1. Render first — 01-slide.png in the output dir is the frame.
-  2. yt-dlp downloads `video_url` at best video+audio (cached in the output
-     dir; re-downloads only when the URL changes).
+  2. The source video is either an uploaded local file (`video_file`, a name in
+     the design's images/ or an absolute path) or, failing that, a link
+     (`video_url`, which yt-dlp downloads at best video+audio and caches in the
+     output dir; re-downloads only when the URL changes). An uploaded file wins.
   3. ffmpeg crops the top `panel_height` strip from the frame PNG, cover-crops
      the video to fill the rest, vstacks them, keeps the source audio.
 
-Outputs: <output-dir>/reel.mp4 (9:16) and square.mp4 (1:1) — same panel strip,
-the video cover-fills whatever the canvas leaves below it.
+Outputs, same panel strip, video cover-fills whatever the canvas leaves below:
+  reel.mp4   1080×1920 (9:16) — the Reels tab only; feed rejects it as too tall.
+  feed.mp4   1080×1350 (4:5)  — a feed/timeline video post (the tallest ratio
+             feed allows: Instagram feed accepts only 4:5 → 16:9, so a 9:16 reel
+             cannot be posted to feed).
+  square.mp4 1080×1080 (1:1)  — feed / grid.
 
 Instagram links use the user's own browser session (see _cookie_args).
 
@@ -93,6 +99,17 @@ def _download(url: str, out_dir: Path, log=print) -> Path:
     return files[0]
 
 
+def _resolve_local(design_dir: Path, ref: str, log=print) -> Path:
+    """Use a video already on disk instead of a link. `ref` is a filename in the
+    design's images/ (where uploads land) or an absolute/~ path."""
+    cand = Path(ref).expanduser()
+    p = cand if cand.is_absolute() else design_dir / "images" / ref
+    if not p.is_file():
+        raise RuntimeError(f"Video file not found: {ref}")
+    log(f"  using uploaded video ({p.name})")
+    return p
+
+
 def _probe_duration(video: Path) -> float:
     proc = _run(["ffprobe", "-v", "quiet", "-print_format", "json",
                  "-show_format", str(video)])
@@ -112,9 +129,10 @@ def compose_reel(design_dir: Path, log=print) -> dict:
                   if (s or {}).get("layout") == "reel-frame"), None)
     if slide is None:
         raise RuntimeError("No reel-frame slide in this design — add one first.")
+    video_file = str(slide.get("video_file") or "").strip()
     url = str(slide.get("video_url") or "").strip()
-    if not url:
-        raise RuntimeError("The reel-frame slide has no Video URL.")
+    if not video_file and not url:
+        raise RuntimeError("The reel-frame slide has no video — upload a file or paste a Video URL.")
 
     output_dir = content_mod.output_dir_for(design_dir)
     frame = output_dir / "01-slide.png"
@@ -127,14 +145,29 @@ def compose_reel(design_dir: Path, log=print) -> dict:
 
     panel_h = int(slide.get("panel_height") or 560)
     panel_h -= panel_h % 2  # h264 yuv420p needs even dims
-    video_h = height - panel_h
-    if video_h <= 0:
-        raise RuntimeError(f"panel_height {panel_h} leaves no room for video in {width}×{height}")
 
-    source = _download(url, output_dir, log)
+    # Output canvas heights are the two CANONICAL Instagram sizes, derived from
+    # the frame WIDTH — never from the frame's own height. A reel-frame slide
+    # can be rendered in a non-reel format (instagram-portrait is the default
+    # for new projects → a 1080×1350 frame); trusting that height would emit a
+    # 4:5 "reel" that Meta rejects as the wrong ratio. The frame only supplies
+    # the top `panel_h` branded strip and the width. reel = 9:16, square = 1:1.
+    def _even(n):
+        n = round(n)
+        return n - (n % 2)
+    reel_h = _even(width * 16 / 9)   # 9:16 — Reels only
+    feed_h = _even(width * 5 / 4)    # 4:5  — tallest ratio a feed post accepts
+    if panel_h >= feed_h:
+        raise RuntimeError(f"panel_height {panel_h} exceeds the {width}×{feed_h} feed canvas")
 
-    # Same branded panel strip, two canvases: 9:16 reel + 1:1 square.
-    variants = {"reel.mp4": height, "square.mp4": width}
+    # An uploaded local file takes priority over the link.
+    source = _resolve_local(design_dir, video_file, log) if video_file \
+        else _download(url, output_dir, log)
+
+    # Same branded panel strip, three canvases. Instagram feed accepts only
+    # 4:5→16:9, so a 9:16 reel is Reels-tab only; feed.mp4/square.mp4 cover the
+    # feed-post path where a 9:16 upload is rejected as the wrong ratio.
+    variants = {"reel.mp4": reel_h, "feed.mp4": feed_h, "square.mp4": width}
     results = {}
     for name, canvas_h in variants.items():
         vid_h = canvas_h - panel_h

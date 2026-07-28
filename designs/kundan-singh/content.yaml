@@ -1,0 +1,31 @@
+name: Kundan Singh
+brand: itiha
+format: instagram-portrait
+caption: |
+  James Mill never set foot in India. He had no Sanskrit and no Persian. Yet the six volumes of his History of British India (1817) became the text on which the East India Company trained its administrators for half a century, and within a decade the Encyclopaedia Britannica had rewritten its India article to match him.
+
+  Dr. Kundan Singh, writing in Colonial Discourse & the Suffering of Indian American Children, states the method plainly: the aim was not description but demotion. Strip the civilisation of every claim to culture and virtue, put hierarchy and oppression in its place, and what remains is a people who can be governed because they are no longer quite people.
+
+  Portrait of James Mill via Wikimedia Commons (public domain).
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #JamesMill #KundanSingh #ColonialDiscourse #Historiography #ColonialHistory #India
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: false
+  overlayDarkness: 62
+  showGrain: true
+slides:
+- layout: story
+  block_y: bottom
+  texture: grain
+  headline: Mill took away from *Hindus* all claims of *civilization* and, in its place, planted timeless
+    hierarchy, oppression, and exploitation. Nothing of culture and values remained with them. They were
+    *dehumanized* and did not have an iota of virtue in them.
+  subline: Dr. Kundan Singh · Colonial Discourse & the Suffering of Indian American Children
+  image: mill-portrait.jpg
+  image_position: 50% 50%
+  headline_size: 58
+  image_filter: duotone-red

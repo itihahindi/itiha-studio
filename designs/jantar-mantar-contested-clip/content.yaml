@@ -1,0 +1,29 @@
+name: jantar-mantar-contested-clip
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Nupur J Sharma, editor-in-chief of OpIndia, has posted a clip from Jantar Mantar saying Naara-e-Takbir and Allahu Akbar slogans were raised at the Cockroach Janta Party protest, and arguing the agitation is therefore not a students' protest but "Shaheen Bagh 2.0".
+
+  Where the record stands: the CJP has publicly cleared four slogans for the protest site, Bharat Mata ki Jai, Inquilab Zindabad, Jai Bheem, and Dharmendra Pradhan Istifa do. As of this posting no mainstream outlet covering the protest has independently reported religious sloganeering at the site, and the clip itself carries no visible date, location marker or wider context. Neither Delhi Police nor the CJP has commented on it.
+
+  We are carrying the claim with its source named. If the footage is independently verified, or shown to be from another time or place, we will update this post and say so.
+
+  Clip via @UnSubtleDesi.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #JantarMantar #CJP #NEET #FactCheck #IndianPolitics #MediaWatch
+tweaks:
+  vertical: live
+  showStamp: true
+slides:
+- layout: reel-frame
+  kicker_meta: Jantar Mantar · 23 Jul 2026
+  headline: |
+    CJP protesters raised
+    *Naara-e-Takbir*
+    at Jantar Mantar
+  video_file: clip.mp4
+  panel_height: 560
+  headline_size: 60
+  texture: grid

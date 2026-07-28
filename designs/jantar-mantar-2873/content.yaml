@@ -1,0 +1,111 @@
+name: jantar-mantar-2873
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Delhi Police have put a number on who else was standing at Jantar Mantar. Every figure below is theirs.
+
+  What the release says. Police say 2,873 individuals with criminal backgrounds were present during the violence at the CJP protest, identified using a face identification system run against existing databases. Of those, the release places 989 in the heinous-offences category, listing 101 with antecedents in murder, 62 in attempt to murder, 284 in dacoity and robbery, 61 in rape and six under the POCSO Act.
+
+  What we could confirm, and what we could not. Reporting from 25 July independently records Delhi Police claiming the facial recognition system had flagged more than 2,500 people with criminal records in three days, alongside 15 FIRs over the 20 July violence and four FRS units at the entry and exit points. The granular split above, the 2,873 and the offence-wise breakdown, appears in no coverage we can find. It comes from the press release as circulated and nowhere else. Treat it as a police claim, because that is all it is so far.
+
+  The word doing the heavy lifting. An antecedent is a prior case, an FIR, an arrest sitting in a police record. It is not a conviction. Some of those matters ended in acquittal, some never reached a courtroom at all. "101 with antecedents in murder" and "101 murderers" are not the same sentence, and only one of them is defensible.
+
+  The machine. Four face-recognition units, wired to police databases, monitored live. Delhi Police have previously been reported to treat an 80 per cent similarity score as a positive match. At crowd scale, a threshold like that produces both catches and false positives, and neither the catches nor the errors are public.
+
+  The timing. The release followed a CJP press conference alleging that volunteers were being picked up. Two claims inside one news cycle, each answering the other. Worth noting on both counts.
+
+  Both ledgers. Delhi Police put their own injured at 118. Hospital sources counted around 60 protesters hurt, and the CJP claims closer to 150 were hospitalised. An Additional DCP was removed from the Jantar Mantar detail after a widely shared video. Police say a notice circulated in the CJP's name to stoke surveillance panic was forged. The CJP, for its part, says it is compiling its own list of police personnel through public input rather than facial recognition, and plans to publish it. Neither side of this is spotless and both are now building lists.
+
+  And here is the part that changes what the list means. The protest was called off on 25 July after Dharmendra Pradhan's resignation. In the settlement that followed talks with JP Nadda and Jitendra Singh, the Centre agreed to compensate the families of NEET aspirants who died by suicide and to withdraw the FIRs lodged against protesters anywhere in India. Delhi Police say they will act once formal orders arrive. So the 15 FIRs that would have established who actually did what are being dropped as part of a political deal.
+
+  Which leaves this. Presence in a crowd is not a charge and a record is not a verdict, but with the cases going away, nothing on either side gets tested by anyone. A police list of alleged antecedents and a protest movement's list of alleged assaults, both permanent allegations, neither one ever weighed in a courtroom. That is the actual outcome here, and it suits everybody except the people who wanted to know what happened on 20 July.
+
+  Sources: Delhi Police press release as circulated, 27 July 2026; The Statesman, News9, Republic, Aaj Tak and India.com on the FRS claims of 25 July; The Tribune and The Quint on the FIR withdrawal and the settlement terms; The Week on the FIRs and video analysis; ThePrint on the Additional DCP's removal; Organiser on the forged notice; Outlook on the CJP's own list; earlier reporting on Delhi Police's 80 per cent FRS match threshold.
+
+  Images: photographs of the Jantar Mantar protest of 20 July 2026 by Sumita Roy Dutta (CC BY-SA 4.0); Delhi Police bus by juggadery (CC BY-SA 2.0). All via Wikimedia Commons. No photograph here identifies anyone named in the police release, and none is placed to suggest otherwise.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #JantarMantar #DelhiPolice #CJP #FRS #FacialRecognition #GroundReport #IndianPolitics
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: true
+  seriesLabel: GROUND REPORT
+slides:
+- layout: cover
+  kicker_meta: 27 JULY 2026
+  headline: |
+    Who else was at
+    *Jantar Mantar*?
+  subline: Delhi Police have put out a number. It is worth reading closely, in both directions.
+  image: https://images.indianexpress.com/2026/07/CJP-protest-Gen-Z-2.jpg?w=640
+  image_position: 50% 45%
+  image_height: 520
+- layout: stat
+  kicker_meta: The Claim
+  label: People with prior police records, per Delhi Police
+  value: 2,873
+  sublabel: Said to have been present during the violence.
+  body: The force says a [face identification system] matched faces against existing databases. Independent
+    reporting on 25 July put the count at **over 2,500**. The finer split is the release's alone.
+- layout: story
+  kicker_meta: As Listed
+  headline: What the release *says* it found
+  body: |
+    Police put **989** of them in the heinous-offences column: [101] murder, [62] attempt to murder, [284] dacoity and robbery, [61] rape, [6] under POCSO. Every one of those figures is the release's.
+- layout: story
+  kicker_meta: The Word
+  headline: An *antecedent* is not a conviction
+  body: |
+    It means a prior case, an FIR, an arrest sitting in a police record. Some ended in acquittal. Some never reached a courtroom. A record says the system has met you before. It does not say a [court agreed.]
+- layout: story
+  surface: solid
+  kicker_meta: The Machine
+  headline: Four cameras and an 80 per cent rule
+  body: |
+    Police say four face-recognition units sit at the entry and exit points, wired to their databases and watched live. Delhi Police have earlier been reported to treat an **80 per cent** similarity score as a positive match. At crowd scale, that produces catches and false positives both.
+- layout: story
+  kicker_meta: The Timing
+  headline: The number arrived *after* the microphone
+  body: |
+    The CJP held a press conference alleging volunteers were being picked up. The police release followed it. Two claims inside one news cycle, each of them answering the other.
+  image: https://files.prokerala.com/news/photos/imgs/1024/cjp-s-press-conference-2072356.jpg
+  image_position: 25% 0%
+  image_height: 380
+  image_caption: Jantar Mantar, 20 July 2026.
+- layout: story
+  kicker_meta: On The Record
+  headline: Fifteen FIRs, and a *deal*
+  body: |
+    Police registered [15 FIRs] over the 20 July violence. Then the protest was called off, and the Centre agreed to **withdraw the FIRs** against protesters. Delhi Police say they are waiting on formal orders to do it.
+  image: delhi-police.jpg
+  image_position: 50% 50%
+  image_height: 380
+  image_caption: A Delhi Police bus in the capital.
+- layout: story
+  kicker_meta: Both Ledgers
+  headline: Neither side is *spotless*
+  body: |
+    Delhi Police put their own injured at **118**. Hospital sources counted about [60] protesters hurt, the CJP claims nearer **150**. An Additional DCP was pulled off the detail over a video, and police say a notice circulated in the CJP's name was [forged.]
+  image: protest-ambulance.jpg
+  image_position: 50% 50%
+  image_height: 330
+  image_caption: An ambulance at the protest site, 20 July 2026.
+- layout: story
+  kicker_meta: The Limit
+  headline: Nothing here gets *tested* now
+  body: |
+    Standing in a crowd is not a charge. A record is not a verdict. But with the FIRs headed for withdrawal, no court is going to weigh any of it. [Both lists stay allegations,] permanently.
+  image: protest-placards.jpg
+  image_position: 50% 45%
+  image_height: 340
+  image_caption: Placards at Jantar Mantar, 20 July 2026.
+- layout: closing
+  headline: |
+    2,873 records.
+    15 FIRs, being dropped.
+    Nothing proved.
+  body: The numbers are the police's claim. The cases are going away under a political settlement. What
+    is left is two lists and nobody to check either one.
+  handle: Follow @vaqhq · vaqhq.com

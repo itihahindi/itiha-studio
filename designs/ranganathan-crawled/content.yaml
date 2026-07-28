@@ -1,0 +1,34 @@
+name: ranganathan-crawled
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Not everyone on the Right is celebrating Dharmendra Pradhan's resignation. Some are angry about it.
+
+  Anand Ranganathan, the author and commentator, shared a line by Ajeet Bharti that captures the dissent, verbatim: "I should be happy that Dharmendra Pradhan has resigned, because I and many others on the Right had been demanding this for six months. But I am sad, because Modi govt has succumbed to street violence and anarchists. Asked to bend by us, it has crawled before them."
+
+  The phrasing is a deliberate echo of L.K. Advani's famous line about the press during the Emergency: asked only to bend, it chose to crawl. The argument here is that a government which resisted this same demand from its own side for months has now yielded to the Jantar Mantar protests it calls anarchic.
+
+  For the record: Pradhan resigned today, 25 July, handing his letter to PM Modi, ten days into the NEET-UG paper-leak protests. His exit was the students' central demand, and the resignation is confirmed by Akashvani, The Week and others.
+
+  The clip is a News18 panel discussion featuring Ranganathan. We quote only the text of his tweet, which carries Ajeet Bharti's words, not the broadcast remarks.
+
+  Video: News18, via @ARanganathan72.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #DharmendraPradhan #NEET #JantarMantar #AnandRanganathan #CJP #IndianPolitics #PaperLeak
+tweaks:
+  vertical: live
+  showStamp: true
+slides:
+- layout: cover
+  kicker_meta: The Other View · 25 Jul 2026
+  headline: |
+    "Asked to bend,
+    it has *crawled*"
+  subline: 'Anand Ranganathan on Dharmendra Pradhan''s resignation '
+  credit: clip News18 · via @ARanganathan72
+  video_file: clip.mp4
+  panel_height: 872
+  headline_size: 78
+  texture: grid

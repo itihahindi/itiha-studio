@@ -1,6 +1,6 @@
 name: protest
 brand: vaq-hq
-format: instagram-portrait
+format: instagram-reel
 caption: |
   Replace this with your IG caption.
 
@@ -12,7 +12,7 @@ tweaks:
   overlayDarkness: 62
   showGrain: true
 slides:
-- layout: cover
+- layout: reel-frame
   eyebrow: Series 01
   eyebrow_meta: protest · 3 Parts
   headline: |
@@ -20,7 +20,7 @@ slides:
   subline: CJP PROTEST
   swipe_meta: Swipe ▸ · 3 Slides · 1 min read
   vertical: ground
-  image: https://pbs.twimg.com/media/HNb87UAa0AEoRmw?format=jpg&name=large
+  image: _cache/fc650b70700c5ac8.jpg
   image_position: 30% 53%
   show_index: false
   texture: grid

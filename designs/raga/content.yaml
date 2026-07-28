@@ -1,0 +1,20 @@
+name: Raga
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Replace this with your IG Reel caption.
+
+  #hashtags #here
+tweaks:
+  showStamp: true
+slides:
+- layout: reel-frame
+  eyebrow: Series 01
+  headline: Secret family of Rahul Gandhi?
+  subline: Viral photos of Rahul Gandhi vacationing with a woman and a child have reignited long-standing
+    rumors about a secret family, despite no credible evidence supporting the claims.
+  handle: '@itiha29'
+  body: Viral photos of Rahul Gandhi vacationing with a woman and a child have reignited long-standing
+    rumors about a secret family.
+  vertical: live
+  video_file: 6l7olfkwyjcxhecz.mp4

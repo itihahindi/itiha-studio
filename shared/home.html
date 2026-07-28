@@ -57,6 +57,68 @@
     letter-spacing: -0.01em; color: #fff; line-height: 1;
   }
   .brand-tabs .t-vaq .hq { color: #F4631E; }
+  /* Search — one box, filters every grid on the page. Because the brand tabs
+     and this box compose, it serves Itiha and Vaq HQ alike. */
+  .search {
+    position: relative; display: flex; align-items: center;
+    flex: 1 1 260px; max-width: 420px; min-width: 200px;
+  }
+  .search .icon {
+    position: absolute; left: 13px; pointer-events: none;
+    display: flex; color: var(--fg-dim);
+  }
+  .search input {
+    width: 100%; padding: 12px 38px 12px 38px;
+    background: #0e0e0e; color: var(--fg);
+    border: 1px solid var(--border); border-radius: 0;
+    font-family: 'DM Sans', system-ui, sans-serif; font-size: 14px;
+    outline: none; transition: border-color 120ms ease, background 120ms ease;
+    -webkit-appearance: none; appearance: none;
+  }
+  /* type=search paints its own clear affordance in WebKit — we ship one that
+     matches the theme, so suppress the native pill and avoid a double ×. */
+  .search input::-webkit-search-cancel-button,
+  .search input::-webkit-search-decoration { -webkit-appearance: none; display: none; }
+  .search input::placeholder { color: var(--fg-dim); }
+  .search input:hover { background: #121212; }
+  .search input:focus { border-color: #3a3a3a; background: #141414; }
+  .search .clear {
+    position: absolute; right: 8px;
+    background: transparent; border: 0; cursor: pointer;
+    color: var(--fg-dim); font-size: 18px; line-height: 1;
+    padding: 4px 8px; display: none;
+  }
+  .search .clear:hover { color: var(--fg); }
+  .search.has-query .clear { display: block; }
+  /* Keyboard affordance — hidden once the box is in use. */
+  .search .kbd {
+    position: absolute; right: 12px; pointer-events: none;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--fg-dim); border: 1px solid #262626; padding: 2px 6px;
+  }
+  .search.has-query .kbd, .search.focused .kbd { display: none; }
+
+  /* Matched substring inside a card title */
+  mark {
+    background: rgba(192,57,43,0.28); color: inherit;
+    padding: 0 1px; border-radius: 1px;
+  }
+  .card[data-brand="vaq-hq"] mark { background: rgba(244,99,30,0.28); }
+
+  /* "N more matches in another brand" nudge — so a brand tab never hides
+     a result without saying so. */
+  .cross-hint {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    letter-spacing: 1.5px; color: var(--fg-mute);
+    margin: -6px 0 18px; display: none;
+  }
+  .cross-hint button {
+    background: transparent; border: 0; cursor: pointer; padding: 0 0 0 8px;
+    font: inherit; letter-spacing: inherit; color: var(--fg);
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .cross-hint button:hover { color: var(--red); }
+
   .wordmark {
     font-family: 'Bebas Neue', Impact, sans-serif;
     font-size: 36px; letter-spacing: 2px;
@@ -201,6 +263,13 @@
     <button data-brand="itiha"  type="button"><span class="t-itiha">ITIHA<span class="dot">.</span></span></button>
     <button data-brand="vaq-hq" type="button"><span class="t-vaq">Vaq <span class="hq">HQ</span></span></button>
   </nav>
+  <div class="search" id="search">
+    <span class="icon" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 L14.5 14.5" stroke-linecap="round"/></svg></span>
+    <input id="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="Search projects…" aria-label="Search projects" />
+    <span class="kbd">/</span>
+    <button class="clear" id="q-clear" type="button" title="Clear search" aria-label="Clear search">×</button>
+  </div>
 </header>
 
 <main>
@@ -245,7 +314,11 @@
     Add <code style="color:#E8DCC8">NOTION_TOKEN</code> and <code style="color:#E8DCC8">NOTION_DB_ID</code> to <code>.env</code> in the repo root and restart Studio. See README for the 5-min setup.
   </div>
 
-  <div class="section-label">Your projects</div>
+  <div class="section-label" style="display:flex;align-items:baseline;gap:14px">
+    Your projects
+    <span id="project-count" style="color:#666;font-size:10px;letter-spacing:2px"></span>
+  </div>
+  <div id="cross-hint" class="cross-hint"></div>
   <div id="grid" class="grid"></div>
   <div id="empty" class="empty" style="display:none">No projects yet. Use the form above to create your first one.</div>
 
@@ -268,6 +341,56 @@ let allProjects = [];
 let brandFilter = (() => {
   try { return localStorage.getItem('kavi:brandFilter') || 'all'; } catch { return 'all'; }
 })();
+
+// Search is deliberately NOT persisted to localStorage: coming back to a
+// half-empty grid because of a filter you set yesterday reads as data loss.
+let searchQuery = '';
+
+// ── Search ──────────────────────────────────────────────────────
+// Tokens are AND-ed, so "somnath temple" and "temple somnath" both hit, and
+// each token may match the display name, the slug, the brand or the format —
+// "vaq reel" is a valid query. Slug matching is what makes a hyphenated
+// paste ("somnath-temple") behave the same as typing the words.
+function tokenize(q) {
+  return String(q || '').toLowerCase().split(/\s+/).filter(Boolean);
+}
+
+function projectHaystack(p) {
+  const brand = p.brand || 'itiha';
+  return [
+    p.name || '', p.slug || '',
+    brand, BRAND_LABELS[brand] || '',
+    p.format || '', FORMAT_LABELS[p.format] || '',
+  ].join(' ').toLowerCase();
+}
+
+function matchesProject(p, tokens) {
+  if (!tokens.length) return true;
+  const hay = projectHaystack(p);
+  return tokens.every(t => hay.includes(t));
+}
+
+// Escape first, then wrap matches — so a project literally named "<b>" can't
+// inject markup through the highlighter.
+function highlight(text, tokens) {
+  const safe = escapeHtml(text);
+  if (!tokens.length) return safe;
+  // Longest-first stops a short token from splitting a longer one mid-match.
+  const pattern = tokens
+    .slice().sort((a, b) => b.length - a.length)
+    .map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    .join('|');
+  if (!pattern) return safe;
+  return safe.replace(new RegExp(`(${pattern})`, 'gi'), '<mark>$1</mark>');
+}
+
+function setSearch(q) {
+  searchQuery = q;
+  const wrap = document.getElementById('search');
+  wrap.classList.toggle('has-query', !!q.trim());
+  renderGrid(allProjects);
+  renderBacklog();
+}
 
 // Header brand switcher: filters the grid, pre-selects the New-project brand,
 // and scopes the (Itiha-only) Notion backlog.
@@ -296,7 +419,46 @@ document.querySelectorAll('#brand-tabs button').forEach(btn => {
     try { localStorage.setItem('kavi:brandFilter', brandFilter); } catch {}
     applyBrandTabs();
     renderGrid(allProjects);
+    renderBacklog();
   };
+});
+
+// ── Search wiring ───────────────────────────────────────────────
+const qInput = document.getElementById('q');
+const qWrap  = document.getElementById('search');
+
+qInput.addEventListener('input', () => setSearch(qInput.value));
+qInput.addEventListener('focus', () => qWrap.classList.add('focused'));
+qInput.addEventListener('blur',  () => qWrap.classList.remove('focused'));
+
+document.getElementById('q-clear').onclick = () => {
+  qInput.value = '';
+  setSearch('');
+  qInput.focus();
+};
+
+qInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    qInput.value = '';
+    setSearch('');
+    qInput.blur();
+  } else if (e.key === 'Enter') {
+    // Enter on a narrowed list opens the top hit — the common case is
+    // "type three letters, hit Enter".
+    const first = document.querySelector('#grid .card');
+    if (first) location.href = first.getAttribute('href');
+  }
+});
+
+// "/" focuses search from anywhere, as long as you're not already typing.
+document.addEventListener('keydown', (e) => {
+  if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+  const el = document.activeElement;
+  const tag = el && el.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (el && el.isContentEditable)) return;
+  e.preventDefault();
+  qInput.focus();
+  qInput.select();
 });
 
 async function loadProjects() {
@@ -309,11 +471,48 @@ function renderGrid(projects) {
   allProjects = projects;
   const grid = document.getElementById('grid');
   const empty = document.getElementById('empty');
+  const counter = document.getElementById('project-count');
+  const hint = document.getElementById('cross-hint');
   grid.innerHTML = '';
-  const shown = brandFilter === 'all'
+
+  const tokens = tokenize(searchQuery);
+  const inBrand = brandFilter === 'all'
     ? projects
     : projects.filter(p => (p.brand || 'itiha') === brandFilter);
-  if (!shown.length) { empty.style.display = 'block'; return; }
+  const shown = inBrand.filter(p => matchesProject(p, tokens));
+
+  counter.textContent = tokens.length
+    ? `(${shown.length} of ${inBrand.length})`
+    : (inBrand.length ? `(${inBrand.length})` : '');
+
+  // A brand tab must never silently swallow a hit. If the query matches
+  // projects filed under another brand, say so and offer a way through.
+  const hiddenElsewhere = tokens.length && brandFilter !== 'all'
+    ? projects.filter(p => (p.brand || 'itiha') !== brandFilter && matchesProject(p, tokens)).length
+    : 0;
+  if (hiddenElsewhere) {
+    hint.innerHTML = `${hiddenElsewhere} more match${hiddenElsewhere === 1 ? '' : 'es'} outside ${escapeHtml(BRAND_LABELS[brandFilter] || brandFilter)}<button type="button" id="cross-show">Search all brands</button>`;
+    hint.style.display = 'block';
+    document.getElementById('cross-show').onclick = () => {
+      brandFilter = 'all';
+      try { localStorage.setItem('kavi:brandFilter', brandFilter); } catch {}
+      applyBrandTabs();
+      renderGrid(allProjects);
+      renderBacklog();
+    };
+  } else {
+    hint.style.display = 'none';
+  }
+
+  if (!shown.length) {
+    // "No matches" and "no projects yet" are different problems — the second
+    // message tells you to use the create form, which is useless mid-search.
+    empty.textContent = tokens.length
+      ? `No projects match "${searchQuery.trim()}".`
+      : 'No projects yet. Use the form above to create your first one.';
+    empty.style.display = 'block';
+    return;
+  }
   empty.style.display = 'none';
   for (const p of shown) {
     const brand = p.brand || 'itiha';
@@ -323,7 +522,7 @@ function renderGrid(projects) {
     a.href = `d/${encodeURIComponent(p.slug)}/`;
     a.innerHTML = `
       <button class="delete-btn" title="Delete project" aria-label="Delete project">×</button>
-      <div class="name">${escapeHtml(p.name || p.slug)}</div>
+      <div class="name">${highlight(p.name || p.slug, tokens)}</div>
       <div class="format">
         <span class="badge" style="color:${BRAND_COLORS[brand] || '#888'};border-color:#2a2a2a">${escapeHtml(BRAND_LABELS[brand] || brand)}</span>
         <span class="badge">${escapeHtml(FORMAT_LABELS[p.format] || p.format || 'unknown')}</span>
@@ -401,7 +600,23 @@ async function loadBacklog() {
   return r.json();
 }
 
-function renderBacklog({ configured, rows }) {
+// Latest backlog payload, so search / brand changes can re-render without
+// re-querying Notion (that call routinely takes 15-30s).
+let backlogState = { configured: false, rows: [] };
+
+function matchesBacklog(row, tokens) {
+  if (!tokens.length) return true;
+  const hay = [
+    row.post || '', row.status || '', row.type || '',
+    TYPE_LABEL[row.type] || '',
+    (row.tags || []).join(' '), (row.topic || []).join(' '),
+  ].join(' ').toLowerCase();
+  return tokens.every(t => hay.includes(t));
+}
+
+function renderBacklog(payload) {
+  if (payload) backlogState = payload;
+  const { configured, rows } = backlogState;
   const wrap = document.getElementById('backlog-wrap');
   const setup = document.getElementById('backlog-setup');
   const grid = document.getElementById('backlog-grid');
@@ -417,13 +632,22 @@ function renderBacklog({ configured, rows }) {
   }
   setup.style.display = 'none';
   wrap.style.display = hideBacklog ? 'none' : 'block';
-  counter.textContent = `(${rows.length})`;
+
+  const tokens = tokenize(searchQuery);
+  const shown = rows.filter(r => matchesBacklog(r, tokens));
+  counter.textContent = tokens.length
+    ? `(${shown.length} of ${rows.length})`
+    : `(${rows.length})`;
   grid.innerHTML = '';
   if (!rows.length) {
     grid.innerHTML = `<div class="empty">No active items. Add ideas in Notion → they'll show up here.</div>`;
     return;
   }
-  for (const row of rows) {
+  if (!shown.length) {
+    grid.innerHTML = `<div class="empty">No backlog items match "${escapeHtml(searchQuery.trim())}".</div>`;
+    return;
+  }
+  for (const row of shown) {
     const card = document.createElement('a');
     card.className = 'card';
     card.href = 'javascript:void(0)';
@@ -434,7 +658,7 @@ function renderBacklog({ configured, rows }) {
     const topics = (row.topic || []).slice(0, 2).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
     const dateStr = row.publish_date ? `<span>📅 ${escapeHtml(row.publish_date)}</span>` : '';
     card.innerHTML = `
-      <div class="name">${escapeHtml(row.post || 'Untitled')}</div>
+      <div class="name">${highlight(row.post || 'Untitled', tokens)}</div>
       <div class="meta">
         <span class="status" data-s="${escapeHtml(status)}">${escapeHtml(status)}</span>
         <span>${escapeHtml(typeLabel)}</span>

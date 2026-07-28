@@ -1,0 +1,82 @@
+name: vaq-geo-demo
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Geo layout demo — real country geometry, brand-coloured highlights, dotted flow lines.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Geo
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: true
+slides:
+# 1 — countries by name, auto brand colours, dotted flow line
+- layout: geo
+  kicker_meta: Resource Diplomacy
+  headline: Why *Australian Uranium* Matters To India
+  region: world
+  countries:
+  - name: Australia
+  - name: India
+  links:
+  - from: Australia
+    to: India
+    animate: true
+  body: |
+    India's reactors run on imported fuel. A [decade-long] negotiation now locks in
+    long-term supply from the world's largest uranium reserves.
+  map_caption: Natural Earth 10m · India POV
+  map_credit: Vaq HQ
+# 2 — alias resolution (USA/UK/UAE), custom per-country colours, tuned lines
+- layout: geo
+  vertical: live
+  kicker_meta: Alias + Colour Test
+  headline: Custom *Colour* Control
+  region: world
+  countries:
+  - name: USA
+    color: '#F4631E'
+  - name: UK
+    color: '#2540FF'
+  - name: UAE
+    color: '#0FA08C'
+  - name: DR Congo
+    color: '#9A3F73'
+  - name: Nowhereistan
+  links:
+  - from: USA
+    to: UK
+    color: '#FFFFFF'
+    width: 4
+    gap: 16
+    opacity: 0.9
+  - from: UK
+    to: UAE
+    color: '#0FA08C'
+    width: 2
+    gap: 8
+    curve: -0.2
+  body: Aliases resolve — [USA], [UK], [UAE] and [DR Congo] all map to the dataset's own names.
+# 3 — regional crop, ocean override, labels off, dark vertical
+- layout: geo
+  vertical: legal
+  kicker_meta: The Docket
+  headline: The Gulf Corridor
+  region: middle-east
+  ocean: '#06121F'
+  land_color: '#1E2C3A'
+  labels: false
+  countries:
+  - name: Iran
+  - name: Saudi Arabia
+  - name: United Arab Emirates
+  markers:
+  - lon: 55.3
+    lat: 25.3
+    label: Strait of Hormuz
+    sublabel: Chokepoint
+    ring: true
+    align: left
+  body: Roughly a fifth of global oil passes the strait.

@@ -1,0 +1,33 @@
+name: modi-paper-leak-cabinet
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Prime Minister Narendra Modi has posted a video to his own Instagram account signalling tougher action on exam paper leaks. His caption, verbatim: "More strict actions against paper leaks to come in tomorrow's Cabinet!" The post went up on the evening of 23 July, which puts that Cabinet meeting on 24 July.
+
+  The timing is the story. The Cockroach Janta Party has held Jantar Mantar since 20 June over the NEET-UG 2026 paper leak, which forced roughly 2.2 million candidates to sit the exam again, and is demanding Education Minister Dharmendra Pradhan's resignation. A march to Parliament on 20 July ended in violence. This is the government's first substantive signal on the students' core demand since then.
+
+  For context, a law already exists. The Public Examinations (Prevention of Unfair Means) Act came into force in 2024, with jail terms and fines for organised cheating and leaks. What the PM is signalling is something stricter on top of it.
+
+  Two honest notes. The specific Cabinet decision was not public when he posted, so what was actually approved is a separate question worth checking against the official briefing. And the remarks in the video are in Hindi; we have not translated them, and quote only his own English caption here.
+
+  Video via @narendramodi.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #NarendraModi #PaperLeak #NEET #NEETUG #Cabinet #JantarMantar #IndianPolitics
+tweaks:
+  vertical: live
+  showStamp: true
+slides:
+- layout: reel-frame
+  kicker_meta: PM's Post · 23 Jul 2026
+  headline: |
+    Modi promises
+    *tougher* action
+    on paper leaks
+  subline: Posted to his own account the night before Cabinet, as the NEET-UG protests continue.
+  credit: via @narendramodi
+  video_file: clip.mp4
+  panel_height: 540
+  headline_size: 70
+  texture: grid

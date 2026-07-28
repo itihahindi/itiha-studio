@@ -52,6 +52,41 @@ function TextInput({ value, onChange, placeholder }) {
     onBlur={e => e.target.style.borderColor = '#2c2c2c'} />;
 }
 
+// Brand palette swatches + a native picker + a hex box. Empty value means
+// "inherit the layout's default", so Reset clears rather than writing a colour.
+const BRAND_SWATCHES = [
+  '#F4631E', '#2F6BE0', '#0FA08C', '#9A3F73',
+  '#FF3333', '#2540FF', '#E0554E', '#0A1F3C',
+  '#17395E', '#F7F9FB', '#141413', '#FFFFFF',
+];
+
+function ColorInput({ value, onChange, swatches }) {
+  const list = swatches && swatches.length ? swatches : BRAND_SWATCHES;
+  const v = value ?? '';
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+        {list.map(c => (
+          <button key={c} type="button" title={c} onClick={() => onChange(c)}
+            style={{
+              width: 22, height: 22, borderRadius: 4, background: c, cursor: 'pointer',
+              border: v.toLowerCase() === c.toLowerCase() ? '2px solid #fff' : '1px solid #444',
+            }} />
+        ))}
+      </div>
+      <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+        <input type="color" value={/^#[0-9a-f]{6}$/i.test(v) ? v : '#000000'}
+          onChange={e => onChange(e.target.value)}
+          style={{ width: 34, height: 30, padding: 0, background: 'none', border: '1px solid #2c2c2c', borderRadius: 4, cursor: 'pointer' }} />
+        <input type="text" value={v} placeholder="inherit" onChange={e => onChange(e.target.value)}
+          style={{ ...inputBase, flex: 1 }} />
+        {v && <button type="button" onClick={() => onChange('')} title="Reset to default"
+          style={{ background: 'none', border: '1px solid #2c2c2c', color: '#888', borderRadius: 4, padding: '5px 9px', cursor: 'pointer' }}>✕</button>}
+      </div>
+    </div>
+  );
+}
+
 function TextArea({ value, onChange, placeholder, rows = 4 }) {
   return <textarea value={value ?? ''} placeholder={placeholder || ''} rows={rows}
     onChange={e => onChange(e.target.value)}
@@ -171,6 +206,65 @@ function ImageInput({ value, onChange, slideIndex, fieldKey }) {
           onChange={e => onChange(e.target.value)} style={{ ...inputBase, padding: '7px 10px', fontSize: 12 }} />
       </div>
       <input ref={inputRef} type="file" accept="image/*" style={{ display: 'none' }}
+        onChange={e => upload(e.target.files[0])} />
+      {err && <div style={{ fontSize: 11, color: '#c0392b', marginTop: 6 }}>{err}</div>}
+    </div>
+  );
+}
+
+// ── Video upload field (reel-frame source) ────────────────────
+// Same POST /api/upload path as images (any file type, saved to the design's
+// images/). Shows a scrubbable preview; no URL box here — the reel-frame keeps
+// a separate `video_url` text field for the link path.
+function VideoInput({ value, onChange }) {
+  const [busy, setBusy] = React.useState(false);
+  const [err, setErr] = React.useState(null);
+  const inputRef = React.useRef(null);
+
+  const upload = async (file) => {
+    if (!file) return;
+    setBusy(true); setErr(null);
+    try {
+      const form = new FormData();
+      form.append('file', file);
+      const r = await fetch('api/upload', { method: 'POST', body: form });
+      if (!r.ok) throw new Error(await r.text());
+      const { filename } = await r.json();
+      onChange(filename);
+    } catch (e) {
+      setErr(String(e.message || e));
+    } finally { setBusy(false); }
+  };
+
+  const onDrop = e => {
+    e.preventDefault();
+    const f = e.dataTransfer.files[0];
+    if (f) upload(f);
+  };
+
+  return (
+    <div onDragOver={e => e.preventDefault()} onDrop={onDrop}
+      style={{ border: '1px dashed #3a3a3a', padding: 10 }}>
+      {value && (
+        <div style={{ marginBottom: 10 }}>
+          <video src={`images/${value}`} controls preload="metadata"
+            style={{ maxWidth: '100%', maxHeight: 180, display: 'block', background: '#000' }} />
+          <div style={{ fontSize: 11, color: '#666', marginTop: 4, wordBreak: 'break-all' }}>{value}</div>
+        </div>
+      )}
+      <div style={{ display: 'flex', gap: 6 }}>
+        <button type="button" onClick={() => inputRef.current?.click()} disabled={busy}
+          style={{ ...inputBase, padding: '8px 12px', cursor: 'pointer', flex: 1, fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase', fontSize: 11 }}>
+          {busy ? 'Uploading…' : (value ? 'Replace video' : 'Choose / drop video')}
+        </button>
+        {value && (
+          <button type="button" onClick={() => onChange(undefined)}
+            style={{ ...inputBase, padding: '8px 12px', cursor: 'pointer', width: 'auto', color: '#888' }}>
+            ✕
+          </button>
+        )}
+      </div>
+      <input ref={inputRef} type="file" accept="video/*" style={{ display: 'none' }}
         onChange={e => upload(e.target.files[0])} />
       {err && <div style={{ fontSize: 11, color: '#c0392b', marginTop: 6 }}>{err}</div>}
     </div>
@@ -303,7 +397,9 @@ function FieldInput({ field, value, onChange, slideIndex }) {
     case 'number':   return <NumberInput value={value} onChange={onChange} step={field.step} />;
     case 'bool':     return <BoolInput value={value} onChange={onChange} />;
     case 'select':   return <SelectInput value={value} onChange={onChange} options={field.options} />;
+    case 'color':    return <ColorInput value={value} onChange={onChange} swatches={field.swatches} />;
     case 'image':    return <ImageInput value={value} onChange={onChange} slideIndex={slideIndex} fieldKey={field.key} />;
+    case 'video':    return <VideoInput value={value} onChange={onChange} />;
     case 'image-position': return <ImagePositionInput value={value} onChange={onChange} />;
     case 'array':    return <ArrayInput value={value} onChange={onChange} item={field.item} />;
     default:         return <TextInput value={value} onChange={onChange} />;

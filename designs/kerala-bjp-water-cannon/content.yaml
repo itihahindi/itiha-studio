@@ -1,0 +1,33 @@
+name: kerala-bjp-water-cannon
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Police turned water cannons on a BJP march in Thiruvananthapuram on 22 July. State president Rajeev Chandrasekhar, now an MLA, was among those hit. The party says workers were injured and alleges a woman worker was slapped by an officer. Chandrasekhar has sought a reply from Chief Minister V.D. Satheesan.
+
+  The context that makes it a clash rather than a dispersal: the BJP was marching on the KPCC headquarters, the Congress party's own state office, in retaliation for a Congress protest in Delhi against the Prime Minister. Police stopped the march before it reached the building.
+
+  This is the first such confrontation under Kerala's new government. The Congress-led UDF took power in May 2026 with 102 of 140 seats, ending a decade of LDF rule under Pinarayi Vijayan.
+
+  Clip via @Mrsinha, who argues the incident is being ignored because of who the victims are.
+
+  Sources: ThePrint, Prokerala.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Kerala #BJP #Congress #RajeevChandrasekhar #Thiruvananthapuram #IndianPolitics #RightToProtest
+tweaks:
+  vertical: ground
+  showStamp: true
+slides:
+- layout: reel-frame
+  kicker_meta: Kerala · 22 Jul 2026
+  headline: |
+    Kerala BJP chief
+    hit by *water cannon*
+  subline: Rajeev Chandrasekhar was among those hit as police stopped a BJP march on the Congress headquarters.
+    The party alleges brutality and has sought a reply from CM V.D. Satheesan.
+  credit: clip via @Mrsinha
+  video_file: clip.mp4
+  panel_height: 840
+  headline_size: 74
+  texture: grid

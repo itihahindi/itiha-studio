@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd ~/Documents/GitHub/hyperframes-doc-kit/templates *)",
+      "Read(//Users/pranavmutalikdeshpande/Documents/GitHub/hyperframes-doc-kit/templates/**)"
+    ]
+  }
+}

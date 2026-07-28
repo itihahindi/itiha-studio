@@ -15,6 +15,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark", help: "Light = off-white background, near-black text." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        help: "Top-left red label." },
       { key: "eyebrow_meta",  type: "text",     label: "Eyebrow meta",   help: "Text next to the eyebrow with a divider." },
       { key: "headline",      type: "textarea", label: "Headline",       help: "Use *word* for Sindoor Red accent. Newlines become line breaks." },
@@ -36,11 +38,13 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark", help: "Light = off-white background, near-black text." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow", help: "Hidden unless showChapterLabels is on." },
       { key: "headline",      type: "textarea", label: "Headline",        help: "Use *word* for red accent." },
       { key: "subline",       type: "text",     label: "Sub-headline" },
       { key: "body",          type: "textarea", label: "Body",            help: "[word] = red emphasis · _word_ = italic · **word** = bold." },
-      { key: "block_y",       type: "select",   label: "Text position",   options: ["top","middle","bottom"], default: "bottom" },
+      { key: "block_y",       type: "select",   label: "Text position",   options: ["top","middle","bottom"], default: "bottom", help: "Superseded by Align ↕ when Align ↕ is set." },
       { key: "image",         type: "image",    label: "Image" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
       { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
@@ -58,6 +62,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "subline",       type: "text",     label: "Sub-headline" },
@@ -80,6 +86,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "quote",         type: "textarea", label: "Pull quote",      help: "Newlines preserved. Wrap in your own quotation marks." },
@@ -101,6 +109,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
       {
@@ -135,6 +145,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
       {
@@ -164,6 +176,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
       {
@@ -195,6 +209,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline",        help: "Use *word* for red accent." },
       {
@@ -226,6 +242,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "left_label",    type: "text",     label: "Left · label",   help: "e.g. \"MYTH\" / \"CLAIM\" / \"BEFORE\"" },
@@ -253,6 +271,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "image",         type: "image",    label: "Portrait image",  help: "Best with a BG-removed PNG or a tight portrait crop." },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
@@ -275,6 +295,8 @@ window.MANIFEST = {
     summary: "Off-White editorial slide — red left border, slide-number top-right.",
     fields: [
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "num",           type: "text",     label: "Slide number",   help: "e.g. \"04\". Defaults to slide index." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline",       help: "Use *word* for red accent." },
@@ -294,6 +316,8 @@ window.MANIFEST = {
     summary: "Solid Sindoor Red final slide.",
     fields: [
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        default: "Final Slide" },
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "cta",           type: "text",     label: "CTA line",       help: "e.g. \"↗ Link in bio · @itiha29\"" },
@@ -311,6 +335,8 @@ window.MANIFEST = {
     summary: "Final slide pointing to a full YouTube documentary. Jet black, thumbnail with stamped red play mark, video title in Big Shoulders Display.",
     fields: [
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        default: "Watch The Full Documentary", help: "Small uppercase line above the divider." },
       { key: "thumbnail",     type: "image",    label: "Video thumbnail", help: "Upload the YouTube auto-generated thumbnail (or a custom 16:9 image). Cropped 16:9." },
       { key: "headline",      type: "textarea", label: "Video title",    help: "The documentary's title. Use *word* for red accent." },
@@ -331,6 +357,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline",        help: "Use *word* for red accent." },
       {
@@ -363,6 +391,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "image",         type: "image",    label: "Map image",       help: "Period map, regional outline, or sketch. Use a high-contrast image for readability." },
@@ -397,6 +427,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Stamp text",     default: "Did You Know?", help: "Overrideable. e.g. \"Today In History\", \"Believe It Or Not?\"" },
       { key: "headline",      type: "textarea", label: "Fact headline",  help: "The surprising claim. Use *word* for red accent." },
       { key: "body",          type: "textarea", label: "Body",           help: "Context for the fact. [bracket] · _italic_ · **bold**." },
@@ -420,6 +452,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline",        help: "Use *word* for red accent." },
       {
@@ -448,6 +482,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline",        help: "Use *word* for red accent." },
       {
@@ -493,6 +529,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline",        help: "Use *word* for red accent." },
       {
@@ -520,6 +558,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline",        help: "Use *word* for red accent." },
       {
@@ -547,6 +587,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "image_before",  type: "image",    label: "Before image" },
@@ -569,6 +611,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline",        help: "Use *word* for red accent." },
       { key: "image",         type: "image",    label: "Document scan / photo" },
@@ -589,6 +633,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "image",         type: "image",    label: "Image (painting / photo)" },
@@ -617,6 +663,8 @@ window.MANIFEST = {
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        default: "Sources", help: "e.g. \"Sources\", \"Further Reading\"." },
       { key: "headline",      type: "textarea", label: "Headline (optional)" },
       {
@@ -644,6 +692,8 @@ window.MANIFEST = {
     fields: [
       { key: "variant",       type: "select",   label: "Variant", options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow" },
       { key: "quote",         type: "textarea", label: "Quote" },
       { key: "attribution",   type: "text",     label: "Attribution" },
@@ -662,6 +712,8 @@ window.MANIFEST = {
     summary: "Standalone 1080×1920 title card (Reel / Story).",
     fields: [
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        help: "e.g. \"Episode 04\"" },
       { key: "headline",      type: "textarea", label: "Headline",       help: "Use *word* for red accent." },
       { key: "subline",       type: "text",     label: "Subline" },
@@ -681,6 +733,8 @@ window.MANIFEST = {
     summary: "Standalone 1280×720 thumbnail.",
     fields: [
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
+      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        help: "e.g. \"Episode 04 · The Sacking\"" },
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "subline",       type: "text",     label: "Subline" },

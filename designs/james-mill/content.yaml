@@ -1,0 +1,103 @@
+name: the-man-who-invented-indian-backwardness
+brand: itiha
+format: instagram-portrait
+caption: |
+  In the 1700s, British generals in India knelt before Hindu goddesses. They bathed in the Ganges. They studied Sanskrit and declared it finer than Latin or Greek. Within one generation, all of that vanished. Indians were "savages." Their gods were "monsters." Their civilisation was "stagnant" and required a "civilising mission." India had not changed. One book had.
+
+  That book was _History of British India_, published in 1817 by the British utilitarian James Mill. Mill never visited India. He did not read a single Indian language. He never met a Sanskrit pandit. He wrote his six-volume history from a London reading room and became overnight the leading British authority on a civilisation he had never encountered. The book became the mandatory manual for every East India Company officer trained after 1818. It carved India's past into three artificial periods — Hindu, Muslim, British — the divisions the modern school syllabus still uses. It invented the framework of Indian backwardness that colonial policy then required to justify conquest by force. And its verdict — of stagnation, sterility, and uniform oppression — was inherited by the Encyclopaedia Britannica within a decade and by generations of academic historians in the two centuries that followed.
+
+  Decolonising begins with knowing the architects. James Mill was the first.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #JamesMill #HistoryOfBritishIndia #ColonialHistory #BritishRaj #Decolonisation #IndianHistoriography #EastIndiaCompany
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: MILL
+slides:
+- layout: cover
+  headline: |
+    Every Indian Should
+    Know This *Man.*
+  subline: The architect of Indian backwardness
+  swipe_meta: Swipe ▸ · 7 Slides · 3 min read
+  align_x: center
+  align_y: bottom
+  headline_offset_y: 100
+  image: magnific_a-young-img1-james-mill-s_y6sqcbgpw9.jpg
+- layout: split-story
+  chapter: Chapter 01 · Before The Book
+  headline: |
+    When British Generals
+    Knelt Before Our
+    *Gods.*
+  body: In the [1700s], British generals in India knelt before [Hindu goddesses]. They bathed in the [Ganges].
+    They studied [Sanskrit] and declared it [finer] than [Latin] or [Greek]. The [admiration] was [real].
+    It was also about to [end].
+  image: magnific_a-lonely-earlymorning-sce_vd2vyr6mmu.png
+  align_x: right
+  body_y: 35
+  image_overlay: 0.8
+- layout: split-story
+  chapter: Chapter 02 · The Sudden Reversal
+  headline: |
+    Within One Generation.
+    It All *Vanished.*
+  body: Suddenly, Indians were called [savages]. Their gods were called [monsters]. Their civilisation
+    was called [stagnant]. [India] had not [changed]. [One book] had.
+  image: magnific_inside-the-building-with-_5xf837nkxe.png
+  image_overlay: 0.7
+  image_position: 86% 50%
+- layout: split-story
+  chapter: Chapter 03 · The Man Who Wrote It
+  name: James Mill
+  dates: 1773–1836
+  role: Author of History of British India, 1817
+  headline: |
+    He Never Once
+    *Visited* India.
+  body: '[James Mill] wrote the [History of British India] in [1817]. He never [visited] India. He did
+    not read a single [Indian language]. He never met a [Sanskrit pandit]. He wrote the entire six-volume
+    work from a [London reading room], and became, overnight, the leading British authority on a civilisation
+    he had [never encountered].'
+  body_y: 30
+  image: magnific_a-grand-immersive-and-hig_swk49adl8e.png
+  image_position: 56% 50%
+  image_overlay: 1
+  align_x: center
+- layout: split-story
+  chapter: Chapter 04 · The Purpose
+  headline: |
+    A Justification For
+    *Conquest.*
+  body: By [1818], the British needed to justify [conquering] a highly [civilised society] by [force].
+    They needed a [civilising mission]. If there was no evidence that Indians were [primitive], Mill would
+    have to [invent it]. His book supplied the [ideology] the [Empire] required.
+  image: _cache/8b7c72ee476a39f1.jpg
+  body_y: 15
+  image_overlay: 1
+- layout: split-story
+  chapter: Chapter 05 · The Method
+  headline: |
+    He Weaponised
+    Our *History.*
+  body: 'Mill sliced [Indian history] into three artificial periods, [Hindu], [Muslim], and [British],
+    the divisions the modern [school syllabus] still uses. The framework served a single purpose: [divide]
+    the population by religious identity and [rule] the whole. The [three-period model] is [his invention].'
+  image: https://upload.wikimedia.org/wikipedia/commons/6/66/History_of_British_India_1817_James_Mill.jpg
+  image_position: 19% 0%
+  image_overlay: 1
+  body_y: 36
+- layout: youtube-cta
+  headline: |
+    Decolonising Begins
+    With Knowing The *Architects.*
+  body: |
+    Mill's [lies] built a [mental prison] that outlasted the [Empire]. The three-period [syllabus]. The [stagnant civilisation] frame. The [civilising mission] pretext. All of it was written by one man in [London] who had never [seen] the country he condemned. [Decolonising] begins with knowing the [architects]. [James Mill] was the [first].
+  handle: Follow @itiha29 · itiha.info
+  headline_size: 70
+  thumbnail: whatsapp-image-2026-07-19-at-22-53-01-1.jpeg

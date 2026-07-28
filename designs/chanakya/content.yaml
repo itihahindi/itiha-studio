@@ -1,0 +1,92 @@
+name: the-arthashastra-not-machiavellis-answer
+brand: itiha
+format: instagram-portrait
+caption: |
+  Mention the Arthashastra to most readers and the response arrives before the text does — "the Indian Machiavelli." The label is everywhere. It is also fundamentally wrong. Kautilya wrote roughly six thousand aphorisms across fifteen books, spanning taxation, mining, urban planning, contract law, espionage, welfare, and grand strategy — some eighteen centuries before Machiavelli published a slim political pamphlet from Florentine exile. Max Weber himself, drawing the original comparison, called The Prince "harmless" next to what Kautilya had written.
+
+  This carousel draws on the scholarship of R. Shamasastry, who rediscovered the manuscript on a Mysore library shelf in 1905; on Thomas Trautmann and Patrick Olivelle, who have shown the text was shaped by multiple hands across centuries; and on the political theorists Stuart Gray and Roger Boesche, who argue that Kautilya — not Machiavelli — deserves the title of history's first great political realist. The Arthashastra defines the state through the saptanga model — seven fitted parts, none sufficient alone. Its rajamandala doctrine maps the calculus of neighbouring states across seventy-two elements. Its four upayas describe an escalation ladder that any modern deterrence theorist would recognise. And running through the entire treatise is yogakshema — the doctrine that a king's legitimacy rests on the active welfare of his subjects, a concept Nirmala Sitharaman invoked while framing the 2022 Union Budget.
+
+  As Amartya Sen has argued, introducing a fourth-century BCE Indian analyst through the frame of a European writer born eighteen centuries later says less about Kautilya than about how narrow the reading list of modern political theory still is.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Arthashastra #Kautilya #Chanakya #IndianPoliticalThought #AmartyaSen #Statecraft #Yogakshema
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: KAUTILYA
+slides:
+- layout: cover
+  headline: '*Kautilya* Was Not India''s *Machiavelli.*'
+  subline: The 6,000-aphorism science of statecraft
+  swipe_meta: Swipe ▸ · 7 Slides · 4 min read
+  image: magnific_upscale-this-image-to-a-h_cdzzxkh0ep-1.png
+  image_position: 67% 50%
+  headline_size: 130
+  headline_offset_y: 400
+- layout: split-story
+  chapter: Chapter 01 · Mysore, 1905
+  headline: |
+    Found On A *Library* Shelf.
+  body: For a [thousand years], the Arthashastra existed only as a [rumour]. In [1905], the Sanskrit scholar
+    [R. Shamasastry] found it on a shelf in [Mysore]. Modern scholarship has since shown the text was
+    shaped by [multiple hands] across centuries, [Kautilya] names a [tradition], not a single author.
+  body_y: 40
+  image: https://static.wixstatic.com/media/f4448d_a65e1cbdbb8a45c9953fe8135c90823e~mv2.jpg/v1/fill/w_700,h_1050,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/f4448d_a65e1cbdbb8a45c9953fe8135c90823e~mv2.jpg
+  image_position: 0% 0%
+- layout: split-story
+  chapter: Chapter 02 · The State As A Chariot
+  headline: |
+    Seven Fitted Parts.
+    None *Sufficient* Alone.
+  body: The [saptanga] defines the state as [seven fitted parts], the sovereign, ministers, territory,
+    fortifications, treasury, army, and allies. The metaphor is a [chariot], not a monarch. Two thousand
+    years before modern political science defined the state by [population], [territory], and [sovereignty],
+    an Indian text had already proposed it.
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Rediscovered_circa_16th_century_Arthashastra_manuscript_in_Grantha_script_from_the_Oriental_Research_Institute_%28ORI%29_which_was_found_in_1905_03.jpg/1920px-Rediscovered_circa_16th_century_Arthashastra_manuscript_in_Grantha_script_from_the_Oriental_Research_Institute_%28ORI%29_which_was_found_in_1905_03.jpg
+  image_overlay: 1
+  body_y: 23
+- layout: comparison
+  chapter: Chapter 04 · The Comparison That Collapses
+  left_label: Machiavelli's Prince
+  left_headline: 'One Man. One
+
+    Short *Pamphlet.*
+
+    '
+  left_body: 'Written by one man in [months], during exile from Florence. Focused on how a [ruler] retains
+    [personal power], with little to say about what he owes the [ruled] beyond avoiding their [hatred].
+
+    '
+  right_label: Kautilya's Arthashastra
+  right_headline: 'A Tradition Across
+
+    *Centuries.*
+
+    '
+  right_body: '[6,000 aphorisms] across [15 books], [taxation], [mining], [contract law], [urban planning],
+    alongside [war] and [diplomacy]. Closer to [Aristotle''s Politics] fused with a [treasury manual]
+    than to anything Machiavelli wrote.'
+  body_size: 45
+  body_offset_y: -310
+- layout: split-story
+  headline: |
+    Read On Its
+    Own *Terms.*
+  body: |
+    A [Mysore] library shelf. A [millennium] of near-total loss. And now a popular [label] that flattens it into someone else's footnote. As [Amartya Sen] has argued, introducing a fourth-century BCE Indian analyst through the frame of a [European] writer born [eighteen centuries] later says less about [Kautilya], and more about the modern [reading list].
+  handle: Follow @itiha29 · itiha.info
+  image: https://pbs.twimg.com/media/EmTEfS4UcAAylku.jpg
+  image_position: 51% 50%
+  image_overlay: 1
+  body_y: 14
+- layout: document
+  headline: Source
+  image: screenshot-2026-07-20-at-12-53-34-am.png
+  image_position: 40% 100%
+  quote: Read the full blog on our website. Link in the bio
+- layout: end-card
+  headline: New slide

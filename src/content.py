@@ -16,6 +16,7 @@ import hashlib
 import json
 import os
 import re
+import ssl
 import time
 import urllib.error
 import urllib.parse
@@ -77,6 +78,49 @@ def _canonical_url(url: str) -> str:
     return urllib.parse.urlunparse(parts._replace(query=new_query))
 
 
+class _TLSTooOldError(Exception):
+    """urllib couldn't negotiate a new enough TLS version for this host."""
+
+
+def _is_tls_version_error(e: Exception) -> bool:
+    """True for the LibreSSL-vs-TLS-1.3 handshake failure.
+
+    macOS ships a system Python linked against LibreSSL 2.8.3, which tops out
+    at TLS 1.2. A growing number of hosts now require TLS 1.3 and reject the
+    ClientHello outright, which surfaces as this alert. Nothing we can set on
+    an SSLContext fixes it — the library simply cannot speak 1.3.
+    """
+    return "TLSV1_ALERT_PROTOCOL_VERSION" in str(e) or "UNSUPPORTED_PROTOCOL" in str(e)
+
+
+def _curl_download(url: str, dest: Path) -> None:
+    """Fetch via the system curl, which is linked against a newer TLS stack.
+
+    Used only as a fallback when urllib's TLS is too old for the host. curl is
+    present on macOS, on Windows 10+, and on essentially every Linux.
+    """
+    import shutil
+    import subprocess
+
+    curl = shutil.which("curl")
+    if not curl:
+        raise _TLSTooOldError("curl not found on PATH")
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    # No shell: the URL is passed as argv. --fail turns HTTP >=400 into a
+    # non-zero exit instead of writing an error page to disk.
+    proc = subprocess.run(
+        [curl, "--silent", "--show-error", "--fail", "--location",
+         "--max-time", "30", "--user-agent", _UA,
+         "--header", "Accept: image/*,*/*;q=0.8",
+         "--output", str(dest), url],
+        capture_output=True, text=True,
+    )
+    if proc.returncode != 0:
+        dest.unlink(missing_ok=True)
+        detail = (proc.stderr or "").strip() or f"curl exit {proc.returncode}"
+        raise _TLSTooOldError(detail)
+
+
 def _download(url: str, dest: Path) -> None:
     """GET `url` and write the body to `dest`. Retries 429/503 with backoff."""
     headers = {
@@ -92,6 +136,8 @@ def _download(url: str, dest: Path) -> None:
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes(data)
             return
+        # HTTPError must be caught before URLError — it is a subclass, so the
+        # broader clause would otherwise shadow the retry logic entirely.
         except urllib.error.HTTPError as e:
             last_error = e
             # Honor Retry-After when the server provides one; otherwise back off
@@ -106,6 +152,14 @@ def _download(url: str, dest: Path) -> None:
                 time.sleep(wait)
                 continue
             raise
+        except urllib.error.URLError as e:
+            # Retrying urllib can never clear a TLS-version mismatch, so hand
+            # straight off to curl. Any other URLError propagates as before.
+            if not _is_tls_version_error(e):
+                raise
+            print("  …TLS too old for this host; retrying via curl")
+            _curl_download(url, dest)
+            return
     if last_error is not None:
         raise last_error
 
@@ -159,6 +213,19 @@ def resolve_image(value: str | None, design_dir: Path) -> str | None:
                 _download(target, local)
             except ContentError:
                 raise
+            except _TLSTooOldError as e:
+                # urllib's TLS was too old AND the curl fallback didn't work.
+                # A raw handshake traceback tells the author nothing they can
+                # act on, so spell out both real ways forward.
+                raise ContentError(
+                    f"failed to download {canonical}\n"
+                    f"  → this host requires TLS 1.3, but Python here is linked "
+                    f"against {ssl.OPENSSL_VERSION}, which cannot negotiate it, "
+                    f"and the curl fallback failed ({e})\n"
+                    f"  → save the image by hand into "
+                    f"designs/{design_dir.name}/images/ and reference it by "
+                    f"filename, or reinstall Python against OpenSSL 1.1.1+"
+                )
             except Exception as e:
                 raise ContentError(f"failed to download {canonical}: {e}")
             if local.read_bytes()[:512].lstrip().startswith(_HTML_SIGNATURES):
@@ -182,7 +249,7 @@ def resolve_image(value: str | None, design_dir: Path) -> str | None:
 
 KNOWN_LAYOUTS = {
     # Carousel layouts (1080×1350 etc.)
-    "cover", "story", "split-story", "quote", "stat", "dates-grid", "closing",
+    "cover", "story", "split-story", "quote", "stat", "roster", "dates-grid", "closing", "geo",
     "numbered-list", "comparison", "portrait", "timeline", "map", "did-you-know",
     "pie-chart", "line-graph", "bar-chart", "dynasty", "before-after",
     "document", "annotated", "sources",

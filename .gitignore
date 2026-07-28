@@ -3,6 +3,9 @@
 .env.local
 .env.*.local
 
+# Personal local context (not committed)
+CLAUDE.local.md
+
 # Python
 .venv/
 __pycache__/

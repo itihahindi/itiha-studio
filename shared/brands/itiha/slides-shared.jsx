@@ -81,6 +81,16 @@ if (typeof document !== 'undefined' && !document.getElementById('itiha-slide-sty
       background-size:5px 5px}
     .itiha-tex--vignette{opacity:1;
       background:radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.6) 100%)}
+    /* ── Text alignment ────────────────────────────────────────────
+       alignBlock() stamps data-align-x on a text block; these rules fix up
+       the children that text-align alone can't move: the divider rule (a
+       fixed-width <hr>) and any max-width-constrained body paragraph. */
+    [data-align-x="left"]   > .itiha-divider{margin-left:0;margin-right:auto}
+    [data-align-x="center"] > .itiha-divider{margin-left:auto;margin-right:auto}
+    [data-align-x="right"]  > .itiha-divider{margin-left:auto;margin-right:0}
+    [data-align-x="left"]   .itiha-body{margin-left:0;margin-right:auto}
+    [data-align-x="center"] .itiha-body{margin-left:auto;margin-right:auto}
+    [data-align-x="right"]  .itiha-body{margin-left:auto;margin-right:0}
   `;
   document.head.appendChild(s);
 }
@@ -311,4 +321,84 @@ function themeFor(slide) {
   };
 }
 
-Object.assign(window, { ITIHA, Stamp, PageNum, Eyebrow, Divider, StripedPlaceholder, FullBleedSlot, ImageLayer, BrandContext, useItiha, ChapterEyebrow, MaybeStamp, MaybePageNum, themeFor, TextureOverlay });
+// ── Text alignment ────────────────────────────────────────────
+// Two per-slide knobs, both optional:
+//   align_x: left | center | right   — horizontal, always safe to apply
+//   align_y: top  | middle | bottom  — vertical, OPT-IN
+//
+// align_y is deliberately opt-in. Every layout below was composed against
+// hand-tuned absolute offsets (headline at top:360, body at bottom:200, …).
+// When align_y is unset, alignBlock returns the caller's legacy geometry
+// untouched, so existing designs render pixel-identically. Only when the
+// author picks a value do we re-anchor the block. Combining the two knobs
+// gives the full nine-way grid (top-left … bottom-right).
+
+// "Unset" and "explicitly left" are NOT the same thing, and the difference
+// matters. `.itiha-divider` is an <hr>, and the UA stylesheet gives <hr>
+// `margin-inline: auto` — which the brand CSS never reset, so that rule has
+// always rendered dead-centre above a left-ranged headline on every existing
+// slide. Honouring align_x: left properly means ranging it left, which would
+// visibly move the rule on every design already in the repo. So: unset emits
+// no attribute and inherits the legacy quirk (existing designs untouched),
+// while an explicit "left" opts into coherent behaviour.
+const _AX_FLEX = { left: 'flex-start', center: 'center', right: 'flex-end' };
+
+function alignFor(slide) {
+  const raw = (slide && slide.align_x) || '';
+  const ax = raw || 'left';
+  const ay = (slide && slide.align_y) || '';
+  return {
+    ax,
+    axSet: !!raw,
+    ay,
+    textAlign: raw ? ax : undefined,
+    flexAlign: _AX_FLEX[ax] || 'flex-start',
+  };
+}
+
+// Build the props for a layout's text block.
+//   legacy — the block's existing absolute-position style object.
+//   opts.top / opts.bottom — insets used when align_y re-anchors the block.
+//     Default to the 110/140 gutter most carousel layouts already use.
+//   opts.stretch — pass true for blocks whose legacy style sets BOTH top and
+//     bottom (grids that fill the gap). Those keep their height and only take
+//     the horizontal treatment, since re-anchoring would collapse the box.
+// Returns { style, 'data-align-x', 'data-align-y' } — spread onto the block.
+function alignBlock(slide, legacy = {}, opts = {}) {
+  const a = alignFor(slide);
+  const { top = 110, bottom = 140, stretch = false } = opts;
+  const { left, right } = legacy;
+
+  let pos = legacy;
+  if (!stretch && a.ay) {
+    if (a.ay === 'top')         pos = { position: 'absolute', left, right, top };
+    else if (a.ay === 'bottom') pos = { position: 'absolute', left, right, bottom };
+    else if (a.ay === 'middle') pos = { position: 'absolute', left, right, top: '50%', transform: 'translateY(-50%)' };
+    // Carry over the layout-specific display/grid/gap bits, but drop the
+    // legacy vertical anchors so they can't fight the new one.
+    const { top: _t, bottom: _b, transform: _tr, position: _p, left: _l, right: _r, ...rest } = legacy;
+    pos = { ...rest, ...pos };
+  }
+
+  const style = { ...pos };
+  // Every horizontal effect is gated on the author actually setting align_x,
+  // so an unset slide keeps whatever alignment its layout already had.
+  if (a.axSet) {
+    style.textAlign = a.textAlign;
+    // Flex and grid containers have to be told separately — text-align doesn't
+    // move flex items. A column aligns on the cross axis, a row on the main one.
+    if (style.display === 'flex') {
+      if (style.flexDirection === 'column') style.alignItems = a.flexAlign;
+      else style.justifyContent = a.flexAlign;
+    } else if (style.display === 'grid') {
+      style.justifyItems = a.ax;
+    }
+  }
+  return {
+    style,
+    'data-align-x': a.axSet ? a.ax : undefined,
+    'data-align-y': a.ay || undefined,
+  };
+}
+
+Object.assign(window, { ITIHA, Stamp, PageNum, Eyebrow, Divider, StripedPlaceholder, FullBleedSlot, ImageLayer, BrandContext, useItiha, ChapterEyebrow, MaybeStamp, MaybePageNum, themeFor, TextureOverlay, alignFor, alignBlock });

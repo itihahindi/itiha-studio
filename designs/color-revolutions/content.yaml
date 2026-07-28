@@ -1,0 +1,183 @@
+name: colour-revolutions-warfare-without-armies
+brand: itiha
+format: instagram-portrait
+caption: |
+  In January 2024 the analyst Matija Šerić called the colour revolutions "the most sophisticated means of warfare" — regime change disguised as a spontaneous, youthful uprising, and, he argues, impossible without foreign sponsors.
+
+  We lay his thesis over the documented record as a lens, not a verdict: Gene Sharp and his 198 catalogued methods, the three phases from network to overthrow, the reported five billion behind one revolution, and the roll call from Manila 1986 to Kyiv 2014. The events and dates are firm history; the interpretation is his, and we attribute it as such.
+
+  His final counsel is aimed at the crowd itself — that the giveaway is the choreography, the same script across nations with nothing else in common, and that the next one will not announce what it is. Read the shape, not the colour.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #colourrevolution #colorrevolution #genesharp #euromaidan #otpor #regimechange #geopolitics #softpower #hybridwarfare #modernhistory #history #ukraine #arabspring #coldwar #itiha
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  seriesLabel: REVISITED
+slides:
+- layout: cover
+  headline: When *Protests* Become *Weapons*
+  subline: One analyst's reading of how a protest is engineered into a coup — the modern history of the
+    colour revolutions.
+  swipe_meta: THE UPRISING AS A WEAPON · SWIPE →
+  image: _cache/f0d21099d9bb6b5a.jpg
+  image_overlay: 0.5
+  image_position: 0% 45%
+  headline_offset_y: 320
+  texture: halftone
+- layout: split-story
+  chapter: THE THESIS
+  headline: |
+    A COUP IN THE
+    SHAPE OF A
+    *CROWD*
+  body: In a 2024 essay, [Matija Šerić] calls a colour revolution a _technology_ for seizing a country's
+    politics from abroad, a government pressured through political blackmail, with the [youth protest
+    movement] as its means. Under the guise of a democratic uprising, he argues, the real work is a [coup
+    d'état]. Without foreign sponsors, his claim runs, these risings **cannot arise**.
+  image: _cache/d1035eedc5861286.jpg
+  image_overlay: 1
+  image_position: 50% 35%
+  body_y: 14
+  texture: halftone
+- layout: quote
+  chapter: THE REFRAME
+  headline: |
+    NOT SOFT POWER.
+    *WAR.*
+  quote: Instead of tanks, bombers and cannons, it solves everything through an uprising.
+  attribution: Matija Šerić, Eurasia Review, 2024
+  body: 'The thesis refuses [Joseph Nye]''s label of _soft power_. This, it holds, is [hard power], admittedly
+    softer than war, but war nonetheless: a modern aggression that [international law] does not yet recognise.'
+  image: _cache/08b539fe1cf34ecb.jpg
+  image_overlay: 0.6
+  texture: halftone
+- layout: split-story
+  chapter: THE ARCHITECT
+  headline: |
+    THE THEORIST OF
+    THE *UNARMED*
+    COUP
+  body: The essay names [Gene Sharp] the _father_ of the colour revolutions. His book _From Dictatorship
+    to Democracy_ catalogued [198 methods] of non-violent action. In Serbia, the youth group [Otpor] turned
+    that manual into the fall of Milošević in 2000, the template later exported, nation to nation.
+  image: https://m.media-amazon.com/images/I/81Li5jNBO4L._AC_UF1000,1000_QL80_.jpg
+  image_overlay: 1
+  image_position: 27% 0%
+  texture: halftone
+  body_y: 17
+  align_x: center
+- layout: numbered-list
+  chapter: THE METHOD
+  headline: |
+    THREE PHASES
+    TO A *FALL*
+  items:
+  - number: '1'
+    headline: THE NETWORK
+    body: An underground web of [dissident cells], drilled and connected long before the first march.
+  - number: '2'
+    headline: DELEGITIMISE
+    body: Strikes and the [occupation] of public squares, until the state's authority hollows out.
+  - number: '3'
+    headline: OVERTHROW
+    body: Open confrontation; the [government buildings] fall. The crowd is now the instrument.
+  body_offset_y: -150
+  number_size: 50
+  texture: halftone
+- layout: stat
+  chapter: THE ARITHMETIC
+  headline: |
+    A CHEAPER
+    *CONQUEST*
+  body: By the analyst's account, the [Euromaidan] drew on roughly [$5 billion] of foreign investment,
+    a fraction of the price of an army. A country changing hands without a single soldier crossing its
+    border.
+  stats:
+  - label: Reported outside investment, Euromaidan
+    value: $5B
+    value_red: true
+    sublabel: Ukraine, 2013–14 · as cited by the analyst
+  - label: Recognition in international law
+    value: NONE
+    value_red: false
+    sublabel: a modern aggression, still unnamed in law
+  body_offset_y: 80
+  stat_size: 132
+  stats_offset_y: -60
+  texture: halftone
+- layout: timeline
+  chapter: THE ROLL CALL
+  headline: |
+    ONE SCRIPT,
+    MANY *FLAGS*
+  items:
+  - date: '1986'
+    headline: MANILA — YELLOW
+    body: '"People Power" unseats Marcos — before the script had a name.'
+  - date: '2000'
+    headline: BELGRADE — BULLDOZER
+    body: Otpor's clenched fist topples Milošević — the template is born.
+  - date: '2003'
+    headline: TBILISI — ROSE
+    body: Roses carried into parliament; Shevardnadze falls.
+  - date: '2004'
+    headline: KYIV — ORANGE
+    body: A disputed vote, a single colour, a re-run in Ukraine.
+  - date: '2011'
+    headline: CAIRO — JANUARY 25
+    body: Tahrir fills; Mubarak's thirty years end in eighteen days.
+  - date: '2013'
+    headline: KYIV — EUROMAIDAN
+    body: The crowds return to the same square — the costliest run.
+  headline_size: 64
+  body_offset_y: -175
+  date_size: 40
+  item_headline_size: 18
+  item_body_size: 27
+  texture: halftone
+- layout: numbered-list
+  chapter: RECOGNITION
+  headline: |
+    HOW TO READ
+    THE *CHOREOGRAPHY*
+  items:
+  - number: '1'
+    headline: A YOUTH MOVEMENT
+    body: The [youth] — media-fluent, photogenic as innocence.
+  - number: '2'
+    headline: A SINGLE BRAND
+    body: One colour, one symbol, sometimes an [absurd mascot].
+  - number: '3'
+    headline: ONE GRIEVANCE
+    body: A lone [administrative spark], made to carry a fall.
+  - number: '4'
+    headline: THE OCCUPIED SQUARE
+    body: 'A plaza held for one demand: that [a minister] resign.'
+  - number: '5'
+    headline: THE CHORUS & THE FOG
+    body: Viral clips, and a fog of _unproven_ [foreign-hand] talk.
+  headline_size: 72
+  body_offset_y: -150
+  item_size: 30
+  number_size: 54
+  texture: halftone
+- layout: split-story
+  headline: |
+    THE NEXT ONE
+    WON'T CALL ITSELF
+    A *REVOLUTION*
+  body: 'Where people sensed the [choreography], the script fell apart, [Beijing, 1989], [Tehran, 2009],
+    [Moscow, 2012]. As Šerić wrote, "People would not be so rampant if they knew they were tools." The
+    giveaway was never the colour, it was the [striking similarity] across nations that shared nothing
+    else. The real question is: Who wrote the script, and who pays for the show?'
+  handle: '@itiha29 · itiha.info'
+  headline_size: 92
+  image: https://www.opindia.com/wp-content/uploads/2026/07/CJP-protest-in-Delhi-696x398.png
+  image_overlay: 1
+  image_position: 50% 40%
+  body_y: 15
+- layout: end-card
+  headline: New slide

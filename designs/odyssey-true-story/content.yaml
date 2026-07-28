@@ -1,0 +1,104 @@
+name: odyssey-true-story
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Christopher Nolan's The Odyssey is in cinemas, and it revives a story almost 2,700
+  years old. So how much of it is history?
+
+  The honest answer is layered. No Greek king really sailed home for ten years fighting
+  Cyclopes and sirens. But historians increasingly read epics like the Odyssey as
+  cultural memory, stories that carry fragments of real events long after the events
+  themselves pass into legend. The poem was set down around the late 8th century BC,
+  roughly four centuries after the Mycenaean world it describes had collapsed.
+
+  Some of that world was real. A fortified city stood at the site of Troy in the Late
+  Bronze Age and was destroyed more than once. Greece really was a patchwork of small
+  kingdoms ruled from citadels like Mycenae and Pylos. Ithaca is a real island in the
+  Ionian Sea, inhabited to this day. There is no single historical Odysseus, but he may
+  be a composite of Mycenaean rulers remembered across generations of oral poets.
+
+  Spoilers for the film from here. Nolan keeps the spine of Homer and rearranges the
+  rest. Calypso feeds the lotus to Odysseus himself. Circe turns his men to pigs but is
+  not his lover. He proves himself to Penelope by winning the archery contest, not by the
+  secret of their olive-tree bed. A new character, Sinon (Elliot Page), talks Troy into
+  taking the wooden horse. The film runs 2 hours 52 minutes and was shot entirely on IMAX
+  film, with Matt Damon as Odysseus and Anne Hathaway as Penelope.
+
+  Art: J.W. Waterhouse and G.D. Tiepolo (public domain). Photos: Stephen Chappell and Zde
+  via Wikimedia Commons, CC BY-SA 4.0.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #TheLongView #TheOdyssey #ChristopherNolan #Homer #AncientGreece #History
+tweaks:
+  vertical: longview
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE ODYSSEY
+slides:
+- layout: cover
+  surface: solid
+  kicker_meta: Ancient Greece
+  headline: |
+    Is the *Odyssey*
+    a true story?
+  subline: Christopher Nolan has put Homer's epic back on the big screen. Historians say the answer is
+    neither a clean yes nor a clean no.
+  image: https://i.pinimg.com/736x/c8/00/94/c80094cc43a97127d02a56324146212f.jpg
+  image_position: 41% 2%
+- layout: story
+  surface: light
+  kicker_meta: The Verdict
+  headline: Not history. Not *only* myth.
+  body: |
+    No king really sailed home for ten years past Cyclopes and sirens. But epics like this carry [cultural memory], real events remembered long after they pass into legend.
+  image: the-sirens.jpg
+  image_position: center 42%
+- layout: story
+  surface: light
+  kicker_meta: The Poem
+  headline: Written almost *2,700* years ago
+  body: |
+    It was set down around the [late 8th century BC], four centuries after the Mycenaean world it describes. [Homer] may be one poet, or many.
+  body_size: 42
+  image: homer.jpg
+  image_position: center 22%
+- layout: story
+  surface: light
+  kicker_meta: The Evidence
+  headline: The world behind it was *real*
+  body: |
+    A fortified city stood at [Troy] in the Bronze Age. Greece was a patchwork of kingdoms ruled from citadels like [Mycenae]. Even [Ithaca] is a real island.
+  body_size: 42
+  image: lion-gate.jpg
+  image_position: center 38%
+- layout: story
+  surface: solid
+  kicker_meta: Spoiler warning
+  headline: |
+    From here,
+    *spoilers*
+  body: The next slides reveal how the film changes Homer's story. Turn back now if you want to watch
+    it clean.
+  headline_size: 104
+- layout: story
+  surface: light
+  kicker_meta: What Nolan Changes · I
+  headline: The horse, and a *new* man
+  body: |
+    Nolan keeps the wooden horse but drags it up the beach on rollers. He adds [Sinon] (Elliot Page), who talks Troy into wheeling it inside the walls.
+  image: trojan-horse.jpg
+  image_position: center 30%
+- layout: story
+  surface: light
+  kicker_meta: What Nolan Changes · II
+  headline: He rewrites the *monsters*
+  body: |
+    [Calypso] feeds the lotus to Odysseus himself. [Circe] still turns his men to pigs, but is no longer his lover.
+  body_size: 42
+  image: circe.jpg
+  image_position: center 18%
+- layout: closing
+  surface: solid
+  headline: A story we still can't put down.
+  handle: '@vaqhq · vaqhq.com'

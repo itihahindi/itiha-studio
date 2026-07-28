@@ -1,0 +1,37 @@
+name: Joshi
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Replace this with your IG caption.
+
+  #hashtags #here
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+slides:
+- layout: cover
+  eyebrow: Series 01
+  eyebrow_meta: Joshi · 3 Parts
+  headline: |
+    *New* Education *Minister*
+  subline: Pralad Joshi.
+  swipe_meta: Swipe ▸ · 3 Slides · 1 min read
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-JVPYefDWJBqCp-kIGmhCcjY5dx-2pIo9Xmm_ZoqFciCkVhzP0X-AAqg&s=10
+  image_position: 23% 0%
+  surface: dark
+- layout: closing
+  headline: |2+
+
+  stats:
+  - value: '1825'
+    label: Year it began
+  - value: 100K
+    label: People affected
+  - value: '12'
+    label: Colonies involved
+  body: |2+
+
+  handle: 'Follow '

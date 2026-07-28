@@ -30,3 +30,6 @@ sources.json
 # bin/kavi daemon state (bin/itiha is a back-compat alias)
 .kavi-studio.pid
 .itiha-studio.pid
+
+# Claude Code web-session render cache (vendored CDN libs)
+tools/.web-cache/

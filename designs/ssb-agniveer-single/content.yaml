@@ -1,0 +1,27 @@
+name: ssb-agniveer-single
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  SSB Recruitment Rules 2026: the Ministry of Home Affairs has reserved 50% of Sashastra Seema Bal Constable (General Duty) vacancies for former Agniveers, every recruitment year, and waived the written exam, Physical Standards Test (PST) and Physical Efficiency Test (PET) they would normally have to clear.
+
+  The upper age limit is relaxed by three years for ex-Agniveers, and by five years for the first batch leaving service. Hiring runs in two phases: the first fills the reserved ex-Agniveer quota, the second opens to all candidates by open competition. Eligibility stays at 18 to 23 years with a matriculation qualification. It is the clearest after-service pathway the Agnipath scheme has been given so far.
+
+  Sources: Ministry of Home Affairs notification via ANI, India Today, Asianet Newsable (28 July 2026).
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #SSBRecruitment2026 #Agniveer #ExAgniveer #ConstableGD #CAPF #SashastraSeemaBal #AgnipathScheme #MHA #GovtJobs #IndianArmy #DefenceJobs #VaqHQ
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: false
+  seriesLabel: THE RULE CHANGE
+slides:
+- layout: story
+  kicker_meta: Ground Report · 28 Jul 2026
+  headline: |
+    Half the SSB constable
+    jobs, now *reserved*
+  image_caption: SSB Constable (GD) recruitment
+  body: |
+    The Home Ministry set aside [50%] of Constable GD posts for ex-Agniveers, and waived their [written exam, PST and PET]. Age limits ease by up to five years.

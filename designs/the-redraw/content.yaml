@@ -1,0 +1,68 @@
+name: the-redraw
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  For fifty years the size of the Lok Sabha has been frozen. That freeze ends after 2026, and what replaces it could reshape Indian politics for a generation.
+
+  The math is simple and uncomfortable. Seats have been fixed to the 1971 census since the 1970s, held in place so that states which slowed their population growth would not be punished for it. Since then the northern states have grown far faster than the southern ones. Redraw the map by pure headcount and the north gains seats while the south loses relative weight, even as its economy carries a large share of the country.
+
+  Nothing has been decided. No new map exists, a fresh census has to come first, and Parliament still has to vote. What we are laying out here is the stakes, not the outcome. But the new Lok Sabha chamber was built to seat far more than 543, and that number was not chosen by accident.
+
+  Sources: PRS India, Census of India, Lok Sabha Secretariat.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Delimitation #LokSabha #IndianPolitics #Federalism #NorthSouth #Census #Parliament
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE REDRAW
+slides:
+- layout: cover
+  kicker_meta: Ground Report · 28 Jul 2026
+  surface: solid
+  headline: |
+    The map that
+    redraws *itself*
+    after 2026
+  subline: One census could tilt Parliament north. Here is the math nobody is settling.
+- layout: story
+  kicker_meta: The Freeze
+  headline: A house frozen since *1971*
+  body: |
+    The Lok Sabha has held [543] elected seats for decades. Their split between states was locked to the [1971 census] and held there by law through 2026.
+- layout: stat
+  kicker_meta: The Ceiling
+  label: Seats the new chamber can hold
+  value: "888"
+  sublabel: Up from 543 today.
+  body: The new Lok Sabha hall was built for a far bigger house. The freeze that kept it at 543 lifts after 2026.
+- layout: story
+  kicker_meta: Why It Tilts
+  headline: Population did not grow *evenly*
+  body: |
+    Since 1971 the [northern] states grew much faster than the [southern] ones. Redraw seats by headcount and the north gains, the south slips.
+- layout: stat
+  kicker_meta: The Asymmetry
+  label: Southern states that curbed growth earliest
+  value: "5"
+  sublabel: Tamil Nadu, Kerala, Karnataka, Andhra Pradesh, Telangana.
+  body: The states that slowed their growth first stand to lose the most relative weight in the house.
+- layout: story
+  kicker_meta: The Southern Case
+  headline: Rewarded early, *penalised* late
+  body: |
+    The south met its family-planning targets first. A pure headcount redraw would cut the share of the states that did what the nation asked.
+- layout: story
+  kicker_meta: The Honest Part
+  headline: Nothing is decided *yet*
+  body: |
+    No new map exists. A [census] must come first, then Parliament must vote. The numbers here are the stakes, not the outcome.
+- layout: closing
+  headline: |
+    Same house.
+    New math.
+  body: |
+    The seats stay frozen until 2026. What replaces the freeze could tilt Parliament for a generation.
+  handle: Follow @vaqhq · vaqhq.com

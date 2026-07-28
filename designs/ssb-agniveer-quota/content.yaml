@@ -1,0 +1,67 @@
+name: ssb-agniveer-quota
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  SSB Recruitment Rules 2026: the Ministry of Home Affairs has reserved 50% of Sashastra Seema Bal Constable (General Duty) vacancies for former Agniveers, every recruitment year, and waived the tests they would normally have to clear. This is the clearest after-service pathway the Agniveer scheme has been given so far.
+
+  What the new SSB Constable GD rules change, in plain terms. Ex-Agniveers are exempted from the written examination, the Physical Standards Test (PST) and the Physical Efficiency Test (PET), on the logic that four years of army service already screens for fitness and discipline. The upper age limit is relaxed by three years for ex-Agniveers, and by five years for the very first batch leaving service. Hiring runs in two phases: the first fills the reserved ex-Agniveer quota, the second opens to all candidates by open competition. Direct recruitment eligibility stays at 18 to 23 years with a matriculation qualification.
+
+  Why it matters. Agniveers serve a four-year term and most exit without a pension. A guaranteed 50% route into the SSB, with the exams removed, is the kind of landing the scheme was criticised for lacking. It also signals how the CAPF forces are being reshaped around a steady flow of short-service veterans.
+
+  Sources: Ministry of Home Affairs notification via ANI, India Today, Asianet Newsable (28 July 2026).
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #SSBRecruitment2026 #Agniveer #ExAgniveer #ConstableGD #CAPF #SashastraSeemaBal #AgnipathScheme #MHA #GovtJobs #IndianArmy #DefenceJobs #VaqHQ
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE RULE CHANGE
+slides:
+- layout: cover
+  kicker_meta: Ground Report · 28 Jul 2026
+  surface: solid
+  headline: |
+    Half the SSB
+    constable list is
+    *reserved* now
+  subline: New Home Ministry rules give ex-Agniveers 50% of Constable GD posts, and a pass on the tests.
+- layout: story
+  kicker_meta: What Changed
+  headline: A new rulebook, *notified* today
+  body: |
+    The Home Ministry notified the [SSB Constable GD Recruitment Rules, 2026]. From now on, half of every recruitment year is set aside for [ex-Agniveers].
+- layout: stat
+  kicker_meta: The Quota
+  label: SSB Constable GD posts reserved for ex-Agniveers
+  value: "50%"
+  sublabel: Every recruitment year.
+  body: One in two constable seats now goes to a soldier who has finished an Agniveer term.
+- layout: story
+  kicker_meta: The Fast Lane
+  headline: No written test. No *PST or PET*.
+  body: |
+    Ex-Agniveers are exempted from the [written exam], the [Physical Standards Test] and the [Physical Efficiency Test]. Four years of service counts as the screen.
+- layout: story
+  kicker_meta: More Time On The Clock
+  headline: Up to *five* extra years
+  body: |
+    The upper age limit is relaxed by [three years] for ex-Agniveers, and by [five] for the very first batch leaving service.
+- layout: story
+  kicker_meta: How Hiring Runs
+  headline: Reserved first, *open* second
+  body: |
+    Recruitment runs in two phases. The [first] fills the ex-Agniveer quota, the [second] opens to everyone by competition.
+- layout: story
+  kicker_meta: Why It Matters
+  headline: The exit ramp Agniveer *needed*
+  body: |
+    Agniveers serve four years, then most leave without a pension. A guaranteed [50%] route into the SSB is the landing the scheme was faulted for lacking.
+- layout: closing
+  headline: |
+    Four years in.
+    A door held open.
+  body: |
+    Half of every SSB constable intake, the tests waived, the age bar eased. The Agnipath scheme just built its off-ramp.
+  handle: Follow @vaqhq · vaqhq.com

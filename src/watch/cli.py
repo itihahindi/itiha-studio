@@ -122,7 +122,7 @@ def slugify(words: list[str]) -> str:
     return re.sub(r"-{2,}", "-", base) or "event"
 
 
-def build_brief(cl: C.Cluster, idf: dict, wl: dict) -> dict:
+def build_brief(cl: C.Cluster, idf: dict, wl: dict, design_index=None) -> dict:
     ents = cl.shared_entities()
     nums = cl.shared_numbers()
     terms = cl.top_terms(idf)
@@ -172,6 +172,7 @@ def build_brief(cl: C.Cluster, idf: dict, wl: dict) -> dict:
         "shared_numbers": nums[:12],
         "top_terms": terms,
         "needs_verification": _verification_flags(cl.text),
+        "possible_duplicate_of": possible_duplicate(ents, terms, design_index or []),
         "posts": [
             {
                 # Post id is what dedupes a developing story across polls —
@@ -189,6 +190,64 @@ def build_brief(cl: C.Cluster, idf: dict, wl: dict) -> dict:
             for p in sorted(cl.posts, key=lambda p: p.dt)
         ],
     }
+
+
+def existing_design_index() -> list[tuple[str, set[str]]]:
+    """Tokenised slug + name of every design already on disk.
+
+    The watcher only knows about decks IT built. Hand-made ones are invisible
+    to it, so it happily re-proposes a story that was covered manually days
+    ago — which is how the Durov charge and the PoJK crackdown both came back.
+    Post-id overlap cannot catch that: a hand-built deck has no source posts
+    recorded at all.
+    """
+    out = []
+    designs = ROOT / "designs"
+    if not designs.is_dir():
+        return out
+    for d in sorted(designs.iterdir()):
+        if not d.is_dir() or not (d / "content.yaml").exists():
+            continue
+        name = ""
+        try:
+            name = (yaml.safe_load((d / "content.yaml").read_text()) or {}).get("name", "")
+        except Exception:
+            pass
+        toks = {
+            t for t in re.split(r"[^a-z0-9]+", f"{d.name} {name}".lower())
+            if len(t) > 2
+        }
+        if toks:
+            out.append((d.name, toks))
+    return out
+
+
+def possible_duplicate(entities: list[str], terms: list[str],
+                       index: list[tuple[str, set[str]]],
+                       *, min_shared: int = 2, rare_df: int = 2) -> list[str]:
+    """Existing designs whose slug/name overlaps this cluster's subject.
+
+    Two shared tokens normally, but ONE is enough when that token is rare
+    across the whole designs folder. "bill" or "leak" is shared by many decks
+    and means little on its own; "pojk" or "durov" appears in one or two and
+    is effectively a subject id. Without the rarity rule the PoJK crackdown
+    slipped through, because its only shared token was the one that mattered.
+    """
+    subject = {t.lower() for t in (entities[:8] + terms[:8])}
+    df: dict[str, int] = {}
+    for _, toks in index:
+        for t in toks:
+            df[t] = df.get(t, 0) + 1
+
+    hits = []
+    for slug, toks in index:
+        shared = subject & toks
+        if not shared:
+            continue
+        distinctive = [t for t in shared if df.get(t, 99) <= rare_df]
+        if len(shared) >= min_shared or distinctive:
+            hits.append(f"{slug} ({', '.join(sorted(shared))})")
+    return hits
 
 
 _VERIFY_TRIGGERS = [
@@ -265,6 +324,7 @@ def cmd_poll(args) -> None:
         fams = ", ".join(sorted(C.family_set(c.sources, wl["families"])))
         print(f"  – held back: {', '.join(c.sources)} — all one family ({fams})")
 
+    design_index = existing_design_index()
     queued = 0
     for cl in hits:
         fp = cl.fingerprint()
@@ -283,10 +343,12 @@ def cmd_poll(args) -> None:
         path = QUEUE_DIR / f"{fp}.json"
         if path.exists() and not args.refresh:
             continue
-        brief = build_brief(cl, idf, wl)
+        brief = build_brief(cl, idf, wl, design_index)
         path.write_text(json.dumps(brief, indent=2, ensure_ascii=False))
         queued += 1
         flag = "  ⚠ echo" if brief["echo_score"] >= ECHO_LIMIT else ""
+        if brief["possible_duplicate_of"]:
+            flag += "  ⚠ maybe covered: " + brief["possible_duplicate_of"][0]
         print(f"  + {fp}  {brief['format']:8} {brief['vertical']:9} "
               f"{', '.join(brief['sources'][:4])}{flag}")
 
@@ -340,6 +402,8 @@ def cmd_queue(_args) -> None:
             print(f"    ⚠ {b['echo_warning']}")
         if b.get("needs_verification"):
             print(f"    ✓ verify: {', '.join(b['needs_verification'])}")
+        for d in b.get("possible_duplicate_of") or []:
+            print(f"    ⚠ possibly already covered by designs/{d}")
 
 
 def cmd_brief(args) -> None:

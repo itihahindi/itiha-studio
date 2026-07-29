@@ -1,0 +1,93 @@
+name: priyanka-gaumutra-kamakoti
+origin: watcher
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Congress MP Priyanka Gandhi Vadra told the Lok Sabha that the government's new exam reform panel contains "one ex-IB chief, one IT company owner and one gaumutra expert." The man she was describing is Prof. V. Kamakoti, Director of IIT Madras, and a former chairman of the JEE.
+
+  What was actually said. Speaking in the debate on the anti-paper-leak legislation on 28 July 2026, she said: "In this new committee, there is one ex-IB chief, one IT company owner and one gaumutra expert." She did not name Kamakoti. The reference was understood immediately, because he is the panel member associated with remarks about cow urine. BJP MP Anurag Thakur objected and the exchange turned into a floor clash.
+
+  Who he is. Kamakoti joined the IIT Madras faculty in 2001 and has been its Director since January 2022. He led the development of Shakti, India's first indigenous microprocessor. He sits on the National Security Advisory Board, has chaired the government's Artificial Intelligence Task Force, and is a former JEE chairman. In January 2026 he was awarded the Padma Shri in the science and engineering category.
+
+  The number being shared is wrong. Posts circulating today credit him personally with 417 patents. That figure is IIT Madras's patent filings for 2025, under the "A Patent a Day" initiative he launched as director. It is an institutional output, not one man's tally. His record does not need the inflation, and using the wrong number is what lets the argument be dismissed.
+
+  The context the jibe reaches for. In January 2025 Kamakoti said cow urine had antibacterial, antifungal and anti-inflammatory properties, citing published studies. The remark drew criticism from scientists and he defended it by pointing to peer reviewed work. That statement is real. It is what the jibe was aiming at, and leaving it out would be dishonest.
+
+  Why it still does not land. The Nilekani task force exists to fix how national exams are run. Its members include a former ISRO chairman, a former IB chief, a former education secretary, a former Bihar chief secretary, and the director of IIT Madras who has chaired the JEE. "What do they know about education" is a question with an answer.
+
+  Sources: The Tribune, Deccan Herald, Outlook India, The News Minute and Business Today on the Lok Sabha exchange of 28 July 2026. Careers360 and ETV Bharat on the Padma Shri 2026 and the patent figure.
+
+  Image: Priyanka Gandhi Vadra speaking in the Lok Sabha, 28 July 2026, as circulated on X.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #PriyankaGandhi #Kamakoti #IITMadras #ExamReforms #NEET #LokSabha #Congress #GroundReport
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: true
+  seriesLabel: GROUND REPORT
+slides:
+- layout: cover
+  kicker_meta: LOK SABHA · 28 JULY
+  # Kept to three short lines: with a 560px image panel above it, the
+  # four-line version collided with the bottom of the frame.
+  headline: |
+    The *gaumutra expert*
+    she mocked used to
+    run the *JEE*.
+  subline: Priyanka Gandhi on the exam reform task force, and the record of the man she was describing.
+  align_x: left
+  image: priyanka-lok-sabha.jpg
+  # 1536x2048 portrait into a 1080-wide band: the crop is a horizontal slice,
+  # so the Y offset decides whether her face survives it. 28% cut the chin.
+  image_position: 50% 38%
+  image_height: 560
+
+- layout: quote
+  kicker_meta: What was said
+  quote: |
+    In this new committee, there is one ex-IB chief, one IT company owner and one gaumutra expert.
+  attribution: Priyanka Gandhi Vadra, Lok Sabha, 28 July 2026
+  quote_size: 66
+
+- layout: story
+  kicker_meta: Who he is
+  headline: The *gaumutra expert* runs IIT Madras.
+  body: |
+    [Prof. V. Kamakoti] joined the faculty in 2001 and has been Director since [January 2022]. He led the development of [Shakti], India's first indigenous microprocessor.
+
+    He sits on the [National Security Advisory Board], chaired the government's [AI Task Force], and is a former [JEE chairman]. In January 2026 he received the [Padma Shri] for science and engineering.
+  body_size: 42
+
+- layout: stat
+  kicker_meta: A number worth getting right
+  label: PATENTS FILED BY IIT MADRAS IN 2025
+  value: "417"
+  sublabel: Under the "A Patent a Day" programme he launched as director
+  body: |
+    This figure is circulating today as [his personal patent count]. It is not. It is the [institution's] filings for one year, under a programme he started.
+
+    The real record is strong enough. Using the wrong number is what lets the argument be waved away.
+  body_size: 40
+
+- layout: story
+  kicker_meta: The context
+  headline: The jibe has a *source*.
+  body: |
+    In [January 2025] Kamakoti said cow urine had [antibacterial, antifungal and anti-inflammatory] properties, citing published studies. Scientists criticised it. He defended it by pointing to peer reviewed work.
+
+    That statement is real, and it is what the jibe was aiming at. The question is whether it disqualifies him from a panel on [how exams are run].
+  body_size: 40
+
+- layout: closing
+  # No *emphasis* here: the closing layout renders its headline as plain
+  # serif and passes asterisks straight through as literal characters.
+  headline: |
+    What the panel
+    is actually for.
+  body: |
+    A former ISRO chairman. A former IB chief. A former education secretary. A former Bihar chief secretary. And the director of IIT Madras, who has chaired the JEE.
+
+    "What do they know about education" is a question with an answer.
+  handle: Follow @vaqhq · vaqhq.com

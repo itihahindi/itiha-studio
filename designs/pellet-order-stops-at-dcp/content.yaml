@@ -1,0 +1,45 @@
+name: pellet-order-stops-at-dcp
+origin: watcher
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Rahul Gandhi told the Lok Sabha that Home Minister Amit Shah authorised police to fire on student protesters on 20 July. The paper trail that exists does not reach him.
+
+  What he said. During the debate on the anti-paper-leak Bill, Gandhi said Shah was either "culpable or incompetent", and that "he authorised the shooting of our students". He demanded Shah's resignation. Shah was not in the House. Parliamentary Affairs Minister Kiren Rijiju rejected the allegation as unsubstantiated and asked Gandhi to produce evidence.
+
+  What is actually on record. A Delhi Police general diary entry, first reported by The Hindu, logs what the Rapid Action Force fired at Jantar Mantar on 20 July: 55 non-electrical shells, 15 electrical shells, five tear gas grenades, two anti-riot gun rounds, and two rounds of plastic pellets. The diary records that the pellet rounds were fired on the instructions of a DCP-rank officer deployed in Zone 1.
+
+  The part that collapsed is not the part being claimed. Delhi Police had denied using pellets at all. That denial is what the diary entry contradicts, and at least four people were reported hit. So the pellets are established, an order is established, and the order stops at a Deputy Commissioner of Police. There is nothing on the record connecting it to the Home Minister.
+
+  Why the distinction matters. An allegation that outruns its evidence is the easiest kind to defeat, and this one has been. But claiming no pellets were fired would be wrong in the other direction, and would not survive the diary entry either. The accurate version is narrower and harder to answer: the order exists, and it has a rank attached to it, and the rank is not Cabinet.
+
+  What to watch. The RAF has barred pellet gun use pending review. The Supreme Court takes up related petitions on 3 August.
+
+  Sources: The Week and Outlook India on the Lok Sabha exchange of 29 July 2026. The Tribune, Outlook India and India TV on the general diary entry and the DCP's instructions, reported 28 July.
+
+  Image: Rahul Gandhi in the Lok Sabha.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #RahulGandhi #AmitShah #LokSabha #Parliament #JantarMantar #DelhiPolice #NEET
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: false
+  seriesLabel: GROUND REPORT
+slides:
+- layout: story
+  kicker_meta: LOK SABHA · 29 JULY 2026
+  headline: |
+    The pellet order is
+    on record. It stops
+    at a *DCP*.
+  headline_size: 68
+  image: rahul-gandhi-lok-sabha.jpg
+  image_position: 50% 40%
+  image_height: 380
+  image_caption: Rahul Gandhi in the Lok Sabha, 29 July
+  # 43 words. House limit for a single post is 50.
+  body: |
+    A police general diary logs [two rounds of plastic pellets] fired at Jantar Mantar on the instructions of a [DCP-rank officer]. Delhi Police had denied using them at all. Nothing on record ties that order to [Amit Shah]. Rijiju called the charge unsubstantiated.
+  body_size: 40

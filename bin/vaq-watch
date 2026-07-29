@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Vaq HQ handle watcher — see src/watch/cli.py for commands.
+#
+#   bin/vaq-watch login     one-time X sign-in in a real browser window
+#   bin/vaq-watch poll      read the watchlist, cluster, queue events
+#   bin/vaq-watch queue     what's waiting for a build
+#   bin/vaq-watch status    ledger + 70/30 ratio
+set -euo pipefail
+
+HERE="$(cd "$(dirname "$0")" && pwd)"
+ROOT="$(cd "$HERE/.." && pwd)"
+PY="$ROOT/.venv/bin/python"
+[[ -x "$PY" ]] || PY="python3"
+
+PYTHONPATH="$ROOT/src${PYTHONPATH:+:$PYTHONPATH}" exec "$PY" -m watch.cli "$@"

@@ -322,6 +322,21 @@
   <div id="grid" class="grid"></div>
   <div id="empty" class="empty" style="display:none">No projects yet. Use the form above to create your first one.</div>
 
+  <!-- Decks the handle watcher built from a queued event. Kept out of Your
+       projects on purpose: these are drafts nobody has read yet. The whole
+       block stays hidden when there are none, so Itiha-only work never sees
+       it. -->
+  <div id="auto-wrap" style="display:none">
+    <div class="section-label" style="display:flex;align-items:baseline;gap:14px;margin-top:52px">
+      Auto-generated
+      <span id="auto-count" style="color:#666;font-size:10px;letter-spacing:2px"></span>
+      <span style="color:#5a5a5a;font-size:10px;letter-spacing:1.4px;text-transform:none">
+        built by the watcher · unreviewed
+      </span>
+    </div>
+    <div id="auto-grid" class="grid"></div>
+  </div>
+
 </main>
 
 <script>
@@ -467,13 +482,43 @@ async function loadProjects() {
   return r.json();
 }
 
+// Decks the watcher built file under Auto-generated, not Your projects.
+const isAuto = p => (p.origin || '') === 'watcher';
+
+function makeCard(p, tokens) {
+  const brand = p.brand || 'itiha';
+  const a = document.createElement('a');
+  a.className = 'card';
+  a.dataset.brand = brand;
+  a.href = `d/${encodeURIComponent(p.slug)}/`;
+  a.innerHTML = `
+    <button class="delete-btn" title="Delete project" aria-label="Delete project">×</button>
+    <div class="name">${highlight(p.name || p.slug, tokens)}</div>
+    <div class="format">
+      <span class="badge" style="color:${BRAND_COLORS[brand] || '#888'};border-color:#2a2a2a">${escapeHtml(BRAND_LABELS[brand] || brand)}</span>
+      <span class="badge">${escapeHtml(FORMAT_LABELS[p.format] || p.format || 'unknown')}</span>
+      ${isAuto(p) ? '<span class="badge" style="color:#8a8a8a;border-color:#2a2a2a">AUTO</span>' : ''}
+    </div>
+  `;
+  a.querySelector('.delete-btn').onclick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    deleteProject(p);
+  };
+  return a;
+}
+
 function renderGrid(projects) {
   allProjects = projects;
   const grid = document.getElementById('grid');
   const empty = document.getElementById('empty');
   const counter = document.getElementById('project-count');
   const hint = document.getElementById('cross-hint');
+  const autoWrap = document.getElementById('auto-wrap');
+  const autoGrid = document.getElementById('auto-grid');
+  const autoCount = document.getElementById('auto-count');
   grid.innerHTML = '';
+  autoGrid.innerHTML = '';
 
   const tokens = tokenize(searchQuery);
   const inBrand = brandFilter === 'all'
@@ -481,9 +526,16 @@ function renderGrid(projects) {
     : projects.filter(p => (p.brand || 'itiha') === brandFilter);
   const shown = inBrand.filter(p => matchesProject(p, tokens));
 
+  const mine = shown.filter(p => !isAuto(p));
+  const auto = shown.filter(isAuto);
+  const inBrandMine = inBrand.filter(p => !isAuto(p));
+  const inBrandAuto = inBrand.filter(isAuto);
+
+  // Counts are per-section: "Your projects (12)" must not include decks
+  // filed below it, or the number contradicts what's under the heading.
   counter.textContent = tokens.length
-    ? `(${shown.length} of ${inBrand.length})`
-    : (inBrand.length ? `(${inBrand.length})` : '');
+    ? `(${mine.length} of ${inBrandMine.length})`
+    : (inBrandMine.length ? `(${inBrandMine.length})` : '');
 
   // A brand tab must never silently swallow a hit. If the query matches
   // projects filed under another brand, say so and offer a way through.
@@ -504,36 +556,29 @@ function renderGrid(projects) {
     hint.style.display = 'none';
   }
 
-  if (!shown.length) {
+  // Only claim the page is empty when BOTH sections are. A search that hits
+  // an auto-generated deck and nothing else must not print "no projects
+  // match" above a section that is visibly showing the match.
+  if (!mine.length && !auto.length) {
     // "No matches" and "no projects yet" are different problems — the second
     // message tells you to use the create form, which is useless mid-search.
     empty.textContent = tokens.length
       ? `No projects match "${searchQuery.trim()}".`
       : 'No projects yet. Use the form above to create your first one.';
     empty.style.display = 'block';
-    return;
+  } else {
+    empty.style.display = 'none';
+    for (const p of mine) grid.appendChild(makeCard(p, tokens));
   }
-  empty.style.display = 'none';
-  for (const p of shown) {
-    const brand = p.brand || 'itiha';
-    const a = document.createElement('a');
-    a.className = 'card';
-    a.dataset.brand = brand;
-    a.href = `d/${encodeURIComponent(p.slug)}/`;
-    a.innerHTML = `
-      <button class="delete-btn" title="Delete project" aria-label="Delete project">×</button>
-      <div class="name">${highlight(p.name || p.slug, tokens)}</div>
-      <div class="format">
-        <span class="badge" style="color:${BRAND_COLORS[brand] || '#888'};border-color:#2a2a2a">${escapeHtml(BRAND_LABELS[brand] || brand)}</span>
-        <span class="badge">${escapeHtml(FORMAT_LABELS[p.format] || p.format || 'unknown')}</span>
-      </div>
-    `;
-    a.querySelector('.delete-btn').onclick = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      deleteProject(p);
-    };
-    grid.appendChild(a);
+
+  if (auto.length) {
+    autoWrap.style.display = 'block';
+    autoCount.textContent = tokens.length
+      ? `(${auto.length} of ${inBrandAuto.length})`
+      : `(${auto.length})`;
+    for (const p of auto) autoGrid.appendChild(makeCard(p, tokens));
+  } else {
+    autoWrap.style.display = 'none';
   }
 }
 

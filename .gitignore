@@ -30,3 +30,6 @@ sources.json
 # bin/kavi daemon state (bin/itiha is a back-compat alias)
 .kavi-studio.pid
 .itiha-studio.pid
+
+# Handle-watcher state (browser profile, post store, queue, ledger)
+.watch/

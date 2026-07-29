@@ -174,6 +174,9 @@ def build_brief(cl: C.Cluster, idf: dict, wl: dict) -> dict:
         "needs_verification": _verification_flags(cl.text),
         "posts": [
             {
+                # Post id is what dedupes a developing story across polls —
+                # see ledger.seen_overlap. Do not drop it from the brief.
+                "id": p.raw.get("id", ""),
                 "handle": p.handle,
                 "author": p.raw.get("author"),
                 "url": p.raw.get("url"),
@@ -266,6 +269,16 @@ def cmd_poll(args) -> None:
     for cl in hits:
         fp = cl.fingerprint()
         if ledger.seen(fp):
+            continue
+        # A developing story gains posts, which shifts the shared entities the
+        # fingerprint is built from — so the same event returns under a new id.
+        # Overlapping source posts are what actually identify it.
+        ids = [p.raw.get("id", "") for p in cl.posts]
+        dup = ledger.seen_overlap(ids)
+        if dup:
+            label = dup.get("slug") or "dismissed"
+            print(f"  – already handled as {label} "
+                  f"({dup['shared']} shared post(s)); skipping {fp}")
             continue
         path = QUEUE_DIR / f"{fp}.json"
         if path.exists() and not args.refresh:
@@ -364,7 +377,8 @@ def cmd_built(args) -> None:
     b = json.loads(path.read_text())
     fmt = args.format or b["format"]
     ledger.record(args.slug, fmt, fingerprint=args.id)
-    ledger.mark_seen(args.id, slug=args.slug, fmt=fmt)
+    ledger.mark_seen(args.id, slug=args.slug, fmt=fmt,
+                     post_ids=[p.get("id", "") for p in b.get("posts", [])])
     if not stamp_origin(args.slug):
         print(f"  !! designs/{args.slug}/content.yaml not found — not stamped")
     path.unlink()
@@ -433,7 +447,8 @@ def cmd_dismiss(args) -> None:
     if not path.exists():
         sys.exit(f"No queued event {args.id}")
     b = json.loads(path.read_text())
-    ledger.mark_seen(args.id, slug="", fmt="dismissed", headline=args.reason or "")
+    ledger.mark_seen(args.id, slug="", fmt="dismissed", headline=args.reason or "",
+                     post_ids=[p.get("id", "") for p in b.get("posts", [])])
     path.unlink()
     print(f"Dismissed {args.id} ({', '.join(b['sources'])})"
           + (f": {args.reason}" if args.reason else ""))

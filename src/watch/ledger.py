@@ -36,15 +36,45 @@ def seen(fingerprint: str) -> dict | None:
     return _load(SEEN_PATH, {}).get(fingerprint)
 
 
-def mark_seen(fingerprint: str, *, slug: str, fmt: str, headline: str = "") -> None:
+def mark_seen(
+    fingerprint: str,
+    *,
+    slug: str,
+    fmt: str,
+    headline: str = "",
+    post_ids: list[str] | None = None,
+) -> None:
     data = _load(SEEN_PATH, {})
     data[fingerprint] = {
         "slug": slug,
         "format": fmt,
         "headline": headline,
+        "post_ids": sorted(post_ids or []),
         "at": datetime.now(timezone.utc).isoformat(),
     }
     _save(SEEN_PATH, data)
+
+
+def seen_overlap(post_ids: list[str], *, min_shared: int = 2) -> dict | None:
+    """Find an already-handled event that shares posts with this cluster.
+
+    The fingerprint alone is not enough. It derives from the cluster's shared
+    entities, and a developing story keeps gaining posts — which changes those
+    entities, which changes the fingerprint, so an event that was built an hour
+    ago requeues under a new id and gets built twice. Overlapping source posts
+    are the stable signal that two clusters are the same story.
+    """
+    ids = set(post_ids)
+    if not ids:
+        return None
+    for fp, rec in _load(SEEN_PATH, {}).items():
+        prior = set(rec.get("post_ids") or [])
+        if not prior:
+            continue  # recorded before post_ids were tracked
+        shared = len(ids & prior)
+        if shared >= min_shared or (prior and prior <= ids):
+            return {"fingerprint": fp, "shared": shared, **rec}
+    return None
 
 
 # ── 70/30 ────────────────────────────────────────────────────────

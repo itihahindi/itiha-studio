@@ -6,12 +6,12 @@
 const _VERTICAL_FIELD = {
   key: "vertical", type: "select", label: "Vertical (show)",
   options: ["", "live", "briefing", "longview", "ground", "sports", "legal", "tech"], default: "",
-  help: "Blank inherits the project default from Tweaks. live=Current Affairs · briefing=Geopolitics · longview=Political History · ground=Indian Politics · sports=Sports (The Arena) · legal=Legal (The Docket, dark) · tech=Technology (Cathode).",
+  help: "Editorial label only — every vertical shares the same two-tone look (orange + navy on paper). Sets the badge text: live=Current Affairs · briefing=Geopolitics · longview=Political History · ground=Indian Politics · sports=Sports · legal=Legal · tech=Technology.",
 };
 const _SURFACE_FIELD = {
   key: "surface", type: "select", label: "Surface",
   options: ["", "light", "solid", "dark"], default: "",
-  help: "Blank = the vertical's own default (legal runs dark throughout). light = paper interior with the vertical's top rule. solid = accent poster tile (photo-less slides). dark = cinematic hero (sports covers) / The Docket's #141413.",
+  help: "Blank = the layout's default. light = paper interior with the orange top rule. solid = orange poster tile (breaking / photo-less slides). dark = navy poster or cinematic photo hero.",
 };
 const _TEXTURE_FIELD = {
   key: "texture", type: "select", label: "Texture",
@@ -156,6 +156,8 @@ window.MANIFEST = {
       _TEXTURE_FIELD,
       { key: "panel_height",      type: "number", label: "Panel height (px)", default: 560, step: 20,
         help: "The video fills everything below this line." },
+      { key: "panel_fade",        type: "number", label: "Panel fade (px)", default: 120, step: 20,
+        help: "Paper bleeds this many px over the video's top edge instead of a hard cut. 0 = hard cut." },
       { key: "headline_size",     type: "number", label: "Headline size (px)", default: 66 },
       { key: "headline_offset_y", type: "number", label: "Headline offset Y (px)", default: 0, step: 10 },
     ],

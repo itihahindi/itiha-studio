@@ -1,0 +1,27 @@
+name: pok-election-violence
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Phase one of assembly polls in Pakistan occupied Kashmir descended into chaos. A PPP worker was shot dead during polling in Kotli, a ballot box was seized and destroyed in Bhimber, and rival parties traded rigging allegations across the Mirpur division.
+
+  The Joint Awami Action Committee had called the vote a sham and asked residents to stay home. Booths across PoK ran near empty as 13 constituencies voted under heavy security.
+
+  Watch the ground footage. This is what election day looks like in occupied Kashmir.
+
+  Follow @vaqhq for geopolitics, decoded live.
+  vaqhq.com
+hashtags: |
+  #PoK #PakistanOccupiedKashmir #Kashmir #PoKElections #Pakistan #ElectionViolence #Kotli #Mirpur #Geopolitics #BreakingNews #VaqHQ
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-frame
+  vertical: live
+  video_url: https://x.com/i/status/2081756389446447477/video/4
+  headline: Pakistan Occupied Kashmir's election day turns *violent*
+  subline: Ballot boxes looted, a party worker shot dead
+  texture: dots
+  panel_height: 420
+  panel_fade: 0

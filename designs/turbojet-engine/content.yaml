@@ -1,0 +1,29 @@
+name: turbojet-engine
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  India has built its first fully indigenous expendable turbojet engine in the 350 kg thrust class. Developed by DRDO's Gas Turbine Research Establishment and manufactured with Azad Engineering, the engine was handed over to the Ministry of Defence this week.
+
+  Expendable turbojets power cruise missiles and one way attack drones, and jet engine technology is regarded as one of the most sophisticated engineering disciplines in the world. Very few countries can build one end to end. India has just joined that club in the small engine tier.
+
+  Follow @vaqhq for technology and defence, decoded.
+  vaqhq.com
+hashtags: |
+  #DRDO #GTRE #JetEngine #TurbojetEngine #MadeInIndia #AtmanirbharBharat #AzadEngineering #IndianDefence #Aerospace #DefenceTech #Technology #VaqHQ
+tweaks:
+  vertical: tech
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: story
+  vertical: tech
+  headline: |
+    India builds its own
+    *jet engine*
+  image: engine.png
+  image_height: 470
+  image_caption: The GTRE turbojet, and the handover
+  image_credit: via News on Air
+  body: |
+    DRDO's GTRE has delivered India's first indigenous expendable turbojet in the [350 kg] thrust class, built with Azad Engineering.
+  surface: solid

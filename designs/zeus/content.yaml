@@ -1,0 +1,104 @@
+name: zeuss-law-and-atithi-devo-bhava
+brand: itiha
+format: instagram-portrait
+caption: |
+  Christopher Nolan's The Odyssey opened this week, and the concept at the centre of the film — the sacred law of hospitality between guest and host that the Greeks called xenia and Nolan calls Zeus's Law — is one Indian audiences already know by another name. Long before Homer, the Taittiriya Upanishad had declared: Atithi Devo Bhava. The guest is God. Not merely under God's protection, as the Greeks held — but literally divine. This carousel is the record of two ancient civilisations that arrived, independently, at the same conclusion about the sacred obligation to the stranger at the door.
+
+  Zeus was the god of xenia — guest-host relations. The Odyssey states the principle plainly: "all strangers and beggars are from Zeus." To violate hospitality was to offend the king of the gods. Indra, in the Rig Veda, was the parallel sky king — thunderbolt in hand, ruler of the pantheon, associated with lightning and the storm. The two civilisations shared the archetype. They also shared the ethical instruction: care for the stranger, honour the traveller, feed the wanderer at your door. But where the Greeks framed hospitality as protection under a god's watchful eye, the Vedic tradition went further. The Taittiriya Upanishad's fivefold instruction — Matru Devo Bhava, Pitru Devo Bhava, Acharya Devo Bhava, Atithi Devo Bhava — treated mother, father, teacher, and guest as literally God. The guest was not merely under divine protection. The guest was divine.
+
+  Nolan's Odyssey brings Zeus's Law back to the global cinematic conversation. India has been living the same principle, under a different name, for three thousand years.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #TheOdyssey #ChristopherNolan #Xenia #AtithiDevoBhava #Upanishads #ComparativeReligion #HinduDharma
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: HOSPITALITY
+slides:
+- layout: cover
+  eyebrow: Pagan Gods
+  eyebrow_meta: Hospitality · 8 Parts
+  headline: "*Zeus's Law* in \nOdyssey Explained\n"
+  subline: The sacred law at the centre of the pagan world — and the Upanishads
+  swipe_meta: Swipe ▸ · 6 Slides · 3 min read
+  image: zeus.webp
+  image_position: 26% 50%
+  headline_offset_y: 220
+  image_overlay: 0.7
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 03 · Two Sky Kings
+  headline: "Gods of \n*Thunderbolt.*\n"
+  body: 'The [Greeks] worshipped [Zeus] , king of the gods, thunderbolt in hand, ruler of the sky. The
+    Hindus worshipped [Indra] , king of the [devas], [Vajra] in hand, ruler of the sky.  Both traditions
+    built their [moral universe] around it. Zeus gave the Greeks [xenia]. Indian civilization had something
+    similar. '
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLqB7W8txZ9-7UYPCx4LzyljlizyCKu6UWm6ct4GzTVA&s=10
+  body_y: 1
+  image_overlay: 1
+  image_position: 34% 50%
+  headline_y: 26
+  texture: scanlines
+- layout: split-story
+  chapter: Chapter 01 · The Law At The Centre
+  headline: |
+    The Sacred Law
+    Of *Hospitality.*
+  body: In [Christopher Nolan's Odyssey], the concept at the centre of the film & Greek world  is called
+    [Zeus's Law] ,the Greeks knew it as [xenia]. Zeus was the god of [guest-host relations]. Operating
+    under the epithet Zeus Xenios, he acted as the divine protector of travelers and strangers.
+  image: https://upload.wikimedia.org/wikipedia/commons/a/ae/Workshop_of_Peter_Paul_Rubens_-_Jupiter_and_Mercury_at_Philemon_and_Baucis.jpg
+  body_y: 9
+  headline_y: 13
+  image_overlay: 1
+  texture: halftone
+- layout: split-story
+  headline: |
+    Moral Code of
+    *Pagan Civilization*
+  body: When world worshiped [old Gods], a weary traveller could expect [food], [comfort], and [shelter]
+    from friends and strangers alike, with only the obligation to be a [respectful guest]. In an ancient
+    world of danger, [xenia] was the [foundational pillar] that made travel and civilisation possible.
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Feast_of_the_Gods_Giovanni_Bellini_1514.jpg/1920px-Feast_of_the_Gods_Giovanni_Bellini_1514.jpg
+  image_overlay: 0.8
+  body_y: 27
+  headline_y: 9
+  texture: halftone
+- layout: quote
+  chapter: Chapter 02 · Homer's Own Words
+  headline: |
+    In The Odyssey
+    *Itself.*
+  quote: |
+    All strangers and beggars
+    are from Zeus.
+    And a gift, however small,
+    is precious.
+  attribution: Homer's Odyssey — the source of what Nolan's film calls Zeus's Law
+  image: https://upload.wikimedia.org/wikipedia/commons/9/99/Odysseus_Sirens_BM_E440_n2.jpg
+  texture: halftone
+- layout: split-story
+  eyebrow: Did You Know?
+  headline: |
+    India Called It
+    *Atithi Devo Bhava.*
+  body: |
+    The [Taittiriya Upanishad] declared: [Atithi Devo Bhava], [the guest is God]. Not merely under [divine protection], as the Greeks held. Literally [divine]. The Upanishad's fivefold instruction taught: [Matru Devo Bhava] (mother is God), [Pitru Devo Bhava] (father is God), [Acharya Devo Bhava] (teacher is God), [Atithi Devo Bhava] (guest is God). The Indian tradition literally [worshipped]  a stranger
+  source: The Taittiriya Upanishad
+  texture: halftone
+- layout: split-story
+  headline: "Forgotten \n*Old Gods*\n"
+  body: |
+    Forgotten  [Zeus's Law] is back in conversation. [India] has been living the same principle, under a [different name], for [thousands years]. What the Greeks called [xenia], the [Taittiriya Upanishad] called [Atithi Devo Bhava]. What Zeus [protected], [Indra's civilisation] made [sacred].
+  handle: Follow @itiha29 · itiha.info
+  image: https://www.archaeology.wiki/wp-content/uploads/2018/10/zeus.jpg
+  image_overlay: 1
+  body_y: 19
+  texture: halftone
+- layout: end-card
+  headline: New slide
+  split: vertical

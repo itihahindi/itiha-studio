@@ -1,0 +1,134 @@
+name: how-christianity-digested-the-greek-epics
+brand: itiha
+format: instagram-portrait
+caption: |2
+
+
+  Before the digestion, the Greek and Roman epics were what the Ramayana and Mahabharata are to India: the sacred cultural stories that unified a civilisation, the core of classical education, the reason Alexander the Great reportedly slept with the Iliad under his pillow. Three methods were then used to break their hold. First, prophetic reinterpretation — taking pagan verses out of context to claim they foretold Christ, as Christians did with Virgil's Eclogue 4. Second, allegorisation — Ovid's Metamorphoses, exiled by Augustus for its sensual content, was rewritten as a Christian moral parable and became a core medieval textbook. Third, the "Egyptian gold" doctrine formalised by St. Augustine: take the useful moral gold from the pagan epics, leave behind the theology, the same way the Israelites took gold from Egypt and left the idols.
+
+  The playbook was ancient. The names of its architects are in the record. Only the target keeps changing.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Homer #Virgil #Ovid #Augustine #ComparativeReligion #ChristianDigestion #Ramayana
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: HOMER
+slides:
+- layout: cover
+  eyebrow: 'Odyssey '
+  eyebrow_meta: The Digestion · 8 Parts
+  headline: "How Christianity\nDigested The \n*Greek Epics.*\n"
+  subline: Three methods · the same playbook now used in India
+  swipe_meta: Swipe ▸ · 8 Slides · 4 min read
+  image: _cache/2ff39e99bc2b0b00.png
+  image_position: 26% 10%
+  image_overlay: 0.2
+  headline_size: 150
+  headline_offset_y: 200
+  theme: dark
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 01 · The Inheritance
+  headline: |
+    Their Ramayana.
+    Their *Mahabharata.*
+  body: The [Iliad] and the [Odyssey] were to the ancient Greeks what the [Ramayana] and [Mahabharata]
+    are to India. They were the [sacred cultural stories] that unified a civilisation  of politically
+    fractured states, providing a shared [worldview] filled with gods, heroes, and diverse schools of
+    thought.
+  theme: light
+  image: _cache/36a37c733c215a14.jpeg
+  body_y: 20
+  image_overlay: 0.8
+  texture: halftone
+- layout: split-story
+  eyebrow: Did You Know?
+  headline: |
+    Alexander Slept
+    With The *Iliad.*
+  body: |
+    The Homeric epics formed the [absolute core] of classical [education]. Their civilisational impact was so profound that [Alexander the Great] was educated on them. [Pagans] read the epics as descriptive storehouses of [wisdom] and [history] , not as [literal] commands. The [myths] were [symbolic], and [mature philosophers] reinterpreted them into deeper [systems] without ever losing their [civilisational hold].
+  source: Classical historical tradition
+  theme: light
+  image: _cache/0399f946bf814bc0.jpg
+  body_y: 1
+  image_overlay: 1.2
+  texture: halftone
+- layout: split-story
+  chapter: Method 01 · Prophetic Reinterpretation
+  headline: |
+    Virgil Became A
+    Christian *Prophet.*
+  body: 'The Roman poet [Virgil] wrote [Eclogue 4] in [40 BCE] — a poem predicting the birth of a Roman
+    boy under [Emperor Augustus]. Four centuries later, Christians reinterpreted it as a [prophecy of
+    Jesus]. [Virgil]  was declared a [pre-Christian prophet]. The technique: take a [pagan text], strip
+    its [original meaning], and claim it foretold [Christ].'
+  theme: light
+  image: _cache/cfb53ed7be6d9892.jpg
+  body_offset_y: 140
+  image_overlay: 1.2
+  body_y: 1
+  texture: halftone
+- layout: split-story
+  chapter: Method 02 · Allegorisation
+  headline: |
+    Ovid Was Exiled.
+    Then *Christianised.*
+  body: '[Ovid''s] epic [Metamorphoses] was so sensual that [Augustus] exiled the poet for writing it.
+    A thousand years later, it had become a [core text] of [medieval Christian education]. Ovid''s [love]
+    was re-read as [Christian truth]. His [myths] were re-read as [parables] of the soul''s need for [Christ].
+    The technique: allegorise the [pagan story] into a [Christian lesson].'
+  image: _cache/1b9b31b3e0db5fb1.jpg
+  theme: light
+  image_overlay: 1
+  body_y: 100
+  headline_y: 30
+  texture: halftone
+- layout: split-story
+  headline: "ROME'S LAST \n*PAGAN EMPEROR*\n"
+  body: |
+    [Julian the Apostate], Rome
+    last [pagan emperor] attempted to stop the appropriation of [Pagan] knowledge by issuing a decree that forbade [Christian] educators from teaching classical pagan literature, arguing that they should not profit from texts whose gods they inherently abused & disrespected. He died within [2 years in the Battlefield].
+  theme: light
+  texture: halftone
+  image: _cache/a85217556856df58.jpg
+  image_overlay: 1.5
+  body_y: -2
+- layout: quote
+  chapter: Method 03 · The Egyptian Gold
+  headline: |
+    Augustine Made It
+    *Doctrine.*
+  quote: |
+    Take the gold of pagan literature —
+    its useful knowledge and moral precepts —
+    and leave behind the superstitious fancies
+    and worship of demons.
+  attribution: St. Augustine, De Doctrina Christiana — the founding doctrine of Christian appropriation
+  body: 'Essence of [St. Augustine] Doctrine that paved way for appropriation '
+  theme: light
+  texture: halftone
+- layout: closing
+  headline: |
+    The Playbook Is
+    Ancient. The Target
+    Keeps *Changing.*
+  body: |
+    [Virgil] as prophet. [Ovid] as allegory. [Augustine's] gold. The three methods that digested [Homer] and the classical epics are the same three methods now applied to the [Ramayana], the [Thirukural], and the [Somaskanda] sculpture. The [names] have changed. The [technique] has not.
+  handle: Follow @itiha29 · itiha.info
+  theme: light
+  texture: halftone
+- layout: document
+  headline: Source
+  theme: light
+  image: _cache/81be093a61b4ca46.jpg
+  image_filter: archival
+  texture: halftone
+  quote: 'Source: From Gods to the God: Christianization of the Roman Empire by RAMA SESHAN'
+- layout: end-card
+  headline: New slide

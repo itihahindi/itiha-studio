@@ -1,0 +1,26 @@
+name: modi-paper-leak-reel
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  PM Narendra Modi in a late night video message: stricter action against paper leaks is coming in the Cabinet. The announcement lands in the middle of the NEET-UG paper leak storm, the student march on Parliament, and the police crackdown that followed.
+
+  Watch the full message. What the Cabinet clears next could reshape how exam fraud is punished in India.
+
+  Follow @vaqhq for Indian politics, decoded live.
+  vaqhq.com
+hashtags: |
+  #NarendraModi #PaperLeak #NEETUG #Cabinet #ExamLeak #StudentProtest #IndianPolitics #BreakingNews #Modi #VaqHQ
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-frame
+  vertical: live
+  video_url: https://x.com/narendramodi/status/2080357811662492096/video/1
+  headline: Strict action coming on *paper leaks*
+  subline: Modi's late night message ahead of the Cabinet meet
+  credit: via @narendramodi
+  texture: grid
+  panel_height: 420
+  panel_fade: 0

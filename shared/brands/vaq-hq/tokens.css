@@ -5,7 +5,7 @@
    Flat colour tiles, four vertical accents, orange stays hero.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Archivo:wght@500;600;700;800;900&family=Saira+Condensed:wght@600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Serif+Devanagari:wght@600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500;1,8..60,600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Archivo:wght@500;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Serif+Devanagari:wght@600;700&display=swap');
 
 :root {
   /* ---------- CHANNEL ---------- */
@@ -57,13 +57,7 @@
   /* ---------- TYPE ---------- */
   --vh-serif:   'Newsreader', Georgia, serif;            /* headline voice */
   --vh-sans:    'Hanken Grotesk', system-ui, sans-serif;  /* body + Ground Report display */
-  --vh-display: 'Archivo', 'Hanken Grotesk', sans-serif;  /* Live: heavy uppercase */
-  --vh-athletic:'Saira Condensed', 'Archivo', sans-serif; /* Sports: bold condensed */
-  --vh-docket:  'Source Serif 4', Georgia, serif;         /* Legal: reading voice */
-  --vh-ui:      'Inter', system-ui, sans-serif;           /* Legal: kickers / meta */
-  --vh-grotesk: 'Space Grotesk', system-ui, sans-serif;   /* Tech: Cathode headlines */
-  --vh-plex:    'IBM Plex Sans', system-ui, sans-serif;   /* Tech: reading voice */
-  --vh-plexmono:'IBM Plex Mono', ui-monospace, monospace; /* Tech: the machine's voice */
+  --vh-display: 'Archivo', 'Hanken Grotesk', sans-serif;  /* the headline voice */
   --vh-mono:    'Space Mono', ui-monospace, monospace;    /* kickers / meta */
   --vh-deva:    'Noto Serif Devanagari', serif;           /* Hindi companions */
 

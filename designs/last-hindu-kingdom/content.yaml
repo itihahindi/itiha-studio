@@ -1,4 +1,5 @@
 name: raja-humabon-the-forgotten-hindu-king
+brand: itiha
 format: instagram-portrait
 caption: |
   When Ferdinand Magellan's fleet dropped anchor at Cebu in March 1521, the Portuguese explorer did not encounter an isolated island of animist tribes. He encountered a Hindu monarch — Raja Humabon — ruling a kingdom whose royal family historical evidence suggests was possibly of Tamil origin. The Philippines that Magellan "discovered" was the eastern frontier of a maritime civilisation that had reached from the Coromandel Coast across the Indian Ocean and into the archipelagos of Southeast Asia for over a thousand years.
@@ -26,8 +27,9 @@ slides:
     *Philippines.*
   subline: Raja Humabon and the fall of Magellan · 1521
   swipe_meta: Swipe ▸ · 9 Slides · 4 min read
-  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCj3G3kgeWbyiqDRITzith8G746ykY7xap6Hm6KXUvOwwjFo1OKIPWpZE&s=10
+  image: _cache/72e0b922a39e653c.jpg
   headline_offset_y: 220
+  texture: scanlines
 - layout: split-story
   chapter: Chapter 01 · The Kingdom
   headline: |
@@ -36,7 +38,7 @@ slides:
   body: When the Spanish explorer [Ferdinand Magellan] arrived in the [Philippines] in the [sixteenth
     century], he did not encounter an isolated land. He encountered a vibrant realm ruled by [Hindu]  monarch
     named [Raja Humabon].
-  image: https://upload.wikimedia.org/wikipedia/commons/9/9c/Ferdinand_Magellan.jpg
+  image: _cache/976011f73917f0d7.jpg
   body_offset_y: -160
   body_y: 81
 - layout: split-story
@@ -48,7 +50,7 @@ slides:
     by a [Hindu dynasty]. Historical evidence suggests that Raja Humabon's royal family was possibly of
     [Tamil origin], highlighting the deep [maritime] and [cultural connections] that stretched from India
     across [Southeast Asia].
-  image: https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Sugbumap.png/1280px-Sugbumap.png
+  image: _cache/6ea5d0a104a3fdf2.png
   image_filter: archival
   image_overlay: 1.2
   body_y: 16
@@ -58,7 +60,7 @@ slides:
   headline: "The Fleet\n*Arrives* in the \nname of *Christ*\n"
   body: In [March 1521], after enduring a grueling and perilous voyage around [South America], [Ferdinand
     Magellan's] fleet finally reached the shores of the [Philippines] and anchored in [Cebu].
-  image: https://upload.wikimedia.org/wikipedia/commons/6/6b/Detail_from_a_map_of_Ortelius_-_Magellan%27s_ship_Victoria.png
+  image: _cache/4f1f0f4ba38cbe35.png
   texture: vignette
   image_overlay: 1
   body_y: 68
@@ -70,17 +72,9 @@ slides:
   body: Seeking to establish a foothold in the region, [Magellan] successfully negotiated a [treaty] with
     [Raja Humabon]. As part of this new alliance, the [Hindu ruler] agreed to be [baptised] and was converted
     to [Catholicism].
-  image: https://prehispaniccebu.wordpress.com/wp-content/uploads/2019/11/f78d55d4-2e7b-4a09-bf4f-beb54b30593e-1650-000002870e267db2.png
+  image: _cache/2a9b2c1e51c419a4.png
   image_overlay: 1.1
   body_y: 48
-- layout: split-story
-  eyebrow: The Legal Basis
-  headline: |
-    The Cost Of A
-    Single *Signature.*
-  body: |
-    While [Raja Humabon] may have viewed the conversion as a strategic [political alliance], it had devastating long-term consequences. His conversion to [Catholicism] and the [treaty] he signed formed the exact [legal and historical basis] upon which [Spain] would later claim sovereignty over the entire [Philippine archipelago].
-  source: Contemporary Spanish colonial records
 - layout: split-story
   chapter: Chapter 05 · The Refusal
   headline: |
@@ -89,11 +83,11 @@ slides:
   body: The new European alliance faced immediate and fierce internal resistance. A local leader named
     [Lapulapu], who was one of [Raja Humabon's] vassal chiefs, flatly refused to submit to the [Spanish]
     or accept the new arrangement.
-  image: https://upload.wikimedia.org/wikipedia/en/9/96/Lapulapu_2019_portrait.jpg
+  image: _cache/5b1d2f04de450a85.jpg
   image_overlay: 0.8
   headline_y: 550
   body_y: 83
-- layout: story
+- layout: split-story
   chapter: Chapter 06 · The Assault
   headline: |
     Magellan's
@@ -102,9 +96,10 @@ slides:
     decided to personally lead an assault on [Lapulapu's] island. Historians suggest he was also driven
     by a desire to live up to the swashbuckling reputation of his adventurer friend, [Francisco Serrao].
   texture: halftone
-  image: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Magellan%27s_Cross_full.jpg/1280px-Magellan%27s_Cross_full.jpg
+  image: _cache/8b6e4847ebebea91.jpg
   image_overlay: 1
   body_offset_y: 0
+  body_y: 19
 - layout: split-story
   chapter: Chapter 07 · The Beach
   headline: |
@@ -113,14 +108,27 @@ slides:
   body: Magellan's attempt to crush the local resistance ended in absolute [disaster]. Instead of a swift
     victory, the [Spanish forces] were overwhelmed. [Magellan] was surrounded by [Lapulapu's] fierce defenders
     and was [killed on the beach].
-  image: https://upload.wikimedia.org/wikipedia/commons/8/8a/Lapulapu-beschreibung.jpg
+  image: _cache/140f735fdbcd0b27.jpg
   image_position: 64% 100%
   image_overlay: 1
   body_y: 48
-- layout: closing
+- layout: split-story
   headline: |
     A Conversion. A
     Corpse. A *Colony.*
   body: |
     The remaining Spanish fleet fled the Philippines and continued their voyage toward the [Spice Islands]. [Raja Humabon's] fateful conversion had immediately brought [foreign conflict] to his shores, cost his powerful [European ally] his life, and laid the [groundwork] for the eventual colonisation of his [homeland]. [Lapulapu] is remembered today. [Humabon] is not.
   handle: Follow @itiha29 · itiha.info
+- layout: story
+  eyebrow: The Legal Basis
+  headline: |
+    The Cost Of A
+    Single *Signature.*
+  body: |2
+     [Raja Humabon] conversion to [Catholicism] and the [treaty] he signed formed the exact [legal and historical basis] upon which [Spain] would later claim sovereignty over the entire [Philippine archipelago].
+  source: Contemporary Spanish colonial records
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_-WjVuMjeo-VpAfkZ1VA_Kz21238SbUsNFZuln9x2kA&s=10
+  image_overlay: 0.9
+  body_offset_y: 0
+- layout: end-card
+  headline: New slide

@@ -323,7 +323,7 @@ function StatSlide({ slide, index }) {
               marginBottom: 26 }}>{label}</div>
           )}
           <div style={{
-            fontFamily: v.numFont || (v.face === 'athletic' ? VAQ.athletic : VAQ.display), fontWeight: 900, fontSize: stat_size, lineHeight: 0.92,
+            fontFamily: v.numFont || VAQ.display, fontWeight: 900, fontSize: stat_size, lineHeight: 0.92,
             letterSpacing: '-.03em', color: surface.onSolid ? ink.head : v.accent,
           }}>{value}</div>
           {sublabel && (
@@ -407,7 +407,7 @@ function ClosingSlide({ slide, index }) {
 // dark placeholder otherwise (and always in capture mode). The source file is
 // cache-keyed server-side on the URL, so after changing Video URL the old clip
 // may keep playing until the next Compose refreshes the download.
-function ReelVideoZone({ top, videoUrl }) {
+function ReelVideoZone({ top, fade = 0, paper, videoUrl }) {
   const isCapture = document.body.classList.contains('capture');
   const [failed, setFailed] = React.useState(false);
   React.useEffect(() => { setFailed(false); }, [videoUrl]);
@@ -421,7 +421,7 @@ function ReelVideoZone({ top, videoUrl }) {
       {showVideo ? (
         <video src="output/source.mp4" autoPlay muted loop playsInline
           onError={() => setFailed(true)}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
       ) : (
         <React.Fragment>
           <VMark size={64} mono />
@@ -432,6 +432,15 @@ function ReelVideoZone({ top, videoUrl }) {
           }}>{videoUrl ? (isCapture ? 'video linked' : 'compose once to preview the video')
               : 'paste a link in Video URL'}</div>
         </React.Fragment>
+      )}
+      {/* Soft hand-off: paper bleeds over the video's top edge. Preview only —
+          the composer paints the same gradient into the MP4 (src/reel.py). */}
+      {!isCapture && fade > 0 && (
+        <div style={{
+          position: 'absolute', left: 0, right: 0, top: 0, height: fade,
+          background: `linear-gradient(180deg, ${paper || VAQ.paper} 0%, ${(paper || VAQ.paper)}00 100%)`,
+          pointerEvents: 'none',
+        }} />
       )}
     </div>
   );
@@ -449,7 +458,7 @@ function ReelFrameSlide({ slide, index }) {
   const surface = surfaceFor(slide, v, 'light');
   const {
     headline = '', subline, kicker_meta, texture, credit, video_url,
-    panel_height = 560, headline_size = 66, headline_offset_y = 0,
+    panel_height = 560, panel_fade = 120, headline_size = 66, headline_offset_y = 0,
   } = slide;
   return (
     <VSlide v={v} surface={surface} texture={texture}>
@@ -457,7 +466,7 @@ function ReelFrameSlide({ slide, index }) {
           (served from the design's output dir) so the framing is judgeable
           before compose. Capture mode keeps the flat placeholder — the
           composer only uses the panel strip above `panel_height` anyway. */}
-      <ReelVideoZone top={panel_height} videoUrl={video_url} />
+      <ReelVideoZone top={panel_height} fade={panel_fade} paper={surface.bg} videoUrl={video_url} />
       {/* Header panel — everything the composer keeps. */}
       <div style={{
         position: 'absolute', left: 0, right: 0, top: 0, height: panel_height,

@@ -1,0 +1,29 @@
+name: icc-karim-khan
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  The International Criminal Court has removed its chief prosecutor. Karim Khan was voted out by the court's member states, with 82 of 125 backing his removal at a special session in New York. It is the first time an ICC prosecutor has been ousted from office.
+
+  The vote follows a finding of serious misconduct by the court's oversight body over his conduct with a female aide, allegations first reported nearly two years ago. Khan denies all wrongdoing and has called the case political.
+
+  The prosecutor who sought arrest warrants for Vladimir Putin and Benjamin Netanyahu now leaves the office to his deputies, Nazhat Shameen Khan and Mame Mandiaye Niang.
+
+  Follow @vaqhq for geopolitics, decoded.
+  vaqhq.com
+hashtags: |
+  #ICC #KarimKhan #InternationalCriminalCourt #TheHague #UnitedNations #WorldNews #Geopolitics #BreakingNews #VaqHQ
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: stat
+  vertical: briefing
+  surface: solid
+  texture: riso
+  label: ICC states that voted to sack prosecutor Karim Khan
+  value: 82/125
+  sublabel: The first chief prosecutor ever removed
+  stat_size: 210
+  body: |
+    The court's own watchdog found [serious misconduct] in his treatment of a female aide. Khan denies wrongdoing and calls the case [political].

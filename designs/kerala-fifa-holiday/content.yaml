@@ -1,0 +1,23 @@
+name: Kerala FIFA Holiday
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Football owns Kerala tonight. Argentina meet Spain in the World Cup final, and the match ends in the early hours of Monday, India time.
+
+  So the state called a holiday. Schools and colleges stay shut, professional colleges included. The Chief Minister signed off after opposition leaders demanded it. One exception: exams already on the timetable go ahead as scheduled.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #Kerala #FIFAWorldCup2026 #Argentina #Spain #Football #VaqHQ
+tweaks:
+  vertical: sports
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: split-story
+  vertical: sports
+  image: _cache/1c03b45f64a6a499.jpg
+  image_credit: BBC
+  headline: Kerala Shuts Schools For The *World Cup*
+  body: Argentina play Spain in the final overnight. The [Kerala] state gave every school and college
+    [Monday off].

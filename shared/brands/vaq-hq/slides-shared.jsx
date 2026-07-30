@@ -9,7 +9,7 @@ const VAQ = {
   navy:      '#0A1119',
   tileDark:  '#0E1A29',
   panel:     '#15263B',
-  ink:       '#1E1E1E',   // sports dark-hero surface
+  ink:       '#1E1E1E',   // dark-hero surface
   // daylight ground
   paper:     '#F7F9FB',
   white:     '#FFFFFF',
@@ -23,114 +23,43 @@ const VAQ = {
   serif:   "'Newsreader', Georgia, serif",
   sans:    "'Hanken Grotesk', system-ui, sans-serif",
   display: "'Archivo', 'Hanken Grotesk', sans-serif",
-  athletic:"'Saira Condensed', 'Archivo', sans-serif",
   mono:    "'Space Mono', ui-monospace, monospace",
   deva:    "'Noto Serif Devanagari', serif",
-  // The Docket (legal) reading voice + UI — from its own design kit.
-  bodySerif: "'Source Serif 4', Georgia, serif",
-  ui:        "'Inter', system-ui, sans-serif",
-  // Cathode (tech) — engineered grotesk + humanist sans + the machine's monospace.
-  grotesk:  "'Space Grotesk', system-ui, sans-serif",
-  plex:     "'IBM Plex Sans', system-ui, sans-serif",
-  plexMono: "'IBM Plex Mono', ui-monospace, monospace",
 };
 
-// ── The four verticals ────────────────────────────────────────
+// ── The verticals ─────────────────────────────────────────────
+// TWO-TONE CONSOLIDATION, 2026-07-27. Audience feedback: the seven per-
+// vertical liveries (accents, typefaces, and the Docket/Cathode sub-kits)
+// made the feed read as several different accounts. Retired all of it.
+// One visual system now, for every vertical:
+//   paper #F7F9FB ground · hero orange #F4631E as the only accent ·
+//   navy poster via `surface: dark` as the counterweight · Archivo caps
+//   headlines · Hanken body · Space Mono meta · Newsreader pull quotes.
+// A vertical contributes ONLY editorial identity: badge text (kicker),
+// show-name meta, and ground's Devanagari companion. Do not reintroduce
+// per-vertical accents, faces, or kit objects.
+const V_BASE = {
+  accent: '#F4631E', onAccent: '#3A1402', onAccentMuted: '#7A2C08', tint: '#FFD9C4',
+  darkInk: true,   // orange tile is light enough for dark ink text
+  face: 'display',
+};
 const VERTICALS = {
-  live: {
-    key: 'live', name: 'Current Affairs', show: 'Vaq HQ Breaking',
-    kicker: '● LIVE', badge: 'plain',
-    accent: '#F4631E', onAccent: '#3A1402', onAccentMuted: '#7A2C08', tint: '#FFD9C4',
-    darkInk: true,   // solid tile is light enough for dark ink text
-    face: 'display',
-  },
-  briefing: {
-    key: 'briefing', name: 'Geopolitics', show: 'The Briefing',
-    kicker: 'GEOPOLITICS', badge: 'solid',
-    accent: '#2F6BE0', onAccent: '#FFFFFF', onAccentMuted: 'rgba(255,255,255,.72)', tint: '#CFE0FB',
-    darkInk: false,
-    face: 'serif',
-  },
-  longview: {
-    key: 'longview', name: 'Political History', show: 'The Long View',
-    kicker: 'HISTORY', badge: 'outline',
-    accent: '#9A3F73', onAccent: '#FFFFFF', onAccentMuted: '#C77FA8', tint: '#F2D6E6',
-    darkInk: false,
-    face: 'serif-italic',
-  },
-  ground: {
-    key: 'ground', name: 'Indian Politics', show: 'Ground Report',
-    kicker: 'GROUND REPORT', badge: 'solid', deva: 'ज़मीनी हक़ीक़त',
-    accent: '#0FA08C', onAccent: '#FFFFFF', onAccentMuted: 'rgba(255,255,255,.72)', tint: '#CFF3EC',
-    darkInk: false,
-    face: 'sans',
-  },
-  sports: {
-    key: 'sports', name: 'Sports', show: 'The Arena',
-    kicker: 'SPORTS', badge: 'solid',
-    accent: '#FF3333', onAccent: '#FFFFFF', onAccentMuted: 'rgba(255,255,255,.74)', tint: '#FFD6D6',
-    darkInk: false,
-    face: 'athletic',      // Saira Condensed — bold condensed uppercase
-    coverSurface: 'dark',  // sports covers default to the cinematic dark hero
-  },
-  // Legal news. Runs on its own "modern docket" kit rather than the daylight
-  // newsroom: dark end-to-end, Archivo in SENTENCE case (not the shouty caps the
-  // other verticals use), Source Serif 4 as the reading voice, and one controlled
-  // red. The kit's rule is that red only ever marks breaking, links and section
-  // rules — so emphasis here is red text, never a highlighter block.
-  legal: {
-    key: 'legal', name: 'Legal', show: 'The Docket',
-    kicker: 'LEGAL', badge: 'solid',
-    accent: '#E0554E', onAccent: '#FFFFFF', onAccentMuted: 'rgba(255,255,255,.72)', tint: '#F6D3D1',
-    darkInk: false,
-    face: 'docket',
-    bodyFont: VAQ.bodySerif,   // Source Serif 4 — never set body in Archivo
-    metaFont: VAQ.ui,          // Inter for kickers / meta / chrome
-    sentence: true,            // headlines are sentence case, kickers stay caps
-    coverSurface: 'dark',
-    interiorSurface: 'dark',   // the whole show is dark, not just the cover
-    dark: {
-      bg:    '#141413',        // kit --page
-      head:  '#F2F2EF',        // kit --ink
-      body:  '#B6B6B2',        // kit --text-2
-      muted: '#8A8A86',        // kit --muted
-      hair:  '#2E2E2B',        // kit --border
-      well:  '#252523',        // kit --surface-2
-    },
-  },
-  // Technology news. Runs on the "Cathode" kit: cool graphite-and-paper light
-  // interiors, one electric signal blue as the only accent (spent on emphasis,
-  // links, live states), Space Grotesk headlines in sentence case, IBM Plex Sans
-  // for the read, and IBM Plex Mono everywhere the machine speaks (kickers, meta,
-  // page numbers). Emphasis is signal-blue text, never a highlighter block. The
-  // cover is the one loud moment — a solid signal-blue poster tile.
-  tech: {
-    key: 'tech', name: 'Technology', show: 'Cathode',
-    kicker: 'TECH', badge: 'solid',
-    accent: '#2540FF', onAccent: '#FFFFFF', onAccentMuted: 'rgba(255,255,255,.72)', tint: '#C7CEFF',
-    darkInk: false,
-    face: 'cathode',
-    bodyFont: VAQ.plex,        // IBM Plex Sans — never set body in Space Grotesk
-    metaFont: VAQ.plexMono,    // IBM Plex Mono — the machine's voice
-    numFont: VAQ.grotesk,      // big stat numerals in the display grotesk
-    quoteFont: VAQ.grotesk,    // pull quotes are Space Grotesk, not italic serif
-    quoteItalic: false,
-    sentence: true,            // sentence-case headlines; blue text emphasis
-    light: {
-      bg:      '#F5F6F8',      // kit --canvas
-      surface: '#FFFFFF',      // kit --surface
-      head:    '#14161B',      // kit --ink (graphite, not the daylight navy)
-      body:    '#454951',      // kit --text-2
-      muted:   '#7A7E88',      // kit --muted
-      hair:    '#E2E4EA',      // kit --border
-      well:    '#EDEFF3',      // kit --surface-2 (image wells, blueprint grid)
-    },
-    // The kit ships a full dark theme too, so a slide can opt into surface: dark.
-    dark: {
-      bg:    '#0E0F13', head: '#F1F2F4', body: '#B4B8C0',
-      muted: '#7E828C', hair: '#262A31', well: '#1E2127',
-    },
-  },
+  live:     { ...V_BASE, key: 'live', name: 'Current Affairs', show: 'Vaq HQ Breaking',
+              kicker: '● LIVE', badge: 'plain' },
+  briefing: { ...V_BASE, key: 'briefing', name: 'Geopolitics', show: 'The Briefing',
+              kicker: 'GEOPOLITICS', badge: 'solid' },
+  longview: { ...V_BASE, key: 'longview', name: 'Political History', show: 'The Long View',
+              kicker: 'HISTORY', badge: 'outline' },
+  ground:   { ...V_BASE, key: 'ground', name: 'Indian Politics', show: 'Ground Report',
+              kicker: 'GROUND REPORT', badge: 'solid', deva: 'ज़मीनी हक़ीक़त' },
+  // sports/tech: `show` matches the kicker so VKicker's dupMeta check hides
+  // the meta — their show-name wordmarks were retired earlier on 2026-07-27.
+  sports:   { ...V_BASE, key: 'sports', name: 'Sports', show: 'SPORTS',
+              kicker: 'SPORTS', badge: 'solid' },
+  legal:    { ...V_BASE, key: 'legal', name: 'Legal', show: 'The Docket',
+              kicker: 'LEGAL', badge: 'solid' },
+  tech:     { ...V_BASE, key: 'tech', name: 'Technology', show: 'TECH',
+              kicker: 'TECH', badge: 'solid' },
 };
 
 // ── Base slide CSS (`.itiha-slide` = cross-brand capture contract) ──
@@ -222,33 +151,18 @@ function solidPalette(v) {
   };
 }
 
-// ── Headline treatment per vertical ───────────────────────────
+// ── Headline treatment ────────────────────────────────────────
+// Post-consolidation there is ONE headline voice: Archivo caps ('display').
+// The switch stays only so a stray/legacy face degrades to the sans default
+// instead of crashing.
 function headlineStyle(v, size, onSolid, onDark) {
   const color = onDark ? ((v.dark && v.dark.head) || '#FFFFFF')
                        : (onSolid ? solidPalette(v).head : ((v.light && v.light.head) || VAQ.inkL));
   const base = { margin: 0, color, textWrap: 'balance' };
   switch (v.face) {
-    // The Docket: grotesque impact WITHOUT the caps. Its kit is explicit that
-    // headlines are sentence case and only kickers are uppercase.
-    case 'docket':
-      return { ...base, fontFamily: VAQ.display, fontWeight: 700, fontSize: size,
-               lineHeight: 1.04, letterSpacing: '-.025em' };
-    // Cathode: engineered grotesk, sentence case, very tight tracking.
-    case 'cathode':
-      return { ...base, fontFamily: VAQ.grotesk, fontWeight: 700, fontSize: size,
-               lineHeight: 1.02, letterSpacing: '-.03em' };
     case 'display':
       return { ...base, fontFamily: VAQ.display, fontWeight: 900, fontSize: size,
                lineHeight: 0.97, letterSpacing: '-.02em', textTransform: 'uppercase' };
-    case 'athletic':
-      return { ...base, fontFamily: VAQ.athletic, fontWeight: 800, fontSize: size,
-               lineHeight: 1.04, letterSpacing: '.005em', textTransform: 'uppercase' };
-    case 'serif':
-      return { ...base, fontFamily: VAQ.serif, fontWeight: 600, fontSize: size,
-               lineHeight: 1.05, letterSpacing: '-.015em' };
-    case 'serif-italic':
-      return { ...base, fontFamily: VAQ.serif, fontWeight: 500, fontStyle: 'italic',
-               fontSize: size, lineHeight: 1.05, letterSpacing: '-.01em' };
     default:
       return { ...base, fontFamily: VAQ.sans, fontWeight: 800, fontSize: size,
                lineHeight: 1.02, letterSpacing: '-.02em' };
@@ -256,9 +170,8 @@ function headlineStyle(v, size, onSolid, onDark) {
 }
 
 function headlineDefaultSize(v, kind) {
-  // docket runs smaller than the caps faces — sentence case sets wider per word.
-  const cover = { display: 118, serif: 108, 'serif-italic': 106, sans: 110, athletic: 140, docket: 100, cathode: 104 };
-  const inner = { display: 88,  serif: 92,  'serif-italic': 92,  sans: 88, athletic: 108, docket: 82, cathode: 84 };
+  const cover = { display: 118 };
+  const inner = { display: 88 };
   return (kind === 'cover' ? cover : inner)[v.face] || 96;
 }
 
@@ -269,7 +182,7 @@ function headlineDefaultSize(v, kind) {
 //   solid                 → white (dark-ink tiles) / tint (white tiles)
 function VHeadline({ text, v, size, onSolid, onDark, style }) {
   const st = headlineStyle(v, size, onSolid, onDark);
-  const blockFace = v.face === 'display' || v.face === 'athletic';
+  const blockFace = v.face === 'display';
   const emStyle = onDark
     ? { color: v.accent }
     : onSolid

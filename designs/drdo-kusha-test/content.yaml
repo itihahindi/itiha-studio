@@ -1,0 +1,26 @@
+name: drdo-kusha-test
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  DRDO has flight tested Kusha for the first time. The long range surface to air missile lifted off from APJ Abdul Kalam Island off Odisha and intercepted a high speed, high altitude aerial target.
+
+  Project Kusha is India's indigenous answer to the Russian S-400, a layered air defence shield with three interceptor variants built to take down fighter jets, drones, cruise missiles and large aircraft at long range. The Air Force variant comes first, and a naval version is planned next.
+
+  Follow @vaqhq for defence and geopolitics, decoded.
+  vaqhq.com
+hashtags: |
+  #DRDO #ProjectKusha #Kusha #S400 #AirDefence #LRSAM #IndianAirForce #MadeInIndia #AtmanirbharBharat #IndianDefence #BreakingNews #VaqHQ
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-frame
+  vertical: live
+  video_url: https://www.youtube.com/shorts/EQt_yK2aIG0
+  headline: DRDO's *Kusha* clears maiden flight test
+  subline: India's indigenous answer to the S-400
+  credit: via Bharat Shakti
+  texture: grid
+  panel_height: 420
+  panel_fade: 0

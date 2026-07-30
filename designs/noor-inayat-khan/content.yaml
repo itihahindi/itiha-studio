@@ -1,0 +1,106 @@
+name: noor-inayat-khan-indias-daughter-who-fought-hitler
+brand: itiha
+format: instagram-portrait
+caption: |
+  In 1943, in a Nazi concentration camp in Germany, a young Indian woman named Noor Inayat Khan was executed by firing squad. She had been starved, chained, and beaten for months. She had refused, throughout the interrogations, to give up a single name. The last word she spoke before the bullets was "Liberté" — freedom. She was 30 years old. She is buried in a country she never called home, for a fight she chose because it was hers to make. This carousel is her record.
+
+  Noor was born in Moscow in 1914 and raised in Paris, playing the piano and the veena, writing music and stories for French radio. When Hitler's forces overran France in 1940, her family fled to Britain. She saw with her own eyes what the Nazis were and something inside her hardened. She applied to the British army — an Indian woman, born in Moscow, fresh off the boat from Paris. They turned her down flat. She wrote back citing her British passport. Her fluent French, her quiet confidence, and her spirit got her in. They trained her as a wireless operator with the Special Operations Executive and dropped her into Nazi-occupied Paris as a secret agent under the code name Madeleine. Within weeks the Gestapo had rounded up nearly every British agent in the city and knew a spy called Madeleine was somewhere in Paris. London ordered her home. She refused. She was the last operator still transmitting intelligence out of Paris and she was not leaving. She dyed her hair, changed her appearance, and kept working under the Nazis' noses for months — moving her transmitter to a new location after every message because German detection vans could trace any signal that ran longer than fifteen minutes. She was finally betrayed by a friend jealous of her, who sold her to the Gestapo for a reward.
+
+  Years earlier, in her British army interview, someone had asked her about India. Her answer was direct — her duty right now was to fight fascism. If that fight was won, she would stand behind India's freedom too. She won her fight. She did not live to fight the second one.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #NoorInayatKhan #WorldWarII #SpecialOperationsExecutive #IndianDiaspora #FreedomFighter #ResistanceHistory #ForgottenHeroes
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  showGrain: true
+  seriesLabel: NOOR
+slides:
+- layout: cover
+  eyebrow: Series 60
+  eyebrow_meta: Noor Inayat Khan · 7 Parts
+  headline: "India's Daughter\nWho Fought \n*Hitler's Army.*\n"
+  subline: Written by  Raj Kumar, Project fellow, ICSSR
+  swipe_meta: Swipe ▸ · 7 Slides · 4 min read
+  headline_size: 130
+  image: https://upload.wikimedia.org/wikipedia/commons/7/71/Noor_Inayat_Khan.jpeg
+  image_position: 43% 50%
+  headline_offset_y: 300
+- layout: split-story
+  chapter: Chapter 01 · The Musician
+  name: Noor Inayat Khan
+  dates: 1914–1944
+  role: Musician, writer, and Special Operations Executive agent
+  headline: |
+    A Pianist. A Veena
+    Player. A *Poet.*
+  body: She was born in [Moscow] in [1914]. There was nothing ordinary about her hands — she played the
+    [piano] and the [veena] with real skill, and made her living writing [music], [stories], and [poetry].
+    For a while, she worked for [French radio]. Her name was [Noor Inayat Khan]. Chances are you have
+    never heard it.
+  theme: light
+- layout: story
+  chapter: Chapter 02 · Paris Falls
+  headline: |
+    Something Inside Her
+    *Hardened.*
+  body: By mid-[1940], [Hitler's] forces had rolled through [France] in weeks. [Paris] fell. Noor's family
+    fled across the Channel to [Britain]. There she saw with her own eyes just how brutal the [Nazis]
+    could be — the Jews and other communities dragged from their houses and sent off to [camps] most people
+    never came back from. Something inside her [hardened] against them.
+  theme: light
+- layout: story
+  chapter: Chapter 03 · The Application
+  headline: |
+    They Turned
+    Her *Down.*
+  body: German bombs were falling on London every night. Noor spotted a [recruitment notice] and sent
+    off her application without a second thought. The British army turned her down [flat] — an [Indian
+    woman], born in [Moscow], fresh off the boat from Paris? Not a chance, they thought. But she wrote
+    back pointing to her [British passport] and [citizenship]. Her [spirit], her [quiet confidence], and
+    her [fluent French] won them over. She was in.
+- layout: story
+  chapter: Chapter 04 · Madeleine
+  headline: |
+    Code Name.
+    *Madeleine.*
+  body: They trained her as a [wireless operator] with the [Special Operations Executive]. She was dropped
+    into Nazi-occupied Paris under the code name [Madeleine]. She had barely settled in when word came
+    to [return to London] — the [Gestapo] had rounded up nearly every British agent in Paris, and they
+    already knew a spy called Madeleine was somewhere in the city. Noor said [no]. She was the [last one
+    left] sending intelligence out, and she was not going anywhere.
+- layout: split-story
+  eyebrow: Did You Know?
+  headline: |
+    Fifteen Minutes.
+    Or *Caught.*
+  body: |
+    If a wireless transmission ran longer than [fifteen minutes], she could be caught — German [detection vans] prowled the streets constantly, hunting for exactly this kind of signal. Every time she finished sending a message, she moved the set [somewhere else] before anyone could trace it. She [dyed her hair], changed her appearance, and kept working right under the Nazis' noses — month after month, all the way through to [October 1943]. The Nazis sometimes picked up [fragments] of her broadcasts. They still could not catch her.
+  source: Historical records of the Special Operations Executive
+- layout: story
+  chapter: Chapter 05 · The Betrayal
+  headline: |
+    Not The Nazis.
+    A *Friend.*
+  body: In the end, it was not [Nazi intelligence] that brought her down. It was [betrayal]. While trying
+    to catch a flight out of France, Noor was [given up] by a friend — someone who had grown jealous of
+    her for reasons that were never entirely clear, and who [handed her over] for a hefty reward. The
+    Nazis took her to a camp. [Starved]. [Chained]. [Beaten]. And still, [India's daughter] said [nothing].
+- layout: quote
+  chapter: Chapter 06 · The Last Word
+  headline: |
+    Her Final Word
+    Before The *Bullets.*
+  quote: |
+    Liberté.
+  attribution: Noor Inayat Khan's last word before her execution by the Nazis, September 1944
+- layout: closing
+  headline: |
+    She Won Her Fight.
+    She Did Not Live To
+    Fight The *Second.*
+  body: |
+    Years earlier, in her British army interview, someone had asked her about [India]. Her answer was direct: right now, her duty was to fight [fascism]. If that fight was won, she would stand behind [India's freedom] too. She won her fight. She did not live to fight the [second].
+  handle: Follow @itiha29 · itiha.info

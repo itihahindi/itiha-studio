@@ -882,6 +882,17 @@ function SlideForm({ slide, slideIndex, onChange, content, setContent }) {
   const layoutDef = window.MANIFEST[layoutKey] || window.MANIFEST.story;
   const allLayouts = Object.keys(window.MANIFEST);
   const [pickerOpen, setPickerOpen] = React.useState(false);
+  const [capCopied, setCapCopied] = React.useState(false);
+  const copyCaption = () => {
+    const cap  = ((content && content.caption)  || '').trim();
+    const tags = ((content && content.hashtags) || '').trim();
+    const full = [cap, tags].filter(Boolean).join('\n\n');
+    if (!full) return;
+    navigator.clipboard.writeText(full).then(() => {
+      setCapCopied(true);
+      setTimeout(() => setCapCopied(false), 1600);
+    });
+  };
 
   const set = (key, v) => onChange({ ...slide, [key]: v });
   const setMeta = (key, v) => setContent({ ...content, [key]: v });
@@ -905,10 +916,18 @@ function SlideForm({ slide, slideIndex, onChange, content, setContent }) {
         dims={content && content.format_dims}
         onPick={v => set('layout', v)} onClose={() => setPickerOpen(false)} />}
       <div style={{ height: 1, background: '#2c2c2c', margin: '4px 0 18px' }} />
-      {layoutKey === 'cover' && content && setContent && (
+      {(layoutKey === 'cover' || slideIndex === 0) && content && setContent && (
         <div style={{ marginBottom: 22, padding: '14px 14px 4px', background: 'rgba(192,57,43,0.06)', border: '1px solid rgba(192,57,43,0.35)' }}>
-          <div style={{ fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', color: '#d4a39a', marginBottom: 12, fontWeight: 600 }}>
-            Post metadata · used on publish
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+            <div style={{ fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', color: '#d4a39a', fontWeight: 600 }}>
+              Post metadata · used on publish
+            </div>
+            <button type="button" onClick={copyCaption} title="Copy caption + hashtags for Instagram" style={{
+              background: capCopied ? '#1e3a24' : '#1a1a1a', color: capCopied ? '#8fd19e' : '#E8DCC8',
+              border: '1px solid #2c2c2c', padding: '4px 12px', cursor: 'pointer',
+              font: '10px "DM Sans", system-ui', letterSpacing: 1.5, textTransform: 'uppercase',
+              fontWeight: 600, whiteSpace: 'nowrap',
+            }}>{capCopied ? 'Copied ✓' : 'Copy caption'}</button>
           </div>
           <Field label="IG caption" help={window.BRAND.captionHelp}>
             <FieldInput

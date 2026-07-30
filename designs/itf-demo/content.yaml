@@ -1,5 +1,5 @@
-name: sample
-brand: vaq-hq
+name: itf-demo
+brand: itiha
 format: instagram-portrait
 caption: |
   Replace this with your IG caption.
@@ -12,17 +12,17 @@ tweaks:
   overlayDarkness: 62
   showGrain: true
 slides:
-- layout: end-card
+- layout: cover
   eyebrow: Series 01
-  eyebrow_meta: sample · 3 Parts
+  eyebrow_meta: itf-demo · 3 Parts
   headline: |
     Your Big
     Headline With An
     *Accent.*
   subline: One-line subtitle
   swipe_meta: Swipe ▸ · 3 Slides · 1 min read
-  theme: light
-  texture: noise
+  image: https://upload.wikimedia.org/wikipedia/commons/4/47/MediaWiki_homepage_%28oct_2024%29.png
+  image_position: 5% 69%
 - layout: story
   headline: |
     The Story
@@ -31,11 +31,7 @@ slides:
     Your body copy goes here. Use [red emphasis] for key terms,
     _italics_ for foreign words, and **bold** for selective stress.
   image_bw: true
-  surface: dark
-  vertical: legal
-  image: _cache/8a8efdcd48205d42.jpg
-  image_position: 46% 55%
-- layout: cover
+- layout: closing
   headline: |
     The Closing
     *Line.*
@@ -49,10 +45,3 @@ slides:
   body: |
     A short, declarative paragraph that lands the final point. Optional.
   handle: Follow @yourhandle
-  texture: grid
-  vertical: live
-  surface: solid
-  image_caption: ssss
-  image: _cache/fb6c4478e1b79da4.jpg
-  image_height: 500
-  image_position: 68% 0%

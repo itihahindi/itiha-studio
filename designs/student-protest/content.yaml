@@ -1,0 +1,23 @@
+name: student-protest
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Student protest.
+
+  Follow @vaqhq for Indian politics, decoded live.
+  vaqhq.com
+hashtags: |
+  #StudentProtest #IndianPolitics #Delhi #VaqHQ
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: split-story
+  vertical: live
+  image: trojan-cartoon.png
+  image_height: 1010
+  kicker_meta: ● LIVE
+  headline: |
+    Student Protest
+  headline_size: 80

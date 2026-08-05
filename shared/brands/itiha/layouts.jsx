@@ -209,37 +209,107 @@ function SplitStory({ slide, index }) {
   );
 }
 
-// Pull-quote layout: headline up top, large quote in middle with red left border, body below.
+// Pull-quote layout — the ONE quote layout (the old standalone `quote-card`
+// was folded in and retired 2026-07-30; square posts just use a square-format
+// project with this layout). Serif italic voice under a giant red quote mark;
+// optional chapter/headline block up top; optional body; optional author
+// strip along the bottom (die-cut portrait left, red divider + name + role
+// right). `text_y` (%) switches from the carousel's bottom anchor to a
+// card-style centered anchor.
 function Quote({ slide, index }) {
-  const { chapter, headline, quote, attribution, body, image, image_bw, image_overlay, image_position,
-          headline_size = 108, quote_size = 64, body_size = 42,
+  const { chapter, headline, quote, attribution, body, text_y,
+          author_image, author_role, author_style = 'cutout', author_height = 320,
+          image, image_bw, image_overlay, image_position,
+          headline_size = 108, quote_size = 56, body_size = 42,
           headline_offset_y = 0, body_offset_y = 0 } = slide;
   const t = themeFor(slide);
+  const hasAuthor = !!author_image;
+  const hasTop = !!(headline || chapter);
+  const authorSrc = author_image && (author_image.startsWith('http') ? author_image : `images/${author_image}`);
+  const bottomPad = (hasAuthor ? author_height + 150 : 200) - body_offset_y;
+  const quotePos = text_y != null
+    ? { position: 'absolute', left: 72, right: 72, top: `${text_y}%`, transform: 'translateY(-50%)',
+        display: 'flex', flexDirection: 'column', gap: 40 }
+    : { position: 'absolute', left: 72, right: 72, bottom: bottomPad,
+        display: 'flex', flexDirection: 'column', gap: 40 };
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} />}
       <TextureOverlay texture={slide.texture} />
-      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 130 + headline_offset_y, right: 72 },
-                          { top: 130 + headline_offset_y, bottom: 200 - headline_offset_y })}>
-        {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
-        <Divider style={{ marginBottom: 28 }} />
-        <Headline text={headline} size={headline_size} />
-      </div>
-      <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 200 - body_offset_y, right: 72, display: 'flex', flexDirection: 'column', gap: 40 }, { stretch: true })}>
+      {hasTop && (
+        <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 130 + headline_offset_y, right: 72 },
+                            { top: 130 + headline_offset_y, bottom: 200 - headline_offset_y })}>
+          {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
+          <Divider style={{ marginBottom: 28 }} />
+          {headline && <Headline text={headline} size={headline_size} />}
+        </div>
+      )}
+      <div {...alignBlock(slide, quotePos, { stretch: true })}>
         {quote && (
-          <div style={{ borderLeft: `3px solid ${ITIHA.red}`, paddingLeft: 28 }}>
-            <div className="itiha-pull" style={{ fontSize: quote_size }}>
-              {quote.split('\n').map((l, i, a) => <React.Fragment key={i}>{l}{i < a.length - 1 && <br/>}</React.Fragment>)}
+          <div>
+            <div aria-hidden="true" style={{
+              fontFamily: ITIHA.quoteSerif, fontStyle: 'italic', fontSize: 150,
+              lineHeight: 1, height: 84, color: ITIHA.red, userSelect: 'none',
+            }}>“</div>
+            {/* itiha-pull carries the serif voice; itiha-body scopes `.key` so
+                the [word] red-emphasis micro-syntax works inside quotes too. */}
+            <div className="itiha-pull itiha-body" style={{
+              fontSize: quote_size, maxWidth: 'none',
+              color: t.isLight ? ITIHA.nearBlack : ITIHA.parchment,
+            }}>
+              {quote.split('\n').map((l, i, a) => (
+                <React.Fragment key={i}>{renderBody(l)}{i < a.length - 1 && <br/>}</React.Fragment>
+              ))}
             </div>
-            {attribution && (
-              <div className="itiha-meta" style={{ marginTop: 18, fontSize: 16 }}>
-                {attribution}
-              </div>
+            {attribution && !hasAuthor && (
+              <div style={{
+                marginTop: 40, fontFamily: ITIHA.sans, fontWeight: 600,
+                fontSize: 18, letterSpacing: '0.25em', textTransform: 'uppercase',
+                color: ITIHA.midGray, fontStyle: 'normal',
+              }}>{attribution}</div>
             )}
           </div>
         )}
         {body && <Body text={body} size={body_size} />}
       </div>
+      {hasAuthor && (
+        <div style={{
+          position: 'absolute', left: 72, right: 72, bottom: 0,
+          display: 'flex', alignItems: 'flex-end', gap: 48,
+        }}>
+          {author_style === 'framed' ? (
+            <div style={{
+              marginBottom: 96, width: Math.round(author_height * 0.62), height: Math.round(author_height * 0.62),
+              border: `1px solid ${t.isLight ? 'rgba(26,26,26,.4)' : 'rgba(232,220,200,.4)'}`,
+              overflow: 'hidden', flex: 'none',
+            }}>
+              <img src={authorSrc} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            </div>
+          ) : (
+            // Die-cut: transparent PNG stands on the bottom edge, no frame.
+            <img src={authorSrc} style={{
+              height: author_height, maxWidth: 380, flex: 'none',
+              objectFit: 'contain', objectPosition: 'bottom', display: 'block',
+            }} />
+          )}
+          <div style={{ paddingBottom: 100, minWidth: 0 }}>
+            <hr className="itiha-divider" style={{ margin: '0 0 22px' }} />
+            {attribution && (
+              <div style={{
+                fontFamily: ITIHA.bebas, fontSize: 46, letterSpacing: '0.5px',
+                lineHeight: 1, color: t.isLight ? ITIHA.nearBlack : ITIHA.parchment, textTransform: 'uppercase',
+              }}>{attribution}</div>
+            )}
+            {author_role && (
+              <div style={{
+                marginTop: 14, fontFamily: ITIHA.sans, fontWeight: 600,
+                fontSize: 17, letterSpacing: '0.22em', textTransform: 'uppercase',
+                color: ITIHA.midGray,
+              }}>{author_role}</div>
+            )}
+          </div>
+        </div>
+      )}
       <MaybePageNum n={index + 1} color={t.pageNumColor} />
       <MaybeStamp color={t.stampFg} />
     </div>
@@ -382,54 +452,6 @@ function Closing({ slide, index }) {
 
 // ─── Templates from the design system bundle ────────────────────
 // These map 1:1 to project/templates/ in the ITIHA design system.
-
-// 1080×1080 quote card — dark or light variant. Single quote, red left border.
-function QuoteCard({ slide, index }) {
-  const { eyebrow, quote, attribution, variant = 'dark',
-          image, image_bw, image_overlay, image_position, text_y = 50,
-          quote_size = 48 } = slide;
-  const isLight = variant === 'light';
-  const bg = isLight ? ITIHA.offWhite : ITIHA.ink;
-  const fg = isLight ? ITIHA.nearBlack : ITIHA.parchment;
-  const stampFg = isLight ? ITIHA.ink : ITIHA.parchment;
-  return (
-    <div className="itiha-slide" style={{ background: bg, color: fg }}>
-      {image && <ImageLayer light={isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.7} position={image_position} vignette={false} />}
-      <TextureOverlay texture={slide.texture} />
-      {/* text_y (percent of card height) stays the default anchor; align_y,
-          when the author sets it, supersedes it — same deal as Story/block_y. */}
-      <div {...alignBlock(slide, { position: 'absolute', left: 96, right: 96, top: `${text_y}%`, transform: 'translateY(-50%)', boxSizing: 'border-box' },
-                          { top: 120, bottom: 120 })}>
-        <div style={{ borderLeft: `3px solid ${ITIHA.red}`, paddingLeft: 48 }}>
-          {eyebrow && (
-            <div style={{
-              fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 22,
-              letterSpacing: '0.3em', textTransform: 'uppercase',
-              color: ITIHA.red, marginBottom: 40,
-            }}>{eyebrow}</div>
-          )}
-          {/* itiha-body is what scopes `.key` (the [word] red emphasis) — without
-              it the body micro-syntax silently renders as plain text here. The
-              inline styles below still win over the class's own font/size/colour. */}
-          <div className="itiha-body" style={{
-            fontFamily: ITIHA.sans, fontSize: quote_size, lineHeight: 1.45,
-            fontStyle: 'italic', color: fg, maxWidth: 'none',
-          }}>
-            {quote && renderBody(quote)}
-          </div>
-          {attribution && (
-            <div style={{
-              marginTop: 44, fontFamily: ITIHA.sans, fontWeight: 600,
-              fontSize: 18, letterSpacing: '0.25em', textTransform: 'uppercase',
-              color: ITIHA.midGray, fontStyle: 'normal',
-            }}>{attribution}</div>
-          )}
-        </div>
-      </div>
-      <Stamp color={stampFg} />
-    </div>
-  );
-}
 
 // 1080×1920 Reel title card. Pure black, centered top-half, optional pill at bottom.
 function ReelTitle({ slide, index }) {
@@ -1726,7 +1748,6 @@ window.LAYOUTS = {
   'cta-red': CtaRed,
   'youtube-cta': YouTubeCTA,
   // Standalone formats
-  'quote-card': QuoteCard,
   'reel-title': ReelTitle,
   'youtube-thumbnail': YoutubeThumbnail,
   'end-card': EndCard,

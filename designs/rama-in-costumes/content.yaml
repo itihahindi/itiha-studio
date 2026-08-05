@@ -1,0 +1,117 @@
+name: ramayana-trailer-costume-critique
+brand: itiha
+format: instagram-portrait
+caption: |
+  Nitesh Tiwari's Ramayana: Part One has released its first trailer — and while the VFX, scale, and star casting (Ranbir Kapoor as Rama, Sai Pallavi as Sita, Lara Dutta as Kaikeyi, Yash as Ravana) have generated real excitement, the costumes have drawn sharp criticism for looking jarringly contemporary. This carousel is the record of why they get it wrong — and what the women of the Ramayana actually wore.
+
+  The dress of the Vedic period and the Ramayana era was fundamentally unstitched. Men and women wore lengths of cloth wrapped, pleated, and draped. The core ensemble was three pieces: the antariya (a rectangular lower cloth), the uttariya (an upper shawl), and the stanapatta (a simple breast band). Stitched, tailored blouses with sleeves, necklines, and darts did not exist. The modern blouse — with fitted sleeves, structured necks, and Victorian-era shape — is a 19th-century colonial innovation popularised under British social influence. Valmiki's own Ramayana describes Sita as pitakausheya-vasini — clad in yellow silk. Nowhere in the text do we find contrast-coloured tailored blouses, half-sleeves, salon-styled side-combed hair, or heavy modern chokers. Yet the trailer dresses Kaikeyi in a designer saree with a green contrast half-sleeve blouse — a look critics have called closer to an Ekta Kapoor serial than to Treta Yuga royalty. Sai Pallavi's Sita is styled with modern wedding-fashion drapes and heavy contemporary jewellery. Clothing is culture made visible. When a film adapts the foundational text of a civilisation, the drape matters as much as the dialogue.
+
+  Ramanand Sagar's 1987 Ramayan was not archaeologically perfect either. But it kept the drape simple, the silhouette traditional, and the aesthetic recognisable. This trailer replaces that with something the Treta Yuga never wore.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Ramayana #NiteshTiwari #Ramayana2026 #IndianCostume #VedicPeriod #TextileHistory #Valmiki
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: RAMAYANA
+slides:
+- layout: cover
+  eyebrow: Ramayana
+  eyebrow_meta: The Ramayana Trailer · 6 Parts
+  headline: |
+    Ramayana Got The
+    Costumes *Wrong.*
+  subline: What the women of the Ramayana actually wore
+  swipe_meta: Swipe ▸ · 6 Slides · 3 min read
+  headline_offset_y: 340
+  image: https://m.media-amazon.com/images/M/MV5BMzljMTFkYTktMjQ0MC00NjFhLWFmOTEtOTMyZmVhNTBmYTMzXkEyXkFqcGc@._V1_.jpg
+  theme: dark
+  texture: halftone
+  image_overlay: 0.9
+- layout: split-story
+  chapter: Chapter 01 · The Ancient Rule
+  headline: |
+    No Stitches.
+    Just *Drape.*
+  body: The clothing of the [Vedic period] and the [Ramayana era] was [unstitched]. Both men and women
+    wore [lengths of cloth] that were [wrapped], [pleated], and [draped]. [Tailored] garments, as we know
+    them today, [did not exist].
+  image: screenshot-2026-07-31-at-10-16-01-pm.png
+  body_y: 18
+  image_overlay: 0.9
+  image_position: 47% 44%
+  texture: halftone
+- layout: story
+  chapter: Chapter 02 · The Three Pieces
+  headline: '*Antariya*'
+  items:
+  - number: 1
+    headline: Antariya
+  body: A rectangular [lower cloth] , wrapped around the waist and hips, secured with a decorative [sash].
+    Not a stitched skirt.
+  image: https://collections-images.lacma.org/images/40126/40126-1-primary.webp
+  texture: halftone
+- layout: story
+  headline: '*Uttariya*'
+  body: A longer [upper shawl],  draped over the shoulders, across the chest, or over the head. Not a
+    fitted top.
+  image: https://pbs.twimg.com/media/Gt4xHzNbwAcQqN2?format=jpg&name=medium
+  image_overlay: 0.7
+  texture: halftone
+- layout: story
+  headline: '*Stanapatta*'
+  body: A simple [breast band],  tied across the chest. Not a modern [blouse] with sleeves, hooks, or
+    darts.
+  image: https://preview.redd.it/common-women-in-ancient-india-really-wore-sleeveless-v0-ceaklw4boo6h1.jpeg?width=931&format=pjpg&auto=webp&s=8d026c6fbdb8c61810a0d867cd0e6119c186abf2
+  texture: halftone
+- layout: did-you-know
+  eyebrow: Did You Know?
+  headline: |
+    The Blouse Is A
+    *British* Invention.
+  body: |
+    The modern fitted [blouse] , with sleeves, structured necklines, and darts , was popularised in the [19th century] under [British] social influence. Reformers adapted [European] and [Parsi] styles so that Indian women could appear in [Decent clothes] in colonial company. What many call [traditional] today is, in part, a [colonial-era] innovation.
+  source: Textile history of the Indian saree
+- layout: split-story
+  chapter: Chapter 03 · What Valmiki Wrote
+  headline: |
+    Yellow Silk. Simple
+    *Drape.*
+  body: '[Valmiki''s Ramayana] describes Sita as [pitakausheya-vasini], clad in [yellow silk]. She wore
+    an [uttariya]. Queens like [Kausalya] appear in [white silk] for ritual. [Nowhere] in the text do
+    we find [fitted], [sleeved], [high-necked], or [contrast-coloured tailored blouses].'
+  image: https://upload.wikimedia.org/wikipedia/commons/a/af/Sita_as_Goddess_LACMA_M.80.6.5.jpg
+  image_overlay: 1.1
+  body_y: 22
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 04 · What The Trailer Shows
+  headline: |
+    A Designer Saree.
+    A *Modern* Blouse.
+  body: 'In the trailer, [Kaikeyi] wears a designer saree with a [green contrast half-sleeve blouse],
+    [salon-styled] side-combed hair, and [modern jewellery]. '
+  image: screenshot-2026-07-31-at-10-24-40-pm.png
+  texture: halftone
+- layout: split-story
+  headline: |2
+     *Goddess Sita*
+    In Ramayan trailer
+  body: Goddess [Sita's] look leans on [wedding-fashion] drapes and heavy [contemporary] chokers. Critics
+    have called it closer to an [Ekta Kapoor serial] than [Treta Yuga] royalty.
+  image: screenshot-2026-07-31-at-10-26-11-pm.png
+  body_y: 46
+  image_overlay: 0.8
+  texture: halftone
+- layout: closing
+  headline: |
+    Clothing Is Culture
+    Made *Visible.*
+  body: |
+    Unstitched garments are not [primitive], They are practicle.  Stitched, form-fitting clothes create closed pockets of air against the skin that trap body heat and moisture, When a film adapts the [foundational text] of a civilisation, the [costume] must speak that grammar. This one speaks [2026]. Not [Treta Yuga].
+  handle: Follow @itiha29 · itiha.info
+  texture: halftone

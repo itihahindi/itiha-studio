@@ -82,7 +82,7 @@ window.MANIFEST = {
 
   quote: {
     label: "Pull Quote",
-    summary: "Image, headline up top, big pull quote in middle, body below.",
+    summary: "Serif quote under a giant red quote mark — optional headline up top, body below, die-cut author strip along the bottom. Same component as Quote Card.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
@@ -90,13 +90,18 @@ window.MANIFEST = {
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
-      { key: "quote",         type: "textarea", label: "Pull quote",      help: "Newlines preserved. Wrap in your own quotation marks." },
-      { key: "attribution",   type: "text",     label: "Attribution",     help: "e.g. \"— Recruiter's pitch, 1860s\"" },
+      { key: "quote",         type: "textarea", label: "Pull quote",      help: "Newlines preserved. The card draws the big red quote mark — no need to type quotation marks. [word] = red emphasis." },
+      { key: "attribution",   type: "text",     label: "Attribution",     help: "Meta line under the quote — or the big name in the author strip when an author image is set." },
+      { key: "author_image",  type: "image",    label: "Author image (bottom-left)", help: "Transparent PNG = die-cut standing on the bottom edge. Use the Die-cut button after uploading a portrait." },
+      { key: "author_role",   type: "text",     label: "Author role / era", help: "Small line under the name, e.g. \"Prime Minister of Britain · 1940\"." },
+      { key: "author_style",  type: "select",   label: "Author image style", options: ["cutout","framed"], default: "cutout", help: "cutout = die-cut PNG, no frame. framed = square crop with hairline border." },
+      { key: "author_height", type: "number",   label: "Author image height (px)", default: 320, step: 20 },
       { key: "body",          type: "textarea", label: "Body" },
-      { key: "image",         type: "image",    label: "Image" },
+      { key: "image",         type: "image",    label: "Background image" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
       { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
-      { key: "quote_size",    type: "number",   label: "Quote size (px)", default: 64 },
+      { key: "text_y",        type: "number",   label: "Quote anchor Y (%)", help: "Blank = bottom-anchored (carousel classic). Set 35–55 for a card-style centered quote." },
+      { key: "quote_size",    type: "number",   label: "Quote size (px)", default: 56 },
       { key: "body_size",     type: "number",   label: "Body size (px)",  default: 42 },
       { key: "headline_offset_y", type: "number", label: "Headline offset Y (px)", default: 0, step: 10, help: "Nudge headline. Negative = up, positive = down." },
       { key: "body_offset_y",     type: "number", label: "Body offset Y (px)",     default: 0, step: 10, help: "Nudge quote+body. Negative = up, positive = down." },
@@ -686,27 +691,6 @@ window.MANIFEST = {
 
   // ─── Standalone formats ─────────────────────────────────────
 
-  "quote-card": {
-    label: "Quote Card",
-    summary: "Standalone 1080×1080 quote (dark or light).",
-    fields: [
-      { key: "variant",       type: "select",   label: "Variant", options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
-      { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
-      { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
-      { key: "eyebrow",       type: "text",     label: "Eyebrow" },
-      { key: "quote",         type: "textarea", label: "Quote" },
-      { key: "attribution",   type: "text",     label: "Attribution" },
-      { key: "image",         type: "image",    label: "Image (optional)" },
-      { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
-      { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.7, step: 0.05 },
-      { key: "image_position",type: "image-position", label: "Image crop" },
-      { key: "quote_size",    type: "number",   label: "Quote size (px)", default: 48, help: "Bigger for short quotes, smaller for long ones." },
-      { key: "text_y",        type: "number",   label: "Text Y (move up/down %)", default: 50, step: 5, help: "0=top, 50=center, 100=bottom. This moves the whole quote block." },
-    ],
-  },
-
   "reel-title": {
     label: "Reel Title",
     summary: "Standalone 1080×1920 title card (Reel / Story).",
@@ -793,6 +777,7 @@ window.MANIFEST_TWEAKS = {
     { key: "showPageNum",       type: "bool",   label: "Show page number" },
     { key: "overlayDarkness",   type: "number", label: "Default image overlay (0–100)", default: 62 },
     { key: "showGrain",         type: "bool",   label: "Film grain on opt-in slides" },
+    { key: "emphasisV2",        type: "bool",   label: "Emphasis v2 (red-legibility A/B)", help: "Brighter vermilion for headline accents on dark; body [keys] render full-contrast with a red underline instead of red text. Graphic red unchanged." },
     { key: "seriesLabel",       type: "text",   label: "Series label",   help: "Appended after page number, e.g. INDENTURE." },
   ],
 };

@@ -19,7 +19,7 @@ tweaks:
 slides:
 - layout: stat
   vertical: briefing
-  surface: solid
+  surface: dark
   texture: riso
   label: ICC states that voted to sack prosecutor Karim Khan
   value: 82/125

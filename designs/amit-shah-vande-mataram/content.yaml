@@ -14,12 +14,12 @@ tweaks:
   showStamp: true
   showPageNum: false
 slides:
-- layout: story
-  vertical: sports
+- layout: cover
+  vertical: tech
   image: amit-shah.jpg
   image_position: 50% 20%
   image_credit: MHA · GODL
   headline: Insulting *Vande Mataram* May Soon Be Criminal
   body: Amit Shah tables the amendment in the Rajya Sabha on Monday. Up to [three years in jail].
-  surface: light
+  surface: dark
   texture: signal

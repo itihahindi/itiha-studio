@@ -16,6 +16,10 @@ const ITIHA = {
   heavy: "'Big Shoulders Display', 'Bebas Neue', Impact, sans-serif",
   sans: "'DM Sans', system-ui, sans-serif",
   mono: "'JetBrains Mono', ui-monospace, monospace",
+  // The quote voice (2026-07-30): DM Serif Display — DM Sans's own serif
+  // sibling, warm high-contrast, true italics. Quotes are a spoken voice,
+  // never Bebas caps. Devanagari serif fallback keeps Hindi quotes in family.
+  quoteSerif: "'DM Serif Display', 'Noto Serif Devanagari', Georgia, serif",
 };
 
 // One-time global CSS for the slide world (separate from design-canvas chrome)
@@ -40,8 +44,19 @@ if (typeof document !== 'undefined' && !document.getElementById('itiha-slide-sty
     .itiha-body{font-family:${ITIHA.sans};font-weight:400;font-size:28px;line-height:1.6;color:${ITIHA.parchment};text-wrap:pretty}
     .itiha-body.light{color:${ITIHA.nearBlack}}
     .itiha-body .key{color:${ITIHA.red};font-weight:500}
+    /* ── Emphasis v2 (A/B, tweaks.emphasisV2) ──────────────────────
+       Sindoor #C0392B is ~3.5:1 on ink — below the 4.5:1 body-text floor —
+       so red running text goes muddy on dark. v2: headline accents lift to a
+       brighter vermilion on dark (same hue family, ~6:1); body [keys] keep
+       full-contrast parchment/ink and carry the red as a thick underline
+       instead of colored text. Graphic red (dividers, eyebrows, numerals)
+       is untouched. */
+    .itiha-slide.em-v2 .itiha-h1 .accent{color:#E2604F}
+    .itiha-slide.em-v2.light .itiha-h1 .accent{color:${ITIHA.red}}
+    .itiha-slide.em-v2 .itiha-body .key{color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:#E2604F;text-decoration-thickness:3.5px;text-underline-offset:7px}
+    .itiha-slide.em-v2.light .itiha-body .key{text-decoration-color:${ITIHA.red}}
     .itiha-meta{font-family:${ITIHA.sans};font-weight:500;font-size:15px;letter-spacing:2.4px;text-transform:uppercase;color:${ITIHA.midGray}}
-    .itiha-pull{font-family:${ITIHA.bebas};font-size:64px;line-height:1.0;color:${ITIHA.parchment};letter-spacing:0.5px;text-transform:uppercase}
+    .itiha-pull{font-family:${ITIHA.quoteSerif};font-style:italic;font-size:64px;line-height:1.28;color:${ITIHA.parchment};letter-spacing:0}
     /* Light-theme per-slide overrides: triggered by .itiha-slide.light */
     .itiha-slide.light{color:${ITIHA.nearBlack}}
     .itiha-slide.light .itiha-h1{color:${ITIHA.ink}}
@@ -286,11 +301,16 @@ function TextureOverlay({ texture }) {
 // flips bg→off-white, text→near-black; CSS overrides above handle class-driven
 // elements (.itiha-h1, .itiha-body, .itiha-sub, .itiha-meta, .itiha-pull, .itiha-page).
 function themeFor(slide) {
+  // Reads the tweak context (always called unconditionally at the top of a
+  // layout component, so the hook rules hold). emphasisV2 is the A/B flag for
+  // the 2026-08-01 red-legibility experiment — it only appends a CSS class.
+  const tw = (typeof React !== 'undefined' && React.useContext) ? React.useContext(BrandContext) : null;
+  const em = tw && tw.emphasisV2 ? ' em-v2' : '';
   const isLight = slide && slide.theme === 'light';
   if (isLight) {
     return {
       isLight: true,
-      className: 'light',
+      className: 'light' + em,
       bg: ITIHA.offWhite,
       fg: ITIHA.nearBlack,
       h1: ITIHA.ink,
@@ -306,7 +326,7 @@ function themeFor(slide) {
   }
   return {
     isLight: false,
-    className: '',
+    className: em.trim(),
     bg: ITIHA.ink,
     fg: ITIHA.parchment,
     h1: ITIHA.parchment,

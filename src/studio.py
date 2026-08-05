@@ -633,16 +633,35 @@ def _build_server() -> ThreadingHTTPServer:
                     filename = (body.get("filename") or "").strip()
                     if not filename:
                         self._send_bytes(b"filename is required", "text/plain", code=400); return
-                    src = design_dir / "images" / filename
-                    if not src.exists():
-                        self._send_bytes(f"image not found: {filename}".encode(),
-                                         "text/plain", code=404); return
+                    images_dir = design_dir / "images"
+                    if filename.startswith(("http://", "https://")):
+                        # URL values (the paste-a-link workflow) get fetched into
+                        # images/ first so the cutout has a local source.
+                        from urllib.request import Request, urlopen
+                        from urllib.parse import urlparse, unquote
+                        req = Request(filename, headers={"User-Agent": "Mozilla/5.0"})
+                        raw_dl = urlopen(req, timeout=60).read()
+                        base = _safe_filename(Path(unquote(urlparse(filename).path)).name or "diecut.jpg")
+                        if not Path(base).suffix:
+                            base += ".jpg"
+                        images_dir.mkdir(exist_ok=True)
+                        src = images_dir / base
+                        n = 1
+                        while src.exists():
+                            src = images_dir / f"{Path(base).stem}-{n}{Path(base).suffix}"
+                            n += 1
+                        src.write_bytes(raw_dl)
+                    else:
+                        src = images_dir / filename
+                        if not src.exists():
+                            self._send_bytes(f"image not found: {filename}".encode(),
+                                             "text/plain", code=404); return
                     # Output is always PNG (alpha required).
-                    out_name = Path(filename).stem + "-bgremoved.png"
-                    dst = design_dir / "images" / out_name
+                    out_name = src.stem + "-bgremoved.png"
+                    dst = images_dir / out_name
                     n = 1
                     while dst.exists():
-                        dst = design_dir / "images" / f"{Path(filename).stem}-bgremoved-{n}.png"
+                        dst = images_dir / f"{src.stem}-bgremoved-{n}.png"
                         n += 1
                     from rembg import remove
                     from PIL import Image

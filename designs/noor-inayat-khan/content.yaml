@@ -12,6 +12,7 @@ caption: |
 hashtags: |
   #IndianHistory #Itiha #NoorInayatKhan #WorldWarII #SpecialOperationsExecutive #IndianDiaspora #FreedomFighter #ResistanceHistory #ForgottenHeroes
 tweaks:
+  emphasisV2: true
   showChapterLabels: false
   showStamp: true
   showPageNum: true
@@ -25,7 +26,7 @@ slides:
   subline: Written by  Raj Kumar, Project fellow, ICSSR
   swipe_meta: Swipe ▸ · 7 Slides · 4 min read
   headline_size: 130
-  image: https://upload.wikimedia.org/wikipedia/commons/7/71/Noor_Inayat_Khan.jpeg
+  image: _cache/5e84af09ed72c0bd.jpeg
   image_position: 43% 50%
   headline_offset_y: 300
 - layout: split-story

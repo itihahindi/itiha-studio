@@ -4,20 +4,20 @@ caption: |
   From the archives — the Mughal court treasury at its zenith.
 
   #IndianHistory #Mughals #Itiha
+tweaks:
+  showPageNum: false
 slides:
-- layout: quote-card
-  variant: dark
-  eyebrow: From the Archives
-  quote: '"While the Hindu elaborates his argument, the Moslem sharpens his sword." '
+- layout: quote
+  chapter: From the Archives
+  quote: While the Hindu elaborates his argument, the Moslem sharpens his sword.
   attribution: Winston Churchill
-  image_overlay: 1
-  image_filter: sepia
-  image: https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Sir_Winston_Churchill_-_19086236948_%28restored%29.jpg/1280px-Sir_Winston_Churchill_-_19086236948_%28restored%29.jpg
-  image_bw: false
-  texture: halftone
-- layout: quote-card
-  variant: light
-  eyebrow: A Note on Method
+  author_image: churchill-bgremoved.png
+  author_role: House of Commons · 1931
+  texture: grain
+- layout: quote
+  theme: light
+  chapter: A Note on Method
+  text_y: 50
   quote: |
-    "Conclusions belong to historians. Curiosities belong to the rest of us."
+    Conclusions belong to historians. Curiosities belong to the rest of us.
   attribution: — Itiha Editorial

@@ -42,6 +42,17 @@ const V_BASE = {
   accent: '#F4631E', onAccent: '#3A1402', onAccentMuted: '#7A2C08', tint: '#FFD9C4',
   darkInk: true,   // orange tile is light enough for dark ink text
   face: 'display',
+  // The second tone. `surface: dark` = the NAVY poster (brand panel navy, not
+  // charcoal) — without this shared palette inkFor falls back to VAQ.ink and
+  // the two-tone system loses its blue half.
+  dark: {
+    bg:    VAQ.panel,               // #15263B — visibly navy on the feed
+    head:  '#FFFFFF',
+    body:  'rgba(255,255,255,.88)',
+    muted: 'rgba(255,255,255,.58)',
+    hair:  'rgba(255,255,255,.16)',
+    well:  'rgba(10,17,25,.45)',    // image wells stay in the navy family
+  },
 };
 const VERTICALS = {
   live:     { ...V_BASE, key: 'live', name: 'Current Affairs', show: 'Vaq HQ Breaking',

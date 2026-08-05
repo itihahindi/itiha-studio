@@ -10,15 +10,11 @@ tweaks:
   showPageNum: false
 slides:
 - layout: reel-title
-  headline: |
-    Deindustrialization
-    of *Kanpur*
-  subline: 'Kanpur: How India''s Textile Capital Lost Everything in the 1970s'
+  headline: "*sachin sanyal* \nBHAGAT SINGH’S MENTOR\n"
   handle: '@itiha29'
-  image: screenshot-2026-07-11-at-12-58-01-am.png
+  image: https://upload.wikimedia.org/wikipedia/commons/6/6c/Freedom_fighter_Sachindranath_Sanyal.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled
   image_overlay: 0.8
   texture: vignette
   image_bw: false
   headline_size: 130
-  text_y: 73
-  image_filter: warm
+  text_y: 75

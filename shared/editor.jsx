@@ -187,11 +187,11 @@ function ImageInput({ value, onChange, slideIndex, fieldKey }) {
           style={{ ...inputBase, padding: '8px 12px', cursor: 'pointer', flex: 1, fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase', fontSize: 11 }}>
           {busy ? 'Uploading…' : (value ? 'Replace file' : 'Choose / drop file')}
         </button>
-        {value && !isUrl && (
+        {value && (
           <button type="button" onClick={removeBg} disabled={bgBusy}
-            title="Run rembg to produce a transparent-background copy"
+            title="Remove the background (rembg) — produces a transparent die-cut PNG. Works on uploads and pasted URLs."
             style={{ ...inputBase, padding: '8px 12px', cursor: bgBusy ? 'wait' : 'pointer', width: 'auto', color: '#E8DCC8', fontSize: 11, letterSpacing: 1, textTransform: 'uppercase' }}>
-            {bgBusy ? 'Removing…' : 'Remove BG'}
+            {bgBusy ? 'Cutting…' : 'Die-cut'}
           </button>
         )}
         {value && (
@@ -419,7 +419,6 @@ function FieldInput({ field, value, onChange, slideIndex }) {
 // formats have their own native dimensions.
 const LAYOUT_ASPECT = {
   'reel-title':        9/16,
-  'quote-card':        1,
   'youtube-thumbnail': 16/9,
   'end-card':          16/9,
 };
@@ -711,14 +710,6 @@ function _schematicFor(layout) {
       {line('eye', 8, 36, 30, tok.muted)}
       {_headlineBlock(8, 44, 84, tok.fg)}
       {line('cta', 8, 76, 36, tok.fg)}
-    </>;
-    case 'quote-card': return <>
-      {bar('qbar', 12, 30, 1.5, 40, RED)}
-      {line('eye', 17, 30, 30, RED)}
-      {bar('q1', 17, 38, 65, 5, tok.fg)}
-      {bar('q2', 17, 46, 55, 5, tok.fg)}
-      {bar('q3', 17, 54, 40, 5, tok.fg)}
-      {line('att', 17, 64, 30, tok.muted)}
     </>;
     case 'reel-title': return <>
       {line('eye', 12, 36, 30, RED)}

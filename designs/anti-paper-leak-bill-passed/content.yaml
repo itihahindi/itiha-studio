@@ -1,0 +1,45 @@
+name: anti-paper-leak-bill-passed
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  The Lok Sabha has passed the Public Examinations (Prevention of Unfair Means) Amendment Bill, 2026, by voice vote. Maximum imprisonment for exam fraud doubles from five years to ten.
+
+  What the Bill does. It raises the maximum sentence to 10 years, requires investigations to be completed within two months, and routes cases to fast-track courts expected to deliver verdicts within three months. Union Minister Jitendra Singh introduced it on 27 July and told the House that 52 FIRs have been lodged since the parent law came into force in 2024.
+
+  It is not law yet. The Bill has cleared the Lok Sabha only. It still requires the Rajya Sabha and presidential assent before any of these provisions take effect.
+
+  The fine figure, honestly. Reporting does not agree. The Tribune and Business Today both put the maximum fine at 50 lakh rupees. Posts circulating today, and some outlets, put it at 10 crore. The parent 2024 Act already set different penalties for candidates, service providers and organised groups, so a single headline number was always going to be a simplification. We are not printing either figure as settled until the passed text is published.
+
+  How it got here. Nationwide protests over the NEET-UG paper leak ran for weeks. Dharmendra Pradhan resigned as Education Minister on 25 July. Pralhad Joshi took charge of the ministry on 26 July, and a high-powered task force under Nandan Nilekani was announced the same week to look at exam reform more broadly. Joshi has said the Bill aims to dismantle the paper leak ecosystem.
+
+  What to watch. Whether the Rajya Sabha passes it unamended, whether the published text confirms the fine structure, and whether the two-month investigation deadline survives contact with the 52 cases already filed.
+
+  Sources: The Tribune and Business Today on the Bill's passage and penalties, 29 July 2026. ANI on Pralhad Joshi taking charge of the Education Ministry on 26 July. NDTV on Joshi's remarks.
+
+  Image: Education Minister Pralhad Joshi.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #PaperLeak #NEET #LokSabha #Parliament #PralhadJoshi #ExamReforms #India
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+  seriesLabel: PARLIAMENT
+slides:
+- layout: cover
+  kicker_meta: LOK SABHA · 29 JULY 2026
+  headline: |
+    Lok Sabha doubles the
+    paper leak sentence
+    to *ten years*.
+  headline_size: 66
+  image: https://cf-images.assettype.com/nationalherald%2F2024-06%2F3402fef2-34c7-462e-9430-e518cd8cb6f1%2FGO6MjVhagAEKN_2.jpeg?rect=0%2C0%2C1280%2C720&auto=format%2Ccompress&fmt=webp&w=1200
+  image_position: 50% 30%
+  image_height: 380
+  body: |
+    Passed by voice vote. Maximum jail rises from five years to [10]. Investigations must close in [two months], fast-track courts inside [three].
+    On the fine, reporting differs: [₹50 lakh] or [₹10 crore]. We are not printing either as settled.
+  body_size: 40
+  align_x: center
+origin: watcher

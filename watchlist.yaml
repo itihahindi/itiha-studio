@@ -1,0 +1,71 @@
+# Handles the watcher reads, and the thresholds it fires on.
+#
+# An event is queued when `min_sources` DIFFERENT handles post about the same
+# thing inside `window_hours`, AND those handles span at least `min_families`
+# source families. Reposts never count toward either number.
+#
+# WHY FAMILIES: a raw handle count is not independence. Accounts inside one
+# amplification network carry each other's claims within minutes, reworded
+# just enough that the verbatim-overlap check (echo_score) stays low. Three
+# of them agreeing is one claim propagating, not three confirmations. Handles
+# with no `family` count as their own.
+#
+# `vertical:` is a desk hint. It nudges routing for stories that account
+# breaks, without overriding a strong keyword signal from elsewhere (a tech
+# commentator posting about a court case still routes legal).
+# Valid: live · briefing · longview · ground · sports · legal · tech
+
+min_sources: 2      # how many independent handles constitute an event
+min_families: 2     # ...spanning at least this many source families
+# 2026-07-29: lowered from 3 to 2 on request ("whenever 2-3 of them post").
+# min_families stays at 2, which is what still stops the aligned network
+# firing on its own: two accounts now trigger an event, but they have to be
+# two accounts that don't habitually repeat each other. Put min_sources back
+# to 3 if the queue starts filling with noise.
+threshold: 0.32     # similarity to count as "the same story" (0.25 looser, 0.40 tighter)
+window_hours: 18    # posts further apart than this never join one cluster
+per_handle: 25      # posts read per handle per poll
+
+handles:
+  # ── the aligned network ──────────────────────────────────────
+  # Grouped as ONE family on purpose. This is not a judgement on their
+  # accuracy — it is about propagation: when a claim enters this ecosystem
+  # all four tend to carry it within the hour, reworded. So the fourth
+  # account repeating it adds reach, not confirmation. Together they can
+  # never fire an event alone; something outside the network has to carry it
+  # too. Split them into separate families if you want that looser.
+  - handle: MeghUpdates
+    family: aligned-network
+    vertical: live
+  - handle: rishibagree
+    family: aligned-network
+    vertical: ground
+  - handle: OpIndia_com
+    family: aligned-network
+    vertical: ground
+  - handle: thetatvaindia
+    family: aligned-network
+    vertical: briefing
+
+  # ── independently sourced ────────────────────────────────────
+  # Each its own family: these break stories on their own reporting, so any
+  # one of them alongside two network accounts is a real second source.
+  - handle: ndtv
+    family: broadcast
+    vertical: live
+    # c.ndtvimg.com hotlink-blocks at the edge — their images will not
+    # download. Source art from Commons instead.
+  - handle: AdityaRajKaul
+    family: kaul
+    vertical: briefing      # defence, Kashmir, national security
+  - handle: jsaideepak
+    family: saideepak
+    vertical: legal         # Supreme Court / Delhi HC advocate
+  - handle: TVMohandasPai
+    family: pai
+    vertical: live          # economy, taxation, education policy
+  - handle: Tushar15
+    family: tushar
+    vertical: ground
+    # I could not confirm which Tushar this handle is. If it turns out to sit
+    # inside the network above, move it to family: aligned-network.

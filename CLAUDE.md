@@ -60,6 +60,28 @@ The yaml fence is load-bearing: claude.ai strips `*asterisks*` and `##` headers 
 
 ---
 
+## Handle watcher (Vaq HQ) — `src/watch/`
+
+Watches a list of X handles and queues an event when ≥3 of them post about the same thing. `bin/vaq-watch login | poll | queue | brief <id> | built <id> <slug> | status`. Config in [watchlist.yaml](watchlist.yaml); all state under `.watch/` (gitignored).
+
+- **It stops at a brief. It never writes `content.yaml` and never publishes.** Three handles agreeing is corroboration of virality, not of fact — and the categories they converge on fastest (resignations, tolls, rulings, seat counts) are exactly the ones CLAUDE.local.md carves out for real verification. `poll` tags those in `needs_verification`.
+- **Reposts never count toward the handle threshold.** A retweet is an echo, not a second source.
+- **An event also needs ≥2 source families** (`min_families`, families declared per handle in `watchlist.yaml`). A raw handle count is not independence: @MeghUpdates, @rishibagree, @OpIndia_com and @thetatvaindia carry each other's claims within the hour, reworded enough that `echo_score` stays low. They're one family, so the four together can never fire an event — something outside the network has to carry it too. This is about propagation, not accuracy.
+- **The clustering maths has two traps, both fixed, both silent when wrong:** the cosine numerator is `Σ idf²` over the intersection (dot product of idf-weighted vectors), not `Σ idf` — the latter understates every match; and IDF is computed against a floored corpus of 50 docs, because on a small store "appears in every document" is an artifact of the store being tiny and drops shared terms to ~0 weight, splitting one story into N clusters. A flat constant added to every weight also fixes that, but it dilutes rare shared terms and loses real cross-source matches. Measured separation on the fixtures: same-story pairs 0.44-1.00, unrelated 0.00-0.24, threshold 0.32.
+- **`echo_score` measures verbatim 5-gram reuse, not vocabulary overlap.** Independent reports of one verdict legitimately share words; shared *phrasing* means one wire story reprinted. Don't "improve" this back into a similarity score — that flagged genuine corroboration as echo.
+- **70/30 post:carousel is held by a ledger** (`.watch/ledger.json`) over a rolling 20 builds, not a per-event coin flip, so it converges. Overrides (≥4 hard facts → carousel, ≤1 → post) are recorded too, which is what pulls the ratio back. Bare years are excluded from the fact count — counting them tipped everything into the carousel override.
+- **Anything feeding `fingerprint()` needs a deterministic tie-break.** It derives from set iteration, and Python randomises string hashing per process; unbroken ties reorder between runs and requeue already-built events under a new id.
+- **Every deck gets an image if the sources supplied one.** Standing rule from 2026-07-29. Run `bin/vaq-watch images <id> --slug <slug>` before drafting: it downloads what the source posts uploaded and builds a contact sheet. Only fall back to the brand's solid poster treatment when the harvest genuinely comes up empty.
+  - **Upgrade the URL or the image is a thumbnail.** X serves timeline images at `name=small` / `360x360` (300-400px), which is soft on a 1080px slide. `images.py` rewrites `/media/` to `name=orig` and video posters to a `:large` suffix — two different forms, because query params do nothing on the `amplify_video_thumb` path.
+  - **Look at the contact sheet before wiring anything in.** The first real harvest returned an NDTV on-air promo, complete with their anchor and logo, which would have gone straight onto a VaqHQ cover. Anything under 600px on the long edge is dropped automatically; branding and wrong subjects need eyes.
+  - Still no `image_credit` on slides — attribution goes in the caption. And the no-faces-next-to-accusations rule still wins: a public figure photographed making the statement a deck is about is fine, an identifiable private person beside an allegation is not.
+- **A single post's body is under 50 words. Hard limit.** Standing rule from 2026-07-29; one slide is read at a glance, so the detail belongs in the caption, which stays long-form. Carousels are exempt (the reader has committed to swiping). `bin/vaq-watch check <slug>` enforces it, and also fails on em dashes and `image_credit` — run it before rendering. A shorter body frees vertical space, so raise `body_size` rather than leaving a gap.
+- No LLM in the pipeline — clustering is plain IDF-weighted cosine. The drafting step is a separate human-supervised session that reads `.watch/queue/`.
+
+Reading X uses a **persistent logged-in Chromium profile** (`.watch/profile/`), not an API. The user accepted the ToS/account risk on 2026-07-29. Delays in `session.py` are deliberately slow and jittered; don't tighten them to speed up polls.
+
+---
+
 ## Voice / micro-syntax
 
 - **Headlines** (Bebas Neue): `*word*` → Sindoor Red accent.
@@ -78,7 +100,8 @@ The yaml fence is load-bearing: claude.ai strips `*asterisks*` and `##` headers 
 - **Notion data-source vs database ID.** `/databases/{id}/query` is the legacy endpoint; new multi-source DBs need `/data_sources/{id}/query`. `_query_db` tries the legacy first, falls back to data-source on 404. If a user pastes the wrong UUID flavor we still work.
 - **Notion is slow.** Backlog query routinely takes 15-30s. Timeouts are 30s. Don't drop them.
 - **Light theme suppresses the dark image overlay.** `{!t.isLight && <ImageLayer ... />}` — otherwise the off-white background turns muddy grey.
-- **Saves silently drop top-level YAML keys that don't round-trip.** The save endpoint writes back exactly what the editor posts, and the editor hydrates from `content.json` = `load_content()`'s output. Any top-level key not included there (the way `brand` and `notion_page_id` now are) is deleted from `content.yaml` on the next save. When adding a top-level field, add it to the dict `load_content` returns.
+- **Saves silently drop top-level YAML keys that don't round-trip.** The save endpoint writes back exactly what the editor posts, and the editor hydrates from `content.json` = `load_content()`'s output. Any top-level key not included there (the way `brand`, `notion_page_id` and `origin` now are) is deleted from `content.yaml` on the next save. When adding a top-level field, add it to the dict `load_content` returns.
+- **`origin: watcher` files a deck under Auto-generated** on the home page instead of Your projects, with an `AUTO` badge. Stamped automatically by `bin/vaq-watch built`; absent means hand-made. The section hides itself entirely when empty, so Itiha-only work never sees it. Counts are deliberately per-section: "Your projects (99)" excludes the auto decks, or the number contradicts what is under the heading.
 - **`__BRAND__` substitution lives in three servers.** `studio.py`, `render.py`, and `preview.py` each serve `render-host.html` with the placeholder replaced. Change the mechanism in one, change all three.
 
 ---
@@ -107,3 +130,4 @@ The yaml fence is load-bearing: claude.ai strips `*asterisks*` and `##` headers 
 | "Bump default body/headline sizes" | Destructure defaults in the brand's [layouts.jsx](shared/brands/itiha/layouts.jsx) **and** field defaults in its [manifest.js](shared/brands/itiha/manifest.js) — both must change together. Line-height is size-adaptive inside the `Body` component. |
 | "Add editor toolbar feature" | [shared/editor.jsx](shared/editor.jsx) — auto-render toggle, limit counters (`LimitCounter`), project-setup buttons all live near the bottom of the `Editor` function. Persist per-user prefs to `localStorage` under the `itiha:` prefix. |
 | "Change the phone preview" | `PhonePreview` in [shared/render-host.html](shared/render-host.html). Has a `sizeMode` toggle: `'fit'` (viewport-relative) vs `'real'` (locked to 410 px outer = 390 px screen ≈ iPhone 14 CSS viewport). |
+| "Tune what the watcher fires on" | thresholds in [watchlist.yaml](watchlist.yaml); clustering + echo maths in [src/watch/cluster.py](src/watch/cluster.py); desk routing keywords in [src/watch/route.py](src/watch/route.py); the 70/30 split in [src/watch/ledger.py](src/watch/ledger.py) |

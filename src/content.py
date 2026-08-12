@@ -227,13 +227,22 @@ def resolve_image(value: str | None, design_dir: Path) -> str | None:
                     f"filename, or reinstall Python against OpenSSL 1.1.1+"
                 )
             except Exception as e:
-                raise ContentError(f"failed to download {canonical}: {e}")
+                # A remote URL that will not serve *us* is not an authoring
+                # mistake — news CDNs hotlink-block (403) unpredictably, and a
+                # single dead link used to abort the render of every other
+                # slide. Hand the raw URL to the page instead: the browser
+                # sends different headers and often gets it where urllib
+                # cannot, and either way the URL survives the next save.
+                # Local filenames still raise below, because those ARE typos.
+                print(f"  !! {canonical} failed ({e}); leaving it to the browser")
+                return canonical
             if local.read_bytes()[:512].lstrip().startswith(_HTML_SIGNATURES):
                 local.unlink()
-                raise ContentError(
-                    f"{canonical} returned a web page, not an image — "
+                print(
+                    f"  !! {canonical} returned a web page, not an image — "
                     f"paste a direct image URL or drop the file into images/"
                 )
+                return canonical
         return f"_cache/{local.name}"
 
     # Tolerate either bare filename or "images/<name>"
@@ -316,6 +325,12 @@ def load_content(design_dir: Path) -> dict:
     # like notion_page_id must round-trip through content.json.
     if data.get("notion_page_id"):
         out["notion_page_id"] = str(data["notion_page_id"])
+    # Where this design came from. "watcher" = built from a queued event by
+    # the handle watcher, which files it in its own space on the home page
+    # instead of Your projects. Absent = hand-made. Must round-trip for the
+    # same reason as notion_page_id, or the first save moves the deck.
+    if data.get("origin"):
+        out["origin"] = str(data["origin"])
     return out
 
 

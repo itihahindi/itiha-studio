@@ -148,6 +148,8 @@ def _list_projects() -> list[dict]:
             "name":   data.get("name") or entry.name,
             "format": data.get("format") or "instagram-portrait",
             "brand":  data.get("brand") or DEFAULT_BRAND,
+            # "watcher" files the card under Auto-generated on the home page.
+            "origin": data.get("origin") or "",
         })
     return out
 

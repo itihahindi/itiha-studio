@@ -1,0 +1,94 @@
+name: nehru-press-conference-cabinet-mission-1946
+brand: itiha
+format: instagram-portrait
+caption: |
+  In June 1946 Muhammad Ali Jinnah accepted a united India. Six weeks later a press conference in Bombay undid it, and Maulana Azad spent the rest of his life calling his own part in it the greatest blunder of his political career.
+
+  The Cabinet Mission Plan of May 1946 was built to avoid Partition: a weak central Union holding only defence, foreign affairs and communications, with the provinces sorted into three sections, B and C carrying Muslim majorities and free to draft their own constitutions. On 6 June the Muslim League formally accepted it — Jinnah saw lacunas, but also provincial autonomy and the outline of a future Pakistan in the grouping of the six Muslim-majority provinces. On 25 June the Congress Working Committee agreed to contest the Constituent Assembly elections. Then, on 6 July, Nehru took charge as Congress President, and on 10 July he told a press conference in Bombay that the Congress entered the Constituent Assembly unfettered by agreements, bound only to participate — and that the big probability was that there would be no grouping, since the North-West Frontier Province and Assam would object to Sections B and C.
+
+  Jinnah read it as notice that a Hindu-majority Congress would use its numbers to scrap grouping and build a centralised state the moment the British left. On 29–30 July the League withdrew its acceptance and called for Direct Action from 16 August 1946, which opened with the Great Calcutta Killings. Azad, who had stood aside for Nehru over Patel, wrote that Patel would never have committed the mistake that gave Jinnah his opening.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #CabinetMissionPlan #Jinnah #Nehru #MaulanaAzad #Partition1947 #DirectActionDay
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: JULY 1946
+slides:
+- layout: cover
+  headline: |
+    Jinnah Had
+    *Accepted* A United India *But...*
+  subline: ' a press conference in Bombay, 10 July 1946'
+  swipe_meta: Swipe ▸ · 9 Slides · 3 min read
+- layout: story
+  chapter: Chapter 02 · May 1946
+  headline: |
+    A Plan Built to
+    Avoid *Partition*
+  body: |
+    The British [Cabinet Mission] proposed three tiers. A weak central Union would hold only defence, foreign affairs and [communications].
+    Beneath it, the provinces would be **grouped** into three sections, each free to draft its own constitution.
+- layout: story
+  chapter: Chapter 03 · 6 June 1946
+  headline: |
+    The League
+    Said *Yes*
+  body: |
+    To the surprise of many, [Jinnah] and the Muslim League formally accepted the plan. He held it to have lacunas and accepted it regardless.
+    Grouping kept [provincial autonomy] alive and laid a foundation for a future **Pakistan**.
+- layout: story
+  theme: light
+  chapter: Chapter 04 · 25 June 1946
+  headline: |
+    A Fragile
+    *Agreement*
+  body: |
+    The Congress Working Committee agreed to contest the [Constituent Assembly] elections.
+    For a few weeks in the summer of [1946], a united post-independence India had been settled on paper by both sides.
+- layout: quote
+  chapter: Chapter 05 · 10 July 1946
+  headline: |
+    Bombay
+    *Undone*
+  quote: |
+    The big probability is that there will be no grouping.
+  attribution: Nehru, press conference, Bombay
+  body: Four days after taking charge as [Congress President], he declared the party entered the assembly
+    **unfettered** by agreements, bound only to contest the elections.
+- layout: story
+  chapter: Chapter 06 · the argument
+  headline: |
+    Two Provinces
+    Would *Object*
+  body: |
+    Nehru held that the [North-West Frontier Province] and [Assam] would refuse to be lumped into the Muslim-majority Sections B and C.
+    Their objection, he argued, would collapse the grouping scheme entirely.
+- layout: story
+  chapter: Chapter 07 · what Jinnah heard
+  headline: |
+    Numbers Instead
+    Of *Assurances*
+  body: |
+    He read it as notice that once the British left, a Hindu-majority Congress would use its numbers in the assembly to scrap [grouping], end provincial autonomy and build a [centralised state].
+    Written assurances, on that reading, were **worthless**.
+- layout: story
+  chapter: Chapter 08 · 29 July 1946
+  headline: |
+    Withdrawal
+    And *Direct Action*
+  body: |
+    The Muslim League withdrew its acceptance of the plan. Jinnah called the Muslim nation to [Direct Action] from [16 August 1946].
+    It opened with the **Great Calcutta Killings**, and made Partition practically inevitable.
+- layout: closing
+  headline: |
+    Azad Called It
+    The Greatest
+    *Blunder*
+  body: |
+    Backing Nehru over [Patel] was, he wrote, the blunder of his political life — Patel would never have given Jinnah the [opportunity].
+  handle: Follow @itiha29 · itiha.info

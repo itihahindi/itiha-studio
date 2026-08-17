@@ -1,0 +1,37 @@
+name: pojk-un-appeal
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  A woman in Pakistan Occupied Jammu and Kashmir, in tears, appealing to the United Nations and to international media to raise their voice against what she describes as Pakistani brutality.
+
+  The clip was posted on 28 July by Aditya Raj Kaul, Senior Executive Editor at NDTV, who says dozens of civilians have been killed in PoJK. We are carrying it as he posted it, and flagging plainly what we can and cannot stand up.
+
+  What we cannot verify. We cannot independently confirm who she is, where the clip was filmed, or when. She is not speaking English and we have not translated her, so nothing in quotation marks here is hers. The only words being quoted are Kaul's own English caption.
+
+  What is corroborated. Since early June, PoJK has been in the middle of a mass movement led by the Jammu Kashmir Joint Awami Action Committee over electricity bills, subsidised wheat, and commitments Islamabad made and broke. A communications blackout has been in force since 5 June. The JAAC was banned on 6 June under anti-terrorism legislation. Rawalakot became the flashpoint, with reporting putting the civilian dead there at six, and other counts at twelve. After talks collapsed in late July, a Long March on Muzaffarabad drew reporting of at least twenty more killed. Around four thousand Rangers were moved across PoJK.
+
+  On the toll, honestly. The counts vary widely, and the higher figures circulating on Indian social media cannot be stood up in any reporting we can reach. That uncertainty is not a footnote, it is the story. A blackout imposed on 5 June is precisely the instrument that makes a death toll unverifiable, and it has been running for eight weeks.
+
+  The double standard, stated precisely. Pakistan raises Kashmir at every international forum it can reach. In the Kashmir it actually administers, a woman is reduced to filming herself on a phone and asking the United Nations to notice.
+
+  Video via @AdityaRajKaul.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #PoJK #POK #Kashmir #Pakistan #JAAC #Muzaffarabad #Geopolitics #TheBriefing
+tweaks:
+  vertical: briefing
+  showStamp: true
+slides:
+- layout: cover
+  kicker_meta: PoJK · 28 Jul 2026
+  headline: |
+    She is appealing
+    to the *UN* Against *Pakistan* Brutality.
+  subline: PoJK woman in tears appeals to United Nations and International Media to raise voice against
+    Pakistani brutality after dozens of innocent civilians were killed in Pakistan Occupied Jammu & Kashmir
+    (PoJK).
+  video_file: clip.mp4
+  panel_height: 780
+  headline_size: 84
+  texture: grid

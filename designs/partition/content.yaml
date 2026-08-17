@@ -1,0 +1,111 @@
+name: partition-violence-calcutta-to-punjab
+brand: itiha
+format: instagram-portrait
+caption: |
+  In August 1946 the corpses in Calcutta were piled two storeys high. The photographer Margaret Bourke-White, who had walked through Buchenwald, said the streets of the city reminded her of the camp.
+
+  This carousel records what the Partition years did to ordinary people, from Direct Action Day to the Punjab crossings of 1947. In Calcutta a fourteen-year-old boy was stripped so that his body could be examined for circumcision and his religion established, then held under the water of a pond with bamboo poles until he drowned, while a Bengali onlooker is said to have timed the death on his Rolex. In the Punjab mobs bound whole families together, poured oil over them and lit them as a single torch; survivors, children among them, came out with their hands hacked off. At Hasilpur a passer-by took the heaps at the roadside for manure and found instead the contorted bodies of 350 Hindu and Sikh men, women and children killed by a Pathan mob.
+
+  Rape was used consciously and systematically as a weapon. Women were held down and cut, tattooed or branded with their attackers' names and the dates of the assaults. In Amritsar a Sikh mob stripped and paraded Muslim women through the streets; those not hidden by rescuers were burned alive. At Thoa Khalsa, ninety Sikh women went into a well rather than wait for the men coming for them, and their bodies rose later to the surface, some with infants still at the breast.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Partition1947 #DirectActionDay #Calcutta #Punjab #ThoaKhalsa #MargaretBourkeWhite
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: PARTITION
+slides:
+- layout: cover
+  headline: |
+    *Horrors* of Partition
+  subline: What Direct Action Day and the Punjab crossings left behind
+  swipe_meta: Swipe ▸ · 9 Slides · 3 min read
+  texture: scanlines
+  align_x: center
+  headline_offset_y: 330
+  image: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgII9VVRGF3I22TKY1YCFQhtoa6Dl8NHSFmsUl08KJDeufo7eSbiSNr35Rc9MqO6qvzX30BrN4hzxYOVhX1pLTFHCTKze5SFQL93dBiG4HDw4W0WmUB2PJU-nYB1ho7wIguWZeTEC8hN5A/s0/Corpses+lying+among+pieces+of+wood+in+preparation+for+cremation+after+bloody+rioting+between+Hindus+and+Muslims+2+Calcutta+%2528Kolkata%2529+1946.jpg
+  image_position: 33% 50%
+- layout: split-story
+  headline: |
+    Direct Action
+    In *Calcutta*
+  body: |
+    The riots opened in [August 1946]. Bloated corpses and fly-covered dead [holy cows] lay heaped in the streets to the height of two storeys.
+    The city had become a place where the dead were **stacked** rather than counted.
+  image: _cache/07ad67a89788389d.jpg
+  image_position: 31% 50%
+  image_bw: true
+  body_y: 12
+- layout: quote
+  headline: |
+    A Photographer
+    Named *Buchenwald*
+  quote: |
+    The scenes in the streets of Calcutta recalled the concentration camp at Buchenwald.
+  attribution: Margaret Bourke-White, photographer
+  body: Bourke-White had photographed the [camps] of Europe. She reached for that comparison to describe
+    an [Indian city] in peacetime.
+  image: _cache/1c458e2b8af35d5a.jpg
+  image_filter: duotone-ink
+  align_x: left
+- layout: split-story
+  theme: dark
+  headline: |
+    Stripped to Establish
+    His *Religion*
+  body: |
+    A [Hindu] boy of [fourteen] was stripped so his body could be examined for circumcision and his faith determined. He was then held under the water of a pond with [bamboo poles] until he drowned.
+    A Bengali onlooker is said to have timed the death on his **Rolex**.
+  image: _cache/080bcfdf8680989e.jpg
+  image_position: 51% 52%
+  image_overlay: 0.77
+  body_y: 18
+  align_x: center
+- layout: numbered-list
+  headline: |
+    Whole Families
+    As One *Torch*
+  items:
+  - label: Bound and burned
+    body: Mobs tied families together, [poured oil over them] and set them alight as a single [torch].
+  - label: Hands hacked off
+    body: Many who survived the raids, young children among them, came away without their hands.
+  - label: Mistaken for manure
+    body: At Hasilpur a passer-by took the roadside heaps for manure. They were 350 Hindu and Sikh men,
+      women and children, [killed by a Pathan mob.]
+  body_offset_y: -80
+- layout: split-story
+  headline: Rape Used As *Policy* Against *Kafirs*
+  body: |
+    It was employed consciously and systematically, not incidentally. Accounts describe women held down while their bodies were cut, tattooed or [branded] with their attackers' names and the [dates] of the assaults.
+    The mark was intended to **outlast** the war.
+  image: _cache/cccf7c44e0ccf722.jpg
+  texture: grain
+  align_x: center
+  body_y: 1
+- layout: split-story
+  headline: |
+    Ninety Women
+    And One *Well*
+  body: |
+    With the attackers approaching Thoa Khalsa, [90 Sikh women] went into the well rather than be taken, choosing death to preserve their [honour].
+    Their swollen bodies rose later to the surface, some with **infants** still clinging to them.
+  body_y: 18
+  image: _cache/b113cf5cc79f25d7.jpeg
+  image_overlay: 0.87
+  image_filter: bw
+- layout: closing
+  headline: |2+
+
+  body: |
+    From [Calcutta] to the Punjab, the line on the map was cut into the bodies of the [unarmed].
+  handle: Follow @itiha29 · itiha.info
+  stats:
+  - {}
+  image: _cache/9173412f70e9a954.jpg
+- layout: end-card
+  headline: New slide

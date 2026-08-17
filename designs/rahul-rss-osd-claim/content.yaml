@@ -1,0 +1,38 @@
+name: rahul-rss-osd-claim
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Rahul Gandhi told the Lok Sabha that the Education Ministry was not run by its minister but by an RSS officer on special duty. An OSD is an appointment that exists on paper. He did not name one.
+
+  What he said. Speaking on 29 July during the debate on the Public Examinations (Prevention of Unfair Means) Amendment Bill, the Leader of the Opposition said, as reported by India TV and ANI, that "the soul of the system has been captured by the RSS", that "Dharmendra Pradhan never ran the education ministry", and that the organisation that ran it is the RSS. He called Pradhan's resignation superficial and said the RSS wants "andhbhakts" rather than students.
+
+  Why the OSD detail is the part that matters. An Officer on Special Duty is a formal appointment to a minister's office. It has a name, a file, an order and a date. That makes this the one element of the speech that is not rhetoric and could be settled in an afternoon. As of now no name has been placed on the record, in the House or outside it, and no document has been produced.
+
+  What we are not saying. We are not saying the claim is false. We are saying it is unevidenced so far, and that it was made in a form which could be evidenced easily if it were true. Those are different things, and the difference is the whole story.
+
+  What is on record. Dharmendra Pradhan resigned as Education Minister on 25 July after weeks of protest over the NEET-UG paper leak. Pralhad Joshi took charge on 26 July. On 29 July the Lok Sabha passed the anti-paper-leak Bill by voice vote. No government response to the OSD allegation had been issued at the time of writing.
+
+  A note on the video. The speech is in Hindi. The English wording above follows published reporting by India TV and ANI, not our own translation.
+
+  Sources: India TV and ANI on the 29 July speech and quotes. The Week and Outlook India on the exchanges in the House. Video via @SaralPatel.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #RahulGandhi #RSS #EducationMinistry #LokSabha #Parliament #NEET #India
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: false
+  seriesLabel: GROUND REPORT
+slides:
+- layout: cover
+  kicker_meta: LOK SABHA · 29 JULY 2026
+  headline: |
+    An OSD is a matter
+    of record. He named
+    *no one*.
+  subline: Rahul Gandhi says an RSS officer, not the minister, ran the Education Ministry.
+  credit: via @SaralPatel
+  video_file: rahul-rss-ls.mp4
+  panel_height: 811
+  headline_size: 78

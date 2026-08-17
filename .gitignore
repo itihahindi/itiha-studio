@@ -30,3 +30,12 @@ sources.json
 # bin/kavi daemon state (bin/itiha is a back-compat alias)
 .kavi-studio.pid
 .itiha-studio.pid
+
+# Handle-watcher state — contains the X session token (x-session.json).
+# NEVER commit: this is a live credential.
+.watch/
+
+# Source video for reels. 300MB+ and growing; no mp4 has ever been tracked and
+# large blobs cannot be removed from history without a rewrite.
+designs/*/images/*.mp4
+designs/*/images/*.mov

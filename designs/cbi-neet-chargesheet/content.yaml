@@ -1,0 +1,42 @@
+name: cbi-neet-chargesheet
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  The CBI has filed its chargesheet in the NEET-UG 2026 questions leak case, against 13 arrested accused. The charges: criminal conspiracy, cheating, criminal breach of trust and destruction of evidence under the BNS, criminal misconduct under the Prevention of Corruption Act, and offences under the Public Examination (Prevention of Unfair Means) Act, 2024.
+
+  The evidence pile: 360 witnesses, 422 documents, 43 material objects. All 13 chargesheeted persons are in judicial custody as on date.
+
+  The chain the agency describes runs from inside the exam system outwards. The 13 arrested include three NTA subject experts in Chemistry, Biology and Physics. Several middlemen who sourced and distributed the leaked questions were identified and arrested. Two individuals associated with coaching institutes were arrested for obtaining the leaked papers from those experts.
+
+  The timeline is tight. NEET-UG 2026 was held on 3 May. The Department of Higher Education lodged a written complaint on 12 May. The CBI registered the FIR the same day, formed multiple teams of 72 officers and personnel plus eight cyber forensic experts, and made its first arrest on 13 May. Searches ran at 92 locations across Maharashtra, Rajasthan, Haryana, Delhi and other states. Money trail analysis led to several bank accounts, bank lockers and a demat account being frozen.
+
+  On the substance, the agency says digital forensic reports, handwriting expert opinions and academic expert opinions confirmed the accused circulated leaked questions prior to the date of examination.
+
+  One honest note: a chargesheet is an allegation, not a conviction. Further investigation and forensic analysis is continuing.
+
+  Details as stated in the CBI's own press note (Government of India, GODL-India).
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #NEET #NEETUG #PaperLeak #CBI #Chargesheet #NTA #IndianPolitics #TheDocket
+tweaks:
+  vertical: legal
+  showStamp: true
+  showPageNum: false
+  seriesLabel: NEET-UG LEAK
+slides:
+- layout: cover
+  kicker_meta: The Docket · 28 Jul 2026
+  headline: |
+    CBI charges *13*
+    in the NEET-UG leak
+  headline_size: 74
+  image: cbi-press-note.jpg
+  image_position: 50% 4%
+  image_height: 340
+  image_caption: The CBI press note on the NEET-UG 2026 chargesheet
+  body: |
+    Criminal conspiracy, cheating, criminal breach of trust and destruction of evidence under the [BNS]. Criminal misconduct under the [Prevention of Corruption Act]. Plus the Public Examination (Prevention of Unfair Means) Act, 2024.
+
+    On record: [360 witnesses], [422 documents], [43 material objects]. All 13 in [judicial custody].
+  body_size: 38

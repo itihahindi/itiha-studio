@@ -1,0 +1,41 @@
+name: ranganathan-mandal-record
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Anand Ranganathan, in a long analysis of reservations posted on 3 August 2026, makes a point that is easy to check and rarely made: the party that campaigns hardest on caste justice is not the party that delivered OBC reservation.
+
+  What he says in the clip. Verbatim from the segment: "The purpose of reservations was to uplift the most underprivileged, the most discriminated against and to emancipate them. Yet, increasingly, they have become a device for furthering appeasement and placating either a religious or a caste vote bank. I support reservations for Dalits and OBCs, but it is ironic that it is Rahul Gandhi's Congress that has historically shown little sympathy for Dalits, OBCs and the underprivileged. Even though the constitution required the setting up of a commission to examine OBC reservations, it was a non-Congress government that set up the Mandal Commission and another non-Congress government that implemented it. Rajiv Gandhi himself opposed the Mandal implementation, calling it a can of worms."
+
+  What we checked. The Mandal Commission, formally the Second Backward Classes Commission under B.P. Mandal, was constituted on 1 January 1979 by the Janata Party government of Morarji Desai. Its recommendation of 27 per cent central reservation for Other Backward Classes was implemented in August 1990 by V.P. Singh's National Front government. Neither was a Congress government. Rajiv Gandhi opposed the implementation and spoke against it in the Lok Sabha at length, and the phrase "a can of worms" is the one attached to him on the report.
+
+  The caveat worth stating. Congress did set up the first Backward Classes Commission, under Kaka Kalelkar, in 1953. Its report was submitted in 1955 and shelved. So the fuller version of the argument is not that Congress never appointed a commission, it is that Congress appointed one and buried it, and both the commission that mattered and the government that acted on it came from outside Congress. That version survives contact with a critic. The shorter one does not.
+
+  What he is not saying. He is not arguing against reservation. He says plainly in the same breath that he supports reservations for Dalits and OBCs. His objection is to reservation used as a vote-bank instrument rather than as a remedy for the most underprivileged, and the rest of the video sets out a five-point formula.
+
+  Source: @ARanganathan72 on X, 3 August 2026, "Reservations: Where We Came From, Where We Stand, What Must Change". Clip is 1:07 to 1:53 of that video. Mandal dates via the Commission's own record and standard accounts of the 1990 implementation.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ #Reservations #Mandal #OBC #Congress #RajivGandhi #IndianPolitics #AnandRanganathan
+tweaks:
+  vertical: ground
+  showStamp: false
+  showPageNum: false
+  seriesLabel: GROUND REPORT
+slides:
+- layout: reel-explainer
+  kicker_meta: 3 Aug 2026
+  video_file: ar-clip.mp4
+  chip: Reservations
+  headline: |
+    Rajiv Gandhi Called Mandal
+    *A Can of Worms*
+  body_label: 'The record:'
+  body: Anand Ranganathan says he supports reservations for Dalits and OBCs, and that the party loudest
+    about them has the weaker record. The [Mandal Commission] was set up by a non-Congress government
+    in 1979 and implemented by another in 1990.
+  credit: 'Clip: @ARanganathan72'
+  panel_height: 780
+  panel_fade: 160
+  headline_size: 70
+  body_size: 30

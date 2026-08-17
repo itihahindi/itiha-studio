@@ -1,0 +1,201 @@
+name: bidadi-ai-city
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Karnataka is calling it India's first AI City. The land, the villages and the promise are the same ones a Karnataka government cleared in 2006 and never built.
+
+  What is being built. The Greater Bengaluru Integrated Township, GBIT, is a ₹18,133 crore project spanning about 9,600 acres across nine revenue villages and sixteen non-revenue villages at Bidadi, roughly 40 km by road from Bengaluru. It is being run by the Greater Bengaluru Development Authority, created in November 2024, and is marketed as an AI-powered work-live-play township and a second central business district.
+
+  Why the site is familiar. In November 2006 the H.D. Kumaraswamy government cleared five townships, with Bidadi as the flagship. DLF won the mandate and walked away after the 2008 financial crisis. The land then sat under a red-zone notification for close to twenty years. The only thing actually built on it was the KIADB industrial estate, which did draw Toyota, Bosch, Britannia and Coca-Cola.
+
+  Who it affects. The preliminary notification covers about 10,450 landowners, roughly 53,000 people counting families. The first phase is 518.45 acres across three villages, Kempayyanapalya at 384.22 acres, Mandalahalli at 71.13 and Vaderahalli at 63.10, affecting around 754 farmers. Compensation on offer is ₹2.07 to ₹2.14 crore an acre plus a 9,583 square foot developed plot for every acre taken. Farmers at Byramangala have been protesting for more than 400 days and want ₹5 to ₹6 crore an acre. Farmer organisations say the GBDA did not obtain the 80% landowner consent the process requires, and plan to litigate.
+
+  The money. HUDCO has offered a credit line of ₹21,000 crore, more than the entire project cost, with ₹10,000 crore of it earmarked for acquisition alone. About ₹1,109 crore is tied up for the first phase. A ₹26 crore tender went out in June 2026 for a consultant to draw the master plan over twelve months, which means compensation began moving before anyone had drawn the plan.
+
+  The infrastructure that is not there yet. Bidadi sits about 30 km from Vidhana Soudha in a straight line, and about 17 km beyond Challaghatta, where the Purple Line currently ends. The proposed Metro extension to Bidadi is still a feasibility study inside the Comprehensive Mobility Plan 2031. Cauvery Stage 6 was cleared by cabinet in February 2026 at ₹6,939 crore for an extra 500 MLD, but Stage 5 took ten years to commission and still has distribution gaps. The western expressway, finished in 2023, runs past Bidadi towards Mysuru rather than serving it.
+
+  The comparison that matters. Bengaluru's successful expansions put the jobs and the trunk infrastructure in first and let the distance stop mattering. Jayanagar in 1948, Whitefield, Devanahalli after the airport opened in 2008. In 2025 Whitefield, 17 km out with Metro and tech parks, saw values rise 23%. Bidadi fell 15%.
+
+  The precedent nobody should ignore. On the Bangalore-Mysore Infrastructure Corridor, awarded to Nandi Infrastructure Corridor Enterprises in 1997, farmers were paid cash in 2004 and at Thirumalapura and other villages the developed plots they were promised have still not been allotted, twenty-two years on. In 2016 a parliamentary committee recommended returning 1,160 acres.
+
+  This is not an argument against building. It is an argument about sequence. Fund and start the Cauvery main, take the Metro extension to DPR and sanction, settle honestly and quickly with ten thousand families, and an ordinary township at Bidadi would earn a grander name on its own.
+
+  Sources: Adithi Gurkar in Swarajya, 30 July 2026. The News Minute on the project, the phase-one break-up and the consent question. Deccan Herald on the HUDCO offer and the GBDA's expanded jurisdiction. Distances computed straight-line from Vidhana Soudha. Price movement figures as reported by Swarajya.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Bengaluru #Karnataka #Bidadi #AICity #GBIT #LandAcquisition #DKShivakumar #UrbanPlanning #IndianPolitics
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE AI CITY
+slides:
+- layout: cover
+  kicker_meta: Ground Report · 31 Jul 2026
+  headline: |
+    India's first *AI City*
+    was cleared in 2006
+  subline: Same land. Same villages. Same promise. Karnataka has renamed a township it never built.
+  align_x: left
+
+- layout: pictogram
+  kicker_meta: The Gap
+  headline: Years the land sat *frozen*
+  value: 20
+  total: 20
+  columns: 10
+  decimals: 0
+  value_suffix: ''
+  grid_height: 260
+  unit_label: years, 2006 to 2026
+  sublabel: Cleared as a flagship township in November 2006. DLF won the mandate, then walked after the 2008 crash. The land stayed under a red-zone notification.
+  source: Only the KIADB industrial estate was ever built on it.
+  headline_size: 62
+
+- layout: city-map
+  kicker_meta: Where It Is
+  headline: Thirty kilometres out, and *past the metro*
+  center_lat: 12.98
+  center_lon: 77.58
+  span_km: 78
+  rings: [10, 20, 30]
+  places:
+  - name: Bengaluru CBD
+    lat: 12.9794
+    lon: 77.5912
+    note: Vidhana Soudha
+    align: left
+  - name: Bidadi
+    lat: 12.7988
+    lon: 77.3853
+    note: The AI City site, 30 km
+    emphasis: true
+  - name: Challaghatta
+    lat: 12.935
+    lon: 77.465
+    note: Purple Line ends here
+    align: left
+  - name: Whitefield
+    lat: 12.9698
+    lon: 77.75
+    note: 17 km · +23%
+    align: left
+  - name: Devanahalli
+    lat: 13.1986
+    lon: 77.7066
+    note: Airport, 2008
+    align: left
+  routes:
+  - from: [12.935, 77.465]
+    to: [12.7988, 77.3853]
+    label: 17 KM OF NO METRO
+    label_offset: -46
+  map_caption: Straight-line distances from Vidhana Soudha. Bidadi is about 40 km by road.
+  source: Rings are true distance circles. Metro extension to Bidadi is still a feasibility study.
+  headline_size: 52
+
+- layout: bar-chart
+  kicker_meta: The Market
+  headline: The city voted with its *money* in 2025
+  mode: diverge
+  value_suffix: '%'
+  decimals: 0
+  rows:
+  - label: Whitefield
+    value: 23
+    note: 17 km out. Metro, tech parks, jobs already there.
+  - label: Bidadi
+    value: -15
+    note: 30 km out. No metro, no trunk water, no anchor employer.
+  source: Change in apartment values through 2025, as reported by Swarajya.
+  body: |
+    Distance was never Bengaluru's problem. [Sequence] is. Whitefield and Devanahalli got the jobs and the trunk lines first, and the distance stopped mattering.
+  bar_size: 58
+  headline_size: 56
+
+- layout: bar-chart
+  kicker_meta: The Compensation
+  headline: What is offered, and what is *asked*
+  mode: emphasis
+  value_prefix: '₹'
+  decimals: 2
+  value_suffix: ' cr'
+  max: 6
+  rows:
+  - label: Government offer, low end
+    value: 2.07
+  - label: Government offer, high end
+    value: 2.14
+  - label: Farmers asking, low end
+    value: 5.00
+  - label: Farmers asking, high end
+    value: 6.00
+    emphasis: true
+    note: Byramangala has been on protest for over 400 days
+  source: Per acre. The offer also carries a 9,583 sq ft developed plot for every acre taken.
+  bar_size: 48
+  label_size: 27
+  headline_size: 56
+
+- layout: bar-chart
+  kicker_meta: The Money
+  headline: The loan line is bigger than the *project*
+  mode: emphasis
+  value_prefix: '₹'
+  decimals: 0
+  value_suffix: ' cr'
+  rows:
+  - label: HUDCO credit line offered
+    value: 21000
+    emphasis: true
+    note: More than the whole project costs
+  - label: GBIT project cost
+    value: 18133
+  - label: Earmarked for land acquisition
+    value: 10000
+  - label: Tied up for phase one
+    value: 1109
+  source: About 70% of the project is to be borrowed. Figures in ₹ crore.
+  bar_size: 44
+  label_size: 26
+  headline_size: 54
+
+- layout: stat
+  kicker_meta: The Scale
+  surface: dark
+  label: LANDOWNERS IN THE NOTIFICATION
+  value: 10,450
+  sublabel: roughly 53,000 people, counting families
+  body: |
+    The first phase alone is [518.45 acres] across three villages and about **754 farmers**. Farmer bodies say the GBDA never obtained the **80%** landowner consent the process requires, and intend to go to court.
+  stat_size: 200
+
+- layout: story
+  kicker_meta: The Precedent
+  headline: On the last corridor, the plots *never came*
+  body: |
+    The Bangalore-Mysore Infrastructure Corridor was awarded to Nandi Infrastructure Corridor Enterprises in **1997**. Farmers took cash compensation in **2004**. At Thirumalapura and other villages the developed plots they were promised have [still not been allotted], twenty-two years on.
+
+    In 2016 a parliamentary committee recommended returning **1,160 acres**.
+  align_y: middle
+  body_size: 42
+
+- layout: story
+  surface: solid
+  kicker_meta: The Sequence Error
+  headline: They are paying before they have *planned*
+  body: |
+    A [₹26 crore] tender went out on **24 June 2026** for a consultant to draw the master plan, on a twelve-month clock. Compensation was already being disbursed.
+
+    Cauvery Stage 6 is cleared but unbuilt, and Stage 5 took **ten years**. The Metro extension is a feasibility study. The expressway runs [past] Bidadi, to Mysuru.
+  align_x: left
+  align_y: middle
+  body_size: 41
+
+- layout: closing
+  headline: |
+    Build the water
+    and the rail first.
+  body: An ordinary township at Bidadi would earn the grander name on its own.
+  handle: '@vaqhq'

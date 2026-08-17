@@ -1,0 +1,135 @@
+name: gandhi-saw-netaji-victory-as-his-own-loss
+brand: itiha
+format: instagram-portrait
+caption: |
+  When Gandhi saw Netaji's victory as his own loss. On 29 January 1939 the Congress delegates re-elected Subhas Chandra Bose president by 1,580 votes to 1,377. Two days later Gandhi issued a statement claiming the defeat as his own.
+
+  As Bose's first term neared its end in late 1938, Gandhi and the Congress Old Guard moved against a second, holding him not at all dependable; Gandhi wrote privately to Rabindranath Tagore, who backed Bose, that Bose needed to be free of presidential work if he was to rid Bengal of corruption. Maulana Abul Kalam Azad was the high command's informal choice but withdrew, and at Gandhi's personal inducement Dr Pattabhi Sitaramayya stood in his place. Seven members of the Working Committee, Vallabhbhai Patel and Rajendra Prasad among them, publicly asked Bose to stand down, calling the presidency an ornamental post like a constitutional monarch. Bose refused, argued the office was closer to a prime minister who nominates his own cabinet, demanded a vote on definite problems and programmes, and charged that the Old Guard wanted a rightist president because it was preparing to compromise with the British over the Federal scheme.
+
+  Gandhi's reply was personal and sarcastic. Because he had induced Sitaramayya not to withdraw, the defeat was more his than his candidate's; the delegates no longer approved the principles and policy for which he stood; Bose was now free to choose a homogeneous cabinet and enforce his programme without let or hindrance. He alleged bogus voters besides. The Bengali monthly Masik Basumati asked why a man who was not even a four-anna member of the Congress should be so perturbed. The public, others observed, had never been told that a ballot against Sitaramayya would be counted as a ballot against Gandhi.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #SubhasChandraBose #Netaji #Gandhi #PattabhiSitaramayya #CongressPresidency #Tripuri1939
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: TRIPURI
+slides:
+- layout: cover
+  headline: |
+    When *Gandhi* Saw Netaji's *Victory* As His Own *Loss*
+  subline: The election of January 1939 and the statement that followed
+  swipe_meta: Swipe ▸ · 9 Slides · 3 min read
+  headline_size: 120
+  image: _cache/a7047f030b27bfd0.jpg
+  headline_offset_y: 300
+  image_overlay: 0.7
+  align_x: center
+- layout: split-story
+  headline: |
+    A Second Term He Would Not *Surrender*
+  body: As his first term closed, [Bose] made plain that he wanted another. Gandhi and the Congress [Old
+    Guard] were deeply opposed, holding him **not at all dependable**.
+  image: _cache/d24d70f2c80cbd62.jpg
+  body_y: 20
+  image_overlay: 0.8
+- layout: quote
+  headline: |
+    Written to *Tagore*
+  quote: |
+    Bose needed to be free from the Presidential work, if he was to rid Bengal of corruption.
+  attribution: Gandhi, privately, to Rabindranath Tagore
+  body: '[Tagore] had backed the re-election. The argument put to him made removal sound like a favour
+    to [Bengal].'
+  image: https://upload.wikimedia.org/wikipedia/commons/9/91/Rabindranath_Tagore_in_1909.jpg?utm_source=en.wikiquote.org&utm_campaign=index&utm_content=original
+  image_filter: duotone-ink
+  body_offset_y: 0
+- layout: split-story
+  headline: |
+    Azad Withdrew
+    *Sitaramayya* Stood
+  body: |
+    The high command had informally settled on [Maulana Azad]. He withdrew from the contest.
+    At Gandhi's personal inducement, Dr [Pattabhi Sitaramayya] of Andhra was put forward as the Right-wing candidate.
+  image: https://bookends.in/wp-content/uploads/2021/10/pattabhi-sitaramayya.jpg
+  body_y: 18
+  image_overlay: 0.8
+- layout: comparison
+  headline: |
+    Ornament or
+    *Executive*
+  left_label: The Working Committee
+  left_headline: 'A Constitutional
+
+    *Monarch*
+
+    '
+  left_body: 'Seven members, [Patel] and [Rajendra Prasad] among them, publicly asked Bose to step down.
+    The presidency, they held, was largely ornamental and did not dictate policy.
+
+    '
+  right_label: Bose
+  right_headline: 'A *Prime Minister*
+
+    Who Picks His Cabinet
+
+    '
+  right_body: He refused to withdraw. The office in modern times resembled a [Prime Minister] or a US
+    President, and delegates should vote on [definite programmes].
+  align_x: center
+  body_offset_y: -110
+- layout: split-story
+  theme: dark
+  headline: |
+    Why They Wanted
+    A *Rightist*
+  body: |
+    Bose levelled it at the Old Guard directly. They sought a rightist president, he alleged, because they were quietly preparing to [compromise] with the British over the proposed [Federal scheme].
+    He opposed that scheme to his **core**.
+  image: https://www.netaji.org/images/gallery/1933-1940/21.png
+  image_position: 42% 0%
+  image_zoom: 1.25
+  image_overlay: 1
+  body_y: 20
+- layout: stat
+  headline: |
+    The Delegates
+    *Voted*
+  stats:
+  - label: Subhas Chandra Bose
+    value: 1,580
+    value_red: votes
+    sublabel: A decisive and historic victory
+  - label: Pattabhi Sitaramayya
+    value: 1,377
+    value_red: votes
+    sublabel: The Right-wing candidate
+  align_y: top
+  align_x: center
+- layout: quote
+  headline: |
+    The Defeat Is
+    More *Mine*
+  quote: |
+    Since I was instrumental in inducing Dr Pattabhi not to withdraw his name, the defeat is more mine than his.
+  attribution: Gandhi, two days after the result
+  body: The delegates, he added, no longer approved the principles for which he stood, and Bose was free
+    to choose a **homogeneous cabinet** and enforce his programme without let or hindrance. He alleged
+    [bogus voters] besides.
+- layout: closing
+  headline: |2+
+
+  body: |
+    A Vote No One Knew
+    Was Against
+    [Gandhi], _Masik Basumati_ asked why a man not even a [four anna member] of the Congress should be so perturbed by the [victory of Subhas].
+  handle: Follow @itiha29 · itiha.info
+  image: https://content.time.com/time/personoftheyear/archive/photohistory/reflow/peacemakers/gandhi.jpg
+  body_offset_y: 110
+- layout: youtube-cta
+  headline: The Making of India's Greatest Revolutionary
+  thumbnail: netaji-thumbnail.png

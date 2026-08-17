@@ -1,0 +1,243 @@
+name: e20-ethanol-question
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  A fifth of every litre you buy is now alcohol. Here is the ledger, both sides of it, built as charts you can check.
+
+  What E20 actually is. Not five litres of petrol with one of ethanol tipped in. One litre, a fifth of it ethanol by volume. Ethanol carries about two thirds of petrol's energy, so a fifth of the litre is neither a fifth off your mileage nor a fifth off the oil bill.
+
+  Why India blends at all. India imports 88.5% of the crude it consumes. That single figure, from the PIB factsheet of 5 July 2026, is the whole case. Petrol is priced by a world market in dollars. Ethanol is fixed in rupees by the Cabinet once a year, which makes it the only component of the litre India actually controls.
+
+  What ethanol costs. For Ethanol Supply Year 2025-26 the ex-mill prices run from ₹57.97 a litre for C-heavy molasses to ₹71.86 for maize, with FCI rice at ₹60.32, B-heavy molasses at ₹60.73, damaged foodgrains at ₹64 and cane juice or syrup at ₹65.61. Including 5% GST and transport, the oil marketing companies' procurement cost is ₹71.18 for IOCL, ₹71.10 for HPCL and ₹71.21 for BPCL. Delhi's pump has been frozen at ₹102.12 since 25 May 2026.
+
+  The shield, priced. At today's $103 a barrel, E0 and E20 land within a rupee of each other, so blending is not a discount. Push crude to $160 and they separate: pure petrol would run about ₹143 a litre at the Delhi pump, E20 about ₹134. The blended litre takes only 80% of the shock, because a fifth of it does not track a barrel at all.
+
+  The mileage fight, honestly. Minister of State for Petroleum Suresh Gopi told the Rajya Sabha on 21 July that any reduction in older E10-designed vehicles is "generally marginal (around 3-5%)". Nitin Gadkari told the same House on 29 July that concerns over engine damage or reduced efficiency "have not been substantiated by any scientific study", while noting that some rubber components and gaskets in BS-III vehicles may need replacing at routine servicing. Maruti Suzuki says that across 2.84 crore vehicles it serviced in FY 2025-26, more than 1.5 crore of them over three years old and not E20-certified, it found no E20-related damage, and puts the effect at roughly 0.6 km on a car doing 20 km a litre. Drivers disagree. A LocalCircles survey has pre-2023 petrol vehicle owners reporting a drop of over 10% rising from 45% in May 2026 to 66% in June. Independent road tests land between 8% and 12%, against ARAI's 1-6%.
+
+  India is not alone. Brazil mandates E27 and is moving to about 35%, with over 80% of new cars sold there flex fuel. The United States runs E10 as its national standard with E15 expanding. Japan has phased in E10. Canada, Thailand and several European countries blend too.
+
+  The catch, in the government's own words. The PIB factsheet states that "ethanol procurement costs have since risen above refined petrol costs, yet the mandate continues because of the energy security, environmental and farm income gains it delivers." Because ethanol holds about two thirds of petrol's energy, a litre at ₹71 costs roughly 40% more per unit of energy than the petrol it displaces. E20 is a premium India has chosen to pay. It is not a discount scheme and the government does not claim it is.
+
+  What it bought. Blending rose from under 1.5% in 2013-14 to 20% in 2025-26, five years ahead of schedule. Ethanol supply went from about 38 crore litres in ESY 2013-14 to over 1,200 crore litres projected for 2025-26, and distillation capacity from 421 crore litres in 2014 to about 2,000 crore litres in 2026. The government puts the return since ESY 2014-15 at over ₹1.90 lakh crore in foreign exchange saved, over ₹1.60 lakh crore in additional farmer earnings, 310 lakh MT of crude substituted and about 930 lakh MT of CO2 cut. Those are cumulative figures over eleven years and they are the government's own claims, not independent audit.
+
+  Sources: PIB factsheet "Ethanol Blending in India", 5 July 2026. Rajya Sabha written replies of 21 and 29 July 2026. Cabinet ethanol pricing for ESY 2025-26. LocalCircles survey, June 2026. Deccan Herald on ARAI and independent road tests. Pump price via Goodreturns and Upstox. The pump decomposition and the crude scenarios are modelled by Polity Policy in "The Ethanol Question" by Tushar Gupta, whose workings we reproduced independently before printing.
+
+  Images: Ganesh Dhamodkar (CC BY-SA 4.0) and Timothy A. Gonsalves (CC BY-SA 4.0), via Wikimedia Commons. Map: Natural Earth, rendered in-house.
+
+  @vaqhq · vaqhq.com
+hashtags: |2+
+
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE ETHANOL QUESTION
+slides:
+- layout: cover
+  headline: |
+    A fifth of your
+    petrol is *not petrol*
+  subline: What E20 actually costs you, and what it buys a country that imports 88.5% of its oil.
+  image: https://www.spinny.com/blog/wp-content/uploads/2025/09/E20-Petrol-jpg.webp
+  image_position: 49% 55%
+  image_height: 520
+  align_x: left
+  show_index: false
+  surface: dark
+  vertical: live
+- layout: bar-chart
+  kicker_meta: The Misconception
+  headline: It is *one litre*, not six
+  mode: stack
+  value_suffix: '%'
+  rows:
+  - label: Petrol
+    value: 80
+  - label: Ethanol
+    value: 20
+  source: E20 by volume. Not five litres of petrol with one of ethanol tipped in.
+  body: |
+    Ethanol carries about **two thirds** of petrol's energy, so a fifth of the litre is [not] a fifth off your mileage, and not a fifth off the oil bill either.
+  headline_size: 64
+  surface: dark
+  texture: dots
+- layout: pictogram
+  kicker_meta: Why Blend At All
+  headline: The number the *whole policy* rests on
+  value: 88.5
+  decimals: 1
+  total: 100
+  columns: 10
+  grid_height: 470
+  unit_label: of the crude India burns is imported
+  sublabel: Each block is one percent of national crude consumption.
+  source: PIB factsheet, Ethanol Blending in India, 5 July 2026.
+  headline_size: 62
+  surface: dark
+  texture: dots
+- layout: bar-chart
+  kicker_meta: The Machinery
+  headline: Ethanol is priced in *rupees*, once a year
+  mode: emphasis
+  value_prefix: ₹
+  decimals: 2
+  rows:
+  - label: Maize
+    value: 71.86
+    emphasis: true
+    note: The costliest route, and the fastest growing
+  - label: Cane juice and syrup
+    value: 65.61
+  - label: Damaged foodgrains
+    value: 64
+  - label: B-heavy molasses
+    value: 60.73
+  - label: Surplus FCI rice
+    value: 60.32
+  - label: C-heavy molasses
+    value: 57.97
+  source: Cabinet ex-mill prices, ESY 2025-26. With GST and transport the oil companies pay a shade over
+    ₹71.
+  bar_size: 44
+  label_size: 26
+  headline_size: 56
+  surface: dark
+  texture: dots
+- layout: bar-chart
+  kicker_meta: The Shield
+  surface: dark
+  headline: Push crude to *$160* and they separate
+  mode: sequence
+  value_prefix: ₹
+  decimals: 0
+  max: 150
+  rows:
+  - label: E0 · pure petrol
+    value: 143
+  - label: E10
+    value: 139
+  - label: E20 · today's fuel
+    value: 134
+  source: Modelled Delhi pump price at $160 a barrel. Scenario by Polity Policy.
+  body: |
+    At today's $103 all three sit within a rupee of each other. Blending is [not] a discount. It is insurance.
+  bar_size: 54
+  headline_size: 58
+  texture: dots
+- layout: bar-chart
+  kicker_meta: The Contested Bit
+  headline: Nobody agrees how much *mileage* you lose
+  mode: emphasis
+  value_suffix: '%'
+  decimals: 0
+  max: 14
+  rows:
+  - label: Maruti Suzuki
+    value: 3
+    note: 0.6 km on a car doing 20 km a litre
+  - label: Government, to the Rajya Sabha
+    value: 5
+    note: '"Generally marginal, around 3-5%", 21 July'
+  - label: ARAI
+    value: 6
+    note: Range of 1 to 6%
+  - label: Independent road tests
+    value: 12
+    emphasis: true
+    note: Range of 8 to 12%
+  source: Highest figure each source gives. Ranges in the notes.
+  body: |
+    Owners of pre-2023 vehicles reporting a fall of over 10% rose from **45%** in May to **66%** in June.
+  bar_size: 46
+  label_size: 26
+  headline_size: 54
+  surface: dark
+  texture: dots
+- layout: line-chart
+  kicker_meta: The Climb
+  headline: Twenty percent, *five years early*
+  series:
+  - name: Ethanol blended into petrol
+    values:
+    - 8.1
+    - 10
+    - 12.06
+    - 14.6
+    - 19.2
+    - 20
+  x_labels:
+  - 2020-21
+  - 2022-23
+  - 2025-26
+  y_min: 0
+  y_max: 22
+  value_suffix: '%'
+  area: true
+  source: By Ethanol Supply Year. The target was 20% by 2030.
+  body: |
+    Ethanol supply rose from **38 crore litres** in 2013-14 to over **1,200 crore** today.
+  headline_size: 60
+  surface: light
+- layout: geo
+  kicker_meta: Not Alone
+  headline: Every big driving economy *blends*
+  region: world
+  zoom: 1.1
+  labels: false
+  countries:
+  - name: India
+    color: '#F4631E'
+  - name: Brazil
+    color: '#94A7BA'
+  - name: USA
+    color: '#94A7BA'
+  - name: Japan
+    color: '#94A7BA'
+  markers:
+  - lon: 78
+    lat: 22
+    label: India · E20
+    ring: true
+  - lon: -51
+    lat: -12
+    label: Brazil · E27
+  - lon: -98
+    lat: 39
+    label: USA · E10
+  - lon: 138
+    lat: 37
+    label: Japan · E10
+    align: left
+  body: |
+    Brazil mandates [E27] and is moving to about 35%, with over **80%** of new cars sold there flex fuel. The United States runs E10 nationally with E15 expanding. Canada and Thailand blend too.
+  map_caption: Blending mandates, 2026.
+  body_size: 38
+  headline_size: 58
+  surface: dark
+  texture: dots
+- layout: story
+  surface: dark
+  kicker_meta: The Catch
+  headline: Their own factsheet *concedes it*
+  body: |
+    PIB, in writing: ethanol procurement costs "have since risen above refined petrol costs, yet the mandate continues because of the energy security, environmental and farm income gains it delivers."
+
+    Ethanol holds about two thirds of petrol's energy, so a litre at ₹71 costs roughly [40% more] per unit of energy than the petrol it replaces. E20 is a premium India chose to pay. It was never a discount scheme.
+  align_x: left
+  align_y: middle
+  body_size: 41
+  texture: dots
+- layout: story
+  kicker_meta: What It Bought
+  headline: The bill, and the *return*
+  body: |
+    The government puts the return since 2014-15 at **₹1.90 lakh crore** in forex saved and **₹1.60 lakh crore** in extra farmer earnings, with **310 lakh MT** of crude substituted.
+
+    Cumulative over eleven years, and its own figures. Not an independent audit.
+  image: https://milexglobal.com/wp-content/uploads/2025/09/Ethanol-and-E20-fuel.webp
+  image_position: 50% 60%
+  image_height: 300
+  body_size: 38
+  body_offset_y: -20
+  surface: dark
+  texture: dots

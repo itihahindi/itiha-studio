@@ -1,0 +1,40 @@
+name: kerala-beef-question
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  A North Indian actress in Kerala to promote a film gave a short interview beside her car. The reporter asked which food she had liked here. She mentioned rice, the greens and the curries, and said she had not had much time to eat. Then came the follow-up: did she like beef.
+
+  What the clip shows. The question is clearly audible, and it is the one the original post quotes.
+
+  What the clip does not show. Her answer. The audio is brief and overlapping, and two separate passes of speech-to-text produced two different readings of that one line, so this post does not put a quote in her mouth. If you have heard it cleanly, you know more than the transcript does.
+
+  Why it travelled. Beef is ordinary, everyday food across much of Kerala, and asking a visitor whether she tried it is the most normal question a local reporter can ask. It is also, nationally, among the most charged symbols in Indian politics. Both of those are true at the same time, which is exactly why a line that sounds like small talk in one state reads as a test in another.
+
+  What is not established. Whether the reporter knew anything about the actress's background, or intended the question as a needle. Nothing in the footage shows that, and the honest version of this story stops where the evidence does.
+
+  Footage via a clip circulating on X, 17 August 2026.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ #Kerala #Cinema #FilmPromotion #IndianPolitics #Media #GroundReport
+tweaks:
+  vertical: ground
+  showStamp: false
+  showPageNum: false
+  seriesLabel: GROUND REPORT
+slides:
+- layout: reel-explainer
+  kicker_meta: Kerala · 17 Aug 2026
+  video_file: clip.mp4
+  chip: On Camera
+  headline: |
+    The Follow-Up Question
+    Was *Beef*
+  body_label: 'What happened:'
+  body: 'A North Indian actress promoting a film in Kerala was asked which food she had liked. She named
+    rice, greens and curries. The reporter''s next question was whether she liked [beef]. '
+  credit: 'Footage: clip circulating on X'
+  panel_height: 640
+  panel_fade: 150
+  headline_size: 64
+  body_size: 30

@@ -97,6 +97,7 @@ The yaml fence is load-bearing: claude.ai strips `*asterisks*` and `##` headers 
 
 | Ask | File |
 |--|--|
+| **"Build a VaqHQ carousel / post / reel from this link"** | **[shared/brands/vaq-hq/AUTHORING.md](shared/brands/vaq-hq/AUTHORING.md)** — the editorial playbook (voice, hooks, deck arcs, length limits, per-layout field lists, caption shape, verification, images, reels). Read it before writing the deck. [README.md](shared/brands/vaq-hq/README.md) beside it is the design system. |
 | "Add a new slide layout" | [shared/brands/&lt;brand&gt;/layouts.jsx](shared/brands/itiha/layouts.jsx) (component + register in `window.LAYOUTS`) + that brand's [manifest.js](shared/brands/itiha/manifest.js) (field schema) + [src/content.py](src/content.py) `KNOWN_LAYOUTS`. If the layout ships a new image-typed field, also add it to the `resolve_image` loop in `content.py`. |
 | "Add a field to an existing layout" | the brand's [manifest.js](shared/brands/itiha/manifest.js) + layout component in its [layouts.jsx](shared/brands/itiha/layouts.jsx) |
 | "Add a format (new dimensions)" | [src/formats.py](src/formats.py) + [src/scaffold.py](src/scaffold.py) starters + home.html format dropdown |

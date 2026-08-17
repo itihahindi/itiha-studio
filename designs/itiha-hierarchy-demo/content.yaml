@@ -1,0 +1,72 @@
+name: itiha-hierarchy-demo
+brand: itiha
+format: instagram-portrait
+caption: |
+  Format demo for the two new hierarchy layouts: pyramid for strata, hierarchy for chains of command. Replace with real content.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #Itiha
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  showGrain: true
+  seriesLabel: LAYOUTS
+slides:
+- layout: hierarchy
+  theme: light
+  chapter: Demo · chain of command
+  headline: |
+    Who Answered
+    to *Whom*
+  nodes:
+  - name: The Emperor
+    note: Padshah, source of all mansab
+    level: 1
+    level_label: The centre
+    highlight: true
+  - name: Wazir
+    note: Revenue and the imperial purse
+    level: 2
+    level_label: Ministers of state
+  - name: Mir Bakhshi
+    note: The army and all appointments
+    level: 2
+  - name: Sadr-us-Sudur
+    note: Religious endowments and law
+    level: 2
+  - name: Subahdar
+    note: Governor of a province
+    level: 3
+    level_label: The provinces
+  - name: Faujdar
+    note: Military command of a district
+    level: 3
+  - name: Amil
+    note: Revenue collection at the pargana
+    level: 3
+  caption: Rungs are set by the [level] field, the same way dynasty groups by generation.
+  texture: paper
+- layout: pyramid
+  chapter: Demo · stratification
+  headline: |
+    The Mansab
+    *Ranks*
+  tiers:
+  - label: Amir-ul-Umara
+    value: '12'
+    note: The highest mansabs, held by princes of the blood
+    highlight: true
+  - label: Amir
+    value: '80'
+    note: Commanders of 1,000 and above
+  - label: Mansabdar
+    value: '400'
+    note: Zat and sawar ranks, 500 to 1,000
+  - label: Ahadi
+    value: 4,000
+    note: Gentleman troopers, paid directly by the imperial treasury
+  apex_width: 32
+  caption: Illustrative numbers. The shape is the argument, not the arithmetic.
+  texture: grain

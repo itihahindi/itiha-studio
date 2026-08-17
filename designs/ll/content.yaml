@@ -1,0 +1,70 @@
+name: indian-money-ivy-league-letterhead
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Over fifteen years, Indian corporate wealth has become a structural funder of South Asia studies in the West. Tata Trusts gave Harvard Business School $50 million in 2010. Lakshmi Mittal gave $25 million in 2017 and the university's South Asia Institute was renamed after him. Anand Mahindra endowed a humanities centre. Rohan Murty put $5.2 million behind a hundred-year translation series at Harvard University Press.
+
+  The same decade saw the money come home. Ashoka University opened in Sonipat in 2014, Krea took its first students in 2019, both built by Indian founders on an American liberal arts template.
+
+  What the gifts mean is where agreement ends. A section of Indian commentary argues this hands foreign scholars the framing of India's past and present. Donors and universities describe it as scholarship, translation and global reach. The 2016 petition against Sheldon Pollock, and Rohan Murty's refusal to act on it, is the sharpest public test of that disagreement so far. The gifts are documented. The reading of them is not.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #Politics #VaqHQ #Philanthropy #India
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  vertical: longview
+  seriesLabel: ENDOWMENTS
+slides:
+- layout: cover
+  headline: Indian money, *Ivy League* letterhead
+  subline: Fifteen years of corporate gifts to the Western academy, and the fight over what they bought.
+  surface: solid
+  texture: grid
+- layout: stat
+  label: Harvard Business School, 2010
+  value: $50M
+  sublabel: Tata Trusts and Tata companies
+  body: The gift built **Tata Hall**, an executive education building on the Boston campus.
+  surface: solid
+- layout: story
+  headline: A *renamed* institute
+  body: Lakshmi Mittal gave $25 million in 2017. Harvard's South Asia Institute now carries his name.
+  surface: light
+  texture: riso
+- layout: story
+  headline: Mahindra funds the *humanities*
+  body: A $10 million gift in 2010 endowed Harvard's Mahindra Humanities Center. [Homi Bhabha] directed
+    it.
+  surface: light
+- layout: stat
+  label: Harvard University Press, 2010
+  value: $5.2M
+  sublabel: Rohan Murty, son of the Infosys co-founder
+  body: The Murty Classical Library plans **500 volumes** of Indian classics over a century.
+  surface: solid
+- layout: story
+  headline: Then came the *petition*
+  body: In 2016 scholars demanded Sheldon Pollock be removed as general editor. Murty refused.
+  surface: light
+  texture: grid
+- layout: story
+  headline: The model comes *home*
+  body: Ashoka University opened in Sonipat in 2014. Krea took its first students in 2019.
+  surface: light
+- layout: story
+  headline: One gift, *two readings*
+  body: Critics call it [ideological outsourcing]. Donors and universities call it scholarship and reach.
+  surface: solid
+- layout: quote
+  quote: The gifts are on the record. What they mean is the argument.
+  attribution: VAQ HQ
+  surface: light
+- layout: closing
+  headline: The money is documented
+  body: Every figure here is public. The dispute is over interpretation, not amounts.
+  handle: '@vaqhq'

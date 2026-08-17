@@ -1,0 +1,142 @@
+name: ram-mandir-donation-theft
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Eight people have been arrested over the theft of donations at the Ram Mandir in Ayodhya. Every one of them was hired staff. No trustee has been arrested.
+
+  What happened. Allegations of theft from the temple's donation counting became public on 7 June 2026. The Uttar Pradesh government constituted a Special Investigation Team on 13 June, on the temple trust's own recommendation. The FIR was registered on 25 June, based on the SIT's preliminary findings, and eight people were arrested. Police recovered about 80 lakh rupees in cash. Investigators have documented roughly 70 instances of theft across about 40 days.
+
+  Who was held. Among the eight is Tinnu Yadav, the driver of the trust's then general secretary Champat Rai. The rest are staff and contract workers hired to count the offerings.
+
+  The part that raises the question. The joint resignation letters of Champat Rai and trustee Anil Mishra, as reported, claim that 81 lakh rupees was recovered inside the trust. That recovery is described as having happened before any FIR was filed. The trust's resignations were accepted on 6 July, the same day the SIT submitted its preliminary report. Krishna Mohan was appointed interim general secretary.
+
+  What is not established. Investigators have not found that Champat Rai personally handled the money or benefited from it. Former principal secretary Nripendra Misra has vouched for his integrity. Rai has called the allegations against him baseless, has taken a vow of silence, and has said he will answer point by point once the SIT files its final report. The larger figure of 7 to 8 crore rupees is an Opposition allegation, not a confirmed finding.
+
+  Where it stands. On 13 July 2026 a Supreme Court bench led by Chief Justice Surya Kant, with Justices Joymalya Bagchi and V. Mohna, issued notice to the Union government, the Uttar Pradesh government and the trust, and directed the SIT to file a status report. The petitions seek a CBI investigation and an audit of the trust's finances.
+
+  None of this is an attack on the temple. Devotees gave the money. They are owed an accounting of it.
+
+  Sources: The Week, 4 July 2026. ANI and India TV, 6 July 2026. ThePrint. LiveLaw, Business Standard and The Tribune, 13 July 2026. Images via Wikimedia Commons (GODL-India; CC BY-SA 4.0, Subhashish Panigrahi).
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #RamMandir #Ayodhya #SupremeCourt #Accountability #IndianPolitics #UttarPradesh
+tweaks:
+  vertical: legal
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE DOCKET
+slides:
+- layout: cover
+  surface: dark
+  kicker_meta: Ayodhya · 4 Aug 2026
+  headline: |
+    *8 arrests* in the
+    Ram Mandir cash theft.
+    *Not one* is a trustee.
+  subline: The general secretary resigned on moral grounds. Investigators have not found that he handled
+    the money.
+  image: mandir.jpg
+  image_position: 50% 40%
+  align_x: left
+  headline_size: 70
+  headline_offset_y: 110
+  image_height: 60
+- layout: story
+  surface: dark
+  kicker_meta: The Clock
+  headline: Eighteen days to an *FIR*
+  body: |
+    **7 June.** The allegations become public.
+
+    **13 June.** The state sets up an SIT, on the trust's own request.
+
+    **25 June.** The FIR is filed. [Eight arrests follow.]
+  align_y: middle
+  body_size: 44
+  loop: What the resignation letters say happened first
+  headline_size: 64
+- layout: stat
+  surface: dark
+  kicker_meta: Before Any FIR
+  label: RETURNED INSIDE THE TRUST
+  value: ₹81 lakh
+  sublabel: the figure claimed in the two resignation letters
+  body: |
+    Champat Rai and Anil Mishra's letters say the money was **recovered internally**. The police FIR came [weeks later].
+  stat_size: 250
+  body_size: 46
+  align_y: middle
+- layout: story
+  surface: dark
+  kicker_meta: Who Was Held
+  headline: The driver, and *seven counters*
+  body: |
+    Eight people were named and arrested. Among them **Tinnu Yadav**, the then general secretary's driver.
+
+    The rest were hired to count the offerings. Police recovered about [₹80 lakh] in cash.
+  align_y: middle
+  body_size: 42
+  loop: The sum being alleged is far larger
+- layout: bar-chart
+  surface: dark
+  kicker_meta: The Gap
+  headline: Recovered, against what is *alleged*
+  mode: emphasis
+  rows:
+  - label: Cash recovered by police
+    value: 0.8
+  - label: Alleged to have been siphoned
+    value: 7.5
+    emphasis: true
+  value_prefix: ₹
+  value_suffix: ' cr'
+  decimals: 1
+  max: 8
+  source: The larger figure is an Opposition allegation, also reported as ₹7 to 8 crore. It is not a confirmed
+    finding.
+  body: Investigators have documented about **70 instances** across roughly 40 days.
+  bar_size: 112
+  body_size: 46
+  chart_offset_y: 40
+  loop: Then the case reached the Supreme Court
+  headline_size: 56
+- layout: story
+  surface: dark
+  kicker_meta: 13 July 2026
+  headline: The Supreme Court *stepped in*
+  body: |
+    A bench led by **Chief Justice Surya Kant** issued notice to the Union, the Uttar Pradesh government and the trust, and told the SIT to file a status report.
+
+    The petitions want a [CBI probe] and an audit of the trust's finances.
+  image: https://www.livelaw.in/h-upload/2026/03/09/660348-cji-surya-kant.webp
+  image_position: 56% 0%
+  image_height: 430
+  body_size: 38
+  loop: The man at the centre has said almost nothing
+- layout: quote
+  surface: light
+  kicker_meta: The Response
+  quote: Many people have levelled baseless allegations against me personally, but I have chosen to remain
+    silent.
+  attribution: Champat Rai, in a letter to devotees
+  quote_size: 62
+- layout: story
+  surface: dark
+  kicker_meta: What Is And Is Not Established
+  headline: Resigning is not the same as *being cleared*
+  body: |
+    Investigators have **not** found that Rai handled the cash or gained from it. He says he will answer point by point once the SIT files its final report.
+
+    What no one has explained is why [the money came back before the police did].
+  align_y: middle
+  body_size: 40
+  loop: One question outlasts all of it
+- layout: closing
+  surface: dark
+  headline: |
+    The money was
+    given in faith.
+  body: Someone still has to account for it. How can so much money be stolen if no one from the trust
+    is involved?
+  handle: '@vaqhq'

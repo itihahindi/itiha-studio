@@ -1,0 +1,170 @@
+name: indian-money-ivy-league-letterhead
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Over fifteen years, Indian industrial wealth quietly became a structural funder of how India is studied in the West. The amounts are public. What they bought is the fight.
+
+  The ledger. Tata Trusts and Tata companies put about $50 million into Harvard Business School from 2010, building Tata Hall, an executive education block dedicated in 2013 and underwritten by Ratan Tata, who took the Advanced Management Programme there in 1975. Lakshmi Mittal and family gave $25 million in 2017, and Harvard's South Asia Institute, running since 2003, was renamed for them. Anand Mahindra gave $10 million in October 2010, the largest gift in Harvard's history earmarked solely for the humanities, and the Humanities Center was renamed for his mother Indira. Rohan Murty endowed the Murty Classical Library of India with $5.2 million. Four gifts, a little over $90 million, one university.
+
+  The hundred-year one. The Murty Classical Library publishes dual-language editions of Indian classics through Harvard University Press: 500 volumes planned, roughly five a year, running for a century. It began in 2015, which makes it eleven years into a hundred. Its general editor is Sheldon Pollock, whose scholarship argues Sanskrit was bound up with the expression of political power, a reading many Indian scholars reject.
+
+  The one test on record. In 2016, 132 scholars and intellectuals petitioned for Pollock's removal as general editor, after he signed statements on the JNU arrests, and asked that the library be aligned with Make in India and its board reconstituted. Rohan Murty refused. Pollock stayed. A counter-petition backed him. It is the only occasion where Indian donors were publicly asked to steer the scholarship they fund, and it went the other way.
+
+  Then the model came home. Ashoka University opened at Sonipat in 2014, raised on ₹1,547 crore from 170 founders and 45 donors, the largest collective philanthropy project in the country. Krea took its first students in 2019. Both are private liberal arts universities built by Indian founders on an American template.
+
+  Two readings. One side calls this outsourcing the story of India to people who are not accountable to anyone here. The other calls it scholarship, translation and global reach, and points out that the classics being translated had no comparable English edition before. The amounts are not in dispute. The meaning is the whole argument.
+
+  Sources: Harvard Crimson and Harvard Gazette on the Mittal and Mahindra gifts; Harvard Magazine and HBS on Tata Hall; Harvard University Press on the Murty Classical Library; Scroll, Time and Publishing Perspectives on the 2016 petition and Rohan Murty's response; Forbes India and Ashoka University on the founding raise.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #Politics #VaqHQ #Philanthropy #India
+tweaks:
+  vertical: longview
+  showStamp: true
+  showPageNum: true
+  seriesLabel: ENDOWMENTS
+slides:
+- layout: cover
+  surface: solid
+  texture: grid
+  headline: |
+    Indian money,
+    *Ivy League*
+    letterhead
+  subline: Ninety million dollars of Indian industrial wealth, four Harvard institutions, and a fight over what it bought.
+  align_x: left
+
+- layout: pie-chart
+  surface: dark
+  kicker_meta: The Ledger
+  headline: Four gifts, *one university*
+  rows:
+  - label: Tata Trusts
+    value: 50
+    color: '#3987e5'
+  - label: Lakshmi Mittal
+    value: 25
+    color: '#d95926'
+  - label: Anand Mahindra
+    value: 10
+    color: '#199e70'
+  - label: Rohan Murty
+    value: 5.2
+    color: '#c98500'
+  value_prefix: $
+  value_suffix: m
+  donut: 0.5
+  size: 500
+  center_value: $90m
+  center_label: TO HARVARD
+  body: |
+    The largest built **Tata Hall**. Ratan Tata took the executive course there in [1975].
+  body_size: 44
+  loop: Two of them bought a nameplate
+  headline_size: 56
+
+- layout: story
+  surface: light
+  texture: riso
+  kicker_meta: 2017
+  headline: They bought the *nameplate*
+  body: |
+    $25 million from Lakshmi Mittal and family. Harvard's South Asia Institute, running since **2003**, now carries [their name].
+  align_y: middle
+  body_size: 46
+  loop: The humanities went the same way
+
+- layout: story
+  surface: light
+  kicker_meta: 2010
+  headline: The biggest humanities gift Harvard *ever took*
+  body: |
+    $10 million from Anand Mahindra, named for his mother Indira. Its director was [Homi Bhabha], a founding figure of postcolonial theory.
+  align_y: middle
+  body_size: 44
+  loop: One gift runs for a century
+
+- layout: pictogram
+  surface: dark
+  kicker_meta: Harvard University Press
+  headline: A hundred-year *bet*
+  value: 11
+  decimals: 0
+  value_suffix: ''
+  total: 100
+  columns: 10
+  grid_height: 380
+  unit_label: years in
+  sublabel: Rohan Murty's $5.2 million funds 500 volumes of Indian classics, about five a year since 2015.
+  source: The Murty Classical Library of India.
+  loop: Then they came for the editor
+  headline_size: 62
+
+- layout: story
+  surface: light
+  texture: grid
+  kicker_meta: 2016
+  headline: 132 signatures, *one refusal*
+  body: |
+    Scholars demanded Sheldon Pollock be removed as general editor. Rohan Murty [said no]. Pollock stayed, and a counter-petition backed him.
+  align_y: middle
+  body_size: 44
+  loop: Meanwhile the model came home
+
+- layout: geo
+  surface: light
+  kicker_meta: Sonipat and Sri City
+  headline: The same template, *rebuilt here*
+  body: |
+    Ashoka opened at Sonipat in 2014 on [₹1,547 crore] from **170 founders**. Krea took its first students in 2019.
+  region: south-asia
+  center_lon: 79
+  center_lat: 21
+  zoom: 1.1
+  labels: false
+  countries:
+  - name: India
+    color: '#F4631E'
+  markers:
+  - lon: 77.02
+    lat: 28.99
+    label: Ashoka · Sonipat
+    ring: true
+    align: left
+  - lon: 80.02
+    lat: 13.55
+    label: Krea · Sri City
+    align: left
+  map_height: 440
+  body_size: 40
+  loop: So what did the money buy
+
+- layout: story
+  surface: solid
+  kicker_meta: The Dispute
+  headline: One ledger, *two readings*
+  body: |
+    One side calls it [outsourcing the story of India]. The other calls it scholarship, translation and reach.
+
+    The amounts are not in dispute. The meaning is the whole argument.
+  align_y: middle
+  body_size: 44
+  loop: Where we stand
+
+- layout: quote
+  surface: dark
+  kicker_meta: Our Position
+  quote: |
+    The gifts are on the record. What they bought is the argument.
+  attribution: Vaq HQ
+  quote_size: 66
+
+- layout: closing
+  surface: light
+  headline: |
+    The money is
+    documented.
+  body: Every number here is public and checkable. The disagreement is about meaning, not arithmetic.
+  handle: '@vaqhq'
+  headline_size: 56

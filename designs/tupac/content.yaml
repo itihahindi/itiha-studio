@@ -1,0 +1,110 @@
+name: how-turkey-and-pakistan-coordinate-anti-india-propaganda
+brand: itiha
+format: instagram-portrait
+caption: |
+  A report by Mediterranean Asian Investigative Journalists documents a coordinated propaganda operation against India, jointly run by Turkey's intelligence agency MIT and Pakistan's ISI, with Turkey's state media outlets TRT World and Anadolu Agency as the focal points. The operation employs Kashmiri journalists, many with close ties to separatist leaders and to figures facing trial in terror-funding cases. Turkey supplies the platform. Pakistan supplies the manpower. The target is Indian public opinion, at home and abroad.
+
+  This carousel documents the four documented components of the coordination. First, media coordination: TRT World and Anadolu Agency serve as the international broadcasting arms of Pakistan's Kashmir narrative, giving separatist voices the reach of a NATO member state's state media apparatus. Second, the student pipeline: Turkey offers lucrative scholarships and exchange programmes for Indian Kashmiri and Muslim students, funded through state-sponsored NGOs. Once the students land in Turkey, they are approached and cultivated by Pakistan proxies operating there. Third, the strategic shift: Erdogan's Islamist project deliberately ignores sectarian differences between Shias, Sunnis, and the various schools within them, aiming to rally South Asian Muslims across the ideological spectrum behind Ankara. Fourth, the political staging: Turkish television gives wide platform to Kashmiri separatists, and Turkey and Pakistan jointly organised a "Combating Hate Speech" event on the sidelines of a UN meeting, borrowing human rights language for a bilateral information war.
+
+  Non-Kashmiri Indian Muslims have, historically, remained largely unconcerned about Kashmir. That is precisely the audience the operation is designed to change.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Turkey #Pakistan #Kashmir #Erdogan #InformationWarfare #TRTWorld #NationalSecurity
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: PROPAGANDA
+slides:
+- layout: cover
+  headline: |
+    How Turkey And
+    Pakistan Coordinate
+    Against *India.*
+  subline: Media, students, platforms. One documented operation.
+  swipe_meta: Swipe ▸ · 7 Slides · 2 min read
+  headline_size: 100
+  headline_offset_y: 360
+  image_position: 58% 50%
+  image: cover-map-wide.png
+- layout: split-story
+  chapter: Chapter 01 · The Intelligence Handshake
+  headline: |
+    MIT And ISI.
+    *Working Together.*
+  body: A report by Mediterranean Asian Investigative Journalists found Turkey's [MIT] working with Pakistan's
+    [ISI] on a propaganda network aimed at India. Turkey supplies the platform. Pakistan supplies the
+    people.
+  image: _cache/9ec208c777061252.png
+  image_overlay: 0.8
+  body_y: 24
+  align_x: center
+- layout: split-story
+  chapter: Chapter 02 · The Kashmiri Journalists
+  headline: |
+    A Ready-Made
+    *Newsroom.*
+  body: The bylines belong to [Kashmiri journalists]. Several named in the report are close to separatist
+    leaders, and to men now on trial in terror-funding cases. Their copy runs on TRT World and Anadolu
+    Agency.
+  image: _cache/c88ac0c3d3dfc617.jpg
+  image_position: 50% 72%
+  image_overlay: 0.7
+  body_y: 14
+  image_zoom: 1.35
+- layout: split-story
+  chapter: Chapter 03 · The Student Pipeline
+  headline: |
+    Scholarships Are
+    The *Recruitment* Tool.
+  body: Turkey hands out scholarships to Kashmiri and Muslim students from India, routed through state-backed
+    NGOs. Once they arrive, [Pakistani handlers] take over. Pakistan has done this before, with medical
+    and engineering seats.
+  source: Mediterranean Asian Investigative Journalists report
+  image: _cache/96ac179279a198ba.jpg
+  image_position: 50% 50%
+  image_overlay: 0.7
+  body_y: 15
+- layout: split-story
+  chapter: Chapter 04 · Erdogan's Strategy
+  headline: |
+    Ignore Sect.
+    Rally The *Ummah.*
+  body: Erdogan's pitch skips the [Shia and Sunni divide]. He is going after South Asian Muslims all at
+    once, online and through people on the ground. Kashmir keeps coming up in his speeches.
+  image: _cache/8b3a5a9bbc001d08.jpg
+  body_y: 25
+- layout: split-story
+  chapter: Chapter 05 · The Platform
+  headline: |
+    Separatists On
+    Turkish *Prime-Time.*
+  body: '[Kashmiri separatists] get airtime on Turkish television. At a UN meeting, Turkey and Pakistan
+    ran a joint event called Combating Hate Speech. Human rights language, used to make Pakistan''s case.'
+  image: _cache/a24125f57be9d54b.jpg
+  image_bw: true
+  image_overlay: 0.8
+  body_y: 30
+- layout: closing
+  headline: |
+    The Target Is The
+    *Indian Muslim.*
+  body: Indian Muslims outside Kashmir have never had much stake in this argument. That is the audience
+    the operation is built to move. The platform is Turkish. The line is Pakistani. The [target is here.]
+  handle: Follow @itiha29 · itiha.info
+  image: _cache/7e7417ff85a708ce.jpeg
+  image_position: 67% 50%
+  headline_size: 100
+  headline_offset_y: -40
+  body_offset_y: 100
+  image_overlay: 1
+- layout: youtube-cta
+  headline: Inside Pakistan's Most Dangerous Covert Plan
+  thumbnail: whatsapp-image-2026-08-01-at-03-07-27.jpeg
+  cta: Watch on YouTube
+  handle: '@itiha'
+- layout: end-card
+  headline: New slide

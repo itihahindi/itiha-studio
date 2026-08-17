@@ -105,7 +105,7 @@ function Cover({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} />}
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
       <TextureOverlay texture={slide.texture} />
       {(eyebrow || eyebrow_meta) && (
         <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 84, right: 72, display: 'flex', alignItems: 'center', gap: 18 }, { stretch: true })}>
@@ -157,7 +157,7 @@ function Story({ slide, index }) {
 
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0} position={image_position} vignette={false} />}
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: overlayCss }} />
       <TextureOverlay texture={slide.texture} />
       <div {...blockProps}>
@@ -185,7 +185,7 @@ function SplitStory({ slide, index }) {
   const showEyebrowBlock = !!chapter && !!ctx.showChapterLabels;
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} />}
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
       <TextureOverlay texture={slide.texture} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: headline_y, right: 72 },
                           { top: headline_y, bottom: body_y })}>
@@ -234,7 +234,7 @@ function Quote({ slide, index }) {
         display: 'flex', flexDirection: 'column', gap: 40 };
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} />}
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
       <TextureOverlay texture={slide.texture} />
       {hasTop && (
         <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 130 + headline_offset_y, right: 72 },
@@ -324,7 +324,7 @@ function Stat({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} />}
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} zoom={slide.image_zoom} />}
       <TextureOverlay texture={slide.texture} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 220 - headline_offset_y })}>
@@ -379,7 +379,7 @@ function DatesGrid({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.84} position={image_position} />}
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.84} position={image_position} zoom={slide.image_zoom} />}
       <TextureOverlay texture={slide.texture} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
@@ -412,7 +412,7 @@ function Closing({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} />}
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} zoom={slide.image_zoom} />}
       <TextureOverlay texture={slide.texture} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 140 + headline_offset_y, right: 72 },
                           { top: 140 + headline_offset_y, bottom: 250 - headline_offset_y })}>
@@ -460,7 +460,7 @@ function ReelTitle({ slide, index }) {
           headline_size = 180, text_y = 50 } = slide;
   return (
     <div className="itiha-slide" style={{ background: ITIHA.jet }}>
-      {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.55} position={image_position} vignette={false} />}
+      {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.55} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
       {/* text_y stays the default anchor; align_y supersedes it when set. */}
       <div {...alignBlock(slide, { position: 'absolute', left: 96, right: 96, top: `${text_y}%`, transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' },
@@ -512,7 +512,7 @@ function YoutubeThumbnail({ slide, index }) {
   return (
     <div className="itiha-slide" style={{ background: ITIHA.jet }}>
       {image
-        ? <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} vignette={false} />
+        ? <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} vignette={false} />
         : (
           // Subtle archival "photo placeholder" — radial bronze tones, no gradient on the page itself.
           <div style={{
@@ -567,7 +567,7 @@ function EndCard({ slide, index }) {
       background: ITIHA.jet, display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
     }}>
-      {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.7} position={image_position} vignette={false} />}
+      {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.7} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
       <div style={{
         fontFamily: ITIHA.bebas, fontSize: wordmark_size,
@@ -602,7 +602,7 @@ function InteriorLight({ slide, index }) {
           image, image_bw, image_overlay, image_position } = slide;
   return (
     <div className="itiha-slide" style={{ background: ITIHA.offWhite, color: ITIHA.nearBlack }}>
-      {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0} position={image_position} vignette={false} />}
+      {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
       <div style={{
         position: 'absolute', top: 56, right: 56,
@@ -649,7 +649,7 @@ function YouTubeCTA({ slide, index }) {
     thumbnail, headline,
     duration, channel_label = 'Itiha Documentaries',
     cta = 'Watch on YouTube',
-    handle = '@itihahindi',
+    handle = '',   // no default channel handle: set it per slide when you want one
     url_label,
     headline_size = 84,
     cta_size = 64,
@@ -777,7 +777,7 @@ function CtaRed({ slide, index }) {
           image, image_bw, image_overlay, image_position } = slide;
   return (
     <div className="itiha-slide" style={{ background: ITIHA.red, color: ITIHA.white }}>
-      {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} vignette={false} />}
+      {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
       <div {...alignBlock(slide, {
         position: 'absolute', inset: 0, padding: '120px 96px',
@@ -821,7 +821,7 @@ function NumberedList({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} vignette={false} />}
+      {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
@@ -871,7 +871,7 @@ function Comparison({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.9} position={image_position} vignette={false} />}
+      {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.9} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
@@ -927,7 +927,7 @@ function Portrait({ slide, index }) {
       <TextureOverlay texture={slide.texture} />
       {image && (
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '50%', overflow: 'hidden' }}>
-          <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.15} position={image_position} vignette={false} />
+          <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.15} position={image_position} zoom={slide.image_zoom} vignette={false} />
         </div>
       )}
       {/* Type column spans top→bottom (the pull quote is pushed down with
@@ -979,7 +979,7 @@ function Timeline({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.88} position={image_position} vignette={false} />}
+      {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.88} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
@@ -1046,7 +1046,7 @@ function MapSlide({ slide, index }) {
         {image ? (
           <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter}
             overlay={image_overlay != null ? image_overlay : 0.25}
-            position={image_position} vignette={false} />
+            position={image_position} zoom={slide.image_zoom} vignette={false} />
         ) : (
           <div style={{
             position: 'absolute', inset: 0,
@@ -1125,7 +1125,7 @@ function DidYouKnow({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} vignette={false} />}
+      {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} />
 
       {show_mark && !image && (
@@ -1590,7 +1590,7 @@ function DocumentSlide({ slide, index }) {
       }}>
         <ImageLayer light={t.isLight} url={image} bw={image_bw}
           filter={image_filter !== undefined ? image_filter : 'archival'}
-          overlay={0} position={image_position} vignette={false} />
+          overlay={0} position={image_position} zoom={slide.image_zoom} vignette={false} />
       </div>
       {quote && (
         <div {...alignBlock(slide, { position: 'absolute', left: 110, right: 110, top: 880,
@@ -1633,7 +1633,7 @@ function Annotated({ slide, index }) {
       <div style={{ position: 'absolute', left: 72, right: 72, top: 330, height: 520,
                     border: `1px solid ${t.divider}`, overflow: 'hidden' }}>
         <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={image_filter}
-          overlay={0.15} position={image_position} vignette={false} />
+          overlay={0.15} position={image_position} zoom={slide.image_zoom} vignette={false} />
         {callouts.map((c, i) => {
           const x = Number(c.x != null ? c.x : 50), y = Number(c.y != null ? c.y : 50);
           return (
@@ -1719,6 +1719,188 @@ function Sources({ slide, index }) {
 }
 
 
+
+// ── PYRAMID ─────────────────────────────────────────────────────
+// Stratification, not succession. Tiers stack top→bottom and widen as they
+// descend, so the shape itself carries the argument: few at the apex, many at
+// the base. For varna/jati orders, mansab ranks, army composition, landholding
+// classes. `dynasty` already owns genealogy — this is for strata.
+//
+// Widths interpolate from `apex_width`% to 100% rather than drawing true
+// trapezoids: sharp-cornered steps read as deliberate in a house style with no
+// gradients and no rounded corners, and they keep long Devanagari labels legible
+// where a tapering polygon would clip them.
+function Pyramid({ slide, index }) {
+  const { chapter, headline, tiers = [], value_suffix = '', caption,
+          headline_size = 88, caption_size = 24, tier_size = 30,
+          apex_width = 46, headline_offset_y = 0 } = slide;
+  const { image, image_bw, image_overlay, image_position } = slide;
+  const t = themeFor(slide);
+  const n = Math.max(1, tiers.length);
+  // A truncated pyramid: the top edge has real width (`apex_width`) because a
+  // point cannot hold a label. Each tier owns one horizontal band, and its
+  // content is sized to the band's NARROW edge — the top one — so nothing can
+  // ever cross a slope no matter how the text wraps.
+  const edgeAt = k => apex_width + (100 - apex_width) * (k / n);   // % width at band boundary k
+  const line = t.isLight ? 'rgba(26,26,26,0.30)' : 'rgba(232,220,200,0.32)';
+  return (
+    <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} zoom={slide.image_zoom} />}
+      <TextureOverlay texture={slide.texture} />
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
+        {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
+        <Divider style={{ marginBottom: 28 }} />
+        <Headline text={headline} size={headline_size} />
+      </div>
+      {/* Chart geometry — widths are computed off this container, so it is not
+          re-anchored by align_x. */}
+      <div style={{ position: 'absolute', left: 72, right: 72, top: 470, bottom: caption ? 240 : 160 }}>
+        {/* The pyramid drawn in lines: two slopes, a base, a top edge, and a
+            rule at every tier division. Stroked with vectorEffect so the 45%
+            editor preview does not resample it away. */}
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none"
+             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+          <g fill="none" stroke={line} strokeWidth="1" vectorEffect="non-scaling-stroke">
+            <path d={`M${50 - apex_width / 2} 0 L${50 + apex_width / 2} 0 L100 100 L0 100 Z`} />
+            {tiers.slice(1).map((_, k) => {
+              const y = ((k + 1) / n) * 100;
+              const half = edgeAt(k + 1) / 2;
+              return <line key={k} x1={50 - half} y1={y} x2={50 + half} y2={y} />;
+            })}
+          </g>
+        </svg>
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column' }}>
+          {tiers.map((tier, i) => {
+            const hot = !!tier.highlight;
+            const ink = hot ? ITIHA.red : (t.isLight ? ITIHA.nearBlack : ITIHA.parchment);
+            return (
+              <div key={i} style={{
+                flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column',
+                alignItems: 'center', justifyContent: 'center',
+                // sized to the band's narrow (upper) edge, with a little inset
+                // so type never touches the stroke
+                width: `${edgeAt(i)}%`, maxWidth: `${edgeAt(i)}%`,
+                marginLeft: 'auto', marginRight: 'auto',
+                padding: '0 14px', boxSizing: 'border-box', textAlign: 'center',
+              }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 12 }}>
+                  <span style={{ fontFamily: ITIHA.bebas, fontSize: tier_size + 6, color: ink,
+                                 lineHeight: 1.05, letterSpacing: '.02em' }}>{tier.label}</span>
+                  {tier.value != null && tier.value !== '' && (
+                    <span style={{ fontFamily: ITIHA.bebas, fontSize: tier_size + 2,
+                                   color: ITIHA.red, lineHeight: 1 }}>{tier.value}{value_suffix}</span>
+                  )}
+                </div>
+                {tier.note && (
+                  <div className="itiha-body" style={{
+                    fontSize: Math.round(tier_size * 0.52), lineHeight: 1.3,
+                    marginTop: 5, color: t.muted55,
+                  }}>{tier.note}</div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      {caption && (
+        <div style={{ position: 'absolute', left: 72, right: 72, bottom: 150 }}>
+          <Body text={caption} size={caption_size} maxWidth={940} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── HIERARCHY ───────────────────────────────────────────────────
+// Chain of command: offices, not people. Nodes are grouped into rows by their
+// `level`, exactly as `dynasty` groups by `generation`, so the two author the
+// same way. The difference is what a row means — dynasty rows are one
+// generation of a bloodline, hierarchy rows are one rung of an administration.
+// For mansabdari, Maurya administration, EIC command, revenue chains.
+function Hierarchy({ slide, index }) {
+  const { chapter, headline, nodes = [], caption,
+          headline_size = 88, caption_size = 24, node_size = 26,
+          headline_offset_y = 0 } = slide;
+  const { image, image_bw, image_overlay, image_position } = slide;
+  const t = themeFor(slide);
+  // Group by level, preserving first-seen order so an author can omit `level`
+  // entirely and still get one row per node.
+  const levels = [];
+  const seen = new Map();
+  nodes.forEach((nd, i) => {
+    const key = nd.level == null ? `_${i}` : String(nd.level);
+    if (!seen.has(key)) { seen.set(key, levels.length); levels.push({ key, label: nd.level_label, items: [] }); }
+    const row = levels[seen.get(key)];
+    if (!row.label && nd.level_label) row.label = nd.level_label;
+    row.items.push(nd);
+  });
+  return (
+    <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} zoom={slide.image_zoom} />}
+      <TextureOverlay texture={slide.texture} />
+      <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
+                          { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
+        {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
+        <Divider style={{ marginBottom: 28 }} />
+        <Headline text={headline} size={headline_size} />
+      </div>
+      <div style={{ position: 'absolute', left: 72, right: 72, top: 470, bottom: caption ? 240 : 160,
+                    display: 'flex', flexDirection: 'column', alignItems: 'stretch',
+                    justifyContent: 'center' }}>
+        {levels.map((row, ri) => (
+          <React.Fragment key={row.key}>
+            {/* Connector down from the previous rung. A plain rule, because the
+                reading order is already top-to-bottom — elbows would add ink
+                without adding information. */}
+            {ri > 0 && (
+              <div style={{ height: 26, display: 'flex', justifyContent: 'center' }}>
+                <div style={{ width: 2, background: ITIHA.red, opacity: 0.55 }} />
+              </div>
+            )}
+            {row.label && (
+              <div style={{
+                fontFamily: ITIHA.mono, fontSize: 15, letterSpacing: '.22em',
+                textTransform: 'uppercase', color: t.muted40, marginBottom: 8, textAlign: 'center',
+              }}>{row.label}</div>
+            )}
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', alignItems: 'stretch' }}>
+              {row.items.map((nd, i) => {
+                const hot = !!nd.highlight;
+                return (
+                  <div key={i} style={{
+                    flex: row.items.length > 1 ? 1 : '0 1 auto',
+                    minWidth: 0,
+                    background: hot ? ITIHA.red : (t.isLight ? '#EFE7D9' : ITIHA.charcoal),
+                    borderTop: `3px solid ${hot ? ITIHA.red : t.divider}`,
+                    padding: '14px 16px', textAlign: 'center',
+                  }}>
+                    <div style={{ fontFamily: ITIHA.bebas, fontSize: node_size + 6, lineHeight: 1.05,
+                                  color: hot ? ITIHA.white : (t.isLight ? ITIHA.nearBlack : ITIHA.parchment) }}>
+                      {nd.name}
+                    </div>
+                    {nd.note && (
+                      <div className="itiha-body" style={{
+                        fontSize: Math.round(node_size * 0.6), marginTop: 6, lineHeight: 1.35,
+                        color: hot ? 'rgba(255,255,255,.85)' : t.muted55,
+                      }}>{nd.note}</div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </React.Fragment>
+        ))}
+      </div>
+      {caption && (
+        <div style={{ position: 'absolute', left: 72, right: 72, bottom: 150 }}>
+          <Body text={caption} size={caption_size} maxWidth={940} />
+        </div>
+      )}
+    </div>
+  );
+}
+
 window.LAYOUTS = {
   // Carousel layouts (full-bleed image + type)
   cover: Cover,
@@ -1739,6 +1921,8 @@ window.LAYOUTS = {
   'line-graph':    LineGraph,
   'bar-chart':     BarChart,
   dynasty:         Dynasty,
+  pyramid:         Pyramid,
+  hierarchy:       Hierarchy,
   'before-after':  BeforeAfter,
   document:        DocumentSlide,
   annotated:       Annotated,

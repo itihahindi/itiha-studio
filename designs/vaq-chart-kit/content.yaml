@@ -1,0 +1,115 @@
+name: vaq-chart-kit
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Reference deck for the Vaq HQ chart system. Every plot here is real, sourced data from the E20 ethanol reporting, so the kit can be judged on the numbers it will actually carry.
+
+  The rule behind the look. Vaq HQ is a two-tone system: paper, hero orange, navy. That leaves no second accent to spend on telling series apart, so these charts encode by emphasis instead. The subject is orange, the field is slate. That pair separates on lightness rather than hue, which means it survives colour blindness better than any two-colour scheme would.
+
+  Every value is printed on the plot. A slide has no tooltip and no table view, so a number that is not on the chart is a number the reader cannot get.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #DataViz #Charts #DesignSystem
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: true
+  seriesLabel: CHART KIT
+slides:
+- layout: cover
+  kicker_meta: Chart Kit · v1
+  headline: |
+    Charts that survive
+    a *phone screen*
+  subline: Three plot types for Vaq HQ. Two-tone, directly labelled, colourblind-safe by construction.
+  align_x: left
+- layout: pictogram
+  kicker_meta: Pictogram
+  headline: The number the *whole policy* rests on
+  value: 88.5
+  decimals: 1
+  total: 100
+  columns: 10
+  grid_height: 500
+  unit_label: of the crude India burns is imported
+  sublabel: Each block is one percent of national crude consumption.
+  source: PIB factsheet, Ethanol Blending in India, 5 July 2026.
+- layout: bar-chart
+  kicker_meta: Bar · emphasis
+  headline: What a litre of *ethanol* costs, by feedstock
+  mode: emphasis
+  value_prefix: '₹'
+  decimals: 2
+  rows:
+  - label: Maize
+    value: 71.86
+    emphasis: true
+    note: The costliest route, and the fastest growing
+  - label: Cane juice and syrup
+    value: 65.61
+  - label: Damaged foodgrains
+    value: 64.00
+  - label: B-heavy molasses
+    value: 60.73
+  - label: Surplus FCI rice
+    value: 60.32
+  - label: C-heavy molasses
+    value: 57.97
+  source: Cabinet ex-mill prices, Ethanol Supply Year 2025-26. Excludes GST and transport.
+  bar_size: 46
+  label_size: 27
+  headline_size: 60
+- layout: bar-chart
+  kicker_meta: Bar · stack
+  headline: A litre of *E20*, by volume
+  mode: stack
+  value_suffix: '%'
+  rows:
+  - label: Petrol
+    value: 80
+  - label: Ethanol
+    value: 20
+  source: E20 is one litre, a fifth of it ethanol. Not five litres plus one.
+  body: |
+    Ethanol carries about **two thirds** of petrol's energy, so a fifth of the litre is [not] a fifth off your mileage.
+  headline_size: 64
+- layout: line-chart
+  kicker_meta: Line · trend
+  headline: Blending went to *20%*, five years early
+  series:
+  - name: Ethanol blended into petrol
+    values: [8.1, 10, 12.06, 14.6, 19.2, 20]
+  x_labels: ['2020-21', '2022-23', '2025-26']
+  y_min: 0
+  y_max: 22
+  value_suffix: '%'
+  area: true
+  source: Ethanol Supply Year. Target was 20% by 2030.
+  headline_size: 62
+- layout: bar-chart
+  kicker_meta: Bar · sequence
+  surface: dark
+  headline: The *shield*, priced across blends
+  mode: sequence
+  value_prefix: '₹'
+  decimals: 0
+  max: 145
+  rows:
+  - label: E0 · pure petrol
+    value: 143
+  - label: E10
+    value: 138
+  - label: E20 · today's fuel
+    value: 134
+  source: Modelled pump price at $160 a barrel, Delhi. Scenario by Polity Policy.
+  body: |
+    A fifth of the litre does not care what a barrel costs.
+  bar_size: 58
+  headline_size: 62
+- layout: closing
+  headline: |
+    Every number,
+    on the plot.
+  body: No tooltips on a phone. If it is not labelled, it is not readable.
+  handle: '@vaqhq'

@@ -94,6 +94,24 @@ if (typeof document !== 'undefined' && !document.getElementById('itiha-slide-sty
     .itiha-tex--halftone{opacity:0.32;mix-blend-mode:multiply;
       background-image:radial-gradient(circle at center, rgba(0,0,0,0.7) 0.6px, transparent 1.6px);
       background-size:5px 5px}
+    /* Minimal drafting grid. Hairlines only, with every fourth line a touch
+       stronger so the eye reads a module rather than graph paper. Sits under
+       the type at low opacity — it should register as structure, not pattern.
+       Light theme flips the ink so the lines stay visible on parchment. */
+    .itiha-tex--grid{opacity:0.42;
+      background-image:
+        linear-gradient(rgba(232,220,200,0.85) 3px, transparent 3px),
+        linear-gradient(90deg, rgba(232,220,200,0.85) 3px, transparent 3px),
+        linear-gradient(rgba(232,220,200,0.45) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(232,220,200,0.45) 2px, transparent 2px);
+      background-size:240px 240px,240px 240px,60px 60px,60px 60px}
+    .light .itiha-tex--grid{opacity:0.40;
+      background-image:
+        linear-gradient(rgba(26,26,26,0.70) 3px, transparent 3px),
+        linear-gradient(90deg, rgba(26,26,26,0.70) 3px, transparent 3px),
+        linear-gradient(rgba(26,26,26,0.34) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(26,26,26,0.34) 2px, transparent 2px);
+      background-size:240px 240px,240px 240px,60px 60px,60px 60px}
     .itiha-tex--vignette{opacity:1;
       background:radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.6) 100%)}
     /* ── Text alignment ────────────────────────────────────────────
@@ -240,7 +258,7 @@ function _resolveImageFilter(filterKey, bw) {
 
 // URL-based image layer (YAML-driven mode). Uses an <img> sized to "cover"
 // so headless renderers wait on real network/decode events.
-function ImageLayer({ url, bw, filter, overlay, position = 'center', vignette = true, light = false }) {
+function ImageLayer({ url, bw, filter, overlay, position = 'center', zoom, vignette = true, light = false }) {
   const t = useItiha();
   const o = overlay != null ? overlay : ((t && t.overlayDarkness != null) ? t.overlayDarkness / 100 : 0.62);
   if (!url) {
@@ -257,9 +275,20 @@ function ImageLayer({ url, bw, filter, overlay, position = 'center', vignette = 
   const vignetteRgba = light ? 'rgba(250,245,238,0.55)' : 'rgba(0,0,0,0.55)';
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+      {/* `object-position` can only shift an image along an axis where it
+          actually OVERFLOWS. A landscape photo cover-fitted into this portrait
+          slide overflows horizontally only, so the Y half of image_position is
+          inert — it has nothing to slide against. image_zoom scales the layer
+          past `cover` so there IS vertical overflow, and transform-origin
+          (driven by the same image_position) becomes the vertical pan: the
+          point you picked stays put while the rest grows around it.
+          zoom unset/1 → byte-identical to the old behaviour. */}
       <img src={src} style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%',
         objectFit: 'cover', objectPosition: position, filter: cssFilter,
+        ...(Number(zoom) > 1
+          ? { transform: `scale(${Number(zoom)})`, transformOrigin: position }
+          : null),
       }} />
       {fx && fx.overlay && (
         <div style={{

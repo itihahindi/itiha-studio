@@ -1,0 +1,131 @@
+name: drdo-swarm-drones
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  DRDO has put out a tender for a fifty-drone swarm that flies half a metre apart, and it will only take bids from Indian small firms.
+
+  The programme. It is called Development of Close Formation Flying of Multiple Drones, run under DRDO's Technology Development Fund. The Organiser reported the call on 3 August 2026.
+
+  What the machine has to do. Fifty drones in one formation, separated by no more than fifty centimetres. Each one holds its position to within five centimetres across all three axes. It has to do that in winds of twenty metres a second, at altitudes up to five thousand metres, and correct any positional error within five hundred milliseconds. The system is specified as jam-proof, with real-time communication between the drones.
+
+  Who is allowed to build it. Indian MSMEs and startups only. Defence public sector undertakings and other PSUs are excluded from bidding. DRDO funds ninety per cent of the project cost.
+
+  The part that matters most. Over seventy per cent indigenous content is mandatory, and commercial off-the-shelf components from adversary countries are barred outright. The winning firm has to hand over fifty drones, batteries with a hundred per cent spares, the communication and control subsystems, and all algorithms, applications and source code.
+
+  The clock. Prototype and functional testing inside twelve months. Qualification, trials, transfer of technology and project closure inside twenty-four.
+
+  Why this is different from the usual. Most defence indigenisation announcements end at assembly, where the hard parts are still imported and the software belongs to somebody else. This one specifies the source code as a deliverable, bars adversary-country parts, and hands the work to small private firms rather than the PSUs that normally absorb it. If it lands, India owns the stack rather than renting it.
+
+  Sources: Organiser, 3 August 2026. DRDO Technology Development Fund tender documents as reported by Indian Defence Research Wing and Indian Defence News.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #DRDO #SwarmDrones #MakeInIndia #Defence #MSME #Atmanirbhar #IndianArmy #DefenceTech
+tweaks:
+  vertical: tech
+  showStamp: true
+  showPageNum: true
+  seriesLabel: DEFENCE TECH
+slides:
+- layout: cover
+  surface: dark
+  kicker_meta: Technology · 4 Aug 2026
+  headline: |
+    DRDO wants *50 drones*
+    flying half a metre apart
+  subline: Indian MSMEs and startups only. The defence PSUs are barred from bidding.
+  align_x: left
+  headline_size: 74
+- layout: pictogram
+  surface: dark
+  kicker_meta: The Swarm
+  headline: Fifty drones, *one formation*
+  value: 50
+  total: 50
+  columns: 10
+  decimals: 0
+  grid_height: 340
+  unit_label: drones flying as one
+  sublabel: Separated by no more than fifty centimetres, in real-time communication with each other.
+  source: 'Programme name: Development of Close Formation Flying of Multiple Drones.'
+  loop: The tolerance is the hard part
+  headline_size: 60
+- layout: stat
+  surface: dark
+  kicker_meta: The Tolerance
+  label: POSITION HELD, ALL THREE AXES
+  value: 5 cm
+  sublabel: in 20 m/s wind, up to 5,000 metres
+  body: |
+    Any drift has to be corrected inside [500 milliseconds]. The formation is specified as **jam-proof**.
+  stat_size: 220
+- layout: pictogram
+  surface: dark
+  kicker_meta: The Real Condition
+  headline: Seventy percent must be *Indian*
+  value: 70
+  total: 100
+  columns: 10
+  decimals: 0
+  grid_height: 400
+  unit_label: minimum indigenous content
+  sublabel: Off-the-shelf parts from adversary countries are barred outright.
+  source: That is the clause aimed at Chinese components.
+  loop: And the state pays for most of it
+  headline_size: 58
+- layout: stat
+  surface: dark
+  kicker_meta: The Money
+  label: DRDO'S SHARE OF THE COST
+  value: 90%
+  sublabel: under the Technology Development Fund
+  body: |
+    Open to Indian **MSMEs and startups** only. Defence PSUs and other public sector units are [excluded from bidding].
+  stat_size: 230
+- layout: bar-chart
+  surface: dark
+  kicker_meta: The Clock
+  headline: Twelve months to a *working prototype*
+  mode: emphasis
+  value_suffix: ' months'
+  decimals: 0
+  max: 26
+  rows:
+  - label: Prototype and functional testing
+    value: 12
+    emphasis: true
+  - label: Trials, transfer of technology, closure
+    value: 24
+  source: As specified in the tender.
+  body: |
+    A two-year clock on a technology most air forces are still writing doctrine for.
+  bar_size: 58
+  loop: Then comes the part nobody usually gets
+  headline_size: 56
+- layout: story
+  surface: dark
+  kicker_meta: The Deliverable
+  headline: They have to hand over the *source code*
+  body: |
+    Fifty drones. Batteries with **100% spares**. The communication and control subsystems. And [all algorithms, applications and source code].
+  align_y: middle
+  body_size: 44
+  loop: Which is why this one is different
+- layout: story
+  surface: dark
+  kicker_meta: The Point
+  headline: Most indigenisation stops at *assembly*
+  body: |
+    Screws get turned here, the hard parts arrive in a crate, and the software belongs to someone else.
+
+    This tender bars adversary-country components, demands the code, and gives the work to small private firms instead of the PSUs that normally absorb it.
+  align_x: left
+  align_y: middle
+  body_size: 40
+- layout: closing
+  surface: dark
+  headline: |
+    Own the stack,
+    or rent it.
+  body: If this lands, India holds the algorithms, not just the airframes. That is the whole difference.
+  handle: '@vaqhq'

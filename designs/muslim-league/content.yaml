@@ -1,0 +1,122 @@
+name: liaquat-poor-mans-budget-1947
+brand: itiha
+format: instagram-portrait
+caption: |
+  On 28 February 1947 the Muslim League's finance minister presented a budget for the poor. Within weeks the stock markets had closed, the Congress financiers had turned, and Partition had become the practical option.
+
+  The Congress had handed Liaquat Ali Khan the Finance portfolio in the Interim Government on the assumption that the League lacked the expertise to use it, and would either decline or fail. Aided by able civil servants, Khan drafted a budget that adhered to the Congress party's own socialist declarations, making open opposition politically impossible. A 25 per cent tax on business profits above Rs 1,00,000 struck the industrialist families — the Birlas, Dalmias and Bajajs — who financed the Congress. A Tax Evasion Commission held wartime audits over the same business community. A capital gains tax choked investment until the exchanges at Bombay, Calcutta and Madras crashed and closed indefinitely in protest. And the salt tax, the target of Gandhi's most famous civil disobedience, was abolished outright, handing the League the moral high ground.
+
+  Control of the purse followed. Departments headed by Congress ministers required financial clearance for routine business, and Sardar Patel, the Home Minister, said he could not appoint a peon without Liaquat Ali Khan's prior approval. The financiers, calling the budget murderous, began pressing the Congress leadership to accept Partition to save the economy. For Nehru and Patel it had demonstrated that a shared government with the League meant permanent gridlock. The party moved from resisting Partition to accepting it.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #LiaquatAliKhan #PoorMansBudget #Partition1947 #InterimGovernment #MuslimLeague
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: BUDGET 1947
+slides:
+- layout: cover
+  headline: |
+    How the *Muslim League* Choked Congress
+  subline: 28 February 1947, and the portfolio Congress thought was harmless
+  swipe_meta: Swipe ▸ · 9 Slides · 3 min read
+  headline_offset_y: 90
+  headline_size: 130
+  image: chatgpt-image-aug-15-2026-10_40_29-pm.png
+  align_x: center
+  align_y: bottom
+- layout: split-story
+  headline: |
+    A Portfolio Given
+    To Be *Failed*
+  body: |
+    In the [Interim Government], Congress and the League were forced into a fragile coalition. Confident the League lacked the technical expertise for the nation's finances, Congress offered it the [Finance Ministry].
+    The assumption was that the League would **decline or fail**.
+  image: _cache/81ea5ce61ae67920.jpg
+  body_y: 15
+  image_overlay: 0.8
+- layout: split-story
+  headline: |
+    Written From the
+    Congress *Programme*
+  body: |
+    [Liaquat Ali Khan] drafted a budget that adhered strictly to the Congress party's own avowed [socialist declarations]. To oppose it openly was to appear **hypocritical**. Under the language of redistribution sat the real target: he set out to break the [business houses] that bankrolled the Congress machine.
+  image: _cache/852a7e0180af3433.jpg
+  body_y: 17
+- layout: numbered-list
+  headline: |
+    Relief for the Poor
+    Ruin for the *Backers*
+  items:
+  - headline: 25% on business profits
+    body: Levied above Rs 1,00,000. Framed as redistribution; aimed at the Birlas, Dalmias and Bajajs.
+  - headline: Tax Evasion Commission
+    body: Wartime profiteering investigated. A sword held over the pro-Congress business community.
+  - headline: Capital gains tax
+    body: Unearned wealth taxed, investment choked off.
+  - headline: Salt tax abolished
+    body: The tax Gandhi built his movement against, removed by the League.
+  body_offset_y: -200
+  number_size: 40
+  headline_offset_y: -60
+  item_size: 35
+- layout: pie-chart
+  headline: |
+    One Rupee in *Four*
+    Above the *Line*
+  segments:
+  - label: Taken as tax
+    value: 25
+    color: red
+  - label: Left with the firm
+    value: 75
+  body: |
+    On every rupee of business profit above [Rs 1,00,000], a quarter went to the state.
+    The houses that funded the [Congress] — Birla, Dalmia, Bajaj — carried the weight of it.
+  donut: true
+  show_values: true
+  texture: scanlines
+- layout: split-story
+  theme: dark
+  headline: |
+    Bombay, Calcutta
+    Madras — *Closed*
+  body: |
+    The capital gains tax stopped the flow of investment across the country. The reaction was immediate.
+    The exchanges at [Bombay], [Calcutta] and Madras crashed and shut **indefinitely** in protest.
+  image: _cache/569a5a5e529c1260.jpg
+  image_position: 33% 50%
+  body_y: 15
+  image_overlay: 0.8
+- layout: split-story
+  headline: |
+    The One Tax They
+    Could Not *Defend*
+  body: |
+    Gandhi had built his most iconic civil disobedience movement on the [salt tax]. Khan abolished it outright.
+    It brought relief to the poorest, and let the [Muslim League] claim the ground of champions of the masses.
+  image: _cache/865d306a0a7990dc.jpg
+  image_overlay: 0.8
+  body_y: 11
+- layout: quote
+  headline: |2+
+
+  quote: |
+    He (Sardar Patel) could not appoint a peon without the prior approval of Liaquat Ali Khan.
+  body: Every department, most headed by [Congress ministers], required financial clearance for the most
+    basic administrative task.
+  image: _cache/bd37898ff3a06786.jpg
+  body_offset_y: 100
+- layout: closing
+  headline: |2+
+
+  body: |
+    The financiers called it [murderous] and pressed for Partition; for Nehru and Patel it proved shared government [unworkable].
+  handle: Follow @itiha29 · itiha.info
+  headline_size: 100
+  align_x: center
+  image: _cache/f71a598f74ffb2da.jpg

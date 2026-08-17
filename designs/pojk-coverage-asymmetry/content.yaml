@@ -1,0 +1,116 @@
+name: pojk-coverage-asymmetry
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Prof. Shamika Ravi, a member of the Economic Advisory Council to the Prime Minister, put a coverage count on the board this week. We could not verify her numbers. We could verify almost everything else, and it is worse than the tweet.
+
+  What she posted. On 4 August 2026 Ravi wrote that the New York Times gave 40 deaths in PoK one report, and one resignation in Delhi sixteen. She tagged it #NarrativeEconomics. The post has crossed 146,000 views.
+
+  What we could not confirm. The counts. Ravi cited no source and we could not reproduce either figure independently. Treat the 1 and the 16 as her claim, not as an established number, and that is how this deck carries them.
+
+  What is not in doubt. International outlets did file from PoJK. Al Jazeera reported nine killed on 15 July and covered the election unrest on 30 July. Al Arabiya carried it the same week. So the honest charge is not silence. It is that a months-long uprising with a contested death toll got episodic wire coverage while a related Indian story got sustained treatment.
+
+  The toll, carefully. The Joint Awami Action Committee puts the dead since June at around 80. Pakistani authorities give far lower figures, 11 to 15 in the early clashes and 9 on 14 July, and on 27 July claimed one security man killed. Al Jazeera reported the JAAC's own count of 30-plus around the first round of voting, with JAAC member Sardar Umar Nazir describing 20 killed in a Monday march and 10 more the next day in Rawalakot and Mirpur. India's state broadcaster reported more than 40 dead in one crackdown. Amnesty International logged reports of the killings without independently verifying them. We are not printing a single confident number, because there is not one.
+
+  Why nobody can check. Web and mobile access across PoJK has been severely restricted since June, with banking and road movement disrupted alongside it. An unverifiable toll is the predictable product of a communications shutdown, not of careless reporting.
+
+  What they are actually demanding. The JAAC's charter runs to 38 points. The central one is abolishing the 12 seats in the PoJK legislative assembly reserved for Kashmiri refugees who migrated to Pakistan after 1947 and largely live outside the region. The JAAC argues the arrangement lets Pakistan-based parties shape the assembly and divert development funds. Pakistan's government says the seats give displaced Kashmiris representation.
+
+  The state's answer, in four days. Pakistan banned the JAAC under its Anti-Terrorism Act on 5 June. On 7 June its Supreme Court held that the 12 refugee seats carry constitutional protection. The movement was designated a terror outfit and the thing it was protesting was locked in.
+
+  The part that settles it. Read the 38 points. Seats, funds, electricity, governance. Every demand is addressed to Islamabad. Not one is addressed to Delhi. India's Ministry of External Affairs, through spokesperson Randhir Jaiswal on 28 July, called the vote a "cosmetic electoral exercise" that is "nothing but an attempt by Pakistan to camouflage its illegal occupation and hide its grave human rights violations in the region". Jaiswal also said the protests are "the direct consequence of economic exploitation" and the denial of fundamental rights.
+
+  Sources: @ShamikaRavi on X, 4 August 2026; Al Jazeera, 15, 27, 30 July and 3 August 2026; Al Arabiya, 15 July 2026; Arab News Pakistan on the Supreme Court ruling; Akashvani / newsonair.gov.in, 30 July 2026; MEA remarks via ANI, The Tribune and ThePrint, 28 July 2026; Wikipedia's consolidated timeline of the 2026 Azad Kashmir protests. Images: New York Times Building and Muzaffarabad city, Wikimedia Commons, CC BY 2.0 and CC BY-SA 4.0.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ #PoJK #PoK #Kashmir #Pakistan #JAAC #Muzaffarabad #NarrativeEconomics #ShamikaRavi #MediaBias
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE BRIEFING
+slides:
+- layout: cover
+  surface: solid
+  kicker_meta: '@ShamikaRavi · 4 Aug 2026'
+  headline: '*40 Deaths* Got One Report. One Resignation Got 16.'
+  subline: Prof. Shamika Ravi of the PM's Economic Advisory Council, on the New York Times. Her count, not ours.
+  headline_size: 96
+  texture: grid
+
+- layout: story
+  surface: light
+  kicker_meta: The count
+  headline: We Could Not Verify It
+  body: |
+    Ravi cited no source and we could not reproduce either figure. What is not in doubt: wires did file from PoJK. [Al Jazeera] and Al Arabiya both reported the killings. Silence is not the charge. Thinness is.
+  body_size: 42
+  image: nyt-building.jpg
+  image_position: 50% 50%
+  image_height: 300
+  image_caption: The New York Times Building, Manhattan
+  loop: The toll nobody can actually confirm
+
+- layout: stat
+  surface: dark
+  kicker_meta: Since June 2026
+  label: DEAD, BY THE PROTESTERS' OWN COUNT
+  value: '80'
+  sublabel: Joint Awami Action Committee claim. Pakistan's official figures are far lower.
+  body: |
+    Amnesty International logged reports of the killings without independently verifying them. India's state broadcaster reported more than [40] dead in one crackdown. Nobody outside PoJK can check any of it.
+  stat_size: 300
+  body_size: 44
+  texture: dots
+
+- layout: story
+  surface: light
+  kicker_meta: Muzaffarabad
+  headline: The Internet Went First
+  body: |
+    Web and mobile access across PoJK has been [restricted] since June. Banking and roads disrupted with it. When a territory goes dark, an unverifiable death toll is the predictable result. That part is not news judgement.
+  body_size: 42
+  image: muzaffarabad.jpg
+  image_position: 50% 55%
+  image_height: 330
+  image_caption: Muzaffarabad, capital of Pakistan-occupied Jammu and Kashmir
+  loop: So what are they actually demanding?
+
+- layout: stat
+  surface: solid
+  kicker_meta: The central demand
+  label: ASSEMBLY SEATS HELD FOR PEOPLE WHO LIVE ELSEWHERE
+  value: '12'
+  sublabel: Reserved for refugees who migrated to Pakistan after 1947.
+  body: |
+    Abolishing them is the JAAC's main demand out of a [38-point] charter. Their charge is that Pakistan-based parties use the seats to shape the assembly and divert development funds meant for the region.
+  stat_size: 300
+  body_size: 44
+
+- layout: story
+  surface: light
+  kicker_meta: 5 and 7 June 2026
+  headline: Banned, Then Overruled
+  body: |
+    Pakistan outlawed the JAAC under its [Anti-Terrorism Act] on 5 June. Two days later its Supreme Court held that the twelve seats carry constitutional protection. The movement was named a terror outfit and the grievance was locked in.
+  body_size: 50
+  loop: Now read the demand list again
+
+- layout: story
+  surface: dark
+  kicker_meta: The part that settles it
+  headline: Not One Demand Is Addressed to Delhi
+  body: |
+    Thirty-eight points. Seats, funds, electricity, governance. Every one aimed at [Islamabad]. India's MEA called the July vote a "cosmetic electoral exercise" masking illegal occupation and grave rights violations.
+  body_size: 50
+  texture: signal
+  loop: The line that survives all of it
+
+- layout: closing
+  surface: dark
+  headline: The Coverage Faded. The Blackout Did Not.
+  body: |
+    Ravi's counts we could not check. The rest is on the record: a banned movement, a throttled territory, a toll nobody can verify, and thirty-eight demands with Islamabad's name on every one.
+  handle: '@vaqhq'
+  headline_size: 58

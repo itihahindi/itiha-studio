@@ -356,7 +356,7 @@ def _build_server() -> ThreadingHTTPServer:
             ctype = {
                 ".mp4": "video/mp4", ".mov": "video/quicktime", ".webm": "video/webm",
                 ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
-            }[f.suffix.lower()]
+            }.get(f.suffix.lower(), "application/octet-stream")
             size = f.stat().st_size
             start, end = 0, size - 1
             status = 200
@@ -380,15 +380,24 @@ def _build_server() -> ThreadingHTTPServer:
                 self.send_header("Content-Range", f"bytes {start}-{end}/{size}")
             self.send_header("Cache-Control", "no-store")
             self.end_headers()
-            with open(f, "rb") as fh:
-                fh.seek(start)
-                remaining = length
-                while remaining > 0:
-                    chunk = fh.read(min(1 << 20, remaining))
-                    if not chunk:
-                        break
-                    self.wfile.write(chunk)
-                    remaining -= len(chunk)
+            # A browser scrubbing or closing a <video> aborts the request mid-body,
+            # which makes wfile.write raise. That is normal client behaviour, not a
+            # server fault, and it must not escape the handler — an unhandled write
+            # error here has repeatedly taken the whole daemon down. Nothing to do
+            # but stop sending: the response is already committed, so we cannot
+            # switch to an error status.
+            try:
+                with open(f, "rb") as fh:
+                    fh.seek(start)
+                    remaining = length
+                    while remaining > 0:
+                        chunk = fh.read(min(1 << 20, remaining))
+                        if not chunk:
+                            break
+                        self.wfile.write(chunk)
+                        remaining -= len(chunk)
+            except (BrokenPipeError, ConnectionResetError):
+                self.close_connection = True
 
         def _send_zip(self, slug: str, design_dir: Path):
             """Stream a ZIP of all rendered PNGs for this design. Used by the web UI

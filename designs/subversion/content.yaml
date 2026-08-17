@@ -1,0 +1,130 @@
+name: ideological-subversion-four-stages
+brand: itiha
+format: instagram-portrait
+caption: |
+  The KGB called it Active Measures. Not espionage, not sabotage — a structured, decades-long campaign to change a nation's perception of reality, until the society dismantles itself and calls the result progress.
+
+  This carousel walks the four chronological stages and their timetables. Demoralisation takes fifteen to twenty years, the minimum needed to school one generation while its inherited moral and patriotic counterweight is stripped away — religion commercialised, education softened into relativism, media diverted onto non-issues, the judiciary turned legalistic, security forces mocked until the public distrusts its own defence, the family replaced by dependence on the welfare state. Destabilisation runs two to five years and strikes the spinal cord: caretaker politicians promising artificial security, institutions bypassed by committees and mob-ocracy, a planned economy run with monopolies and unions, allies abandoned. Crisis takes two to six months — sleeper agents activate, the population welcomes strong leaders, emergency powers are granted, power changes hands by revolution, civil war or foreign intervention. Normalisation is permanent, and its first casualties are the radicals who cheered the whole thing on.
+
+  Yesterday's useful idiots are rounded up, executed or imprisoned. The new regime has no use for disturbers. The press censors itself, and the population adapts.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #IdeologicalSubversion #ActiveMeasures #Demoralisation #Propaganda #KGB #ColdWarTactics
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: SUBVERSION
+slides:
+- layout: cover
+  eyebrow: Series 01
+  eyebrow_meta: Ideological subversion · 4 Parts
+  headline: |
+    The Slow
+    *Con Game*
+    Against a *Nation*
+  subline: Four stages, and a timetable measured in generations
+  swipe_meta: Swipe ▸ · 10 Slides · 3 min read
+- layout: story
+  chapter: Chapter 02 · the method
+  headline: |
+    Not a *Battlefield*
+    A *Timetable*
+  body: |
+    The Soviet KGB filed it under [Active Measures]. No front line, no invasion — a structured campaign to alter a country's [perception of reality].
+    The strengths, values and internal divisions of the target are the weapons. **Its own.**
+- layout: numbered-list
+  chapter: Chapter 03 · the sequence
+  headline: |
+    Four *Stages*
+    In Fixed *Order*
+  items:
+  - label: Demoralisation · 15–20 years
+    body: One generation, schooled.
+  - label: Destabilisation · 2–5 years
+    body: The spinal cord, struck.
+  - label: Crisis · 2–6 months
+    body: The rupture.
+  - label: Normalisation · permanent
+    body: Total state control, arriving as order.
+- layout: story
+  chapter: Chapter 04 · stage one
+  headline: |
+    Twenty Years
+    For One *Generation*
+  body: The span is not arbitrary. It is the minimum required to educate and brainwash a single [generation
+    of students] — to expose young minds to the ideology while the nation's traditional [moral and patriotic]
+    counterweight is eliminated around them.
+- layout: numbered-list
+  chapter: Chapter 05 · the three levels
+  headline: |
+    Where the *Attack*
+    Actually *Lands*
+  items:
+  - label: Ideas
+    body: Religion commercialised into theatre. Education softened into moral relativity. Media monopolised
+      and diverted onto non-issues.
+  - label: Structures
+    body: Criminals become victims, citizens defenceless. Police and military discredited until the public
+      distrusts its own defence. Empty peace treaties breed complacency, then isolation.
+  - label: Life
+    body: The family replaced by the welfare state. Spectator sport for participation. Racial division
+      inflamed. Labour bargaining turned to economic blackmail.
+- layout: story
+  theme: light
+  chapter: Chapter 06 · the lock
+  headline: |
+    Irreversible for
+    One *Generation*
+  body: |
+    The schooled generation matures into [government], business, media and the security services. Set in their ways, they now direct opinion and policy.
+    Objective truth reaches them and does not land. Not even **physical evidence**.
+- layout: story
+  chapter: Chapter 07 · stage two
+  headline: |
+    The *Spinal Cord*
+    Two to Five *Years*
+  body: |
+    Ideas no longer need attacking. Power structures do. Caretaker politicians sell artificial security; national institutions are bypassed by committees and boards until [mob-ocracy] rules.
+    The economy is centrally planned, the State in cahoots with [monopolies] and unions.
+- layout: comparison
+  chapter: Chapter 08 · the inversion
+  headline: |
+    Allies *Abandoned*
+    Enemies *Financed*
+  left_label: Abroad
+  left_headline: 'Defeatism
+
+    And *Isolation*
+
+    '
+  left_body: 'Allies are dropped. The subverter expands its military reach while the target''s own politicians
+    are brought to believe [their nation] is the one breaking international law.
+
+    '
+  right_label: At home
+  right_headline: 'Trade With the
+
+    *Subverter*
+
+    '
+  right_body: The nation's multinational [monopolies] go on appeasing, trading and extending credit to
+    the power dismantling them.
+- layout: story
+  chapter: Chapter 09 · stage three
+  headline: |
+    Crisis
+    Two to Six *Months*
+  body: |
+    Sleeper agents and domestic radicals move at once. The population, in complete confusion, welcomes [strong leaders] who promise to end the chaos — and grants them **emergency powers**.
+    Power changes hands by revolution, civil war or [foreign intervention].
+- layout: closing
+  headline: |
+    Then the *Radicals*
+    Are *Rounded Up*
+  body: |
+    Normalisation is permanent. Yesterday's [useful idiots] are executed or imprisoned, the press censors itself, and a vanquished country learns [total state control].
+  handle: Follow @itiha29 · itiha.info

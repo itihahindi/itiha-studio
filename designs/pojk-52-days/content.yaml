@@ -1,0 +1,117 @@
+name: pojk-52-days
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Pakistan is shooting Kashmiris in the part of Kashmir it holds, and it has spent seven weeks making sure nobody can count them.
+
+  The demand that should end an argument. Fifty-two days of Kashmiris on the street in PoJK, and not one demand addressed to India. The JAAC wants electricity bills it can pay, the subsidised wheat it was promised, and commitments Islamabad made and broke. That is what the people Pakistan claims to speak for are actually asking for, and they are asking Islamabad.
+
+  What is corroborated. The Jammu Kashmir Joint Awami Action Committee has led a mass movement across PoJK since early June over electricity bills, subsidised wheat and a list of commitments the administration made and did not keep. The trigger was the killing of JAAC activist Shahzeb Habib near the Barmang Bridge. On 6 June the authorities banned the JAAC under anti-terrorism legislation. A communications blackout has been in force since 5 June. Rawalakot in the Poonch division became the flashpoint on 8 and 9 June. On 27 July, after talks collapsed, thousands began marching on Muzaffarabad while forces were moved into Mirpur.
+
+  The death toll, honestly. It is contested and the range is wide. For the June violence Reuters reported 11 killed and more than 70 injured; Dawn recorded seven civilians and four law-enforcement personnel; AP and AFP initially reported seven. Some accounts put June alone at 27. For the late-July Long March, reporting says at least 20 more were killed with several critically injured. A figure of more than 80 dead since 5 June is circulating on Indian social media. We could not stand that number up in any reporting we can reach, and we are not going to print it as fact.
+
+  Why nobody can settle the number. That is the story. A blackout imposed on 5 June is precisely the instrument that makes tolls unverifiable, and it has been running for seven weeks. When a government cuts communications and then disputes casualty counts, the cut is not incidental to the dispute. Both things should be reported together, and the uncertainty should be stated rather than filled in.
+
+  The double standard, stated precisely. Pakistan raises Kashmir at every forum it can reach while running a seven-week communications blackout over the Kashmir it actually administers. On coverage, be accurate rather than loud: Reuters, AP, AFP and Dawn all did report the June killings, so "no global media coverage" is wrong. The true and sharper charge is that it was brief, faded within days, and that a 52-day uprising under blackout has drawn a fraction of the scrutiny permanently reserved for Indian Kashmir.
+
+  India's position, on the record. On 22 February 1994 both Houses of Parliament resolved unanimously that Jammu and Kashmir has been, is and shall be an integral part of India, and demanded that Pakistan vacate the areas it occupies. By India's own stated legal position, the people being fired on in Rawalakot this month are Indians.
+
+  What to watch. Whether the march reaches Muzaffarabad, whether the JAAC ban is lifted as part of any settlement, whether detainees are released, and whether the blackout is ended so the numbers can finally be checked by someone other than the people doing the shooting.
+
+  Sources: Reuters, Dawn, AP and AFP on the June casualties; Newsgram and NRI Globe on the Rawalakot crackdown; Prokerala and AP7AM on the late-July Long March toll; The Tribune and Republic on the 27 July firing and the movement on Mirpur. Flagged via @AdityaRajKaul.
+
+  Map: Natural Earth, rendered in-house.
+
+  @vaqhq · vaqhq.com
+hashtags: |2+
+
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE BRIEFING
+slides:
+- layout: cover
+  kicker_meta: POJK · 28 JULY
+  headline: |
+    Pakistan is shooting
+    *Kashmiris*. In the
+    part it holds.
+  subline: Fifty-two days of protest in PoJK, behind a blackout Islamabad imposed on 5 June.
+  image: _cache/a9493c190711fde2.jpeg
+  align_x: center
+- layout: geo
+  kicker_meta: Where
+  headline: The march on *Muzaffarabad*
+  region: south-asia
+  center_lon: 74
+  center_lat: 33.5
+  zoom: 5
+  marker_size: 18
+  countries:
+  - name: India
+    color: '#2F6BE0'
+  - name: Pakistan
+    opacity: 0.5
+  markers:
+  - lon: 73.47
+    lat: 34.37
+    label: Muzaffarabad
+    align: left
+  - lon: 73.76
+    lat: 33.86
+    label: Rawalakot
+    ring: true
+  - lon: 73.75
+    lat: 33.15
+    label: Mirpur
+  body: |
+    [Rawalakot] was the flashpoint on 8 June. On **27 July**, after talks collapsed, thousands began marching on Muzaffarabad while forces moved into [Mirpur.]
+  map_caption: Rawalakot, Mirpur and Muzaffarabad, PoJK.
+- layout: story
+  kicker_meta: The Demands
+  headline: Nobody there is asking *Delhi* for anything
+  body: |
+    The [JAAC's] demands are electricity bills, subsidised wheat and commitments Islamabad made and broke. Fifty-two days of Kashmiris on the street, and not one demand addressed to **India**.
+  align_y: middle
+  align_x: left
+  image: rawalakot.jpg
+  image_position: 50% 55%
+  image_height: 340
+  image_caption: Rawalakot, PoJK, the flashpoint of the June crackdown.
+  body_offset_y: -40
+  headline_offset_y: 40
+- layout: split-story
+  kicker_meta: Whose Government
+  headline: The answer is *Islamabad*
+  body: |
+    PoJK is run by an administration that answers to Pakistan. That administration banned the JAAC under [anti-terrorism law] on 6 June and cut communications on the 5th. Police and paramilitary have done the firing.
+  image: _cache/0919d4f9f20db7c8.jpg
+  align_x: center
+  body_offset_y: -50
+- layout: story
+  surface: solid
+  kicker_meta: The Toll
+  headline: Nobody can settle the number
+  body: |
+    Reuters put June's dead at **11**, with 70 injured. Dawn recorded seven civilians and four police. At least **20 more** are reported killed in the July march. A figure of 80-plus is circulating; we could not stand it up, so we are not printing it.
+  align_x: center
+- layout: story
+  kicker_meta: The Double Standard
+  headline: Raised at the *UN*, blacked out at home
+  body: |
+    Pakistan takes Kashmir to every forum it can reach, then runs a **seven-week** blackout over the Kashmir it actually governs. Reuters, AP and AFP filed in June. Then it went quiet. Weigh that against the standing coverage of Indian Kashmir.
+  image: _cache/966ff1c60d78176c.jpg
+  body_offset_y: -20
+  body_size: 43
+- layout: story
+  surface: solid
+  kicker_meta: India's Position
+  headline: Parliament settled this in *1994*
+  body: |
+    On **22 February 1994** both Houses resolved unanimously that Jammu and Kashmir has been, is and shall be an integral part of India, and demanded Pakistan vacate the areas it occupies. By that resolution, the people being fired on this month are [Indian.]
+- layout: closing
+  headline: |
+    The blackout
+    is the story.
+  handle: '@vaqhq'

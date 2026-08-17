@@ -1,0 +1,216 @@
+name: china-engineering-peak-oil
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Peak oil was supposed to arrive when the world ran out, or when growth stopped. China is trying to schedule it.
+
+  The vulnerability. China imports more than 11 million barrels of crude a day and spends roughly 300 billion dollars a year doing it. More than 70% of its oil and over 40% of its gas is imported, and nearly 80% of those energy imports pass through the Strait of Malacca, a channel it does not control. In 2024 its crude imports fell for the first time in two decades outside COVID, to about 11.04 million barrels a day from a 2023 peak of 11.28 million. The IEA expects Chinese oil demand to peak by 2030.
+
+  Pillar one, renewables as industrial policy. In 2025 China added 315 GW of solar and 119 GW of wind, both annual records, on top of 277 GW and 80 GW the year before. Non-fossil sources crossed 60.4% of total installed capacity against 39.6% for thermal, the first time the balance has tipped. It spent close to a trillion dollars on energy in 2025, about half of all global spending, and Chinese firms now file roughly 75% of the world's clean-energy patents, against 5% in 2000.
+
+  Pillar two, nuclear at speed. Sixty reactors are operating. Thirty-six more are under construction, which is more than 49% of everything being built anywhere on earth. Thirty-seven were completed between 2015 and 2024 at an average of 6.3 years each, against a global average of 9.4. Sixteen more are approved, and the pipeline points at about 125 GW.
+
+  Pillar three, the uncomfortable one. In 2024 China converted 276 million tonnes of coal into chemicals, synthetic oil and synthetic gas. Coal-to-liquids output runs past 12 million tonnes a year, coal-to-gas expansions point at 19.5 billion cubic metres, and planned capacity could double within five years. This is worse on carbon than the crude it replaces. It is being built anyway, because the objective is sovereignty rather than emissions.
+
+  Pillar four, electrification. China sold about 13.2 million electric vehicles in 2025, roughly 53% of new car sales. Around one car in ten on its roads is now electric, Chinese manufacturers build more than 70% of the world's EVs, over 90% of the world's electric buses run there, and Shenzhen fully electrified its bus fleet back in 2017. The IEA reckons EVs cut global oil demand by more than 1.3 million barrels a day in 2024, about half of that in China, and puts the 2030 figure past 5 million.
+
+  What it means for India. India imports 88.5% of the crude it burns, a higher dependence than China's. India's answer so far is a fifth of a litre: E20 ethanol blending, hit five years early, real but small. China's answer is to move the demand off oil altogether, onto electrons it generates and coal it digs itself. Both are energy-security strategies. They are not the same size.
+
+  The thesis worth arguing with. Peak oil demand need not wait for economic saturation. It can be engineered, if a state is willing to spend for a decade in one direction. Whether India can or should attempt the same thing at the same scale is the question this raises, and it is not a question about climate.
+
+  Sources: Nisha Holla, "Engineering Peak Oil", ORF Expert Speak, 31 July 2026. China's National Energy Administration on the 2025 solar and wind additions and the non-fossil crossover. China customs via Reuters on the 2024 import decline. World Nuclear Association on reactors operating and under construction. IEA on peak demand and EV oil displacement. PIB factsheet, 5 July 2026, for India's 88.5% import dependence.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #China #Energy #PeakOil #EnergySecurity #Crude #EV #Nuclear #Geopolitics #India
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: true
+  seriesLabel: ENGINEERING PEAK OIL
+slides:
+- layout: cover
+  surface: dark
+  kicker_meta: The Briefing · 31 Jul 2026
+  headline: |
+    China is trying to
+    *schedule* peak oil
+  subline: Not wait for it. Four pillars, a decade of spending, and a deliberate exit from imported crude.
+  align_x: left
+  headline_size: 82
+  image: https://energyintel.brightspotcdn.com/dims4/default/062997e/2147483647/strip/true/crop/1000x667+0+0/resize/1000x667!/quality/90/?url=http%3A%2F%2Fenergy-intelligence-brightspot.s3.us-east-2.amazonaws.com%2F5b%2F47%2Ffb32ccc94a029d183ce478cf7d0b%2Fss-2364254369-china-oil.jpg
+  image_position: 13% 50%
+- layout: stat
+  surface: dark
+  kicker_meta: The Vulnerability
+  label: CRUDE CHINA IMPORTS
+  value: 11m
+  sublabel: barrels a day, about $300 billion a year
+  body: |
+    More than **70%** of its oil and over **40%** of its gas comes from abroad. In 2024 crude imports fell for the first time in two decades outside COVID, to [11.04 million] barrels a day from a 2023 peak of 11.28 million.
+  stat_size: 230
+  align_x: center
+- layout: geo
+  surface: dark
+  kicker_meta: The Chokepoint
+  headline: Nearly *80%* of it through one strait
+  region: asia
+  center_lon: 88
+  center_lat: 22
+  zoom: 1.15
+  labels: false
+  countries:
+  - name: China
+    color: '#FF3333'
+  - name: Saudi Arabia
+    color: '#0FA08C'
+  - name: Iraq
+    color: '#0FA08C'
+  - name: United Arab Emirates
+    color: '#0FA08C'
+  links:
+  - from: Saudi Arabia
+    to: Malaysia
+    curve: -0.12
+    color: '#F7F9FB'
+  - from: Malaysia
+    to: China
+    curve: -0.12
+  markers:
+  - lon: 102.9
+    lat: 1.43
+    label: Strait of Malacca
+    ring: true
+    align: left
+  - lon: 105
+    lat: 35
+    label: China
+  - lon: 45
+    lat: 24
+    label: Gulf suppliers
+  body: |
+    Nearly **80%** of China's energy imports transit the Malacca Strait, a channel it neither owns nor patrols. Every pillar below is an answer to [this map].
+  map_caption: Principal crude route from the Gulf to Chinese refineries.
+  body_size: 36
+  headline_size: 56
+- layout: pie-chart
+  surface: dark
+  kicker_meta: Pillar One · The Mix
+  headline: Coal is now the *minority* of the grid
+  rows:
+  - label: Thermal
+    value: 1500
+  - label: Solar
+    value: 1200
+  - label: Wind
+    value: 640
+  - label: Hydro
+    value: 450
+  - label: Nuclear
+    value: 63
+  - label: Biomass and other
+    value: 37
+  value_suffix: ' GW'
+  decimals: 0
+  donut: 0.5
+  size: 450
+  center_value: 3,890
+  center_label: GW INSTALLED
+  source: China's National Energy Administration, end-2025. Component figures rounded.
+  body: |
+    The first time the balance has tipped. Non-fossil sources now hold [60.4%] of installed capacity against **39.6%** for thermal.
+  headline_size: 54
+- layout: bar-chart
+  surface: dark
+  kicker_meta: Pillar One · The Build
+  headline: Two record years, *back to back*
+  mode: emphasis
+  value_suffix: ' GW'
+  decimals: 0
+  rows:
+  - label: Solar added, 2025
+    value: 315
+    emphasis: true
+    note: A national record, and a world first past 1,000 GW installed
+  - label: Solar added, 2024
+    value: 277
+  - label: Wind added, 2025
+    value: 119
+  - label: Wind added, 2024
+    value: 80
+  source: China's National Energy Administration, January 2026.
+  body: |
+    Close to **$1 trillion** spent on energy in 2025, about half of all global spending. Chinese firms now file roughly [75%] of the world's clean-energy patents, against 5% in 2000.
+  bar_size: 46
+  label_size: 27
+  headline_size: 58
+- layout: bar-chart
+  surface: dark
+  kicker_meta: Pillar Two · Nuclear
+  headline: Built in *two-thirds* the world's time
+  mode: emphasis
+  value_suffix: ' yrs'
+  decimals: 1
+  max: 10
+  rows:
+  - label: China, average build
+    value: 6.3
+    emphasis: true
+    note: 37 reactors completed between 2015 and 2024
+  - label: Global average
+    value: 9.4
+  source: 60 reactors operating. 36 under construction, more than 49% of everything being built on earth.
+  body: |
+    Sixteen more are approved. The pipeline points at about [125 GW].
+  bar_size: 58
+  headline_size: 54
+- layout: story
+  surface: dark
+  kicker_meta: Pillar Three · The Uncomfortable One
+  headline: Coal, turned into *oil and gas*
+  body: |
+    In 2024 China converted **276 million tonnes** of coal into chemicals, synthetic oil and synthetic gas. Coal-to-liquids runs past **12 million tonnes** a year and planned capacity could [double within five years].
+
+    This is worse on carbon than the crude it replaces. It is being built anyway, because the objective is **sovereignty**, not emissions.
+  align_y: middle
+  body_size: 41
+- layout: bar-chart
+  surface: dark
+  kicker_meta: Pillar Four · Electrification
+  headline: Every EV sold is *oil not burnt*
+  mode: emphasis
+  value_suffix: ' mb/d'
+  decimals: 1
+  max: 5.5
+  rows:
+  - label: Oil displaced by EVs, 2030
+    value: 5
+    emphasis: true
+    note: IEA projection
+  - label: Oil displaced by EVs, 2024
+    value: 1.3
+    note: About half of it in China
+  source: 13.2 million EVs sold in China in 2025, roughly 53% of new car sales.
+  body: |
+    About [one car in ten] on Chinese roads is electric. Chinese factories build more than **70%** of the world's EVs and over **90%** of its electric buses.
+  bar_size: 58
+  headline_size: 56
+- layout: story
+  surface: dark
+  kicker_meta: What It Means For India
+  headline: India is *more* exposed, not less
+  body: |
+    India imports [88.5%] of the crude it burns. That is a higher dependence than China's.
+
+    India's answer so far is a fifth of a litre. **E20** ethanol blending, hit five years early, real but small. China's answer is to move the demand off oil altogether, onto electrons it generates and coal it digs itself.
+
+    Both are energy-security strategies. They are not the same size.
+  align_y: middle
+  body_size: 39
+- layout: closing
+  surface: dark
+  headline: |
+    Peak oil, on
+    a schedule.
+  body: This is not a climate story. It is a story about who controls the fuel.
+  handle: '@vaqhq'

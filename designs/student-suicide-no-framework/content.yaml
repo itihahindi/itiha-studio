@@ -1,0 +1,49 @@
+name: student-suicide-no-framework
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  If you or someone you know needs support, Tele-MANAS is a free national helpline on 14416, available in multiple languages, 24 hours a day.
+
+  A 20-year-old second-year student at IIT Bombay died on 29 July. Mumbai Police have registered an accidental death report at Powai police station under Section 194 of the Bharatiya Nagarik Suraksha Sanhita and an investigation is under way. We are not publishing the student's name, the hostel, or how they died. Those details serve nobody, and reporting guidelines exist because publishing method and location measurably raises the risk to others reading.
+
+  What is missing, on the Supreme Court's own finding. In March 2025 the Court set up a National Task Force on student mental health in higher educational institutions, headed by former Supreme Court judge Justice S. Ravindra Bhat, with ten members including psychiatrists, academics and senior counsel. It visited institutions across ten states, among them IIT Delhi, AIIMS Delhi, JNU and Jamia Millia Islamia.
+
+  Its interim report, submitted in November 2025, found two things worth holding together. Student suicides are driven by academic, social, economic and institutional pressures, not by mental health alone. And India has no specific statutory, regulatory or institutional framework for preventing them in higher education. Not a weak framework. None.
+
+  Why that is the story. Every one of these deaths is followed by the same sequence: an accidental death report, an internal committee, a statement about counselling services. What does not follow is any binding obligation on an institution, because none exists to enforce. The Task Force has been given until October 2026 to file its final report.
+
+  The context this channel has been covering. The same month, the Centre agreed to compensate families of NEET aspirants who died by suicide, and set up a task force on exam reform. The pressure being examined at the entrance-exam end does not stop once a student is admitted.
+
+  Sources: India TV and Careers360 on the 29 July death and the police report. Deccan Herald, LiveLaw and Tribune India on the Supreme Court's National Task Force of 24 March 2025, its composition, field visits and interim findings.
+
+  Image: main gate, IIT Bombay, Powai.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #IITBombay #StudentMentalHealth #SupremeCourt #TeleMANAS #HigherEducation #India
+tweaks:
+  vertical: legal
+  showStamp: true
+  showPageNum: false
+  seriesLabel: THE DOCKET
+slides:
+- layout: story
+  kicker_meta: MUMBAI · 29 JULY 2026
+  # Deliberately no method, no hostel, no name. Suicide-reporting guidance
+  # exists because method and location detail measurably raises copycat risk,
+  # and the student was a private individual, not a public figure.
+  headline: |
+    A student died at IIT
+    Bombay. There is still
+    *no framework*.
+  headline_size: 64
+  image: iitb-main-gate.jpg
+  image_position: 50% 55%
+  image_height: 340
+  image_caption: Main gate, IIT Bombay, Powai
+  # 45 words. House limit for a single post is 50.
+  body: |
+    Mumbai Police have registered an [accidental death report]. In [March 2025] the Supreme Court set up a National Task Force under Justice [S. Ravindra Bhat]. It found India has [no statutory framework] for preventing student suicide. Its report is due [October 2026].
+
+    Tele-MANAS helpline: [14416].
+  body_size: 36

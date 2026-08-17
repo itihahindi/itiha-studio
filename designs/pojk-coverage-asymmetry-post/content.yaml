@@ -1,0 +1,44 @@
+name: pojk-coverage-asymmetry-post
+brand: vaq-hq
+format: instagram-portrait
+caption: |2
+
+  What she posted. On 4 August 2026 Ravi wrote that the New York Times gave 40 deaths in PoK one report, and one resignation in Delhi sixteen. She tagged it #NarrativeEconomics. The post has crossed 146,000 views.
+
+  What we could not confirm. The counts. Ravi cited no source and we could not reproduce either figure independently. Treat the 1 and the 16 as her claim, not as an established number, and that is how this post carries them.
+
+  What is not in doubt. International outlets did file from PoJK. Al Jazeera reported nine killed on 15 July and covered the election unrest on 30 July. Al Arabiya carried it the same week. So the honest charge is not silence. It is that a months-long uprising with a contested death toll got episodic wire coverage while a related Indian story got sustained treatment.
+
+  The toll, carefully. The Joint Awami Action Committee puts the dead since June at around 80. Pakistani authorities give far lower figures, 11 to 15 in the early clashes and 9 on 14 July, and on 27 July claimed one security man killed. Al Jazeera reported the JAAC's own count of 30-plus around the first round of voting, with JAAC member Sardar Umar Nazir describing 20 killed in a Monday march and 10 more the next day in Rawalakot and Mirpur. India's state broadcaster reported more than 40 dead in one crackdown. Amnesty International logged reports of the killings without independently verifying them. We are not printing a single confident number, because there is not one.
+
+  Why nobody can check. Web and mobile access across PoJK has been severely restricted since June, with banking and road movement disrupted alongside it. An unverifiable toll is the predictable product of a communications shutdown, not of careless reporting.
+
+  What they are actually demanding. The JAAC's charter runs to 38 points. The central one is abolishing the 12 seats in the PoJK legislative assembly reserved for Kashmiri refugees who migrated to Pakistan after 1947 and largely live outside the region. The JAAC argues the arrangement lets Pakistan-based parties shape the assembly and divert development funds. Pakistan's government says the seats give displaced Kashmiris representation.
+
+  The state's answer, in four days. Pakistan banned the JAAC under its Anti-Terrorism Act on 5 June. On 7 June its Supreme Court held that the 12 refugee seats carry constitutional protection. The movement was designated a terror outfit and the thing it was protesting was locked in.
+
+  The part that settles it. Read the 38 points. Seats, funds, electricity, governance. Every demand is addressed to Islamabad. Not one is addressed to Delhi. India's Ministry of External Affairs, through spokesperson Randhir Jaiswal on 28 July, called the vote a "cosmetic electoral exercise" that is "nothing but an attempt by Pakistan to camouflage its illegal occupation and hide its grave human rights violations in the region". Jaiswal also said the protests are "the direct consequence of economic exploitation" and the denial of fundamental rights.
+
+  Sources: @ShamikaRavi on X, 4 August 2026; Al Jazeera, 15, 27, 30 July and 3 August 2026; Al Arabiya, 15 July 2026; Arab News Pakistan on the Supreme Court ruling; Akashvani / newsonair.gov.in, 30 July 2026; MEA remarks via ANI, The Tribune and ThePrint, 28 July 2026; Wikipedia's consolidated timeline of the 2026 Azad Kashmir protests. Image: Muzaffarabad city, Wikimedia Commons, CC BY-SA 4.0.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ #PoJK #PoK #Kashmir #Pakistan #JAAC #Muzaffarabad #NarrativeEconomics #ShamikaRavi #MediaBias
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: false
+  seriesLabel: THE BRIEFING
+slides:
+- layout: story
+  surface: dark
+  kicker_meta: Shamika Ravi on the NYT · 4 Aug 2026
+  headline: '*40 Deaths* Got One Report. A Resignation Got 16.'
+  headline_size: 70
+  body: |
+    PoJK has been [dark] since June, the death toll is unverifiable, and every one of the JAAC's [38] demands is addressed to Islamabad. Not one to Delhi.
+  body_size: 46
+  image: screenshot-2026-08-04-at-7-19-53-pm.png
+  image_position: 50% 55%
+  image_height: 460
+  texture: grid

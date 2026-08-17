@@ -1,0 +1,161 @@
+name: indian-money-harvard-india-studies
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Why are Indians funding anti-India institutions? It is a charge worth taking seriously enough to actually check. So we checked it.
+
+  Layer one, Harvard. Five gifts we could verify: the Tata Group put about $50 million behind Tata Hall at Harvard Business School, begun 2010 and dedicated 2013, underwritten by Ratan Tata. Lakshmi Mittal and family gave $25 million in 2017 and the South Asia Institute was renamed for them. Siddharth Yog gave $11,000,001 in November 2011, as guru dakshina to his own professor. Anand Mahindra gave $10 million in October 2010, the largest gift in Harvard's history earmarked solely for the humanities, and the Humanities Center was renamed for his mother Indira. Rohan Murty endowed the Murty Classical Library with $5.2 million. Just over $101 million, to one university.
+
+  The academy it went into. Harvard's own student newspaper surveys its Faculty of Arts and Sciences. In 2025, 63% identified as liberal, 29% of them "very liberal", against 9% conservative. Roughly seven to one. The share is falling: over 82% in 2022, over 75% in 2023. That the faculty leans left is not arguable, and it is Harvard reporting it.
+
+  Layer two, at home. Ashoka University was built by collective philanthropy on a scale India had not seen: 170 founders and 45 donors, ₹1,547 crore, the largest collective philanthropy project in the country. Ashish Dhawan and Sanjeev Bikhchandani started it in 2007 with Pramath Raj Sinha. Its Trivedi Centre for Political Data, set up in 2015, builds election datasets. Worth being precise here: TCPD is an open-access project publishing Indian election results, not a private collection of sensitive data. Krea University was built by a second corporate coalition on the same liberal-arts model.
+
+  Layer three, the media. The Independent and Public-Spirited Media Foundation was set up on 1 July 2015 with about ₹100 crore from a group of businessmen including Azim Premji and Rohini Nilekani. It gives grants to digital publications. The Wire received ₹1.95 crore in August 2016 and ₹1.75 crore in March 2017. Here is the part that breaks the "leftist coalition" framing: IPSMF's grantee list also includes Swarajya, alongside The Caravan, Scroll, LiveLaw, IndiaSpend, The Print, EPW, Article14 and Alt News. A fund that pays both Swarajya and The Wire is not an ideological operation. In September 2022 the income tax department ran a survey on IPSMF, which says it takes no foreign funding.
+
+  What happened when donors actually used their power. This is where the charge collapses, and it collapses in the opposite direction from the one people expect. In March 2021 Pratap Bhanu Mehta resigned from Ashoka after the founders made clear his association had become a political liability; he had been writing against the ruling party. Arvind Subramanian resigned in solidarity. About 100 academics abroad, including Homi K. Bhabha, wrote to the trustees in protest. In August 2023 Sabyasachi Das resigned after Ashoka publicly distanced itself from his working paper on the 2019 general election, a statement founder Sanjeev Bikhchandani amplified. And in 2016, when 132 scholars petitioned Rohan Murty to remove Sheldon Pollock as general editor of the Murty Classical Library, Murty refused and Pollock stayed. Twice the donors leaned on anti-government scholarship. Once they were asked to lean on left-leaning scholarship and declined.
+
+  The four theories, and what they are worth. The argument offers four motives: genuine ideological conviction, naive philanthropy without due diligence, prestige and access, and protection from activism plus better ESG ratings. They are presented as possibilities, and that is the honest way to hold them. None is established by anything in the public record.
+
+  What we had to correct. Ashoka's raise is ₹1,547 crore, not ₹1,000 crore. TCPD publishes open-access election data rather than collecting sensitive information. IPSMF funds Swarajya as well as The Wire. And the Murty Classical Library was endowed by Rohan Murty, not by his father N.R. Narayana Murthy.
+
+  The question that survives. Over $101 million went into studying India at one American university, and thousands of crores into importing the liberal-arts model at home. Almost none of it built the same interpretive capacity in an Indian public institution. The useful question is not what the donors intended. It is why India keeps renting the authority to explain itself.
+
+  Sources: Harvard Crimson and Harvard Gazette; Harvard Magazine and HBS on Tata Hall; Harvard University Press on the Murty Classical Library; Scroll, Time and Publishing Perspectives on the 2016 petition; Ashoka University and Forbes India on the founding raise; IPSMF's own donor and grantee pages; CPJ and Newslaundry on the 2022 tax survey; Time, Newslaundry and Scholars at Risk on the Mehta and Das resignations. We could not independently verify the reported backer list for Krea University, so it is not named here.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #India #Harvard #Ashoka #IPSMF #SoftPower #Philanthropy #Academia #IndianBusiness #IndiaStudies
+tweaks:
+  vertical: longview
+  showStamp: true
+  showPageNum: true
+  seriesLabel: WHO EXPLAINS INDIA
+slides:
+- layout: cover
+  surface: dark
+  headline: |
+    *Why* Indians End Up Funding *Anti-India* Institutions
+  subline: '$101m to Harvard. ₹1,547 crore to Ashoka. ₹100 crore into media. '
+  align_x: left
+  headline_size: 80
+  image: _cache/b98cbc16d6ab2e43.png
+  image_position: 51% 50%
+  vertical: ground
+- layout: pie-chart
+  surface: dark
+  kicker_meta: Step One
+  headline: Five Indian families gave Harvard *$101 million*
+  rows:
+  - label: Tata Group
+    value: 50
+    color: '#3987e5'
+  - label: Lakshmi Mittal
+    value: 25
+    color: '#d95926'
+  - label: Siddharth Yog
+    value: 11
+    color: '#199e70'
+  - label: Anand Mahindra
+    value: 10
+    color: '#c98500'
+  - label: Rohan Murty
+    value: 5.2
+    color: '#d55181'
+  value_prefix: $
+  value_suffix: m
+  donut: 0.5
+  size: 520
+  center_value: $101m
+  center_label: TO ONE UNIVERSITY
+  body: |
+    Tata gave half of it. The rest came from Mittal, Yog, Mahindra and Murty between **2010 and 2017**.
+  body_size: 42
+  loop: Who teaches at that university
+  headline_size: 50
+- layout: bar-chart
+  surface: dark
+  kicker_meta: Step Two
+  headline: That money went into a *63% liberal* faculty
+  mode: emphasis
+  value_suffix: '%'
+  decimals: 0
+  max: 70
+  rows:
+  - label: Identify as liberal
+    value: 63
+    emphasis: true
+  - label: Identify as conservative
+    value: 9
+  source: The Harvard Crimson's survey of Arts and Sciences faculty, 2025.
+  body: |
+    Seven liberals for every conservative, counted by Harvard's [own student newspaper].
+  bar_size: 62
+  body_size: 42
+  loop: The same donors built universities here
+  headline_size: 52
+- layout: story
+  surface: dark
+  kicker_meta: Step Three
+  headline: The same money built *Ashoka* in India
+  body: |
+    **₹1,547 crore** from [170 founders and 45 donors], on the American liberal arts model. India's largest collective philanthropy. Krea was built the same way.
+  align_y: middle
+  body_size: 44
+  loop: Then they funded the press
+- layout: story
+  surface: dark
+  kicker_meta: Step Four
+  headline: And the same fund pays *The Wire and Swarajya*
+  body: |
+    **₹100 crore**, seeded by Azim Premji and Rohini Nilekani. Both publications are on its grantee list.
+
+    A fund that pays [both of them] is not running an ideology.
+  align_y: middle
+  body_size: 42
+- layout: roster
+  surface: dark
+  kicker_meta: Step Five
+  headline: So why do they give? *Four answers.*
+  row_size: 42
+  rows:
+  - flag: 1️⃣
+    name: They actually believe it
+    year: CONVICTION
+  - flag: 2️⃣
+    name: They never did the diligence
+    year: IGNORANCE
+  - flag: 3️⃣
+    name: A seat at the high table
+    year: PRESTIGE
+  - flag: 4️⃣
+    name: Protection, and ESG scores
+    year: INSURANCE
+  loop: Two of them were tested in public
+  headline_size: 54
+- layout: story
+  surface: dark
+  kicker_meta: Step Six
+  headline: Twice, the founders removed a *government critic*
+  body: |
+    **2021.** Ashoka university founders called Pratap Bhanu Mehta a political liability. He left.
+
+    **2023.** Sabyasachi Das left after they disowned his paper on the 2019 election.
+
+    **2016.** Asked to sack Sheldon Pollock, Rohan Murty [refused].
+  align_y: middle
+  body_size: 40
+  loop: So what is actually proven
+  headline_size: 63
+- layout: story
+  surface: dark
+  kicker_meta: Step Seven
+  headline: The gifts are documented. The *motive is not.*
+  body: |
+    Every amount above is public record. No evidence shows any of these donors wanted a particular reading of India, and when they did use their power it was [against] the government's critics, not for them.
+  align_y: middle
+  body_size: 42
+- layout: closing
+  surface: dark
+  headline: |2+
+
+  handle: '@vaqhq'headline_size: 54

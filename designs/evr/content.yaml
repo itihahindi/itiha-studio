@@ -1,0 +1,89 @@
+name: evr-nagammai-temple-harassment
+brand: itiha
+format: instagram-portrait
+caption: |
+  E. V. Ramasamy could not argue his first wife out of going to the temple. So he arranged for her to be harassed out of it. His own hagiographers record the episode — and hail it as a great rationalist strategy.
+
+  Nagammai wanted to visit the temple, and EVR's reasoning failed to win her over. He went instead to his fellow 'minors' — the feudal playboy set his hagiographers admit he belonged to, brothel visits included — pointed his own wife out to them as a new Dasi in town, and asked them to make her consent to their desires. They began teasing and stalking her away from the temple. Traumatised, she stopped attending. Only later did she learn that the man who had set it up was her rationalist husband.
+
+  The same hagiographic tradition sustains a second story with nothing behind it: that EVR coached Dr Muthulakshmi Reddy on countering Sathyamurthy over the devadasi question in the legislative assembly. There is no archival or documentary evidence for it, and the tale diminishes Reddy, who drew on the Advaitic humanism of Sarada and Sri Ramakrishna and needed no tutoring from EVR. Meanwhile the era's decisive women's rights struggle — the Sarda Act against child marriage, brought by Har Bilas Sarda and backed by Ambedkar and Gandhi — proceeded without him.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #EVRamasamy #Nagammai #MuthulakshmiReddy #SardaAct #TamilNadu #WomensRights
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: NAGAMMAI
+slides:
+- layout: cover
+  headline: |
+    How *Periyar* Harassed His *Wife*
+  subline: What EVR's own hagiographers call rationalist strategy
+  swipe_meta: Swipe ▸ · 8 Slides · 2 min read
+  headline_offset_y: 420
+  image: https://d18x2uyjeekruj.cloudfront.net/wp-content/uploads/2025/09/peryar.png
+  headline_size: 120
+  align_x: center
+  texture: grain
+- layout: split-story
+  headline: |
+    The *Minor*
+    And His *Friends*
+  body: |
+    Even his [hagiographers] accept it. Known as a [minor], E.V. Ramaswamy (EVR) was a feudal playboy who visited local [brothels]. The admission comes from the very men who wrote to **praise** him.
+  image: https://upload.wikimedia.org/wikipedia/commons/d/da/Periyar%2C_early_20th_century.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled
+  body_y: 23
+- layout: split-story
+  headline: |
+    His wife Wanted
+    To visit The *Temple*
+  body: |
+    His first wife [Nagammai] intended to go and worship. EVR argued against it and lost.
+    Reason, the instrument he built a career on, could not move [one woman] in his own house.
+  image: https://modernrationalist.com/wp-content/uploads/2020/05/v5.jpg
+  image_overlay: 0.77
+  body_y: 14
+  texture: grain
+- layout: split-story
+  theme: dark
+  headline: |
+    He Called His Wife
+    A New *Dasi*
+  body: EVR went secretly to his [minor] friends and showed them [Nagammai]. He told them she was a new
+    [Dasi] in town, and asked them to make her consent to their desires.
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkO-XQNUz_1I_BFB6oGqOznQOYmSr-MnAXxmpHVCvDHNsqQAgzUxHn7aRZ&s=10
+  image_position: 35% 66%
+  align_x: center
+  body_y: 28
+  image_overlay: 0.88
+  texture: grain
+- layout: split-story
+  headline: |
+    Teased, *Stalked*
+    Then *Silent*
+  body: |
+    They set upon her at the temple, teasing and stalking her. [Traumatised], she stopped attending altogether.
+    She learned **later** that the trick had been played by her [rationalist] husband.
+  image: https://th-i.thgim.com/public/incoming/sys9zh/article70007163.ece/alternates/FREE_1200/EVR_02.jpg
+  image_position: 0% 0%
+  image_overlay: 0.77
+  body_y: 20
+  image_zoom: 1.3
+  texture: grain
+- layout: quote
+  headline: |
+    Recorded as a
+    *Great Strategy*
+  quote: |
+    A hagiographer (Tamizhar Thalaivar) hails the incident as a great rationalist strategy.
+  body: This is not a charge from EVR's opponents. It survives because his [followers] preserved it as
+    a **credit** to him.
+  image: https://m.media-amazon.com/images/I/71ihC8Sws2L.jpg
+  image_filter: duotone-ink
+  texture: grain
+- layout: end-card
+  headline: New slide

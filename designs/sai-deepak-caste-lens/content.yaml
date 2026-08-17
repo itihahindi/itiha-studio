@@ -1,0 +1,36 @@
+name: sai-deepak-caste-lens
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  J. Sai Deepak, in a panel discussion uploaded on 27 July 2026, makes a consistency argument about caste that is worth hearing in full, because it is routinely misreported as an argument against reservation. It is not. It is an argument about where the lens is pointed.
+
+  What he says in the clip. Verbatim from the segment: "Discrimination of all forms has always existed. The fact that you choose to focus your discriminatory lens exclusively on caste gives the distinct impression that all of the social structures are free of discrimination. So gender discrimination exists, yes or no. It happens now both ways, thanks to 498A. Right. Now in such a situation, shall we destroy the concept of genders altogether? Religions also discriminate against each, or between each other, for the most part. What do you want to do? Every identity will create the concept of them and us. Then you should have a fundamental problem with the concept of identity itself. Let's start by saying there's no concept of family also, because then my family, your family. What are you expected to do?"
+
+  The structure of the argument. It is a reductio, not a policy demand. If the reason caste must be dissolved is that identity produces an in-group and an out-group, then the same reasoning dissolves gender, religion and family, because each of those produces the same distinction. He is not proposing that any of them be abolished. He is asking why the standard is applied to one axis and not the others, and what principle justifies the exemption.
+
+  On the one legal reference. 498A is the old Indian Penal Code section on cruelty by a husband or his relatives. Since 1 July 2024 it no longer exists under that number: the IPC was replaced by the Bharatiya Nyaya Sanhita 2023, where the offence is Section 85 and the definition of cruelty is Section 86, carried over almost verbatim. Same scope, same three-year maximum, same cognizable and non-bailable character. Whether the provision is misused is a live and genuinely contested argument, and courts have said so in both directions. The section number, at least, is settled.
+
+  Source: "J Sai Deepak | Reservation and Caste discrimination", uploaded 27 July 2026. Clip is 3:43 to 4:36. BNS correspondence via the official IPC-to-BNS comparative table.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ #JSaiDeepak #Caste #Reservation #Identity #IndianPolitics #BNS #GroundReport
+tweaks:
+  vertical: ground
+  showStamp: false
+  showPageNum: false
+  seriesLabel: GROUND REPORT
+slides:
+- layout: reel-explainer
+  kicker_meta: 27 Jul 2026
+  video_file: sd-clip.mp4
+  chip: Identity
+  headline: |
+    Gender, Religion, Family.
+    Why Only *Caste*?
+  body_label: 'The argument:'
+  credit: 'Clip: J. Sai Deepak, 27 Jul 2026'
+  panel_height: 640
+  panel_fade: 160
+  headline_size: 66
+  body_size: 30

@@ -1,0 +1,39 @@
+name: ambedkar-nagar-reel
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  In September 2023 a Class 11 student in Ambedkar Nagar was cycling home from school when two men on a motorcycle pulled her dupatta. She lost control, fell, and was hit by the motorcycle behind her. She died. Police said a chargesheet would be filed in ten days and the accused convicted within a month. That was thirty-five months ago.
+
+  What the state charged. Three people were arrested on 17 September 2023 and booked under Indian Penal Code sections 302, 354, 298 and 304 along with the Protection of Children from Sexual Offences Act. Police then moved to proceed under the Uttar Pradesh Gangsters and Anti-Social Activities (Prevention) Act. Section 302 is murder. The state refused to file this as a road accident, and that call was right.
+
+  The promise. Police stated publicly that a chargesheet would follow within ten days and that the accused would be convicted within a month. The first half is a police function. The second is not. Police do not convict anybody. Courts do, after a trial, and no officer can promise a verdict on a calendar.
+
+  The encounter. Days after the arrests the three were injured while reportedly attempting to flee custody, two with bullet wounds to the legs and one with a fractured leg. Police said they had tried to snatch a rifle. Being shot in the leg is not a verdict, it establishes no guilt, and a custodial injury is one more thing a defence can raise at trial.
+
+  What we could not establish. We could find no verdict in this case on the public record. That is not the same as saying none exists. It means that thirty-five months after a promise of conviction within a month, the outcome of this case is not something a reader can look up.
+
+  Why this names nobody. The victim was a minor and a victim of a sexual offence, so naming her is barred by section 228A of the Indian Penal Code and section 23 of the POCSO Act. Reporting is inconsistent about which of the accused was a juvenile, and naming a juvenile in conflict with law is barred by the Juvenile Justice Act. Three people were arrested. That is the fact.
+
+  The point. This story returns every few months as a clip, recaptioned, with a name attached and a line about what happens to men in Uttar Pradesh. The clip is not the accountability. The chargesheet was. The conviction would be. A family in Ambedkar Nagar is owed a judgment, and that is the one thing no viral video has delivered them.
+
+  Sources: Outlook India, The Print and India.com reporting of 16 to 20 September 2023; police statements on the Gangsters Act and the chargesheet timeline via The Print.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ #AmbedkarNagar #UttarPradesh #POCSO #Justice #DueProcess #IndianLaw #TheDocket
+tweaks:
+  vertical: legal
+  showStamp: true
+  showPageNum: false
+  seriesLabel: THE DOCKET
+slides:
+- layout: reel-frame
+  kicker_meta: Ambedkar Nagar · Sep 2023
+  headline: |
+    They Promised a Conviction
+    in *One Month*
+  subline: Thirty-five months on, no verdict is on the public record.
+  credit: 'Sources: Outlook, The Print, 2023'
+  headline_size: 64
+  panel_height: 620
+  panel_fade: 120

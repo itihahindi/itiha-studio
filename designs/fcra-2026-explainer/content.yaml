@@ -1,0 +1,125 @@
+name: fcra-2026-explainer
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  The Foreign Contribution (Regulation) Amendment Bill 2026 is being described abroad as a crackdown on Indian civil society. Read the text and the first thing you find is that it cuts the maximum prison term for an FCRA offence from five years to one.
+
+  What it is. The Bill was introduced in the Lok Sabha on 25 March 2026 by the Ministry of Home Affairs. A separate set of instruments, the Foreign Contribution (Regulation) Amendment Rules 2026, was notified through June 2026 and carries the detail on registration scope, territory and disclosure. Compliance teams need to read both.
+
+  The decriminalisation nobody mentions. The maximum imprisonment for a general offence goes from five years to one year, or a fine, or both. That is an eighty per cent cut in the criminal exposure of a trustee. A law written to jail people does not move in that direction.
+
+  What replaces prison. Money. Using foreign contribution for a purpose, or in a State or Union Territory, for which registration was not granted now attracts a penalty of ₹1 lakh or thirty per cent of the amount so used, whichever is higher. Parking foreign contribution in speculative investment attracts thirty per cent plus one hundred per cent of the returns earned. The state stops trying to imprison and starts taking the money back. That is the direction of travel in most modern regulatory statutes.
+
+  Spend it where you said you would. Registration is now mapped to specified activities and to declared States and Union Territories rather than to a broad label like "Social" or "Educational". Adding a purpose or a state means modifying the registration. Critics call this rigidity. Every institutional donor on earth calls it grant compliance, and it is the ordinary condition of accepting somebody else's money.
+
+  The dormancy filter. To be treated as having undertaken reasonable activity at renewal, an organisation must have utilised at least ₹10 lakh of foreign contribution across the preceding two financial years. An entity holding a live foreign-funding licence while doing nothing is a shell waiting to be used. This clears them out.
+
+  Deemed cessation. If a certificate is not renewed before expiry, no renewal is applied for, or renewal is denied, the registration ceases and unutilised foreign contribution and assets created from it vest in a Designated Authority, which may transfer them to government entities or sell them. The principle is that assets built with foreign charitable money remain in a public purpose rather than becoming private property the moment a licence lapses.
+
+  Named individuals, named responsibility. A key functionary now includes directors, partners, trustees, the karta of a Hindu Undivided Family, office bearers, and anyone with control over management. They carry presumed liability for the organisation's offences unless they show the violation happened without their knowledge or that they exercised due diligence. This is the standard that already applies to company directors under the Companies Act. Sitting on a board that moves foreign money is now the same kind of responsibility as sitting on a board that moves shareholder money.
+
+  What 2026 did not do. Three of the changes most often attributed to this Bill are older. The cap on administrative expenditure at twenty per cent, the prohibition on sub-granting to other FCRA holders, and the single designated account at State Bank of India's New Delhi Main Branch all came in with the Foreign Contribution (Regulation) Amendment Act 2020. Anyone arguing about 2026 should know which law they are actually arguing with.
+
+  The objection, and the answer. The Catholic Bishops Conference of India and overseas advocacy groups say the framework burdens Christian institutions. The Bill names no religion and applies to every FCRA holder without distinction. Minister Kiren Rijiju has said the amendment is not against any religion and does not target any organisation. Whether the compliance burden is proportionate is a fair argument to have. Whether India is entitled to regulate foreign money entering its domestic institutions is not. Every state does that.
+
+  Sources: PRS Legislative Research on the Foreign Contribution (Regulation) Amendment Bill 2026; FCRA Amendment Rules 2026 as analysed by KPMG India and Indian law firms; Foreign Contribution (Regulation) Amendment Act 2020 for the 20 per cent cap, the sub-granting bar and the SBI account; remarks by Union Minister Kiren Rijiju, April 2026.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ #FCRA #NGO #India #Parliament #LokSabha #ForeignFunding #Compliance #Policy #Explainer
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: true
+  seriesLabel: POLICY
+slides:
+- layout: cover
+  surface: solid
+  kicker_meta: 'FCRA Amendment Bill · Lok Sabha · '
+  headline: '*The Crackdown That Cuts Jail Time by 80%*'
+  subline: The FCRA 2026 amendments, read properly. Maximum imprisonment goes from five years to one.
+  headline_size: 96
+  texture: grid
+- layout: stat
+  surface: dark
+  kicker_meta: The headline change
+  label: MAXIMUM IMPRISONMENT, DOWN FROM FIVE YEARS
+  value: '1'
+  sublabel: Year. Or a fine. Or both.
+  body: |
+    A law written to jail people does not cut the prison term by [80%]. The 2026 Bill moves FCRA enforcement off the criminal track and onto the financial one.
+  stat_size: 300
+  body_size: 44
+  texture: dots
+  align_x: center
+- layout: story
+  surface: light
+  kicker_meta: What replaces prison
+  headline: It Takes the Money Instead
+  body: |
+    Spend foreign contribution on a purpose or in a State you are not registered for and the penalty is [₹1 lakh or 30%] of the amount, whichever is higher. Park it in speculative investment and it is 30% plus [100% of the returns].
+  body_size: 46
+  loop: So what are you registered for, exactly?
+- layout: story
+  surface: dark
+  kicker_meta: Scope and territory
+  headline: Spend It Where You *Said* You Would
+  body: |
+    Registration now maps to specified activities and declared States, not a vague label like "Social". Critics call that rigidity. Every institutional donor on earth calls it [grant compliance]. It is the ordinary condition of accepting somebody else's money.
+  body_size: 46
+  loop: Next, the shells
+- layout: stat
+  surface: solid
+  kicker_meta: The dormancy filter
+  label: MINIMUM FOREIGN CONTRIBUTION USED, TO QUALIFY FOR RENEWAL
+  value: ₹10L
+  sublabel: Across the preceding two financial years.
+  body: |
+    An entity sitting on a live foreign-funding licence while doing nothing is a [shell waiting to be used]. The threshold clears them off the register.
+  stat_size: 260
+  body_size: 44
+- layout: story
+  surface: light
+  kicker_meta: Deemed cessation
+  headline: A Lapsed Licence No Longer Means a Free Building
+  body: |
+    If a certificate expires, is never renewed, or is refused, unused funds and the assets built with them [vest in a Designated Authority]. Money given for a public purpose stays in one instead of becoming private property the day the paperwork runs out.
+  body_size: 44
+  loop: And somebody has to sign for it
+- layout: story
+  surface: dark
+  kicker_meta: Key functionaries
+  headline: The Board Signs for It Now
+  body: |
+    Directors, trustees, partners, the karta of an HUF and anyone controlling management carry [presumed liability], unless they show no knowledge or due diligence. That is the standard company directors already live under. Boards moving foreign money now answer like boards moving [shareholder money].
+  body_size: 44
+  texture: signal
+  loop: One thing the critics keep misdating
+- layout: bar-chart
+  surface: light
+  kicker_meta: Not a 2026 change
+  headline: The 80/20 Rule Was *2020*
+  mode: emphasis
+  value_suffix: '%'
+  max: 100
+  rows:
+  - label: Before 2020
+    value: 50
+    note: share of foreign contribution allowed for admin overhead
+  - label: After the 2020 Act*
+    value: 20
+    note: at least 80% must reach the programme
+    emphasis: true
+  source: Foreign Contribution (Regulation) Amendment Act, 2020
+  body: |
+    The overhead cap, the ban on sub-granting and the single SBI account all came in six years ago. Argue with 2026 by all means. Know which law you are arguing with.
+  body_size: 40
+  loop: So what is the actual objection?
+- layout: closing
+  surface: dark
+  headline: Regulating Foreign Money Is Not Persecution.
+  body: |
+    The Bill names no religion and applies to every FCRA holder alike. Whether the compliance burden is proportionate is a fair argument. Whether India may regulate foreign money entering its own institutions is not. [Every state does that.]
+  handle: '@vaqhq'
+  headline_size: 54
+  align_x: center

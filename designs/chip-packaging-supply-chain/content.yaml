@@ -1,0 +1,186 @@
+name: chip-packaging-supply-chain
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  India has learnt to package a chip faster than almost anyone expected. It has not yet learnt to make what goes inside the package.
+
+  What actually happened at Sanand. Three plants turned Gujarat into India's packaging cluster. Kaynes Semicon shipped India's first commercially packaged multi-chip modules to Alpha and Omega Semiconductor in California barely a year after breaking ground, and was inaugurated on 31 March 2026. CG Semi, a joint venture that runs Renesas's manufacturing recipe, cleared formal customer qualification in about ten months, against a Southeast Asian norm closer to twenty. Micron opened a 2.75 billion dollar memory packaging plant in February 2026. On speed of execution this is not a country that struggles.
+
+  The part that is still imported. Roughly 60 to 70% of material inputs come from abroad. Copper lead frames, which are 35 to 40% of material cost, come from Korea or the Philippines. Bonding wire has effectively two suppliers on earth, Tanaka Precious Metals in Japan and Heraeus Electronics in Germany. Epoxy moulding compounds come from Southeast Asian plants. Almost all of it arrives by ship at Mundra, about 273 km west of Sanand, and is trucked in.
+
+  Why that matters more than it sounds. Materials are 45 to 50% of the cost of running an assembly plant. Labour, the input India is assumed to be cheap at, is 5 to 6%. Equipment is largely neutralised by a 70% subsidy. So the cost structure of this industry sits almost entirely in the one part India does not yet make.
+
+  The barrier is qualification, not capability. A new material has to be approved by the OSAT, then validated by the customer, and often by the customer's customer. That cycle runs one to two years, and in automotive it is stricter still, because incumbents are rarely displaced. Making the material is the easy half. Getting it designed into someone's part is the hard half.
+
+  Where Indian suppliers are already real. INOX Air Products is supplying semiconductor-grade gases at parts-per-billion and parts-per-trillion purity and is building onsite plants at Sanand and a specialty gas hub at Dholera. HySpec Chemicals committed ₹750 crore in an MoU signed on 1 March 2026. Atotech India in Gurugram does plating chemicals. MacDermid makes silver epoxy and solder paste in Chennai. The easy tier, facility chemicals, cleanroom consumables, trays and tape-and-reel, is already Indian.
+
+  The money behind it. ISM 2.0 carries an outlay of ₹1,27,500 crore, against ₹76,000 crore for ISM 1.0, and it is aimed at exactly this gap. It includes an Equipment and Materials sub-scheme of roughly ₹40,000 crore for high-purity chemicals, gases and substrates, and it shifts incentives towards revenue and jobs rather than capital alone.
+
+  The two histories worth holding side by side. Malaysia got its first chip assembly plant when Intel arrived in Penang in 1972, and fifty years later it is still largely a back-end economy. Taiwan's ASE was founded in 1984, listed in 1989, and was the world's leading OSAT by 2003, because it got technology transfer and volume guarantees from TSMC. India's own 1984 attempt, Semiconductor Complex Limited in Punjab, was crippled by a 1989 fire and then by dependence on captive government orders.
+
+  The open question is demand. Malaysia only ever did back-end. India is attempting design, fabrication and packaging at once, which is harder but is the only route that does not end in a back-end trap. What is missing is guaranteed domestic volume. Today the OSATs run on foreign order books, Micron's own production, Kaynes's shipments to Alpha and Omega, CG Semi's Renesas-qualified customers.
+
+  ISM CEO Amitesh Sinha puts the horizon plainly: ten to fifteen years of consistent work at the same speed and focus to build a robust ecosystem. The packaging plants took about a year each. The supply chain underneath them is the decade-long part, and it has just started.
+
+  Sources: Diksha Yadav in Swarajya, 28 July 2026. PIB and IBEF on the ISM 2.0 outlay and the Equipment and Materials sub-scheme. PMIndia and Electronics For You on the Kaynes inauguration and cost. Distances computed straight-line.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Semiconductors #ISM #MakeInIndia #Sanand #Gujarat #ChipManufacturing #OSAT #Micron #Electronics
+tweaks:
+  vertical: tech
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE CHIP SUPPLY CHAIN
+slides:
+- layout: cover
+  surface: light
+  kicker_meta: Technology · 31 Jul 2026
+  headline: |
+    India can package
+    a chip. It cannot yet
+    make *what goes in*
+  subline: Sanand learnt the hard part in a year. The supply chain underneath is the decade-long part.
+  align_x: center
+  headline_size: 76
+  image: https://www.webopedia.com/wp-content/uploads/2025/02/12-biggest-semiconductor-chip-manufacturers-cover.webp
+  image_position: 50% 50%
+  texture: grid
+- layout: bar-chart
+  surface: dark
+  kicker_meta: The Part That Worked
+  headline: Qualified in *half* the usual time
+  mode: emphasis
+  value_suffix: ' months'
+  decimals: 0
+  max: 22
+  rows:
+  - label: CG Semi, Sanand
+    value: 10
+    emphasis: true
+    note: Joint venture running Renesas's manufacturing recipe
+  - label: Southeast Asian norm
+    value: 20
+    note: Typical time to formal customer qualification
+  source: Kaynes shipped India's first commercial multi-chip modules about a year after breaking ground.
+  body: |
+    On [execution speed] this is not a country that struggles. Micron's **$2.75 billion** memory plant opened in February 2026, Kaynes was inaugurated on 31 March.
+  bar_size: 56
+  headline_size: 58
+- layout: pictogram
+  surface: dark
+  kicker_meta: The Part That Did Not
+  headline: Most of what goes in is *imported*
+  value: 65
+  decimals: 0
+  total: 100
+  columns: 10
+  grid_height: 430
+  unit_label: of material inputs come from abroad
+  sublabel: Bonding wire has effectively two suppliers on earth, in Japan and Germany.
+  source: Reported range is 60 to 70%. Midpoint shown.
+  headline_size: 56
+- layout: bar-chart
+  surface: dark
+  kicker_meta: Where The Cost Sits
+  headline: Labour is a *rounding error*
+  mode: stack
+  value_suffix: '%'
+  decimals: 0
+  rows:
+  - label: Materials
+    value: 48
+  - label: Utilities, maintenance, rest
+    value: 46
+  - label: Labour
+    value: 6
+  source: Materials 45 to 50%, labour 5 to 6%. Midpoints shown. Equipment is largely neutralised by a
+    70% subsidy.
+  body: |
+    The cost of this industry sits almost entirely in the one part India does [not yet make]. Copper lead frames alone are **35 to 40%** of material cost.
+  headline_size: 58
+- layout: roster
+  surface: dark
+  kicker_meta: The Bill Of Materials
+  headline: What goes in, and *who makes it*
+  row_size: 40
+  rows:
+  - flag: 🇰🇷
+    name: Copper lead frames
+    year: 35-40% OF COST
+  - flag: 🇯🇵
+    name: Bonding wire
+    year: 2 SUPPLIERS ON EARTH
+    featured: true
+  - flag: 🇹🇭
+    name: Epoxy moulding compound
+    year: SOUTHEAST ASIA
+  - flag: 🇮🇳
+    name: Semiconductor-grade gases
+    year: INOX
+  - flag: 🇮🇳
+    name: Plating chemicals
+    year: ATOTECH
+  - flag: 🇮🇳
+    name: Silver epoxy, solder paste
+    year: MACDERMID
+  headline_size: 54
+- layout: bar-chart
+  surface: dark
+  kicker_meta: The Money
+  headline: The second mission is aimed at *the gap*
+  mode: emphasis
+  value_prefix: ₹
+  decimals: 0
+  value_suffix: ' cr'
+  rows:
+  - label: ISM 2.0 outlay
+    value: 127500
+    emphasis: true
+    note: Announced in the Union Budget 2026-27
+  - label: ISM 1.0 outlay
+    value: 76000
+  - label: Equipment and Materials sub-scheme
+    value: 40000
+    note: High-purity chemicals, gases and substrates
+  source: Cabinet-approved outlay. Incentives shift towards revenue and jobs rather than capital alone.
+  bar_size: 52
+  headline_size: 54
+- layout: quote
+  kicker_meta: The Horizon
+  surface: dark
+  quote: |
+    It will take us ten to fifteen years of consistent work, at the same speed, focus and vision, to build a robust semiconductor ecosystem.
+  attribution: Amitesh Sinha, CEO, India Semiconductor Mission
+  quote_size: 62
+  align_x: left
+- layout: story
+  surface: dark
+  kicker_meta: Two Histories
+  headline: Penang got the plants. It never got *the rest.*
+  body: |
+    Intel arrived in Penang in **1972**. Fifty years on, Malaysia is still largely a [back-end economy].
+
+    Taiwan's ASE was founded in 1984, listed in 1989, and was the world's leading OSAT by **2003**. The difference was technology transfer and volume guarantees from TSMC.
+  align_y: middle
+  body_size: 42
+- layout: story
+  surface: dark
+  kicker_meta: The Open Question
+  headline: Nobody has promised them *orders*
+  body: |
+    The OSATs run on foreign order books today. Micron's own production, Kaynes's shipments to California, CG Semi's Renesas-qualified customers.
+
+    India's 1984 attempt, [Semiconductor Complex Limited] in Punjab, was crippled by a 1989 fire and then by living on captive government orders. Guaranteed domestic volume is the thing still missing.
+  align_x: left
+  align_y: middle
+  body_size: 40
+- layout: closing
+  surface: dark
+  headline: |
+    The plants took
+    a year. The chain
+    takes a decade.
+  body: India is attempting design, fabrication and packaging at once. That is harder, and it is the only
+    route that does not end in a back-end trap.
+  handle: '@vaqhq'headline_size: 54

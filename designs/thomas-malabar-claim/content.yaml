@@ -1,0 +1,120 @@
+name: thomas-malabar-claim
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  A sitting US Congressman told 3.7 million people that Christians have been in India since St. Thomas the Apostle reached the Malabar Coast, and then attached that history to a warning about Indian legislation. The history is the weakest part of the argument.
+
+  What he said. On 4 August 2026 Rep. Riley Moore of West Virginia posted that Christians have been in India since St. Thomas travelled to the Malabar Coast "just decades after the resurrection", and that the Foreign Contribution (Regulation) Amendment Bill would be "a clear attack against Christians" and "a point of major concern in our bilateral relationship with India".
+
+  The single source. Every version of the Malabar story descends from one text, the Acts of Thomas, written in Syriac at Edessa in roughly 200 to 250 CE. It is an apocryphal romance rather than a chronicle, composed something like 150 years after the events it narrates, and it is not treated as a historical record by mainstream scholarship.
+
+  What that text actually describes. It does use the word India. It then describes a desert kingdom whose people speak an Iranian language, practise Zoroastrianism and carry Persian names, ruled by a king named Mazdai. In antiquity "India" was a loose label for almost everything east and south of the Roman frontier, Parthia and Arabia and Ethiopia included.
+
+  What the early Church believed. Origen, writing in the third century and preserved in Eusebius of Caesarea's Ecclesiastical History 3.1, recorded that the territory allotted to Thomas was Parthia, the Iranian world. The Vatican's own catechesis on Thomas still cites that passage.
+
+  The papal audience, and the edit. On 27 September 2006 Pope Benedict XVI told a general audience that Thomas "first evangelized Syria and Persia, then penetrated as far as western India, from where Christianity also reached South India". Kerala's bishops objected. The text on the Vatican website was amended the following day and now reads that Thomas "then went on to Western India, from where also he finally reached Southern India". Both versions are on the record.
+
+  What is documented. The first Christian arrival in India with a paper trail is a party of Syrian refugees led by a merchant, Thomas of Cana, traditionally dated to 345 CE. Over generations a community can merge its historical founder with its spiritual patron when both are named Thomas.
+
+  The chronology problem. The Kerala tradition has Thomas converting Namboodiri Brahmins in 52 CE. Scholarly estimates for the Namboodiri settlement of Kerala range from the fourth century to the tenth, with the eighth to tenth most commonly cited. No historian places them there in the first century.
+
+  What this does not mean. Christianity in India is roughly 1,700 years old. That is older than Christianity in most of Europe, and nobody serious disputes it. Indian Christians are not newcomers and this is not an argument that they are. It is an argument about one specific claim, made by a foreign legislator, used as leverage.
+
+  On the bill itself. The Foreign Contribution (Regulation) Amendment Bill 2026 was introduced in the Lok Sabha on 25 March 2026 by Minister of State Nityanand Rai. It lets a Designated Authority take control of assets created from foreign contributions when an organisation's FCRA registration is cancelled, surrendered or not renewed. It is not written as a power to seize churches, and it names no religion. Whether it is good law is a fair argument. It is a different argument from the one about the apostle.
+
+  Sources: @RepRileyMoore on X, 4 August 2026; Acts of Thomas; Eusebius, Ecclesiastical History 3.1; Benedict XVI general audience of 27 September 2006, vatican.va; PRS Legislative Research on the FCRA Amendment Bill 2026; reporting on the bill from CSW and International Christian Concern; scholarship on Namboodiri settlement chronology. Image: San Thome Basilica, Mylapore, Wikimedia Commons, CC BY 4.0.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ #StThomas #IndianHistory #Kerala #Malabar #FCRA #ChurchHistory #Mylapore #Vijayanagara #TheLongView
+tweaks:
+  vertical: longview
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE LONG VIEW
+slides:
+- layout: cover
+  surface: light
+  kicker_meta: '@RepRileyMoore · 4 Aug 2026'
+  headline: US *lawmaker* and his *myths*
+  subline: Rep. Riley Moore says Christians reached the Malabar Coast with St. Thomas. The only source
+    for that is a third-century romance.
+  headline_size: 88
+  texture: grid
+  image: screenshot-2026-08-05-at-2-14-51-pm.png
+- layout: story
+  surface: light
+  kicker_meta: The post
+  headline: He Attached It to a Bill
+  body: |
+    Moore told 3.7 million people that Christians have been in India since Thomas reached the Malabar Coast, then warned that the [FCRA] amendment would be a point of major concern in the bilateral relationship. The history is the premise of the threat.
+  body_size: 40
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOUwk_bckOV1K1FcB-s5LqY5vp3eEwraOkt9eksO6Bi1E5NeEZ-Hi9A_Q7&s=10
+  image_position: 43% 0%
+  image_height: 400
+  loop: So where does the story come from?
+  align_x: center
+- layout: stat
+  surface: dark
+  kicker_meta: The evidence base
+  label: ORIGINAL SOURCES FOR THOMAS IN INDIA
+  value: '1'
+  sublabel: The Acts of Thomas. Syriac, written at Edessa around 200 to 250 CE.
+  body: |
+    Every later version descends from it. It is an apocryphal romance rather than a chronicle, written roughly [150 years] after the events it narrates.
+  stat_size: 300
+  body_size: 44
+  texture: dots
+  align_x: center
+- layout: story
+  surface: light
+  kicker_meta: What the text says
+  headline: The India It Describes Is *Persian*
+  body: |
+    The text does use the word India. It then describes a desert kingdom whose people speak an Iranian language, practise [Zoroastrianism] and carry Persian names, under a king called [Mazdai]. In antiquity "India" meant almost anything east of Rome.
+  body_size: 48
+  loop: The early Church was more specific
+  align_x: center
+- layout: story
+  surface: dark
+  kicker_meta: Third century
+  headline: The Early Church Said *Parthia*
+  body: |
+    [Origen], preserved in Eusebius of Caesarea's Ecclesiastical History, recorded that the territory allotted to Thomas was [Parthia], the Iranian world. Not the subcontinent. The Vatican's own page on Thomas still cites that passage.
+  body_size: 50
+  loop: Then a Pope said it out loud
+  align_x: left
+- layout: story
+  surface: light
+  kicker_meta: 27 September 2006
+  headline: The Pope Said It. Then It Was *Edited.*
+  body: |
+    Pope Benedict XVI told a general audience that Thomas reached [western India], and that Christianity got to the south from there. Kerala's bishops objected. The Vatican site was amended the next day to say Thomas himself finally reached [South India].
+  body_size: 48
+  loop: So what actually has a paper trail?
+- layout: stat
+  surface: dark
+  kicker_meta: The documented arrival
+  label: SYRIAN REFUGEES WHO LANDED IN KERALA
+  value: '400'
+  sublabel: Led by a merchant, Thomas of Cana, traditionally dated to 345 CE.
+  body: |
+    This is the arrival with a record behind it. Over generations a community can merge its founder, [Thomas the merchant], with its patron, [Thomas the apostle].
+  stat_size: 300
+  body_size: 44
+  align_x: center
+- layout: story
+  surface: dark
+  kicker_meta: The chronology
+  headline: The Brahmins Were Not There Yet
+  body: |
+    The Kerala tradition has Thomas converting [Namboodiri Brahmins] in 52 CE. Scholarly estimates for their settlement of Kerala run from the fourth century to the tenth. [No historian places them there in the first.]
+  body_size: 50
+  texture: signal
+- layout: closing
+  surface: dark
+  headline: Follow!!
+  body: |2+
+
+  handle: '@vaqhq'
+  headline_size: 56

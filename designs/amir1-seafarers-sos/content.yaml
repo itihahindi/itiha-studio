@@ -1,0 +1,37 @@
+name: amir1-seafarers-sos
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Thirteen Indians are sitting on a ship in a Ukrainian port while drones and missiles come down around it.
+
+  The appeal. The Forward Seaman Union of India has issued an SOS over the MV AMIR1, berthed at Chornomorsk on Ukraine's Black Sea coast with 15 crew aboard, 13 of them Indian. The union calls the situation "terrible and life-threatening", says repeated drone and missile attacks are landing in the immediate vicinity of the vessel, and that the crew is living under the constant fear of a direct hit.
+
+  What it is asking for. Immediate action from the Government of India, the shipowners and the flag state to secure the crew and repatriate them. The union's line is the one worth repeating: Indian seafarers must not be left as sitting targets in a conflict zone.
+
+  Why this is not a freak event. Indians crew a very large share of the world's merchant fleet, and merchant shipping has been a target in this war for years. Black Sea ports have been struck repeatedly. Indian seafarers have already been killed aboard merchant vessels hit in this conflict. The risk here is structural, not accidental: commercial ships keep calling at ports inside an active war, and the people on deck are disproportionately Indian.
+
+  What we can and cannot confirm. The union's appeal and the crew numbers are on the record and have been reported. The footage circulating with the appeal has not been independently verified as the MV AMIR1 at Chornomorsk, and we are carrying it as what it is, video released with the union's SOS.
+
+  What to watch. Whether the MEA and the Indian mission in Kyiv respond publicly, whether the shipowner moves the vessel, and whether any evacuation corridor is arranged. Thirteen families are waiting on all three.
+
+  Source: Forward Seaman Union of India statement, 28 July 2026, as reported by The Tribune. Video via @RShivshankar.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Seafarers #MVAmir1 #Chornomorsk #Ukraine #IndianSeafarers #MEA #BlackSea #Shipping
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: story
+  vertical: live
+  kicker_meta: 28 JULY 2026
+  video_file: amir1.mp4
+  headline: |
+    13 Indians *trapped*
+    in a Ukrainian port
+  subline: A seafarers' union has issued an SOS from Chornomorsk. Drones are landing near the vessel.
+  credit: via @RShivshankar
+  panel_height: 814
+  headline_size: 78

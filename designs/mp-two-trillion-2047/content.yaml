@@ -1,0 +1,37 @@
+name: mp-two-trillion-2047
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Madhya Pradesh says it will contribute 2 trillion dollars to India's economy by 2047. Here is what that number asks for.
+
+  The target. Chief Minister Mohan Yadav has put the state's 2047 contribution at 2 trillion dollars, against the Centre's stated goal of a 30 trillion dollar national economy by then. A CII report separately assessed that Madhya Pradesh has the potential to reach 2.1 trillion dollars by 2047-48, so the figure is not plucked from nowhere.
+
+  Where it starts from. Madhya Pradesh's GSDP was estimated at 16.94 lakh crore rupees, roughly 192 billion dollars, in FY26. The CII assessment used a smaller base of about 165 billion dollars, reflecting a different year and method.
+
+  The arithmetic nobody puts in the headline. Going from about 192 billion to 2 trillion dollars is a multiple of roughly ten, over 21 years. That works out to about 11.8 per cent compound growth every single year, in dollar terms, without a break. From the smaller CII base it is closer to 12.6 per cent a year.
+
+  Is that plausible. The state has posted strong recent numbers, with GSDP growth reported above 10 per cent and projected at 11.14 per cent. So the target is roughly a bet that the best recent year becomes the average year, held for two decades. Dollar terms matter here too: a weakening rupee eats into a dollar-denominated target even when rupee growth is on track. That is the part a headline number hides.
+
+  Why we are printing the rate and not just the target. A 2047 goal is unfalsifiable for 21 years. An annual growth rate is checkable next year, and the year after. It is the version of this announcement that can actually be held to account.
+
+  Sources: The Statesman and UNI on the Chief Minister's 2 trillion dollar statement. IBEF for the FY26 GSDP estimate. Business Standard and Tribune India on the CII report projecting 2.1 trillion by 2047-48. India TV on the 11.14 per cent growth projection. Compound rates calculated in-house from those figures.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #MadhyaPradesh #MohanYadav #Economy #GSDP #Viksit2047 #India
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+  seriesLabel: ECONOMY
+slides:
+- layout: cover
+  kicker_meta: MADHYA PRADESH · 2047
+  label: WHAT THE TARGET ACTUALLY REQUIRES
+  value: 10x
+  sublabel: About $192 billion today to $2 trillion in 21 years
+  body: |
+    CM [Mohan Yadav] puts the state's 2047 contribution at [$2 trillion]. GSDP was ₹16.94 lakh crore, about [$192 billion], in FY26.
+    That needs roughly [11.8% growth every year] for 21 straight years, in dollar terms. Best recent year: [11.14%].
+  image: https://hindibusinessstandard.imagibyte.sortdcdn.net/wp-content/uploads/2024/10/mohan-yadav.jpg
+  image_position: 27% 5%

@@ -1,0 +1,97 @@
+name: ambedkar-nagar-still-no-verdict
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  In September 2023 a Class 11 student in Ambedkar Nagar was cycling home from school when two men on a motorcycle pulled her dupatta. She lost control, fell, and was hit by the motorcycle behind her. She died. Police said a chargesheet would be filed in ten days and the accused convicted within a month. That was thirty-five months ago.
+
+  What happened. On 16 September 2023, in Ambedkar Nagar district of Uttar Pradesh, a 17-year-old was riding home from school. Two men on a motorcycle tugged at her dupatta as they passed. She lost control of her bicycle and fell into the path of the motorcycle behind her, which hit her. She did not survive. The sequence was recorded on a private CCTV camera and the footage went national within a day.
+
+  What the state charged. Three people were arrested on 17 September 2023 and booked under Indian Penal Code sections 302, 354, 298 and 304 along with provisions of the Protection of Children from Sexual Offences Act. Police then moved to proceed against them under the Uttar Pradesh Gangsters and Anti-Social Activities (Prevention) Act. Section 302 is murder. The state did not treat this as a road accident, and that decision was the right one.
+
+  The promise. Police publicly stated that a chargesheet would be filed within ten days and that the accused would be convicted within a month. The first half of that is a police function and a reasonable undertaking. The second half is not. Police do not convict anybody. Courts do, after a trial, and no officer can promise a verdict on a calendar. Making that promise in front of cameras set an expectation the system was never structured to meet.
+
+  The encounter. Days after the arrests the three were injured while reportedly attempting to flee custody. Two sustained bullet wounds to the legs and one fractured a leg. Police said the men had tried to snatch a rifle from a constable. Whatever the sequence, being shot in the leg is not a verdict, it does not establish guilt, and a custodial injury is one more thing a defence can raise at trial.
+
+  What we could not establish. We could find no verdict in this case on the public record. That is not the same as saying no verdict exists. It means that thirty-five months after a promise of conviction within a month, the outcome of the most heavily filmed molestation-death case in recent Uttar Pradesh memory is not something a reader can look up.
+
+  Why this deck names nobody. The victim was a minor and a victim of a sexual offence, so naming her is barred by section 228A of the Indian Penal Code and section 23 of the POCSO Act, whatever some outlets did at the time. On the accused side, reporting is inconsistent about which of them was a juvenile, and naming a juvenile in conflict with law is barred by the Juvenile Justice Act. Three people were arrested. That is the fact. The names add nothing the case does not already carry.
+
+  The point. This story circulates every few months as a clip, usually recaptioned, usually with a name attached and a line about what happens to men in Uttar Pradesh. The clip is not the accountability. The chargesheet was. The conviction would be. A family in Ambedkar Nagar is owed a judgment, and a judgment is the one thing no viral video has delivered them.
+
+  Sources: Outlook India, The Print and India.com reporting of 16 to 20 September 2023; police statements on the Gangsters Act and the chargesheet timeline as carried by The Print; accounts of the custodial escape attempt as reported at the time.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ #AmbedkarNagar #UttarPradesh #POCSO #Justice #DueProcess #IndianLaw #TheDocket
+tweaks:
+  vertical: legal
+  showStamp: true
+  showPageNum: true
+  seriesLabel: THE DOCKET
+slides:
+- layout: cover
+  surface: solid
+  kicker_meta: Ambedkar Nagar · 16 Sep 2023
+  headline: 'They Promised a Conviction in *One Month*. That Was 2023.'
+  subline: A schoolgirl died when two men pulled her dupatta. Thirty-five months later, no verdict is on the public record.
+  headline_size: 86
+  texture: grid
+
+- layout: story
+  surface: dark
+  kicker_meta: What happened
+  headline: She Was Cycling Home From School
+  body: |
+    A [17-year-old] in Ambedkar Nagar was riding home when two men on a motorcycle tugged at her dupatta. She lost control, fell, and was struck by the motorcycle behind her. She died. A private [CCTV] camera recorded all of it.
+  body_size: 46
+  loop: The state did not call it an accident
+
+- layout: stat
+  surface: dark
+  kicker_meta: The charge
+  label: THE SECTION THEY WERE BOOKED UNDER
+  value: '302'
+  sublabel: Murder. Plus 354, 298, 304 and the POCSO Act.
+  body: |
+    Police then moved to proceed under the UP [Gangsters Act]. Whatever else is arguable here, the state refused to file this as a road accident. That call was right.
+  stat_size: 300
+  body_size: 44
+  texture: dots
+
+- layout: story
+  surface: light
+  kicker_meta: The promise
+  headline: Chargesheet in Ten Days. Conviction in One Month.
+  body: |
+    The first half is a police function and a fair undertaking. The second half is not. [Police do not convict anybody.] Courts do, after a trial. No officer can promise a verdict on a calendar, and saying so on camera set a clock nobody could run.
+  body_size: 42
+  loop: Then came the part that went viral
+
+- layout: story
+  surface: dark
+  kicker_meta: Days after the arrests
+  headline: An Encounter Is Not a Verdict
+  body: |
+    Two of the accused were shot in the legs and one fractured a leg while reportedly trying to flee custody. Police said they grabbed at a constable's rifle. It settles nothing. A [custodial injury] proves no guilt and gives the defence something to raise at trial.
+  body_size: 42
+  texture: signal
+  loop: So where did the case actually get to?
+
+- layout: stat
+  surface: solid
+  kicker_meta: As of August 2026
+  label: MONTHS SINCE A CONVICTION WAS PROMISED IN ONE
+  value: '35'
+  sublabel: No verdict in this case is on the public record.
+  body: |
+    That is not proof no verdict exists. It means the outcome of the [most filmed] molestation-death case in recent UP memory is not something a reader can look up.
+  stat_size: 300
+  body_size: 42
+
+- layout: closing
+  surface: dark
+  headline: The Clip Is Not the Accountability.
+  body: |
+    This footage returns every few months, recaptioned, with a name attached and a line about what happens to men in UP. The chargesheet was the accountability. A [conviction] would be. That is the one thing no viral video has delivered this family.
+  handle: '@vaqhq'
+  headline_size: 54

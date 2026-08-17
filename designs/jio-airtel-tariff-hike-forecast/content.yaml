@@ -1,0 +1,44 @@
+name: jio-airtel-tariff-hike-forecast
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  A brokerage note has put a number on your next recharge. No telecom operator has.
+
+  What the report actually says. Centrum Institutional Research, in its Q1 FY27 telecom and internet sector preview, expects Reliance Jio, Bharti Airtel and Vodafone Idea to raise mobile tariffs by 12 to 15 per cent over the next three to four months, landing in Q3 FY27, October to December 2026. It would be the first industry-wide hike in about two years. Both prepaid and postpaid are in scope.
+
+  The arithmetic being quoted. At the low end of the range, the 28-day ₹349 pack works out to about ₹389, the 84-day ₹899 to about ₹1,007, and the 365-day ₹3,599 to about ₹4,031. These are illustrative numbers derived from the forecast percentage, not tariffs any operator has filed or announced.
+
+  What we could confirm. The report exists and the 12 to 15 per cent range is Centrum's. The last industry-wide hike was July 2024, when Airtel went up 10 to 21 per cent, Jio 13 to 27 per cent and Vodafone Idea 10 to 23 per cent. Centrum also flags that the next round may not be a flat price rise at all but a change in pricing structure, moving toward usage-based plans.
+
+  The part worth being precise about. Centrum names its own reason, and it is not 5G capex alone. It is market structure: "the pricing environment has become more favourable with only 3+1 players in the market." Three private operators and one state-run. The brokerage is telling its clients that thin competition is what makes the hike stick.
+
+  So read the +1 properly. The reason India has three private operators instead of two is that the state kept the third one breathing through the AGR years, and the reason there is a fourth at all is BSNL, now running a 4G core built in India rather than imported. A state telco with its own stack is the structural answer to a duopoly. Price control is not.
+
+  And keep the base rate in view. Even after 15 per cent, India stays among the cheapest mobile data markets on earth. Cable.co.uk put the global average at $2.59 per GB in June 2026. India has spent a decade at a fraction of that, which is exactly why a 12 per cent move on a ₹349 pack is news here and would be a rounding error almost anywhere else.
+
+  Sources: Centrum Institutional Research Q1 FY27 telecom preview, as reported by Free Press Journal and TelecomTalk, 4 August 2026; July 2024 hike percentages via Gulf News and India Infoline; global data pricing via Cable.co.uk, June 2026. Image: mobile towers in Punjab farmland, Wikimedia Commons, CC BY-SA 4.0.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ #Jio #Airtel #VodafoneIdea #BSNL #Telecom #TariffHike #Recharge #IndianEconomy #5G
+tweaks:
+  vertical: tech
+  showStamp: true
+  showPageNum: false
+  seriesLabel: TELECOM
+slides:
+- layout: story
+  surface: dark
+  kicker_meta: Centrum Research · 4 Aug 2026
+  headline: Jio and Airtel May Raise Prices *12-15%*
+  headline_size: 78
+  body: |
+    Centrum Institutional Research expects a [12-15%] hike between October and December. At the low end, ₹349 becomes ₹389, ₹899 becomes ₹1,007, ₹3,599 becomes ₹4,031.
+
+    No operator has announced anything. Centrum's own reason is market structure: only [3+1 players] left, and the +1 is state-run BSNL.
+  body_size: 39
+  image: mobile-towers-punjab.jpg
+  image_position: 50% 12%
+  image_height: 340
+  image_caption: Mobile towers over farmland in Punjab
+  texture: grid

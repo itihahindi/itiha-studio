@@ -89,8 +89,22 @@ def _is_tls_version_error(e: Exception) -> bool:
     at TLS 1.2. A growing number of hosts now require TLS 1.3 and reject the
     ClientHello outright, which surfaces as this alert. Nothing we can set on
     an SSLContext fixes it — the library simply cannot speak 1.3.
+
+    Servers do not agree on which alert to send when they refuse that
+    ClientHello. neh.gov answers TLSV1_ALERT_INTERNAL_ERROR, others send a bare
+    handshake failure, and the two originally listed here are only the most
+    common. All of them are recoverable by handing the URL to curl, which links
+    against a newer stack and still validates certificates, so matching the
+    wider set costs nothing and rescues a render that used to die.
     """
-    return "TLSV1_ALERT_PROTOCOL_VERSION" in str(e) or "UNSUPPORTED_PROTOCOL" in str(e)
+    s = str(e)
+    return any(alert in s for alert in (
+        "TLSV1_ALERT_PROTOCOL_VERSION",
+        "UNSUPPORTED_PROTOCOL",
+        "TLSV1_ALERT_INTERNAL_ERROR",
+        "SSLV3_ALERT_HANDSHAKE_FAILURE",
+        "SSLV3_ALERT_ILLEGAL_PARAMETER",
+    ))
 
 
 def _curl_download(url: str, dest: Path) -> None:
@@ -227,13 +241,20 @@ def resolve_image(value: str | None, design_dir: Path) -> str | None:
                     f"filename, or reinstall Python against OpenSSL 1.1.1+"
                 )
             except Exception as e:
-                raise ContentError(f"failed to download {canonical}: {e}")
+                # Degrade, don't abort. One unreachable host must not take a
+                # ten-slide render down with it: warn loudly, hand the raw URL
+                # back so the browser can try it directly, and let the URL
+                # survive the next save instead of being silently dropped.
+                # Local filenames still raise below — those are typos, not
+                # network weather.
+                print(f"  !!     could not fetch {canonical}: {e}")
+                print(f"  !!     leaving the URL in place for the browser to load")
+                return value
             if local.read_bytes()[:512].lstrip().startswith(_HTML_SIGNATURES):
                 local.unlink()
-                raise ContentError(
-                    f"{canonical} returned a web page, not an image — "
-                    f"paste a direct image URL or drop the file into images/"
-                )
+                print(f"  !!     {canonical} returned a web page, not an image")
+                print(f"  !!     paste a direct image URL or drop the file into images/")
+                return value
         return f"_cache/{local.name}"
 
     # Tolerate either bare filename or "images/<name>"
@@ -251,12 +272,14 @@ KNOWN_LAYOUTS = {
     # Carousel layouts (1080×1350 etc.)
     "cover", "story", "split-story", "quote", "stat", "roster", "dates-grid", "closing", "geo",
     "numbered-list", "comparison", "portrait", "timeline", "map", "did-you-know",
-    "pie-chart", "line-graph", "bar-chart", "dynasty", "before-after",
+    "pie-chart", "line-graph", "bar-chart", "dynasty", "pyramid", "hierarchy", "before-after",
+    "line-chart", "pictogram", "city-map",   # vaq-hq chart pack
     "document", "annotated", "sources",
     "interior-light", "cta-red", "youtube-cta",
     # Standalone formats
     "reel-title",         # 1080×1920
     "reel-frame",         # 1080×1920 — vaq-hq header panel for reposted video (src/reel.py)
+    "reel-explainer",     # 1080×1920 — vaq-hq inverted reel: video top, caption panel bottom
     "youtube-thumbnail",  # 1280×720
     "end-card",           # 1920×1080
 }

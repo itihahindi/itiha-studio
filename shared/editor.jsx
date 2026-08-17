@@ -1329,8 +1329,12 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
   };
   const publishBusy = publishState.phase === 'publishing';
 
-  // Reel composing — only offered when the design carries a reel-frame slide.
-  const hasReelFrame = (content.slides || []).some(s => s && s.layout === 'reel-frame');
+  // Reel composing — offered when the design carries any composable reel slide.
+  // Keep this list in sync with REEL_LAYOUTS in src/reel.py: the backend accepts
+  // both, so gating the button on reel-frame alone silently hides Compose Reel
+  // from reel-explainer designs.
+  const REEL_LAYOUTS = ['reel-frame', 'reel-explainer'];
+  const hasReelFrame = (content.slides || []).some(s => s && REEL_LAYOUTS.includes(s.layout));
   const [reelState, setReelState] = React.useState({ phase: 'idle' });
   // phase: 'idle' | 'rendering' | 'composing' | 'done' | 'error'
 
@@ -1500,7 +1504,7 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
           }}>{publishBusy ? 'Posting…' : 'Post IG'}</button>
         {hasReelFrame && (
           <button onClick={composeReel} disabled={reelBusy || renderBusy}
-            title="Fetch the Video URL with yt-dlp and stack it under the rendered header panel (ffmpeg)"
+            title="Fetch the video (upload or yt-dlp URL) and stack it with the rendered panel — under it for reel-frame, over it for reel-explainer (ffmpeg)"
             style={{
               background: reelBusy ? '#1a1a1a' : '#0f0f0f',
               color: reelBusy ? '#888' : '#E8DCC8',

@@ -1,0 +1,36 @@
+name: swat-kabal-blast
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  A crowd gathered in Swat to protest against terrorism. A suicide bomber walked into it.
+
+  What happened. On Sunday 2 August a suicide bomber struck outside the Kabal police station in Swat district, Khyber Pakhtunkhwa. Dawn reports at least 14 killed, including police personnel, and more than 25 injured. The attacker tried to enter the station and was intercepted by security personnel at the main gate before detonating his explosives. The injured were taken to Saidu Sharif Hospital.
+
+  Why the crowd was there. This is the part that matters and the part most posts left out. Hundreds of people were gathered at Kabal Chowk for a demonstration called by a local peace committee, protesting the recent wave of terrorism in the Swat valley. The bomb went off beside a rally against bombings.
+
+  The toll moved through the day. Early wire copy on Sunday put it at seven killed and 18 injured. By evening Dawn, Business Recorder and Arab News were reporting at least 14 dead and more than 25 hurt, with five police personnel and eight civilians among the dead in one account. Treat the figure as provisional. It has already risen once.
+
+  Nobody has claimed it. As of filing, no group has claimed responsibility for the attack.
+
+  About the clip. It shows the immediate aftermath in the bazaar: dust still hanging, wrecked motorcycles, damaged cars, police moving through the street. We could not establish who filmed it. It reached us through @KreatelyMedia, whose post described the attack only as injuring police officers, with no mention of the dead or of the peace rally it hit.
+
+  Sources: Dawn, Business Recorder, Arab News Pakistan, The Express Tribune and IANS, 2 August 2026.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Pakistan #Swat #KhyberPakhtunkhwa #Terrorism #Geopolitics #Breaking
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: false
+  seriesLabel: THE BRIEFING
+slides:
+- layout: reel-frame
+  kicker_meta: Swat · 2 Aug 2026
+  video_file: source.mp4
+  headline: Suicide *Bombing Kills 14* at Peace Rally Near Swat Police Station
+  subline: At least 14 killed and more than 25 hurt outside Kabal police station. Hundreds were there
+    to protest the attacks.
+  panel_height: 692
+  panel_fade: 120
+  headline_size: 62

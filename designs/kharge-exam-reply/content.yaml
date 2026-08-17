@@ -1,0 +1,37 @@
+name: kharge-exam-reply
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Karnataka's Home Minister was asked to resign over a police recruitment exam that fell apart. This was his answer.
+
+  What he said. "I will resign, but first let the aspirants go on a 25-day hunger strike, lathicharge them, and then I will resign, just as they did after the NEET paper leak." Reported by the Free Press Journal and carried widely on 3 August 2026.
+
+  What it was about. On 2 August Karnataka held the written examination for 3,991 Civil Police Constable posts. Candidates at several centres reported delays in receiving question papers and administrative confusion. Protests followed. Leader of the Opposition R. Ashoka demanded Priyank Kharge's resignation, saying the government had handed candidates "confusion, administrative incompetence and shattered dreams instead of a fair opportunity."
+
+  The part worth being precise about. The "they" in his sentence is the Centre. He is pointing at how the NEET row ended, with the Union minister going only after weeks of protest. Read charitably, the jab is aimed at Delhi rather than at the candidates. We are printing that because it is the honest reading of the sentence.
+
+  It still does not survive. He is the Home Minister. The police who would carry out a lathicharge report to him. The young people he suggested lathicharging are applying to join that same force. The exam that collapsed was run by his own government. Asked for accountability, the man holding the Home portfolio reached for a joke about beating students.
+
+  And note what he treated as the template. Weeks of hunger strike and a lathicharge are what it took to force a resignation at the Centre. He is not disowning that sequence. He is asking why he should be held to it.
+
+  Clip via @LalaXd. Footage is a press scrum carrying ANI, PTI and Republic Kannada microphones.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Karnataka #PriyankKharge #Congress #IndianPolitics #PoliceExam #Bengaluru
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: false
+  seriesLabel: GROUND REPORT
+slides:
+- layout: reel-frame
+  kicker_meta: 3 Aug 2026
+  video_file: cropped.mp4
+  headline: |
+    First, do *Lati Charge*, then *Hunger Strike*, then I will resign.
+  subline: Karnataka's Home Minister, asked to resign over the constable exam his own government just
+    botched. A most shameless reply you’ll ever hear from a politician.
+  panel_height: 796
+  panel_fade: 110
+  headline_size: 76

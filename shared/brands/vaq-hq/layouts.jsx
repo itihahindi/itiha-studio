@@ -136,7 +136,7 @@ function StorySlide({ slide, index }) {
   const v = verticalFor(slide, t);
   const surface = surfaceFor(slide, v);
   const {
-    headline = '', body, kicker_meta, texture,
+    headline = '', body, kicker_meta, texture, loop,
     image, image_caption, image_credit, image_position, image_height = 470,
     headline_size, body_size = 46, headline_offset_y = 0, body_offset_y = 0,
   } = slide;
@@ -184,6 +184,7 @@ function StorySlide({ slide, index }) {
               <VBody text={body} v={v} size={body_size} onSolid={surface.onSolid} onDark={surface.onDark} />
             </div>
           )}
+          <VLoop text={loop} v={v} onSolid={surface.onSolid} onDark={surface.onDark} />
         </div>
         <div style={{ flex: image ? 1 : 1.2 }} />
         <div style={{ height: CHROME_H - 40 }} />
@@ -200,7 +201,7 @@ function SplitStorySlide({ slide, index }) {
   const v = verticalFor(slide, t);
   const surface = surfaceFor(slide, v);
   const {
-    headline = '', body, kicker_meta, texture,
+    headline = '', body, kicker_meta, texture, loop,
     image, image_position, image_height = 580, image_credit,
     headline_size, body_size = 45, body_offset_y = 0,
   } = slide;
@@ -242,6 +243,7 @@ function SplitStorySlide({ slide, index }) {
               <VBody text={body} v={v} size={body_size} onSolid={surface.onSolid} onDark={surface.onDark} />
             </div>
           )}
+          <VLoop text={loop} v={v} onSolid={surface.onSolid} onDark={surface.onDark} />
         </div>
       </div>
       <VChrome n={index + 1} onSolid={surface.onSolid} onDark={surface.onDark} v={v} />
@@ -503,6 +505,103 @@ function ReelFrameSlide({ slide, index }) {
   );
 }
 
+// ── REEL-EXPLAINER ────────────────────────────────────────────
+// Inverted reel: video on TOP, dark text panel BELOW. The video is the hero and
+// the panel is the caption, which is the shape short-form geopolitics accounts
+// converged on — a static panel above a small video wastes the part of the frame
+// the eye lands on first.
+//
+// `panel_height` here is the height of the BOTTOM strip, so src/reel.py must
+// crop from (canvas - panel_h) and stack [vid] over [panel]. That is what
+// `panel_anchor: 'bottom'` signals to the composer — keep the two in sync.
+//
+// Deliberately NOT the reference's yellow-on-black with a red chip: the only
+// accent here is VAQ orange, per the 2026-07-27 two-tone consolidation.
+function ReelExplainerSlide({ slide, index }) {
+  const t = useTweaks();
+  const v = verticalFor(slide, t);
+  // Always the dark counterweight — a paper panel under bright video reads as a
+  // different brand, and the reference's contrast is doing real work.
+  const surface = surfaceFor(slide, v, 'dark');
+  const ink = inkFor(v, surface);
+  const {
+    headline = '', chip, body, body_label, kicker_meta, texture, credit, video_url,
+    panel_height = 760, panel_fade = 160, headline_size = 74, body_size = 30,
+  } = slide;
+  return (
+    <VSlide v={v} surface={surface} texture={texture}>
+      {/* Video occupies everything ABOVE the panel. Anchored off the BOTTOM, not
+          computed from 1920, so the frame still composes if the design is left
+          in instagram-portrait by mistake. */}
+      <div style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: panel_height, overflow: 'hidden' }}>
+        <ReelVideoZone top={0} videoUrl={video_url} />
+        {/* Wordmark watermark, over the video, top-right. */}
+        <div style={{ position: 'absolute', top: PAD - 24, right: PAD - 8, opacity: .82 }}>
+          <VWordmark size={30} onDark />
+        </div>
+      </div>
+      {/* Bottom panel — the strip the composer keeps. The gradient sits INSIDE
+          it so the composed MP4 gets the same hand-off the preview shows. */}
+      <div style={{
+        position: 'absolute', left: 0, right: 0, bottom: 0, height: panel_height,
+        background: surface.bg, boxSizing: 'border-box',
+        padding: `${panel_fade * 0.55}px ${PAD - 8}px ${PAD + 40}px`,
+        display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
+      }}>
+        {panel_fade > 0 && (
+          <div style={{
+            position: 'absolute', left: 0, right: 0, top: -panel_fade, height: panel_fade,
+            background: `linear-gradient(180deg, ${surface.bg}00 0%, ${surface.bg} 100%)`,
+            pointerEvents: 'none',
+          }} />
+        )}
+        {(chip || kicker_meta) && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 22 }}>
+            {chip && (
+              <span style={{
+                background: VAQ.orange, color: '#FFF', fontFamily: VAQ.mono, fontWeight: 700,
+                fontSize: 22, letterSpacing: '.14em', textTransform: 'uppercase',
+                padding: '8px 16px', borderRadius: 3,
+              }}>{chip}</span>
+            )}
+            {kicker_meta && (
+              <span style={{
+                fontFamily: VAQ.mono, fontSize: 21, letterSpacing: '.14em',
+                textTransform: 'uppercase', color: ink.muted,
+              }}>{kicker_meta}</span>
+            )}
+          </div>
+        )}
+        <VHeadline text={headline} v={v} size={headline_size} onDark />
+        {/* The label is a run-in float rather than a sibling: VBody emits <p>,
+            so a plain span before it would break onto its own line. Floating it
+            shortens only the first line box, which is the effect wanted, and it
+            keeps the body going through VBody so [key term], _italic_ and
+            **bold** still parse. */}
+        {body && (
+          <div className="vaq-measure" style={{ marginTop: 24, maxWidth: 980 }}>
+            {body_label && (
+              <span style={{
+                float: 'left', marginRight: 12,
+                fontFamily: VAQ.mono, fontWeight: 700, color: VAQ.orange,
+                fontSize: body_size, lineHeight: body_size <= 38 ? 1.65 : 1.58,
+                letterSpacing: '.06em', textTransform: 'uppercase',
+              }}>{body_label}</span>
+            )}
+            <VBody text={body} v={v} size={body_size} onDark color={ink.body} />
+          </div>
+        )}
+        {credit && (
+          <div style={{
+            marginTop: 'auto', fontFamily: VAQ.mono, fontSize: 19, letterSpacing: '.1em',
+            textTransform: 'uppercase', color: ink.muted,
+          }}>{credit}</div>
+        )}
+      </div>
+    </VSlide>
+  );
+}
+
 // ── ROSTER ────────────────────────────────────────────────────
 // A ranked / chronological league table: one row per entry
 // (flag · name · value), sized to fit the whole list on one slide, with an
@@ -517,7 +616,7 @@ function RosterSlide({ slide, index }) {
   const surface = surfaceFor(slide, v);
   const ink = inkFor(v, surface);
   const {
-    headline = '', kicker_meta, texture, rows = [],
+    headline = '', kicker_meta, texture, rows = [], loop,
     headline_size, row_size,
   } = slide;
   const n = rows.length || 1;
@@ -574,6 +673,7 @@ function RosterSlide({ slide, index }) {
             );
           })}
         </div>
+          <VLoop text={loop} v={v} onSolid={surface.onSolid} onDark={surface.onDark} />
         <div style={{ height: CHROME_H - 58 }} />
       </div>
       <VChrome n={index + 1} onSolid={surface.onSolid} onDark={surface.onDark} v={v} />
@@ -956,6 +1056,624 @@ function GeoSlide({ slide, index }) {
 }
 
 
+// ── CHART SHELL ───────────────────────────────────────────────
+// Every chart layout is the same slide: kicker, headline, the plot, an
+// optional legend, an optional source line. Only the plot differs.
+function VChartSlide({ slide, index, children, legend }) {
+  const t = useTweaks();
+  const v = verticalFor(slide, t);
+  const surface = surfaceFor(slide, v);
+  const {
+    headline, kicker_meta, texture, source, body, loop,
+    headline_size, body_size = 38, chart_offset_y = 0,
+  } = slide;
+  const viz = vizFor(v, surface);
+  const hSize = headline_size || 68;
+  return (
+    <VSlide v={v} surface={surface} texture={texture}>
+      <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column' }}>
+        <VKicker v={v} onSolid={surface.onSolid} onDark={surface.onDark} meta={kicker_meta} style={kickerAlign(slide)} />
+        {headline && (
+          <div style={{ marginTop: 30 }}>
+            <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} onDark={surface.onDark} />
+          </div>
+        )}
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center',
+          transform: `translateY(${chart_offset_y}px)` }}>
+          <div style={{ marginTop: 40 }}>{children}</div>
+          {legend}
+          <VSource text={source} v={v} viz={viz} />
+          {body && (
+            <div style={{ marginTop: 30 }}>
+              <VBody text={body} v={v} size={body_size} onSolid={surface.onSolid} onDark={surface.onDark} />
+            </div>
+          )}
+          <VLoop text={loop} v={v} onSolid={surface.onSolid} onDark={surface.onDark} />
+        </div>
+        {/* Full chrome clearance: a chart's source line is the last thing on
+            the slide and lands closest to the page number. */}
+        <div style={{ height: CHROME_H }} />
+      </div>
+      <VChrome n={index + 1} onSolid={surface.onSolid} onDark={surface.onDark} v={v} />
+    </VSlide>
+  );
+}
+
+// ── BAR-CHART ─────────────────────────────────────────────────
+// Horizontal bars: long Indian category names don't fit under a column.
+// mode: emphasis (default — the subject in orange, the field in slate)
+//     · sequence (ordinal orange ramp, for genuinely ordered bands)
+//     · stack    (one bar, part-to-whole, 2px surface gaps, legend required)
+function BarChartSlide({ slide, index }) {
+  const t = useTweaks();
+  const v = verticalFor(slide, t);
+  const surface = surfaceFor(slide, v);
+  const viz = vizFor(v, surface);
+  const {
+    mode = 'emphasis', rows, value_prefix = '', value_suffix = '', decimals,
+    max, bar_size = VIZ.bar, label_size = 30,
+  } = slide;
+  const data = vizRows(rows);
+  if (!data.length) return <VChartSlide slide={slide} index={index}><div /></VChartSlide>;
+
+  const total = data.reduce((a, r) => a + r.value, 0);
+  const top = Number(max) || Math.max(...data.map(r => r.value));
+
+  // ---- stack: one bar, segments in the ordinal ramp, legend carries identity
+  if (mode === 'stack') {
+    const legend = (
+      <VLegend v={v} viz={viz} items={data.map((r, i) => ({
+        name: `${r.label} · ${vizFmt(r.value, value_prefix, value_suffix, decimals)}`,
+        color: r.color || viz.ramp[i % viz.ramp.length],
+      }))} />
+    );
+    return (
+      <VChartSlide slide={slide} index={index} legend={legend}>
+        <div style={{ display: 'flex', width: '100%', height: bar_size * 1.9, borderRadius: VIZ.round,
+          overflow: 'hidden', gap: VIZ.gap }}>
+          {data.map((r, i) => {
+            const pct = total ? (r.value / total) * 100 : 0;
+            const fill = r.color || viz.ramp[i % viz.ramp.length];
+            // Only label inside the segment when the text genuinely fits.
+            const room = (pct / 100) * (1080 - PAD * 2);
+            const txt = vizFmt(r.value, value_prefix, value_suffix, decimals);
+            const fits = room > txt.length * 20 + 44;
+            return (
+              <div key={i} style={{ width: `${pct}%`, background: fill, display: 'flex',
+                alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
+                {fits && <span style={vizNum(v, label_size, i >= 2 ? '#FFFFFF' : '#3A1402', 700)}>{txt}</span>}
+              </div>
+            );
+          })}
+        </div>
+      </VChartSlide>
+    );
+  }
+
+  // ---- diverge: above/below a baseline. Warm pole (orange) reads positive,
+  // cool pole (slate) negative, with the surface itself as the neutral
+  // midpoint — never a third hue sitting at zero.
+  if (mode === 'diverge') {
+    const maxAbs = Number(max) || Math.max(...data.map(r => Math.abs(r.value))) || 1;
+    return (
+      <VChartSlide slide={slide} index={index}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 38 }}>
+          {data.map((r, i) => {
+            const neg = r.value < 0;
+            const w = (Math.abs(r.value) / maxAbs) * 50;
+            return (
+              <div key={i}>
+                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
+                  marginBottom: 12, gap: 24 }}>
+                  <span style={{ fontFamily: bodyFontFor(v), fontWeight: 700, fontSize: label_size + 4,
+                    color: viz.ink.head, letterSpacing: '-.01em' }}>{r.label}</span>
+                  <span style={vizNum(v, label_size + 6, viz.ink.head, 700)}>
+                    {(r.value > 0 ? '+' : '') + vizFmt(r.value, value_prefix, value_suffix, decimals)}
+                  </span>
+                </div>
+                <div style={{ position: 'relative', width: '100%', height: bar_size }}>
+                  <div style={{ position: 'absolute', left: '50%', top: -6, bottom: -6, width: VIZ.hair,
+                    background: viz.axis }} />
+                  <div style={{ position: 'absolute', top: 0, height: bar_size,
+                    left: neg ? `${50 - w}%` : '50%', width: `${w}%`,
+                    background: neg ? viz.ctx : viz.accent,
+                    borderRadius: neg ? `${VIZ.round}px 0 0 ${VIZ.round}px` : `0 ${VIZ.round}px ${VIZ.round}px 0` }} />
+                </div>
+                {r.note && (
+                  <div style={{ marginTop: 12, fontFamily: metaFontFor(v), fontSize: 20, letterSpacing: '.04em',
+                    color: viz.ink.muted }}>{r.note}</div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </VChartSlide>
+    );
+  }
+
+  // ---- emphasis / sequence: a row per bar, value directly labelled at the tip
+  const anyEm = data.some(r => r.emphasis);
+  return (
+    <VChartSlide slide={slide} index={index}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 34 }}>
+        {data.map((r, i) => {
+          const pct = top ? Math.max(0, (r.value / top)) * 100 : 0;
+          const fill = r.color
+            || (mode === 'sequence' ? viz.ramp[Math.min(i, viz.ramp.length - 1)]
+            : (anyEm ? (r.emphasis ? viz.accent : viz.ctx) : viz.accent));
+          return (
+            <div key={i}>
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between',
+                marginBottom: 12, gap: 24 }}>
+                <span style={{ fontFamily: bodyFontFor(v), fontWeight: r.emphasis ? 800 : 600, fontSize: label_size + 4,
+                  color: r.emphasis || !anyEm ? viz.ink.head : viz.ink.body, letterSpacing: '-.01em' }}>{r.label}</span>
+                <span style={vizNum(v, label_size + 6, r.emphasis || !anyEm ? viz.ink.head : viz.ink.body, 700)}>
+                  {vizFmt(r.value, value_prefix, value_suffix, decimals)}
+                </span>
+              </div>
+              {/* track is the surface, not a filled block: the bar is the only ink */}
+              <div style={{ width: '100%', height: bar_size, background: 'transparent',
+                borderTop: `${VIZ.hair}px solid ${viz.grid}` , paddingTop: 0 }}>
+                <div style={{ width: `${pct}%`, height: bar_size, background: fill,
+                  borderRadius: `0 ${VIZ.round}px ${VIZ.round}px 0` }} />
+              </div>
+              {r.note && (
+                <div style={{ marginTop: 10, fontFamily: metaFontFor(v), fontSize: 20, letterSpacing: '.04em',
+                  color: viz.ink.muted }}>{r.note}</div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </VChartSlide>
+  );
+}
+
+// ── LINE-CHART ────────────────────────────────────────────────
+// Trend over time. One series is the norm (no legend — the headline names
+// it); a second is allowed and takes slate, with a legend. Labels are
+// SELECTIVE: first, last, and the extreme — never a number on every point.
+function LineChartSlide({ slide, index }) {
+  const t = useTweaks();
+  const v = verticalFor(slide, t);
+  const surface = surfaceFor(slide, v);
+  const viz = vizFor(v, surface);
+  const {
+    series, x_labels = [], y_min, y_max, value_prefix = '', value_suffix = '',
+    decimals, area = false, label_size = 26, chart_height = 470,
+  } = slide;
+
+  const sets = (Array.isArray(series) ? series : []).slice(0, 2).map((s, i) => ({
+    name: s.name || '',
+    values: (Array.isArray(s.values) ? s.values : []).map(Number),
+    color: i === 0 ? viz.accent : viz.ctx,
+  })).filter(s => s.values.length > 1);
+  if (!sets.length) return <VChartSlide slide={slide} index={index}><div /></VChartSlide>;
+
+  const all = sets.flatMap(s => s.values);
+  const lo = y_min !== undefined && y_min !== null && y_min !== '' ? Number(y_min) : Math.min(...all);
+  const hi = y_max !== undefined && y_max !== null && y_max !== '' ? Number(y_max) : Math.max(...all);
+  const span = hi - lo || 1;
+  const W = 1080 - PAD * 2, H = chart_height;
+  const PADL = 8, PADR = 8, PADT = 46, PADB = 8;               // room for the end label
+  const px = (i, n) => PADL + (i / (n - 1)) * (W - PADL - PADR);
+  const py = (val) => PADT + (1 - (val - lo) / span) * (H - PADT - PADB);
+
+  const legend = sets.length > 1
+    ? <VLegend v={v} viz={viz} items={sets.map(s => ({ name: s.name, color: s.color }))} />
+    : null;
+
+  return (
+    <VChartSlide slide={slide} index={index} legend={legend}>
+      <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} style={{ display: 'block', overflow: 'visible' }}>
+        {/* solid hairline gridlines, one step off the surface — never dashed */}
+        {[0, 0.5, 1].map((f, i) => (
+          <line key={i} x1={0} x2={W} y1={PADT + f * (H - PADT - PADB)} y2={PADT + f * (H - PADT - PADB)}
+            stroke={f === 1 ? viz.axis : viz.grid} strokeWidth={VIZ.hair} />
+        ))}
+        {sets.map((s, si) => {
+          const n = s.values.length;
+          const d = s.values.map((val, i) => `${i ? 'L' : 'M'}${px(i, n)},${py(val)}`).join(' ');
+          const areaD = `${d} L${px(n - 1, n)},${H - PADB} L${px(0, n)},${H - PADB} Z`;
+          const iMax = s.values.indexOf(Math.max(...s.values));
+          // first, last, and the peak — the three that carry the story
+          const marks = [...new Set([0, iMax, n - 1])];
+          return (
+            <g key={si}>
+              {area && si === 0 && <path d={areaD} fill={s.color} opacity={0.10} />}
+              <path d={d} fill="none" stroke={s.color} strokeWidth={VIZ.line}
+                strokeLinejoin="round" strokeLinecap="round" />
+              {marks.map((i) => (
+                <g key={i}>
+                  {/* 2px surface ring keeps the dot legible where it crosses */}
+                  <circle cx={px(i, n)} cy={py(s.values[i])} r={VIZ.dot}
+                    fill={s.color} stroke={surface.bg} strokeWidth={VIZ.gap} />
+                  <text x={px(i, n)} y={py(s.values[i]) - VIZ.dot - 16} textAnchor={i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle'}
+                    style={vizNum(v, label_size, viz.ink.head, 700)}>
+                    {vizFmt(s.values[i], value_prefix, value_suffix, decimals)}
+                  </text>
+                </g>
+              ))}
+            </g>
+          );
+        })}
+      </svg>
+      {x_labels.length > 0 && (
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 18 }}>
+          {x_labels.map((l, i) => (
+            <span key={i} style={{ fontFamily: metaFontFor(v), fontSize: 22, letterSpacing: '.06em',
+              textTransform: 'uppercase', color: viz.ink.muted }}>{l}</span>
+          ))}
+        </div>
+      )}
+    </VChartSlide>
+  );
+}
+
+// ── PICTOGRAM ─────────────────────────────────────────────────
+// A unit chart: N cells, the share of them filled. The one chart form the
+// Venngage piece singles out for social, and the right one for a proportion
+// read at arm's length — a phone reader counts blocks faster than they read
+// a pie's angles.
+function PictogramSlide({ slide, index }) {
+  const t = useTweaks();
+  const v = verticalFor(slide, t);
+  const surface = surfaceFor(slide, v);
+  const viz = vizFor(v, surface);
+  const {
+    value = 0, total = 100, columns = 10, unit_label, sublabel,
+    value_suffix = '%', value_prefix = '', decimals, shape = 'square',
+    grid_height = 560, figure_size = 132,
+  } = slide;
+  const n = Math.max(1, Math.round(Number(total) || 100));
+  const cols = Math.max(1, Math.round(Number(columns) || 10));
+  // Fill exactly, not to the nearest whole cell: 88.5% of a 100-cell grid is
+  // 88 blocks and a half, and rounding it to 89 would put a number on the
+  // plot that contradicts the label printed right above it.
+  const exact = (Number(value) / (Number(total) === 100 ? 100 : n)) * n;
+  const full = Math.max(0, Math.floor(exact + 1e-9));
+  const frac = Math.min(1, Math.max(0, exact - full));
+  const W = 1080 - PAD * 2;
+  const rows = Math.ceil(n / cols);
+  // Fit the grid to BOTH axes. Sizing off the width alone overflows the canvas
+  // as soon as the row count climbs (a 100-cell 10-wide grid is square, and a
+  // square 936px grid does not fit under a headline on a 1350px slide).
+  const gap = VIZ.gap * 2;
+  const cell = Math.max(8, Math.min(
+    Math.floor((W - (cols - 1) * gap) / cols),
+    Math.floor(((Number(grid_height) || 560) - (rows - 1) * gap) / rows),
+  ));
+
+  return (
+    <VChartSlide slide={slide} index={index}>
+      <div>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 22, marginBottom: 34 }}>
+          {/* Deliberate deviation from the dataviz "hero figure = the UI sans"
+              rule: Archivo display numerals ARE the VAQ voice (the `stat`
+              layout is built on them), so the sans would read as the foreign
+              element here — the inverse of what that rule guards against. */}
+          <span style={{ fontFamily: VAQ.display, fontWeight: 900, fontSize: figure_size, lineHeight: 0.9,
+            letterSpacing: '-.03em', color: surface.onSolid ? viz.ink.head : viz.accent }}>
+            {vizFmt(value, value_prefix, value_suffix, decimals)}
+          </span>
+          {unit_label && (
+            <span style={{ fontFamily: bodyFontFor(v), fontWeight: 700, fontSize: 38, color: viz.ink.head,
+              letterSpacing: '-.01em' }}>{unit_label}</span>
+          )}
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cols}, ${cell}px)`,
+          gap: VIZ.gap * 2, width: 'max-content' }}>
+          {Array.from({ length: rows * cols }).map((_, i) => {
+            if (i >= n) return <span key={i} />;
+            const radius = shape === 'dot' ? '50%' : 4;
+            const empty = { width: cell, height: cell, background: viz.ctx, opacity: 0.34,
+                            borderRadius: radius, display: 'block' };
+            if (i < full) return <span key={i} style={{ ...empty, background: viz.accent, opacity: 1 }} />;
+            // The partial cell's two halves are SIBLINGS, not nested: opacity
+            // on a parent clamps its children, so a 0.34 track would wash the
+            // filled part out to a tint of the accent.
+            if (i === full && frac > 0.02) return (
+              <span key={i} style={{ width: cell, height: cell, borderRadius: radius,
+                position: 'relative', overflow: 'hidden', display: 'block' }}>
+                <span style={{ position: 'absolute', inset: 0, background: viz.ctx, opacity: 0.34 }} />
+                <span style={{ position: 'absolute', top: 0, bottom: 0, left: 0,
+                  width: `${frac * 100}%`, background: viz.accent }} />
+              </span>
+            );
+            return <span key={i} style={empty} />;
+          })}
+        </div>
+        {sublabel && (
+          <div style={{ marginTop: 30, fontFamily: bodyFontFor(v), fontWeight: 600, fontSize: 32,
+            color: viz.ink.body, letterSpacing: '-.01em' }}>{sublabel}</div>
+        )}
+      </div>
+    </VChartSlide>
+  );
+}
+
+// ── PIE-CHART ─────────────────────────────────────────────────
+// Part-to-whole, at a glance only. The rules that keep it honest:
+//   · 6 slices maximum. Past that adjacent classes blur and it wants a table.
+//   · Never for comparing close values — that is a bar. Use this when the
+//     reader's question is "how is the whole divided", not "which is bigger".
+//   · Never 2 slices. That is a stat tile with extra ink.
+//
+// COLOUR: this is the one layout that leaves the two-tone system, because a
+// part-to-whole needs true categorical identity and VAQ has one accent. Slice
+// colours come from the dataviz skill's documented palette, re-validated
+// against VAQ's own surfaces INCLUDING the ring-closure pair (in a pie the
+// last slice touches the first, which a linear pairlist never tests):
+//   node scripts/validate_palette.js "#c98500,#199e70,#3987e5,#d55181,#008300" \
+//        --mode dark --surface "#1E1E1E"          → ALL PASS
+//   …and the light steps against #F7F9FB          → ALL PASS (contrast WARN,
+//   relieved by the direct labels + legend this layout always ships)
+// Slot 0 is a NEUTRAL GREY on purpose: in a fossil-vs-clean split the fossil
+// share is context, not an identity, and grey separates from every hue on
+// lightness rather than hue. Don't hand-pick slice colours — a semantic guess
+// put violet beside blue (ΔE 1.9 under protanopia) and red beside magenta.
+const PIE_SLOTS_DARK  = ['#8A97A3', '#c98500', '#199e70', '#3987e5', '#d55181', '#008300'];
+const PIE_SLOTS_LIGHT = ['#6B7A88', '#eda100', '#1baf7a', '#2a78d6', '#e87ba4', '#008300'];
+
+function PieChartSlide({ slide, index }) {
+  const t = useTweaks();
+  const v = verticalFor(slide, t);
+  const surface = surfaceFor(slide, v);
+  const viz = vizFor(v, surface);
+  const {
+    rows, value_prefix = '', value_suffix = '', decimals,
+    donut = 0.56, size = 440, center_label, center_value,
+    show_percent = false, slice_label_size = 26,
+  } = slide;
+  const data = vizRows(rows).slice(0, 6);
+  if (!data.length) return <VChartSlide slide={slide} index={index}><div /></VChartSlide>;
+
+  const slots = surface.onDark ? PIE_SLOTS_DARK : PIE_SLOTS_LIGHT;
+  const total = data.reduce((a, r) => a + r.value, 0) || 1;
+  const R = size / 2, r = R * Math.max(0, Math.min(0.85, donut));
+  const C = size / 2 + 10;                 // a little air for the gap stroke
+  const S = size + 20;
+
+  // Arc geometry. Angles run clockwise from 12 o'clock.
+  const pt = (rad, ang) => [C + rad * Math.sin(ang), C - rad * Math.cos(ang)];
+  let acc = 0;
+  const slices = data.map((row, i) => {
+    const frac = row.value / total;
+    const a0 = acc * 2 * Math.PI, a1 = (acc + frac) * 2 * Math.PI;
+    acc += frac;
+    const big = a1 - a0 > Math.PI ? 1 : 0;
+    const [x0, y0] = pt(R, a0), [x1, y1] = pt(R, a1);
+    const [u1, w1] = pt(r, a1), [u0, w0] = pt(r, a0);
+    const d = r > 0
+      ? `M${x0},${y0} A${R},${R} 0 ${big} 1 ${x1},${y1} L${u1},${w1} A${r},${r} 0 ${big} 0 ${u0},${w0} Z`
+      : `M${C},${C} L${x0},${y0} A${R},${R} 0 ${big} 1 ${x1},${y1} Z`;
+    const mid = (a0 + a1) / 2;
+    const [lx, ly] = pt(r > 0 ? (R + r) / 2 : R * 0.62, mid);
+    return { ...row, frac, d, lx, ly, color: row.color || slots[i % slots.length] };
+  });
+
+  // On-slice labels carry the bare number: the unit is on every legend row, and
+  // a suffix like " GW" is what pushes the text past the ring band.
+  const fmt = (row) => show_percent
+    ? `${Math.round(row.frac * 100)}%`
+    : vizFmt(row.value, '', '', decimals);
+  // Space Mono advances ~0.6em. A donut label has the ring's width to live in;
+  // a pie label has the radius. Anything that doesn't fit goes to the legend
+  // rather than being drawn over its own edge.
+  const band = r > 0 ? (R - r) : R * 0.8;
+  const fits = (row) => fmt(row).length * slice_label_size * 0.62 < band - 14;
+
+  const legend = (
+    <VLegend v={v} viz={viz} items={slices.map(s => ({
+      name: `${s.label} · ${vizFmt(s.value, value_prefix, value_suffix, decimals)}`,
+      color: s.color,
+    }))} />
+  );
+
+  return (
+    <VChartSlide slide={slide} index={index} legend={legend}>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <svg width={S} height={S} viewBox={`0 0 ${S} ${S}`} style={{ display: 'block', overflow: 'visible' }}>
+          {slices.map((s, i) => (
+            // 2px surface gap, drawn as a stroke in the surface colour — never
+            // a border, which would add ink that isn't data.
+            <path key={i} d={s.d} fill={s.color} stroke={surface.bg} strokeWidth={VIZ.gap}
+              strokeLinejoin="round" />
+          ))}
+          {slices.map((s, i) => {
+            // Only label a slice wide enough to hold the text, in both
+            // directions. Everything else is carried by the legend, so nothing
+            // is gated behind a sliver.
+            if (s.frac < 0.09 || !fits(s)) return null;
+            return (
+              <text key={i} x={s.lx} y={s.ly + 9} textAnchor="middle"
+                style={vizNum(v, slice_label_size, _pieInk(s.color), 700)}>{fmt(s)}</text>
+            );
+          })}
+          {(center_value || center_label) && r > 0 && (
+            <g>
+              {center_value && (
+                <text x={C} y={C + (center_label ? 4 : 14)} textAnchor="middle"
+                  style={{ fontFamily: VAQ.display, fontWeight: 900, fontSize: 62,
+                    letterSpacing: '-.02em', fill: viz.ink.head }}>{center_value}</text>
+              )}
+              {center_label && (
+                <text x={C} y={C + 44} textAnchor="middle"
+                  style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 21,
+                    letterSpacing: '.12em', fill: viz.ink.muted }}>{center_label}</text>
+              )}
+            </g>
+          )}
+        </svg>
+      </div>
+    </VChartSlide>
+  );
+}
+
+// A label sitting INSIDE a coloured fill is the one place text may leave the
+// ink tokens: pick white or near-black by the fill's luminance so it always
+// clears contrast against its own slice.
+function _pieInk(hex) {
+  const c = String(hex).replace('#', '');
+  const [r, g, b] = [0, 2, 4].map(i => parseInt(c.slice(i, i + 2), 16) / 255)
+    .map(u => (u <= 0.04045 ? u / 12.92 : ((u + 0.055) / 1.055) ** 2.4));
+  return (0.2126 * r + 0.7152 * g + 0.0722 * b) > 0.35 ? '#101010' : '#FFFFFF';
+}
+
+// ── CITY-MAP ──────────────────────────────────────────────────
+// A local map for one metro area. `geo` is Natural Earth 110m — country
+// outlines — so zooming it to a city gives a featureless slab. This draws
+// from real lat/lon on a locally-correct projection instead, and the thing
+// it actually encodes is DISTANCE: concentric rings from a centre, with
+// places pinned on them. Use it for "how far out is this really".
+//
+// Projection: equirectangular about (center_lat, center_lon) with the
+// longitude axis scaled by cos(center_lat). Without that correction a
+// Bengaluru map is stretched ~2.6% east-west; with it, a ring drawn as a
+// circle is a true circle on the ground.
+const KM_PER_DEG = 111.32;
+
+function CityMapSlide({ slide, index }) {
+  const t = useTweaks();
+  const v = verticalFor(slide, t);
+  const surface = surfaceFor(slide, v, 'light');
+  const viz = vizFor(v, surface);
+  const {
+    center_lat = 12.9794, center_lon = 77.5912, span_km = 70,
+    rings, places, routes, map_height = 620, map_caption,
+    field_color, ring_label = true, scale_bar = true, pin_size = 15, label_size = 24,
+  } = slide;
+
+  const W = 1080 - PAD * 2, H = Number(map_height) || 620;
+  const lat0 = Number(center_lat), lon0 = Number(center_lon);
+  const K = W / (Number(span_km) / KM_PER_DEG);           // px per degree latitude
+  const cosLat = Math.cos(lat0 * Math.PI / 180);
+  const X = (lon) => W / 2 + (lon - lon0) * cosLat * K;
+  const Y = (lat) => H / 2 - (lat - lat0) * K;
+  const kmToPx = (km) => (km / KM_PER_DEG) * K;
+
+  const field = field_color || '#0A1F3C';
+  const ringList = (Array.isArray(rings) ? rings : [10, 20, 30]).map(Number).filter(n => n > 0);
+  const pts = (Array.isArray(places) ? places : []).map(p => ({
+    name: p.name || '', lat: Number(p.lat), lon: Number(p.lon),
+    emphasis: !!p.emphasis, note: p.note || '', align: p.align || 'right',
+  })).filter(p => Number.isFinite(p.lat) && Number.isFinite(p.lon));
+
+  const routeList = (Array.isArray(routes) ? routes : []).map(r => ({
+    from: r.from, to: r.to, label: r.label || '', label_offset: r.label_offset,
+  })).filter(r => Array.isArray(r.from) && Array.isArray(r.to));
+
+  return (
+    <VChartSlide slide={slide} index={index}>
+      <div>
+        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}
+          style={{ display: 'block', borderRadius: 14, overflow: 'hidden' }}>
+          <rect x={0} y={0} width={W} height={H} fill={field} />
+          {/* faint local grid — orientation only, never a data gridline */}
+          {Array.from({ length: 9 }).map((_, i) => (
+            <g key={i} stroke="rgba(255,255,255,.055)" strokeWidth={VIZ.hair}>
+              <line x1={(i + 1) * W / 10} x2={(i + 1) * W / 10} y1={0} y2={H} />
+              {i < 6 && <line x1={0} x2={W} y1={(i + 1) * H / 7} y2={(i + 1) * H / 7} />}
+            </g>
+          ))}
+          {/* Distance rings. Labels ride the upper-left diagonal rather than
+              due east: the eastward radius is where pins cluster on a map
+              centred at a CBD, and stacking three ring labels along it walks
+              them straight through those labels. */}
+          {ringList.map((km, i) => {
+            const rr = kmToPx(km), D = 0.7071;
+            return (
+              <g key={i}>
+                <circle cx={X(lon0)} cy={Y(lat0)} r={rr} fill="none"
+                  stroke="rgba(255,255,255,.26)" strokeWidth={VIZ.hair} />
+                {ring_label && (
+                  <text x={X(lon0) - rr * D} y={Y(lat0) - rr * D - 10} textAnchor="middle"
+                    style={{ fontFamily: metaFontFor(v), fontSize: 19, fill: 'rgba(255,255,255,.5)',
+                      letterSpacing: '.08em' }}>{km} KM</text>
+                )}
+              </g>
+            );
+          })}
+          {routeList.map((r, i) => {
+            const mx = (X(r.from[1]) + X(r.to[1])) / 2, my = (Y(r.from[0]) + Y(r.to[0])) / 2;
+            // Offset the label perpendicular to the line so it clears both
+            // endpoints' own labels.
+            const dx = X(r.to[1]) - X(r.from[1]), dy = Y(r.to[0]) - Y(r.from[0]);
+            const len = Math.hypot(dx, dy) || 1;
+            const off = Number(r.label_offset) || 30;
+            return (
+              <g key={i}>
+                <line x1={X(r.from[1])} y1={Y(r.from[0])} x2={X(r.to[1])} y2={Y(r.to[0])}
+                  stroke={viz.accent} strokeWidth={VIZ.line} strokeLinecap="round"
+                  strokeDasharray={`1 ${VIZ.line * 2.6}`} />
+                {r.label && (
+                  <text x={mx + (-dy / len) * off} y={my + (dx / len) * off + 7}
+                    textAnchor="middle" style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 21,
+                      fill: '#FFFFFF', letterSpacing: '.04em' }}>{r.label}</text>
+                )}
+              </g>
+            );
+          })}
+          {/* Centre cross marks the ORIGIN OF THE RINGS, so it only earns its
+              place when rings are drawn — otherwise it is a stray mark at an
+              arbitrary point. Also suppressed when a pin already sits on the
+              centre, where its arms would poke out from under that pin. */}
+          {ringList.length > 0
+            && !pts.some(p => Math.hypot(X(p.lon) - X(lon0), Y(p.lat) - Y(lat0)) < pin_size + 8) && (
+            <g stroke="rgba(255,255,255,.55)" strokeWidth={VIZ.hair}>
+              <line x1={X(lon0) - 13} x2={X(lon0) + 13} y1={Y(lat0)} y2={Y(lat0)} />
+              <line x1={X(lon0)} x2={X(lon0)} y1={Y(lat0) - 13} y2={Y(lat0) + 13} />
+            </g>
+          )}
+          {pts.map((p, i) => {
+            const cx = X(p.lon), cy = Y(p.lat), left = p.align === 'left';
+            const r = p.emphasis ? pin_size + 3 : pin_size;
+            return (
+              <g key={i}>
+                {p.emphasis && (
+                  <circle cx={cx} cy={cy} r={r + 13} fill="none" stroke={viz.accent}
+                    strokeWidth={VIZ.hair} opacity={0.7} />
+                )}
+                <circle cx={cx} cy={cy} r={r} fill={p.emphasis ? viz.accent : '#B3C7DA'}
+                  stroke={field} strokeWidth={VIZ.gap} />
+                <text x={left ? cx - r - 14 : cx + r + 14} y={cy + 8} textAnchor={left ? 'end' : 'start'}
+                  style={{ fontFamily: bodyFontFor(v), fontWeight: 800, fontSize: label_size,
+                    fill: '#FFFFFF', letterSpacing: '-.01em' }}>{p.name}</text>
+                {p.note && (
+                  <text x={left ? cx - r - 14 : cx + r + 14} y={cy + 8 + label_size + 4}
+                    textAnchor={left ? 'end' : 'start'}
+                    style={{ fontFamily: metaFontFor(v), fontSize: label_size - 6,
+                      fill: 'rgba(255,255,255,.66)', letterSpacing: '.03em' }}>{p.note}</text>
+                )}
+              </g>
+            );
+          })}
+          {scale_bar && (() => {
+            // Adaptive: a fixed 10 km bar is a 27px stub on a 340 km map and a
+            // third of the frame on a 30 km one. Snap to a round number near a
+            // fifth of the span.
+            const nice = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000];
+            const target = Number(span_km) / 5;
+            const km = nice.reduce((a, b) => Math.abs(b - target) < Math.abs(a - target) ? b : a);
+            return (
+              <g>
+                <line x1={26} y1={H - 30} x2={26 + kmToPx(km)} y2={H - 30}
+                  stroke="rgba(255,255,255,.7)" strokeWidth={VIZ.hair * 1.6} strokeLinecap="square" />
+                <text x={26} y={H - 42} style={{ fontFamily: metaFontFor(v), fontSize: 19,
+                  fill: 'rgba(255,255,255,.7)', letterSpacing: '.08em' }}>{km} KM</text>
+              </g>
+            );
+          })()}
+        </svg>
+        {map_caption && (
+          <div style={{ marginTop: 16, fontFamily: metaFontFor(v), fontSize: 21,
+            letterSpacing: '.04em', color: viz.ink.muted }}>{map_caption}</div>
+        )}
+      </div>
+    </VChartSlide>
+  );
+}
+
 window.LAYOUTS = {
   'cover':       CoverSlide,
   'story':       StorySlide,
@@ -966,4 +1684,10 @@ window.LAYOUTS = {
   'geo':         GeoSlide,
   'closing':     ClosingSlide,
   'reel-frame':  ReelFrameSlide,
+  'reel-explainer': ReelExplainerSlide,
+  'bar-chart':   BarChartSlide,
+  'line-chart':  LineChartSlide,
+  'pictogram':   PictogramSlide,
+  'city-map':    CityMapSlide,
+  'pie-chart':   PieChartSlide,
 };

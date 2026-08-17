@@ -1,0 +1,65 @@
+name: nasha-mukt-yuva-100-week-campaign
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Prime Minister Narendra Modi launched the Nasha Mukt Yuva for Viksit Bharat Sankalp Abhiyan by video conferencing on 2 August 2026. The government put the launch-day turnout at over 10 million young people across 10,000 locations, taking a collective pledge against drug use.
+
+  The campaign runs for 100 weeks under the Ministry of Youth Affairs and Sports, driven by MY Bharat volunteers. Every Sunday, local units are to hold sports events, walkathons, meditation sessions, nukkad nataks, art competitions and discussion forums. Schools, colleges, youth bodies, NGOs, industry associations and 125 spiritual organisations have been brought in. Volunteers and organisations will be recognised at the 50th, 75th and 100th week marks.
+
+  Modi framed drug-free youth as a precondition for Viksit Bharat by 2047, and said individual resolve is harder to sustain than collective effort. He pointed to nationwide crackdowns, large seizures and rising arrests of dealers and smugglers as evidence the state is moving alongside the campaign. The test of a 100-week programme is week 60, not week one.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #Politics #VaqHQ #NashaMuktBharat #India
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  vertical: ground
+  seriesLabel: ANTI-DRUG DRIVE
+slides:
+- layout: cover
+  headline: A *100-week* pledge against drugs
+  subline: Modi launched the Nasha Mukt Yuva Abhiyan by video conferencing on 2 August 2026.
+  surface: light
+  image: _cache/0e37b6bc52761673.jpg
+- layout: stat
+  label: Launch day turnout, government figure
+  value: 10 million
+  sublabel: Young people across 10,000 locations
+  body: All took a **collective pledge** against substance abuse on the same day.
+  surface: dark
+  align_x: center
+- layout: story
+  headline: Every *Sunday*, for two years
+  body: |
+    The campaign runs 100 weeks under the Ministry of Youth Affairs and Sports.
+
+    **The weekly programme.** Sports events, walkathons, meditation, nukkad nataks, art competitions and discussion forums, held locally.
+
+    **Who has been brought in.** Colleges, youth bodies, NGOs, industry associations and [125 spiritual organisations].
+  surface: light
+  texture: grid
+  image: _cache/0ef2d8e7d1d13ca0.jpg
+  image_position: 44% 0%
+  image_height: 280
+  body_size: 37
+- layout: stat
+  label: Recognition milestones
+  value: 50 · 75 · 100
+  sublabel: Weeks at which volunteers are honoured
+  body: The structure is designed to hold **participation** across the full two years.
+  surface: dark
+- layout: quote
+  quote: Our youth will protect their energy by staying free from addiction.
+  attribution: Narendra Modi, 2 August 2026
+  surface: light
+- layout: closing
+  headline: Week one is easy
+  body: |
+    **The state's side of the ledger.** Modi cited nationwide crackdowns, large seizures and rising arrests of dealers and smugglers.
+
+    A 100-week campaign is judged at week 60. Turnout then is the real number.
+  handle: '@vaqhq'

@@ -1,0 +1,29 @@
+name: vaq-reel-explainer-demo
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Format demo for the reel-explainer layout. Video on top, caption panel along the bottom, chip plus two-tone headline plus a labelled explainer paragraph. Replace this with the real story.
+
+  @vaqhq
+hashtags: |
+  #VaqHQ
+tweaks:
+  vertical: briefing
+  showStamp: false
+  showPageNum: false
+  seriesLabel: THE BRIEFING
+slides:
+- layout: reel-explainer
+  kicker_meta: Muzaffarabad · Aug 2026
+  video_file: testsrc.mp4
+  chip: Blackout
+  headline: |
+    PoJK Has Been *Dark*
+    Since June
+  body_label: 'What happened:'
+  body: Web and mobile access across Pakistan-occupied Jammu and Kashmir has been restricted since June, with banking and road movement disrupted alongside it. The JAAC puts the dead at around 80. Pakistan's official figures are far lower, and nobody outside can verify either number.
+  credit: 'Footage: replace before publishing'
+  panel_height: 760
+  panel_fade: 160
+  headline_size: 74
+  body_size: 30

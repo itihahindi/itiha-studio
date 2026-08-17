@@ -1,0 +1,40 @@
+name: ranganathan-accountability
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  The CJP got its three demands and called the protest off. Anand Ranganathan's question on News18 India was about where the demands stopped.
+
+  What he said. In his own words on X: "If your demand stops at the edge of convenience or loyalty, then it was never about accountability to begin with." He framed the debate as exposing those who demand transparency from others while shielding their own.
+
+  What the debate was about. On News18 India with Aman Chopra, opposite CJP spokesperson Saurav Das. The on-screen headline ran "मांगे मान गई सरकार, खत्म हो गई तकरार", the government accepted the demands and the confrontation ended. Das said on air that the government had accepted all three of the CJP's demands, that FIRs against students would be withdrawn in the states as well, that families of students who died would receive financial support, and that the CJP had nothing to do with other leaders' demands.
+
+  Why the last one is the argument. A movement that wins FIR withdrawal and compensation, and then declines to extend the same standard to demands it does not find convenient, has drawn a line. Ranganathan's point is that the position of that line, not the volume of the campaign, is what tells you whether it was ever about accountability.
+
+  What is on record. The CJP called off a 36-day protest on 25 July after Dharmendra Pradhan resigned as Education Minister. The Centre agreed to compensate families of NEET aspirants who died by suicide and to withdraw FIRs against protesters nationwide, with Delhi Police awaiting formal orders. Pralhad Joshi took charge of Education on 26 July. The anti-paper-leak Bill cleared the Lok Sabha on 29 July.
+
+  A note on the clip. The debate is in Hindi. The English wording above is Ranganathan's own from his post, and the Hindi lines are the channel's on-screen chyrons. We have not translated the spoken exchange.
+
+  Source and video: @ARanganathan72 on News18 India with @AmanChopra_, 26 July 2026.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #AnandRanganathan #CJP #NEET #PaperLeak #Accountability #News18 #India
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: false
+  seriesLabel: GROUND REPORT
+slides:
+- layout: cover
+  kicker_meta: NEWS18 INDIA · 26 JULY 2026
+  headline: |
+    If the demand stops at
+    the edge of convenience,
+    it was never about
+    *accountability*.
+  subline: Anand Ranganathan to the CJP, after the government met its three demands.
+  credit: via @ARanganathan72
+  video_file: rg-closing.mp4
+  panel_height: 772
+  headline_size: 62
+  vertical: live

@@ -279,8 +279,11 @@ function VKicker({ v, onSolid, onDark, meta, style }) {
       padding: '8px 17px', borderRadius: 8, textTransform: 'uppercase',
     }}>{v.kicker}</span>;
   })();
-  const metaText = meta || v.show;
-  const dupMeta = metaText.trim().toLowerCase() === v.kicker.trim().toLowerCase();
+  // String(): a bare year in YAML (`kicker_meta: 2017`) parses as a NUMBER, and
+  // .trim() on a number throws, which takes down the whole slide tree from that
+  // slide onward. Coerce rather than making authors remember to quote years.
+  const metaText = String(meta || v.show);
+  const dupMeta = metaText.trim().toLowerCase() === String(v.kicker).trim().toLowerCase();
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 22, ...style }}>
       {chip}
@@ -518,9 +521,156 @@ function alignBlock(slide, legacy = {}, opts = {}) {
   };
 }
 
+// ── CURIOSITY LOOP ────────────────────────────────────────────
+// A one-line cliffhanger pinned under the body that sets up the NEXT slide.
+// Editorial copy, not chrome — which is what keeps it clear of the brand's
+// no-swipe-meta rule (Itiha owns the swipe-indicator convention). Give it
+// nothing on the cover, where the subline already does this job, and nothing
+// on the closing, where there is no next slide to loop to.
+function VLoop({ text, v, onSolid, onDark }) {
+  if (!text) return null;
+  const color = onSolid ? '#FFFFFF' : (v && v.accent) || '#F4631E';
+  return (
+    <div style={{ marginTop: 30, display: 'flex', alignItems: 'center', gap: 14 }}>
+      <span style={{ width: 30, height: 3, background: color, flex: 'none', opacity: 0.85 }} />
+      <span style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 23,
+        letterSpacing: '.1em', textTransform: 'uppercase', color, whiteSpace: 'nowrap' }}>
+        {text}
+      </span>
+      <span style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 23, color, opacity: 0.9 }}>
+        &#8594;
+      </span>
+    </div>
+  );
+}
+
+// ── CHARTS ────────────────────────────────────────────────────
+// Data-viz tokens for the two-tone system. Derived by holding the brand
+// orange's own hue (OKLCH 41.6°) and stepping lightness, then validated with
+// the dataviz skill's validate_palette.js against VAQ's real surfaces —
+// NOT eyeballed. Re-run it before changing any hex here:
+//   node scripts/validate_palette.js "#FF8B5D,#F4631E,#D54E00,#A23900" \
+//        --ordinal --surface "#F7F9FB"                      → ALL PASS
+//   node scripts/validate_palette.js "#FFCEBC,#FFA380,#F4631E,#D54E00" \
+//        --ordinal --mode dark --surface "#1E1E1E"          → ALL PASS
+//
+// Why there is no categorical palette: a categorical slot needs OKLCH C >= .10
+// to do identity work, and every navy that clears it comes out a saturated
+// blue (#0064B5 …) — i.e. a second accent, which the 2026-07-27 two-tone
+// consolidation exists to prevent. So VAQ charts encode by EMPHASIS instead:
+// the subject in orange, the context in slate. That pair separates on
+// lightness rather than hue (ΔE 34.1 normal, 21.5 protan on paper), so it
+// survives colour blindness better than any two-hue pair would. Running the
+// *categorical* validator on it FAILs the chroma floor by design — the grey is
+// meant to read as grey. Don't "fix" that by saturating the context colour.
+//
+// Brand orange is 2.99:1 on paper, a hair under the 3:1 mark floor, so the
+// relief rule binds: every value is DIRECTLY LABELLED. A slide has no tooltip
+// and no table view, so the label is the only channel — it is not optional.
+const VAQ_VIZ = {
+  rampLight: ['#FF8B5D', '#F4631E', '#D54E00', '#A23900'],
+  rampDark:  ['#FFCEBC', '#FFA380', '#F4631E', '#D54E00'],
+  ctxLight:  '#94A7BA',   // de-emphasis fill on paper   (2.34:1)
+  ctxDark:   '#76889B',   // de-emphasis fill on #1E1E1E (4.58:1)
+  inkLight:  '#3E4F60',   // second identity series on paper (7.98:1)
+  onSolidFill:  'rgba(58,20,2,.86)',   // data on the orange poster tile
+  onSolidCtx:   'rgba(58,20,2,.26)',
+};
+
+// Mark specs. The dataviz specs are in SCREEN px; a 1080-wide slide is shown
+// at ~390px on a phone, so everything is multiplied by ~2.75 to land at the
+// intended optical weight. Changing SCALE rescales the whole chart system.
+const VIZ_SCALE = 2.75;
+const VIZ = {
+  bar:  Math.round(23 * VIZ_SCALE),   // 63 — cap the bar, let the band breathe
+  line: Math.round(2.2 * VIZ_SCALE),  // 6
+  dot:  Math.round(4 * VIZ_SCALE),    // 11 radius → 22 dia (spec: >= 8 screen)
+  gap:  Math.round(2 * VIZ_SCALE),    // 6  — surface gap between touching fills
+  hair: Math.round(1 * VIZ_SCALE),    // 3  — solid hairline grid, never dashed
+  round: 11,                          // 4px rounded data-end
+};
+
+// Resolve the chart ink for a surface. Text always wears text tokens; only
+// marks wear the data colour.
+function vizFor(v, surface) {
+  const ink = inkFor(v, surface);
+  if (surface.onSolid) return {
+    accent: VAQ_VIZ.onSolidFill, ctx: VAQ_VIZ.onSolidCtx, ramp: [VAQ_VIZ.onSolidFill],
+    grid: 'rgba(58,20,2,.18)', axis: 'rgba(58,20,2,.34)', ink,
+  };
+  if (surface.onDark) return {
+    accent: '#F4631E', ctx: VAQ_VIZ.ctxDark, ramp: VAQ_VIZ.rampDark,
+    grid: 'rgba(255,255,255,.12)', axis: 'rgba(255,255,255,.22)', ink,
+  };
+  return {
+    accent: '#F4631E', ctx: VAQ_VIZ.ctxLight, ramp: VAQ_VIZ.rampLight,
+    grid: 'rgba(10,17,25,.10)', axis: 'rgba(10,17,25,.20)', ink,
+  };
+}
+
+// Numbers on a chart: Space Mono, tabular, so columns of values line up.
+// (Large standalone figures — the `stat` layout — keep proportional figures.)
+//
+// Sets BOTH `color` and `fill`, because this style object is spread onto HTML
+// spans and SVG <text> alike. SVG text takes `fill`; with `color` only it
+// silently falls back to default black, which is invisible on a dark slide.
+function vizNum(v, size, color, weight = 700) {
+  return { fontFamily: metaFontFor(v), fontWeight: weight, fontSize: size, color, fill: color,
+           fontVariantNumeric: 'tabular-nums', letterSpacing: '-.01em', whiteSpace: 'nowrap' };
+}
+
+// A source/footnote line under a chart. Charts carry their provenance.
+function VSource({ text, v, viz }) {
+  if (!text) return null;
+  return (
+    <div style={{ marginTop: 30, fontFamily: metaFontFor(v), fontWeight: 400, fontSize: 21,
+      letterSpacing: '.04em', color: viz.ink.muted, lineHeight: 1.45 }}>{text}</div>
+  );
+}
+
+// Legend — mandatory whenever two or more things are encoded by colour. A
+// single series never gets one: the headline already names what is plotted.
+function VLegend({ items, v, viz, style }) {
+  if (!items || items.length < 2) return null;
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px 34px', marginTop: 30, ...style }}>
+      {items.map((it, i) => (
+        <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span style={{ width: 26, height: 14, borderRadius: 3, background: it.color, flex: 'none' }} />
+          <span style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 22, letterSpacing: '.06em',
+            textTransform: 'uppercase', color: viz.ink.body }}>{it.name}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Parse `rows:` from YAML. Accepts objects or "Label | 42 | note" strings so a
+// chart can be typed quickly in the paste tab.
+function vizRows(rows) {
+  if (!Array.isArray(rows)) return [];
+  return rows.map((r) => {
+    if (typeof r === 'string') {
+      const p = r.split('|').map(s => s.trim());
+      return { label: p[0] || '', value: parseFloat(p[1]) || 0, note: p[2] || '', emphasis: /\*$/.test(p[0]) };
+    }
+    return { label: r.label || '', value: Number(r.value) || 0, note: r.note || '',
+             emphasis: !!r.emphasis, color: r.color };
+  }).map(r => ({ ...r, label: String(r.label).replace(/\s*\*$/, '') }));
+}
+
+// Format a value for a direct label.
+function vizFmt(n, prefix = '', suffix = '', decimals) {
+  const d = decimals === undefined || decimals === null || decimals === ''
+    ? (Math.abs(n) < 10 && !Number.isInteger(n) ? 1 : 0) : Number(decimals);
+  const s = Number(n).toLocaleString('en-IN', { minimumFractionDigits: d, maximumFractionDigits: d });
+  return `${prefix}${s}${suffix}`;
+}
+
 Object.assign(window, {
   VAQ, VERTICALS, BrandContext, useTweaks, verticalFor, surfaceFor, solidPalette,
   headlineStyle, headlineDefaultSize, VHeadline, VBody, VKicker,
   VMark, VWordmark, VChrome, VTexture, VGhostIndex, VSlide,
-  alignFor, alignBlock,
+  alignFor, alignBlock, VLoop,
+  VAQ_VIZ, VIZ, VIZ_SCALE, vizFor, vizNum, VSource, VLegend, vizRows, vizFmt,
 });

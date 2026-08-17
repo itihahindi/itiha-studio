@@ -1,0 +1,43 @@
+name: odisha-500bn-2036
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Odisha has set two economic targets: 500 billion dollars by 2036, and 1.5 trillion by 2047. The nearer one is the harder one.
+
+  What was announced. Chief Minister Mohan Charan Majhi has put the state on a two-step path, 500 billion dollars by 2036 and 1.5 trillion by 2047, under the Odisha Vision 2036 and 2047 exercise prepared with NITI Aayog since August 2024. The stated pillars are inclusion, prosperity and wellness, alongside a goal of more than one crore new jobs and universal literacy and healthcare.
+
+  Where it starts from. Odisha's economy is currently around 120 billion dollars.
+
+  The arithmetic. Reaching 500 billion by 2036 is a multiple of roughly four, in about ten years. That requires close to 15 per cent compound growth every year, in dollar terms. The Chief Minister has himself described it as growing fivefold, so the scale of the ask is not being understated by the government.
+
+  The 2047 leg is, counter-intuitively, gentler. Going from 120 billion to 1.5 trillion over 21 years is about 12.8 per cent a year. So the difficult commitment is the near one, and it is the one that will be measurable while this government is still answerable for it.
+
+  What would make it real. Nominal dollar growth of 15 per cent a year for a decade is well above what any large Indian state has sustained. It would need both high rupee growth and a stable or strengthening rupee, and the second is not in a state government's control. Watch the annual GSDP prints against roughly 15 per cent, not the 2036 headline.
+
+  Sources: Deccan Chronicle and UNI on the Chief Minister's targets. Social News XYZ on the fivefold growth framing and the roughly 120 billion dollar current size. Devdiscourse and Odisha Plus on the Vision 2036 and 2047 documents prepared with NITI Aayog. Compound rates calculated in-house from those figures.
+
+  Image: Chief Minister Mohan Charan Majhi.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Odisha #MohanMajhi #Economy #GSDP #NITIAayog #Vision2047 #India
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+  seriesLabel: ECONOMY
+slides:
+- layout: story
+  kicker_meta: ODISHA · VISION 2036
+  headline: |
+    Odisha's nearer target is the *harder* one.
+  headline_size: 66
+  image: majhi-announcement.jpg
+  image_position: 50% 35%
+  image_height: 360
+  image_caption: Chief Minister Mohan Charan Majhi
+  body: |
+    CM [Mohan Majhi] has set [$500 billion by 2036] and [$1.5 trillion by 2047]. The state economy is about [$120 billion].
+
+    The first leg alone needs close to [15% growth a year] for a decade. The 2047 leg needs [12.8%].
+  body_size: 36

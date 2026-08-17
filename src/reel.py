@@ -125,14 +125,16 @@ def compose_reel(design_dir: Path, log=print) -> dict:
         raise RuntimeError(f"No content.yaml in {design_dir}")
     config = yaml.safe_load(yaml_path.read_text()) or {}
 
+    REEL_LAYOUTS = ("reel-frame", "reel-explainer")
     slide = next((s for s in config.get("slides", [])
-                  if (s or {}).get("layout") == "reel-frame"), None)
+                  if (s or {}).get("layout") in REEL_LAYOUTS), None)
     if slide is None:
-        raise RuntimeError("No reel-frame slide in this design — add one first.")
+        raise RuntimeError("No reel-frame or reel-explainer slide in this design — add one first.")
+    layout = slide.get("layout")
     video_file = str(slide.get("video_file") or "").strip()
     url = str(slide.get("video_url") or "").strip()
     if not video_file and not url:
-        raise RuntimeError("The reel-frame slide has no video — upload a file or paste a Video URL.")
+        raise RuntimeError(f"The {layout} slide has no video — upload a file or paste a Video URL.")
 
     output_dir = content_mod.output_dir_for(design_dir)
     frame = output_dir / "01-slide.png"
@@ -143,7 +145,13 @@ def compose_reel(design_dir: Path, log=print) -> dict:
     with Image.open(frame) as im:
         width, height = im.size
 
-    panel_h = int(slide.get("panel_height") or 560)
+    # reel-explainer inverts the frame: video on top, caption panel along the
+    # BOTTOM. Same branded-strip trick, opposite anchor — so the crop offset and
+    # the vstack order both flip. Keep this in sync with ReelExplainerSlide in
+    # shared/brands/vaq-hq/layouts.jsx, which anchors its panel to bottom: 0.
+    panel_at_bottom = slide.get("layout") == "reel-explainer"
+    default_panel = 760 if panel_at_bottom else 560
+    panel_h = int(slide.get("panel_height") or default_panel)
     panel_h -= panel_h % 2  # h264 yuv420p needs even dims
 
     # Output canvas heights are the two CANONICAL Instagram sizes, derived from
@@ -176,11 +184,15 @@ def compose_reel(design_dir: Path, log=print) -> dict:
             continue
         out = output_dir / name
         log(f"  compositing {name} ({width}×{canvas_h})…")
+        # The panel strip is the same pixels for every canvas, so it is cropped
+        # out of the rendered PNG by its own anchor, not by the canvas height.
+        panel_y = (height - panel_h) if panel_at_bottom else 0
+        stack = "[vid][panel]" if panel_at_bottom else "[panel][vid]"
         filter_complex = (
             f"[0:v]scale={width}:{vid_h}:force_original_aspect_ratio=increase,"
             f"crop={width}:{vid_h},setsar=1[vid];"
-            f"[1:v]crop={width}:{panel_h}:0:0[panel];"
-            f"[panel][vid]vstack=inputs=2[out]"
+            f"[1:v]crop={width}:{panel_h}:0:{panel_y}[panel];"
+            f"{stack}vstack=inputs=2[out]"
         )
         _run([
             "ffmpeg", "-y", "-i", str(source), "-i", str(frame),

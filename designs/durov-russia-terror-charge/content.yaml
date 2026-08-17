@@ -1,0 +1,42 @@
+name: durov-russia-terror-charge
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Russia has charged Telegram founder Pavel Durov with facilitating terrorism, and issued an international arrest warrant for him.
+
+  What the FSB says. Russia's domestic security service alleges Telegram was used "to prepare and co-ordinate acts of sabotage and terror" inside Russia, and that the platform failed to remove channels, chats and bots used by Ukraine's secret services for recruitment.
+
+  What Telegram did. Shortly after the charge was announced, Telegram's account on X posted an image of Durov holding up his middle finger. He has previously accused Russian authorities of "fabricating new pretexts to restrict Russians' access to Telegram".
+
+  Why the warrant may not matter. Durov is 41, has lived outside Russia for years, and holds French and UAE passports. It is not clear that any other state would act on a Russian warrant.
+
+  The history that frames this. Durov left Russia in 2014 after refusing government demands to shut down opposition communities on VKontakte, the platform he founded and which was dubbed the Facebook of Russia. Telegram now has around 950 million users worldwide and has built its identity on privacy rather than the moderation policies other platforms adopted. It is popular in Russia, where tens of millions use it and where authorities have been restricting access as part of a wider crackdown on internet freedom, and it is popular in Ukraine too.
+
+  The part worth sitting with. In 2024 France arrested Durov and placed him under formal investigation for failing to moderate the app enough to curb criminality. That investigation is still running. Russia has now charged him for failing to take down Ukrainian channels. Two states, opposite politics, and the same accusation in form: that he did not remove enough. A platform that refuses to police speech ends up answering to every government that wants it policed differently.
+
+  A note on this claim. The terrorism allegation is the FSB's, made against a man who left Russia after defying it, by a service that is not a neutral arbiter. It is a charge, not a finding, and no evidence has been made public.
+
+  Source: BBC News, 29 July 2026. Image: Pavel Durov photographed in 2013, by TechCrunch, CC BY 2.0 via Wikimedia Commons.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Telegram #PavelDurov #Russia #Ukraine #FSB #Encryption #Privacy #Cathode
+tweaks:
+  vertical: tech
+  showStamp: true
+  showPageNum: false
+  seriesLabel: CATHODE
+slides:
+- layout: story
+  kicker_meta: Moscow · 29 Jul 2026
+  headline: Russia charges *Durov* with facilitating terrorism
+  headline_size: 68
+  image: https://upload.wikimedia.org/wikipedia/commons/e/e4/TechCrunch_Disrupt_Europe_Berlin_2013_%2810537067163%29_%28cropped%29.jpg
+  image_position: 50% 50%
+  image_height: 420
+  image_caption: Pavel Durov, photographed in 2013
+  body: |
+    The [FSB] says Telegram was used "to prepare and co-ordinate acts of sabotage and terror" inside Russia, and failed to remove channels run by [Ukraine's secret services]. An [international arrest warrant] has been issued.
+
+    Durov left Russia in [2014] rather than shut down opposition communities.
+  body_size: 36

@@ -1,0 +1,143 @@
+name: internal-hierarchy-indian-muslim-biradiris
+brand: itiha
+format: instagram-portrait
+caption: |
+  Source - ‘Caste’ Among Muslims: Ethnographic Account from a Karnataka Village By Sobin George & Shrinidhi Adiga
+
+  It is called biradiri, and it behaves like caste. Across Indian Muslim settlements, sub-groups are placed in a hierarchy that governs whom a family may marry, whose food may be eaten, which mosque may be entered, and which trade a man's sons will inherit.
+
+  At the top sit the Hanafis — Syeds, Sheikhs, Mughals and Pathans — Urdu-speaking and claiming noble descent. Below them are the Shaffis of Kerala and the Malikis or Labbes of Tamil Nadu, migrants whose ancestral claims local upper-status families often distrust. At the base are the occupational biradiris: Baigs, Darvesus, Ladafs, Nadafs, Pinjaras, Pakzades, Phulharas, Mochis, Chapparbandhs. Marriage is endogamous by preference and by prohibition: Syeds and Sheikhs intermarry, avoid the Pathans over cultural difference, and refuse proposals from below entirely. The Pinjara, Ladaf, Nadaf and Baig are branded not clean. Where inter-group marriage occurs it is hypergamous and exceptional — a high-status man of advanced age or physical disability taking a lower-status woman, who then holds a position equivalent to a servant.
+
+  Purity rules follow into the kitchen and the mosque. Upper-status families avoid food cooked in Ladaf, Nadaf and Pinjara homes; at feasts the lower groups sit as subordinates because they are the recipients of Zakat. Pinjaras and Nadafs, accused of ancestral ritual and of not praying five times, maintain separate mosques. Occupation is inherited along biradiri lines — Qassabs butcher, Pakzades wash, Mochis work leather, Chapparbandhs build huts — and low entitlements in education and land keep the cycle closed. Leadership in local self-government is captured by Syeds and Sheikhs; welfare information is withheld; the roads and drains of forward-class settlements are maintained while the lower quarters are left unpaved and stagnant.
+
+  On the terms. The stratification described here is the subject of a substantial sociological literature, beginning with Imtiaz Ahmad's Caste and Social Stratification among Muslims in India (1973). The framework most often used in that literature is Ashraf, Ajlaf and Arzal — a top tier claiming foreign descent, and indigenous occupational groups below it. Pasmanda is the term the lower groups increasingly use for themselves. The biradiri names above are drawn from local ethnography and the ordering varies by region; this is a description of specific settlements, not a single national ranking.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Biradiri #IndianMuslims #SocialHierarchy #Pasmanda #Ashraf #Ajlaf
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  showGrain: true
+  overlayDarkness: 64
+  seriesLabel: BIRADIRI
+slides:
+- layout: cover
+  headline: Caste *discrimination* among *Muslims.*
+  subline: Descent, marriage, food and trade among Indian Muslim biradiris
+  swipe_meta: Swipe ▸ · 9 Slides · 3 min read
+  texture: grain,vignette
+  headline_offset_y: 430
+  image: _cache/229361deccfc3ec6.jpg
+  headline_size: 110
+  align_x: center
+- layout: split-story
+  theme: dark
+  headline: |
+    They Call It Biradiri
+    It Works Like *Caste*
+  body: |
+    The biradiri order carries the three marks of [caste]: marriage inside the group, [occupation inherited] by birth, and a rank that every family can recite. The literature names three broad tiers, [Ashraf], Ajlaf and Arzal, a top claiming foreign descent, and indigenous working groups beneath it. Those beneath now call themselves [Pasmanda].
+  texture: paper
+  image: _cache/1fbedce837e13d5a.jpg
+  image_filter: archival
+  image_position: 50% 45%
+  image_overlay: 0.84
+  body_y: 10
+- layout: pyramid
+  headline: |
+    Three *Tiers*
+    Clearly *Recognised*
+  tiers:
+  - label: Hanafis (Upper Caste)
+    note: Syeds · Sheikhs · Mughals · Pathans. Urdu-speaking, claiming noble descent.
+    highlight: true
+  - label: Shaffis and Malikis
+    note: Migrants from Kerala and Tamil Nadu, whose ancestral claims local upper-status families distrust.
+  - label: Occupational biradiris (Lower Caste)
+    note: Baigs · Darvesus · Ladafs · Nadafs · Pinjaras · Pakzades · Phulharas · Mochis · Chapparbandhs
+  apex_width: 46
+  tier_size: 43
+  texture: grain
+  theme: dark
+- layout: split-story
+  headline: |
+    Proposals That
+    Are Never *Received*
+  body: |
+    [Syeds] and Sheikhs prefer to intermarry, and avoid the Pathans. From below, nothing is entertained. The [Pinjara], Ladaf, Nadaf and Baig are branded **not clean**, and alliances with them refused.
+  texture: grain
+  image: _cache/564461f837ef258c.jpg
+  image_overlay: 0.8
+  body_y: 15
+- layout: split-story
+  headline: |
+    No Segregation
+    And No *Equality*
+  body: |
+    Upper-status muslim families avoid food prepared in the homes of the [Ladaf], Nadaf and Pinjara.
+    At feasts and weddings there is no overt separation, yet the lower groups sit as subordinates, they are the recipients of [Zakat].
+  texture: grain
+  body_y: 16
+  image: https://cdn.siasat.com/wp-content/uploads/2022/07/279803644_1392072591220767_6707696795720771991_n.jpg
+  image_position: 57% 96%
+  image_zoom: 1.15
+- layout: split-story
+  theme: dark
+  headline: |
+    Kept Out of the
+    *Main Hall*
+  body: |
+    [Pinjaras] and Nadafs are accused of keeping ancestral rituals and of not offering _Namaz_ five times a day.
+    They are shut out of the main religious spaces, and maintain [separate mosques].
+  texture: paper
+  image: https://static.sanatanprabhat.org/wp-content/uploads/sites/7/2021/12/20113823/Namaz-Prayer.jpeg
+  image_overlay: 0.8
+  body_y: 13
+- layout: hierarchy
+  headline: |
+    Who Gets to
+    *Decide*
+  nodes:
+  - name: Syeds and Sheikhs
+    note: They hold the local seats.
+    level: 1
+    level_label: Top
+    highlight: true
+  - name: Their own families
+    note: They hear about new schemes first.
+    level: 2
+    level_label: Next
+  - name: Ladafs, Nadafs, Pinjaras
+    note: They are told late, or not at all.
+    level: 3
+    level_label: Last
+  node_size: 63
+  caption: News about help and money starts at the top. It often does not reach the bottom.
+  texture: grain
+  align_x: center
+- layout: closing
+  headline: |2+
+
+  body: |
+    [Syeds] and Sheikhs hold local office and withhold welfare information, while the lower quarters go unpaved with [stagnant drains].
+  handle: Follow @itiha29 · itiha.info
+  texture: grain,vignette
+  headline_size: 100
+  body_offset_y: 110
+  image: https://imgix.bustle.com/mic/vtnbt7htc0fwsiqvm4fb1xxpricfoo2vjrl5xbkpg793fbaww7pqtolllfljevbd.jpg?w=1200&h=900&fit=crop&crop=faces&fm=jpg
+  image_zoom: 1.25
+  image_position: 55% 100%
+- layout: story
+  headline: 'Source '
+  sources:
+  - title: 'Caste Among Muslims: Ethnographic Account from a Karnataka Village '
+    author: Sobin George & Shrinidhi Adiga
+  image: screenshot-2026-08-16-at-8-59-26-pm.png
+  image_zoom: 1.6
+  image_position: 51% 0%
+  align_x: center
+  image_overlay: 0.8
+- layout: end-card
+  headline: New slide

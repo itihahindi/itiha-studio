@@ -1,0 +1,40 @@
+name: bank-mab-penalties-fy26
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Indian banks collected ₹7,086.63 crore in a single year from people who did not keep enough money in the bank. The figure was given to the Rajya Sabha by Pankaj Chaudhary, Minister of State for Finance.
+
+  Who actually took it. Private banks collected ₹4,948.71 crore, just under 70 per cent of the total. HDFC Bank alone charged ₹1,798.14 crore and Axis Bank ₹1,081.33 crore. Those two banks account for roughly 58 per cent of everything private banks collected. Public sector banks took ₹2,137.92 crore, led by State Bank of India at ₹477.27 crore, then Bank of Baroda at ₹394.10 crore and Indian Bank at ₹299.17 crore.
+
+  The detail most coverage skips. SBI's ₹477.27 crore comes from current accounts. It stopped penalising regular savings accounts in March 2020 and has not charged for it since. So the largest bank in the country, which is state-owned, has not billed an ordinary saver for a low balance in six years, while the private sector built the opposite habit.
+
+  The four-year number. Across FY23 to FY26, banks collected ₹26,170 crore this way.
+
+  What is exempt. Basic Savings Bank Deposit Accounts, including Jan Dhan accounts, carry no minimum balance requirement and no penalty. The government puts that at roughly 72 crore accounts. RBI rules require any minimum average balance charge to be reasonable, transparent and tied to the cost of service.
+
+  The honest way to read this. The exemption is real, and it covers the poorest account holders by design. The criticism is also real: a minimum balance penalty is a charge that lands hardest on the customer with the least, and it is the one charge that grows precisely when a customer can least afford it. Both of those things are true at once, and the split in the data says who is doing it.
+
+  Source: reply by the Minister of State for Finance in the Rajya Sabha, 29 July 2026, as reported by Business Standard, IANS and The Hans India.
+
+  @vaqhq · vaqhq.com
+hashtags: |
+  #VaqHQ #Banking #HDFCBank #AxisBank #SBI #MinimumBalance #RBI #RajyaSabha #IndianEconomy
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+  seriesLabel: BANKING
+slides:
+- layout: cover
+  kicker_meta: Rajya Sabha · 29 Jul 2026
+  align_y: middle
+  image: _cache/a61f0fea91b3fcfd.jpg
+  image_height: 520
+  image_position: 50% 50%
+  headline: Indian Banks Collect *₹7,087 Crore* in Minimum Balance Penalties in FY26
+  headline_size: 60
+  body: |
+    [Private banks] took ₹4,948.71 crore of it, nearly [70%]. [HDFC] charged ₹1,798.14 crore, [Axis] ₹1,081.33 crore. Public banks took ₹2,137.92 crore, and [SBI] stopped penalising savings accounts back in 2020.
+
+    Across FY23 to FY26, the total is [₹26,170 crore].
+  body_size: 40

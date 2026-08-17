@@ -1,0 +1,135 @@
+name: savarkar-and-the-first-flag-abroad
+brand: itiha
+format: instagram-portrait
+caption: |
+  On 18 August 1907, at the International Socialist Congress in Stuttgart, Madame Bhikaji Cama stood before nearly 900 delegates from across the world and unfurled a flag no assembly had ever seen. She was 46. She was Indian. And the flag she raised — three horizontal stripes of green, saffron, and red, with "Vande Mataram" embroidered on a golden band, eight stars for the provinces of India, the sun and crescent for its faiths — had been designed for that moment by a young revolutionary in London named Vinayak Damodar Savarkar. This carousel is the record of how India's first international flag was made, and the woman who carried it into history.
+
+  The context was strategic. In August 1907, the International Socialist Congress at Stuttgart was to bring delegates from across the world to debate colonialism. Savarkar and his revolutionary associates at India House in London saw the platform for what it was — the largest international audience the Indian freedom movement had ever been offered. Madame Bhikaji Cama, later called the Mother of Indian Revolutionaries, and Sardar Singh Rana were sent as delegates. Savarkar designed the flag they would carry. Green at the top for the Muslim community, saffron in the middle for Buddhists and Sikhs, red at the bottom for strength. "Vande Mataram" at the centre in gold. Eight stars for eight provinces — a direct nod to the American flag's convention of one star per state. The sun and the crescent for the faiths of the land. Then, on 18 August 1907, overcoming immense opposition — including a protest walkout by the British Labour politician Ramsay MacDonald — Madame Cama raised the flag before the assembly and delivered a speech that changed the register of the Indian freedom struggle abroad forever.
+
+  The flag Savarkar designed did not become the national flag. What it did was more precise. It announced to the world that India was already a nation, already sovereign in its own reckoning, and already prepared to be recognised as one.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Savarkar #MadameCama #Stuttgart1907 #IndianFlag #FreedomStruggle #IndiaHouse #IndianRevolutionaries
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: STUTTGART
+slides:
+- layout: cover
+  headline: |
+    The *First* Flag Of *Free India* Was Raised In *Germany.*
+  subline: 'Savarkar''s design · Madame Cama''s hand · '
+  swipe_meta: Swipe ▸ · 7 Slides · 4 min read
+  headline_size: 130
+  headline_offset_y: 260
+  image: https://pbs.twimg.com/media/CptsEy1XEAALy4v.jpg
+  image_overlay: 0.8
+  image_position: 59% 50%
+- layout: split-story
+  chapter: Chapter 01 · The Opportunity
+  headline: |
+    Nine Hundred Delegates.
+    One *Stage.*
+  body: |
+    In [August 1907], nearly [900 delegates] gathered at the [International Socialist Congress] in [Stuttgart, Germany] to debate issues like [colonialism]. [Savarkar] and his associates at [India House] saw the perfect chance to put [India's freedom] on the [world stage].
+  body_y: 20
+  image: https://www.socialistinternational.org/fileadmin/uploads/si/Photos/Councils/New_York_1996/a.jpg
+  image_position: 26% 50%
+  image_overlay: 0.9
+  align_x: center
+- layout: split-story
+  chapter: Chapter 02 · The Delegates
+  headline: |
+    Madame Cama.
+    Sardar *Rana.*
+  body: It was decided that [Madame Bhikaji Cama], later called the [Mother of Indian Revolutionaries],
+    and [Sardar Singh Rana] would represent India as [delegates] at the Congress. To visually represent
+    a nation yearning to break free from [British rule], Savarkar [designed a flag] to be unfurled at
+    the assembly.
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDdWpbp2DmZEk8k9007h9lu0ZPrHQ8ChTYb17Z-WCsUg8VNEx6SC8DC-Y&s=10
+  body_y: 13
+  image_overlay: 1
+- layout: numbered-list
+  chapter: Chapter 03 · The Design
+  headline: |
+    Three Stripes.
+    One *Nation.*
+  items:
+  - number: 1
+    headline: Green — Muslim community
+    body: The top stripe, [green], was chosen as the sacred colour of [Muslims]. Savarkar later explained
+      it also suggested the [patriotic spirit] of the [Abhinav Bharat Society].
+  - number: 2
+    headline: Saffron — Buddhists and Sikhs
+    body: The middle stripe, [saffron], represented the sacred colour of the [Buddhists] and [Sikhs],
+      symbolising [glory] and [victory].
+  - number: 3
+    headline: Red — strength
+    body: The bottom stripe, [red], symbolised the [strength] of the people who would carry the flag [forward].
+  body_offset_y: -130
+  number_size: 40
+  item_size: 35
+- layout: document
+  chapter: Chapter 04 · The Embellishments
+  headline: |
+    Vande Mataram.
+    Eight *Stars.*
+  body: In the very centre, the words [Vande Mataram], [Salutations to the Motherland], were embroidered
+    on a [golden band]. The top section featured [eight stars] in a row representing the [different provinces
+    of India], directly inspired by the [US flag], where each star represents a state. The middle section
+    featured the [Sun] on the left and the [Crescent Moon] on the right, symbolising the [various faiths]
+    and [geographical provinces] of India.
+  body_y: 20
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Flag_of_India_1906_%28Calcutta_Flag%29.svg/1280px-Flag_of_India_1906_%28Calcutta_Flag%29.svg.png
+  image_position: 37% 0%
+  image_overlay: 1
+  caption: In the very centre, the words [Vande Mataram], [Salutations to the Motherland], were embroidered
+    on a [golden band]. The top section featured [eight stars] in a row representing the [different provinces
+    of India], directly inspired by the [US flag], where each star represents a state. The middle section
+    featured the [Sun] on the left and the [Crescent Moon] on the right, symbolising the [various faiths]
+    and [geographical provinces] of India.
+  quote: In the very centre, the words Vande Mataram, Salutations to the Motherland, were embroidered
+    on a golden band. The top section featured eight stars in a row representing the different provinces
+    of India directly inspired by the US flag, where each star represents a state. The middle section
+    featured the Sun on the left and the Crescent Moon on the right, symbolising the various faiths and
+    geographical provinces of India.
+- layout: quote
+  chapter: Chapter 05 · Madame Cama's Speech
+  headline: |
+    In Her Own
+    *Words.*
+  quote: |
+    This flag is of Indian independence.
+    Behold, it is born.
+    It is already sanctified
+    by the blood of martyred Indian youth.
+  attribution: Madame Bhikaji Cama, unfurling the flag at Stuttgart, 18 August 1907
+  image: https://upload.wikimedia.org/wikipedia/en/8/8f/Madame_Cama_with_Stuttgart_Flag1907.jpg?_=20231225171120
+  headline_offset_y: 450
+- layout: did-you-know
+  theme: dark
+  headline: |
+    A British Politician
+    *Walked Out.*
+  body: |
+    Cama's unfurling of the flag was met with [immense opposition]. The British Labour politician [Ramsay MacDonald], who would later become the [Prime Minister] of Britain, led a [protest walkout] from the assembly. Cama stood her ground. She held the flag [high]. She [thundered] her appeal to the [lovers of freedom] across the world to cooperate in [freeing one-fifth of the human race].
+  source: 'Savarkar: Echoes from the Forgotten Past by Vikram Sampath '
+  texture: grain
+  body_offset_y: 70
+  align_x: center
+- layout: closing
+  headline: |2+
+
+  body: |
+    The flag [Savarkar] designed did not become the [national flag]. What it did was more [precise]. It announced to the [world] that [India] was already a [nation], already [sovereign] in its own reckoning, and already prepared to be [recognised] as one. The [design] was made in [London]. The [flag] was raised in [Germany]. The [nation] it represented was [India].
+  handle: Follow @itiha29 · itiha.info
+  align_x: center
+  body_offset_y: 110
+  image: https://pbs.twimg.com/media/CptsEy1XEAALy4v.jpg
+  image_overlay: 1
+- layout: end-card
+  headline: New slide

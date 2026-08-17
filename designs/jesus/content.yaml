@@ -1,0 +1,134 @@
+name: st-thomas-never-came-to-india
+brand: itiha
+format: instagram-portrait
+caption: |
+  On 27 September 2006, Pope Benedict XVI stated categorically that Saint Thomas the Apostle never visited South India. He reached only "western India" — modern-day Pakistan — and Christianity travelled to the south from there. The Pope's statement was in line with what the Catholic Church's own Vatican had communicated to Indian Christians in 1952: that Thomas's landing at Cranganore in 52 CE was "unverified." Yet the Thomas legend continues to be cited as the foundation of a fabricated "Dravidian Christianity" that predates and rivals the Vedic tradition. This carousel is the record of what the primary sources actually say.
+
+  The evidence against the South Indian Thomas legend is overwhelming, and none of it is new. The sole original source is the Acts of Thomas, written in Syriac around 210 CE by the Gnostic poet Bardesanes at Edessa — a text universally recognised by modern biblical scholars as a fictional religious romance, not a historical record. The Acts describes a desert country where people speak an Iranian language, practice Zoroastrianism, and bear Persian names. This is Parthia, Afghanistan, or Baluchistan — not tropical Kerala. The earliest Church Fathers, including Origen, Clement of Alexandria, and Eusebius, all recorded that Thomas's assigned region was Parthia, not the Indian subcontinent. The South Indian claim that Thomas converted Namboodiri Brahmins in 52 CE is chronologically impossible — the Namboodiris did not migrate to Kerala until at least the 4th century. The Portuguese "discovery" of Thomas's skeleton at Mylapore in 1523 was dismissed by the Jesuit historian Father Henry Heras himself as a "barefaced imposture" — because the verified skeletal remains of Saint Thomas have been in the Basilica of Ortona in Italy, documented and continuously preserved, since 1258 CE. And the community claiming apostolic descent in Kerala are the descendants of 400 Syrian refugees who fled Persian persecution in 345 CE, led by a merchant named Thomas of Cana — later conflated with Thomas the Apostle.
+
+  The Pope has said it. The Vatican has said it. The primary sources have always said it. Only the propagandists of "Dravidian Christianity" continue to insist otherwise.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #SaintThomas #DravidianChristianity #ActsOfThomas #KeralaHistory #PopeBenedict #Historiography #ComparativeReligion
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: THOMAS
+slides:
+- layout: cover
+  headline: Saint Thomas Never Came To *South india*
+  subline: The Pope himself said so — in 2006
+  swipe_meta: Swipe ▸ · 8 Slides · 5 min read
+  headline_size: 122
+  headline_offset_y: 420
+  image: https://faith.nd.edu/wp-content/uploads/2024/07/St.-Thomas-the-Apostle.jpg
+  image_position: 43% 0%
+  align_x: center
+  texture: grain
+- layout: quote
+  chapter: Chapter 01 · The Pope's Own Words
+  headline: |
+    The Vatican
+    Settled It.
+  quote: |
+    Saint Thomas the Apostle
+    reached only western India (modern-day Pakistan).
+    From there, Christianity
+    travelled to the south.
+  attribution: Pope Benedict XVI, 27 September 2006 — echoing the Vatican's 1952 statement that the Cranganore
+    landing was "unverified"
+  image: https://upload.wikimedia.org/wikipedia/commons/9/98/Benedykt_XVI_%282010-10-17%29_2.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original
+  image_bw: false
+  image_filter: duotone-ink
+  texture: grain
+- layout: split-story
+  chapter: Chapter 02 · The Only Source
+  headline: |
+    A Gnostic Romance.
+    Written In *Syria.*
+  body: The sole original source for the [Saint Thomas in India] legend is [The Acts of Thomas], written
+    in [Syriac] around [210 CE] by the [Gnostic poet Bardesanes] at [Edessa]. Modern biblical scholars
+    universally recognise it as a [fictional religious romance] or [moral fable], [not] a credible historical
+    record. It is the only source. It is not history.
+  body_y: 20
+  image_overlay: 0.8
+  image: https://www.ctsbooks.org/wp-content/uploads/2020/06/st-thomas-history-Christianity-India-blog.jpg
+  image_position: 23% 50%
+  align_x: center
+  texture: grain
+- layout: split-story
+  chapter: Chapter 03 · The Wrong Country
+  headline: |
+    Desert. Zoroastrians.
+    *Persian Names.*
+  body: The [Acts of Thomas] never mentions or describes the [Indian subcontinent]. It depicts the apostle
+    travelling to a [desert country] where people speak an [Iranian language], practice [Zoroastrianism],
+    and bear [Persian names]. This is [Parthia], [Afghanistan], or [Baluchistan], not [tropical South
+    India]. In antiquity, [India] was a vague term for [anywhere east] of the Roman frontier.
+  image: https://thumbs.dreamstime.com/b/old-map-india-sri-lanka-25319729.jpg
+  image_overlay: 1
+  body_y: 17
+  texture: grain
+- layout: split-story
+  chapter: Chapter 04 · The Early Fathers
+  headline: |
+    Origen. Eusebius.
+    All Said *Parthia.*
+  body: The earliest and most reliable Christian historians, [Origen] (ca. 185–254), [Clement of Alexandria]
+    (ca. 150–235), and [Eusebius] (ca. 260–339), all explicitly recorded that Saint Thomas's allotted
+    region of evangelical work was [Parthia] (the Iranian world). [Not] the [Indian subcontinent]. Later
+    historians like [Rufinus of Aquileia] and [Socrates of Constantinople] agreed.
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEX_7PSxkcTlD8WgHorMkZKeY3PsFdEhFNt6Jx4kKEE1J-QbFeWq6hxrP6&s=10
+  body_y: 20
+  align_x: center
+  texture: grain
+- layout: did-you-know
+  eyebrow: ' The Namboodiri Problem'
+  headline: |2+
+
+  body: |
+    The South Indian tradition claims that [Saint Thomas] arrived in [Kerala] in [52 CE] and immediately converted [high-caste Namboodiri Brahmins]. Historical and sociological analyses show that [Namboodiri Brahmins] did not migrate to or settle in Kerala until at least the [4th century CE], with some estimates placing their arrival [even later]. The [1st-century conversion] claim is a [chronological impossibility].
+  source: Ishwar Sharan’s The Myth of Saint Thomas and the Mylapore Shiva Temple
+  body_offset_y: 10
+  align_x: center
+  texture: grain
+- layout: split-story
+  chapter: Chapter 06 · Thomas Of Cana
+  headline: |
+    A Merchant. Not
+    *The Apostle.*
+  body: Historical records indicate that [Syrian Christians] arrived in India in [345 CE], traditionally
+    led by [Thomas of Cana (Knai Thoma)]. Some historians argue that over time, [Thomas the Merchant]
+    became conflated with [Thomas the Apostle]. The migration is documented. The [apostle's visit] remains
+    disputed.
+  image: https://i.pinimg.com/736x/da/33/37/da3337a8daa5bd929f1ff18baa2d3d7f.jpg
+  body_y: 38
+  image_overlay: 0.8
+  image_position: 58% 50%
+  texture: grain
+- layout: split-story
+  eyebrow: Chapter 07 · The Ortona Contradiction
+  theme: dark
+  headline: |
+    His Skeleton Is In
+    *Italy.*
+  body: |
+    Since [1258 CE], the complete [skull] and verified [skeletal remains] of Saint Thomas have been preserved and documented in the [Basilica of Saint Thomas] in [Ortona], [Italy]. This undermines the [Portuguese claim] of [discovering] his skeleton in a seashore tomb in [Mylapore] in [1523]. The Jesuit historian [Father Henry Heras] dismissed the Portuguese [Mylapore relics] as a [barefaced imposture] and a [forgery].
+  source: Historical records of the Basilica of Ortona
+  image: https://media.mutualart.com/Images/2009_07/06/0076/452551/4ba3ff99-d3e1-4446-897d-602c5d3dc4dd_g_570.Jpeg
+  body_y: 20
+  texture: grain
+- layout: closing
+  headline: |
+    The Legend Serves
+    A *Purpose.*
+  body: |
+    The [Pope] has said it. The [Vatican] has said it. The [primary sources] have always said it. And yet the [Saint Thomas in India] legend continues to be cited as the foundation of a fabricated [Dravidian Christianity], invented to claim that [South India] was [Christian] before it was [Hindu]. The [legend] is not [history]. It is [strategy].
+  handle: Follow @itiha29 · itiha.info
+  texture: grain
+- layout: end-card
+  headline: New slide

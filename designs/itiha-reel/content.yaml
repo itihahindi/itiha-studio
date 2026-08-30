@@ -10,11 +10,14 @@ tweaks:
   showPageNum: false
 slides:
 - layout: reel-title
-  headline: "*sachin sanyal* \nBHAGAT SINGH’S MENTOR\n"
+  headline: |
+    *Jahangir:*
+    EMPIRE FOR BEER
   handle: '@itiha29'
-  image: https://upload.wikimedia.org/wikipedia/commons/6/6c/Freedom_fighter_Sachindranath_Sanyal.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgjhjdaxS5kLSmr2Ub3YJ1Q5Y-t-rPBcYLyIzPvCLPZ2AzOw_vaoTQuM4G4tClk07qnukeVePJtvwdNvUJ_h3A11iMVD_ANHeU6-Bzyw&s=10
   image_overlay: 0.8
-  texture: vignette
+  texture: halftone
   image_bw: false
-  headline_size: 130
+  headline_size: 166
   text_y: 75
+  subline: itiha.info

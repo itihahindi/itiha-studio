@@ -1,0 +1,98 @@
+name: bjp-social-media-mhaskey
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  After 11 years, the BJP has a new social media head. Deepak Mhaskey replaces Amit Malviya.
+
+  What the party announced. On Monday, 17 August, the BJP named Deepak Mhaskey its Social Media Convenor, with Priti Gandhi, Shivanand Dwivedi, Alok Bhatt and Arun Yadav as Co-Convenors. The list came alongside BJP president Nitin Nabin's new national team.
+
+  Who Mhaskey is. Born 1968. A former chemistry professor in Chhattisgarh, chairman of the Chhattisgarh Medical Services Corporation with minister of state rank, a permanent invitee to the state BJP unit, and a former independent director on the board of Engineers India Limited. In his words, "a huge responsibility" and an honour that "a party worker has been entrusted with it."
+
+  Who Malviya was. He surfaced in 2009 through the Friends of BJP forum and took charge of the party's IT department in 2015. He congratulated his successor and the co-convenors on X, saying he had worked closely with each of them over the last decade, and thanked the BJP's online support base for having "played a decisive role in reshaping India's public discourse."
+
+  Sources: PTI via Rediff and Business Standard, Business Today, 17 August 2026. Photo of Amit Malviya: Naveen Sharma / ANI.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #BJP #AmitMalviya #DeepakMhaskey #BJPITCell #SocialMedia #Chhattisgarh #NitinNabin #IndianPolitics
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: true
+slides:
+- layout: cover
+  surface: solid
+  kicker_meta: New Delhi · 17 Aug 2026
+  headline: After *11 years*, BJP replaces Amit Malviya
+  headline_size: 78
+  subline: Deepak Mhaskey, a chemistry professor turned Chhattisgarh administrator, takes over the social
+    media department.
+  image: amit-malviya.jpg
+  image_position: 50% 12%
+  image_height: 520
+  texture: grid
+  vertical: live
+  align_x: center
+- layout: story
+  surface: dark
+  kicker_meta: The Outgoing Head
+  headline: |
+    Malviya ran BJP's
+    IT cell since *2015*
+  body: |
+    He surfaced in 2009 through the [Friends of BJP] forum and took charge of the IT department in 2015. Two Lok Sabha wins later, he hands over the most argued-about department in Indian politics.
+  body_size: 54
+  align_y: middle
+  loop: Meet the successor
+  texture: grid
+- layout: story
+  surface: dark
+  kicker_meta: The New Convenor
+  headline: |
+    Who is
+    *Deepak Mhaskey*?
+  body: |
+    Born 1968. Former chemistry professor in Chhattisgarh. Chairman of the state's [Medical Services Corporation], with minister of state rank. Ex board member at Engineers India Ltd. In his own words, a party worker.
+  body_size: 54
+  align_y: middle
+  loop: He does not come alone
+  texture: grid
+- layout: roster
+  surface: light
+  kicker_meta: The New Team
+  headline: |
+    Five names on the
+    *social media* sheet
+  row_size: 44
+  rows:
+  - flag: 1️⃣
+    name: Deepak Mhaskey
+    year: CONVENOR
+    featured: true
+  - flag: 2️⃣
+    name: Priti Gandhi
+    year: CO-CONVENOR
+  - flag: 3️⃣
+    name: Shivanand Dwivedi
+    year: CO-CONVENOR
+  - flag: 4️⃣
+    name: Alok Bhatt
+    year: CO-CONVENOR
+  - flag: 5️⃣
+    name: Arun Yadav
+    year: CO-CONVENOR
+  loop: Malviya's parting words
+  texture: grid
+- layout: quote
+  surface: solid
+  kicker_meta: On X · 17 Aug 2026
+  quote: This family has stayed together through thick and thin and played a decisive role in reshaping
+    India's public discourse.
+  attribution: Amit Malviya, to the BJP's social media supporters
+  quote_size: 66
+  texture: grid
+- layout: closing
+  surface: dark
+  body: Follow @vak_hq for Indian politics, decoded.
+  handle: '@vak_hq'
+  texture: grid

@@ -16,7 +16,7 @@ caption: |
 
   Source: reply by the Minister of State for Finance in the Rajya Sabha, 29 July 2026, as reported by Business Standard, IANS and The Hans India.
 
-  @vaqhq · vaqhq.com
+  @vak_hq · vaqhq.com
 hashtags: |
   #VaqHQ #Banking #HDFCBank #AxisBank #SBI #MinimumBalance #RBI #RajyaSabha #IndianEconomy
 tweaks:
@@ -25,7 +25,7 @@ tweaks:
   showPageNum: false
   seriesLabel: BANKING
 slides:
-- layout: cover
+- layout: story
   kicker_meta: Rajya Sabha · 29 Jul 2026
   align_y: middle
   image: _cache/a61f0fea91b3fcfd.jpg
@@ -38,3 +38,6 @@ slides:
 
     Across FY23 to FY26, the total is [₹26,170 crore].
   body_size: 40
+  texture: squares
+  field_color: '#FF3333'
+  video_url: https://x.com/ANI/status/2093519832943862058/video/1

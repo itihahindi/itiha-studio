@@ -1,0 +1,28 @@
+name: vajpayee-remembrance
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Eight years ago today, Atal Bihari Vajpayee passed away. Poet, parliamentarian, three time Prime Minister, Bharat Ratna. The man who took India nuclear at Pokhran, built the Golden Quadrilateral, reached for peace with the Lahore bus and answered Kargil in the same year.
+
+  The Ministry of Information and Broadcasting released this tribute on his death anniversary. His words, in his own voice, still carry.
+
+  Follow @vak_hq for political history, decoded.
+  vaqhq.com
+hashtags: |
+  #AtalBihariVajpayee #Vajpayee #BharatRatna #PoliticalHistory #IndianPolitics #Pokhran #Kargil #GoldenQuadrilateral #India #VaqHQ
+tweaks:
+  vertical: longview
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-frame
+  vertical: longview
+  video_url: https://x.com/MIB_India/status/2088830608046989479/video/1
+  headline: Remembering *Vajpayee*
+  subline: The poet Prime Minister, eight years on
+  credit: via @MIB_India
+  texture: grid
+  panel_height: 420
+  panel_fade: 100
+  headline_size: 120
+  headline_offset_y: 50

@@ -1,0 +1,135 @@
+name: how-bose-broke-the-british-army
+brand: itiha
+format: instagram-portrait
+caption: |
+  In March 1941, Britain's Special Operations Executive — a covert unit created by Winston Churchill himself and headed by his close associate — issued a direct order to assassinate Subhas Chandra Bose. The British Foreign Office consented to Bose being "liquidated" on neutral Turkish territory. This was not standard wartime protocol. This was an empire terrified of one man. This carousel is the record of what Bose understood about the British Raj that made his elimination worth a direct kill order — and how, even in defeat, his prediction came true.
+
+  Bose escaped house arrest in Calcutta in January 1941, disguised first as a Muslim insurance agent and later in a flowing turban, trekking across frozen mountain passes into Afghanistan and eventually to Berlin. His goal was to secure Axis military aid to liberate India. What terrified the British was not his politics but his diagnosis of their weakness — Bose understood that if a foreign force of just 50,000 men reached India's borders, the British Indian Army would desert its colonisers and the masses would rise. This was the vulnerability Churchill lost sleep over. Sixty percent of educated Indian officers already expected independence as a reward for fighting the war. Churchill refused to equip Indian troops with modern tanks, asking his commanders, "how do you know they wouldn't turn and fire the wrong way?" After failing to get substantial help from Hitler, Bose took a three-month submarine journey to Southeast Asia in 1943, took command of the Indian National Army, and at Imphal in 1944 marched his under-equipped soldiers toward India shouting "Jai Hind! Chalo Delhi!" The march was defeated. Bose reportedly died in a plane crash in Taiwan in August 1945 — though SOE agents were operational across Southeast Asia at the time, and the original assassination order still seemed to be in effect. Then came the payoff. In late 1945, the British foolishly put surviving INA commanders on public trial for treason at Delhi's Red Fort. The trial outraged the country, sparked the Royal Indian Navy mutiny of 1946, and forced the British Commander-in-Chief to admit that any further prosecution would dissolve the Indian Army entirely.
+
+  For the first time since 1857, the British realised they could no longer use their own army to hold India. Which meant they could no longer hold it at all. Bose lost the battle. He won the war he was actually fighting.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #SubhasChandraBose #Netaji #INA #IndianNationalArmy #Churchill #Imphal #1857
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  emphasisV2: true
+  seriesLabel: NETAJI
+slides:
+- layout: cover
+  eyebrow: 'NETAJI '
+  eyebrow_meta: Bose · 9 Parts
+  headline: |
+    Churchill's Order
+    To Kill
+    *Netaji.*
+  subline: How Netaji broke the British hold on the Indian Army
+  swipe_meta: Swipe ▸ · 9 Slides · 5 min read
+  image: churchill-bose-split-1080x1350.png
+  headline_offset_y: 230
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 01 · The Escape
+  headline: |
+    Beard. Mountain Pass.
+    *Berlin.*
+  body: In [January 1941], frustrated by political deadlocks, [Bose] escaped his house arrest in [Calcutta].
+    Disguised as a [Pathan insurance agent] and later in a [flowing turban], he trekked over [frozen mountain
+    passes] into [Afghanistan] — eventually reaching [Berlin]. His goal — to secure [military aid] from
+    the [Axis powers] to [liberate India].
+  image: screenshot-2026-08-27-at-7-17-19-pm.png
+  headline_y: 19
+  body_y: 62
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 02 · The Real British Fear
+  headline: |
+    He Knew Their Army
+    Would *Desert.*
+  body: The British were terrified of Bose because he understood their greatest [vulnerability], the [Indian
+    Army]. Bose believed that if a foreign force of just [50,000 men] reached India's borders, the [British
+    Indian Army] would [desert] their colonizers and the [masses] would [rise].
+  image: _cache/e30129626cb15b46.jpg
+  image_overlay: 0.9
+  body_y: 40
+  texture: halftone
+- layout: split-story
+  eyebrow: Chapter 03 · The Assassination Order
+  headline: |
+    Churchill Ordered
+    Him *Killed.*
+  body: In [March 1941], Britain's [Special Operations Executive] issued direct orders to [assassinate
+    Bose]. The [Special Operations Executive] was created by [Churchill] and headed by his close associate
+    closely supervised by him
+  source: Historical records of SOE operational directives
+  image: _cache/3bf589c000ce20b7.jpg
+  headline_y: 67
+  body_y: 57
+  texture: halftone
+- layout: split-story
+  headline: |
+    *Churchil's*
+    Direct Order
+  body: |
+    The order to kill Bose must have [emanated from the very top],. The [Foreign Office] even consented to him being [liquidated] on [neutral Turkish territory]. Special Operations Executive, was all over Europe tracking the movements of Netaji Subhash Chandra Bose.
+  image: _cache/f492a6ea199facf9.jpg
+  image_position: 36% 50%
+  image_overlay: 0.8
+  body_y: 63
+  texture: halftone
+- layout: quote
+  chapter: Chapter 04 · Churchill's Own Words
+  headline: |
+    On His Own
+    *Indian Troops.*
+  quote: |
+    How do you know
+    they wouldn't turn
+    and fire the wrong way?
+  attribution: Winston Churchill, refusing to equip Indian troops with modern tanks
+  theme: light
+  texture: halftone
+- layout: story
+  chapter: Chapter 05 · The Submarine To Singapore
+  headline: |
+    Three Months.
+    Under The *Sea.*
+  body: After failing to get substantial help from [Hitler], Bose took a perilous [3-month submarine journey]
+    to [Southeast Asia] in [1943]. He took over the [Indian National Army] — electrifying the [captured
+    Indian soldiers] in [Singapore]. The plan — once [Axis forces] broke into India, the INA would march
+    in, fight [guerrilla battles], and inspire a [nationwide uprising].
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 06 · Imphal, 1944
+  headline: |
+    Jai Hind.
+    *Chalo Delhi.*
+  body: In [1944], the INA marched toward India, soldiers shouting [Jai Hind! Chalo Delhi!]. But they
+    were critically [under-equipped], lacking [mortars], [radios], and even [footwear]. The [British Empire's
+    forces], bolstered by [American aircraft] and immense [airlifts], fiercely defended the [Imphal valley].
+    The [Japanese] and the [INA] were forced to [retreat].
+  image: _cache/0786ddcfe1d0972a.jpg
+  image_position: 30% 44%
+  image_overlay: 0.9
+  body_y: 29
+- layout: split-story
+  chapter: Chapter 07 · A Suspicious End
+  headline: |
+    A Plane Crash.
+    In *Taiwan.*
+  body: 'In [August 1945], Bose reportedly died in a plane crash in [Taiwan]. But [SOE agents] were crawling
+    all over [Southeast Asia] at the time & the original [British assassination order] against Bose [seems
+    to still have been in effect].  These were the circumstances Surrounding [Netaji''s] disappearance. '
+  image: _cache/9f43ea70441cd85e.jpg
+  image_overlay: 0.9
+  body_offset_y: 20
+  body_y: 29
+- layout: youtube-cta
+  headline: The Escape That Destroyed the British Raj.
+  image: t-2.png
+  thumbnail: t-3-2.png
+  channel_label: '@itiha'

@@ -1,0 +1,156 @@
+name: dhyan-chand-national-sports-day
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Major Dhyan Chand was born on 29 August 1905, and India marks his birthday as National Sports Day. Three Olympics, three golds, one goal conceded. This is who he was.
+
+  Why he matters. India won hockey gold at six straight Olympics from 1928 to 1956, scoring 178 goals and conceding seven, and went 30 matches unbeaten at the Games until the 1960 final. Dhyan Chand won the first three of those golds and was the reason the world noticed. In 1928 a Dutch newspaper wrote that this was not a game of hockey but magic, and called him the magician of hockey. Officials reportedly broke open his stick looking for a magnet. This was an India that competed under the British flag, and hockey was the one arena in which it beat the world.
+
+  Amsterdam 1928. His first Games. India scored 29 goals and conceded none. Dhyan Chand scored 14 of them in five matches, the top scorer of the tournament, including two in the 3-0 final against the Netherlands.
+
+  Los Angeles 1932. Two matches, 35 goals. India beat Japan 11-1 and the United States 24-1, a scoreline that stood as an Olympic record for decades. Dhyan Chand scored 12 across the two games, eight of them in the final. His brother Roop Singh scored 13. Between them, the brothers scored 25 of India's 35.
+
+  Berlin 1936. Captain at 30. India scored 38 goals and conceded one, in the 8-1 final against Germany, in front of 40,000 people. Dhyan Chand scored three in that final by his own count, and 11 in the tournament by most tallies. The stories that grew around Berlin, the German offer of citizenship and a colonel's rank, the Dutch officials breaking his stick to look for a magnet, are legend, not record. The scoreline needs no help.
+
+  The career. 185 international matches from 1926 to 1949, more than 400 goals by the traditional count. On the 1935 tour of New Zealand and Australia he scored 201 goals in 23 matches. Don Bradman, watching him in Adelaide, is widely reported to have said he scores goals like runs in cricket.
+
+  After the whistle. Padma Bhushan, 1956. The National Stadium in Delhi renamed for him, 2002. National Sports Day on his birthday since 2012. The Khel Ratna renamed the Major Dhyan Chand Khel Ratna, 2021. The Bharat Ratna, campaigned for since 2011 and considered in 2014, has still not been conferred. He died on 3 December 1979 at AIIMS, New Delhi.
+
+  Photos: 1936 Berlin Olympics, public domain, via Wikimedia Commons. Major Dhyan Chand National Stadium by Sanket Oswal, CC BY-SA 4.0, via Wikimedia Commons. Sources: Olympics.com, Olympedia, Britannica, The Times of India.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #NationalSportsDay #DhyanChand #MajorDhyanChand #HockeyIndia #Olympics #IndianHockey #BharatRatna #Berlin1936
+tweaks:
+  vertical: sports
+  showStamp: true
+  showPageNum: true
+  texture: house
+slides:
+- layout: cover
+  surface: dark
+  kicker_meta: National Sports Day · 29 Aug
+  headline: |
+    Major Dhyan Chand.
+    The man behind the *sports day.*
+  subline: India celebrates his birthday, 29 August, as National Sports Day. Three Olympic golds, one
+    goal conceded. Here is who he was.
+  image: berlin-1936.jpg
+  image_position: 50% 40%
+  image_height: 600
+  headline_size: 75
+  align_x: left
+- layout: story
+  surface: dark
+  kicker_meta: Why He Matters · The Olympics
+  headline: |
+    He started a *legacy*
+  body: |
+    India won hockey gold at six straight Olympics, 1928 to 1956, scoring 178 goals and conceding [seven]. Thirty matches unbeaten until the 1960 final. Dhyan Chand won the first three, and was the reason the world noticed.
+  body_size: 38
+  align_y: middle
+  loop: The player himself
+  image: _cache/be9ac435fd01eee2.jpg
+  image_position: 49% 0%
+- layout: story
+  surface: dark
+  kicker_meta: Why He Matters · The Athlete
+  headline: |
+    "This is not hockey.
+    This is *magic*."
+  body: |
+    A Dutch newspaper, Amsterdam 1928. Officials reportedly broke open his stick looking for a [magnet]. More than 400 goals in 185 internationals, in an era when India competed under the British flag and hockey was the only place it beat the world.
+  body_size: 46
+  align_y: middle
+  loop: Now the numbers
+- layout: bar-chart
+  surface: light
+  kicker_meta: Three Games · 1928 to 1936
+  headline: |
+    India's goals,
+    *for and against*
+  mode: sequence
+  rows:
+  - label: Amsterdam 1928
+    value: 29
+    note: conceded 0
+  - label: Los Angeles 1932
+    value: 0.5
+    note: conceded 2
+  - label: Berlin 1936
+    value: 38
+    note: conceded 1
+  max: 40
+  value_suffix: ' goals'
+  source: 'Source: Olympic records, Olympedia'
+  body: 102 scored, 3 conceded, 3 golds. Dhyan Chand scored 37 of the 102.
+  loop: His first Games
+- layout: stat
+  surface: dark
+  kicker_meta: Amsterdam 1928
+  label: TOP SCORER OF THE GAMES
+  value: '14'
+  sublabel: goals in five matches, age 22
+  body: |
+    Two of them in the 3-0 final against the Netherlands. India did not concede a goal all tournament.
+  body_size: 43
+- layout: story
+  surface: light
+  kicker_meta: Los Angeles 1932
+  headline: |
+    24-1. Against the
+    *United States*.
+  body: |
+    Two matches, 35 goals. Dhyan Chand scored eight in the final, his brother [Roop Singh] ten. Between them the brothers scored 25 of India's 35. The scoreline stood as an Olympic record for decades.
+  body_size: 46
+  align_y: middle
+  loop: Then Berlin, as captain
+- layout: split-story
+  kicker_meta: Berlin 1936 · Final
+  image: final-1936.jpg
+  image_position: 50% 50%
+  image_height: 560
+  headline: |
+    8-1. Germany.
+    *40,000* watching.
+  body: 'Captain at 30. Three goals in the final by his own count, 11 in the tournament. India scored
+    38 and conceded [one], in this match. '
+  body_size: 44
+  loop: What Bradman saw
+- layout: quote
+  surface: solid
+  kicker_meta: Adelaide · 1935
+  quote: He scores goals like runs in cricket.
+  attribution: Don Bradman, on watching Dhyan Chand, as widely reported
+  quote_size: 84
+- layout: roster
+  surface: light
+  kicker_meta: After The Whistle
+  headline: |
+    The honours,
+    and the *one missing*
+  row_size: 42
+  rows:
+  - flag: 🏅
+    name: Padma Bhushan
+    year: '1956'
+  - flag: 🏟️
+    name: National Stadium, Delhi, renamed
+    year: '2002'
+  - flag: 📅
+    name: National Sports Day on his birthday
+    year: '2012'
+  - flag: 🏆
+    name: Khel Ratna renamed for him
+    year: '2021'
+  - flag: ✕
+    name: Bharat Ratna
+    year: NOT YET
+    featured: true
+- layout: closing
+  surface: dark
+  headline: |
+    Major Dhyan Chand.
+    Happy birthday, sir.
+  body: Follow @vak_hq for sport, decoded.
+  handle: '@vak_hq'

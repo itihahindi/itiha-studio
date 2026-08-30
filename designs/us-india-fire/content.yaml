@@ -1,0 +1,28 @@
+name: us-india-fire
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  One year after the 50 percent tariff crisis, Washington and Delhi say the relationship is repaired. Monthly Modi Trump calls, senior visits both ways, talk of a Trump trip to India. The picture underneath is more complicated.
+
+  Three Indian sailors died in the Strait of Hormuz in June, and the opposition wants Modi to answer Trump for it. Trump keeps claiming credit for the India Pakistan ceasefire, a claim Delhi rejects. Pakistan walked out of the Oval Office with a ten billion dollar backstop request on the table, US lawmakers are publicly lobbying against India's FCRA Bill, and Islamabad just signed a defence pact in Mecca.
+
+  Handshakes on camera, smoke underneath. Watch the pattern, not the photo op.
+
+  Follow @vak_hq for geopolitics, decoded.
+  vaqhq.com
+hashtags: |
+  #IndiaUS #Trump #Modi #Tariffs #Pakistan #StraitOfHormuz #FCRA #MeccaPact #IndianForeignPolicy #Geopolitics #VaqHQ
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-frame
+  vertical: briefing
+  video_file: clip.mp4
+  headline: US India ties, *smoke or fire?*
+  subline: Tariffs patched. Trust, not quite.
+  credit: "Photo: White House · FX: Freepik"
+  texture: grid
+  panel_height: 420
+  panel_fade: 0

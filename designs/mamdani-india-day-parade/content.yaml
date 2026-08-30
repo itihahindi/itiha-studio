@@ -1,0 +1,119 @@
+name: mamdani-india-day-parade
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Forty five years, every New York mayor, one parade. Zohran Mamdani is the first to skip it.
+
+  What happened. On Sunday 16 August, the Federation of Indian Associations held its 44th India Day Parade on Madison Avenue, the city's main India Independence Day event since Ed Koch walked the first one in 1981. Giuliani, Bloomberg, de Blasio and Adams all made a point of attending. The FIA invited Mamdani, per IANS. He did not come. He spent the day at a family day organised by public housing residents in Brooklyn. Governor Kathy Hochul was the political star on Madison Avenue.
+
+  A week earlier, Pakistan Day. On Sunday 9 August, Mamdani spoke at the Brooklyn Pakistan Day Mela at the Allama Iqbal Community Center, a celebration of Pakistan's Independence Day. The transcript is on nyc.gov. He opened with "Salam alaikum," told the crowd it was "such a privilege to be back here with all of you," and posted afterwards that he had gathered "to commemorate Pakistan's Independence Day and honor the contributions Pakistani New Yorkers have made to our city."
+
+  The part worth being precise about. Mamdani did attend a smaller India Independence Day parade in Floral Park, Queens, on Saturday 15 August, and posted that he was there as "the first Indian American mayor of New York City." The Pakistan event was a community mela, not the Manhattan Pakistan Day Parade. Neither changes the record: the one Indian event with a 45 year mayoral tradition is the one he missed.
+
+  The pattern. In May he refused the Israel Day Parade on principle. On 9 August he attended the Pakistan Day celebration. On 16 August he skipped the main India Day Parade. On 26 August he said he opposes RSS chief Mohan Bhagwat's Madison Square Garden address, while conceding the city has no power to cancel it. Which invitations a mayor accepts is a choice, and this is his.
+
+  Sources: IANS, 17 August 2026. The Statesman. nyc.gov transcript, Brooklyn Pakistan Day Mela, 9 August 2026. The Algemeiner, 12 August 2026. Scroll, Business Today, 26 August 2026. Photo: Bloomberg.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #ZohranMamdani #IndiaDayParade #NYC #IndianAmericans #FIA #PakistanDay #Diaspora #IndianDiaspora
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: true
+slides:
+- layout: cover
+  surface: dark
+  kicker_meta: New York · Aug 2026
+  headline: |
+    45 years. Every mayor.
+    *Mamdani* Skips India Day Parade
+  image: mamdani.jpg
+  image_position: 60% 30%
+  image_height: 620
+  texture: dots
+  headline_size: 88
+  show_index: false
+  vertical: live
+- layout: roster
+  surface: dark
+  kicker_meta: Madison Avenue · Since 1981
+  headline: |
+    Every mayor
+    *walked it*
+  row_size: 44
+  rows:
+  - flag: 🗽
+    name: Ed Koch
+    year: 1981 · FIRST PARADE
+  - flag: 🗽
+    name: Rudy Giuliani
+    year: ATTENDED
+  - flag: 🗽
+    name: Michael Bloomberg
+    year: ATTENDED
+  - flag: 🗽
+    name: Bill de Blasio
+    year: ATTENDED
+  - flag: 🗽
+    name: Eric Adams
+    year: ATTENDED
+  - flag: ✕
+    name: Zohran Mamdani
+    year: 2026 · SKIPPED
+    featured: true
+  loop: Where he was on 16 August
+  texture: grid
+- layout: story
+  surface: dark
+  kicker_meta: Sunday · 16 Aug 2026
+  headline: |
+    Invited. *Absent.*
+  body: |
+    The Federation of Indian Associations invited him to the 44th India Day Parade, per IANS. He spent the day at a [public housing] family day in Brooklyn. Governor Kathy Hochul led the politicians on Madison Avenue.
+  body_size: 50
+  align_y: middle
+  loop: A week earlier, a different flag
+  texture: grid
+- layout: story
+  surface: dark
+  kicker_meta: Sunday · 9 Aug 2026
+  headline: |
+    Pakistan Day: he
+    *showed up*
+  body: |
+    Brooklyn Pakistan Day Mela, Allama Iqbal Community Center. He opened with "Salam alaikum" and called it "such a [privilege] to be back here with all of you." The transcript is on nyc.gov.
+  image_height: 400
+  body_size: 44
+  align_y: middle
+  loop: In his own words
+  texture: grid
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRld-8K84aU3JuGqOoHtJ_euZhIEW_8bi2DQ9DGZsjYVJgkMps8sbepP_GZ&s=10
+  image_position: 39% 39%
+- layout: quote
+  surface: dark
+  kicker_meta: Mamdani on X · After the Mela
+  quote: I gathered with residents at the Allama Iqbal Community Center's Mela to commemorate Pakistan's
+    Independence Day and honor the contributions Pakistani New Yorkers have made to our city.
+  attribution: Zohran Mamdani, Mayor of New York
+  quote_size: 60
+  texture: grid
+- layout: story
+  surface: dark
+  kicker_meta: The Pattern
+  headline: |
+    Four choices
+    in *four months*
+  body: |
+    May: refused the Israel Day Parade. 9 August: attended the Pakistan Day celebration. 16 August: skipped the main India Day Parade. 26 August: said he [opposes] RSS chief Bhagwat's Madison Square Garden address.
+  body_size: 50
+  align_y: middle
+  texture: grid
+- layout: closing
+  surface: dark
+  headline: |
+    Which invitations a mayor
+    accepts is a choice.
+  body: Follow @vak_hq for the diaspora, decoded.
+  handle: '@vak_hq'
+  texture: grid

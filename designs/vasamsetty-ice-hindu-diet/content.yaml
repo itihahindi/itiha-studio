@@ -1,0 +1,21 @@
+name: vasamsetty-ice-hindu-diet
+brand: vaq-hq
+format: instagram-portrait
+hashtags: |
+  #VaqHQ #ICE #GreenCard #IndianDiaspora #NRI #Hindu #Immigration #NorthCarolina #IndiansInUSA
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: cover
+  surface: dark
+  kicker_meta: Georgia · 25 Aug 2026
+  headline: Hindu Women in ICE Detention forced to *eat beef*
+  subline: Venkata Vasamsetty, 59, green card since 2013, diabetic, shackled at a routine check-in. Her
+    lawyer says she is losing weight in custody.
+  texture: grid
+  headline_size: 96
+  image: https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA2azOJO.img?w=768&h=432&m=6&x=509&y=122&s=90&d=90
+  image_height: 400
+  vertical: ground

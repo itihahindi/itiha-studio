@@ -1,0 +1,138 @@
+name: bhagwat-msg-carousel
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Six thousand inside Madison Square Garden. A protest, a mayor's opposition and a visa-revocation demand outside. This is what Mohan Bhagwat actually said.
+
+  The room. The Universal Oneness Celebration at the Infosys Theater on Saturday 29 August, hosted by the American Hindus for Engagement and Dialogue (AHEAD) Forum, drew more than 6,000 people from 39 states, 853 cities and 250 organisations, per the organisers. It was the first stop of a US, Canada and UK tour marking the RSS centenary. The address ran close to an hour.
+
+  Pluralism and unity in diversity. "When we say United States of America, one word is often discussed frequently. That is pluralism. And when we say Bharat, another phrase is discussed: unity in diversity. For Bharat, this unity and this diversity, both are in their DNA."
+
+  The Vivekananda line. "Every nation has a message to deliver. Every nation has a mission to accomplish. Every nation has a destiny to fulfil." Bharat's, he said, "is to realise and from time to time make the world realise this unity in diversity. We are one, and due to diversity, that oneness is decorated." And: "Diversity is natural and unity is truth."
+
+  The sharpest line. "One tendency was: live and let live. The other tendency was: live and let only those live who obey us. Those who say, you obey us and we will protect you, are Rakshasas."
+
+  The ask of the diaspora. Be loyal to your karma bhoomi; after that duty, if you want to do something for your janma bhoomi, live by the values Bharat gave you. "How much we earn is not important; how much we distribute is important." The message, he said, goes out "through practice, not through preaching."
+
+  The week outside. On 26 August Mayor Zohran Mamdani said he was not supportive of the rally. On 27 August USCIRF urged the Trump administration to revoke Bhagwat's visa. On 28 August the Hindu American Foundation asked whether city grant money was funding the protest's organisers, and a Times Square billboard carried his portrait. On 29 August Hindus for Human Rights and allied groups protested outside while he spoke inside.
+hashtags: |
+  #VaqHQ #MohanBhagwat #RSS #MadisonSquareGarden #UniversalOneness #UnityInDiversity #HinduAmerican #NewYork #Vivekananda #Diaspora
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: true
+  texture: house
+slides:
+- layout: cover
+  surface: dark
+  kicker_meta: New York · 29 Aug 2026
+  headline_style: label
+  headline: |
+    6,000 inside. Protests outside.
+    *This* is what he said.
+  headline_size: 90
+  subline: Mohan Bhagwat at Madison Square Garden
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3I6QKG8zt9M-mZHExVt00z6R8uoQwgN38Z49Jl07nj9Ih--bUeRs2YYvk&s=10
+  image_position: 51% 53%
+  align_y: bottom
+  cover_style: poster
+  image_style: cutout
+  image_align: center
+  texture: newsprint
+- layout: stat
+  surface: solid
+  kicker_meta: Infosys Theater · MSG
+  label: THE UNIVERSAL ONENESS CELEBRATION
+  value: 6,000+
+  sublabel: from 39 states, 853 cities and 250 organisations, per the organisers
+  body: |
+    Hosted by the AHEAD Forum. The first stop of a US, Canada and UK tour for the RSS centenary. An address of close to [an hour].
+  body_size: 40
+  vertical: live
+- layout: story
+  surface: solid
+  kicker_meta: The Framing
+  headline: |
+    Pluralism, versus
+    *unity in diversity*
+  body: |
+    "When we say United States of America, one word is often discussed. That is pluralism. When we say Bharat, another phrase is discussed: unity in diversity. For Bharat, this unity and this diversity, both are in their [DNA]."
+  body_size: 44
+  align_y: middle
+  loop: The line he built the speech on
+  vertical: live
+- layout: quote
+  surface: solid
+  kicker_meta: As quoted at MSG
+  quote: Every nation has a message to deliver. Every nation has a mission to accomplish. Every nation
+    has a destiny to fulfil.
+  attribution: Swami Vivekananda, cited by Mohan Bhagwat
+  quote_size: 68
+  vertical: live
+- layout: story
+  surface: solid
+  kicker_meta: Bharat's Destiny
+  headline: |
+    "We are one. Diversity
+    *decorates* that oneness."
+  body: |
+    Bharat's destiny, he said, is "to realise and from time to time make the world realise this unity in diversity." Then, the compression: "[Diversity is natural] and unity is truth."
+  body_size: 44
+  align_y: middle
+  loop: The sharpest line of the night
+  vertical: live
+- layout: story
+  surface: light
+  kicker_meta: Live And Let Live
+  headline: |
+    "Those who say obey us
+    and we will protect you
+    are *Rakshasas*."
+  body: |
+    Two tendencies, in his telling. "Live and let live." And "live and let only those live who [obey us]." He did not name anyone. The room did not need him to.
+  body_size: 44
+  align_y: middle
+  loop: What he asked of the diaspora
+  vertical: live
+- layout: story
+  surface: solid
+  kicker_meta: The Ask
+  headline: |
+    Karma bhoomi first.
+    Then *janma bhoomi*.
+  body: |
+    Be loyal to the land you work in. After that duty, live by the values Bharat gave you. "How much we earn is not important; how much we [distribute] is important." Through practice, not preaching.
+  body_size: 44
+  align_y: middle
+  loop: Meanwhile, outside the Garden
+  vertical: live
+- layout: roster
+  surface: solid
+  kicker_meta: The Week Outside
+  headline: |
+    Four days,
+    *four fronts*
+  row_size: 40
+  rows:
+  - flag: 1️⃣
+    name: Mamdani says he is not supportive
+    year: 26 AUG
+  - flag: 2️⃣
+    name: USCIRF asks for his visa to be revoked
+    year: 27 AUG
+  - flag: 3️⃣
+    name: HAF asks about city grants to the protesters
+    year: 28 AUG
+  - flag: 4️⃣
+    name: HfHR protests outside. He speaks inside.
+    year: 29 AUG
+    featured: true
+  vertical: live
+- layout: closing
+  surface: dark
+  headline: |
+    Outside, the argument about him.
+    Inside, the argument he made.
+  body: Follow @vak_hq for the diaspora, decoded.
+  handle: '@vak_hq'
+  texture: newsprint

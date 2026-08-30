@@ -1,0 +1,36 @@
+name: modi-chalisa-press-club
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  A "Bhagwaan Shri Narendra Modi Chalisa" was unveiled and recited at the Press Club of India in Delhi on Thursday, 20 August. The clip shows a cutout of the Prime Minister dressed as Lord Ram, crown and bow included, with an aarti performed before it and chants of "Har Har Modi, Jai Jai Modi."
+
+  Who held it. Members of the transgender community, including Dr Rajan Singh and Mahamandaleshwar Vaibhavi Maharaj, per Siasat's report. The recital is modelled on the Hanuman Chalisa.
+
+  What the Press Club says. It did not organise the event. In its clarification on X, the club said the hall was hired by an organisation for a press conference, the terms of the booking were violated, and its authorities "immediately intervened" and stopped the event.
+
+  The reaction has not split on party lines. Much of the sharpest criticism is from Hindu users asking why a sitting politician is being turned into a deity. One widely shared line: "My religion is not a joke."
+
+  Footage via @ShyamMeeraSingh. Reporting: Free Press Journal, Siasat, News18, 20 August 2026.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #ModiChalisa #PressClubOfIndia #Delhi #Modi #IndianPolitics #MediaWatch
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-explainer
+  vertical: live
+  kicker_meta: Delhi · 20 Aug 2026
+  video_url: https://x.com/ShyamMeeraSingh/status/2090335492810399905/video/1
+  chip: Press Club of India
+  headline: |
+    A *Modi Chalisa* at
+    the Press Club
+  body_label: 'What happened:'
+  body: A cutout of the PM as Ram, an aarti, and a recital. The club says the hall was hired for a press conference, and it stopped the event.
+  credit: 'Footage: via @ShyamMeeraSingh'
+  texture: riso
+  panel_height: 680
+  headline_size: 100

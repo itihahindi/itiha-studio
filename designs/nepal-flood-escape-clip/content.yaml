@@ -1,0 +1,40 @@
+name: nepal-flood-escape-clip
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  This is what running from the Trishuli looked like. Phone footage circulating online shows workers in hi-vis fleeing down a valley road in Nepal's Rasuwa district as the flood wave and its dust cloud come through behind them, then scrambling over the boulder field it left.
+
+  The toll, as of 29 August. At least 538 confirmed dead in Nepal and up to 1,924 unaccounted for, per Nepal's National Disaster Risk Reduction and Management Authority and Nepal Police, as reported by CBS News. Tibet's Gyirong county reported 3 dead and 558 missing earlier in the week. The numbers are still moving.
+
+  What happened. At about 8:40 AM on Wednesday 26 August, a section of glacier ice and rock broke off above the Lhende valley in Tibet and plunged some 1,200 metres. The surge ran down the Bhote Koshi into the Trishuli and hit settlements along a 72 km stretch through Rasuwa and Nuwakot. The Trishuli rose as much as 9 metres in 30 minutes. Workers at the Upper Trishuli-1 hydropower project were among those trapped; Nepali Army rescuers pulled people out of a mud filled tunnel.
+
+  About this clip. It was posted by a small account and we have not independently verified where on the valley it was shot or by whom. The terrain, the workers' gear and the wave are consistent with the Rasuwa footage carried by Euronews and NBC on 27 August. If it turns out to be from elsewhere or another date, we will update this post and say so.
+
+  Downstream, Bihar opened all 36 gates of the Gandak Barrage at Valmikinagar and put six districts on alert. India sent about 10 tonnes of relief by air and readied IAF and NDRF teams.
+
+  Clip via @Rahul112113118. Sources: CBS News, Euronews, NBC News, Al Jazeera, The Week, 26 to 29 August 2026.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #Nepal #NepalFloods #Rasuwa #Trishuli #BhoteKoshi #Himalaya #Bihar #Gandak
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: false
+  texture: house
+slides:
+- layout: reel-frame
+  vertical: live
+  kicker_meta: Rasuwa · 26 Aug 2026
+  video_file: clip.mp4
+  headline_style: label
+  headline: |
+    Running from the Trishuli.
+    *538 dead*, 1,924 missing.
+  headline_size: 70
+  subline: Workers flee the flood wave in Nepal's Rasuwa valley. Clip circulating online, location not
+    independently verified.
+  credit: via @Rahul112113118
+  panel_height: 420
+  panel_fade: 0
+  texture: newsprint

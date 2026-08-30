@@ -1,0 +1,32 @@
+name: kerala-reporter-beef-question
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Malvika Sharma, the Maharashtra-born actress of Red, Nela Ticket and Bhimaa, was in Kerala for her first press interaction for the Malayalam film Khalifa. Asked which Kerala food she liked, she said she had not had time to try much. The follow-up: "Did you like beef?"
+
+  Her answer: "I am vegetarian so I haven't tried beef."
+
+  The clip has drawn heavy criticism online, with users asking why a beef question belonged in a film promotion at all, and whether the same reporter would ask a Muslim guest about pork. Others read it as a clumsy local-food question. Either way, it is the only part of the interaction anyone is talking about.
+
+  Clip: Neelakkuyil Entertainments, via @theskindoctor13.
+
+  @vak_hq · vaqhq.com
+hashtags: |
+  #VaqHQ #MalvikaSharma #Khalifa #Kerala #Mollywood #Tollywood #MediaWatch #IndianCinema
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-frame
+  vertical: live
+  kicker_meta: Kerala · 17 Aug 2026
+  video_url: https://x.com/theskindoctor13/status/2089233503284342975
+  headline: |
+    "Did you like *beef*?"
+  subline: A Kerala reporter's question to Malvika Sharma at her first Khalifa promo. Her answer, "I am
+    vegetarian."
+  texture: grid
+  panel_height: 420
+  panel_fade: 0
+  headline_size: 72

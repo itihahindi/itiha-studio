@@ -1,0 +1,85 @@
+name: uscirf-targets-india-editorial
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  The US Commission on International Religious Freedom was created in 1998 under the International Religious Freedom Act, pushed through by a Christian-right lobbying campaign behind Republican Frank Wolf's bill and signed by Bill Clinton. Nine commissioners, appointed by both parties, advise Congress, the State Department and the White House, and their sharpest instrument is the recommendation to sanction a country named a "Country of Particular Concern."
+
+  Critics in India read USCIRF as an arm of a global evangelical project. Its reports lean on advocacy groups like the Dalit Freedom Network and evangelist testimony, treat conversion to Christianity as liberation and India's ghar wapsi as regression, and press Washington to gut India's Freedom of Religion Acts and the Foreigners Act that curbs foreign missionaries. Violence by Christian separatist militias like the NLFT and Naga outfits, meanwhile, draws little of its attention.
+
+  In 2026, for the seventh straight year, it urged the CPC tag and went further, demanding sanctions on the RSS and R&AW. The State Department has never acted on it, and India has rejected the report as biased and motivated. @vak_hq · vaqhq.com
+hashtags: |
+  #Politics #VaqHQ #USCIRF #India
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  vertical: briefing
+  seriesLabel: THE BRIEFING
+slides:
+- layout: cover
+  headline: '*USCIRF*:The panel that *targets* India'
+  subline: USCIRF, and the agenda its critics see behind it
+  surface: solid
+  image: uscirf-881x478-bgremoved.png
+  image_height: 1000
+  image_position: 50% 5%
+  headline_offset_y: 40
+  kicker_meta: USCIRF
+  align_x: center
+  texture: grid
+- layout: story
+  headline: Born from a *lobby*
+  body: Created in 1998 under the International Religious Freedom Act. A Christian-right campaign drove
+    Republican Frank Wolf's founding bill. Bill Clinton signed it into law.
+  surface: solid
+  image: https://upload.wikimedia.org/wikipedia/commons/d/d3/Bill_Clinton.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original
+  texture: grid
+- layout: story
+  headline: A foreign-policy *lever*
+  body: Nine commissioners, named by both parties, advise Congress, the State Department and the White
+    House. Their sharpest tool is a recommendation that can trigger US sanctions.
+  texture: grid
+  surface: solid
+- layout: story
+  headline: An *evangelical* engine
+  body: 'It''s an outward arm of a global evangelical project. Its yearly India reports read as spin,
+    and India sits as a standing target on its watchlist. It''s a medium for American evangelist spread
+    their ideology across world especially developing countries. '
+  surface: solid
+- layout: story
+  headline: Convert good, *return* home bad
+  body: It frames conversion to Christianity as a move toward freedom. Any opposition to conversions or  the
+    return to Native religions of the lnad, it treats as backsliding into oppression.
+  surface: solid
+- layout: story
+  headline: Built on *atrocity* literature
+  body: It leans on evangelist testimony and advocacy groups like the Dalit Freedom Network, which is
+    funded by American Christian right. wing.  Sensational, unverified claims are synthesized into official-sounding
+    findings against India.
+  image: https://images.squarespace-cdn.com/content/v1/576a9e3f9de4bbf43634ad4b/58593366-69ee-4b87-94ca-bbb1f4684f45/122265712758_4.jpg
+  image_height: 300
+  surface: solid
+- layout: story
+  headline: A one-way *lens*
+  body: Allegations against Hindus are magnified into national indictments. Decades of killings by Christian
+    separatist militias, the NLFT and Naga outfits, barely register in its reports.
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvJiXn-oBe-Xq0XoWIr8DGsRr0XOaO-GDGAvPutFxcB_nzGSe5ML6ItJg&s=10
+  image_position: 25% 44%
+  surface: solid
+- layout: story
+  headline: Aimed at India's *laws*
+  body: It presses Washington to force a repeal of India's Freedom of Religion Acts, live in 13 states.
+    It also attacks the Foreigners Act that regulates US evangelists entering the country.
+  surface: solid
+- layout: stat
+  label: CONSECUTIVE YEARS
+  value: 7
+  sublabel: years USCIRF has demanded the CPC tag
+  body: In 2026 it escalated, urging targeted sanctions on the RSS and R&AW. The State Department has
+    declined the designation every single time.
+  surface: solid
+- layout: closing
+  align_y: middle
+  texture: grid

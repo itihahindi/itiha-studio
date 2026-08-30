@@ -1,0 +1,104 @@
+name: dalit-mata-movement
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  What is the Dalit Mata Movement? A Gen Z meme movement, a deadpan online religion, or both. Here is what one detailed account and the movement's own websites say.
+
+  Where this comes from. Almost everything known about the movement is from a single writeup posted on X by Ravinder Reddy on 19 August, based on member interviews and public posts. He calls it "not an endorsement." No mainstream outlet has covered the movement, and we could not independently verify its size, leadership or membership. Treat every claim below as attributed, not established.
+
+  What the writeup says. A mostly Gen Z network on X and Instagram that calls itself a third front, backs neither the BJP nor the Congress, and is hostile to what it calls "Hindutva boomers." It says both parties expanded what it calls Ambedkarism, in its words a freebie state. It opposes what it calls the "Dalitification" of India, which it describes as law and institutions built to erase upper caste people. Those are the movement's claims about the Indian state, not facts.
+
+  The imagery. The first Dalit Mata image is traced to an Instagram post made for a Marathi trans group, reposted on X and morphed since. The figure is gender fluid per the movement, appears with a Bengal monitor lizard, and now has a supporting cast including a Dalit Papa and a Dalit Mother Mary. The lizard is a reference to a real case: in April 2022, four men were booked under the Wild Life (Protection) Act after one filmed the rape of a Bengal monitor lizard in Maharashtra's Sahyadri Tiger Reserve. That case is on record.
+
+  The movement's own site, dalitmata.com, runs the bit completely straight: a "5000 Year Old Living Goddess of Bahujan," Ambedkar blue and gold, Jai Bhim, and a press note instructing journalists, "Do not call 2026 darshan a meme."
+
+  The pushback. Supporters of both major parties ask whether the same treatment will come for their gods and leaders. The movement's answer, per the writeup: it already does, at scale, and nothing comes of it. Since 19 August, members report threats from accounts using Mahatma Gandhi profile pictures.
+
+  Sources: Ravinder Reddy on X, 19 August 2026. dalitmata.com press page, updated 19 August 2026. The Sahyadri Tiger Reserve case: India TV, Vice, April 2022.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #DalitMata #GenZ #IndianPolitics #Caste #MemeCulture #SocialMedia
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: true
+slides:
+- layout: cover
+  surface: solid
+  headline: |
+    What is
+    *Dalit Mata*?
+  subline: A Gen Z meme movement, a deadpan religion, or both. One writeup and the movement's own websites,
+    decoded.
+  texture: riso
+  image: https://hnycurvn5wwq5kstqktge3cwqdrp0phu.vercel.app/images/dalit-mata-portrait.jpg
+- layout: story
+  surface: light
+  kicker_meta: The Writeup
+  headline: |
+    A *third front*
+    of meme accounts
+  body: |
+    Per Ravinder Reddy's account, based on member interviews. Mostly [Gen Z], on X and Instagram. They back neither the BJP nor the Congress, and are openly hostile to "Hindutva boomers." Songs, a manifesto and several websites already exist.
+  body_size: 46
+  loop: Their target is a word they coined
+  texture: grid
+- layout: story
+  surface: dark
+  kicker_meta: Their Words
+  headline: |
+    The target:
+    *"Dalitification"*
+  body: |
+    The movement's own coinage. It claims India's laws and institutions are built to [erase upper castes], and calls Ambedkarism "a freebie state." Those are its claims about the state, not established fact.
+  body_size: 46
+  loop: The goddess began as a repost
+  texture: grid
+- layout: story
+  surface: light
+  kicker_meta: The Origin
+  headline: |
+    A deity born
+    on *Instagram*
+  body: |
+    The first image is traced to a post made for a [Marathi trans group], reposted on X and morphed since. Dalit Mata is gender fluid, per the movement, and now has a supporting cast: a Dalit Papa and a Dalit Mother Mary.
+  body_size: 46
+  loop: Why a monitor lizard?
+  texture: grid
+- layout: stat
+  surface: light
+  kicker_meta: Sahyadri · April 2022
+  label: THE LIZARD IS A REFERENCE
+  value: '4'
+  sublabel: men booked under the Wild Life (Protection) Act, 1972
+  body: |
+    Dalit Mata appears with a Bengal monitor lizard. The movement says it recalls the 2022 case in Maharashtra, where one accused [filmed the act]. The one fully checkable fact in this story.
+  body_size: 43
+  texture: grid
+- layout: story
+  surface: dark
+  kicker_meta: The Pushback
+  headline: |
+    "Aren't you afraid
+    for *your* gods?"
+  body: |
+    The question members get most, per the writeup. Their answer: it [already happens] to their gods, at scale, and nothing comes of it. Since 19 August, members report threats from accounts using Gandhi profile pictures.
+  body_size: 46
+  loop: Their own site refuses the word meme
+  texture: grid
+- layout: quote
+  surface: solid
+  kicker_meta: dalitmata.com · Press Note
+  quote: 'Use official photo only. Colour: Ambedkar blue + gold. Do not call 2026 darshan a meme.'
+  attribution: Press guidelines, dalitmata.com
+  quote_size: 64
+  texture: grid
+- layout: closing
+  surface: dark
+  headline: |
+    Meme, movement,
+    or a new religion. Watch it.
+  body: Follow @vak_hq for Indian politics, decoded.
+  handle: '@vak_hq'
+  texture: grid

@@ -1,0 +1,48 @@
+name: bhagwat-uscirf-haf
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  The US body that wants Mohan RSS Cheif Mohan Bhagwat's visa revoked has been refused India's own visas for more than 15 years. This week its commissioner said he would sit down with Bhagwat if someone arranged it.
+
+  What USCIRF did. On 27 August the US Commission on International Religious Freedom urged the Trump administration to revoke the RSS chief's visa and consider targeted sanctions against RSS members, saying it was "deeply concerned" about his visit. Bhagwat is in New York on a three-nation trip to address the Universal Oneness Celebrations at the Infosys Theater, Madison Square Garden, on 29 August.
+
+  What the clip says. Asked by ANI in Los Angeles whether he would meet Bhagwat, USCIRF's Asif Mahmood said: "I would definitely be open to sit down if there is an opportunity. If arrangements can be made, we will be happy to sit with him, talk and bring more awareness. There might be some assurances and guarantees they can give which might change our mind." He also said groups like the RSS "are creating hate according to our knowledge." And then: "We have tried many, many times to get the visa, but we couldn't get it."
+
+  The record. India has declined USCIRF delegations since 2009, including requested visits in 2016 and 2020, on the position that a foreign body has no standing to pronounce on Indian citizens' constitutionally protected rights. This week the MEA's Randhir Jaiswal called USCIRF a "biased organisation" with "their own agenda."
+
+  The pushback. HinduPACT called USCIRF's statements a "smear campaign" that turns religious freedom into a platform for ideological attacks on Hindu organisations. The Hindu American Foundation issued a community alert for attendees, warning of attempts to disrupt the event and asking them to stay civil.
+
+  Footage: ANI. Reporting: Free Press Journal, ThePrint, ANI, Assam Tribune, 27 to 29 August 2026. USCIRF statements on India visas, 2016 and 2020.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #USCIRF #MohanBhagwat #RSS #MadisonSquareGarden #HinduAmerican #IndiaUS #Geopolitics
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-explainer
+  vertical: briefing
+  kicker_meta: Los Angeles · 28 Aug 2026
+  video_file: clip.mp4
+  chip: USCIRF
+  headline_style: label
+  headline: 'The *Pakistani-American* head of USCIRF wants RSS chief Mohan Bhagwat''s visa revoked.'
+  headline_size: 76
+  body_label: 'In the clip:'
+  body: USCIRF's Asif Mahmood says he would sit down with Mohan Bhagwat if arrangements can be made, and
+    that the commission has tried "many, many times" to get an Indian visa and was denied.
+  body_size: 40
+  texture: halftone
+  panel_height: 800
+  panel_fade: 100
+  bursts:
+  - x: 960
+    y: 1660
+    color: paper
+    size: 120
+    points: 9
+    rotate: 15
+    pos: bottom-right
+    front: false

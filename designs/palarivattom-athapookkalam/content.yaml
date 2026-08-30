@@ -1,0 +1,25 @@
+name: palarivattom-athapookkalam
+brand: vaq-hq
+format: instagram-reel
+hashtags: |
+  #VaqHQ #Onam #Athapookkalam #Kerala #Kochi #Palarivattom #FactCheck #MediaWatch
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-frame
+  vertical: ground
+  kicker_meta: Kochi · 26 Aug 2026
+  video_url: https://x.com/MahaRathii/status/2092533349797822596
+  headline: |
+    An Onam pookalam,
+    *scuffed* on camera
+  subline: A viral post says a Muslim girl did it deliberately. No outlet has verified the claim yet.
+    Here is what the CCTV shows.
+  credit: 'CCTV clip '
+  texture: dots
+  panel_height: 800
+  panel_fade: 0
+  headline_size: 100
+  align_y: middle

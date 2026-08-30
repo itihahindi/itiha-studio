@@ -1,0 +1,37 @@
+name: mamdani-hfhr-grant
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  The group leading the protest against Mohan Bhagwat's Madison Square Garden address holds a $10,000 grant from New York City. Its founder co-founded Hindus for Zohran. The Hindu American Foundation is asking whether taxpayer money is funding political activity. City Hall has not answered.
+
+  What is documented. In February 2026 the NYC Office for the Prevention of Hate Crimes and the Commission on Human Rights named Hindus for Human Rights (HfHR) one of 12 recipients of the Community Project Grant to Prevent and Address Bias and Hate, worth up to $10,000, for an Eid, Holi and Vaisakhi intercultural programme in Queens. HfHR's executive director Sunita Viswanath co-founded Hindus for Zohran during the 2025 mayoral campaign and, per the city's own filings, bundled donations for it. HfHR organised the City Hall press conference and the counter-protest against the 29 August event, and Mayor Mamdani said he opposes the rally.
+
+  The campaign record. The NYC Campaign Finance Board's 2025 intermediaries file lists "Viswanath, Sunita" of Brooklyn as an intermediary, the CFB's term for a bundler, for Mamdani's mayoral campaign, with $8,105 in contributions delivered and her occupation recorded as "Not Employed." We checked the CFB's public data file directly.
+
+  What HAF asks. In a 28 August statement the Hindu American Foundation puts four questions to the mayor: whether city funding is being used for campaigning, lobbying or protests targeting Hindu Americans; what coordination took place between these groups and the mayor's office before his public opposition; whether the mayor's office assured organisers of attendee safety; and whether the mayor commits to representing all New Yorkers.
+
+  The part worth being precise about. The grant was awarded in February, before Bhagwat's visit was announced, and its stated purpose is interfaith festivals, not protests. Nothing on the record shows grant money paid for the counter-protest. The documented fact is narrower and still pointed: the city is funding the organisation that is now running the campaign against a Hindu event, while that organisation's founder is a political ally of the mayor.
+
+  Sources: Hindu American Foundation, 28 August 2026. NYC Campaign Finance Board, 2025 Intermediaries data file. NYC.gov and News India Times on the 2026 Community Project Grants, February 2026. New Lines Magazine and City & State on Hindus for Zohran. Photo: Zohran Mamdani as State Assemblymember, by Karamccurdy, CC BY-SA 4.0, via Wikimedia Commons.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #Mamdani #NYC #HinduAmerican #HAF #HfHR #MadisonSquareGarden #MohanBhagwat
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: false
+  texture: house
+slides:
+- layout: cover
+  surface: dark
+  kicker_meta: New York · 29 Aug 2026
+  headline_style: label
+  headline: |
+    The group protesting Bhagwat
+    holds a *$10,000* City Hall grant.
+  headline_size: 76
+  subline: Hindus for Human Rights holds a 2026 NYC hate-crimes grant. Its founder bundled $8,105 for Mamdani's campaign, per city records. City Hall has not answered HAF's questions.
+  image: mamdani-formal.jpg
+  image_position: 50% 15%
+  image_height: 640

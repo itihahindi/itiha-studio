@@ -1,0 +1,33 @@
+name: faria-abdullah-bonalu
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Telugu actress Faria Abdullah carried a Bonam at the Sri Simhavahini Mahankali Temple in Hyderabad's Old City on 9 August, walking with the Bonalu procession alongside Pothuraju performers. The trolling that followed called her a kafir for taking part.
+
+  On 15 August she answered in a video posted to Instagram, breaking down as she spoke. Her father, Sanjay Abdullah, was born Hindu and converted to Islam. "He got converted to Islam because he liked the religion," she said. "I've always seen the good about Islam. I really wish good things for you bro, actually." Her mother, Kausar Sultana, was born Muslim and later took to Hindu spirituality and meditation.
+
+  Vishwa Hindu Raksha Parishad national mahila president Yamuna Pathak called the trolling "vicious" and told ANI: "Bharat is governed by the Constitution, not by religious policy. Every citizen enjoys equality, dignity and freedom of conscience under Articles 14, 19, 21 and 25." VHP's Vinod Bansal also condemned the trolls, saying they "will not be able to function for long with radical mindset."
+
+  Clip via @RShivshankar. Reporting: ANI, WION.
+
+  @vak_hq · vaqhq.com
+hashtags: |
+  #VaqHQ #FariaAbdullah #Bonalu #Hyderabad #Telangana #Tollywood #JathiRatnalu #VHRP #Trolling #IndianPolitics
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-frame
+  kicker_meta: Hyderabad · 16 Aug 2026
+  video_url: https://x.com/RShivshankar/status/2088865071061458992
+  headline: |
+    Carried a Bonam.
+    Called a *kafir*.
+  subline: Telugu actress Faria Abdullah breaks down after the Bonalu backlash. VHRP calls the trolling
+    "vicious".
+  texture: dots
+  panel_height: 450
+  panel_fade: 100
+  headline_size: 66
+  headline_offset_y: 50

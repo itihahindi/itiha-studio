@@ -1,0 +1,97 @@
+name: the-great-education-myth
+brand: itiha
+format: instagram-portrait
+caption: |
+  For nearly two hundred years, the story of Indian education has been told through one man and one date — Thomas Babington Macaulay and his 1835 Minute. The story says the British gave modern education to a country that was stuck in darkness. The research of historian Parimala V. Rao proves this story wrong. India had a working school system long before the British arrived. It was written, not oral. It was mostly non-Brahmin, not caste-restricted. It was funded by families and communities. The British did not build it. They broke it.
+
+  Rao's work draws on colonial-era school surveys in the Bombay, Madras, and Bengal Presidencies. In Madras, out of 142,369 Hindu boys in school, 111,890 were non-Brahmin. In Bengal, out of 1,463 Hindu teachers, 1,255 were non-Brahmin. In Tirhut, students from the "untouchable" Sunri caste were ahead of upper-caste students in some subjects. Children of "good caste" families were taught by teachers of "inferior caste" without complaint. The classroom used sandboards, wooden writing tablets, and clay pencils, then moved to palm leaves, plantain leaves, and paper. It was a written culture, not an oral one. For the first 95 years of British rule — from 1757 to 1852 — the colonial state opened zero English schools. The Orientalist officials kept Indians on Sanskrit and Arabic sacred texts on purpose, to keep them away from the political ideas coming out of Europe. Modern schooling in India was actually built by Indians like Rammohan Roy, who fought the colonial state to open the Vidyalaya in Calcutta. Macaulay himself wrote 42 Education Minutes, not one. In the 41 forgotten ones, he asked for Indian teachers to be paid 30 to 50 rupees. The colonial state paid 5. When Macaulay left India, the state closed every school he had opened.
+
+  Macaulay is not the man who built Indian education. He is the mask hiding a state that refused to build it.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #ParimalaVRao #Macaulay #IndianEducation #BeautifulTree #ColonialHistory #PreColonialIndia #Historiography
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: BEAUTIFULTREE
+  emphasisV2: true
+slides:
+- layout: cover
+  eyebrow: Education Before British
+  eyebrow_meta: The Education Myth · 8 Parts
+  headline: Facts about pre-Raj Education
+  subline: Five archival truths about our pre-colonial classrooms
+  swipe_meta: Swipe ▸ · 8 Slides · 3 min read
+- layout: story
+  chapter: Chapter 01 · The Story We Were Told
+  headline: |
+    Macaulay Did Not
+    Bring The *Book.*
+  body: The story says the [British] gave modern education to a country stuck in [darkness]. The archives
+    say the opposite. The colonial state was not the [builder] of Indian schooling. It was the [obstacle].
+- layout: story
+  chapter: Chapter 02 · The Paper Trail
+  headline: |
+    Not Oral.
+    *Written.*
+  body: The claim that Indian schools were [oral] is a [colonial invention]. Students wrote on [sandboards],
+    then [wooden tablets], then [palm leaves], then [paper]. They used [reed pens] and [lamp-black ink].
+    It was a [culture of the pen] — not the [chant].
+- layout: stat
+  chapter: Chapter 03 · Who Actually Studied
+  headline: |
+    The Classroom
+    Was Not *Brahmin.*
+  stats:
+  - label: Non-Brahmin Hindu boys, Madras Presidency
+    value: 111,890
+    value_red: true
+    sublabel: Out of 142,369 total
+  - label: Non-Brahmin Hindu teachers, Bengal
+    value: 1,255
+    sublabel: Out of 1,463 total
+  body: The myth says pre-colonial classrooms were [Brahmin-only]. The [Madras], [Bombay], and [Bengal]
+    surveys prove the opposite. In [Bihar], [untouchable Sunri] students were [ahead] of upper-caste ones.
+    [Brahminisation] was a [British] policy — not an Indian [default].
+  headline_offset_y: -10
+  stats_offset_y: -140
+- layout: split-story
+  eyebrow: Chapter 04 · The Sabotage
+  headline: |
+    Zero English Schools.
+    For *95 Years.*
+  body: |
+    For the first [95 years] of their rule (1757 -  1852), the British opened [zero English schools]. Officials kept Indians on [Sanskrit] and [Arabic] on purpose, to keep them away from the [political ideas] coming out of [Europe]. Modern education in India was built by [Indians] like [Rammohan Roy], not by the [colonial state].
+  source: Parimala V. Rao, Beyond Macaulay
+- layout: story
+  chapter: Chapter 05 · The Real Macaulay
+  headline: |
+    He Wrote 42 Minutes.
+    History Remembers *One.*
+  body: '[Macaulay] wrote [42 Education Minutes]. History only teaches the [1835 one]. In the [other 41],
+    he asked for Indian teachers to be paid [30 to 50 rupees]. The colonial state paid [5]. When Macaulay
+    [left], the state [closed every school] he had opened.'
+- layout: story
+  chapter: Chapter 06 · Two Kinds Of British
+  headline: |
+    From Shepherd Boys.
+    To Imperial *Masters.*
+  body: 'The early British were [poor Scottish shepherd boys] like [John Malcolm] and [Thomas Munro].
+    They lived among Indians, [repaired temples], and studied Indian culture. '
+- layout: split-story
+  headline: "British *aristocracy* \ntakes over India\n"
+  body: 'After the Fall of American Colonies,  The [British aristocracy] took over. Men like [Lord Cornwallis]
+    brought a [racial contempt] , declaring that [no Indian is worthy of trust].  '
+- layout: closing
+  headline: |
+    Macaulay Is Not The
+    Architect. He Is The
+    *Smokescreen.*
+  body: |
+    The [1835 Minute] is not the [blueprint] of British education policy. It is the [smokescreen] for a state that refused to [fund] the enlightenment it claimed to [bring]. The [beautiful tree] was not a [gift]. It was an [inheritance] , [cut down] by the men who then claimed to have [planted] it.
+  handle: Follow @itiha29 · itiha.info
+  headline_size: 100

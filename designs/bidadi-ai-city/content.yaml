@@ -22,7 +22,7 @@ caption: |
 
   Sources: Adithi Gurkar in Swarajya, 30 July 2026. The News Minute on the project, the phase-one break-up and the consent question. Deccan Herald on the HUDCO offer and the GBDA's expanded jurisdiction. Distances computed straight-line from Vidhana Soudha. Price movement figures as reported by Swarajya.
 
-  @vaqhq · vaqhq.com
+  @vak_hq · vaqhq.com
 hashtags: |
   #VaqHQ #Bengaluru #Karnataka #Bidadi #AICity #GBIT #LandAcquisition #DKShivakumar #UrbanPlanning #IndianPolitics
 tweaks:
@@ -31,14 +31,15 @@ tweaks:
   showPageNum: true
   seriesLabel: THE AI CITY
 slides:
-- layout: cover
+- layout: stat
   kicker_meta: Ground Report · 31 Jul 2026
   headline: |
     India's first *AI City*
     was cleared in 2006
   subline: Same land. Same villages. Same promise. Karnataka has renamed a township it never built.
   align_x: left
-
+  texture: ink
+  image_tint: navy
 - layout: pictogram
   kicker_meta: The Gap
   headline: Years the land sat *frozen*
@@ -46,20 +47,24 @@ slides:
   total: 20
   columns: 10
   decimals: 0
-  value_suffix: ''
   grid_height: 260
   unit_label: years, 2006 to 2026
-  sublabel: Cleared as a flagship township in November 2006. DLF won the mandate, then walked after the 2008 crash. The land stayed under a red-zone notification.
+  sublabel: Cleared as a flagship township in November 2006. DLF won the mandate, then walked after the
+    2008 crash. The land stayed under a red-zone notification.
   source: Only the KIADB industrial estate was ever built on it.
   headline_size: 62
-
+  surface: dark
+  texture: newsprint
 - layout: city-map
   kicker_meta: Where It Is
   headline: Thirty kilometres out, and *past the metro*
   center_lat: 12.98
   center_lon: 77.58
   span_km: 78
-  rings: [10, 20, 30]
+  rings:
+  - 10
+  - 20
+  - 30
   places:
   - name: Bengaluru CBD
     lat: 12.9794
@@ -87,14 +92,17 @@ slides:
     note: Airport, 2008
     align: left
   routes:
-  - from: [12.935, 77.465]
-    to: [12.7988, 77.3853]
+  - from:
+    - 12.935
+    - 77.465
+    to:
+    - 12.7988
+    - 77.3853
     label: 17 KM OF NO METRO
     label_offset: -46
   map_caption: Straight-line distances from Vidhana Soudha. Bidadi is about 40 km by road.
   source: Rings are true distance circles. Metro extension to Bidadi is still a feasibility study.
   headline_size: 52
-
 - layout: bar-chart
   kicker_meta: The Market
   headline: The city voted with its *money* in 2025
@@ -113,12 +121,11 @@ slides:
     Distance was never Bengaluru's problem. [Sequence] is. Whitefield and Devanahalli got the jobs and the trunk lines first, and the distance stopped mattering.
   bar_size: 58
   headline_size: 56
-
 - layout: bar-chart
   kicker_meta: The Compensation
   headline: What is offered, and what is *asked*
   mode: emphasis
-  value_prefix: '₹'
+  value_prefix: ₹
   decimals: 2
   value_suffix: ' cr'
   max: 6
@@ -128,21 +135,20 @@ slides:
   - label: Government offer, high end
     value: 2.14
   - label: Farmers asking, low end
-    value: 5.00
+    value: 5
   - label: Farmers asking, high end
-    value: 6.00
+    value: 6
     emphasis: true
     note: Byramangala has been on protest for over 400 days
   source: Per acre. The offer also carries a 9,583 sq ft developed plot for every acre taken.
   bar_size: 48
   label_size: 27
   headline_size: 56
-
 - layout: bar-chart
   kicker_meta: The Money
   headline: The loan line is bigger than the *project*
   mode: emphasis
-  value_prefix: '₹'
+  value_prefix: ₹
   decimals: 0
   value_suffix: ' cr'
   rows:
@@ -160,7 +166,6 @@ slides:
   bar_size: 44
   label_size: 26
   headline_size: 54
-
 - layout: stat
   kicker_meta: The Scale
   surface: dark
@@ -170,7 +175,6 @@ slides:
   body: |
     The first phase alone is [518.45 acres] across three villages and about **754 farmers**. Farmer bodies say the GBDA never obtained the **80%** landowner consent the process requires, and intend to go to court.
   stat_size: 200
-
 - layout: story
   kicker_meta: The Precedent
   headline: On the last corridor, the plots *never came*
@@ -180,7 +184,6 @@ slides:
     In 2016 a parliamentary committee recommended returning **1,160 acres**.
   align_y: middle
   body_size: 42
-
 - layout: story
   surface: solid
   kicker_meta: The Sequence Error
@@ -192,10 +195,9 @@ slides:
   align_x: left
   align_y: middle
   body_size: 41
-
 - layout: closing
   headline: |
     Build the water
     and the rail first.
   body: An ordinary township at Bidadi would earn the grander name on its own.
-  handle: '@vaqhq'
+  handle: '@vak_hq'

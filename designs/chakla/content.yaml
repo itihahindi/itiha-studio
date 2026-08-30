@@ -1,0 +1,112 @@
+name: the-british-invented-the-prostitute-caste
+brand: itiha
+format: instagram-portrait
+caption: |
+  In 1868, the British colonial state passed the Contagious Diseases Act in India — a law designed to justify the mass sexual enslavement of Indian women in state-run military brothels called Chaklas. To legitimise the operation, colonial officials fabricated a fiction: they declared that the women trafficked into the Chaklas belonged to a "prostitute caste" — that this was their traditional social role, and the state was merely regulating it. The claim was a lie. Indian society had no such caste. This carousel is the record of what the British actually did — and the myth they invented to hide it.
+
+  The reality on the ground: police walked into villages and took the daughters of poor families "from fourteen years and upwards." In some cases, the mere act of a woman speaking to a man was used as grounds to denounce her as a prostitute and traffic her into a Chakla. Caste, poverty, and chastity were all weaponised as pretexts. Once inside, twelve to fifteen women were forced to serve a cantonment of one thousand soldiers each, at a fixed price of four annas per visit. They were beaten, cut on the arms and breasts, refused payment, and in documented cases set on fire. The colonial state then reclassified them as members of a hereditary "prostitute caste" — a category that did not exist in Indian tradition. When two British women investigators exposed the racket in a letter to higher authorities, the officials denounced the investigators and repeated the caste fiction as justification. In truth, prostitutes in pre-colonial India held recognised social positions that had no equivalent to the outcast status of prostitutes in Victorian Britain. The "prostitute caste" was not a discovered category. It was a manufactured one.
+
+  This carousel is the short-form record. The full story — the Chakla system, the lock hospitals, the escape penalties, the Anglo-Indian orphan pipeline, the surgical rape justified as "medical examination" — is in the full video linked in bio.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Chaklas #ContagiousDiseasesAct #ColonialHistory #IndianWomen #BritishRaj #ProstituteCaste #Cantonment
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: CHAKLAS
+  emphasisV2: true
+slides:
+- layout: cover
+  eyebrow: Series 73
+  eyebrow_meta: The Chakla System · 6 Parts
+  headline: |
+    British RAJ Invented
+    The *Prostitute*
+    *Caste.*
+  subline: How a colonial law manufactured a caste that never existed
+  swipe_meta: Swipe ▸ · 6 Slides · 3 min read
+  image: maxresdefault.webp
+  image_position: 13% 40%
+  headline_size: 120
+  headline_offset_y: 300
+- layout: split-story
+  chapter: Chapter 01 · The Fabrication
+  headline: |
+    A Caste That
+    Did Not *Exist.*
+  body: To justify the mass [sexual enslavement] of Indian women in [state-run military brothels], the
+    [colonial state] declared that these women belonged to a hereditary [prostitute caste]. Indian society
+    had [no such caste]. The category was [manufactured] , to make the [trafficking] appear as the [regulation]
+    of an [existing tradition].
+  theme: light
+- layout: split-story
+  chapter: Chapter 02 · How They Were Taken
+  headline: "British took \ngirls in early *teens*\n"
+  body: When military cantonment demanded girls for [British soldiers], Police [went into the villages]
+    and took daughters barely reaching their teens. In some cases, [talking to a man] was enough to denounce
+    a woman as a [prostitute]. [Caste], [poverty], and [chastity] were all used as [pretexts]. The women
+    did not [enter] the trade. They were [taken] into it.
+  image: _cache/32b8c84f897fdb5f.jpg
+  image_overlay: 0.7
+  body_y: 5
+  headline_y: 21
+  theme: dark
+- layout: stat
+  chapter: Chapter 03 · The Cantonment Ratio
+  headline: |
+    Twelve Women.
+    A Thousand *Soldiers.*
+  stats:
+  - label: Soldiers per cantonment
+    value: 1,000
+    sublabel: The base being "served"
+  - label: Women forced to serve them
+    value: 10–12
+    value_red: true
+    sublabel: The reality inside the Chakla walls
+  body: Women had to serve British Soliders at a fixed price of [four annas] per visit. The women were
+    [beaten], cut on the [arms] and [breasts], refused [payment], and in documented cases [set on fire].
+    The [caste fiction] framed this as [social work]. The [reality] was [enslavement].
+  headline_offset_y: 10
+  stats_offset_y: -150
+  theme: light
+  stat_size: 200
+- layout: story
+  chapter: Chapter 04 · The Cover-Up
+  headline: |
+    Two British Women
+    Exposed It. They
+    Were *Denounced.*
+  body: Two [British women investigators] discovered the [Chakla system] and documented it in a letter
+    to [higher officials]. The officials [publicly denounced] their claims & [reaffirmed] that the women
+    [belonged to the prostitute caste anyway]. The [investigators] were dismissed. The [caste fiction]
+    was retained. The [trafficking] continued.
+- layout: split-story
+  eyebrow: Chapter 05 · The Historical Truth
+  theme: light
+  headline: |
+    Indian Prostitutes
+    Were Not *Outcasts.*
+  body: |
+    In [pre-colonial India], [prostitutes] held recognised [social positions]. They were not the [outcasts] that Victorian Britain made of its own. The [British] imported their [own society's] view of the [prostitute] as a hereditary [degradation]  & [projected it] onto India as an [ancient caste]. It was [never true]. It was [convenient].
+  source: Historical scholarship on the Chakla system and the Contagious Diseases Act
+- layout: closing
+  headline: |
+    A Law. A Lie. A
+    System Of *Slavery.*
+  body: |
+    The [Contagious Diseases Act] of [1868] did not [regulate] a caste. It [manufactured] one. The [prostitute caste] was a [British invention] built to [legitimise] the [sexual enslavement] of Indian women in [military brothels]. The [full story] — the [lock hospitals], the [escape penalties], the [surgical rape] — is in the [video]. This is the [hook]. The [reckoning] is what follows.
+  handle: Follow @itiha29 · itiha.info
+- layout: youtube-cta
+  headline: 'Chakla: How the British Raj Created a ‘Licensed Vice’ System'
+  image: maxresdefault-2.jpg
+  thumbnail: _cache/b81eaff96c673876.webp
+  texture: grain
+  channel_label: '@itiha'
+  handle: '@itihs'
+  headline_size: -4
+  url_label: Comment for link to full video.

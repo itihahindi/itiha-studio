@@ -1,0 +1,144 @@
+name: how-the-us-government-runs-conversion
+brand: itiha
+format: instagram-portrait
+caption: |
+  The relationship between Christian conversion in India and American foreign policy is not incidental. It is coordinated, institutionalised, and documented in the paper trail of the US government's own agencies. This carousel is the record of how the machinery actually works — from USAID grants to the International Religious Freedom Act to the Joshua Project's intelligence-grade databases on Indian tribal populations.
+
+  Five documented components. First, doctrine: US foreign policy views Western evangelical missions as "flag-bearers of civilisation." Second, funding: USAID routes India aid through World Vision and Catholic Relief Services rather than through the Government of India, with a revolving door of personnel between the two. Third, legislation: the International Religious Freedom Act of 1998 created the US Commission on International Religious Freedom, which threatens sanctions against any country that restricts coercive conversion. Fourth, intelligence: the Denver-based Joshua Project compiles anthropological databases of Indian communities categorised by "market penetration," and field data from evangelical NGOs has been documented flowing to the CIA. Fifth, geopolitics: converting Dalits, tribals, and South Indians decouples them from Indian civilisational identity — creating internal friction inside a rising competitor to American hegemony.
+
+  The conversion is real. But the conversion is not the goal. The conversion is the mechanism.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #USAID #WorldVision #IRFA #USCIRF #JoshuaProject #NationalSecurity #ConversionAgenda
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: MACHINERY
+  emphasisV2: true
+slides:
+- layout: cover
+  eyebrow: FCRA 67
+  eyebrow_meta: The Machinery · 9 Parts
+  headline: |2
+
+    How The West
+    Weaponises
+    *Conversion*
+  subline: The documented pipeline
+  swipe_meta: Swipe ▸ · 9 Slides · 3 min read
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRob9VH9XbKv9YZNBMpZ9FxWHHdeOKM8uwzIZQVDh3QEgTuoVhpsog5BF4&s=10
+  headline_size: 150
+  headline_offset_y: 100
+  texture: halftone
+  image_position: 63% 50%
+- layout: split-story
+  chapter: Fact 01 · The Doctrine
+  headline: |
+    Evangelists Are
+    *Flag-Bearers.*
+  body: 'US foreign policy views Western [evangelical missions] as [flag-bearers of civilisation]. Converting
+    foreign populations builds [loyal constituencies]. A [Neo-colonialism]. Northeast Indian [Baptist
+    christians] follow American Christian Nationalist talking points. '
+  image: https://neibbcs.org.in/data1/images/photo.jpg
+  image_filter: warm
+  image_overlay: 0.9
+  body_y: 17
+- layout: split-story
+  chapter: Fact 02 · USAID
+  headline: |
+    American Aid.
+    Church *Delivery.*
+  body: 'USAID routes India aid through [World Vision] and [Catholic Relief Services] , not through the
+    [Indian government]. A former administrator openly admitted: [the US has long used Christian organisations.
+    Big time].'
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Seal_of_the_United_States_Agency_for_International_Development.svg/1920px-Seal_of_the_United_States_Agency_for_International_Development.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  image_bw: false
+  image_overlay: 0.9
+  body_y: 114
+- layout: did-you-know
+  eyebrow: Fact 03 · The Revolving Door
+  headline: |
+    He Ran World Vision.
+    Then Ran *USAID.*
+  body: |
+    A past [USAID administrator] had previously served as [vice president of World Vision]. The first US [Ambassador-at-Large for International Religious Freedom] was [president of World Vision] for [eleven years]. Not oversight. A [revolving door].
+  source: Public records of US administrative appointments
+  image: https://upload.wikimedia.org/wikipedia/commons/2/2b/2023_The_International_Religious_Freedom_Act_at_25_-_5362438.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled
+  image_overlay: 0.9
+  body_offset_y: 100
+  headline_offset_y: -90
+  image_position: 20% 50%
+- layout: split-story
+  chapter: Fact 04 · The Target
+  headline: |
+    Dalits. Tribals.
+    *Dravidians.*
+  body: 'USAID programmes target [millions] of [marginalised Dalit] and [tribal communities]. The language
+    is [social service]. The environment created is [ripe for proselytisation], followed by [Anti-India]
+    insurgency similar to Insurgencies in North East India. '
+  texture: halftone
+  image: https://media.vaticannews.va/media/content/dam-archive/vaticannews/agenzie/images/ansa/2018/03/30/14/good-friday-in-bhopal-1522412295528.jpg/_jcr_content/renditions/cq5dam.thumbnail.cropped.1500.844.jpeg
+  image_overlay: 0.9
+  body_y: 67
+- layout: split-story
+  chapter: Fact 05 · The Law
+  headline: |
+    A US Law To
+    Watch *Every Nation.*
+  body: The [International Religious Freedom Act] of [1998]  was created by [USCIRF] after lobbying by
+    [Christian Missionaries],  the US commission that [monitors] other nations' [internal affairs] on
+    the question of [conversion].
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Seal_of_the_United_States_Commission_on_International_Religious_Freedom.svg/1920px-Seal_of_the_United_States_Commission_on_International_Religious_Freedom.svg.png?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  image_overlay: 0.9
+  body_y: 53
+  texture: halftone
+- layout: story
+  chapter: Fact 06 · The Threat
+  headline: |
+    Anti-Conversion Law.
+    Or *US Sanctions.*
+  body: USCIRF threatens [sanctions] against any country that passes laws restricting [coercive] or [fraudulent]
+    conversion. Every Indian state that has passed one receives the same [warning] from [Washington].
+  texture: vignette
+  image: screenshot-2026-08-06-at-1-55-10-am.png
+  image_position: 0% 50%
+  image_overlay: 0.9
+- layout: did-you-know
+  eyebrow: Fact 07 · The Database
+  theme: dark
+  headline: |
+    A Denver Database.
+    Every Indian *Tribe.*
+  body: |
+    The [Joshua Project] compiles anthropological databases of Indian communities — categorised by [market penetration] for [soul harvesting]. Field data from [World Vision] has been documented flowing to the [CIA].
+  source: Investigative reports on evangelical intelligence networks
+  image: https://liketreesplanted.com/wp-content/uploads/2015/11/jp-progress-scale-map-large.jpg
+  headline_offset_y: -10
+  body_offset_y: 100
+  image_position: 82% 87%
+  texture: vignette
+- layout: story
+  chapter: Fact 08 · The Endgame
+  headline: |
+    A Fractured India
+    Is The *Goal.*
+  body: Converting [Dalits], [tribals], and [South Indians] decouples them from [Indian civilisational
+    identity].  Militant Linguistic identities over cultural unity, A [balkanised] India cannot [challenge]
+    American [hegemony]. That is the [point].
+  image: https://m.media-amazon.com/images/I/61+jZi+pSJL._AC_UF1000,1000_QL80_.jpg
+  image_overlay: 0.8
+  image_position: 42% 30%
+  texture: halftone
+- layout: closing
+  headline: |
+    The Conversion Is
+    Real. The Goal
+    Is *Not.*
+  body: |
+    The conversion is the [mechanism]. The [constituency] it creates is the [leverage]. The [funding] is [American]. The [target] is [Indian]. The [outcome] is [decided] in [Washington].
+  handle: Follow @itiha29 · itiha.info
+  texture: noise

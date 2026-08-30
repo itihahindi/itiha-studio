@@ -1,0 +1,42 @@
+name: bhagwat-msg-dna
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Outside Madison Square Garden: a protest, a mayor's opposition, a federal commission's demand that his visa be revoked. Inside: more than 6,000 people, and this.
+
+  What he said. Addressing the Universal Oneness Celebration at the Infosys Theater on Saturday, RSS chief Mohan Bhagwat set Bharat's idea against America's: "When we say United States of America, one word is often discussed frequently. That is pluralism. And when we say Bharat, another phrase is discussed: unity in diversity. For Bharat, this unity and this diversity, both are in their DNA."
+
+  Citing Swami Vivekananda, "Every nation has a message to deliver. Every nation has a mission to accomplish. Every nation has a destiny to fulfil," he said Bharat's destiny "is to realise and from time to time make the world realise this unity in diversity. We are one, and due to diversity, that oneness is decorated." Diversity, he said, "has to be celebrated, has to be respected, has to be accepted. And at the same time, we must keep in mind this feeling of oneness."
+
+  He asked Bharatiyas abroad to fulfil their duties "in our karma bhumi as well as our janma bhumi," calling that "a boon for the world struggling with all these problems."
+
+  The room. The nearly hour-long address was hosted by the American Hindus for Engagement and Dialogue (AHEAD) Forum and drew attendees from 39 states, 853 cities and 250 organisations, per the organisers. It was the first stop of a US, Canada and UK tour marking the RSS centenary.
+
+  Footage: Republic World, via YouTube. Quotes: ANI, 30 August 2026. Attendance and event details: PTI via OrissaPOST, ANI.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #MohanBhagwat #RSS #MadisonSquareGarden #UniversalOneness #UnityInDiversity #HinduAmerican #NewYork #Vivekananda
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: false
+  texture: house
+slides:
+- layout: reel-explainer
+  vertical: briefing
+  kicker_meta: New York · 29 Aug 2026
+  video_file: clip.mp4
+  chip: Madison Square Garden
+  headline_style: label
+  headline: |
+    Inside the Garden, Bhagwat's
+    answer to the *protests outside*.
+  headline_size: 54
+  body_label: 'He said:'
+  body: Unity and diversity are both in Bharat's DNA. Every nation has a message, a mission and a destiny.
+    Bharat's is to remind the world that we are one, and that diversity decorates that oneness.
+  body_size: 28
+  credit: 'Footage: Republic World'
+  panel_height: 520
+  panel_fade: 0

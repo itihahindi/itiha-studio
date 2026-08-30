@@ -4,7 +4,7 @@ format: instagram-portrait
 caption: |
   Layout system demo v2 — daylight newsroom + poster wall.
 
-  @vaqhq · vaqhq.com
+  @vak_hq · vaqhq.com
 hashtags: |
   #VaqHQ #Demo
 tweaks:
@@ -68,4 +68,4 @@ slides:
   texture: grid
   headline: |
     Politics, decoded — live.
-  handle: '@vaqhq'
+  handle: '@vak_hq'

@@ -1,0 +1,38 @@
+name: drdo-missile-tot
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  DRDO's missiles are going private. Rajnath Singh has approved the transfer of technology of every DRDO-developed conventional missile system to Indian defence industry, for production within the country.
+
+  What changes. Until now, private firms mostly supplied components inside DRDO programmes. With this approval they can produce complete missile systems at scale, subject to qualifications, certifications and regulatory clearance, once the forces place orders.
+
+  What is on the table. The conventional line: Akash and Akash-NG air defence, Astra air-to-air, the Rudram anti-radiation family, Nag and SANT anti-tank, NASM-SR anti-ship, Pralay and cruise missiles for land attack.
+
+  What is not. Strategic systems stay with the state: the Agni series, the K-series, and BrahMos and MRSAM, which sit inside foreign partnerships.
+
+  The stated aim, per the Ministry of Defence release of 25 August: enhance operational capability, cut import dependence, and open the missile supply chain to Indian MSMEs and technology partners.
+
+  Sources: Ministry of Defence / PIB Delhi, 25 August 2026. The Week, The Tribune. Photo: Pralay launch, DRDO / Ministry of Defence, GODL-India, via Wikimedia Commons.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #DRDO #RajnathSingh #MakeInIndia #AtmanirbharBharat #Akash #Astra #Pralay #IndianDefence #DefenceManufacturing
+tweaks:
+  vertical: live
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: cover
+  surface: dark
+  kicker_meta: New Delhi · 25 Aug 2026
+  headline: |
+    DRDO's missile tech
+    goes *private*
+  subline: Rajnath Singh clears every conventional missile system for production by Indian industry. Strategic
+    missiles stay with the state.
+  image: pralay.jpg
+  image_position: 50% 20%
+  image_height: 640
+  texture: signal
+  align_y: bottom
+  show_index: false

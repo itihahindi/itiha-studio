@@ -1,0 +1,36 @@
+name: bhagwat-times-square
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Mohan Bhagwat on a Times Square billboard, the night before he addresses Madison Square Garden. New York's mayor says he opposes the event. The federal religious freedom commission wanted his visa revoked. Protesters will be outside. He is speaking anyway.
+
+  The billboard. Footage by WION's Sidhant Sibal shows a full height Times Square screen cycling the "Universal Oneness Celebrations" creative with the RSS chief's portrait on the evening of 28 August.
+
+  The event. The Universal Oneness Celebration at the Infosys Theater, Madison Square Garden, on 29 August, hosted by the American Hindus for Engagement and Dialogue (AHEAD) Forum. More than 5,000 attendees and over 100 temple, yoga and cultural groups are expected. It is the first stop on a US, Canada and UK tour marking the RSS's centenary year.
+
+  The opposition. On 27 August USCIRF urged the Trump administration to revoke Bhagwat's visa and consider sanctions on the RSS. Mayor Zohran Mamdani said he was "not supportive" of the rally, finding himself "in deep opposition" to the movement, while conceding the city has no power to cancel a private event. Hindus for Human Rights and allied groups plan to protest outside the Garden on the night. The Hindu American Foundation has issued a community alert asking attendees to stay civil.
+
+  Footage via @sidhant. Sources: Religion News Service, 28 August. Free Press Journal, Scroll, Business Today, 26 to 27 August 2026.
+
+  @vak_hq
+hashtags: |
+  #VaqHQ #MohanBhagwat #RSS #TimesSquare #MadisonSquareGarden #NewYork #HinduAmerican #Mamdani #USCIRF
+tweaks:
+  vertical: briefing
+  showStamp: true
+  showPageNum: false
+  texture: house
+slides:
+- layout: reel-frame
+  vertical: briefing
+  kicker_meta: New York · 29 Aug 2026
+  video_file: clip.mp4
+  headline_style: label
+  headline: |
+    Bhagwat on a *Times Square* billboard.
+    The mayor says he opposes the event.
+  headline_size: 64
+  subline: The RSS chief addresses 5,000 at Madison Square Garden tonight. USCIRF wanted his visa revoked.
+  credit: via @sidhant, WION
+  panel_height: 420
+  panel_fade: 0

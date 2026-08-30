@@ -1,0 +1,31 @@
+name: vande-mataram-row
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  For the first time, the full Vande Mataram was sung at the Congress headquarters on Independence Day, and it still ended in a row. A clip from Indira Bhawan shows Sonia Gandhi gesturing during the rendition. The BJP's Amit Malviya says she was demanding the song be stopped. Congress says she was asking for a chair for 83 year old Mallikarjun Kharge.
+
+  Jairam Ramesh insists the full version was sung with no attempt to interrupt it, and the party has called the allegation baseless. The BJP is running with the clip anyway, in Vande Mataram's 150th anniversary year, with the song's long history between the two parties doing the heavy lifting.
+
+  Watch the clip. Judge the gesture for yourself.
+
+  Follow @vak_hq for Indian politics, decoded live.
+  vaqhq.com
+hashtags: |
+  #VandeMataram #SoniaGandhi #Kharge #Congress #BJP #IndependenceDay #IndiraBhawan #IndianPolitics #BreakingNews #VaqHQ
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: reel-frame
+  vertical: ground
+  video_url: https://x.com/desishitposterr/status/2088602577432904117/video/1
+  headline: The *Vande Mataram* row
+  subline: A gesture, a claim, and a clarification
+  credit: 'Footage: Manorama News'
+  texture: signal
+  panel_height: 400
+  panel_fade: 200
+  align_x: left
+  align_y: bottom
+  headline_offset_y: 50

@@ -1309,11 +1309,20 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
   const [publishState, setPublishState] = React.useState({ phase: 'idle' });
   // phase: 'idle' | 'publishing' | 'done' | 'error'
 
+  // 9:16 formats publish as a reel (the composed reel.mp4, slide 1 as cover);
+  // everything else posts the rendered PNGs as a single image or a carousel.
+  const isVideoFormat = content.format === 'instagram-reel' || content.format === 'instagram-story';
+  const published = content.ig_published;
   const publishIG = async () => {
     const n = (content.slides || []).length;
+    const what = isVideoFormat
+      ? 'Post the composed reel.mp4 (slide 1 as cover) to Instagram Reels NOW?'
+      : `Post ${n} slide${n === 1 ? '' : 's'} to Instagram NOW?`;
+    const again = published
+      ? `\n\nAlready published ${published.at || ''} (${published.permalink || published.post_id}). This creates a SECOND post.`
+      : '';
     const ok = window.confirm(
-      `Post ${n} slide${n === 1 ? '' : 's'} to Instagram NOW?\n\n` +
-      `This publishes the last rendered PNGs publicly to the connected account.`
+      `${what}\n\nThis publishes publicly to the connected @${content.brand === 'vaq-hq' ? 'vak_hq' : 'itiha29'} account.${again}`
     );
     if (!ok) return;
     setPublishState({ phase: 'publishing' });
@@ -1447,6 +1456,22 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
           maxHeight: 120, overflowY: 'auto', whiteSpace: 'pre-wrap',
         }}>{reelState.msg}</div>
       )}
+      {published && publishState.phase !== 'done' && (
+        <div style={{
+          padding: '8px 14px', background: 'rgba(90,168,127,0.06)',
+          borderTop: '1px solid #2c2c2c', display: 'flex', alignItems: 'center', gap: 10,
+          fontSize: 11, color: '#9ab', letterSpacing: 0.5,
+        }}>
+          <span style={{ color: '#5a8', fontWeight: 600 }}>●</span>
+          <span>Published {published.at ? published.at.replace('T', ' ').slice(0, 16) : ''}{published.kind ? ` · ${published.kind}` : ''}</span>
+          {published.permalink && (
+            <a href={published.permalink} target="_blank" rel="noreferrer"
+              style={{ ...btnSm, marginLeft: 'auto', textDecoration: 'none',
+                       display: 'inline-flex', alignItems: 'center' }}
+            >View post</a>
+          )}
+        </div>
+      )}
       {publishState.phase === 'done' && (
         <div style={{
           padding: '10px 14px', background: 'rgba(90,168,127,0.10)',
@@ -1501,7 +1526,7 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
             border: '1px solid #2c2c2c',
             padding: '10px 14px', cursor: publishBusy ? 'wait' : 'pointer',
             font: '11px "DM Sans", system-ui', letterSpacing: 2, textTransform: 'uppercase', fontWeight: 600,
-          }}>{publishBusy ? 'Posting…' : 'Post IG'}</button>
+          }}>{publishBusy ? 'Posting…' : isVideoFormat ? 'Post Reel' : 'Post IG'}</button>
         {hasReelFrame && (
           <button onClick={composeReel} disabled={reelBusy || renderBusy}
             title="Fetch the video (upload or yt-dlp URL) and stack it with the rendered panel — under it for reel-frame, over it for reel-explainer (ffmpeg)"

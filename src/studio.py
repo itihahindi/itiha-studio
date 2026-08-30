@@ -576,11 +576,8 @@ def _build_server() -> ThreadingHTTPServer:
                 try:
                     import instagram as instagram_mod
                     result = instagram_mod.publish_design(design_dir, log=lambda *_: None)
-                    self._send_bytes(json.dumps({
-                        "ok": True,
-                        "post_id": result.get("post_id"),
-                        "permalink": result.get("permalink"),
-                    }).encode(), "application/json")
+                    self._send_bytes(json.dumps({"ok": True, **result}).encode(),
+                                     "application/json")
                 except Exception as e:
                     self._send_bytes(f"publish failed: {e}".encode(), "text/plain", code=500)
                 finally:

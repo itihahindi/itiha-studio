@@ -339,6 +339,8 @@ def load_content(design_dir: Path) -> dict:
     # like notion_page_id must round-trip through content.json.
     if data.get("notion_page_id"):
         out["notion_page_id"] = str(data["notion_page_id"])
+    if isinstance(data.get("ig_published"), dict):
+        out["ig_published"] = data["ig_published"]
     return out
 
 

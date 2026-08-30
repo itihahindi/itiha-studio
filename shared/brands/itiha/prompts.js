@@ -77,7 +77,7 @@ PART 2 — ALLOWED FIELDS (closed list)
 ═══════════════════════════════════════════════════════
 
 Front-matter only: name, format, caption, hashtags, tweaks
-Tweaks block only: showChapterLabels, showStamp, showPageNum, seriesLabel
+Tweaks block only: showChapterLabels, showStamp, showPageNum, seriesLabel, footer (page|site — site prints itiha.info instead of the page number)
 
 Slide fields only (depending on layout):
 - Common:        Layout, Theme, Eyebrow, Eyebrow-Meta, Chapter, Headline, Subline, Swipe-Meta, Body

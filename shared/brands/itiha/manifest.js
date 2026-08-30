@@ -862,7 +862,9 @@ window.MANIFEST_TWEAKS = {
   fields: [
     { key: "showChapterLabels", type: "bool",   label: "Show chapter eyebrows" },
     { key: "showStamp",         type: "bool",   label: "Show ITIHA. stamp" },
-    { key: "showPageNum",       type: "bool",   label: "Show page number" },
+    { key: "showPageNum",       type: "bool",   label: "Show footer (page number / site)" },
+    { key: "footer",            type: "select", label: "Footer shows", options: ["page","site"], default: "page", help: "page = 01 / 09 · SERIES. site = itiha.info · SERIES (same spot, same type)." },
+    { key: "footerSite",        type: "text",   label: "Site text",      help: "Shown when Footer = site. Default itiha.info." },
     { key: "overlayDarkness",   type: "number", label: "Default image overlay (0–100)", default: 62 },
     { key: "showGrain",         type: "bool",   label: "Film grain on opt-in slides" },
     { key: "emphasisV2",        type: "bool",   label: "Emphasis v2 (red-legibility A/B)", help: "Brighter vermilion for headline accents on dark; body [keys] render full-contrast with a red underline instead of red text. Graphic red unchanged." },

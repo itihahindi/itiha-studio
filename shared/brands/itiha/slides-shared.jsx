@@ -140,9 +140,13 @@ function PageNum({ n, total, label, color }) {
   const t = useItiha();
   const N = total || (t && t.totalSlides) || 9;
   const lbl = label || (t && t.seriesLabel) || '';
+  // tweaks.footer: 'page' (01 / 09) or 'site' (itiha.info) — the series label
+  // is appended either way; showPageNum still hides the whole footer.
+  const site = (t && t.footer === 'site') ? ((t.footerSite || '').trim() || 'itiha.info') : null;
+  const lead = site || `${String(n).padStart(2, '0')} / ${String(N).padStart(2, '0')}`;
   return (
     <div className="itiha-page" style={color ? { color } : undefined}>
-      {String(n).padStart(2, '0')} / {String(N).padStart(2, '0')}{lbl ? ` · ${lbl}` : ''}
+      {lead}{lbl ? ` · ${lbl}` : ''}
     </div>
   );
 }

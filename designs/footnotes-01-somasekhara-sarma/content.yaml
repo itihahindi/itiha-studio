@@ -1,0 +1,175 @@
+name: Footnotes 01 — Mallampalli Somasekhara Sarma
+brand: itiha
+format: instagram-portrait
+caption: |
+  Warangal fell to Ulugh Khan in 1323, and for the next fifty years the Telugu country all but vanished from written history. Footnotes, No. 1 of 15, is about the man who put those years back: Mallampalli Somasekhara Sarma (1891–1963), the self-taught epigraphist whose A Forgotten Chapter of Andhra History (1945) reconstructed the Musunuri Nayakas from a set of copper plates.
+
+  The only narrative accounts of the period were the Persian court chronicles of Barani and Ferishta, written from Delhi's side; the Telugu memory of the chiefs who won the country back survived in later grants and village records and was treated as legend. Near Pithapuram in East Godavari, diggers cutting earth for a brick kiln had turned up inscribed copper plates that stayed in the family of Hundi Venkata Rao for the better part of a century. Sarma and N. Venkataramanayya read them as the Vilasa grant of Prolaya Nayaka, dated 1330: a Sanskrit account of the Telugu country after the conquest, with Prolaya, ruling from Rekapalle on the Godavari, as its restorer. With the Kaluvacheru grant of 1423 the sequence came clear: Prolaya's cousin Kapaya Nayaka and seventy-five nayakas retook Warangal in 1336 and held it until Kapaya fell at Bhimavaram in 1368.
+
+  Sarma had matriculated at Rajahmundry, could not afford college, and burned the certificate rather than take a village clerkship. He learned epigraphy copying inscriptions for Chilukuri Virabhadra Rao, worked for Desa Mata at twelve rupees a month, and published more than thirty new copper-plate and stone records across ten dynasties. Andhra University hired him in 1940 to teach epigraphy and South Indian history; History of the Reddi Kingdoms (1946) followed, built from inscriptions, literature and the village records other scholars had dismissed.
+
+  Read him: A Forgotten Chapter of Andhra History (1945), then History of the Reddi Kingdoms (1946), both free on archive.org; in Telugu, Reddi Rajyala Charitra and Andhra Desa Charitra Sangrahamu from Emesco. Profile drawn on Jogi's article for itiha.info and the 1976 commemoration volume. Warangal Fort photograph: Wikimedia Commons, CC BY-SA 4.0.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Footnotes #AndhraHistory #MusunuriNayakas #Warangal #Kakatiya #ReddiKingdom #Epigraphy #TeluguHistory #SomasekharaSarma #BookRecommendation
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: Mallampalli Somashekara Sarma
+  emphasisV2: true
+  footer: site
+slides:
+- layout: cover
+  eyebrow: Footnotes · 01 / 15
+  eyebrow_meta: Mallampalli Somasekhara Sarma · 1891–1963
+  headline: |
+    Andhra's *Dark Age*
+    Lasted Fifty Years.
+    Sarma *Unearthed* It.
+  subline: Warangal fell to the Tughluqs in 1323. The record went dark until 1945.
+  swipe_meta: Swipe ▸ · 9 Slides · 3 min read
+  image: sarma.jpg
+  image_filter: archival
+  image_position: 50% 15%
+  image_overlay: 0.74
+  texture: halftone
+  headline_size: 107
+  headline_offset_y: 350
+- layout: split-story
+  chapter: Chapter 01 · The Gap
+  headline: |
+    Delhi Wrote
+    The Only *Account*
+  body: |
+    Ulugh Khan took [Warangal] in 1323 and renamed it Sultanpur. What happened next in the Telugu country survived only in the Persian chronicles of Barani and Ferishta: a distant rebellion, then silence until [Vijayanagara]. The Telugu memory of the chiefs who won the land back was filed under [legend/folklore]
+  image: warangal-fort.jpg
+  image_filter: duotone-ink
+  image_position: 50% 0%
+  image_zoom: 1.25
+  image_overlay: 0.6
+  headline_size: 96
+  body_size: 42
+  body_offset_y: 160
+  body_y: 49
+- layout: portrait
+  chapter: Chapter 02 · The Epigraphist
+  image: sarma.jpg
+  image_filter: archival
+  image_position: 50% 20%
+  name: 'Mallampalli
+
+    Somasekhara
+
+    Sarma
+
+    '
+  dates: 24 Dec 1891 – 7 Jan 1963
+  role: Matriculated at Rajahmundry; Burned the certificate rather than take a village clerkship, joined
+    _Desa Mata_ at [twelve rupees a month], and learned epigraphy copying inscriptions for Chilukuri Virabhadra
+    Rao. Later published more than [thirty] new records.  Unearthed the dark ages of [Telugu history]
+  name_size: 100
+  body_size: 39
+  headline_offset_y: -160
+- layout: split-story
+  chapter: Chapter 03 · The Plates
+  headline: |
+    Copper Plates
+    From A *Brick Kiln*
+  body: |
+    Diggers cutting earth for a kiln near [Pithapuram], East Godavari, turned up a set of inscribed copper plates. They stayed in the family of Hundi Venkata Rao for the better part of a century. Sarma and N. Venkataramanayya read them as the [Vilasa grant] of Prolaya Nayaka, a Musunuri chief, issued in [1330], seven years after Warangal fell.
+  image: warangal-fort.jpg
+  image_filter: duotone-ink
+  image_position: 30% 10%
+  image_zoom: 1.7
+  image_overlay: 0.7
+  headline_size: 96
+  body_size: 45
+  body_y: 27
+- layout: split-story
+  chapter: Chapter 04 · What The Plates Said
+  headline: |
+    A Country Laid Waste,
+    And A Chief Who *Restored* It
+  body: |
+    In Sanskrit verse the grant describes the Telugu country after the conquest and presents [Prolaya Nayaka], ruling from Rekapalle on the Godavari, as the man who set it right. It records his gift of the village of Vilasa to a Brahmin. The Kaluvacheru grant of [1423] supplied the rest: seventy-five nayakas under his cousin [Kapaya], have re-taken Warangal.
+  image: warangal-fort.jpg
+  image_filter: duotone-ink
+  image_position: 70% 0%
+  image_zoom: 1.4
+  image_overlay: 0.72
+  headline_size: 85
+  body_size: 45
+  body_y: 45
+- layout: timeline
+  chapter: Chapter 05 · The Kingdom They Revealed
+  headline: |
+    Thirty Years
+    Of *Musunuri* Rule
+  items:
+  - date: '1323'
+    headline: Warangal falls to Ulugh Khan; the Kakatiya capital becomes Sultanpur
+  - date: '1330'
+    headline: Prolaya Nayaka issues the Vilasa grant from Rekapalle
+  - date: '1336'
+    headline: Kapaya Nayaka takes Warangal back from Malik Maqbul
+  - date: '1368'
+    headline: Kapaya falls at Bhimavaram to the Recherla chiefs; the line ends
+  date_size: 60
+  item_headline_size: 46
+- layout: document
+  chapter: Chapter 06 · The Book
+  headline: |
+    The Chapter That
+    Outgrew Its *Book*
+  image: preface.jpg
+  image_filter: archival
+  image_position: 50% 30%
+  image_zoom: 1.6
+  quote: |
+    Chief among such records is the Vilasa grant of the Musunuri Chief, Prolaya Nayaka, a unique document containing much interesting information not otherwise available.
+  attribution: Sarma's preface to A Forgotten Chapter of Andhra History · Guntur, December 1944 · in press
+    since 1942, held up by the wartime paper famine
+  quote_size: 40
+- layout: quote
+  chapter: Chapter 07 · Andhra University
+  headline: |
+    Hired To Teach
+    With No *Degree*
+  quote: |
+    Your researches appear to me to possess a high scientific value as they embody the results of patience and accurate investigation and the application of sound historical methods.
+  attribution: C. R. Reddy, Vice-Chancellor, Andhra University, on Sarma's departure in 1946
+  body: |
+    [C. R. Reddy] brought Sarma to Waltair in 1940 to teach epigraphy and South Indian history. _History of the Reddi Kingdoms_ followed in [1946], built from inscriptions, literature and the village records other scholars had dismissed.
+  quote_size: 38
+  body_size: 40
+  headline_offset_y: -40
+- layout: split-story
+  headline: HISTORY OF *REDDY KINGS*
+  image: _cache/6a54eaa978012bce.jpg
+  body: '[HISTORY OF REDDY KINGS] written in 1948 mainly provides us information about the Telugu political
+    landscape in the period [1325-1448], mainly providing information about [Kondaviti, Rajahmundry, Kandukuru],
+    and giving insights about the lifestyle, arts, customs, and society of that time. '
+  texture: vignette
+  image_overlay: 0.9
+  body_y: 31
+- layout: numbered-list
+  chapter: Chapter 08 · Read Him
+  headline: |
+    His *Books*
+  items:
+  - number: '1'
+    headline: A Forgotten Chapter of Andhra History
+    body: The Musunuri Nayaks, 1323 to 1368. Andhra University, [1945]. Free on archive.org.
+  - number: '2'
+    headline: History of the Reddi Kingdoms
+    body: Kondavidu and Rajahmundry, 1325 to 1448. Andhra University, [1946]. Free on archive.org.
+  - number: '3'
+    headline: Reddi Rajyala Charitra · Andhra Desa Charitra Sangrahamu
+    body: His Telugu histories, in print from [Emesco].
+  item_size: 36
+  number_size: 72
+  body_offset_y: -150

@@ -1,0 +1,25 @@
+name: The British Devotee — Reel cover
+brand: itiha
+format: instagram-reel
+caption: |
+  The British Devotee. Watch the full episode — link in bio.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #BritishRaj #Temple #Reels
+tweaks:
+  showStamp: false
+  showPageNum: false
+slides:
+- layout: reel-title
+  headline: |
+    THE BRITISH
+    *DEVOTEE*
+  subline: itiha.info
+  handle: '@itiha29'
+  image: peter.jpg
+  image_overlay: 0.65
+  image_position: 20% 50%
+  texture: grain
+  headline_size: 232
+  text_y: 74

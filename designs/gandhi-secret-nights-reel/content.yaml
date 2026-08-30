@@ -1,0 +1,27 @@
+name: Gandhi's Secret Nights — Reel cover
+brand: itiha
+format: instagram-reel
+caption: |
+  Gandhi's Secret Nights. Watch the full episode — link in bio.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Gandhi #Brahmacharya #Reels
+tweaks:
+  showStamp: false
+  showPageNum: false
+slides:
+- layout: reel-title
+  headline: |
+    GANDHI'S
+    *SECRET*
+    NIGHTS
+  subline: itiha.info
+  handle: '@itiha29'
+  image: gandhi.jpg
+  image_filter: archival
+  image_overlay: 0.72
+  image_position: 47% 50%
+  texture: grain
+  headline_size: 232
+  text_y: 65

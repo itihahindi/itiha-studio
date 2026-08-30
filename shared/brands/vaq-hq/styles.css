@@ -1,0 +1,13 @@
+/* Vaq HQ — collage / poster vocabulary (2026-08-29).
+   Loaded via tokens.css. Hand-written HTML can use these classes; the React
+   primitives in slides-shared.jsx inline the same rules. */
+.vaq-label { display: inline; background: #15263B; color: #fff; padding: .05em .25em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.vaq-label--ink   { background: #0A1119; }
+.vaq-label--orange{ background: #F4631E; color: #fff; }
+.vaq-poster { font-family: 'Archivo', sans-serif; font-weight: 900; font-stretch: 62%;
+  text-transform: uppercase; letter-spacing: -.01em; line-height: .86; }
+.vaq-duotone--orange { filter: grayscale(1) sepia(1) saturate(4.2) hue-rotate(-12deg) contrast(1.08) brightness(1.02); }
+.vaq-duotone--navy   { filter: grayscale(1) sepia(1) saturate(3) hue-rotate(178deg) brightness(.62) contrast(1.15); }
+.vaq-duotone--mono   { filter: grayscale(1) contrast(1.18); }
+.vaq-cutout-shadow   { filter: drop-shadow(0 26px 40px rgba(10,17,25,.45)); }

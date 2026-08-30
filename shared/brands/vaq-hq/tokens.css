@@ -5,7 +5,8 @@
    Flat colour tiles, four vertical accents, orange stays hero.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Archivo:wght@500;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Serif+Devanagari:wght@600;700&display=swap');
+@import url('styles.css');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Archivo:ital,wdth,wght@0,62..125,500..900&family=Space+Mono:wght@400;700&family=Noto+Serif+Devanagari:wght@600;700&display=swap');
 
 :root {
   /* ---------- CHANNEL ---------- */

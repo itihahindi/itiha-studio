@@ -62,7 +62,7 @@ const VERTICALS = {
   longview: { ...V_BASE, key: 'longview', name: 'Political History', show: 'The Long View',
               kicker: 'HISTORY', badge: 'outline' },
   ground:   { ...V_BASE, key: 'ground', name: 'Indian Politics', show: 'Ground Report',
-              kicker: 'GROUND REPORT', badge: 'solid', deva: 'ज़मीनी हक़ीक़त' },
+              kicker: 'GROUND REPORT', badge: 'solid' },   // Devanagari companion retired 2026-08-29 (user)
   // sports/tech: `show` matches the kicker so VKicker's dupMeta check hides
   // the meta — their show-name wordmarks were retired earlier on 2026-07-27.
   sports:   { ...V_BASE, key: 'sports', name: 'Sports', show: 'SPORTS',
@@ -191,22 +191,28 @@ function headlineDefaultSize(v, kind) {
 //   light + display face  → accent block, white text (A cover)
 //   light + serif/sans    → tint block, navy text (highlighter)
 //   solid                 → white (dark-ink tiles) / tint (white tiles)
-function VHeadline({ text, v, size, onSolid, onDark, style }) {
-  const st = headlineStyle(v, size, onSolid, onDark);
+function VHeadline({ text, v, size, onSolid, onDark, style, label }) {
+  const st0 = headlineStyle(v, size, onSolid, onDark);
+  // Collage vocabulary (2026-08-29): `label` sets the headline in sentence-case
+  // sans, each line boxed in navy — the poster-label device from the GRIDD
+  // references. Emphasis inside a label goes orange.
+  const st = label
+    ? { ...st0, fontFamily: VAQ.sans, fontWeight: 700, textTransform: 'none',
+        letterSpacing: '-.02em', lineHeight: 1.34, fontSize: Math.round((size || 80) * 0.78) }
+    : st0;
+  const labelStyle = label ? {
+    background: onSolid ? '#3A1402' : (onDark ? VAQ.paper : '#15263B'),
+    color: onDark ? VAQ.inkL : '#FFFFFF', padding: '0.06em 0.26em',
+    boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone',
+  } : null;
   const blockFace = v.face === 'display';
-  const emStyle = onDark
-    ? { color: v.accent }
-    : onSolid
-    ? { color: solidPalette(v).em, fontStyle: v.face === 'serif' || v.face === 'serif-italic' ? 'italic' : undefined }
-    : v.sentence
-    // The Docket: red is a signal, never a highlighter slab behind text.
-    ? { color: v.accent }
-    : (blockFace
-        ? { background: `linear-gradient(180deg, transparent 10%, ${v.accent} 10%, ${v.accent} 82%, transparent 82%)`,
-            color: '#fff', padding: '0 0.12em',
-            boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone' }
-        : { background: v.tint, color: VAQ.inkL, padding: '0 0.11em',
-            boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone' });
+  // Print refresh (2026-08-28): emphasis is an editorial italic in the serif,
+  // set inside the Archivo caps — a magazine device, not a marker-pen slab.
+  const emStyle = {
+    fontFamily: VAQ.serif, fontStyle: 'italic', fontWeight: 600,
+    textTransform: 'none', letterSpacing: '-.015em', fontSize: '1.06em',
+    color: onSolid ? solidPalette(v).em : v.accent,
+  };
   const parts = String(text || '').split(/(\*[^*]+\*)/g).filter(Boolean);
   const out = [];
   parts.forEach((p, i) => {
@@ -215,9 +221,10 @@ function VHeadline({ text, v, size, onSolid, onDark, style }) {
     chunk.split('\n').forEach((seg, j) => {
       if (j > 0) out.push(<br key={`b${i}-${j}`} />);
       if (!seg) return;
-      out.push(<span key={`${i}-${j}`} style={isEm ? emStyle : undefined}>{seg}</span>);
+      out.push(<span key={`${i}-${j}`} style={isEm ? (label ? { ...emStyle, fontFamily: VAQ.sans, fontStyle: 'normal', fontSize: '1em', color: onDark ? v.accent : '#FFB48F' } : emStyle) : undefined}>{seg}</span>);
     });
   });
+  if (label) return <h2 style={{ ...st, ...style }}><span style={labelStyle}>{out}</span></h2>;
   return <h2 style={{ ...st, ...style }}>{out}</h2>;
 }
 
@@ -258,34 +265,26 @@ function VBody({ text, v, size = 40, onSolid, onDark, color, style }) {
 // ── Kicker row ────────────────────────────────────────────────
 function VKicker({ v, onSolid, onDark, meta, style }) {
   const pal = onSolid ? solidPalette(v) : null;
-  const chip = (() => {
-    if (v.badge === 'plain') {
-      return <span style={{
-        fontFamily: VAQ.sans, fontWeight: 800, fontSize: 28, letterSpacing: '.1em',
-        color: onSolid ? v.onAccent : v.accent,
-      }}>{v.kicker}</span>;
-    }
-    if (v.badge === 'outline') {
-      const c = onSolid ? v.tint : v.accent;
-      return <span style={{
-        border: `2.5px solid ${c}`, color: c,
-        fontFamily: VAQ.sans, fontWeight: 700, fontSize: 23, letterSpacing: '.12em',
-        padding: '7px 16px', borderRadius: 8, textTransform: 'uppercase',
-      }}>{v.kicker}</span>;
-    }
-    return <span style={{
-      background: onSolid ? 'rgba(255,255,255,.18)' : v.accent, color: '#fff',
-      fontFamily: VAQ.sans, fontWeight: 800, fontSize: 23, letterSpacing: '.12em',
-      padding: '8px 17px', borderRadius: 8, textTransform: 'uppercase',
-    }}>{v.kicker}</span>;
-  })();
+  // Print refresh: the section head is a newspaper slug — Archivo caps in ink
+  // with a short accent underline — never a pill / chip / eyebrow.
+  const slugInk = onSolid ? v.onAccent : (onDark ? '#FFFFFF' : VAQ.inkL);
+  const slugRule = onSolid ? v.onAccent : v.accent;
+  const chip = (
+    <span style={{
+      fontFamily: VAQ.display, fontWeight: 800, fontSize: 24, letterSpacing: '.14em',
+      textTransform: 'uppercase', color: slugInk,
+      borderBottom: `4px solid ${slugRule}`, paddingBottom: 5, lineHeight: 1,
+    }}>{String(v.kicker).replace(/^●\s*/, '')}</span>
+  );
+  const mastRule = onSolid ? 'rgba(58,20,2,.45)' : (onDark ? 'rgba(255,255,255,.42)' : 'rgba(10,17,25,.5)');
   // String(): a bare year in YAML (`kicker_meta: 2017`) parses as a NUMBER, and
   // .trim() on a number throws, which takes down the whole slide tree from that
   // slide onward. Coerce rather than making authors remember to quote years.
   const metaText = String(meta || v.show);
   const dupMeta = metaText.trim().toLowerCase() === String(v.kicker).trim().toLowerCase();
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 22, ...style }}>
+    <div style={{ display: 'flex', alignItems: 'baseline', gap: 26,
+      paddingBottom: 16, borderBottom: `4px double ${mastRule}`, ...style }}>
       {chip}
       {!dupMeta && <span style={{
         fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 22, letterSpacing: '.16em',
@@ -293,10 +292,7 @@ function VKicker({ v, onSolid, onDark, meta, style }) {
         color: onSolid ? pal.muted
              : (onDark ? ((v.dark && v.dark.muted) || 'rgba(255,255,255,.72)') : VAQ.mutedL),
       }}>{metaText}</span>}
-      {v.deva && (
-        <span style={{ fontFamily: VAQ.deva, fontWeight: 600, fontSize: 27,
-          color: onSolid ? v.tint : v.accent, marginLeft: 'auto' }}>{v.deva}</span>
-      )}
+
     </div>
   );
 }
@@ -346,8 +342,9 @@ function VChrome({ n, onSolid, onDark, v }) {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     }}>
       {t.showPageNum !== false && n != null ? (
-        <span style={{ fontFamily: metaFontFor(v), fontSize: 22, letterSpacing: '.18em', color: pageColor }}>
-          {String(n).padStart(2, '0')} / {String(total).padStart(2, '0')}{lbl ? ` · ${lbl}` : ''}
+        <span style={{ fontFamily: VAQ.serif, fontStyle: 'italic', fontWeight: 500, fontSize: 26,
+          letterSpacing: '0', color: pageColor }}>
+          {n} of {total}{lbl ? ` · ${lbl}` : ''}
         </span>
       ) : <span />}
       {t.showStamp !== false ? <VWordmark size={30} onSolid={onSolid} onDark={onDark} /> : <span />}
@@ -363,7 +360,15 @@ function VChrome({ n, onSolid, onDark, v }) {
 const _RISO_NOISE =
   "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>\")";
 
-function VTexture({ texture, v, onSolid }) {
+const _PAPER_NOISE =
+  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.06' numOctaves='3' seed='7' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.10  0 0 0 0 0.09  0 0 0 0 0.07  0 0 0 0.55 0'/></filter><rect width='520' height='520' filter='url(%23p)'/></svg>\")";
+const _HALFTONE_INK =
+  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12'><defs><pattern id='h' width='12' height='12' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'><circle cx='6' cy='6' r='1.7' fill='%230A1119'/></pattern></defs><rect width='12' height='12' fill='url(%23h)'/></svg>\")";
+const _HALFTONE_WHITE = _HALFTONE_INK.replace('%230A1119', '%23FFFFFF');
+const _SPECK_NOISE =
+  "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360'><filter id='s'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' seed='3' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0.95  0 0 0 0 0.55  0 0 0 0 0.30  0 0 0 9 -6.6'/></filter><rect width='360' height='360' filter='url(%23s)'/></svg>\")";
+
+function VTexture({ texture, v, onSolid, onDark }) {
   if (!texture) return null;
   const names = String(texture).split(',').map(s => s.trim()).filter(Boolean);
   const layers = names.map((name, i) => {
@@ -391,6 +396,92 @@ function VTexture({ texture, v, onSolid }) {
         opacity: onSolid ? 0.5 : 0.16,
         WebkitMaskImage: 'radial-gradient(620px 620px at 100% 0%, #000 0%, transparent 72%)',
         maskImage: 'radial-gradient(620px 620px at 100% 0%, #000 0%, transparent 72%)',
+      }} />;
+    }
+    if (name === 'paper' || name === 'newsprint') {
+      // Print stock: low-frequency fibre noise, multiplied in. newsprint adds
+      // faint horizontal fibre lines on top of the same stock.
+      const layers = [
+        <div key={`${i}-p`} style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          backgroundImage: _PAPER_NOISE, backgroundSize: '520px 520px',
+          opacity: onSolid ? 0.12 : 0.20, mixBlendMode: 'multiply',
+        }} />,
+      ];
+      if (name === 'newsprint') layers.push(
+        <div key={`${i}-n`} style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none', opacity: onSolid ? 0.10 : 0.07,
+          backgroundImage: 'repeating-linear-gradient(0deg, rgba(10,17,25,.9) 0 1px, transparent 1px 3px)',
+          mixBlendMode: 'multiply',
+        }} />);
+      return <React.Fragment key={i}>{layers}</React.Fragment>;
+    }
+    if (name === 'halftone') {
+      // 45° CMYK-style dot screen, ink on paper / white on colour.
+      return <div key={i} style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: onSolid ? _HALFTONE_WHITE : _HALFTONE_INK, backgroundSize: '12px 12px',
+        opacity: onSolid ? 0.28 : 0.20, mixBlendMode: onSolid ? 'screen' : 'multiply',
+      }} />;
+    }
+    if (name === 'ink') {
+      // Press vignette: ink gathering at the edges of the sheet.
+      return <div key={i} style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none', mixBlendMode: 'multiply',
+        background: 'radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(10,17,25,.28) 100%)',
+        opacity: onSolid ? 0.6 : 0.85,
+      }} />;
+    }
+    if (name.startsWith('file:')) {
+      // A texture PNG dropped into shared/brands/vaq-hq/textures/ (e.g. a
+      // texturelab.org export). Multiplied in at half strength; add `:NN` for
+      // a custom opacity percent — `file:fibre.png:70`.
+      // file:<path>[:opacity%][:blend]  — blend = multiply (default on paper /
+      // orange), screen (default on dark: film & grunge scans lift instead of
+      // muddying), overlay, soft-light, lighten, darken.
+      const m = name.slice(5).match(/^(.*?)(?::(\d{1,3}))?(?::([a-z-]+))?$/);
+      const file = m ? m[1] : name.slice(5);
+      const op = m && m[2] ? Math.min(100, parseInt(m[2], 10)) / 100 : 0.5;
+      const blend = (m && m[3]) || (onDark ? 'screen' : 'multiply');
+      // Where the file lives: an http(s) URL as given · `images/…` = this
+      // design's own images folder · `brands/…` = anywhere in the packs ·
+      // otherwise shared/brands/vaq-hq/textures/ (subfolders allowed).
+      const src = /^https?:/.test(file) || file.startsWith('images/') || file.startsWith('brands/')
+        ? file : `brands/vaq-hq/textures/${file}`;
+      return <div key={i} style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: `url(${src})`, backgroundSize: 'cover',
+        opacity: op, mixBlendMode: blend,
+      }} />;
+    }
+    if (name === 'squares') {
+      // Squared grid paper (the GRIDD green slide), on any surface.
+      const line = onSolid ? 'rgba(255,255,255,.14)' : 'rgba(10,17,25,.09)';
+      return <div key={i} style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: `repeating-linear-gradient(0deg, ${line} 0 1px, transparent 1px 44px),` +
+                         `repeating-linear-gradient(90deg, ${line} 0 1px, transparent 1px 44px)`,
+      }} />;
+    }
+    if (name === 'speck') {
+      // Speckled press ground — warm flecks, reads on dark best.
+      return <div key={i} style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none',
+        backgroundImage: _SPECK_NOISE, backgroundSize: '360px 360px', opacity: onSolid ? 0.35 : 0.55,
+        mixBlendMode: 'screen',
+      }} />;
+    }
+    if (name === 'splat') {
+      // Ink blotches, orange on paper / dark on colour — the .ties map slide.
+      const c = onSolid ? 'rgba(58,20,2,.35)' : (onDark ? 'rgba(244,99,30,.50)' : 'rgba(244,99,30,.55)');
+      return <div key={i} style={{
+        position: 'absolute', inset: 0, pointerEvents: 'none', mixBlendMode: onDark ? 'screen' : 'multiply',
+        backgroundImage: `radial-gradient(140px 90px at 12% 22%, ${c} 0 55%, transparent 62%),` +
+                         `radial-gradient(80px 60px at 78% 18%, ${c} 0 50%, transparent 60%),` +
+                         `radial-gradient(200px 120px at 86% 70%, ${c} 0 52%, transparent 60%),` +
+                         `radial-gradient(60px 40px at 30% 84%, ${c} 0 50%, transparent 62%),` +
+                         `radial-gradient(110px 70px at 55% 55%, ${c} 0 50%, transparent 60%)`,
+        filter: 'blur(1px) contrast(1.6)', opacity: 0.8,
       }} />;
     }
     if (name === 'signal') {
@@ -423,17 +514,152 @@ function VGhostIndex({ n, v, onSolid }) {
   );
 }
 
+// ── Collage vocabulary (2026-08-29) ───────────────────────────
+// Starbursts, die-cut/duotone images and a condensed poster face — the zine /
+// poster-wall register from the user's GRIDD and .ties references, kept inside
+// the two-tone rule (orange + navy on paper).
+const _BURST_POS = {
+  'top-left': { top: -60, left: -60 }, 'top-right': { top: -60, right: -60 },
+  'bottom-left': { bottom: -60, left: -60 }, 'bottom-right': { bottom: -60, right: -60 },
+  'left': { top: '42%', left: -80 }, 'right': { top: '42%', right: -80 },
+  'center': { top: '40%', left: '38%' },
+  'top': { top: -40, left: '38%' }, 'bottom': { bottom: -40, left: '38%' },
+};
+function _burstColor(c, onSolid) {
+  const map = { orange: VAQ.orange, navy: '#15263B', ink: VAQ.inkL, paper: VAQ.paper, white: '#FFFFFF',
+                slate: VAQ.slate, tint: '#FFD8C4' };
+  if (onSolid && (c === 'orange' || !c)) return VAQ.paper;
+  return map[c] || c || VAQ.orange;
+}
+function burstPath(points = 10, inner = 0.42) {
+  const pts = [];
+  for (let i = 0; i < points * 2; i++) {
+    const r = i % 2 === 0 ? 50 : 50 * inner;
+    const a = (Math.PI * i) / points - Math.PI / 2;
+    pts.push(`${(50 + r * Math.cos(a)).toFixed(2)},${(50 + r * Math.sin(a)).toFixed(2)}`);
+  }
+  return pts.join(' ');
+}
+// bursts: [{pos, color, size, points, rotate, inner, x, y}] — pos names above;
+// x/y (px) override pos for hand placement.
+function VBursts({ bursts, onSolid }) {
+  if (!bursts || !bursts.length) return null;
+  return (
+    <>
+      {bursts.map((b, i) => {
+        if (!b) return null;
+        const size = b.size || 300;
+        const pos = (b.x != null || b.y != null)
+          ? { left: b.x || 0, top: b.y || 0 }
+          : (_BURST_POS[b.pos || 'top-right'] || _BURST_POS['top-right']);
+        return (
+          <svg key={i} viewBox="0 0 100 100" width={size} height={size}
+            style={{ position: 'absolute', zIndex: b.front ? 4 : 1, pointerEvents: 'none',
+              transform: `rotate(${b.rotate || 0}deg)`, ...pos }}>
+            <polygon points={burstPath(b.points || 10, b.inner || 0.42)} fill={_burstColor(b.color, onSolid)} />
+          </svg>
+        );
+      })}
+    </>
+  );
+}
+const _DUOTONE = {
+  orange: 'grayscale(1) sepia(1) saturate(4.2) hue-rotate(-12deg) contrast(1.08) brightness(1.02)',
+  navy:   'grayscale(1) sepia(1) saturate(3) hue-rotate(178deg) brightness(.62) contrast(1.15)',
+  mono:   'grayscale(1) contrast(1.18)',
+};
+// A die-cut (transparent PNG) or plain photo with the print treatments:
+//   imageStyle: plain | cutout | duotone | mono   tint: orange | navy
+//   halftone: dot screen masked to the image's own alpha   tilt: degrees
+function VCutout({ src, imageStyle = 'plain', tint = 'orange', halftone = false, tilt = 0,
+                   shadow = true, width, height, position, style }) {
+  if (!src) return null;
+  const url = src.startsWith('http') ? src : `images/${src}`;
+  const filt = imageStyle === 'duotone' ? _DUOTONE[tint] || _DUOTONE.orange
+             : imageStyle === 'mono' ? _DUOTONE.mono : 'none';
+  const isCut = imageStyle === 'cutout' || imageStyle === 'duotone' || imageStyle === 'mono';
+  return (
+    <div style={{ position: 'relative', width: width || '100%', height: height || 'auto',
+      transform: tilt ? `rotate(${tilt}deg)` : undefined, ...style }}>
+      <img src={url} style={{
+        display: 'block', width: '100%', height: height ? '100%' : 'auto',
+        objectFit: height ? (isCut ? 'contain' : 'cover') : undefined, objectPosition: position || 'center',
+        filter: [filt !== 'none' ? filt : '', shadow && isCut ? 'drop-shadow(0 26px 40px rgba(10,17,25,.45))' : '']
+          .filter(Boolean).join(' ') || undefined,
+      }} />
+      {halftone && (
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none',
+          backgroundImage: _HALFTONE_INK, backgroundSize: '10px 10px', opacity: 0.35, mixBlendMode: 'multiply',
+          WebkitMaskImage: `url(${url})`, maskImage: `url(${url})`,
+          WebkitMaskSize: height ? (isCut ? 'contain' : 'cover') : '100% 100%', maskSize: height ? (isCut ? 'contain' : 'cover') : '100% 100%',
+          WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: position || 'center', maskPosition: position || 'center' }} />
+      )}
+    </div>
+  );
+}
+// Condensed poster face (Archivo wdth 62): the giant white display of the
+// .ties covers. *word* → orange.
+function VPosterHeadline({ text, size = 200, color = '#FFFFFF', accent = VAQ.orange, align = 'left', style }) {
+  const parts = String(text || '').split(/(\*[^*]+\*)/g).filter(Boolean);
+  const out = [];
+  parts.forEach((p, i) => {
+    const isEm = p.startsWith('*') && p.endsWith('*') && p.length > 2;
+    const chunk = isEm ? p.slice(1, -1) : p;
+    chunk.split('\n').forEach((seg, j) => {
+      if (j > 0) out.push(<br key={`b${i}-${j}`} />);
+      if (seg) out.push(<span key={`${i}-${j}`} style={isEm ? { color: accent } : undefined}>{seg}</span>);
+    });
+  });
+  return (
+    <h2 style={{ margin: 0, fontFamily: VAQ.display, fontWeight: 900, fontStretch: '62%',
+      fontSize: size, lineHeight: 0.86, letterSpacing: '-.01em', textTransform: 'uppercase',
+      color, textAlign: align, textWrap: 'balance', ...style }}>{out}</h2>
+  );
+}
+
 // ── Slide wrapper ─────────────────────────────────────────────
 // Light slides carry the vertical's rule across the TOP (newsroom masthead);
 // solid tiles are pure colour.
-function VSlide({ v, surface, texture, children }) {
+// Print refresh: the slide owns a "foot" slot just above the chrome row. The
+// jump line (VLoop) portals into it, so it sits at the column foot like a
+// newspaper "continued on" line and can never run into the folio/stamp,
+// whatever the body length or align_y re-anchoring does above it.
+const VFootContext = React.createContext(null);
+// Deck-wide texture (2026-08-29): tweaks.texture is the default stock for every
+// slide, with tweaks.textureDark / tweaks.textureSolid overriding per surface
+// (one paper for the interior, one film for the navy posters, one ink for the
+// orange tiles). A slide's own `texture:` still wins; `texture: none` opts out.
+// `house` = the user's favourite stocks (2026-08-29), per surface:
+//   paper  → newsprint fibre + Grunge_340M scan
+//   navy   → 45° halftone + Film_197M scan (Film_176M is the dustier alt)
+//   orange → 45° halftone (white dots)
+const HOUSE_TEXTURE = {
+  light: 'newsprint, file:Texturelabs_Grunge_340M.jpg:30',
+  dark:  'halftone, file:Texturelabs_Film_197M.jpg:40',
+  solid: 'halftone',
+};
+function expandTexture(value, surface) {
+  if (value !== 'house') return value;
+  return surface.onDark ? HOUSE_TEXTURE.dark : surface.onSolid ? HOUSE_TEXTURE.solid : HOUSE_TEXTURE.light;
+}
+function resolveTexture(texture, t, surface) {
+  if (texture === 'none') return '';
+  if (texture) return expandTexture(texture, surface);
+  if (!t) return '';
+  if (surface.onDark && t.textureDark) return expandTexture(t.textureDark, surface);
+  if (surface.onSolid && t.textureSolid) return expandTexture(t.textureSolid, surface);
+  return expandTexture(t.texture || '', surface);
+}
+function VSlide({ v, surface, texture, bursts, children }) {
+  const [foot, setFoot] = React.useState(null);
+  const t = useTweaks();
+  const tex = resolveTexture(texture, t, surface);
   return (
     <div className="itiha-slide vaq-slide" style={{ background: surface.bg }}>
-      {!surface.onSolid && !surface.onDark && (
-        <div style={{ position: 'absolute', left: 0, right: 0, top: 0, height: 10, background: v.accent, zIndex: 3 }} />
-      )}
-      <VTexture texture={texture} v={v} onSolid={surface.onSolid} />
-      {children}
+      <VTexture texture={tex} v={v} onSolid={surface.onSolid} onDark={surface.onDark} />
+      <VBursts bursts={bursts} onSolid={surface.onSolid} />
+      <VFootContext.Provider value={foot}>{children}</VFootContext.Provider>
+      <div ref={setFoot} style={{ position: 'absolute', left: 72, right: 72, bottom: 104, zIndex: 5 }} />
     </div>
   );
 }
@@ -529,19 +755,24 @@ function alignBlock(slide, legacy = {}, opts = {}) {
 // on the closing, where there is no next slide to loop to.
 function VLoop({ text, v, onSolid, onDark }) {
   if (!text) return null;
-  const color = onSolid ? '#FFFFFF' : (v && v.accent) || '#F4631E';
-  return (
-    <div style={{ marginTop: 30, display: 'flex', alignItems: 'center', gap: 14 }}>
-      <span style={{ width: 30, height: 3, background: color, flex: 'none', opacity: 0.85 }} />
-      <span style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 23,
-        letterSpacing: '.1em', textTransform: 'uppercase', color, whiteSpace: 'nowrap' }}>
-        {text}
-      </span>
-      <span style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 23, color, opacity: 0.9 }}>
-        &#8594;
+  // Print refresh: a newspaper jump line ("Continued …") — hairline above,
+  // serif italic, right-set. No arrow, no accent: it is copy, not chrome.
+  const hair = onSolid ? 'rgba(58,20,2,.35)' : (onDark ? 'rgba(255,255,255,.28)' : 'rgba(10,17,25,.25)');
+  const color = onSolid ? '#3A1402' : (onDark ? 'rgba(255,255,255,.82)' : VAQ.bodyL);
+  const foot = React.useContext(VFootContext);
+  const line = (
+    <div style={{ paddingTop: 10, borderTop: `1px solid ${hair}`,
+      display: 'flex', justifyContent: 'flex-end', lineHeight: 1.1 }}>
+      <span style={{ fontFamily: VAQ.serif, fontStyle: 'italic', fontWeight: 500, fontSize: 26,
+        letterSpacing: '-.005em', color }}>
+        Next: {text}
       </span>
     </div>
   );
+  if (foot && typeof ReactDOM !== 'undefined' && ReactDOM.createPortal) {
+    return ReactDOM.createPortal(line, foot);
+  }
+  return <div style={{ marginTop: 22 }}>{line}</div>;
 }
 
 // ── CHARTS ────────────────────────────────────────────────────

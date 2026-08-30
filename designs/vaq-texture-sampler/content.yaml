@@ -1,0 +1,101 @@
+name: vaq-texture-sampler
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Texture sampler. Not for publishing.
+tweaks:
+  vertical: ground
+  showStamp: true
+  showPageNum: true
+slides:
+- layout: story
+  surface: light
+  kicker_meta: texture · paper
+  headline: |
+    Paper stock,
+    *multiplied in*
+  body: The same story slide four ways. This one carries the paper texture, a low frequency fibre noise
+    on the sheet.
+  loop: newsprint next
+  texture: paper
+- layout: story
+  surface: light
+  kicker_meta: texture · newsprint
+  body: Paper stock plus faint horizontal fibre lines, the cheap press feel.
+  loop: halftone next
+  texture: newsprint
+- layout: story
+  surface: dark
+  kicker_meta: texture · halftone
+  headline: |
+    Halftone screen,
+    *45 degrees*
+  body: A CMYK style dot screen. Ink dots on paper, white dots on colour and navy.
+  loop: ink next
+  texture: halftone
+- layout: story
+  surface: solid
+  kicker_meta: texture · ink + riso
+  headline: |
+    Press vignette,
+    *ink at the edges*
+  body: Ink gathering at the edges of the sheet, stacked with the existing riso grain. Textures stack
+    with commas.
+  loop: end of sampler
+  texture: ink, riso
+- layout: story
+  surface: light
+  kicker_meta: file · Paper_290L · multiply 55
+  headline: |
+    Texturelabs paper,
+    *on the sheet*
+  body: Paper_290L at 55 percent, multiplied into the paper ground.
+  texture: file:Texturelabs_Paper_290L.jpg:55
+- layout: story
+  surface: dark
+  kicker_meta: file · Film_176M · screen 45
+  headline: |
+    Film scan,
+    *screened on navy*
+  body: Film_176M at 45 percent, screen blend, so the scratches lift the navy instead of muddying it.
+  texture: file:Texturelabs_Film_176M.jpg:45
+- layout: story
+  surface: dark
+  kicker_meta: file · Film_189M · screen 40
+  headline: |
+    Film scan,
+    *second stock*
+  body: Film_189M at 40 percent, screen blend.
+  texture: file:Texturelabs_Film_189M.jpg:40
+- layout: story
+  surface: dark
+  kicker_meta: file · Film_197M · screen 40
+  headline: |
+    Film scan,
+    *third stock*
+  body: Film_197M at 40 percent, screen blend.
+  texture: file:Texturelabs_Film_197M.jpg:40
+- layout: story
+  surface: light
+  kicker_meta: file · Grunge_340M · multiply 40
+  headline: |
+    Grunge,
+    *on paper*
+  body: Grunge_340M at 40 percent, multiplied. Heavy, use sparingly.
+  texture: file:Texturelabs_Grunge_340M.jpg:40
+- layout: story
+  surface: dark
+  kicker_meta: file · Grunge_354M · screen 35
+  headline: |
+    Grunge,
+    *on navy*
+  body: Grunge_354M at 35 percent, screen blend.
+  texture: file:Texturelabs_Grunge_354M.jpg:35
+- layout: story
+  surface: solid
+  kicker_meta: file · InkPaint_410M · multiply 45
+  headline: |
+    Ink and paint,
+    *on orange*
+  body: InkPaint_410M at 45 percent, multiplied into the orange tile.
+  texture: file:Texturelabs_InkPaint_410M.jpg:45

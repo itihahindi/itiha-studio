@@ -1,0 +1,99 @@
+name: vaq-style-lab
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Style lab. The five reference registers rebuilt in VAQ colours. Not for publishing.
+
+  Images: Kawasaki KJ300 turbofan at JA2024 by Hunini, CC BY-SA 4.0, via Wikimedia Commons. Ajit Doval, US State Department, public domain. S. Jaishankar, Feb 2024, CC BY 4.0, via Wikimedia Commons. 1922 Index of the Great Trigonometrical Survey of India, public domain.
+tweaks:
+  vertical: tech
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: cover
+  surface: light
+  cover_style: label
+  headline_style: label
+  headline: |
+    India's leap in
+    jet engine technology
+  headline_size: 84
+  image: engine-alt.png
+  image_style: duotone
+  image_tint: orange
+  image_halftone: true
+  image_tilt: -12
+  image_width: 78%
+  image_height: 760
+  texture: paper
+  bursts:
+  - {pos: right, color: navy, size: 260, points: 12, rotate: 8, front: true}
+  - {pos: bottom, color: ink, size: 150, points: 9, rotate: -20}
+- layout: story
+  surface: dark
+  kicker_meta: Ground Report
+  headline: |
+    *Unknown men*, again
+  body: |
+    Three more Lashkar-e-Taiba figures have died in Pakistan this month, all to "unknown gunmen." Delhi says nothing. It rarely needs to.
+  body_size: 46
+  image: doval.png
+  image_style: mono
+  image_halftone: true
+  image_anchor: bottom-right
+  image_width: 64%
+  image_height: 760
+  image_tilt: 0
+  texture: squares
+  bursts:
+  - {pos: bottom-left, color: orange, size: 560, points: 11, rotate: 15}
+  - {pos: right, color: orange, size: 220, points: 9, rotate: 30}
+- layout: cover
+  surface: dark
+  cover_style: poster
+  tag: 2028-29
+  headline: |
+    India's
+    bid for
+    *UNSC*
+  headline_size: 230
+  image: jaishankar.png
+  image_style: cutout
+  image_align: right
+  image_width: 60%
+  image_height: 1000
+  texture: speck
+- layout: story
+  surface: dark
+  kicker_meta: The Long View · 1947
+  headline: |
+    How Partition redrew
+    India's *economic map*
+  image: partition-map.jpg
+  image_style: cutout
+  image_halftone: true
+  image_tilt: -7
+  image_width: 84%
+  image_height: 720
+  body: |
+    Jute mills in Calcutta, jute fields in East Bengal. Cotton in Bombay, cotton in Sindh. The line cut both in half.
+  body_size: 42
+  texture: speck, splat
+- layout: cover
+  surface: solid
+  cover_style: label
+  headline_style: label
+  headline: |
+    The tender demands
+    the *source code*
+  headline_size: 84
+  image: engine-alt.png
+  image_style: mono
+  image_halftone: true
+  image_tilt: 10
+  image_width: 70%
+  image_height: 720
+  texture: riso
+  bursts:
+  - {pos: top-left, color: paper, size: 300, points: 10, rotate: 12}
+  - {pos: bottom-right, color: ink, size: 200, points: 8, front: true}

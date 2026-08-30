@@ -16,6 +16,86 @@ const kickerAlign = (slide) => ({ justifyContent: alignFor(slide).flexAlign });
 // ── COVER ─────────────────────────────────────────────────────
 // Poster tile by default (surface: solid); `surface: light` gives the
 // newsroom cover. Ghost index numeral on by default.
+// ── POSTER COVER ──────────────────────────────────────────────
+// The .ties register: giant condensed display type, a die-cut subject standing
+// on a soft studio backdrop, wordmark only — no masthead, no folio.
+function PosterCover({ slide, index, v, surface, t }) {
+  const {
+    headline = '', subline, image, image_position, image_style = 'cutout', image_tint = 'orange',
+    image_tilt = 0, image_halftone = false, image_width, image_height = 900, image_align = 'right',
+    headline_size = 210, headline_offset_y = 0, texture, bursts, tag,
+  } = slide;
+  const dark = surface.onDark || surface.onSolid;
+  const bg = surface.bg;
+  const backdrop = dark
+    ? 'radial-gradient(70% 55% at 50% 38%, rgba(255,255,255,.20) 0%, rgba(255,255,255,0) 70%)'
+    : 'radial-gradient(70% 55% at 50% 38%, rgba(10,17,25,.10) 0%, rgba(10,17,25,0) 70%)';
+  const headColor = dark ? '#FFFFFF' : VAQ.inkL;
+  const imgAlign = { left: 'flex-start', center: 'center', right: 'flex-end' }[image_align] || 'flex-end';
+  return (
+    <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
+      <div style={{ position: 'absolute', inset: 0, background: backdrop }} />
+      {image && (
+        <div style={{ position: 'absolute', left: PAD, right: PAD, bottom: 0, height: image_height, zIndex: 2,
+          display: 'flex', alignItems: 'flex-end', justifyContent: imgAlign }}>
+          <VCutout src={image} imageStyle={image_style} tint={image_tint} halftone={image_halftone}
+            tilt={image_tilt} width={image_width || '72%'} height={image_height} position={image_position || 'bottom'} />
+        </div>
+      )}
+      <div style={{ position: 'absolute', left: PAD, right: PAD, top: PAD + 80 + headline_offset_y, zIndex: 3 }}>
+        {tag && (
+          <div style={{ fontFamily: VAQ.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.16em',
+            textTransform: 'uppercase', color: dark ? 'rgba(255,255,255,.75)' : VAQ.mutedL, marginBottom: 22 }}>{tag}</div>
+        )}
+        <VPosterHeadline text={headline} size={headline_size} color={headColor} />
+        {subline && (
+          <div className="vaq-measure" style={{ marginTop: 28, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 36,
+            lineHeight: 1.4, color: dark ? 'rgba(255,255,255,.86)' : VAQ.bodyL, maxWidth: 760 }}>{subline}</div>
+        )}
+      </div>
+      <div style={{ position: 'absolute', top: PAD - 20, right: PAD - 8, zIndex: 4 }}>
+        {t.showStamp !== false && <VWordmark size={30} onDark={dark} />}
+      </div>
+    </VSlide>
+  );
+}
+
+// ── LABEL COVER ───────────────────────────────────────────────
+// The GRIDD register: sentence-case headline boxed in navy at the top, a
+// die-cut / duotone subject floating below, starbursts, wordmark only.
+function LabelCover({ slide, index, v, surface, t }) {
+  const {
+    headline = '', subline, image, image_position, image_style = 'duotone', image_tint = 'orange',
+    image_tilt = 0, image_halftone = true, image_width, image_height = 720,
+    headline_size = 84, headline_offset_y = 0, texture, bursts, align_x = 'center',
+  } = slide;
+  const dark = surface.onDark;
+  return (
+    <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
+      <div style={{ position: 'absolute', left: PAD, right: PAD, top: PAD + 90 + headline_offset_y, zIndex: 3,
+        textAlign: align_x }}>
+        <VHeadline text={headline} v={v} size={headline_size} onSolid={surface.onSolid} onDark={dark} label
+          style={{ textAlign: align_x }} />
+        {subline && (
+          <div className="vaq-measure" style={{ marginTop: 26, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 34,
+            lineHeight: 1.4, color: dark ? 'rgba(255,255,255,.86)' : (surface.onSolid ? '#3A1402' : VAQ.bodyL),
+            maxWidth: 820, marginLeft: align_x === 'center' ? 'auto' : 0, marginRight: align_x === 'center' ? 'auto' : 0 }}>{subline}</div>
+        )}
+      </div>
+      {image && (
+        <div style={{ position: 'absolute', left: PAD, right: PAD, bottom: 150, height: image_height, zIndex: 2,
+          display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <VCutout src={image} imageStyle={image_style} tint={image_tint} halftone={image_halftone}
+            tilt={image_tilt} width={image_width || '84%'} height={image_height} position={image_position} />
+        </div>
+      )}
+      <div style={{ position: 'absolute', right: PAD, bottom: 56, zIndex: 4 }}>
+        {t.showStamp !== false && <VWordmark size={30} onSolid={surface.onSolid} onDark={dark} />}
+      </div>
+    </VSlide>
+  );
+}
+
 function CoverSlide({ slide, index }) {
   const t = useTweaks();
   const v = verticalFor(slide, t);
@@ -24,7 +104,17 @@ function CoverSlide({ slide, index }) {
     headline = '', subline, kicker_meta, texture,
     image, image_position, image_height = 560, image_credit,
     headline_size, headline_offset_y = 0, show_index,
+    cover_style = 'newsroom', headline_style, image_style = 'plain', image_tint = 'orange',
+    image_tilt = 0, image_halftone = false, image_width, bursts,
   } = slide;
+  const isLabel = headline_style === 'label';
+  const isCut = image_style !== 'plain';
+  if (cover_style === 'poster') {
+    return <PosterCover slide={slide} index={index} v={v} surface={surface} t={t} />;
+  }
+  if (cover_style === 'label') {
+    return <LabelCover slide={slide} index={index} v={v} surface={surface} t={t} />;
+  }
   // With an image panel the headline drops to interior scale so the
   // composition still fits the tile.
   const hSize = headline_size || headlineDefaultSize(v, image ? 'inner' : 'cover');
@@ -37,8 +127,15 @@ function CoverSlide({ slide, index }) {
     const dSize = headline_size || headlineDefaultSize(v, 'cover');
     const dInk = inkFor(v, surface);
     return (
-      <VSlide v={v} surface={surface} texture={texture}>
-        {image && (
+      <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
+        {image && isCut && (
+          <div style={{ position: 'absolute', left: PAD, right: PAD, bottom: 140, zIndex: 2,
+            display: 'flex', justifyContent: 'center' }}>
+            <VCutout src={image} imageStyle={image_style} tint={image_tint} halftone={image_halftone}
+              tilt={image_tilt} width={image_width || '78%'} position={image_position} />
+          </div>
+        )}
+        {image && !isCut && (
           <div style={{ position: 'absolute', inset: 0 }}>
             <img src={image.startsWith('http') ? image : `images/${image}`} style={{
               width: '100%', height: '100%', objectFit: 'cover',
@@ -48,7 +145,6 @@ function CoverSlide({ slide, index }) {
               'linear-gradient(180deg, rgba(30,30,30,.62) 0%, rgba(30,30,30,0) 24%, rgba(30,30,30,0) 40%, rgba(30,30,30,.74) 72%, rgba(30,30,30,.97) 100%)' }} />
           </div>
         )}
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 10, background: v.accent, zIndex: 4 }} />
         <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column', zIndex: 3 }}>
           {show_index === true && <VGhostIndex n={index + 1} v={v} onSolid={false} />}
           <VKicker v={v} onDark meta={kicker_meta} style={kickerAlign(slide)} />
@@ -56,8 +152,7 @@ function CoverSlide({ slide, index }) {
           <div {...alignBlock(slide,
                  { left: 0, right: 0, transform: `translateY(${headline_offset_y}px)` },
                  { top: 110 + headline_offset_y, bottom: (CHROME_H - 20) - headline_offset_y })}>
-            <div className="vaq-rule" style={{ width: 88, height: 9, background: v.accent, marginBottom: 30 }} />
-            <VHeadline text={headline} v={v} size={dSize} onDark />
+            <VHeadline text={headline} v={v} size={dSize} onDark label={isLabel} />
             {subline && (
               <div className="vaq-measure" style={{ marginTop: 30, fontFamily: bodyFontFor(v),
                 fontWeight: v.bodyFont ? 400 : 600, fontSize: 38,
@@ -84,13 +179,21 @@ function CoverSlide({ slide, index }) {
   // the author's headline_offset_y travels with an explicit anchor.
   const coverOff = headline_offset_y - (image ? 20 : 40);
   return (
-    <VSlide v={v} surface={surface} texture={texture}>
+    <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
       {show_index === true && <VGhostIndex n={index + 1} v={v} onSolid={surface.onSolid} />}
-      <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column' }}>
-        <VKicker v={v} onSolid={surface.onSolid} onDark={surface.onDark} meta={kicker_meta} style={kickerAlign(slide)} />
-        {image && (
+      <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column', zIndex: 2 }}>
+        {cover_style !== 'label' && (
+          <VKicker v={v} onSolid={surface.onSolid} onDark={surface.onDark} meta={kicker_meta} style={kickerAlign(slide)} />
+        )}
+        {image && isCut && (
+          <div style={{ marginTop: 44, height: image_height, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <VCutout src={image} imageStyle={image_style} tint={image_tint} halftone={image_halftone}
+              tilt={image_tilt} width={image_width || '86%'} height={image_height} position={image_position} />
+          </div>
+        )}
+        {image && !isCut && (
           <div style={{
-            marginTop: 44, position: 'relative', borderRadius: 14, overflow: 'hidden',
+            marginTop: 44, position: 'relative', borderRadius: 0, overflow: 'hidden',
             border: `1px solid ${surface.onSolid ? 'rgba(255,255,255,.35)' : VAQ.hairL}`,
             height: image_height, background: 'rgba(0,0,0,.15)',
           }}>
@@ -111,7 +214,7 @@ function CoverSlide({ slide, index }) {
         <div {...alignBlock(slide,
                { left: 0, right: 0, transform: `translateY(${coverOff}px)` },
                { top: 110 + headline_offset_y, bottom: (CHROME_H - 20) - headline_offset_y })}>
-          <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} onDark={surface.onDark} />
+          <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} onDark={surface.onDark} label={isLabel} />
           {subline && (
             <div className="vaq-measure" style={{
               marginTop: 36, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 38, lineHeight: 1.4,
@@ -139,13 +242,28 @@ function StorySlide({ slide, index }) {
     headline = '', body, kicker_meta, texture, loop,
     image, image_caption, image_credit, image_position, image_height = 470,
     headline_size, body_size = 46, headline_offset_y = 0, body_offset_y = 0,
+    headline_style, image_style = 'plain', image_tint = 'orange', image_tilt = 0, image_halftone = false,
+    image_width, bursts, image_anchor,
   } = slide;
+  const isLabel = headline_style === 'label';
+  const isCut = image_style !== 'plain';
+  // image_anchor pins a cutout to the slide's bottom edge, out of the text
+  // flow (the GRIDD portrait): bottom-right | bottom-left | bottom.
+  const anchored = isCut && !!image_anchor;
+  const anchorJustify = { 'bottom-left': 'flex-start', 'bottom': 'center', 'bottom-right': 'flex-end' }[image_anchor] || 'flex-end';
   const hSize = headline_size || headlineDefaultSize(v, 'inner');
   const ink = inkFor(v, surface);
   const capParts = [image_caption, image_credit].filter(Boolean);
   return (
-    <VSlide v={v} surface={surface} texture={texture}>
-      <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column' }}>
+    <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
+      {image && anchored && (
+        <div style={{ position: 'absolute', left: PAD, right: PAD, bottom: 0, height: image_height, zIndex: 1,
+          display: 'flex', alignItems: 'flex-end', justifyContent: anchorJustify }}>
+          <VCutout src={image} imageStyle={image_style} tint={image_tint} halftone={image_halftone}
+            tilt={image_tilt} width={image_width || '60%'} height={image_height} position={image_position || 'bottom'} />
+        </div>
+      )}
+      <div style={{ zIndex: 2, position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column' }}>
         <VKicker v={v} onSolid={surface.onSolid} onDark={surface.onDark} meta={kicker_meta} style={kickerAlign(slide)} />
         {!image && <div style={{ flex: 0.8 }} />}
         {/* headline · frame · body move as one. They are stacked block boxes,
@@ -153,12 +271,18 @@ function StorySlide({ slide, index }) {
             align_y a single box to re-anchor once it isn't. */}
         <div {...alignBlock(slide, { left: 0, right: 0 }, { top: 110, bottom: CHROME_H - 40 })}>
           <div style={{ marginTop: image ? 52 : 0, transform: `translateY(${headline_offset_y}px)` }}>
-            <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} onDark={surface.onDark} />
+            <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} onDark={surface.onDark} label={isLabel} />
           </div>
-          {image && (
+          {image && isCut && !anchored && (
+            <div style={{ marginTop: 44, height: image_height, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <VCutout src={image} imageStyle={image_style} tint={image_tint} halftone={image_halftone}
+                tilt={image_tilt} width={image_width || '80%'} height={image_height} position={image_position} />
+            </div>
+          )}
+          {image && !isCut && (
             <div style={{ marginTop: 44 }}>
               <div style={{
-                borderRadius: 14, overflow: 'hidden',
+                borderRadius: 0, overflow: 'hidden',
                 border: `1px solid ${ink.hair}`,
                 height: image_height, background: ink.well,
               }}>
@@ -223,7 +347,8 @@ function SplitStorySlide({ slide, index }) {
             color: '#fff', background: 'rgba(10,17,25,.55)', padding: '5px 12px', borderRadius: 6,
           }}>{image_credit}</div>
         )}
-        <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 10, background: v.accent }} />
+        <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 10, background: 'transparent',
+          borderBottom: `1px solid ${surface.onDark ? 'rgba(255,255,255,.35)' : 'rgba(10,17,25,.5)'}` }} />
       </div>
       <div style={{
         position: 'absolute', top: image_height + 10, left: 0, right: 0, bottom: 0,
@@ -377,11 +502,11 @@ function ClosingSlide({ slide, index }) {
           <span style={{ color: ink.head }}>Vaq</span>{' '}
           <span style={{ color: VAQ.orange }}>HQ</span>
         </div>
-        <div style={{ display: 'flex', gap: 22, marginTop: 46 }}>
-          {Object.values(VERTICALS).map(vv => (
-            <span key={vv.key} style={{ width: 18, height: 18, borderRadius: 6, background: vv.accent }} />
-          ))}
-        </div>
+        {/* Print refresh: a colophon — double rules and the channel line —
+            replaces the four accent dots. */}
+        <div style={{ marginTop: 40, width: 440, borderTop: `4px double ${ink.hair}`, paddingTop: 16,
+          fontFamily: VAQ.serif, fontStyle: 'italic', fontWeight: 500, fontSize: 30,
+          letterSpacing: '-.005em', color: ink.muted }}>Politics, decoded.</div>
         {headline && (
           <div className="vaq-measure" style={{ marginTop: 64, maxWidth: 840 }}>
             <div style={{ fontFamily: sFont, fontWeight: 600, fontSize: headline_size,
@@ -405,15 +530,18 @@ function ClosingSlide({ slide, index }) {
   );
 }
 
-// Video zone for reel-frame: <video> of the yt-dlp download when it exists,
-// dark placeholder otherwise (and always in capture mode). The source file is
+// Video zone for reel-frame: <video> of the uploaded file (served from the
+// design's images/) or the yt-dlp download when only a URL is set; dark
+// placeholder otherwise (and always in capture mode). The downloaded source is
 // cache-keyed server-side on the URL, so after changing Video URL the old clip
-// may keep playing until the next Compose refreshes the download.
-function ReelVideoZone({ top, fade = 0, paper, videoUrl }) {
+// may keep playing until the next Compose refreshes the download. An uploaded
+// file wins over the URL, mirroring compose_reel.
+function ReelVideoZone({ top, fade = 0, paper, videoUrl, videoFile }) {
   const isCapture = document.body.classList.contains('capture');
   const [failed, setFailed] = React.useState(false);
-  React.useEffect(() => { setFailed(false); }, [videoUrl]);
-  const showVideo = !isCapture && videoUrl && !failed;
+  const src = videoFile ? `images/${videoFile}` : 'output/source.mp4';
+  React.useEffect(() => { setFailed(false); }, [videoUrl, videoFile]);
+  const showVideo = !isCapture && (videoUrl || videoFile) && !failed;
   return (
     <div style={{
       position: 'absolute', left: 0, right: 0, top, bottom: 0,
@@ -421,7 +549,7 @@ function ReelVideoZone({ top, fade = 0, paper, videoUrl }) {
       alignItems: 'center', justifyContent: 'center', gap: 20, overflow: 'hidden',
     }}>
       {showVideo ? (
-        <video src="output/source.mp4" autoPlay muted loop playsInline
+        <video src={src} autoPlay muted loop playsInline
           onError={() => setFailed(true)}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
       ) : (
@@ -431,8 +559,9 @@ function ReelVideoZone({ top, fade = 0, paper, videoUrl }) {
             fontFamily: VAQ.mono, fontSize: 22, letterSpacing: '.2em',
             textTransform: 'uppercase', color: 'rgba(255,255,255,.4)',
             maxWidth: 800, textAlign: 'center',
-          }}>{videoUrl ? (isCapture ? 'video linked' : 'compose once to preview the video')
-              : 'paste a link in Video URL'}</div>
+          }}>{(videoUrl || videoFile) ? (isCapture ? 'video linked'
+                : (videoFile ? 'video file set \u2014 loading' : 'compose once to preview the video'))
+              : 'upload a video or paste a link'}</div>
         </React.Fragment>
       )}
       {/* Soft hand-off: paper bleeds over the video's top edge. Preview only —
@@ -459,25 +588,28 @@ function ReelFrameSlide({ slide, index }) {
   const v = verticalFor(slide, t);
   const surface = surfaceFor(slide, v, 'light');
   const {
-    headline = '', subline, kicker_meta, texture, credit, video_url,
+    headline = '', subline, kicker_meta, texture, credit, video_url, video_file,
     panel_height = 560, panel_fade = 120, headline_size = 66, headline_offset_y = 0,
+    headline_style, bursts,
   } = slide;
+  const isLabel = headline_style === 'label';
   return (
-    <VSlide v={v} surface={surface} texture={texture}>
+    <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
       {/* Video zone. In the live preview this plays the downloaded source
           (served from the design's output dir) so the framing is judgeable
           before compose. Capture mode keeps the flat placeholder — the
           composer only uses the panel strip above `panel_height` anyway. */}
-      <ReelVideoZone top={panel_height} fade={panel_fade} paper={surface.bg} videoUrl={video_url} />
+      <ReelVideoZone top={panel_height} fade={panel_fade} paper={surface.bg} videoUrl={video_url} videoFile={video_file} />
       {/* Header panel — everything the composer keeps. */}
       <div style={{
         position: 'absolute', left: 0, right: 0, top: 0, height: panel_height,
         padding: `${PAD - 20}px ${PAD - 8}px 30px`, boxSizing: 'border-box',
         display: 'flex', flexDirection: 'column',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          paddingBottom: 14, borderBottom: '4px double rgba(10,17,25,.5)' }}>
           <VWordmark size={34} />
-          <VKicker v={v} onSolid={false} meta={kicker_meta} />
+          <VKicker v={v} onSolid={false} meta={kicker_meta} style={{ borderBottom: 'none', paddingBottom: 0 }} />
         </div>
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           {/* Inner wrapper so the headline keeps stretching to the panel width
@@ -485,7 +617,7 @@ function ReelFrameSlide({ slide, index }) {
           <div {...alignBlock(slide,
                  { left: PAD - 8, right: PAD - 8, transform: `translateY(${headline_offset_y}px)` },
                  { top: 110 + headline_offset_y, bottom: 70 - headline_offset_y })}>
-            <VHeadline text={headline} v={v} size={headline_size} />
+            <VHeadline text={headline} v={v} size={headline_size} label={isLabel} />
             {subline && (
               <div className="vaq-measure" style={{
                 marginTop: 26, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 34,
@@ -525,16 +657,18 @@ function ReelExplainerSlide({ slide, index }) {
   const surface = surfaceFor(slide, v, 'dark');
   const ink = inkFor(v, surface);
   const {
-    headline = '', chip, body, body_label, kicker_meta, texture, credit, video_url,
+    headline = '', chip, body, body_label, kicker_meta, texture, credit, video_url, video_file,
     panel_height = 760, panel_fade = 160, headline_size = 74, body_size = 30,
+    headline_style, bursts,
   } = slide;
+  const isLabel = headline_style === 'label';
   return (
-    <VSlide v={v} surface={surface} texture={texture}>
+    <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
       {/* Video occupies everything ABOVE the panel. Anchored off the BOTTOM, not
           computed from 1920, so the frame still composes if the design is left
           in instagram-portrait by mistake. */}
       <div style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: panel_height, overflow: 'hidden' }}>
-        <ReelVideoZone top={0} videoUrl={video_url} />
+        <ReelVideoZone top={0} videoUrl={video_url} videoFile={video_file} />
         {/* Wordmark watermark, over the video, top-right. */}
         <div style={{ position: 'absolute', top: PAD - 24, right: PAD - 8, opacity: .82 }}>
           <VWordmark size={30} onDark />
@@ -556,12 +690,13 @@ function ReelExplainerSlide({ slide, index }) {
           }} />
         )}
         {(chip || kicker_meta) && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 22 }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 24, marginBottom: 26,
+            paddingBottom: 14, borderBottom: '4px double rgba(255,255,255,.42)' }}>
             {chip && (
               <span style={{
-                background: VAQ.orange, color: '#FFF', fontFamily: VAQ.mono, fontWeight: 700,
-                fontSize: 22, letterSpacing: '.14em', textTransform: 'uppercase',
-                padding: '8px 16px', borderRadius: 3,
+                color: '#FFF', fontFamily: VAQ.display, fontWeight: 800,
+                fontSize: 22, letterSpacing: '.14em', textTransform: 'uppercase', lineHeight: 1,
+                borderBottom: `4px solid ${VAQ.orange}`, paddingBottom: 5,
               }}>{chip}</span>
             )}
             {kicker_meta && (
@@ -572,7 +707,7 @@ function ReelExplainerSlide({ slide, index }) {
             )}
           </div>
         )}
-        <VHeadline text={headline} v={v} size={headline_size} onDark />
+        <VHeadline text={headline} v={v} size={headline_size} onDark label={isLabel} />
         {/* The label is a run-in float rather than a sibling: VBody emits <p>,
             so a plain span before it would break onto its own line. Floating it
             shortens only the first line box, which is the effect wanted, and it
@@ -936,7 +1071,7 @@ function GeoSlide({ slide, index }) {
           </div>
           <div style={{ marginTop: 44 }}>
             <div style={{
-              position: 'relative', borderRadius: 14, overflow: 'hidden',
+              position: 'relative', borderRadius: 0, overflow: 'hidden',
               border: `1px solid ${ink.hair}`, height: mH, background: ocean,
             }}>
               <svg viewBox={`${_px(lonMin)} ${_py(latMax)} ${spanX} ${spanY}`} preserveAspectRatio="none"
@@ -1567,7 +1702,7 @@ function CityMapSlide({ slide, index }) {
     <VChartSlide slide={slide} index={index}>
       <div>
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}
-          style={{ display: 'block', borderRadius: 14, overflow: 'hidden' }}>
+          style={{ display: 'block', borderRadius: 0, overflow: 'hidden' }}>
           <rect x={0} y={0} width={W} height={H} fill={field} />
           {/* faint local grid — orientation only, never a data gridline */}
           {Array.from({ length: 9 }).map((_, i) => (

@@ -29,8 +29,8 @@ made the feed read as several different accounts. **Do not reintroduce per-verti
 accents, typefaces or kit objects.** Retired: briefing blue, longview plum, ground
 teal, sports red, legal `#E0554E`, tech `#2540FF`, the Docket/Cathode sub-kits.
 
-A vertical now contributes **editorial identity only** — badge text, show name, and
-ground's Devanagari companion. All seven share `V_BASE`.
+A vertical now contributes **editorial identity only** — badge text and show name.
+All seven share `V_BASE`. (Ground's Devanagari companion was retired 2026-08-29.)
 
 `live · briefing · longview · ground · sports · legal · tech`
 
@@ -39,6 +39,75 @@ ground's Devanagari companion. All seven share `V_BASE`.
 
 Type: Archivo caps headlines · Hanken Grotesk body · Space Mono meta ·
 Newsreader pull quotes · Noto Serif Devanagari companion.
+
+---
+
+## Print refresh (2026-08-29, branch `feat/vaq-design-refresh`)
+
+User feedback: the pack read as a generic AI template — the orange top bar,
+pill/eyebrow chips, the short accent dash over headlines, the `— LOOP →` line
+and the four closing dots were the giveaways. Colour and type stay; the chrome
+is now newspaper, not UI:
+
+| Was | Now |
+|---|---|
+| 10px orange bar across the top | gone — no accent on the sheet edge |
+| orange pill badge + mono meta | **masthead**: Archivo slug in ink with a short orange underline, mono dateline, closed by a *double* hairline rule |
+| `*word*` = orange highlighter slab | `*word*` = **Newsreader italic in orange** set inside the Archivo caps |
+| `— LOOP TEXT →` mono line | **jump line**: hairline above, right-set serif italic "Next: …" (no arrow, no accent) |
+| 88×9 orange dash over dark-cover headlines | gone |
+| rounded 14px hairline photo frames | square frames; split-story photo ends on a 1px ink cutline |
+| four accent dots on the closing | **colophon**: double rules + "Politics, decoded." |
+| `02 / 08` mono page number | `2 of 8` in serif italic |
+
+Textures gained a print set — `paper` · `newsprint` · `halftone` · `ink` —
+alongside the originals (`grid` `riso` `dots` `signal`); they stack with commas.
+`texture: file:<name>.png[:opacity%]` multiplies in any PNG dropped into
+`textures/` (subfolders fine), or `file:images/<name>.png` from the design's own
+`images/`, or a `brands/…` path or http(s) URL. A third segment sets the blend:
+`file:Texturelabs_Film_176M.jpg:45:screen` (multiply is the default on paper and
+orange, screen on dark). Texturelabs scans in `textures/` are under the
+Texturelabs free licence: fine inside renders, not for redistribution as files. `designs/vaq-texture-sampler` shows
+all four new ones on light / dark / solid.
+
+---
+
+## Collage & poster vocabulary (2026-08-29)
+
+Second pass on the same feedback, from five references the user shared (GRIDD
+zine covers, .ties posters). Same two colours; a louder register when a story
+wants it. All opt-in per slide; the newsroom chrome stays the default.
+
+| Device | How |
+|---|---|
+| headline in a label block (each line boxed in navy, sentence-case sans) | `headline_style: label` on cover / story. `cover_style: label` also drops the masthead |
+| die-cut subject with drop shadow | Die-cut the image in the editor (rembg), then `image_style: cutout` |
+| one-colour print duotone (orange or navy) | `image_style: duotone` + `image_tint: orange\|navy`; `image_halftone: true` adds a dot screen masked to the subject |
+| B&W cutout | `image_style: mono` |
+| tilted print / photo | `image_tilt: -6` (degrees), `image_width: 78%` |
+| zine starbursts | `bursts: [{pos: right, color: orange, size: 360, points: 10, rotate: 12, front: false}]` — colours `orange navy ink paper white slate tint`; `x`/`y` px override `pos` |
+| giant condensed poster type + subject on a studio backdrop, wordmark only | `cover_style: poster` with `headline` (`*word*` → orange), `tag`, `image_align`, `image_height` (900), `headline_size` (210). Archivo now loads with its `wdth` axis for this |
+| grid paper · speckled dark ground · ink splatter | `texture: squares` · `speck` · `splat` (stack with commas, e.g. `speck, splat`) |
+
+**Deck-wide stock.** Set once in `tweaks:` and every slide inherits it — the
+print rule is one paper per issue, so this is *less* chaotic than per-slide picks:
+
+```yaml
+tweaks:
+  texture: file:Texturelabs_Paper_290L.jpg:50        # every slide
+  textureDark: file:Texturelabs_Film_176M.jpg:40     # navy surfaces instead
+  textureSolid: file:Texturelabs_InkPaint_410M.jpg:40   # orange tiles instead
+```
+
+`texture: house` is the shorthand for the user's favourite stocks (2026-08-29):
+newsprint + Grunge_340M on paper · 45° halftone + Film_197M on navy · halftone
+on orange. Film_176M is the dustier navy alternative. A slide's own `texture:`
+still wins; `texture: none` opts a slide out.
+
+`designs/vaq-style-lab` recreates the five references in VAQ colours — copy a
+slide from there rather than starting from the field list. Primitives live in
+`slides-shared.jsx` (`VBursts`, `VCutout`, `VPosterHeadline`, `VHeadline label`);
+`styles.css` (imported by `tokens.css`) carries the same rules as plain classes.
 
 ---
 

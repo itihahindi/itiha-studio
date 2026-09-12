@@ -12,7 +12,7 @@ caption: |
 
   Sources: PTI via Rediff and Business Standard, Business Today, 17 August 2026. Photo of Amit Malviya: Naveen Sharma / ANI.
 
-  @vak_hq
+  @vaq_hq
 hashtags: |
   #VaqHQ #BJP #AmitMalviya #DeepakMhaskey #BJPITCell #SocialMedia #Chhattisgarh #NitinNabin #IndianPolitics
 tweaks:
@@ -93,6 +93,6 @@ slides:
   texture: grid
 - layout: closing
   surface: dark
-  body: Follow @vak_hq for Indian politics, decoded.
-  handle: '@vak_hq'
+  body: Follow @vaq_hq for Indian politics, decoded.
+  handle: '@vaq_hq'
   texture: grid

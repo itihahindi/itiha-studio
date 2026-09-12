@@ -1,0 +1,123 @@
+name: India rejects the Hague on the Indus treaty
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  The Hague ordered India to treat the Indus Waters Treaty as fully in force. Delhi's answer: the court does not exist in law, and the treaty stays in abeyance.
+
+  What the court said. On 31 August the Court of Arbitration ruled unanimously that the 1960 treaty "remains fully in force," found India's April 2025 suspension had "insufficient justification," and imposed interim limits on concreting at the Ratle project until roughly July 2027, when a World Bank-appointed neutral expert is due to decide.
+
+  What Delhi said. The Ministry of External Affairs: "This so-called Court of Arbitration has no jurisdiction whatsoever to pronounce on India's sovereign decisions." Its pronouncements "will have no effect on India's actions." This is the third award India has binned from a body it has never recognised: the supplemental award of June 2025 and the pondage award of May 2026 were both rejected as the work of an "illegally constituted" tribunal whose decisions are "null and void."
+
+  The part worth being precise about. Abeyance is conditional, not eternal: India has tied restoration to Pakistan "credibly and irrevocably" ending support for cross-border terrorism, the condition set after Pahalgam, 22 April 2025, 26 dead. And the leverage is structural: the Indus system feeds about 80 percent of Pakistan's farmland.
+
+  Sources: Al Jazeera, 31 Aug 2026; Free Press Journal, 1 Sep 2026; MEA statements via Akashvani, Jun 2025 and May 2026.
+
+  @vaq_hq
+hashtags: |
+  #IndusWatersTreaty #India #Pakistan #TheHague #Ratle #Kashmir #Geopolitics #VaqHQ
+tweaks:
+  vertical: briefing
+  texture: house
+slides:
+- layout: cover
+  surface: solid
+  headline: |
+    The Hague *ordered.*
+    India refused.
+  subline: The Court of Arbitration says the Indus treaty binds. Delhi says the court does not exist.
+  tag: The Briefing
+  headline_size: 132
+  vertical: live
+  image_tint: navy
+  image: https://www.aljazeera.com/wp-content/uploads/2026/08/2025-04-24T123155Z_1554335542_RC2A4EAQJ2TL_RTRMADP_3_INDIA-KASHMIR-ATTACK-WATER-1788187534.jpg?resize=770%2C513&quality=80
+  headline_style: label
+  texture: halftone
+- layout: story
+  kicker_meta: 31 August 2026
+  headline: |
+    What the court *said*
+  headline_size: 92
+  body: |
+    Unanimous: the 1960 treaty ["remains fully in force"], and India's 2025 suspension had ["insufficient justification."] Interim limits on Ratle concreting run to mid-2027, when a World Bank neutral expert decides.
+  body_size: 60
+  loop: Delhi's answer took one line
+  align_x: left
+  image_halftone: false
+  texture: halftone
+- layout: quote
+  quote: |
+    This so-called Court of Arbitration has no jurisdiction whatsoever to pronounce on India's sovereign decisions.
+  attribution: Ministry of External Affairs · 31 August 2026
+  quote_size: 75
+  texture: halftone
+- layout: geo
+  kicker_meta: The Basin
+  headline: |
+    Two dams, three *rivers*
+  region: auto
+  center_lon: 74
+  center_lat: 31.5
+  zoom: 1.5
+  labels: false
+  countries:
+  - name: India
+    color: '#F4631E'
+  - name: Pakistan
+    color: '#0FA08C'
+  markers:
+  - lon: 75.77
+    lat: 33.15
+    label: Ratle · Chenab
+    ring: true
+  - lon: 74.75
+    lat: 34.66
+    label: Kishenganga · Jhelum
+  body: |
+    Both projects stand on western rivers the treaty assigns to Pakistan's use. India may build run-of-river power there. Pakistan has arbitrated every design since.
+  map_caption: The two J&K projects Pakistan took to The Hague.
+  body_size: 50
+  headline_size: 64
+  texture: halftone
+- layout: stat
+  kicker_meta: The Leverage
+  label: OF PAKISTAN'S FARMLAND
+  value: 80%
+  sublabel: is fed by the Indus river system
+  body: |
+    The 1960 treaty gave Pakistan the three western rivers, and the guarantee behind that dependence. Abeyance withdraws the guarantee. Not yet the water.
+  body_size: 55
+  texture: halftone
+- layout: story
+  kicker_meta: The Pattern
+  headline: |
+    Third award, third *no*
+  headline_size: 92
+  body: |
+    June 2025: supplemental award, rejected. May 2026: pondage award, ["null and void."] August 2026: status award, rejected. India has [never recognised] this tribunal's existence, and boycotted it throughout.
+  body_size: 60
+  loop: Abeyance has one exit clause
+  surface: light
+  headline_style: label
+  image_tint: navy
+  texture: halftone
+- layout: story
+  kicker_meta: The Condition
+  headline: |
+    Until the terror *ends*
+  headline_size: 92
+  body: |
+    The treaty went into abeyance days after [Pahalgam], 22 April 2025, 26 dead. Delhi's stated price for restoration: Pakistan ["credibly and irrevocably"] ends support for cross-border terrorism.
+  body_size: 55
+  loop: One line to keep
+  texture: halftone
+- layout: closing
+  headline: |
+    The Hague has paper.
+    India has the rivers.
+  headline_size: 72
+  body: |
+    Abeyance holds.
+  handle: '@vaq_hq'
+  texture: halftone
+  align_x: center
+  align_y: middle

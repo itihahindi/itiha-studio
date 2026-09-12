@@ -1,0 +1,53 @@
+name: cover bake-off
+brand: itiha
+format: instagram-portrait
+tweaks:
+  showStamp: true
+  showPageNum: true
+  seriesLabel: FOOTNOTES 01
+  footer: site
+  texture: house
+slides:
+- layout: cover
+  eyebrow: Footnotes · 01 / 15
+  eyebrow_meta: Mallampalli Somasekhara Sarma · 1891–1963
+  headline: |
+    Andhra's *Dark Age*
+    Lasted Fifty Years.
+    Sarma *Unearthed* It.
+  subline: Warangal fell to the Tughluqs in 1323. The record went dark until 1945.
+  image: sarma.jpg
+  image_filter: archival
+  image_position: 50% 15%
+  image_overlay: 0.74
+  texture: halftone
+  headline_size: 108
+- layout: x-cover-file
+  eyebrow: Case · The Musunuri Kingdom, 1330–1368
+  eyebrow_meta: M. Somasekhara Sarma · 1891–1963
+  plate_caption: Commemoration volume, Hyderabad, 1976
+  headline: |
+    Andhra's *Dark Age*
+    Lasted Fifty Years.
+    Sarma *Unearthed* It.
+  subline: Warangal fell to the Tughluqs in 1323. The record went dark until 1945.
+  image: sarma.jpg
+- layout: x-cover-plate
+  eyebrow_meta: Mallampalli Somasekhara Sarma · Madras · 1891–1963
+  headline: |
+    Andhra's *Dark Age*
+    Lasted Fifty Years.
+    Sarma *Unearthed* It.
+  subline: Footnotes 01 · The record went dark until 1945
+  image: sarma.jpg
+- layout: x-cover-scale
+  eyebrow: Footnotes · 01 / 15
+  eyebrow_meta: M. Somasekhara Sarma · 1891–1963
+  year: '1323'
+  headline: |
+    Andhra's
+    *Dark Age.*
+    Sarma Dug
+    It *Out.*
+  subline: Warangal fell to the Tughluqs in 1323
+  image: sarma.jpg

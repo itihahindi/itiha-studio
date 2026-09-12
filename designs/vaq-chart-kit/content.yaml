@@ -8,7 +8,7 @@ caption: |
 
   Every value is printed on the plot. A slide has no tooltip and no table view, so a number that is not on the chart is a number the reader cannot get.
 
-  @vak_hq · vaqhq.com
+  @vaq_hq · vaqhq.com
 hashtags: |
   #VaqHQ #DataViz #Charts #DesignSystem
 tweaks:
@@ -112,4 +112,4 @@ slides:
     Every number,
     on the plot.
   body: No tooltips on a phone. If it is not labelled, it is not readable.
-  handle: '@vak_hq'
+  handle: '@vaq_hq'

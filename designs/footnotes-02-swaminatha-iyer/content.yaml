@@ -1,0 +1,174 @@
+name: Footnotes 02 — U. V. Swaminatha Iyer
+brand: itiha
+format: instagram-portrait
+caption: |
+  Classical Tamil survived on palm leaf. Leaves rot, so every few decades somebody had to copy the whole text out again by hand or it was gone — and by the 1880s the copies sat in temple mutts and in private houses whose owners often could not read them. Footnotes, No. 2 of 15, is about the man who put that literature into print: U. V. Swaminatha Iyer (1855–1942), the Tamil professor at Kumbakonam who spent sixty years chasing manuscripts and died with the work unfinished.
+
+  The turn came in 1880. At Government Arts College, Kumbakonam, Iyer met Salem Ramaswami Mudaliar, a civil munsif and a reader of Tamil, who asked what he knew of the old classics and whether he could annotate the Cīvaka Cintāmaṇi. Iyer — a pandit trained from 1870 under Meenakshi Sundaram Pillai and at the Thiruvavaduthurai Saiva mutt — had not heard of it. Mudaliar handed him a copy. What followed was a seven-year hunt through the villages of the Tamil country: lofts, unlocked almirahs, families who did not know what they were holding, copies already thrown out or eaten. He studied under Tamil Jains so that he could read a Jain epic properly, and in 1887, at thirty-two, he printed it.
+
+  Then he kept going: Pattuppāṭṭu in 1889, Silappadikāram in 1891, Purananūru in 1894, Manimekalai in 1898, Kuṟuntokai as late as 1937. Over ninety books, more than three thousand manuscripts and notes. What he produced were editions, not transcriptions — the poem, a prose paraphrase, a note on who is speaking, and at the foot of the page the variant readings, the places where his copies disagreed. From January 1940 to May 1942 he serialised his own life as En Sarithiram in Ananda Vikatan; he died that April with it incomplete, and the library built around his manuscripts opened in Madras the next year.
+
+  Read him: Cīvaka Cintāmaṇi (1887) and the classical editions; En Sarithiram, in book form from 1950, and in English as The Story of My Life. Photographs and the 1937 Kuṟuntokai page, public domain via Wikimedia Commons; palm-leaf Tevaram manuscript by Ms Sarah Welch, CC0; Government Arts College, Kumbakonam, CC BY 3.0.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Footnotes #TamilLiterature #SwaminathaIyer #SangamLiterature #Silappadikaram #Kumbakonam #PalmLeafManuscripts #BookRecommendation
+tweaks:
+  showChapterLabels: true
+  showStamp: true
+  showPageNum: true
+  seriesLabel: U. V. Swaminatha Iyer
+  emphasisV2: true
+  footer: site
+slides:
+- layout: cover
+  eyebrow: Footnotes · 02 / 15
+  eyebrow_meta: U. V. Swaminatha Iyer · 1855–1942
+  headline: |
+    Tamil's Oldest Books
+    Were Rotting On *Palm Leaf*.
+    Iyer *Printed* Them.
+  subline: In 1880 a judge asked whether he could read the Cīvaka Cintāmaṇi. He had never heard of it.
+  swipe_meta: Swipe ▸ · 10 Slides · 3 min read
+  image: uvs-manuscripts.jpg
+  image_filter: archival
+  image_position: 46% 30%
+  image_overlay: 0.74
+  texture: vignette
+  headline_size: 96
+  headline_offset_y: 340
+- layout: split-story
+  chapter: Chapter 01 · The Gap
+  headline: |
+    A Literature That
+    Existed Only In
+    *Copies*
+  body: |
+    Classical Tamil was written on [palm leaf], and palm leaf rots. Every few decades a text had to be copied out again by hand or it was lost. By the 1880s those copies sat in temple mutts and in private houses whose owners often could not read the script. The old epics and the [Sangam] anthologies were names in a scholar's memory long before they were books on a shelf.
+  image: palm-leaf-plate.jpg
+  image_filter: archival
+  image_overlay: 0.5
+  headline_size: 88
+  body_size: 39
+  body_y: 60
+- layout: portrait
+  chapter: Chapter 02 · The Scholar
+  image: uvs-portrait.jpg
+  image_filter: archival
+  image_position: 50% 20%
+  name: 'U. V.
+
+    Swaminatha
+
+    Iyer
+
+    '
+  dates: 19 February 1855 – 28 April 1942
+  role: Born at [Sooriyamoolai] in Thanjavur district; trained from 1870 under the poet [Meenakshi Sundaram
+    Pillai] and at the Thiruvavaduthurai Saiva mutt. In [1880] he took the Tamil chair at Government Arts
+    College, Kumbakonam. He would publish more than ninety books.
+  name_size: 96
+  body_size: 37
+- layout: split-story
+  chapter: Chapter 03 · The Question
+  headline: |
+    A Judge Asked What
+    He Had *Read*
+  body: |
+    At Kumbakonam he met [Salem Ramaswami Mudaliar], a civil munsif and a reader of Tamil. Mudaliar asked what he knew of the old classics, and whether he could annotate the _Cīvaka Cintāmaṇi_. Iyer was already a trained pandit. He had [never heard of the book]. Mudaliar handed him a copy.
+  image: kumbakonam-college.jpg
+  image_filter: archival
+  image_position: 50% 78%
+  image_zoom: 1.35
+  image_overlay: 0.6
+  headline_size: 92
+  body_size: 40
+  body_y: 52
+- layout: split-story
+  chapter: Chapter 04 · The Hunt
+  headline: |
+    Seven Years Of
+    Knocking On *Doors*
+  body: |
+    He went after the leaves village by village — lofts, unlocked almirahs, households that did not know what they were holding. Copies had been thrown out, ritually disposed of, or eaten. He read through unindexed piles and argued with owners who would not part with them, and he studied under Tamil [Jains] so that he could annotate a Jain epic properly. In his own account the [termites] beat him about half the time.
+  image: tholkappiyam-plate.jpg
+  image_filter: archival
+  image_overlay: 0.55
+  headline_size: 92
+  body_size: 38
+  body_y: 58
+- layout: split-story
+  theme: light
+  chapter: Chapter 05 · The Book
+  headline: |
+    Printed In *1887*,
+    At Thirty-Two
+  body: |
+    The _Cīvaka Cintāmaṇi_ came off the press in [1887]. Not a transcription — an edition: the text established by comparing the copies he had gathered, with a commentary set around it and the context of a Jain epic explained for readers who had none. It was the first of the long classical works he put into type.
+  headline_size: 96
+  body_size: 42
+  body_y: 45
+- layout: timeline
+  chapter: Chapter 06 · What Followed
+  headline: |
+    Fifty Years
+    Of *Editions*
+  items:
+  - date: '1887'
+    headline: Cīvaka Cintāmaṇi — the Jain epic Mudaliar had named
+  - date: '1889'
+    headline: Pattuppāṭṭu, the ten long songs
+  - date: '1891'
+    headline: Silappadikāram, the epic of the anklet
+  - date: '1894'
+    headline: Purananūru, the Sangam anthology of the public world
+  - date: '1937'
+    headline: Kuṟuntokai — still editing at eighty-two
+  date_size: 58
+  item_headline_size: 40
+- layout: split-story
+  chapter: Chapter 07 · The Page
+  headline: |
+    What An *Edition*
+    Actually Looks Like
+  body: |
+    From his 1937 _Kuṟuntokai_. A bracketed note first, saying who speaks to whom. Then the poem, a prose paraphrase, and along the foot of the page the [variant readings] — where his copies disagreed. He printed the disagreements rather than quietly choosing one.
+  image: kuruntokai-plate.jpg
+  image_filter: archival
+  image_overlay: 0.3
+  headline_size: 92
+  body_size: 37
+  body_y: 74
+- layout: split-story
+  chapter: Chapter 08 · His Own Story
+  headline: |
+    He Wrote His Life
+    Down *Last*
+  body: |
+    From January 1940 he serialised _En Sarithiram_ in the weekly [Ananda Vikatan] — his life told through the villages, mutts and households the manuscripts had taken him to. The last instalment ran in [May 1942]. He had died that April, at eighty-seven, with the account unfinished. The library built around the three thousand manuscripts he had gathered opened in Madras the following year.
+  image: uvs-manuscripts.jpg
+  image_filter: archival
+  image_position: 62% 40%
+  image_zoom: 1.15
+  image_overlay: 0.72
+  headline_size: 92
+  body_size: 38
+  body_y: 55
+- layout: numbered-list
+  chapter: Chapter 09 · Read Him
+  headline: |
+    His *Books*
+  items:
+  - number: '1'
+    headline: Cīvaka Cintāmaṇi
+    body: The Jain epic he was taunted into recovering. First printed edition, [1887].
+  - number: '2'
+    headline: Silappadikāram · Pattuppāṭṭu · Purananūru
+    body: The classical editions, [1889–1894], with his commentary and variant readings.
+  - number: '3'
+    headline: En Sarithiram
+    body: The memoir, serialised [1940–42] and in book form from 1950; in English as _The Story of My
+      Life_.
+  item_size: 38
+  number_size: 68
+  body_offset_y: -120

@@ -1,0 +1,147 @@
+name: 7.8% GDP growth, decoded
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  India grew 7.8% in April–June. The number beat every forecast. The parts tell a sharper story than the headline.
+
+  What the data says. Real GDP rose 7.8% in Q1 FY27 against 6.9% a year ago, on a consensus near 7.2%. Nominal GDP grew 10.3%, real GVA 8.2%.
+
+  What did the lifting. Investment. Gross fixed capital formation grew 11.9%, its share of GDP up 290 basis points to 34.3%. Exports rose 12% through a West Asia crisis quarter; imports fell 1.1%. Manufacturing grew 9.2% against 8.3% last year; financial and professional services 12.1%.
+
+  The part worth being precise about. Consumption slowed to 7.1% from 7.5% in the previous quarter. Government consumption grew just 4.3%. Mining contracted 2.4%. And the nominal-real gap is a deflator near 2.4%, with higher inflation flattering the nominal print.
+
+  The line that survives the fine print: capex is buying the growth that consumption paused. The 7.8 is real. The mix is the story.
+
+  Sources: MoSPI Q1 FY27 release, 31 Aug 2026, as reported by Forbes India, Business Standard and Business Today. Peg: HT's Number Theory, 1 Sep 2026. Images: Wikimedia Commons, CC BY-SA.
+
+  @vaq_hq
+hashtags: |
+  #IndianEconomy #GDP #India #Economy #Manufacturing #Capex #VaqHQ
+tweaks:
+  vertical: live
+  texture: house
+  showStamp: true
+  showPageNum: false
+slides:
+- layout: cover
+  surface: solid
+  headline: |
+    7.8% growth.
+    *Decoded.*
+  subline: India's Q1 GDP beat every forecast. The parts tell a sharper story than the headline.
+  tag: Vaq HQ Breaking
+  image: bse-building.jpg
+  image_credit: Wikimedia Commons · CC BY-SA 3.0
+  image_style: duotone
+  image_tint: navy
+  image_halftone: true
+  image_position: 50% 30%
+  headline_size: 128
+  image_align: left
+  headline_offset_y: 30
+- layout: bar-chart
+  headline: |
+    The *beat*
+  headline_size: 88
+  body_size: 38
+  label_size: 34
+  mode: sequence
+  rows:
+  - label: Q1 FY26
+    value: 6.9
+  - label: Consensus
+    value: 7.2
+  - label: Q1 FY27
+    value: 7.8
+    emphasis: true
+  value_suffix: '%'
+  decimals: 1
+  source: MoSPI, 31 Aug 2026 · consensus per Business Standard poll
+  body: |
+    Real GDP, year on year. Nominal grew 10.3. Real GVA grew 8.2.
+  loop: Investment did the lifting
+- layout: bar-chart
+  headline: |
+    The *engine*
+  headline_size: 88
+  body_size: 38
+  label_size: 32
+  chart_offset_y: -30
+  mode: emphasis
+  rows:
+  - label: Investment (GFCF)
+    value: 11.9
+    emphasis: true
+  - label: Exports
+    value: 12
+  - label: Private consumption
+    value: 7.1
+  - label: Govt consumption
+    value: 4.3
+  - label: Imports
+    value: -1.1
+  value_suffix: '%'
+  decimals: 1
+  source: MoSPI expenditure-side, constant prices
+  body: |
+    Capex share of GDP rose 290 bps to [34.3%].
+  loop: The factory floor agrees
+- layout: bar-chart
+  headline: |
+    Sector *scoreboard*
+  headline_size: 88
+  body_size: 38
+  label_size: 32
+  chart_offset_y: -40
+  mode: sequence
+  rows:
+  - label: Financial & professional
+    value: 12.1
+  - label: Services (tertiary)
+    value: 10
+  - label: Manufacturing
+    value: 9.2
+    emphasis: true
+    note: 8.3 a year ago
+  - label: Construction
+    value: 7.7
+  - label: Agriculture
+    value: 3.6
+  value_suffix: '%'
+  decimals: 1
+  source: MoSPI GVA by sector, constant prices
+  body: |
+    Mining was the one contraction, down [2.4%].
+  loop: Now the fine print
+- layout: story
+  headline: |
+    The fine *print*
+  headline_size: 92
+  body: |
+    Nominal grew 10.3, real 7.8; the gap is a deflator near [2.4%], and higher inflation flattered the nominal print. Consumption slowed to [7.1%] from 7.5 last quarter.
+  body_size: 44
+  image: bse-bull.jpg
+  image_caption: The bull at the Bombay Stock Exchange, Dalal Street
+  image_credit: Wikimedia Commons · CC BY-SA 4.0
+  image_height: 440
+  loop: It happened mid-crisis
+- layout: story
+  headline: |
+    Through a *war* quarter
+  headline_size: 92
+  body: |
+    The quarter absorbed the West Asia crisis. Exports still rose [12%], imports fell 1.1, and India stayed the [fastest-growing] major economy.
+  body_size: 44
+  image: wall-street.jpg
+  image_caption: Wall Street, New York
+  image_credit: Wikimedia Commons · CC BY-SA 3.0
+  image_height: 440
+  loop: One line to keep
+- layout: closing
+  headline: |
+    Capex is buying what
+    consumption paused
+  headline_size: 72
+  body: |
+    The 7.8 is real. The mix is the story.
+  handle: '@vaq_hq'

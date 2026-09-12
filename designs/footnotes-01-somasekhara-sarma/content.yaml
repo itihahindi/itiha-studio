@@ -36,9 +36,10 @@ slides:
   image_filter: archival
   image_position: 50% 15%
   image_overlay: 0.74
-  texture: halftone
+  texture: vignette
   headline_size: 107
   headline_offset_y: 350
+  image_bw: false
 - layout: split-story
   chapter: Chapter 01 · The Gap
   headline: |
@@ -47,7 +48,6 @@ slides:
   body: |
     Ulugh Khan took [Warangal] in 1323 and renamed it Sultanpur. What happened next in the Telugu country survived only in the Persian chronicles of Barani and Ferishta: a distant rebellion, then silence until [Vijayanagara]. The Telugu memory of the chiefs who won the land back was filed under [legend/folklore]
   image: warangal-fort.jpg
-  image_filter: duotone-ink
   image_position: 50% 0%
   image_zoom: 1.25
   image_overlay: 0.6
@@ -55,6 +55,7 @@ slides:
   body_size: 42
   body_offset_y: 160
   body_y: 49
+  texture: halftone
 - layout: portrait
   chapter: Chapter 02 · The Epigraphist
   image: sarma.jpg

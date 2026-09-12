@@ -1,0 +1,158 @@
+name: Gloria Steinem — The Feminism She Learned In India
+brand: itiha
+format: instagram-portrait
+caption: |
+  Gloria Steinem died in Manhattan on 2 September 2026, aged 92. Her final essay ran in The New Yorker the next day, and the first thing it did was point at India: "I learned about feminism greatly from living in India for a couple of years after I had graduated from college in the nineteen-fifties."
+
+  She graduated from Smith in 1956 and went out on a Chester Bowles Asian Fellowship, studying at Miranda House, Delhi University, learning to wear a sari from her classmates, and writing a guidebook, The Thousand Indias, in 1957. That was the smaller half of it. When caste violence broke out in Ramnad, in southern Tamil Nadu, in 1957, she joined a team of Gandhian workers from Vinoba Bhave's Bhoodan movement who walked village to village to counter rumour, discourage revenge and get people talking. The night meetings she sat in are the thing she carried home. In My Life on the Road she called it "the ancient and modern magic of groups in which anyone may speak in turn, everyone must listen, and consensus is more important than time." A decade later that shape reappeared in America as the consciousness-raising group, the engine of second-wave feminism. Her own summary: "My becoming an itinerant feminist organizer was just a Western version of walking in villages."
+
+  The debt was visual too. When Ms. ran its preview issue inside New York magazine in December 1971, Miriam Wosk's cover was a pregnant, many-armed Kali holding a clock, a skillet, a typewriter, a rake, a mirror, a telephone, a steering wheel and an iron. Three hundred thousand copies went in three days. Rajiv Malhotra, in The Myth of Hindu Sameness, uses exactly this episode to make a harder point: the Hindu Goddess became a serious subject for white women revolting against male-centric Abrahamic religion in the 1970s, and the source tradition was seldom acknowledged for it, while the same Goddess was recast in Western scholarship as vulgar and oppressive. Steinem, to her credit, kept naming India. Her last essay named it again.
+
+  Sources: Gloria Steinem's final essay, The New Yorker, 3 September 2026; My Life on the Road (2015); Rajiv Malhotra, "The Myth of Hindu Sameness"; the Wilson Center's "From Toledo to Tamil Nadu"; Live History India. Photographs: Warren K. Leffler, 1972, and Jay Godwin, 1975, both public domain; Gandhi and Vinoba Bhave, public domain; Kali, Kalighat school, late 19th century, public domain — all via Wikimedia Commons.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #GloriaSteinem #Feminism #VinobaBhave #Bhoodan #Kali #TamilNadu #RajivMalhotra #MsMagazine
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  seriesLabel: Gloria Steinem
+  footer: site
+  emphasisV2: true
+  texture: house
+slides:
+- layout: cover
+  eyebrow: In Memoriam · 1934–2026
+  eyebrow_meta: Gloria Steinem · Died 2 September 2026
+  headline: |
+    The Feminist
+    Who Learned It
+    In *India*
+  subline: Her final essay, published the day after she died, named the country that made her.
+  swipe_meta: Swipe ▸ · 10 Slides · 3 min read
+  image: steinem-1972.jpg
+  image_filter: archival
+  image_position: 50% 12%
+  image_overlay: 0.72
+  texture: vignette
+  headline_size: 104
+  headline_offset_y: 330
+- layout: quote
+  chapter: Chapter 01 · The Last Word
+  headline: |
+    Filed Before She Died.
+    Printed *After*
+  quote: |
+    I learned about feminism greatly from living in India for a couple of years after I had graduated from college in the nineteen-fifties. Only later in my life did I realize how much those years had influenced what I now see as my feminism.
+  attribution: Gloria Steinem · final essay, The New Yorker, 3 September 2026
+  body: |
+    The essay ran on 3 September, the day after she died in Manhattan at [ninety-two]. Its first argument was that her feminism had been learned somewhere else.
+  quote_size: 40
+  body_size: 40
+  headline_offset_y: -40
+- layout: portrait
+  chapter: Chapter 02 · The Fellowship
+  image: steinem-1975.jpg
+  image_filter: archival
+  image_position: 62% 18%
+  image_zoom: 1.15
+  name: 'Gloria
+
+    Steinem
+
+    '
+  dates: 25 March 1934 – 2 September 2026
+  role: Toledo, Ohio; Smith College, [1956]; then a [Chester Bowles Asian Fellowship] and two years in
+    a newly independent India. She studied at [Miranda House], Delhi University, was taught to wear a
+    sari by her classmates, and wrote a guidebook, _The Thousand Indias_, in 1957.
+  name_size: 108
+  body_size: 38
+- layout: split-story
+  chapter: Chapter 03 · Ramnad, 1957
+  headline: |
+    Riots, And
+    A Team That *Walked*
+  body: |
+    Violence tore through [Ramnad] in southern Tamil Nadu in the summer of 1957. Steinem joined a team of Gandhian workers walking village to village to counter rumour and discourage revenge. They belonged to the [Bhoodan] movement of [Vinoba Bhave], then crossing India on foot asking landlords to give their land away.
+  image: gandhi-vinoba.jpg
+  image_filter: duotone-ink
+  image_position: 50% 15%
+  image_overlay: 0.6
+  headline_size: 92
+  body_size: 41
+  body_y: 51
+- layout: quote
+  chapter: Chapter 04 · The Circle
+  headline: |
+    What She Saw
+    After *Dark*
+  quote: |
+    It was the first time I witnessed the ancient and modern magic of groups in which anyone may speak in turn, everyone must listen, and consensus is more important than time.
+  attribution: Gloria Steinem · My Life on the Road, 2015
+  body: |
+    The meetings ran at night, in village after village. Anyone could speak; nobody presided; the group stayed until it agreed. She would spend the rest of her life reproducing that room.
+  quote_size: 40
+  body_size: 40
+  headline_offset_y: -40
+- layout: story
+  theme: light
+  chapter: Chapter 05 · The Transplant
+  headline: |
+    A Western Version
+    Of Walking In *Villages*
+  body: |
+    That was Steinem's own description of what she became. Back in New York she wrote for magazines, then organised, then never really stopped moving. The [consciousness-raising group] that carried American feminism through the 1970s — women in a circle, speaking in turn, testimony treated as evidence — had the shape of the [village meetings] she had sat in twenty years earlier.
+  block_y: bottom
+  headline_size: 96
+  body_size: 44
+- layout: split-story
+  chapter: Chapter 06 · The Goddess On The Cover
+  headline: |
+    The First Ms. Cover
+    Was A *Goddess*
+  body: |
+    _Ms._ ran its preview issue inside New York magazine in December 1971. The cover, drawn by [Miriam Wosk], was a pregnant, eight-armed [Kali] holding a clock, a skillet, a typewriter, a rake, a mirror, a telephone, a steering wheel and an iron. Three hundred thousand copies sold in [three days].
+  image: kali-kalighat.jpg
+  image_position: 50% 42%
+  image_zoom: 1.1
+  image_overlay: 0.9
+  headline_size: 90
+  body_size: 42
+  body_y: 52
+  texture: house
+- layout: quote
+  theme: light
+  chapter: Chapter 07 · The Unpaid Debt
+  headline: |
+    The Source Was
+    Never *Named*
+  quote: |
+    The Hindu Goddess became the subject of very serious and intense study by many white women in the 1970s when they revolted against the male centric Abrahamic religions.
+  attribution: Rajiv Malhotra · The Myth of Hindu Sameness
+  body: |
+    Malhotra's charge is that the traffic ran one way. The [source tradition] went unacknowledged, he wrote, while the same Goddess was recast by Western scholarship as vulgar, and as a symbol of the oppression of Hindu women.
+  quote_size: 38
+  body_size: 39
+- layout: split-story
+  eyebrow: On The Record
+  headline: |
+    She Dated Patriarchy
+    At *Five Per Cent*
+  body: |
+    Steinem argued that male domination is recent, not permanent. [Patriarchy] makes only five per cent of human history, she told an Indian interviewer in 2014, and the cultures that came closest to balance were [matrilineal] ones — in India, she said, from [Kerala to the Himalayas], before colonialism arrived. The paradigm there, she added, was the circle.
+  source: The Tribune, February 2014
+  headline_size: 100
+  body_size: 42
+- layout: closing
+  headline: |
+    God May Be In The Details.
+    The *Goddess* Is In
+    The Connections.
+  body: |
+    Her line. She had met the many-armed goddess, and the circle where anyone may speak in turn, on a road in [southern India] at twenty-three.
+  handle: Follow @itiha29 · itiha.info
+  headline_size: 84
+  image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs2dmSCLvjsPNl1o2k44RZ9aqiJ-VA_qNSscz3CbS2AZx8N0a28Ebpfyo&s=10
+  texture: halftone
+  body_offset_y: 90

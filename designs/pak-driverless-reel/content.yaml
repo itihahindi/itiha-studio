@@ -1,0 +1,34 @@
+name: Pakistan's driverless car meets a police van
+brand: vaq-hq
+format: instagram-reel
+caption: |
+  Pakistan under Asim Munir is on track to create the next Tesla. The road test is going great.
+
+  What the video shows. Journalist Muhammad Aalijah rides passenger in a "driverless" car at Islamabad's D-Chowk, in front of Parliament House, while an operator steers it over the internet. Thirteen seconds in, the car swerves into a parked police van. Aalijah grabs the handbrake on the way.
+
+  What we could confirm. The demo happened on 30 August. The car is technology enthusiast Ehsan Zafar's conversion, controlled remotely via satellite and internet links. Aalijah's own words after the crash: "Everything was fine until a technical fault occurred due to an internet disruption, causing the car to go out of control and crash into a police vehicle."
+
+  The part worth being precise about. This is not an autonomous vehicle. There is no self-driving stack, no sensors making decisions. It is a remote-controlled car that loses its driver the moment the internet drops, demonstrated on a public road beside Parliament.
+
+  His own warning survives the joke: on a busy road, he said, the consequences could have been fatal.
+
+  Sources: Dawn, 31 Aug 2026; ProPakistani, 31 Aug 2026. Video: @burhan_uddin_0 on X.
+
+  @vaq_hq
+hashtags: |
+  #Pakistan #Islamabad #DriverlessCar #Tesla #Tech #VaqHQ
+tweaks:
+  vertical: tech
+slides:
+- layout: reel-frame
+  video_file: source.mp4
+  headline: |
+    Pakistan's  next *Tesla*
+    is here
+  subline: Internet-driven car, demoed at Islamabad's D-Chowk. Meets a parked police van in 13 seconds.
+  headline_style: label
+  panel_height: 400
+  panel_fade: 300
+  headline_size: 96
+  headline_offset_y: 60
+  align_x: left

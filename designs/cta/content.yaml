@@ -1,0 +1,242 @@
+name: born-criminal-the-yerukulas-and-the-cta
+brand: itiha
+format: instagram-portrait
+caption: |
+  In 1913 the Yerukulas and Koravas of the Madras Presidency were officially notified as criminal tribes. Every man, woman and child in those communities had to register with the police, submit to fingerprinting, report at night and again at dawn, and get a permit to walk to the next village. A child born into them was a criminal at birth. The revised Criminal Tribes Act of 1911 covered around 1,400,000 people by official figures.
+
+  They had not been criminals. They had been traders. Before the railways, the Yerukulas carried grain and salt between the coast and the interior, handling retail distribution where the Banjaras handled wholesale, and reaching villages nobody else could reach. Three blows destroyed that trade. In 1805 the East India Company made salt a government monopoly and banned private manufacture, forcing traders to buy at up to forty times production cost. From 1856 the railways made mobile intermediaries obsolete. Then the Great Madras Famine of 1876 killed the cattle herds their transport depended on, while new forest laws closed the grazing commons. Ruined traders became, in official eyes, wandering suspects — hard to tax, hard to police, and therefore in need of reform.
+
+  That reform was handed largely to the Salvation Army, in India since 1882 and self-consciously modelled on empire: generals, officers, articles of war, a newspaper called The War Cry, and territory to be occupied. Its settlements at Sitanagaram and Stuartpuram, in Guntur district on the Andhra coast, confined whole families, took attendance up to five times a day, and issued barren land in place of the promised pattas. When agriculture failed, Section 11 was used to send settlers into private factories such as the ILTD Company, where women walked seven miles each way for shifts of twelve to sixteen hours with no labour rights, because they were not legally workers but offenders under reform. Booth Tucker put the advantage plainly: free labour was unreliable, but settlers could not abscond, because absconding was an offence.
+
+  Images, all public domain via Wikimedia Commons unless noted: Yerukala settlement and Korava woman telling fortunes from Edgar Thurston, Castes and Tribes of Southern India, vol. 3 (1909); Deccan bullock carts by William Johnson, c. 1855–62; Igatpuri station, early 1870s; "The Last of the Herd," Bellary district, The Graphic, 6 October 1877; Salvation Army officers in India, 1880s; Commander F. Booth-Tucker, Library of Congress; Political Divisions of the Indian Empire, Imperial Gazetteer of India, 1909, J. G. Bartholomew. Salt pans at Marakkanam by Dey.sandip, CC BY-SA 4.0.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #CriminalTribesAct #Yerukula #Stuartpuram #SalvationArmy #MadrasPresidency #ColonialIndia #DenotifiedTribes #Bhoodan
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: CRIMINAL TRIBES
+  footer: site
+slides:
+- layout: cover
+  headline: |
+    Born A *Criminal*
+    Because Of Your
+    *Caste*
+  subline: How India's salt traders were turned into convicts
+  swipe_meta: Swipe ▸ · 13 Slides · 4 min read
+  image: _cache/74011bcc911e4d5b.jpg
+  headline_offset_y: 220
+  theme: dark
+- layout: split-story
+  chapter: Chapter 01 · The Trade
+  headline: |
+    Proud *Salt & Grain*
+    Traders
+  body: Before Modern railways, The [Yerukulas] moved grain and salt between the coast and the interior
+    of the Madras Presidency. The Banjaras did wholesale; the Yerukulas did retail, reaching villages
+    no one else could reach. They prevented famines, For many places they were [the only source of grain].
+    Their cattle carried the loads and grazed on common forest land.
+  image: deccan-carts.jpg
+  image_filter: archival
+  image_position: 50% 55%
+  image_overlay: 0.7
+  body_size: 45
+  body_y: 55
+- layout: split-story
+  chapter: Chapter 02 · The Monopoly
+  headline: |
+    The *Company* Took
+    The Salt In 1805
+  body: The East India Company seized salt production outright and banned Indians from making it. Traders
+    now had to buy from the government at up to [forty times the cost of production]. A working family
+    could spend [a month's income] on a year's salt. The trade that defined the [Yerukulas was choked
+    off by British policy], Salt became a luxury for common man.
+  image: salt-pans.jpg
+  image_filter: duotone-ink
+  image_position: 50% 60%
+  image_overlay: 0.72
+  body_y: 37
+  body_size: 45
+- layout: split-story
+  chapter: Chapter 03 · The Railway
+  headline: |2
+     *Railways*
+    Made Them Obsolete
+  body: From [1856] the Madras Railway pushed track into the interior and distribution centralised on
+    the station yard. Grain that had moved on the backs of cattle now arrived by [rail], in bulk, at a
+    fixed point. The mobile trader who reached the villages no road served was made [unnecessary].
+  image: railway-plate.jpg
+  image_filter: archival
+  image_position: 50% 50%
+  image_overlay: 0.42
+  body_size: 45
+  body_y: 60
+- layout: split-story
+  theme: light
+  chapter: Chapter 04 · The Famine
+  headline: |
+    *Famine*
+    Took The Cattle
+  body: 'The [Great Madras Famine of 1876] killed the herds their whole transport depended on. New forest
+    laws designed for lumber extraction by [British Corporations],  shut them out of the grazing commons
+    in the same years. **Three policies, one ruined community.**  Now, They took help from [Christian
+    Missionaries] to civilize the natives. '
+  image: famine-bellary.jpg
+  image_filter: sepia
+  image_position: 50% 45%
+  image_overlay: 0.7
+  body_y: 31
+  body_size: 45
+  texture: vignette
+- layout: split-story
+  chapter: Chapter 05 · The Suspicion
+  headline: |
+    Ruined Traders
+    Became *Suspects*
+  body: Officials did not see people wrecked by policy. They saw wanderers outside state control , [hard
+    to tax, hard to control], and their tribal customs were offensive to Victorian ideas of settled respectability.
+    The same prejudice English officials held against [Romani people] was applied here. The answer was
+    a law. Solution was provided by [Salvation Army]
+  image: korava-fortune.jpg
+  image_filter: archival
+  image_position: 42% 40%
+  image_zoom: 1.15
+  image_overlay: 0.8
+  body_y: 67
+  texture: vignette
+- layout: split-story
+  chapter: Chapter 07 · The Reformers
+  headline: |
+    A Church That Called
+    Itself An *Army*
+  body: The [Salvation Army] arrived in 1882 with generals, officers, articles of war and a paper called
+    _The War Cry_. It did not open missions, it [occupied territory]. Madras handed it near-exclusive
+    charge of notified itinerant communities, and its leader Booth Tucker collected the [Kaiser-i-Hind
+    medal] for the work.
+  image: salvation-army-india.jpg
+  image_position: 50% 35%
+  image_overlay: 0.9
+  body_y: 29
+- layout: split-story
+  headline: |2
+
+    *Salvation army *
+    to  rescue
+  align_y: top
+  body: 'The settlements were operated like [jails, with rigorous discipline and surveillance]. Settlers
+    were subjected to hard labor, often under exploitative conditions. . [The Salvation Army,] wielded
+    extensive control, including the ability to impose fines, restrict movements, and enforce additional
+    labor. '
+  image: https://s3.amazonaws.com/cache.salvationarmy.org/2f12f99f-c024-4724-98ed-fa077b46aed0_frederick_tucker.jpg
+  body_offset_y: 0
+  body_y: 31
+  image_overlay: 0.8
+  headline_y: 3
+  texture: vignette
+- layout: split-story
+  chapter: Chapter 06 · The Evidence
+  headline: |
+    The *Evidence* Was
+    Their Own Folklore
+  body: Accusations of theft and extortion came without proof. One official claim was that their god [Subramanyam]
+    had given them a house-breaking tool, offered seriously as evidence of inborn criminality. Administrators
+    argued crime ran in the blood like any caste occupation, and wrote it into the [1911] amendments.
+  image: https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Murugan_by_Raja_Ravi_Varma.jpg/960px-Murugan_by_Raja_Ravi_Varma.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail
+  body_y: 37
+  image_overlay: 0.9
+  texture: halftone
+- layout: stat
+  headline: |
+    Notified In *1913*
+  body: |
+    Once a tribe was notified, nobody in it was innocent. [Registration, fingerprinting, roll-call late at night and again at dawn.] A [permit] was needed to visit the next village. Police could arrest on suspicion alone, and [low-paid constables ]used that power to extort money, labour, and worse from settlers.
+  stats:
+  - label: People covered by the 1911 Act
+    value_red: 1,400,000
+    sublabel: official figures
+    value: 1.4 Lakhs
+  - label: Year the Yerukulas were notified
+    value: 1913
+    sublabel: Madras Presidency
+    value_red: true
+  - label: Criminal record required
+    value: None
+    sublabel: birth was enough
+    value_red: true
+  stats_offset_y: -210
+  theme: light
+  body_offset_y: 140
+  image_filter: duotone-parchment
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 08 · The Settlement
+  headline: |
+    Whole Families
+    Inside The *Settlement*
+  body: Jails held individuals; settlements like [Sitanagaram] and [Stuartpuram] held grandparents, parents
+    and children were separated for [Missionary education}. Attendance was taken up to five times a day.
+    The Salvation Army was police, landlord and employer at once. The promised farmland was barren, and
+    the promised _pattas_ never came.
+  image: yerukala-settlement.jpg
+  image_filter: archival
+  image_position: 50% 45%
+  image_overlay: 0.8
+  body_size: 40
+  body_y: 55
+  texture: vignette
+- layout: map
+  chapter: Chapter 09 · The Geography
+  headline: |
+    Where The State
+    Put *Them*
+  image: india-map-1909.jpg
+  image_overlay: 0.18
+  markers:
+  - x: 47
+    y: 69
+    label: Stuartpuram
+    sublabel: Guntur district
+  - x: 47
+    y: 79
+    label: Madras
+    sublabel: The notifying government
+  caption: Sitanagaram lay to the north, on the Krishna. Base map, Imperial Gazetteer of India, 1909.
+  marker_size: 16
+  headline_size: 84
+  caption_offset_y: 10
+  texture: house
+- layout: quote
+  quote: |
+    Free labor was unreliable… but forced labor from our settlers could not escape, absconding was an offense.
+  attribution: Booth Tucker
+  author_image: booth-tucker.jpg
+  author_role: Commander, Salvation Army in India
+  author_style: framed
+  body: 'The working conditions were so hard, that many tired to escape. The so-called criminal tribes
+    were used as a free source of labor for british businesses '
+  texture: house
+- layout: story
+  headline: |
+    Not Workers
+    *Offenders* Under
+    Reform
+  body: |
+    Section 11 of the act, sent settlers into private factories like the [ILTD Company] near Stuartpuram (Andhra Pradesh). Women walked seven miles each way for shifts of [twelve to sixteen hours]. Because they were not legally workers but criminals under reform, no wage law, hour limit or safety rule applied to them.
+  handle: Follow @itiha29 · itiha.info
+- layout: story
+  headline: |
+    *Salvation army:*
+    A Saviour of tribes
+  body: In 1949, the discriminatory CTA act was finally repealed. The tribes were [de-notified]. Decades
+    of separation, indoctrination, and suppression had a profound impact on collective memory.  Yerukula
+    nowrefret  their supposed criminal past and celebrate the [Salvation Army's role in 'reforming' them]
+  image: https://vishnuias.com/wp-content/uploads/2021/02/Picture5.jpg
+  image_overlay: 0.9
+- layout: youtube-cta
+  headline: 'Criminal Tribes Act: British Raj Created a Village of “Thieves”'
+  thumbnail: https://i9.ytimg.com/vi_webp/sVvP26agmAQ/maxresdefault.webp?v=6a7baef6&sqp=CIzv8tQG&rs=AOn4CLCC4Bm1aWdrlgvdqGCz46D3Sse27w

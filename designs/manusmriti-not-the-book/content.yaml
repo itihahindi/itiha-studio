@@ -1,0 +1,158 @@
+name: Manusmriti is a Hindu text, not the book of Hinduism
+brand: itiha
+format: instagram-portrait
+caption: |
+  Manusmriti is a Hindu text. It is not "the Hindu book." From Abhishek Iyengar's essay for Stories by Itiha: the decades-old habit of treating one Smriti as the constitution of Hinduism, and why the premise fails at the first step.
+
+  Hinduism did not begin with a book. No single founder, no founding date, no one revelation. Sanatana Dharma grew as a civilisation of practices and libraries: Vedas and Upanishads, the Ramayana, the Mahabharata and the Gita, Puranas, Agamas and Tantras, and a whole Dharmashastra tradition in which Manu's treatise is one voice among many, contested by rival Smritis, overridden by regional custom, and outranked in living practice by Bhakti devotion. No church ever existed to bind every Hindu to a single rulebook. The question "what is the Hindu Bible?" is not hard to answer. It is malformed.
+
+  The essay's sharper point is about convenience: equate Manusmriti with Hinduism and any verse becomes "eternal Hindu commandment," while a thousand years of argument, schools and reform vanish into one quotable page. As Iyengar writes, Sanatana Dharma does not need to become somebody else's version of religion to be understood. It needs to be understood on its own terms.
+
+  Written by Abhishek Iyengar, edited by Pranav MD. Read the full essay at itiha.info, Stories by Itiha. Cover manuscript: Naradasmriti palm-leaf, 1407 CE (Wikimedia Commons, CC BY-SA 4.0).
+
+  @itiha29 · itiha.info
+hashtags: |
+  #Hinduism #SanatanaDharma #Manusmriti #IndianHistory #Itiha #Dharmashastra #Upanishads #BhagavadGita #HinduPhilosophy #StoriesByItiha
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: MANUSMRITI
+  footer: site
+  texture: house
+slides:
+- layout: cover
+  headline: |
+    Manusmriti Is
+    A Hindu Text.
+    Not The Hindu *Book.*
+  byline: Essay by Abhishek Iyengar
+  subline: Why the search for a Hindu Bible keeps failing
+  swipe_meta: Swipe ▸ · 10 Slides · 3 min read
+  image: manusmriti-book.jpg
+  texture: halftone
+  image_overlay: 0.68
+  image_position: 50% 80%
+  image_zoom: 1.15
+  headline_size: 118
+  headline_offset_y: 260
+- layout: split-story
+  chapter: Chapter 01 · The Project
+  headline: |
+    A Curious
+    *Project*
+  body: |
+    For decades one deceptively simple proposition has done heavy lifting: ["Manusmriti is the Hindu book."] Find the constitution, read out its worst verse, indict the civilisation. The method only works if the premise holds. It does not.
+  image: palmleaf2.jpg
+  image_overlay: 0.9
+  image_position: 50% 30%
+  headline_size: 104
+  body_size: 55
+  body_offset_y: -20
+  body_y: 14
+- layout: split-story
+  chapter: Chapter 02 · No Founding Book
+  headline: |
+    Hinduism Did Not
+    Begin With A *Book*
+  body: |
+    No single founder. No founding date. No one revelation handed down once. [Sanatana Dharma] grew as a civilisation of practice: temple and family tradition, festivals, pilgrimage, guru-shishya lineages, and innumerable forms of worship.
+  theme: light
+  headline_size: 96
+  body_size: 55
+  texture: halftone
+- layout: numbered-list
+  chapter: Chapter 03 · The Library
+  headline: |
+    One Shelf Was
+    Never *Enough*
+  items:
+  - number: '1'
+    headline: Shruti
+    body: The Vedas and the Upanishads.
+  - number: '2'
+    headline: Itihasa
+    body: Ramayana and Mahabharata, the Gita within.
+  - number: '3'
+    headline: Purana · Agama · Tantra
+    body: Cosmology, temple ritual, regional practice.
+  - number: '4'
+    headline: Dharmashastra
+    body: Many Smritis on law. Manu's is one of them.
+  item_size: 36
+  body_offset_y: -130
+- layout: document
+  chapter: Chapter 04 · The Text Itself
+  headline: |
+    One Voice In A
+    *Crowded* Tradition
+  image: palmleaf2.jpg
+  image_position: 50% 35%
+  quote: |
+    To leap from "this is an ancient Hindu text" to "this is the authoritative rulebook of Hinduism" is intellectually indefensible.
+  attribution: Abhishek Iyengar · Stories by Itiha
+  quote_size: 38
+- layout: comparison
+  chapter: Chapter 05 · The Template
+  headline: |
+    The *Template*
+    Breaks
+  left_label: The Abrahamic box
+  left_headline: One book, one creed
+  left_body: 'A founder. A dated revelation. A single scripture and a doctrine every believer signs. The
+    box works for the religions it was built from.
+
+    '
+  right_label: Sanatana Dharma
+  right_headline: A civilisation
+  right_body: '[Dharma], karma, moksha. Puja, yoga, pilgrimage, festival. Philosophy, story and ritual
+    in a thousand lineages. It does not fit the box.
+
+    '
+  headline_size: 88
+  body_size: 43
+  sub_size: 55
+  headline_offset_y: 0
+  body_offset_y: -140
+- layout: split-story
+  chapter: Chapter 06 · The Tell
+  headline: |
+    A *Malformed*
+    Question
+  body: |
+    Critics quote Manusmriti. Philosophers reach for the [Upanishads]. The devout carry the Gita. Which one is "the Hindu book"? [None of them], in the Abrahamic sense of the question — and the question itself is the error.
+  theme: light
+  headline_size: 100
+  body_size: 50
+  texture: noise
+- layout: split-story
+  chapter: Chapter 07 · The Convenience
+  headline: |
+    Flattening A
+    *Civilisation*
+  body: |
+    Equate one Smriti with all of Hinduism, and any verse can be read out as ["eternal Hindu commandment."] A thousand years of argument, schools and reform collapse into a single quotable page. The flattening is the point.
+  image: palmleaf.jpg
+  image_overlay: 0.9
+  image_position: 50% 70%
+  headline_size: 100
+  body_size: 50
+  body_y: 34
+- layout: quote
+  chapter: Chapter 08 · On Its Own Terms
+  quote: |
+    Sanātana Dharma does not need to become somebody else's version of religion to be understood. It needs to be understood on its own terms.
+  attribution: 'Abhishek Iyengar '
+  author_image: author.jpg
+  author_role: 'theatre practitioner, writer, filmmaker '
+  author_style: cutout
+  quote_size: 58
+  theme: dark
+  texture: house
+  align_x: left
+  headline: |
+    Read The
+    Full *Essay on*
+    itiha.info

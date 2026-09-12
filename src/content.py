@@ -277,6 +277,7 @@ KNOWN_LAYOUTS = {
     "document", "annotated", "sources",
     "interior-light", "cta-red", "youtube-cta",
     # Standalone formats
+    "x-cover-file", "x-cover-plate", "x-cover-scale",  # BAKE-OFF 2026-08-31 (temporary)
     "reel-title",         # 1080×1920
     "reel-frame",         # 1080×1920 — vaq-hq header panel for reposted video (src/reel.py)
     "reel-explainer",     # 1080×1920 — vaq-hq inverted reel: video top, caption panel bottom

@@ -77,7 +77,7 @@ PART 2 — ALLOWED FIELDS (closed list)
 ═══════════════════════════════════════════════════════
 
 Front-matter only: name, format, caption, hashtags, tweaks
-Tweaks block only: showChapterLabels, showStamp, showPageNum, seriesLabel, footer (page|site — site prints itiha.info instead of the page number)
+Tweaks block only: showChapterLabels, showStamp, showPageNum, seriesLabel, footer (page|site — site prints itiha.info instead of the page number), texture (deck-wide default; 'house' = the curated film-glow/paper stock; a slide sets texture: none to opt out)
 
 Slide fields only (depending on layout):
 - Common:        Layout, Theme, Eyebrow, Eyebrow-Meta, Chapter, Headline, Subline, Swipe-Meta, Body
@@ -150,7 +150,7 @@ HEADLINES:
 - 2–3 short lines via literal newlines inside the YAML block scalar.
 
 BODY (sentence case):
-- [word] → red-emphasis key term (a name, a number, a place, a verdict). 2+ per body slide.
+- [word] → key-term emphasis (a name, a number, a place, a verdict; renders bold with a red underline). 1–3 per body slide, NEVER more — emphasis loses power when everything is marked.
 - _word_ → italic (foreign words: _Ain-i-Akbari_, _kuli_, _ryotwari_; song/book titles).
 - **word** → bold, sparingly (at most once per slide).
 

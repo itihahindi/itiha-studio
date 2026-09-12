@@ -310,15 +310,15 @@ It still does not survive. <the argument>
 
 Sources: <named outlets, with dates>. <image credits if any licence needs one>
 
-@vak_hq
+@vaq_hq
 ```
 
 **No `vaqhq.com` on the end card.** Standing instruction, 5 Aug 2026. The
 `closing` slide's `handle:` field is the handle **alone**:
 
 ```yaml
-handle: '@vak_hq'        # right
-handle: '@vak_hq · vaqhq.com'   # wrong, prints the domain on the card
+handle: '@vaq_hq'        # right
+handle: '@vaq_hq · vaqhq.com'   # wrong, prints the domain on the card
 ```
 
 The domain is not hard-coded in `ClosingSlide` — it only ever appears because it

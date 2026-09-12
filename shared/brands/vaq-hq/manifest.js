@@ -576,7 +576,7 @@ window.MANIFEST = {
       { ..._ALIGN_Y_FIELD, help: "Where the stack sits. Blank = centred, as tuned." },
       { key: "headline",      type: "textarea", label: "Headline (optional)" },
       { key: "body",          type: "textarea", label: "Body (optional)" },
-      { key: "handle",        type: "text",     label: "Handle line", help: "e.g. @vak_hq" },
+      { key: "handle",        type: "text",     label: "Handle line", help: "e.g. @vaq_hq" },
       { key: "headline_size", type: "number",   label: "Headline size (px)", default: 60 },
     ],
   },

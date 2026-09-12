@@ -32,10 +32,10 @@ if (typeof document !== 'undefined' && !document.getElementById('itiha-slide-sty
     .itiha-slide > div[style*="position: absolute"]:not(:first-child){pointer-events:none}
     .itiha-slide image-slot{pointer-events:auto}
     .itiha-slide *{box-sizing:border-box}
-    .itiha-stamp{position:absolute;right:56px;bottom:48px;font-family:${ITIHA.bebas};font-size:22px;letter-spacing:2px;line-height:1;display:flex;align-items:baseline;gap:0}
+    .itiha-stamp{position:absolute;right:56px;bottom:48px;font-family:${ITIHA.bebas};font-size:24px;letter-spacing:2px;line-height:1;display:flex;align-items:baseline;gap:0}
     .itiha-stamp .w{color:var(--stamp-fg,${ITIHA.parchment})}
     .itiha-stamp .d{color:${ITIHA.red};margin-left:1px}
-    .itiha-page{position:absolute;left:56px;bottom:48px;font-family:${ITIHA.sans};font-weight:600;font-size:13px;letter-spacing:4px;color:${ITIHA.midGray};text-transform:uppercase}
+    .itiha-page{position:absolute;left:56px;bottom:48px;font-family:${ITIHA.sans};font-weight:600;font-size:16px;letter-spacing:4px;color:${ITIHA.midGray};text-transform:uppercase}
     .itiha-eyebrow{font-family:${ITIHA.sans};font-weight:600;font-size:14px;letter-spacing:5px;color:${ITIHA.red};text-transform:uppercase}
     .itiha-divider{display:block;width:48px;height:3px;background:${ITIHA.red};border:0}
     .itiha-h1{font-family:${ITIHA.bebas};color:${ITIHA.parchment};font-weight:400;line-height:0.94;letter-spacing:-0.5px;margin:0;text-transform:uppercase}
@@ -76,6 +76,8 @@ if (typeof document !== 'undefined' && !document.getElementById('itiha-slide-sty
         repeating-linear-gradient(90deg, transparent 0 2px, rgba(0,0,0,0.5) 2px 3px)}
     /* ── Texture overlays (opt in via slide.texture) ───────────── */
     .itiha-tex{position:absolute;inset:0;pointer-events:none;z-index:2}
+    .itiha-texfile{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
+    .light .itiha-texfile{mix-blend-mode:multiply}
     .itiha-tex--grain{
       background-image:radial-gradient(rgba(255,255,255,0.05) 1px,transparent 1px);
       background-size:3px 3px;mix-blend-mode:overlay;opacity:0.85}
@@ -316,15 +318,44 @@ function ImageLayer({ url, bw, filter, overlay, position = 'center', zoom, vigne
 
 // Texture overlay — paints on top of imagery and below text.
 // Accepts a single texture name OR a comma-separated list ("grain,vignette").
-// Values: grain · noise · scanlines · paper · halftone · vignette.
-function TextureOverlay({ texture }) {
-  if (!texture) return null;
-  const names = String(texture).split(',').map(s => s.trim()).filter(Boolean);
+// Procedural: grain · noise · scanlines · paper · halftone · vignette · grid.
+// Scan layers: file:<name>[:opacity%][:blend] — <name> resolves to
+// shared/brands/itiha/textures/ unless it starts with images/ (this design's
+// folder), brands/ (any pack, e.g. brands/vaq-hq/textures/…) or http(s).
+// Default blend comes from CSS: screen on dark slides (scans lift the black),
+// multiply on light (they sink into the parchment); a :blend suffix overrides.
+// Resolution order: slide texture → tweaks.textureLight/textureDark by theme
+// → tweaks.texture. `none` opts a slide out of the deck default.
+// `house` = the curated Itiha stock per theme (2026-08-30):
+const ITIHA_HOUSE = {
+  dark:  'grain, file:Texturelabs_Film_197M.jpg:20:screen',
+  light: 'file:Texturelabs_Paper_290L.jpg:15',
+};
+function TextureOverlay({ texture, slide }) {
+  const tw = (typeof React !== 'undefined' && React.useContext) ? React.useContext(BrandContext) : null;
+  const isLight = !!(slide && slide.theme === 'light');
+  let value = texture;
+  if (!value && tw) value = (isLight ? tw.textureLight : tw.textureDark) || tw.texture;
+  if (!value || value === 'none') return null;
+  if (value === 'house') value = isLight ? ITIHA_HOUSE.light : ITIHA_HOUSE.dark;
+  const names = String(value).split(',').map(s => s.trim()).filter(Boolean);
   return (
     <>
-      {names.map((n, i) => (
-        <div key={i} className={`itiha-tex itiha-tex--${n}`} />
-      ))}
+      {names.map((n, i) => {
+        if (n.startsWith('file:')) {
+          const m = n.slice(5).match(/^(.*?)(?::(\d{1,3}))?(?::([a-z-]+))?$/);
+          const file = m ? m[1] : n.slice(5);
+          const op = m && m[2] ? Math.min(100, parseInt(m[2], 10)) / 100 : 0.5;
+          const blend = m && m[3];
+          const src = /^https?:/.test(file) || file.startsWith('images/') || file.startsWith('brands/')
+            ? file : `brands/itiha/textures/${file}`;
+          return <div key={i} className="itiha-tex itiha-texfile" style={{
+            backgroundImage: `url(${src})`, backgroundSize: 'cover',
+            opacity: op, ...(blend ? { mixBlendMode: blend } : null),
+          }} />;
+        }
+        return <div key={i} className={`itiha-tex itiha-tex--${n}`} />;
+      })}
     </>
   );
 }
@@ -338,7 +369,9 @@ function themeFor(slide) {
   // layout component, so the hook rules hold). emphasisV2 is the A/B flag for
   // the 2026-08-01 red-legibility experiment — it only appends a CSS class.
   const tw = (typeof React !== 'undefined' && React.useContext) ? React.useContext(BrandContext) : null;
-  const em = tw && tw.emphasisV2 ? ' em-v2' : '';
+  // emphasisV2 won its A/B and is the DEFAULT since 2026-08-30 — only an
+  // explicit `emphasisV2: false` in tweaks restores treatment A (red body text).
+  const em = (!tw || tw.emphasisV2 !== false) ? ' em-v2' : '';
   const isLight = slide && slide.theme === 'light';
   if (isLight) {
     return {

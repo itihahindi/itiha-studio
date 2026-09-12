@@ -14,13 +14,14 @@ window.MANIFEST = {
     summary: "Opening slide — image, eyebrow, big headline, swipe meta.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark", help: "Light = off-white background, near-black text." },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        help: "Top-left red label." },
       { key: "eyebrow_meta",  type: "text",     label: "Eyebrow meta",   help: "Text next to the eyebrow with a divider." },
       { key: "headline",      type: "textarea", label: "Headline",       help: "Use *word* for Sindoor Red accent. Newlines become line breaks." },
       { key: "subline",       type: "text",     label: "Subline" },
+      { key: "byline",        type: "text",     label: "Byline",         help: "Contributor credit above the footer, e.g. \"Essay by Abhishek Iyengar\". Red dash + caps, smaller than the hook." },
       { key: "swipe_meta",    type: "text",     label: "Footer meta",    help: "e.g. \"Swipe ▸ · 9 Slides · 4 min read\"" },
       { key: "image",         type: "image",    label: "Cover image" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
@@ -38,7 +39,7 @@ window.MANIFEST = {
     summary: "Image + a single text block (eyebrow, divider, headline, optional body).",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark", help: "Light = off-white background, near-black text." },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow", help: "Hidden unless showChapterLabels is on." },
@@ -63,7 +64,7 @@ window.MANIFEST = {
     summary: "Headline pinned high, body pinned low — image fills between them.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -88,7 +89,7 @@ window.MANIFEST = {
     summary: "Serif quote under a giant red quote mark — optional headline up top, body below, die-cut author strip along the bottom. Same component as Quote Card.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -116,7 +117,7 @@ window.MANIFEST = {
     summary: "Two-column number comparison with optional supporting body.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -153,7 +154,7 @@ window.MANIFEST = {
     summary: "2×2 grid of (date, fact) cells.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -185,7 +186,7 @@ window.MANIFEST = {
     summary: "Final slide: big headline, horizontal stats row, body, follow handle.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -219,7 +220,7 @@ window.MANIFEST = {
     summary: "Vertical list of 3–5 items with big Bebas numerals. For \"N reasons / N truths\" slides.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -253,7 +254,7 @@ window.MANIFEST = {
     summary: "Two-column side-by-side. For myth-vs-reality / claim-vs-counter slides.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -283,7 +284,7 @@ window.MANIFEST = {
     summary: "Subject-focused slide. Image on left half · big name in Bebas · dates · role · optional pull quote.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -308,7 +309,7 @@ window.MANIFEST = {
     label: "Interior · Light",
     summary: "Off-White editorial slide — red left border, slide-number top-right.",
     fields: [
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "num",           type: "text",     label: "Slide number",   help: "e.g. \"04\". Defaults to slide index." },
@@ -330,7 +331,7 @@ window.MANIFEST = {
     label: "CTA · Red",
     summary: "Solid Sindoor Red final slide.",
     fields: [
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        default: "Final Slide" },
@@ -350,7 +351,7 @@ window.MANIFEST = {
     label: "CTA · YouTube",
     summary: "Final slide pointing to a full YouTube documentary. Jet black, thumbnail with stamped red play mark, video title in Big Shoulders Display.",
     fields: [
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        default: "Watch The Full Documentary", help: "Small uppercase line above the divider." },
@@ -372,7 +373,7 @@ window.MANIFEST = {
     summary: "Vertical timeline — red axis with dated events. For dynasty progressions, conquest dates, indenture timelines.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -407,7 +408,7 @@ window.MANIFEST = {
     summary: "Map image with Sindoor-red markers. Drop a period-accurate map, place dots at (x%, y%).",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -444,7 +445,7 @@ window.MANIFEST = {
     summary: "Surprising-fact slide. Red-square stamp + parchment eyebrow, Bebas fact headline, body, optional source. Great for breather slides inside a longer carousel.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Stamp text",     default: "Did You Know?", help: "Overrideable. e.g. \"Today In History\", \"Believe It Or Not?\"" },
@@ -470,7 +471,7 @@ window.MANIFEST = {
     summary: "Proportion chart. Segments sized by value, Sindoor-red leads. Legend with auto-percentages. For shares, splits, breakdowns.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -500,7 +501,7 @@ window.MANIFEST = {
     summary: "Single-series trend over time. Sindoor-red line + area fill, gridlines, axis labels. For exports, populations, casualties across years.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -547,7 +548,7 @@ window.MANIFEST = {
     summary: "Compare values across categories. Vertical bars, or horizontal for long labels / rankings. Sindoor-red bars, values in Bebas.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -576,7 +577,7 @@ window.MANIFEST = {
     summary: "Succession or genealogy tree. Nodes flow top→bottom; group siblings on one row with a shared generation number. For dynasties, lineages, regnal lines.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -604,7 +605,7 @@ window.MANIFEST = {
     summary: "Stratification. Tiers widen as they descend, so the shape carries the argument: few at the apex, many at the base. For varna orders, mansab ranks, army composition, landholding classes.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "" },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "" },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -641,7 +642,7 @@ window.MANIFEST = {
     summary: "Chain of command — offices, not people. Nodes group into rungs by `level`, the way dynasty groups by generation. For mansabdari, Maurya administration, EIC command, revenue chains.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "" },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "" },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -675,7 +676,7 @@ window.MANIFEST = {
     summary: "Two images split by a diagonal (or vertical) seam, each labelled. For ruins vs reconstruction, 1900 vs now, conquest vs aftermath.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -699,7 +700,7 @@ window.MANIFEST = {
     summary: "A framed scan of a document, manuscript, inscription or photograph, with a pulled key line + archival attribution. The documentary signature.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -722,7 +723,7 @@ window.MANIFEST = {
     summary: "Numbered red markers on a painting or photo at (x%, y%), with a numbered legend. Visual close-reading of a source image.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
@@ -753,7 +754,7 @@ window.MANIFEST = {
     summary: "Bibliography slide — the books, documents and archives the carousel draws on. Makes the research visible. Usually near the end.",
     fields: [
       { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        default: "Sources", help: "e.g. \"Sources\", \"Further Reading\"." },
@@ -781,7 +782,7 @@ window.MANIFEST = {
     label: "Reel Title",
     summary: "Standalone 1080×1920 title card (Reel / Story).",
     fields: [
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        help: "e.g. \"Episode 04\"" },
@@ -802,7 +803,7 @@ window.MANIFEST = {
     label: "YouTube Thumbnail",
     summary: "Standalone 1280×720 thumbnail.",
     fields: [
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "eyebrow",       type: "text",     label: "Eyebrow",        help: "e.g. \"Episode 04 · The Sacking\"" },
@@ -822,7 +823,7 @@ window.MANIFEST = {
     label: "End Card",
     summary: "Standalone 1920×1080 video outro.",
     fields: [
-      { key: "texture",       type: "select",   label: "Texture",        options: ["","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
+      { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "tagline",       type: "text",     label: "Tagline",         default: "History Simplified" },
       {
         key: "handles", type: "array", label: "Social handles",
@@ -867,7 +868,10 @@ window.MANIFEST_TWEAKS = {
     { key: "footerSite",        type: "text",   label: "Site text",      help: "Shown when Footer = site. Default itiha.info." },
     { key: "overlayDarkness",   type: "number", label: "Default image overlay (0–100)", default: 62 },
     { key: "showGrain",         type: "bool",   label: "Film grain on opt-in slides" },
-    { key: "emphasisV2",        type: "bool",   label: "Emphasis v2 (red-legibility A/B)", help: "Brighter vermilion for headline accents on dark; body [keys] render full-contrast with a red underline instead of red text. Graphic red unchanged." },
+    { key: "emphasisV2",        type: "bool",   label: "Emphasis v2 (default ON)", default: true, help: "Default since 2026-08-30 (won the A/B): vermilion headline accents on dark; body [keys] full-contrast bold with a red underline. Untick for the old red-text treatment." },
     { key: "seriesLabel",       type: "text",   label: "Series label",   help: "Appended after page number, e.g. INDENTURE." },
+    { key: "texture",           type: "text",   label: "Deck texture",   help: "Default for slides without their own. 'house' = curated stock (grain + film glow on dark, paper fibre on light). Any list works: grain,vignette · file:scan.jpg:40:screen. Slide texture 'none' opts out." },
+    { key: "textureDark",       type: "text",   label: "Deck texture · dark slides",  help: "Overrides Deck texture on dark slides only." },
+    { key: "textureLight",      type: "text",   label: "Deck texture · light slides", help: "Overrides Deck texture on light slides only." },
   ],
 };

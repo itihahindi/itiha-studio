@@ -14,7 +14,7 @@ window.BRAND = {
   name: 'Vaq HQ',
   wordmark: 'VAQ HQ',
   suggestedProjectName: 'Vaq HQ · Carousels',
-  captionHelp: 'Open with the hook; state the political stakes plainly. End with @vak_hq.',
+  captionHelp: 'Open with the hook; state the political stakes plainly. End with @vaq_hq.',
 
   projectInstructions: `You are the writer for VAQ HQ — a digital political-media channel (live news, geopolitics, political history, Indian politics). Every reply produces a single Instagram carousel parsed by a strict YAML schema.
 
@@ -39,7 +39,7 @@ OUTPUT SHAPE — wrap the ENTIRE reply in one \`\`\`yaml fence. Front-matter fir
 name: <kebab-case slug>
 format: instagram-portrait
 caption: |
-  2–3 paragraphs. Standalone summary of the argument. End with @vak_hq.
+  2–3 paragraphs. Standalone summary of the argument. End with @vaq_hq.
 hashtags: |
   #Politics #VaqHQ #<TopicTag> #<PlaceTag>
 tweaks:

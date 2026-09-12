@@ -99,14 +99,14 @@ function Body({ text, size = 28, maxWidth = 880, style, className }) {
 // ── Layout components ───────────────────────────────────────────
 
 function Cover({ slide, index }) {
-  const { eyebrow, eyebrow_meta, headline, subline, swipe_meta,
+  const { eyebrow, eyebrow_meta, headline, subline, swipe_meta, byline,
           image, image_bw, image_overlay, image_position, headline_size,
           headline_offset_y = 0 } = slide;
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       {(eyebrow || eyebrow_meta) && (
         <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 84, right: 72, display: 'flex', alignItems: 'center', gap: 18 }, { stretch: true })}>
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
@@ -120,6 +120,14 @@ function Cover({ slide, index }) {
         <Headline text={headline} size={headline_size || 156} style={{ textShadow: t.isLight ? 'none' : '0 2px 24px rgba(0,0,0,0.6)' }} />
       </div>
       <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 220, right: 72 }, { stretch: true })}>
+        {byline && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 18,
+                        fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 24, letterSpacing: 3,
+                        textTransform: 'uppercase', color: t.h1 }}>
+            <span style={{ width: 26, height: 2, background: ITIHA.red }} />
+            <span>{byline}</span>
+          </div>
+        )}
         {subline && <div className="itiha-sub" style={{ marginBottom: 14 }}>{subline}</div>}
         {swipe_meta && <div className="itiha-meta" style={{ color: t.muted40 }}>{swipe_meta}</div>}
       </div>
@@ -159,7 +167,7 @@ function Story({ slide, index }) {
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: overlayCss }} />
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...blockProps}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
@@ -186,7 +194,7 @@ function SplitStory({ slide, index }) {
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: headline_y, right: 72 },
                           { top: headline_y, bottom: body_y })}>
         {showEyebrowBlock && (
@@ -235,7 +243,7 @@ function Quote({ slide, index }) {
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       {hasTop && (
         <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 130 + headline_offset_y, right: 72 },
                             { top: 130 + headline_offset_y, bottom: 200 - headline_offset_y })}>
@@ -325,7 +333,7 @@ function Stat({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} zoom={slide.image_zoom} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 220 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -380,7 +388,7 @@ function DatesGrid({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.84} position={image_position} zoom={slide.image_zoom} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -413,7 +421,7 @@ function Closing({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} zoom={slide.image_zoom} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 140 + headline_offset_y, right: 72 },
                           { top: 140 + headline_offset_y, bottom: 250 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -461,7 +469,7 @@ function ReelTitle({ slide, index }) {
   return (
     <div className="itiha-slide" style={{ background: ITIHA.jet }}>
       {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.55} position={image_position} zoom={slide.image_zoom} vignette={false} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       {/* text_y stays the default anchor; align_y supersedes it when set. */}
       <div {...alignBlock(slide, { position: 'absolute', left: 96, right: 96, top: `${text_y}%`, transform: 'translateY(-50%)', display: 'flex', flexDirection: 'column', boxSizing: 'border-box' },
                           { top: 300, bottom: 620 })}>
@@ -522,7 +530,7 @@ function YoutubeThumbnail({ slide, index }) {
                          ${ITIHA.jet}`,
           }} />
         )}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', inset: 0, padding: '120px 144px', display: 'flex', flexDirection: 'column', justifyContent: 'center', boxSizing: 'border-box' }, { stretch: true })}>
         <div style={{ maxWidth: 920 }}>
           {eyebrow && (
@@ -568,7 +576,7 @@ function EndCard({ slide, index }) {
       alignItems: 'center', justifyContent: 'center',
     }}>
       {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.7} position={image_position} zoom={slide.image_zoom} vignette={false} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div style={{
         fontFamily: ITIHA.bebas, fontSize: wordmark_size,
         letterSpacing: 0, color: ITIHA.parchment, textTransform: 'uppercase',
@@ -603,7 +611,7 @@ function InteriorLight({ slide, index }) {
   return (
     <div className="itiha-slide" style={{ background: ITIHA.offWhite, color: ITIHA.nearBlack }}>
       {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0} position={image_position} zoom={slide.image_zoom} vignette={false} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div style={{
         position: 'absolute', top: 56, right: 56,
         fontFamily: ITIHA.bebas, fontSize: 56, color: ITIHA.red, lineHeight: 1,
@@ -675,7 +683,7 @@ function YouTubeCTA({ slide, index }) {
 
   return (
     <div className="itiha-slide" style={{ background: ITIHA.jet, color: ITIHA.parchment }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
 
       {/* Eyebrow + small red divider — Eyebrow (not ChapterEyebrow) so the
           tweaks toggle for showChapterLabels doesn't hide it. */}
@@ -778,7 +786,7 @@ function CtaRed({ slide, index }) {
   return (
     <div className="itiha-slide" style={{ background: ITIHA.red, color: ITIHA.white }}>
       {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} zoom={slide.image_zoom} vignette={false} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, {
         position: 'absolute', inset: 0, padding: '120px 96px',
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
@@ -822,7 +830,7 @@ function NumberedList({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} zoom={slide.image_zoom} vignette={false} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -872,7 +880,7 @@ function Comparison({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.9} position={image_position} zoom={slide.image_zoom} vignette={false} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -924,7 +932,7 @@ function Portrait({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       {image && (
         <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '50%', overflow: 'hidden' }}>
           <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.15} position={image_position} zoom={slide.image_zoom} vignette={false} />
@@ -980,7 +988,7 @@ function Timeline({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.88} position={image_position} zoom={slide.image_zoom} vignette={false} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -1032,7 +1040,7 @@ function MapSlide({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -1126,7 +1134,7 @@ function DidYouKnow({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} zoom={slide.image_zoom} vignette={false} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
 
       {show_mark && !image && (
         <div style={{
@@ -1231,7 +1239,7 @@ function PieChart({ slide, index }) {
   }
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -1304,7 +1312,7 @@ function LineGraph({ slide, index }) {
   const colorFor = (s, i) => s.color || palette[i % palette.length];
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -1381,7 +1389,7 @@ function BarChart({ slide, index }) {
   const colorFor = b => b.color || ITIHA.red;
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -1464,7 +1472,7 @@ function Dynasty({ slide, index }) {
   }
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -1530,7 +1538,7 @@ function BeforeAfter({ slide, index }) {
   );
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72, zIndex: 5 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -1575,7 +1583,7 @@ function DocumentSlide({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 96 + headline_offset_y, right: 72 },
                           { top: 96 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 16 }}>{chapter}</ChapterEyebrow>}
@@ -1622,7 +1630,7 @@ function Annotated({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 96 + headline_offset_y, right: 72 },
                           { top: 96 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 16 }}>{chapter}</ChapterEyebrow>}
@@ -1678,7 +1686,7 @@ function Sources({ slide, index }) {
   const t = themeFor(slide);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 120 + headline_offset_y, right: 72 },
                           { top: 120 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {eyebrow && <Eyebrow style={{ marginBottom: 18 }}>{eyebrow}</Eyebrow>}
@@ -1746,7 +1754,7 @@ function Pyramid({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} zoom={slide.image_zoom} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -1838,7 +1846,7 @@ function Hierarchy({ slide, index }) {
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} zoom={slide.image_zoom} />}
-      <TextureOverlay texture={slide.texture} />
+      <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72 },
                           { top: 110 + headline_offset_y, bottom: 200 - headline_offset_y })}>
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
@@ -1936,3 +1944,91 @@ window.LAYOUTS = {
   'youtube-thumbnail': YoutubeThumbnail,
   'end-card': EndCard,
 };
+
+// ═══ BAKE-OFF 2026-08-31 — three experimental cover directions ═══
+// Judge on designs/zz-bakeoff. Delete this block + the x-cover-* names in
+// content.py KNOWN_LAYOUTS once a winner is folded into the real cover.
+
+function XCoverFile({ slide, index }) {
+  const t = themeFor(slide);
+  const { headline, eyebrow, eyebrow_meta, subline, image, plate_caption } = slide;
+  return (
+    <div className="itiha-slide" style={{ background: ITIHA.jet }}>
+      <TextureOverlay texture={slide.texture} slide={slide} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 10, background: ITIHA.red }} />
+      <div style={{ position: 'absolute', top: 46, left: 56, right: 56, display: 'flex', justifyContent: 'space-between', fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 16, letterSpacing: 3.2, textTransform: 'uppercase', color: 'rgba(232,220,200,0.75)' }}>
+        <span><span style={{ color: ITIHA.red }}>Itiha Archive</span> · File 01 / 15</span>
+        <span>{eyebrow_meta}</span>
+      </div>
+      <div style={{ position: 'absolute', top: 112, left: 56, right: 56, height: 620, border: '1.5px solid rgba(232,220,200,0.35)', padding: 12, boxSizing: 'border-box' }}>
+        <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+          <img src={`images/${image}`} style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 12%', filter: 'sepia(0.72) saturate(0.85) contrast(0.95) brightness(0.95)' }} />
+          <div className="itiha-tex itiha-tex--halftone" />
+        </div>
+      </div>
+      <div style={{ position: 'absolute', top: 752, left: 56, right: 140, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 15, letterSpacing: 2.8, textTransform: 'uppercase', color: 'rgba(232,220,200,0.55)' }}>
+        <span style={{ color: ITIHA.red }}>Plate I</span> · {plate_caption}
+      </div>
+      <div style={{ position: 'absolute', right: 56, top: 742, width: 62, height: 62, border: `3px solid ${ITIHA.red}`, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.9 }}>
+        <span style={{ fontFamily: '"Noto Serif Devanagari", serif', fontSize: 30, color: ITIHA.red, lineHeight: 1 }}>इ</span>
+      </div>
+      <div style={{ position: 'absolute', left: 56, right: 56, bottom: 150 }}>
+        <div style={{ fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 18, letterSpacing: 3.6, textTransform: 'uppercase', color: ITIHA.red, marginBottom: 26 }}>{eyebrow}</div>
+        <Headline text={headline} size={100} />
+        {subline && <div style={{ marginTop: 22, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 17, letterSpacing: 2.4, textTransform: 'uppercase', color: 'rgba(232,220,200,0.6)' }}>{subline}</div>}
+      </div>
+      <MaybePageNum n={index + 1} color={t.pageNumColor} />
+      <MaybeStamp color={t.stampFg} />
+    </div>
+  );
+}
+
+function XCoverPlate({ slide, index }) {
+  const t = themeFor(slide);
+  const { headline, eyebrow_meta, subline, image } = slide;
+  return (
+    <div className="itiha-slide" style={{ background: '#0B0A08' }}>
+      <div style={{ position: 'absolute', top: 40, left: 40, right: 40, bottom: 64, overflow: 'hidden', background: '#000' }}>
+        <img src={`images/${image}`} style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 12%', filter: 'sepia(0.65) saturate(0.8) contrast(1.02) brightness(0.96)' }} />
+        <img src="brands/itiha/textures/Texturelabs_Film_189M.jpg" style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'fill', mixBlendMode: 'multiply', opacity: 0.92 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(90% 70% at 50% 40%, transparent 40%, rgba(0,0,0,0.6) 100%)' }} />
+        <div style={{ position: 'absolute', left: 56, right: 56, bottom: 110 }}>
+          <Headline text={headline} size={110} />
+          {subline && <div style={{ marginTop: 20, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 17, letterSpacing: 2.6, textTransform: 'uppercase', color: 'rgba(232,220,200,0.65)' }}>{subline}</div>}
+        </div>
+      </div>
+      <div style={{ position: 'absolute', left: 0, right: 0, bottom: 20, textAlign: 'center', fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 14, letterSpacing: 4, textTransform: 'uppercase', color: 'rgba(232,220,200,0.5)' }}>{eyebrow_meta}</div>
+      <MaybeStamp color={t.stampFg} />
+    </div>
+  );
+}
+
+function XCoverScale({ slide, index }) {
+  const t = themeFor(slide);
+  const { headline, eyebrow, eyebrow_meta, subline, image, year = '1323' } = slide;
+  return (
+    <div className="itiha-slide" style={{ background: ITIHA.jet }}>
+      <div style={{ position: 'absolute', top: 0, bottom: 0, left: '42%', right: 0, overflow: 'hidden' }}>
+        <img src={`images/${image}`} style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'cover', objectPosition: '60% 12%', filter: 'sepia(0.72) saturate(0.85) contrast(0.95) brightness(0.88)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(13,13,13,1) 0%, rgba(13,13,13,0.3) 20%, transparent 45%)' }} />
+      </div>
+      <TextureOverlay texture={slide.texture} slide={slide} />
+      <div style={{ position: 'absolute', top: -60, left: -24, fontFamily: ITIHA.bebas, fontSize: 540, lineHeight: 1, color: 'rgba(232,220,200,0.11)', letterSpacing: -6 }}>{year}</div>
+      <div style={{ position: 'absolute', bottom: 620, left: 32, fontFamily: '"Noto Serif Devanagari", serif', fontSize: 150, color: 'rgba(192,57,43,0.16)', lineHeight: 1 }}>इतिहास</div>
+      <div style={{ position: 'absolute', top: 46, left: 56, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 16, letterSpacing: 3.2, textTransform: 'uppercase', color: 'rgba(232,220,200,0.75)' }}>{eyebrow_meta}</div>
+      <div style={{ position: 'absolute', left: 56, bottom: 150, width: '55%' }}>
+        <div style={{ fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 18, letterSpacing: 3.6, textTransform: 'uppercase', color: ITIHA.red, marginBottom: 24 }}>{eyebrow}</div>
+        <Headline text={headline} size={118} />
+        {subline && <div style={{ marginTop: 22, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 16, letterSpacing: 2.4, textTransform: 'uppercase', color: 'rgba(232,220,200,0.6)', lineHeight: 1.6 }}>{subline}</div>}
+      </div>
+      <MaybePageNum n={index + 1} color={t.pageNumColor} />
+      <MaybeStamp color={t.stampFg} />
+    </div>
+  );
+}
+
+Object.assign(window.LAYOUTS, {
+  'x-cover-file': XCoverFile,
+  'x-cover-plate': XCoverPlate,
+  'x-cover-scale': XCoverScale,
+});

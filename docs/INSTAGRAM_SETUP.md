@@ -23,7 +23,7 @@ to it, which is exactly the two accounts we own.
 ### 1. Both Instagram accounts must be professional
 
 Instagram app → Settings → Account type → **Business** or **Creator** (either
-works). Do this for `@itiha29` and `@vak_hq`. Skip any Facebook-Page linking
+works). Do this for `@itiha29` and `@vaq_hq`. Skip any Facebook-Page linking
 prompts — not needed on this route.
 
 ### 2. Create one Meta app with Instagram login
@@ -33,7 +33,7 @@ prompts — not needed on this route.
    app type **Business**. Any name, e.g. "Kavi Studio". Leave it in
    Development mode.
 3. App dashboard → **Instagram** → **API setup with Instagram business login**.
-4. Section **Generate access tokens** → **Add account** → log in as `@vak_hq` →
+4. Section **Generate access tokens** → **Add account** → log in as `@vaq_hq` →
    approve every permission:
    - `instagram_business_basic`
    - `instagram_business_content_publish`
@@ -51,7 +51,7 @@ Then retry step 4.
 ### 3. Fill `.env`
 
 ```
-# VAQ HQ (@vak_hq) — designs with brand: vaq-hq post here
+# VAQ HQ (@vaq_hq) — designs with brand: vaq-hq post here
 IG_USER_ID_VAQ_HQ=<account id from step 5>
 IG_ACCESS_TOKEN_VAQ_HQ=<token>
 
@@ -63,7 +63,7 @@ IG_ACCESS_TOKEN=<token>
 Then `bin/kavi restart` (the daemon reads `.env` at start) and verify:
 
 ```
-bin/publish vaq-hq --whoami     # → vaq-hq: @vak_hq · id … · BUSINESS · N posts
+bin/publish vaq-hq --whoami     # → vaq-hq: @vaq_hq · id … · BUSINESS · N posts
 bin/publish itiha --whoami
 ```
 

@@ -1322,7 +1322,7 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
       ? `\n\nAlready published ${published.at || ''} (${published.permalink || published.post_id}). This creates a SECOND post.`
       : '';
     const ok = window.confirm(
-      `${what}\n\nThis publishes publicly to the connected @${content.brand === 'vaq-hq' ? 'vak_hq' : 'itiha29'} account.${again}`
+      `${what}\n\nThis publishes publicly to the connected @${content.brand === 'vaq-hq' ? 'vaq_hq' : 'itiha29'} account.${again}`
     );
     if (!ok) return;
     setPublishState({ phase: 'publishing' });

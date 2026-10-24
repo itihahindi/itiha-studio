@@ -40,7 +40,7 @@ tweaks:
   showChapterLabels: false
   showStamp: true
   showPageNum: true
-  seriesLabel: <ALL-CAPS SHORT, e.g. SOMNATH>
+  seriesLabel: <SHORT, as it should print in the footer tab, e.g. Somnath>
 ---
 
 ## Slide 1
@@ -98,7 +98,7 @@ Slide fields only (depending on layout):
 - Source                                                                                      — did-you-know
 - Handle                                                                                      — closing
 
-Theme: \`dark\` (default — off-white text on near-black) or \`light\` (near-black text on off-white). Use \`light\` for breather slides — typically a slide that's all-type (no image), often around the midpoint, to break up the dark rhythm. 1–2 light slides per 9-slide carousel max.
+Theme: leave it out and the slide sits on the deck palette's signature ground (bright yellow, ultramarine, acid green or plum). Set the opposite ground — \`dark\` or \`light\` — on 2–3 slides per carousel for rhythm. Any slide whose photo is mostly dark (a die-cut face on black, a night scene, a dark plate) must be \`dark\`, or the type disappears into the picture.
 
 LAYOUTS (the only valid values for the Layout: field):
 cover · story · split-story · quote · stat · dates-grid · closing · numbered-list · comparison · portrait · timeline · map · did-you-know · pie-chart · line-graph · bar-chart · dynasty · before-after · document · annotated · sources · interior-light · cta-red
@@ -145,12 +145,12 @@ NEVER:
 - Hedging ("perhaps", "maybe", "might be considered"). State the conclusion.
 
 HEADLINES:
-- Normal case in the source; renderer uppercases in Bebas Neue.
+- Sentence case: capitalise the first word and proper nouns only ("The march of *Mahmud*", not "The March Of Mahmud"). The renderer sets headlines exactly as typed.
 - 1–2 *accent words* per headline, each wrapped in *asterisks*. An accent must be a noun, name, place, date, or verb of consequence. Never a connector (the, and, of, a).
 - 2–3 short lines via literal newlines inside the YAML block scalar.
 
 BODY (sentence case):
-- [word] → key-term emphasis (a name, a number, a place, a verdict; renders bold with a red underline). 1–3 per body slide, NEVER more — emphasis loses power when everything is marked.
+- [word] → key-term emphasis (a name, a number, a place, a verdict; renders bold with an accent-colour underline). 1–3 per body slide, NEVER more — emphasis loses power when everything is marked.
 - _word_ → italic (foreign words: _Ain-i-Akbari_, _kuli_, _ryotwari_; song/book titles).
 - **word** → bold, sparingly (at most once per slide).
 
@@ -201,7 +201,7 @@ If any check fails, fix it before sending.`,
   // Per-chat message the user pastes into a new conversation inside the project.
   topicPrompt: `Topic: <<<REPLACE WITH YOUR TOPIC>>>
 Slides: 9
-Series label (ALL CAPS, short — e.g. SOMNATH, PLASSEY, INDENTURE): <<<REPLACE>>>
+Series label (short, as it should print — e.g. Somnath, Plassey, Indenture): <<<REPLACE>>>
 Primary source(s) to cite (book + author, if applicable): <<<REPLACE — e.g. "The Story of Civilisation, Will Durant" — or leave blank>>>
 
 Produce the carousel now in the EXACT schema from the project instructions.

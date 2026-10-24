@@ -257,7 +257,7 @@ noted below.
 | `city-map` | `headline` `center_lat` `center_lon` `span_km`(70) `rings` `places` `routes` `map_height`(620) `map_caption` `source` `body` `loop` |
 | `geo` | `headline` `region` `zoom` `center_lon` `center_lat` `countries` `links` `markers` `body` `map_caption` `map_height` — no `loop` |
 | `closing` | `headline` `body` `handle` `headline_size`(60) |
-| `reel-frame` | `video_file` `video_url` `headline` `subline` `credit` `panel_height`(560) `panel_fade`(120) `headline_size`(66) — no `surface` |
+| `reel-frame` | `video_file` `video_url` `headline` `subline` `credit` `image` `image_width`(720) `image_caption` `panel_height`(560) `panel_fade`(120) `headline_size`(66) — no `surface` |
 
 **Micro-syntax.** Headlines: `*word*` → accent highlight, 1–2 per headline max.
 Body: `[word]` → accent key term · `_word_` → italic · `**word**` → bold.
@@ -266,6 +266,9 @@ Body: `[word]` → accent key term · `_word_` → italic · `**word**` → bold
 
 - **`closing` accepts `surface:` in YAML** even though the editor shows no
   control for it. Set it, or a dark deck ends on a white card.
+- **`closing` renders its headline in the serif signature face**, and parses
+  `*word*` itself (serif italic in orange) since 2026-09-20. Before that it
+  printed the asterisks literally.
 - **`roster` rows are YAML-only** — no editor repeater exists.
 - **`split-story` has no `surface`** and no `chapter` (that is Itiha's field).
   An `eyebrow:` will be silently dropped; the field is `kicker_meta`.
@@ -408,6 +411,12 @@ dark veil — that is the Itiha language.
   started. Cut to the moment that matters within the first 2–3 seconds.
 - **Hindi and Kannada speech will not transcribe reliably.** Quote only the
   source's own English caption or on-screen text. Never fabricate a translation.
+- **Tweet + reaction clip.** When the video answers a post, pin the post in the
+  panel with `image:` (hairline frame, natural height). A 16:9 clip at zero crop
+  leaves a 1312 px panel, which is room for headline, subline and a ~730 px card.
+  Keep `image_width` near the screenshot's own width: a 1× capture (≈590 px)
+  goes soft past ~1.2×. If the clip is old footage used as commentary, say so in
+  `credit:` with its real date, or the reel reads as new news.
 - Fetch X media JSON via `api.fxtwitter.com/<user>/status/<id>`. Instagram via
   `yt-dlp` ("There is no video in this post" means it is an image post).
 

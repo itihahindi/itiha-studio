@@ -31,7 +31,7 @@ tweaks:
   showChapterLabels: false
   showStamp: true
   showPageNum: true
-  overlayDarkness: 62
+  overlayDarkness: 75
   showGrain: true
 
 slides:
@@ -117,12 +117,12 @@ brand: {brand}
 
 slides:
   - layout: end-card
-    tagline: "History Simplified"
 """
 
 
 _STARTERS_BY_FORMAT = {
     "instagram-portrait":  _CAROUSEL_STARTER,
+    "instagram-tall":      _CAROUSEL_STARTER,
     "instagram-square":    _CAROUSEL_STARTER,
     "instagram-reel":      _REEL_STARTER,
     "youtube-thumbnail":   _THUMBNAIL_STARTER,

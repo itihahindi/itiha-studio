@@ -79,7 +79,7 @@ function _wedgePath(cx, cy, r, startAngle, endAngle) {
 }
 
 function Headline({ text, size = 132, style }) {
-  return <h1 className="itiha-h1" style={{ fontSize: size, ...style }}>{renderHeadline(text)}</h1>;
+  return <h1 className="itiha-h1" style={{ fontSize: ITIHA.dsize(size), ...style }}>{renderHeadline(text)}</h1>;
 }
 
 function Body({ text, size = 28, maxWidth = 880, style, className }) {
@@ -101,11 +101,14 @@ function Body({ text, size = 28, maxWidth = 880, style, className }) {
 function Cover({ slide, index }) {
   const { eyebrow, eyebrow_meta, headline, subline, swipe_meta, byline,
           image, image_bw, image_overlay, image_position, headline_size,
-          headline_offset_y = 0 } = slide;
+          headline_offset_y = 0, cover_style, subline_size } = slide;
   const t = themeFor(slide);
+  const red = cover_style === 'red';
   return (
-    <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
+    <div className={`itiha-slide itiha-grain ${t.className}${red ? ' cover-red' : ''}`} style={{ background: red ? ITIHA.solid : t.bg }}>
+      {red
+        ? (image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0} position={image_position} zoom={slide.image_zoom} vignette={false} />)
+        : <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
       <TextureOverlay texture={slide.texture} slide={slide} />
       {(eyebrow || eyebrow_meta) && (
         <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 84, right: 72, display: 'flex', alignItems: 'center', gap: 18 }, { stretch: true })}>
@@ -116,19 +119,19 @@ function Cover({ slide, index }) {
       )}
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 360 + headline_offset_y, right: 72 },
                           { top: 200 + headline_offset_y, bottom: 380 - headline_offset_y })}>
-        <Divider style={{ marginBottom: 56 }} />
-        <Headline text={headline} size={headline_size || 156} style={{ textShadow: t.isLight ? 'none' : '0 2px 24px rgba(0,0,0,0.6)' }} />
+        <Divider color={red ? ITIHA.solidAccent : ITIHA.accent} style={{ marginBottom: 56 }} />
+        <Headline text={headline} size={headline_size || 156} style={{ textShadow: (t.isLight || red) ? 'none' : '0 2px 24px rgba(0,0,0,0.6)' }} />
       </div>
       <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 220, right: 72 }, { stretch: true })}>
         {byline && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 18,
-                        fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 24, letterSpacing: 3,
-                        textTransform: 'uppercase', color: t.h1 }}>
-            <span style={{ width: 26, height: 2, background: ITIHA.red }} />
+                        fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(24, '3px'), color: t.h1 }}>
+            <span style={{ width: 26, height: 2, background: ITIHA.accent }} />
             <span>{byline}</span>
           </div>
         )}
-        {subline && <div className="itiha-sub" style={{ marginBottom: 14 }}>{subline}</div>}
+        {/* subline_size opts into a readable hook line: bigger, near-full contrast. */}
+        {subline && <div className="itiha-sub" style={{ marginBottom: 14, ...(subline_size ? { fontSize: subline_size, letterSpacing: 1.5, lineHeight: 1.45, color: red ? ITIHA.onSolid : (t.isLight ? ITIHA.onPaper : ITIHA.rgba('fg', 0.9)) } : null) }}>{subline}</div>}
         {swipe_meta && <div className="itiha-meta" style={{ color: t.muted40 }}>{swipe_meta}</div>}
       </div>
       <MaybePageNum n={index + 1} color={t.pageNumColor} />
@@ -147,14 +150,18 @@ function Story({ slide, index }) {
   // align_y, when set, supersedes the older block_y knob — and the image
   // gradient has to follow the text, or the fade lands on the wrong edge.
   const anchor = slide.align_y || block_y;
-  // Light theme: fade image to off-white at the text edge instead of black.
-  const overlayCss = custom_overlay || (t.isLight
-    ? (anchor === 'bottom'
-        ? 'linear-gradient(180deg, rgba(250,245,238,0.0) 0%, rgba(250,245,238,0.0) 45%, rgba(250,245,238,0.55) 62%, rgba(250,245,238,0.92) 78%, rgba(250,245,238,1) 100%)'
-        : 'linear-gradient(180deg, rgba(250,245,238,0.55) 0%, rgba(250,245,238,0.4) 30%, rgba(250,245,238,0.7) 70%, rgba(250,245,238,0.95) 100%)')
-    : (anchor === 'bottom'
-        ? 'linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.0) 28%, rgba(0,0,0,0.0) 45%, rgba(0,0,0,0.55) 62%, rgba(13,13,13,0.92) 78%, rgba(13,13,13,1) 100%)'
-        : 'linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.7) 70%, rgba(13,13,13,0.95) 100%)'));
+  // Veil strength follows tweaks.overlayDarkness. A bottom-anchored block
+  // with a full body starts ~30% down, so the ramp must be dark by then —
+  // the old curve was fully clear from 28% to 45% and left headlines on
+  // bright photos at <1:1 contrast (audience "can't read it" complaints;
+  // measured 2026-10-02, now ≥3.5:1 worst-row at the default 75).
+  const ctx = useItiha();
+  const o = (ctx && ctx.overlayDarkness != null) ? ctx.overlayDarkness / 100 : 0.75;
+  const veil = t.isLight ? 'var(--it-paper-rgb)' : 'var(--it-veil-rgb)';
+  const foot = t.isLight ? 'var(--it-paper-rgb)' : 'var(--it-ground-rgb)';
+  const overlayCss = custom_overlay || (anchor === 'bottom'
+    ? `linear-gradient(180deg, rgba(${veil},${o * 0.6}) 0%, rgba(${veil},${o * 0.35}) 15%, rgba(${veil},${o * 0.85}) 32%, rgba(${veil},${o}) 48%, rgba(${foot},${Math.min(o + 0.17, 0.95)}) 72%, rgba(${foot},1) 100%)`
+    : `linear-gradient(180deg, rgba(${veil},${o * 0.85}) 0%, rgba(${veil},${o * 0.75}) 30%, rgba(${veil},${o}) 70%, rgba(${foot},0.95) 100%)`);
 
   const blockStyle = block_y === 'top'
     ? { position: 'absolute', left: 72, top: 130, right: 72 }
@@ -191,9 +198,19 @@ function SplitStory({ slide, index }) {
   // actually render — otherwise the divider hangs alone above the headline
   // and reads like a stray coat-lapel detail.
   const showEyebrowBlock = !!chapter && !!ctx.showChapterLabels;
+  // Text sits at BOTH ends here, so the shared top-light veil left headlines
+  // on the brightest part of the photo. Own veil: the headline band (top
+  // ~28%) and body band (bottom ~40%) never drop below 0.78, whatever
+  // image_overlay says; image_overlay only sets how open the middle window is.
+  const o = image_overlay != null ? image_overlay
+    : (ctx.overlayDarkness != null ? ctx.overlayDarkness / 100 : 0.75);
+  const band = Math.max(o, 0.78);
+  const veil = t.isLight ? 'var(--it-paper-rgb)' : 'var(--it-veil-rgb)';
+  const splitVeil = `linear-gradient(180deg, rgba(${veil},${band}) 0%, rgba(${veil},${band * 0.95}) 26%, rgba(${veil},${o * 0.45}) 40%, rgba(${veil},${o * 0.45}) 50%, rgba(${veil},${band}) 61%, rgba(${veil},${Math.min(band + 0.12, 0.96)}) 100%)`;
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={0} position={image_position} zoom={slide.image_zoom} vignette={false} />}
+      {image && <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: splitVeil }} />}
       <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: headline_y, right: 72 },
                           { top: headline_y, bottom: body_y })}>
@@ -256,14 +273,14 @@ function Quote({ slide, index }) {
         {quote && (
           <div>
             <div aria-hidden="true" style={{
-              fontFamily: ITIHA.quoteSerif, fontStyle: 'italic', fontSize: 150,
-              lineHeight: 1, height: 84, color: ITIHA.red, userSelect: 'none',
+              fontFamily: ITIHA.quote, fontStyle: 'italic', fontSize: 150,
+              lineHeight: 1, height: 84, color: ITIHA.accent, userSelect: 'none',
             }}>“</div>
             {/* itiha-pull carries the serif voice; itiha-body scopes `.key` so
                 the [word] red-emphasis micro-syntax works inside quotes too. */}
             <div className="itiha-pull itiha-body" style={{
               fontSize: quote_size, maxWidth: 'none',
-              color: t.isLight ? ITIHA.nearBlack : ITIHA.parchment,
+              color: t.isLight ? ITIHA.onPaper : ITIHA.fg,
             }}>
               {quote.split('\n').map((l, i, a) => (
                 <React.Fragment key={i}>{renderBody(l)}{i < a.length - 1 && <br/>}</React.Fragment>
@@ -271,9 +288,9 @@ function Quote({ slide, index }) {
             </div>
             {attribution && !hasAuthor && (
               <div style={{
-                marginTop: 40, fontFamily: ITIHA.sans, fontWeight: 600,
-                fontSize: 18, letterSpacing: '0.25em', textTransform: 'uppercase',
-                color: ITIHA.midGray, fontStyle: 'normal',
+                marginTop: 40, fontFamily: ITIHA.text, fontWeight: 600,
+                ...ITIHA.caps(18, '0.25em'),
+                color: ITIHA.muted, fontStyle: 'normal',
               }}>{attribution}</div>
             )}
           </div>
@@ -288,7 +305,7 @@ function Quote({ slide, index }) {
           {author_style === 'framed' ? (
             <div style={{
               marginBottom: 96, width: Math.round(author_height * 0.62), height: Math.round(author_height * 0.62),
-              border: `1px solid ${t.isLight ? 'rgba(26,26,26,.4)' : 'rgba(232,220,200,.4)'}`,
+              border: `1px solid ${t.isLight ? ITIHA.rgba('onPaper', 0.4) : ITIHA.rgba('fg', 0.4)}`,
               overflow: 'hidden', flex: 'none',
             }}>
               <img src={authorSrc} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -304,15 +321,15 @@ function Quote({ slide, index }) {
             <hr className="itiha-divider" style={{ margin: '0 0 22px' }} />
             {attribution && (
               <div style={{
-                fontFamily: ITIHA.bebas, fontSize: 46, letterSpacing: '0.5px',
-                lineHeight: 1, color: t.isLight ? ITIHA.nearBlack : ITIHA.parchment, textTransform: 'uppercase',
+                ...ITIHA.dfont(46), letterSpacing: '0.5px',
+                lineHeight: 1, color: t.isLight ? ITIHA.onPaper : ITIHA.fg,
               }}>{attribution}</div>
             )}
             {author_role && (
               <div style={{
-                marginTop: 14, fontFamily: ITIHA.sans, fontWeight: 600,
-                fontSize: 17, letterSpacing: '0.22em', textTransform: 'uppercase',
-                color: ITIHA.midGray,
+                marginTop: 14, fontFamily: ITIHA.text, fontWeight: 600,
+                ...ITIHA.caps(17, '0.22em'),
+                color: ITIHA.muted,
               }}>{author_role}</div>
             )}
           </div>
@@ -351,13 +368,13 @@ function Stat({ slide, index }) {
             <div>
               {s.label && <div className="itiha-meta">{s.label}</div>}
               <div style={{
-                fontFamily: ITIHA.bebas, fontSize: stat_size, lineHeight: 0.9,
-                color: s.value_red ? ITIHA.red : t.h1, marginTop: 12,
+                ...ITIHA.dfont(stat_size), lineHeight: 0.9,
+                color: s.value_red ? ITIHA.accent : t.h1, marginTop: 12,
               }}>
                 {/* YAML parses bare numbers (value: 240) as ints — coerce
                     before splitting or the whole editor tree crashes. */}
                 {s.value != null && String(s.value).split('%').length === 2
-                  ? <>{String(s.value).split('%')[0]}<span style={{ color: ITIHA.red }}>%</span></>
+                  ? <>{String(s.value).split('%')[0]}<span style={{ color: ITIHA.accent }}>%</span></>
                   : s.value}
               </div>
               {s.sublabel && <div className="itiha-meta" style={{ marginTop: 8 }}>{s.sublabel}</div>}
@@ -400,8 +417,8 @@ function DatesGrid({ slide, index }) {
         display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 36, rowGap: 44,
       }, { stretch: true })}>
         {items.map((it, i) => (
-          <div key={i} style={{ borderTop: `1px solid ${t.divider}`, paddingTop: 20 }}>
-            <div style={{ fontFamily: ITIHA.bebas, fontSize: date_size, color: ITIHA.red, lineHeight: 1, letterSpacing: 1 }}>{it.date}</div>
+          <div key={i} style={{ borderTop: `var(--it-rule-w) solid ${t.divider}`, paddingTop: 20 }}>
+            <div style={{ ...ITIHA.dfont(date_size), color: ITIHA.accent, lineHeight: 1, letterSpacing: 1 }}>{it.date}</div>
             <Body text={it.text} size={text_size} style={{ marginTop: 12, lineHeight: 1.55 }} />
           </div>
         ))}
@@ -434,8 +451,8 @@ function Closing({ slide, index }) {
           display: 'grid', gridTemplateColumns: `repeat(${stats.length}, 1fr)`, gap: 28,
         }, { stretch: true })}>
           {stats.map((s, i) => (
-            <div key={i} style={{ borderTop: `1px solid ${t.divider}`, paddingTop: 16 }}>
-              <div style={{ fontFamily: ITIHA.bebas, fontSize: 64, color: t.h1, lineHeight: 1 }}>{s.value}</div>
+            <div key={i} style={{ borderTop: `var(--it-rule-w) solid ${t.divider}`, paddingTop: 16 }}>
+              <div style={{ ...ITIHA.dfont(64), color: t.h1, lineHeight: 1 }}>{s.value}</div>
               <div className="itiha-meta" style={{ marginTop: 10 }}>{s.label}</div>
             </div>
           ))}
@@ -448,7 +465,7 @@ function Closing({ slide, index }) {
       )}
       {handle && (
         <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 130, right: 72, display: 'flex', alignItems: 'center', gap: 18 }, { stretch: true })}>
-          <span style={{ width: 8, height: 8, background: ITIHA.red, borderRadius: 0 }} />
+          <span style={{ width: 8, height: 8, background: ITIHA.accent, borderRadius: 0 }} />
           <span className="itiha-sub" style={{ color: t.h1, fontSize: 16 }}>{handle}</span>
         </div>
       )}
@@ -463,11 +480,12 @@ function Closing({ slide, index }) {
 
 // 1080×1920 Reel title card. Pure black, centered top-half, optional pill at bottom.
 function ReelTitle({ slide, index }) {
+  const look = useLook();
   const { eyebrow, headline, subline, pill, handle = '@itiha29',
           image, image_bw, image_overlay, image_position,
           headline_size = 180, text_y = 50 } = slide;
   return (
-    <div className="itiha-slide" style={{ background: ITIHA.jet }}>
+    <div className={`itiha-slide ${look}`} style={{ background: ITIHA.jet }}>
       {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.55} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} slide={slide} />
       {/* text_y stays the default anchor; align_y supersedes it when set. */}
@@ -475,18 +493,16 @@ function ReelTitle({ slide, index }) {
                           { top: 300, bottom: 620 })}>
         {eyebrow && (
           <div style={{
-            fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 26,
-            letterSpacing: '0.35em', textTransform: 'uppercase',
-            color: ITIHA.red, marginBottom: 40,
+            fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(26, '0.35em'),
+            color: ITIHA.accent, marginBottom: 40,
           }}>{eyebrow}</div>
         )}
         <Divider style={{ marginBottom: 48 }} />
         <Headline text={headline} size={headline_size} />
         {subline && (
           <div style={{
-            marginTop: 44, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 28,
-            letterSpacing: '0.25em', textTransform: 'uppercase',
-            color: 'rgba(232,220,200,0.6)',
+            marginTop: 44, fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(28, '0.25em'),
+            color: ITIHA.rgba('fg', 0.6),
           }}>{subline}</div>
         )}
       </div>
@@ -495,15 +511,14 @@ function ReelTitle({ slide, index }) {
           position: 'absolute', left: 96, bottom: 480,
           background: 'rgba(0,0,0,0.85)', color: ITIHA.white,
           padding: '14px 28px', borderRadius: 4,
-          fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 30,
+          fontFamily: ITIHA.text, fontWeight: 600, fontSize: 30,
         }}>{pill}</div>
       )}
       {handle && (
         <div {...alignBlock(slide, {
           position: 'absolute', left: 96, bottom: 80, right: 96,
-          fontFamily: ITIHA.sans, fontWeight: 500, fontSize: 22,
-          letterSpacing: '0.22em', textTransform: 'uppercase',
-          color: ITIHA.midGray,
+          fontFamily: ITIHA.text, fontWeight: 500, ...ITIHA.caps(22, '0.22em'),
+          color: ITIHA.muted,
         }, { stretch: true })}>{handle}</div>
       )}
       <div className="itiha-stamp" style={{ right: 80, bottom: 80, fontSize: 44 }}>
@@ -515,10 +530,11 @@ function ReelTitle({ slide, index }) {
 
 // 1280×720 YouTube thumbnail. Big headline (Bebas), red eyebrow, parchment subline.
 function YoutubeThumbnail({ slide, index }) {
+  const look = useLook();
   const { eyebrow, headline, subline, image, image_bw, image_overlay = 0.55,
           image_position, headline_size = 156 } = slide;
   return (
-    <div className="itiha-slide" style={{ background: ITIHA.jet }}>
+    <div className={`itiha-slide ${look}`} style={{ background: ITIHA.jet }}>
       {image
         ? <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} vignette={false} />
         : (
@@ -526,7 +542,7 @@ function YoutubeThumbnail({ slide, index }) {
           <div style={{
             position: 'absolute', inset: 0,
             background: `radial-gradient(ellipse at 80% 50%, #3a1812 0%, transparent 55%),
-                         radial-gradient(ellipse at 20% 80%, ${ITIHA.charcoal} 0%, transparent 60%),
+                         radial-gradient(ellipse at 20% 80%, ${ITIHA.raised} 0%, transparent 60%),
                          ${ITIHA.jet}`,
           }} />
         )}
@@ -535,17 +551,15 @@ function YoutubeThumbnail({ slide, index }) {
         <div style={{ maxWidth: 920 }}>
           {eyebrow && (
             <div style={{
-              fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 26,
-              letterSpacing: '0.3em', textTransform: 'uppercase',
-              color: ITIHA.red, marginBottom: 32,
+              fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(26, '0.3em'),
+              color: ITIHA.accent, marginBottom: 32,
             }}>{eyebrow}</div>
           )}
           <Headline text={headline} size={headline_size} />
           {subline && (
             <div style={{
-              marginTop: 40, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 28,
-              letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: 'rgba(232,220,200,0.6)',
+              marginTop: 40, fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(28, '0.22em'),
+              color: ITIHA.rgba('fg', 0.6),
             }}>{subline}</div>
           )}
         </div>
@@ -558,9 +572,72 @@ function YoutubeThumbnail({ slide, index }) {
 }
 
 // 1920×1080 video end card — centered wordmark, red underline, tagline, handles.
-function EndCard({ slide, index }) {
+// ── End card, 2026-10 looks ─────────────────────────────────────
+// The classic card (centred wordmark, thin rule, tracked tagline, stacked
+// YT/IG/WEB) is the generic template in miniature. v2 builds it from the
+// look's own parts: the tagline as a real headline, each handle on a solid
+// accent tab flush to the left edge (the folio tab, scaled up), and the
+// wordmark set huge and cropped by the bottom edge like a poster. Landscape
+// (youtube-end-card) moves the tabs to the right edge via a container query.
+if (typeof document !== 'undefined' && !document.getElementById('itiha-end-styles')) {
+  const s = document.createElement('style');
+  s.id = 'itiha-end-styles';
+  s.textContent = `
+    .it-end{container-type:size}
+    .it-end-top{position:absolute;left:72px;right:72px;top:110px}
+    .it-end-handles{position:absolute;left:0;top:44%;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+    .it-end-tab{background:var(--it-accent);color:var(--it-on-accent);padding:16px 44px 18px 72px;display:flex;flex-direction:column;gap:6px}
+    .it-end-tab b{font:700 24px/1 var(--it-text)}
+    .it-end-tab span{font-family:var(--it-display);font-weight:800;font-stretch:110%;font-size:66px;line-height:.95;letter-spacing:-0.01em}
+    .it-end-mark{position:absolute;left:48px;bottom:-0.14em;font-family:var(--it-display);font-weight:800;font-stretch:75%;
+      font-size:440px;line-height:1;letter-spacing:-0.02em;white-space:nowrap}
+    .it-end-mark i{font-style:normal;color:var(--it-accent)}
+    @container (min-aspect-ratio: 4/3){
+      .it-end-top{right:48%}
+      .it-end-handles{left:auto;right:0;top:110px;align-items:flex-end}
+      .it-end-tab{padding:16px 72px 18px 44px;align-items:flex-end}
+      .it-end-mark{font-size:400px}
+    }
+  `;
+  document.head.appendChild(s);
+}
+const _PLATFORM = { YT: 'YouTube', IG: 'Instagram', WEB: 'Web', X: 'X', FB: 'Facebook' };
+
+function EndCardV2({ slide, index }) {
+  const tagline = slide.tagline || 'History,\n*simplified*';
   const {
-    tagline = 'History Simplified',
+    handles = [
+      { platform: 'IG',  text: '@itiha29' },
+      { platform: 'YT',  text: '@itiha' },
+      { platform: 'WEB', text: 'itiha.info' },
+    ],
+    tagline_size = 150,
+    image, image_bw, image_overlay, image_position,
+  } = slide;
+  const t = themeFor(slide);
+  return (
+    <div className={`itiha-slide it-end ${t.className}`} style={{ background: t.bg, color: t.h1 }}>
+      {image && <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.8} position={image_position} zoom={slide.image_zoom} vignette={false} />}
+      <TextureOverlay texture={slide.texture} slide={slide} />
+      <div className="it-end-top"><Headline text={tagline} size={tagline_size} /></div>
+      <div className="it-end-handles">
+        {handles.map((h, i) => (
+          <div key={i} className="it-end-tab">
+            <b>{_PLATFORM[h.platform] || h.platform}</b>
+            <span>{h.text}</span>
+          </div>
+        ))}
+      </div>
+      <div className="it-end-mark" data-bleed>ITIHA<i>.</i></div>
+    </div>
+  );
+}
+
+function EndCard({ slide, index }) {
+  const look = useLook();
+  if (look) return <EndCardV2 slide={slide} index={index} />;
+  const {
+    tagline: tagline0,
     handles = [
       { platform: 'YT',  text: '@itiha' },
       { platform: 'IG',  text: '@itiha29' },
@@ -570,34 +647,33 @@ function EndCard({ slide, index }) {
     handle_size = 42,
     image, image_bw, image_overlay, image_position,
   } = slide;
+  const tagline = tagline0 || 'History Simplified';
   return (
-    <div className="itiha-slide" style={{
+    <div className={`itiha-slide ${look}`} style={{
       background: ITIHA.jet, display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
     }}>
       {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.7} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} slide={slide} />
       <div style={{
-        fontFamily: ITIHA.bebas, fontSize: wordmark_size,
-        letterSpacing: 0, color: ITIHA.parchment, textTransform: 'uppercase',
+        ...ITIHA.dfont(wordmark_size),
+        letterSpacing: 0, color: ITIHA.fg, textTransform: 'uppercase',
         lineHeight: 1, display: 'flex',
       }}>
-        ITIHA<span style={{ color: ITIHA.red }}>.</span>
+        ITIHA<span style={{ color: ITIHA.accent }}>.</span>
       </div>
-      <div style={{ width: 140, height: 4, background: ITIHA.red, margin: '44px 0 36px' }} />
+      <div style={{ width: 140, height: 4, background: ITIHA.accent, margin: '44px 0 36px' }} />
       <div style={{
-        fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 22,
-        letterSpacing: '0.45em', textTransform: 'uppercase', color: ITIHA.midGray,
+        fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(22, '0.45em'), color: ITIHA.muted,
       }}>{tagline}</div>
       {/* Stacked handles — one per row, sized to read from a video end screen. */}
       <div style={{
         marginTop: 70, display: 'flex', flexDirection: 'column', gap: 30,
         alignItems: 'center',
-        fontFamily: ITIHA.sans, fontWeight: 600, fontSize: handle_size,
-        letterSpacing: '0.18em', textTransform: 'uppercase', color: ITIHA.parchment,
+        fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(handle_size, '0.18em'), color: ITIHA.fg,
       }}>
         {handles.map((h, i) => (
-          <div key={i}><span style={{ color: ITIHA.red, marginRight: 22 }}>{h.platform}</span>{h.text}</div>
+          <div key={i}><span style={{ color: ITIHA.accent, marginRight: 22 }}>{h.platform}</span>{h.text}</div>
         ))}
       </div>
     </div>
@@ -606,42 +682,42 @@ function EndCard({ slide, index }) {
 
 // Carousel variant: Off-White interior slide w/ red left border + slide number top-right.
 function InteriorLight({ slide, index }) {
+  const look = useLook();
   const { num, eyebrow, headline, body, headline_size = 96, body_size = 42,
           image, image_bw, image_overlay, image_position } = slide;
   return (
-    <div className="itiha-slide" style={{ background: ITIHA.offWhite, color: ITIHA.nearBlack }}>
+    <div className={`itiha-slide ${look ? 'light ' + look : ''}`} style={{ background: ITIHA.paper, color: ITIHA.onPaper }}>
       {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} slide={slide} />
       <div style={{
         position: 'absolute', top: 56, right: 56,
-        fontFamily: ITIHA.bebas, fontSize: 56, color: ITIHA.red, lineHeight: 1,
+        ...ITIHA.dfont(56), color: ITIHA.accent, lineHeight: 1,
       }}>{num || String(index + 1).padStart(2, '0')}</div>
       {/* inset:0 full-bleed box — the red rule is the container's own left
           border, so this block takes align_x only, never a re-anchor. */}
       <div {...alignBlock(slide, {
         position: 'absolute', inset: 0, padding: '120px 112px',
-        borderLeft: `3px solid ${ITIHA.red}`,
+        borderLeft: 'var(--it-bar)',
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
       }, { stretch: true })}>
         {eyebrow && (
           <div style={{
-            fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 14,
-            letterSpacing: '0.3em', textTransform: 'uppercase',
-            color: ITIHA.red, marginBottom: 32,
+            fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(14, '0.3em'),
+            color: ITIHA.accent, marginBottom: 32,
           }}>{eyebrow}</div>
         )}
-        <h1 className="itiha-h1" style={{ fontSize: headline_size, color: ITIHA.ink, marginBottom: 36 }}>
+        <h1 className="itiha-h1" style={{ fontSize: ITIHA.dsize(headline_size), color: ITIHA.paperInk, marginBottom: 36 }}>
           {renderHeadline(headline)}
         </h1>
         {body && (
-          <p className="itiha-body" style={{ fontSize: body_size, maxWidth: 840, color: ITIHA.nearBlack }}>
+          <p className="itiha-body" style={{ fontSize: body_size, maxWidth: 840, color: ITIHA.onPaper }}>
             {renderBody(body)}
           </p>
         )}
       </div>
-      <MaybePageNum n={index + 1} color={ITIHA.midGray} />
+      <MaybePageNum n={index + 1} color={ITIHA.muted} />
       <div className="itiha-stamp" style={{ right: 56, bottom: 48 }}>
-        <span className="w" style={{ color: ITIHA.ink }}>ITIHA</span><span className="d">.</span>
+        <span className="w" style={{ color: ITIHA.ground }}>ITIHA</span><span className="d">.</span>
       </div>
     </div>
   );
@@ -652,6 +728,7 @@ function InteriorLight({ slide, index }) {
 // for the video title + CTA — heavier than Bebas Neue, reads as a movie
 // poster credit rather than another slide.
 function YouTubeCTA({ slide, index }) {
+  const look = useLook();
   const {
     eyebrow = 'Watch The Full Documentary',
     thumbnail, headline,
@@ -670,7 +747,7 @@ function YouTubeCTA({ slide, index }) {
     return tokens.map((tok, i) => {
       const isYT = /^you?-?tube$/i.test(tok);
       return isYT
-        ? <span key={i} style={{ color: ITIHA.red }}>{tok}</span>
+        ? <span key={i} style={{ color: ITIHA.accent }}>{tok}</span>
         : <span key={i}>{tok}</span>;
     });
   };
@@ -682,7 +759,7 @@ function YouTubeCTA({ slide, index }) {
     : null;
 
   return (
-    <div className="itiha-slide" style={{ background: ITIHA.jet, color: ITIHA.parchment }}>
+    <div className={`itiha-slide ${look}`} style={{ background: ITIHA.jet, color: ITIHA.fg }}>
       <TextureOverlay texture={slide.texture} slide={slide} />
 
       {/* Eyebrow + small red divider — Eyebrow (not ChapterEyebrow) so the
@@ -701,9 +778,9 @@ function YouTubeCTA({ slide, index }) {
         position: 'absolute', left: 72, top: 240 + headline_offset_y, right: 72,
         aspectRatio: '16 / 9',
         overflow: 'hidden',
-        boxShadow: `inset 0 0 0 1px rgba(232,220,200,0.20)`,
+        boxShadow: `inset 0 0 0 1px ${ITIHA.rgba('fg', 0.2)}`,
         background: thumbnail
-          ? ITIHA.charcoal
+          ? ITIHA.raised
           : 'repeating-linear-gradient(135deg, #131313 0 14px, #0c0c0c 14px 28px)',
       }}>
         {thumbSrc && (
@@ -717,8 +794,8 @@ function YouTubeCTA({ slide, index }) {
           transform: 'translate(-50%, -50%)',
           filter: 'drop-shadow(0 6px 20px rgba(0,0,0,0.55))',
         }}>
-          <rect x="0" y="0" width="168" height="118" fill={ITIHA.red} />
-          <polygon points="64,30 64,88 116,59" fill={ITIHA.parchment} />
+          <rect x="0" y="0" width="168" height="118" style={{ fill: ITIHA.accent }} />
+          <polygon points="64,30 64,88 116,59" style={{ fill: ITIHA.onAccent }} />
         </svg>
       </div>
 
@@ -728,23 +805,23 @@ function YouTubeCTA({ slide, index }) {
         <h2 style={{
           fontFamily: ITIHA.heavy,
           fontWeight: 900,
-          fontSize: headline_size,
+          fontSize: ITIHA.dsize(headline_size),
+          fontStretch: 'var(--it-h-stretch)',
           lineHeight: 0.95,
           letterSpacing: '-0.005em',
-          textTransform: 'uppercase',
-          color: ITIHA.parchment,
+          textTransform: 'var(--it-h-case)',
+          color: ITIHA.fg,
           margin: 0,
         }}>{renderHeadline(headline)}</h2>
 
         {(duration || channel_label) && (
           <div style={{
             marginTop: 32,
-            fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 16,
-            letterSpacing: '0.28em', textTransform: 'uppercase',
-            color: 'rgba(232,220,200,0.6)',
+            fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(16, '0.28em'),
+            color: ITIHA.rgba('fg', 0.6),
           }}>
             {duration && <span>{duration}</span>}
-            {duration && channel_label && <span style={{ margin: '0 14px', color: ITIHA.red }}>·</span>}
+            {duration && channel_label && <span style={{ margin: '0 14px', color: ITIHA.accent }}>·</span>}
             {channel_label && <span>{channel_label}</span>}
           </div>
         )}
@@ -756,35 +833,37 @@ function YouTubeCTA({ slide, index }) {
         <div style={{
           fontFamily: ITIHA.heavy,
           fontWeight: 900,
-          fontSize: cta_size,
+          fontSize: ITIHA.dsize(cta_size),
+          fontStretch: 'var(--it-h-stretch)',
           lineHeight: 1,
           letterSpacing: '0.005em',
-          textTransform: 'uppercase',
-          color: ITIHA.parchment,
+          textTransform: 'var(--it-h-case)',
+          color: ITIHA.fg,
         }}>{renderCta(cta)}</div>
         {(handle || url_label) && (
           <div style={{
             marginTop: 20,
-            fontFamily: ITIHA.sans, fontWeight: 500, fontSize: 18,
-            letterSpacing: 0, color: 'rgba(232,220,200,0.72)',
+            fontFamily: ITIHA.text, fontWeight: 500, fontSize: 'max(18px, var(--it-lbl-min, 0px))',
+            letterSpacing: 0, color: ITIHA.rgba('fg', 0.72),
           }}>
-            {handle}{url_label && <span style={{ color: 'rgba(232,220,200,0.45)' }}>{` · ${url_label}`}</span>}
+            {handle}{url_label && <span style={{ color: ITIHA.rgba('fg', 0.45) }}>{` · ${url_label}`}</span>}
           </div>
         )}
       </div>
 
-      <MaybePageNum n={index + 1} color="rgba(232,220,200,0.5)" />
-      <MaybeStamp color={ITIHA.parchment} />
+      <MaybePageNum n={index + 1} color={ITIHA.rgba('fg', 0.5)} />
+      <MaybeStamp color={ITIHA.fg} />
     </div>
   );
 }
 
 // Carousel variant: solid Sindoor Red CTA — usually the final slide.
 function CtaRed({ slide, index }) {
+  const look = useLook();
   const { eyebrow = 'Final Slide', headline, cta, headline_size = 116,
           image, image_bw, image_overlay, image_position } = slide;
   return (
-    <div className="itiha-slide" style={{ background: ITIHA.red, color: ITIHA.white }}>
+    <div className={`itiha-slide cover-red ${look}`} style={{ background: ITIHA.solid, color: ITIHA.onSolid }}>
       {image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.85} position={image_position} zoom={slide.image_zoom} vignette={false} />}
       <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, {
@@ -793,24 +872,22 @@ function CtaRed({ slide, index }) {
       }, { stretch: true })}>
         {eyebrow && (
           <div style={{
-            fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 22,
-            letterSpacing: '0.3em', textTransform: 'uppercase',
-            color: ITIHA.white, opacity: 0.8, marginBottom: 36,
+            fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(22, '0.3em'),
+            color: ITIHA.onSolid, opacity: 0.8, marginBottom: 36,
           }}>{eyebrow}</div>
         )}
-        <h1 className="itiha-h1" style={{ fontSize: headline_size, color: ITIHA.white }}>
+        <h1 className="itiha-h1" style={{ fontSize: ITIHA.dsize(headline_size), color: ITIHA.onSolid }}>
           {renderHeadline(headline)}
         </h1>
         {cta && (
           <div style={{
-            marginTop: 56, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 24,
-            letterSpacing: '0.25em', textTransform: 'uppercase', color: ITIHA.white,
+            marginTop: 56, fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(24, '0.25em'), color: ITIHA.onSolid,
           }}>{cta}</div>
         )}
       </div>
-      <MaybePageNum n={index + 1} color="rgba(255,255,255,0.7)" />
+      <MaybePageNum n={index + 1} color={ITIHA.rgba('onSolid', 0.7)} />
       <div className="itiha-stamp" style={{ right: 56, bottom: 48 }}>
-        <span className="w" style={{ color: ITIHA.white }}>ITIHA</span><span className="d" style={{ color: ITIHA.white }}>.</span>
+        <span className="w" style={{ color: ITIHA.onSolid }}>ITIHA</span><span className="d" style={{ color: ITIHA.onSolid }}>.</span>
       </div>
     </div>
   );
@@ -844,14 +921,14 @@ function NumberedList({ slide, index }) {
                     display: 'grid', gap: 28 }, { stretch: true })}>
         {items.map((it, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 28,
-                                borderTop: `1px solid ${t.divider}`, paddingTop: 22 }}>
-            <div style={{ fontFamily: ITIHA.bebas, fontSize: number_size, color: ITIHA.red,
+                                borderTop: `var(--it-rule-w) solid ${t.divider}`, paddingTop: 22 }}>
+            <div style={{ ...ITIHA.dfont(number_size), color: ITIHA.accent,
                           lineHeight: 0.9, flex: '0 0 auto', minWidth: 100, letterSpacing: 1 }}>
               {it.number != null ? String(it.number) : String(i + 1).padStart(2, '0')}
             </div>
             <div style={{ flex: 1 }}>
               {it.headline && (
-                <div className="itiha-h1" style={{ fontSize: 38, marginBottom: 10, lineHeight: 1 }}>
+                <div className="itiha-h1" style={{ fontSize: 'calc(38px * var(--it-item-k))', marginBottom: 10, lineHeight: 1 }}>
                   {renderHeadline(it.headline)}
                 </div>
               )}
@@ -905,7 +982,7 @@ function Comparison({ slide, index }) {
         <div style={{ width: 1, alignSelf: 'stretch', background: t.divider }} />
         <div>
           {right_label && (
-            <div className="itiha-eyebrow" style={{ marginBottom: 18, color: ITIHA.red }}>{right_label}</div>
+            <div className="itiha-eyebrow" style={{ marginBottom: 18, color: ITIHA.accent }}>{right_label}</div>
           )}
           {right_headline && (
             <div className="itiha-h1" style={{ fontSize: sub_size, marginBottom: 18, lineHeight: 1.02 }}>
@@ -948,18 +1025,18 @@ function Portrait({ slide, index }) {
         {chapter && <ChapterEyebrow style={{ marginBottom: 18 }}>{chapter}</ChapterEyebrow>}
         <Divider style={{ marginBottom: 28 }} />
         {name && (
-          <h1 className="itiha-h1" style={{ fontSize: name_size, marginBottom: 14, lineHeight: 0.92 }}>
+          <h1 className="itiha-h1" style={{ fontSize: ITIHA.dsize(name_size), marginBottom: 14, lineHeight: 0.92 }}>
             {renderHeadline(name)}
           </h1>
         )}
         {dates && (
-          <div className="itiha-sub" style={{ marginBottom: 18, color: ITIHA.red, fontSize: 18, letterSpacing: 3 }}>
+          <div className="itiha-sub" style={{ marginBottom: 18, color: ITIHA.accent, fontSize: 18, letterSpacing: 3 }}>
             {dates}
           </div>
         )}
         {role && <Body text={role} size={body_size} maxWidth={image ? 460 : 800} style={{ lineHeight: 1.55, marginBottom: 28 }} />}
         {quote && (
-          <div style={{ borderLeft: `3px solid ${ITIHA.red}`, paddingLeft: 22, marginTop: 'auto' }}>
+          <div style={{ borderLeft: 'var(--it-bar)', paddingLeft: 'calc(22px * var(--it-bar-k))', marginTop: 'auto' }}>
             <div className="itiha-pull" style={{ fontSize: 36, lineHeight: 1.1 }}>
               {quote.split('\n').map((l, i, a) => <React.Fragment key={i}>{l}{i < a.length - 1 && <br/>}</React.Fragment>)}
             </div>
@@ -999,17 +1076,17 @@ function Timeline({ slide, index }) {
           relative box and stay put. */}
       <div {...alignBlock(slide, { position: 'absolute', left: 96, top: 460 + body_offset_y, right: 72, bottom: 160 - body_offset_y }, { stretch: true })}>
         <div style={{ position: 'relative', paddingLeft: 50, display: 'flex', flexDirection: 'column', gap: 32 }}>
-          <div style={{ position: 'absolute', left: 6, top: 14, height: `calc(100% - ${30 + item_body_size * 1.5}px)`, width: 2, background: ITIHA.red, opacity: 0.55 }} />
+          <div style={{ position: 'absolute', left: 6, top: 14, height: `calc(100% - ${30 + item_body_size * 1.5}px)`, width: 2, background: ITIHA.accent, opacity: 0.55 }} />
           {items.map((it, i) => (
             <div key={i} style={{ position: 'relative' }}>
               <div style={{
                 position: 'absolute', left: -50, top: 18,
-                width: 14, height: 14, background: ITIHA.red,
+                width: 14, height: 14, background: ITIHA.accent,
                 transform: 'translateX(-1px)',
-                boxShadow: t.isLight ? '0 0 0 4px rgba(250,245,238,1)' : '0 0 0 4px rgba(13,13,13,1)',
+                boxShadow: `0 0 0 4px ${t.bg}`,
               }} />
               <div style={{
-                fontFamily: ITIHA.bebas, fontSize: date_size, color: ITIHA.red,
+                ...ITIHA.dfont(date_size), color: ITIHA.accent,
                 lineHeight: 1, letterSpacing: 1,
               }}>{it.date}</div>
               {it.headline && (
@@ -1060,15 +1137,14 @@ function MapSlide({ slide, index }) {
             position: 'absolute', inset: 0,
             background: t.isLight ? '#EFE5D2' : '#161616',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            color: t.muted55, fontFamily: ITIHA.mono, fontSize: 12, letterSpacing: 2,
-            textTransform: 'uppercase',
+            color: t.muted55, fontFamily: ITIHA.mono, ...ITIHA.caps(12, '2px'),
           }}>Drop a map image</div>
         )}
         {markers.map((m, i) => {
           const x = Number(m.x != null ? m.x : 50);
           const y = Number(m.y != null ? m.y : 50);
           const labelShadow = t.isLight
-            ? '0 0 6px rgba(250,245,238,0.95), 0 0 2px rgba(250,245,238,0.95)'
+            ? `0 0 6px ${ITIHA.rgba('paper', 0.95)}, 0 0 2px ${ITIHA.rgba('paper', 0.95)}`
             : '0 0 6px rgba(0,0,0,0.95), 0 0 2px rgba(0,0,0,0.95)';
           return (
             <div key={i} style={{
@@ -1076,14 +1152,14 @@ function MapSlide({ slide, index }) {
               transform: 'translate(-50%, -50%)',
             }}>
               <div style={{
-                width: marker_size, height: marker_size, background: ITIHA.red,
+                width: marker_size, height: marker_size, background: ITIHA.accent,
                 borderRadius: '50%',
-                boxShadow: `0 0 0 4px ${t.isLight ? 'rgba(250,245,238,0.85)' : 'rgba(13,13,13,0.85)'}, 0 0 0 6px rgba(192,57,43,0.4)`,
+                boxShadow: `0 0 0 4px ${t.isLight ? ITIHA.rgba('paper', 0.85) : ITIHA.rgba('ground', 0.85)}, 0 0 0 6px ${ITIHA.rgba('accent', 0.4)}`,
               }} />
               {m.label && (
                 <div style={{
                   position: 'absolute', left: marker_size + 10, top: -4,
-                  fontFamily: ITIHA.bebas, fontSize: 28, color: t.h1,
+                  ...ITIHA.dfont(28), color: t.h1,
                   lineHeight: 1, whiteSpace: 'nowrap', letterSpacing: 1,
                   textShadow: labelShadow,
                 }}>{m.label}</div>
@@ -1091,8 +1167,8 @@ function MapSlide({ slide, index }) {
               {m.sublabel && (
                 <div style={{
                   position: 'absolute', left: marker_size + 10, top: 28,
-                  fontFamily: ITIHA.sans, fontSize: 12, color: ITIHA.red,
-                  letterSpacing: 2.5, textTransform: 'uppercase',
+                  fontFamily: ITIHA.text, ...ITIHA.caps(12, '2.5px'), color: ITIHA.accent,
+                  
                   fontWeight: 600, whiteSpace: 'nowrap',
                   textShadow: labelShadow,
                 }}>{m.sublabel}</div>
@@ -1140,8 +1216,8 @@ function DidYouKnow({ slide, index }) {
         <div style={{
           position: 'absolute', right: -60, top: -80,
           opacity: t.isLight ? 0.07 : 0.06,
-          fontFamily: ITIHA.bebas, fontSize: 880, lineHeight: 0.85,
-          color: ITIHA.red, pointerEvents: 'none',
+          ...ITIHA.dfont(880), lineHeight: 0.85,
+          color: ITIHA.accent, pointerEvents: 'none',
           userSelect: 'none',
         }}>?</div>
       )}
@@ -1152,10 +1228,9 @@ function DidYouKnow({ slide, index }) {
         position: 'absolute', left: 72, top: 110 + headline_offset_y, right: 72,
         display: 'flex', alignItems: 'center', gap: 16,
       }, { stretch: true })}>
-        <div style={{ width: 14, height: 14, background: ITIHA.red }} />
+        <div style={{ width: 14, height: 14, background: ITIHA.accent }} />
         <div style={{
-          fontFamily: ITIHA.sans, fontWeight: 700, fontSize: 22,
-          letterSpacing: '0.4em', textTransform: 'uppercase',
+          fontFamily: ITIHA.text, fontWeight: 700, ...ITIHA.caps(22, '0.4em'),
           color: t.h1,
         }}>{eyebrow}</div>
       </div>
@@ -1175,8 +1250,7 @@ function DidYouKnow({ slide, index }) {
       {source && (
         <div {...alignBlock(slide, {
           position: 'absolute', left: 72, bottom: 200, right: 72,
-          fontFamily: ITIHA.sans, fontWeight: 500, fontSize: 14,
-          letterSpacing: 2.5, textTransform: 'uppercase',
+          fontFamily: ITIHA.text, fontWeight: 500, ...ITIHA.caps(14, '2.5px'),
           color: t.muted55,
         }, { stretch: true })}>— {source}</div>
       )}
@@ -1196,10 +1270,8 @@ function PieChart({ slide, index }) {
           center_label, caption,
           headline_size = 88, caption_size = 24, headline_offset_y = 0 } = slide;
   const t = themeFor(slide);
-  // Theme-aware default palette — parchment/tan read on dark, ink/grey on light.
-  const palette = t.isLight
-    ? ['#C0392B', '#1A1A1A', '#8A8A8A', '#7A2E22', '#B0A283', '#4A4A4A']
-    : ['#C0392B', '#E8DCC8', '#8A8A8A', '#C9BB9D', '#5A5A5A', '#7A2E22'];
+  // Theme-aware series colours — each palette sets its own six per ground.
+  const palette = ITIHA.series(t.isLight, 6);
   const total = segments.reduce((s, x) => s + (Number(x.value) || 0), 0) || 1;
   const size = 420;
   const cx = size / 2, cy = size / 2;
@@ -1218,7 +1290,7 @@ function PieChart({ slide, index }) {
       const dash = (Number(seg.value) || 0) / total * circ;
       const el = (
         <circle key={i} r={r} cx={cx} cy={cy} fill="none"
-          stroke={colorFor(seg, i)} strokeWidth={stroke}
+          style={{ stroke: colorFor(seg, i) }} strokeWidth={stroke}
           strokeDasharray={`${dash} ${circ - dash}`}
           strokeDashoffset={-offset}
           transform={`rotate(-90 ${cx} ${cy})`} />
@@ -1227,14 +1299,14 @@ function PieChart({ slide, index }) {
       return el;
     });
   } else if (segments.length === 1) {
-    arcs = <circle cx={cx} cy={cy} r={size / 2} fill={colorFor(segments[0], 0)} />;
+    arcs = <circle cx={cx} cy={cy} r={size / 2} style={{ fill: colorFor(segments[0], 0) }} />;
   } else {
     let start = 0;
     arcs = segments.map((seg, i) => {
       const frac = (Number(seg.value) || 0) / total;
       const d = _wedgePath(cx, cy, size / 2, start * 360, (start + frac) * 360);
       start += frac;
-      return <path key={i} d={d} fill={colorFor(seg, i)} />;
+      return <path key={i} d={d} style={{ fill: colorFor(seg, i) }} />;
     });
   }
   return (
@@ -1252,7 +1324,7 @@ function PieChart({ slide, index }) {
           {arcs}
           {donut && center_label && (
             <text x={cx} y={cy} textAnchor="middle" dominantBaseline="central"
-              style={{ fontFamily: ITIHA.bebas, fontSize: 92, fill: t.h1 }}>{center_label}</text>
+              style={{ ...ITIHA.dfont(92), fill: t.h1 }}>{center_label}</text>
           )}
         </svg>
       </div>
@@ -1264,7 +1336,7 @@ function PieChart({ slide, index }) {
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <span style={{ width: 16, height: 16, background: colorFor(seg, i), flex: '0 0 auto' }} />
               <span className="itiha-body" style={{ fontSize: 22, lineHeight: 1.2 }}>{seg.label}</span>
-              {show_values && <span style={{ marginLeft: 'auto', fontFamily: ITIHA.bebas, fontSize: 34, color: ITIHA.red, lineHeight: 1 }}>{pct}%</span>}
+              {show_values && <span style={{ marginLeft: 'auto', ...ITIHA.dfont(34), color: ITIHA.accent, lineHeight: 1 }}>{pct}%</span>}
             </div>
           );
         })}
@@ -1288,9 +1360,7 @@ function LineGraph({ slide, index }) {
   const { chapter, headline, points = [], series, y_suffix = '', fill = true,
           caption, headline_size = 88, caption_size = 24, headline_offset_y = 0 } = slide;
   const t = themeFor(slide);
-  const palette = t.isLight
-    ? ['#C0392B', '#1A1A1A', '#8A8A8A', '#7A2E22']
-    : ['#C0392B', '#E8DCC8', '#8A8A8A', '#C9BB9D'];
+  const palette = ITIHA.series(t.isLight, 4);
   // Normalize to a list of series. Single-series `points` → one unlabeled series.
   const seriesList = (Array.isArray(series) && series.length)
     ? series.map(s => ({ ...s, points: s.points || [] }))
@@ -1335,9 +1405,9 @@ function LineGraph({ slide, index }) {
             const yy = Y(gv);
             return (
               <g key={i}>
-                <line x1={padL} y1={yy} x2={padL + plotW} y2={yy} stroke={t.divider} strokeWidth="1" />
+                <line x1={padL} y1={yy} x2={padL + plotW} y2={yy} style={{ stroke: t.divider }} strokeWidth="1" />
                 <text x={padL - 14} y={yy} textAnchor="end" dominantBaseline="central"
-                  style={{ fontFamily: ITIHA.sans, fontSize: 19, fontWeight: 500, fill: t.muted55 }}>
+                  style={{ fontFamily: ITIHA.text, fontSize: 19, fontWeight: 500, fill: t.muted55 }}>
                   {Math.round(gv)}{y_suffix}
                 </text>
               </g>
@@ -1345,25 +1415,25 @@ function LineGraph({ slide, index }) {
           })}
           {!multi && fill && (
             <polygon points={`${padL},${padT + plotH} ${seriesList[0].points.map((p, i) => `${X(i)},${Y(Number(p.value) || 0)}`).join(' ')} ${padL + plotW},${padT + plotH}`}
-              fill="rgba(192,57,43,0.14)" />
+              style={{ fill: ITIHA.rgba('accent', 0.14) }} />
           )}
           {seriesList.map((s, si) => {
             const color = colorFor(s, si);
             const pts = s.points.map((p, i) => `${X(i)},${Y(Number(p.value) || 0)}`).join(' ');
             return (
               <g key={si}>
-                <polyline points={pts} fill="none" stroke={color} strokeWidth="4"
+                <polyline points={pts} fill="none" style={{ stroke: color }} strokeWidth="4"
                   strokeLinejoin="round" strokeLinecap="round" />
                 {s.points.map((p, i) => (
-                  <circle key={i} cx={X(i)} cy={Y(Number(p.value) || 0)} r="7" fill={color}
-                    stroke={t.bg} strokeWidth="3" />
+                  <circle key={i} cx={X(i)} cy={Y(Number(p.value) || 0)} r="7" style={{ fill: color, stroke: t.bg }}
+                    strokeWidth="3" />
                 ))}
               </g>
             );
           })}
           {xRef.map((p, i) => (
             <text key={i} x={X(i)} y={padT + plotH + 30} textAnchor="middle"
-              style={{ fontFamily: ITIHA.sans, fontSize: 19, fontWeight: 500, fill: t.muted55 }}>{p.label}</text>
+              style={{ fontFamily: ITIHA.text, fontSize: 19, fontWeight: 500, fill: t.muted55 }}>{p.label}</text>
           ))}
         </svg>
       </div>
@@ -1386,7 +1456,7 @@ function BarChart({ slide, index }) {
           caption, headline_size = 88, caption_size = 24, headline_offset_y = 0 } = slide;
   const t = themeFor(slide);
   const maxV = Math.max(1, ...bars.map(b => Number(b.value) || 0));
-  const colorFor = b => b.color || ITIHA.red;
+  const colorFor = b => b.color || ITIHA.accent;
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       <TextureOverlay texture={slide.texture} slide={slide} />
@@ -1407,7 +1477,7 @@ function BarChart({ slide, index }) {
               <div key={i}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
                   <span className="itiha-body" style={{ fontSize: 24 }}>{b.label}</span>
-                  <span style={{ fontFamily: ITIHA.bebas, fontSize: 42, color: ITIHA.red, lineHeight: 1 }}>{b.value}{value_suffix}</span>
+                  <span style={{ ...ITIHA.dfont(42), color: ITIHA.accent, lineHeight: 1 }}>{b.value}{value_suffix}</span>
                 </div>
                 <div style={{ height: 26, background: t.divider }}>
                   <div style={{ height: '100%', width: `${w}%`, background: colorFor(b), minWidth: 3 }} />
@@ -1425,7 +1495,7 @@ function BarChart({ slide, index }) {
               return (
                 <div key={i} style={{ flex: 1, height: '100%', display: 'flex', flexDirection: 'column',
                                       alignItems: 'center', justifyContent: 'flex-end' }}>
-                  <div style={{ fontFamily: ITIHA.bebas, fontSize: 40, color: ITIHA.red, lineHeight: 1, marginBottom: 10 }}>{b.value}{value_suffix}</div>
+                  <div style={{ ...ITIHA.dfont(40), color: ITIHA.accent, lineHeight: 1, marginBottom: 10 }}>{b.value}{value_suffix}</div>
                   <div style={{ width: '100%', height: `${h}%`, background: colorFor(b), minHeight: 3 }} />
                 </div>
               );
@@ -1485,18 +1555,18 @@ function Dynasty({ slide, index }) {
                     display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {rows.map((row, gi) => (
           <React.Fragment key={gi}>
-            {gi > 0 && <div style={{ width: 2, height: 30, background: ITIHA.red, opacity: 0.6, flex: '0 0 auto' }} />}
+            {gi > 0 && <div style={{ width: 2, height: 30, background: ITIHA.accent, opacity: 0.6, flex: '0 0 auto' }} />}
             <div style={{ display: 'flex', gap: 22, justifyContent: 'center', flexWrap: 'wrap' }}>
               {row.map((nd, ni) => (
                 <div key={ni} style={{
-                  border: `1px solid ${nd.highlight ? ITIHA.red : t.divider}`,
-                  background: nd.highlight ? 'rgba(192,57,43,0.12)' : 'transparent',
+                  border: `1px solid ${nd.highlight ? ITIHA.accent : t.divider}`,
+                  background: nd.highlight ? ITIHA.rgba('accent', 0.12) : 'transparent',
                   padding: '14px 24px', minWidth: 200, textAlign: 'center',
                 }}>
-                  <div style={{ fontFamily: ITIHA.bebas, fontSize: 40, color: t.h1, lineHeight: 1 }}>{nd.name}</div>
+                  <div style={{ ...ITIHA.dfont(40), color: t.h1, lineHeight: 1 }}>{nd.name}</div>
                   {nd.dates && (
-                    <div style={{ fontFamily: ITIHA.sans, fontSize: 14, letterSpacing: 2.5, color: ITIHA.red,
-                                  marginTop: 7, textTransform: 'uppercase', fontWeight: 600 }}>{nd.dates}</div>
+                    <div style={{ fontFamily: ITIHA.text, ...ITIHA.caps(14, '2.5px'), color: ITIHA.accent,
+                                  marginTop: 7, fontWeight: 600 }}>{nd.dates}</div>
                   )}
                   {nd.note && <Body text={nd.note} size={16} maxWidth={260} style={{ marginTop: 6, color: t.muted75 }} />}
                 </div>
@@ -1531,8 +1601,7 @@ function BeforeAfter({ slide, index }) {
   const tag = (text, pos) => (
     <div style={{
       position: 'absolute', ...pos, zIndex: 4,
-      fontFamily: ITIHA.sans, fontWeight: 700, fontSize: 18, letterSpacing: '0.35em',
-      textTransform: 'uppercase', color: ITIHA.white,
+      fontFamily: ITIHA.text, fontWeight: 700, ...ITIHA.caps(18, '0.35em'), color: ITIHA.white,
       background: 'rgba(0,0,0,0.55)', padding: '8px 16px',
     }}>{text}</div>
   );
@@ -1555,8 +1624,8 @@ function BeforeAfter({ slide, index }) {
         <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 3 }}
           preserveAspectRatio="none" viewBox="0 0 100 100">
           {diagonal
-            ? <line x1="62" y1="0" x2="38" y2="100" stroke={ITIHA.red} strokeWidth="0.7" />
-            : <line x1="50" y1="0" x2="50" y2="100" stroke={ITIHA.red} strokeWidth="0.7" />}
+            ? <line x1="62" y1="0" x2="38" y2="100" style={{ stroke: ITIHA.accent }} strokeWidth="0.7" />
+            : <line x1="50" y1="0" x2="50" y2="100" style={{ stroke: ITIHA.accent }} strokeWidth="0.7" />}
         </svg>
         {label_before && tag(label_before, { left: 32, top: 28 })}
         {label_after && tag(label_after, { right: 32, bottom: 28 })}
@@ -1602,7 +1671,7 @@ function DocumentSlide({ slide, index }) {
       </div>
       {quote && (
         <div {...alignBlock(slide, { position: 'absolute', left: 110, right: 110, top: 880,
-                      borderLeft: `3px solid ${ITIHA.red}`, paddingLeft: 26 }, { stretch: true })}>
+                      borderLeft: 'var(--it-bar)', paddingLeft: 'calc(26px * var(--it-bar-k))' }, { stretch: true })}>
           <div className="itiha-pull" style={{ fontSize: quote_size, lineHeight: 1.05 }}>
             {quote.split('\n').map((l, i, a) => <React.Fragment key={i}>{l}{i < a.length - 1 && <br/>}</React.Fragment>)}
           </div>
@@ -1611,8 +1680,7 @@ function DocumentSlide({ slide, index }) {
       )}
       {attribution && (
         <div {...alignBlock(slide, { position: 'absolute', left: 110, right: 110, bottom: 120,
-                      fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 14, letterSpacing: 2.5,
-                      textTransform: 'uppercase', color: t.muted55 }, { stretch: true })}>
+                      fontFamily: ITIHA.text, fontWeight: 600, ...ITIHA.caps(14, '2.5px'), color: t.muted55 }, { stretch: true })}>
           — {attribution}
         </div>
       )}
@@ -1647,9 +1715,9 @@ function Annotated({ slide, index }) {
           return (
             <div key={i} style={{
               position: 'absolute', left: `${x}%`, top: `${y}%`, transform: 'translate(-50%,-50%)',
-              width: marker_size, height: marker_size, borderRadius: '50%', background: ITIHA.red,
+              width: marker_size, height: marker_size, borderRadius: '50%', background: ITIHA.accent,
               border: '2px solid #fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: ITIHA.bebas, fontSize: marker_size * 0.62, color: '#fff', lineHeight: 1,
+              ...ITIHA.dfont(marker_size * 0.62), color: ITIHA.onAccent, lineHeight: 1,
               boxShadow: '0 2px 10px rgba(0,0,0,0.55)',
             }}>{i + 1}</div>
           );
@@ -1660,7 +1728,7 @@ function Annotated({ slide, index }) {
         {callouts.map((c, i) => (
           <div key={i} style={{ display: 'flex', gap: 14, alignItems: 'baseline' }}>
             <span style={{ flex: '0 0 auto', width: 28, height: 28, borderRadius: '50%',
-                           background: ITIHA.red, color: '#fff', fontFamily: ITIHA.bebas, fontSize: 19,
+                           background: ITIHA.accent, color: ITIHA.onAccent, ...ITIHA.dfont(19),
                            display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1,
                            transform: 'translateY(2px)' }}>{i + 1}</span>
             <Body text={c.label} size={20} maxWidth={860} style={{ lineHeight: 1.4 }} />
@@ -1699,8 +1767,8 @@ function Sources({ slide, index }) {
       <div {...alignBlock(slide, { position: 'absolute', left: 72, right: 72, top: headline ? 460 : 360, bottom: 200,
                     display: 'grid', gap: 22, alignContent: 'start', overflow: 'hidden' }, { stretch: true })}>
         {sources.map((s, i) => (
-          <div key={i} style={{ borderTop: `1px solid ${t.divider}`, paddingTop: 16 }}>
-            <div style={{ fontFamily: ITIHA.sans, fontSize: 24, fontWeight: 600, fontStyle: 'italic', color: t.h1, lineHeight: 1.3 }}>{s.title}</div>
+          <div key={i} style={{ borderTop: `var(--it-rule-w) solid ${t.divider}`, paddingTop: 16 }}>
+            <div style={{ fontFamily: ITIHA.text, fontSize: 24, fontWeight: 600, fontStyle: 'italic', color: t.h1, lineHeight: 1.3 }}>{s.title}</div>
             {(s.author || s.detail) && (
               <div className="itiha-meta" style={{ marginTop: 6 }}>
                 {s.author}{s.author && s.detail ? ' · ' : ''}{s.detail}
@@ -1716,7 +1784,7 @@ function Sources({ slide, index }) {
       )}
       {handle && (
         <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 124, right: 72, display: 'flex', alignItems: 'center', gap: 18 }, { stretch: true })}>
-          <span style={{ width: 8, height: 8, background: ITIHA.red }} />
+          <span style={{ width: 8, height: 8, background: ITIHA.accent }} />
           <span className="itiha-sub" style={{ color: t.h1, fontSize: 16 }}>{handle}</span>
         </div>
       )}
@@ -1750,7 +1818,7 @@ function Pyramid({ slide, index }) {
   // content is sized to the band's NARROW edge — the top one — so nothing can
   // ever cross a slope no matter how the text wraps.
   const edgeAt = k => apex_width + (100 - apex_width) * (k / n);   // % width at band boundary k
-  const line = t.isLight ? 'rgba(26,26,26,0.30)' : 'rgba(232,220,200,0.32)';
+  const line = t.isLight ? ITIHA.rgba('onPaper', 0.3) : ITIHA.rgba('fg', 0.32);
   return (
     <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
       {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0.82} position={image_position} zoom={slide.image_zoom} />}
@@ -1781,7 +1849,7 @@ function Pyramid({ slide, index }) {
         <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column' }}>
           {tiers.map((tier, i) => {
             const hot = !!tier.highlight;
-            const ink = hot ? ITIHA.red : (t.isLight ? ITIHA.nearBlack : ITIHA.parchment);
+            const ink = hot ? ITIHA.accent : (t.isLight ? ITIHA.onPaper : ITIHA.fg);
             return (
               <div key={i} style={{
                 flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column',
@@ -1793,11 +1861,11 @@ function Pyramid({ slide, index }) {
                 padding: '0 14px', boxSizing: 'border-box', textAlign: 'center',
               }}>
                 <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 12 }}>
-                  <span style={{ fontFamily: ITIHA.bebas, fontSize: tier_size + 6, color: ink,
+                  <span style={{ ...ITIHA.dfont(tier_size + 6), color: ink,
                                  lineHeight: 1.05, letterSpacing: '.02em' }}>{tier.label}</span>
                   {tier.value != null && tier.value !== '' && (
-                    <span style={{ fontFamily: ITIHA.bebas, fontSize: tier_size + 2,
-                                   color: ITIHA.red, lineHeight: 1 }}>{tier.value}{value_suffix}</span>
+                    <span style={{ ...ITIHA.dfont(tier_size + 2),
+                                   color: ITIHA.accent, lineHeight: 1 }}>{tier.value}{value_suffix}</span>
                   )}
                 </div>
                 {tier.note && (
@@ -1863,13 +1931,12 @@ function Hierarchy({ slide, index }) {
                 without adding information. */}
             {ri > 0 && (
               <div style={{ height: 26, display: 'flex', justifyContent: 'center' }}>
-                <div style={{ width: 2, background: ITIHA.red, opacity: 0.55 }} />
+                <div style={{ width: 2, background: ITIHA.accent, opacity: 0.55 }} />
               </div>
             )}
             {row.label && (
               <div style={{
-                fontFamily: ITIHA.mono, fontSize: 15, letterSpacing: '.22em',
-                textTransform: 'uppercase', color: t.muted40, marginBottom: 8, textAlign: 'center',
+                fontFamily: ITIHA.mono, ...ITIHA.caps(15, '.22em'), color: t.muted40, marginBottom: 8, textAlign: 'center',
               }}>{row.label}</div>
             )}
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center', alignItems: 'stretch' }}>
@@ -1879,18 +1946,18 @@ function Hierarchy({ slide, index }) {
                   <div key={i} style={{
                     flex: row.items.length > 1 ? 1 : '0 1 auto',
                     minWidth: 0,
-                    background: hot ? ITIHA.red : (t.isLight ? '#EFE7D9' : ITIHA.charcoal),
-                    borderTop: `3px solid ${hot ? ITIHA.red : t.divider}`,
+                    background: hot ? ITIHA.accent : (t.isLight ? 'var(--it-paper-raised)' : ITIHA.raised),
+                    borderTop: `3px solid ${hot ? ITIHA.accent : t.divider}`,
                     padding: '14px 16px', textAlign: 'center',
                   }}>
-                    <div style={{ fontFamily: ITIHA.bebas, fontSize: node_size + 6, lineHeight: 1.05,
-                                  color: hot ? ITIHA.white : (t.isLight ? ITIHA.nearBlack : ITIHA.parchment) }}>
+                    <div style={{ ...ITIHA.dfont(node_size + 6), lineHeight: 1.05,
+                                  color: hot ? ITIHA.onAccent : (t.isLight ? ITIHA.onPaper : ITIHA.fg) }}>
                       {nd.name}
                     </div>
                     {nd.note && (
                       <div className="itiha-body" style={{
                         fontSize: Math.round(node_size * 0.6), marginTop: 6, lineHeight: 1.35,
-                        color: hot ? 'rgba(255,255,255,.85)' : t.muted55,
+                        color: hot ? ITIHA.onAccent : t.muted55,
                       }}>{nd.note}</div>
                     )}
                   </div>
@@ -1903,6 +1970,302 @@ function Hierarchy({ slide, index }) {
       {caption && (
         <div style={{ position: 'absolute', left: 72, right: 72, bottom: 150 }}>
           <Body text={caption} size={caption_size} maxWidth={940} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ═══ Comic (2026-09-19) ══════════════════════════════════════════
+// A deliberate break from the cinematic Itiha look, for illustrated
+// "graphic history" decks (first: Vijayanagara food / Amuktamalyada).
+// Newsprint page, inked panel frames, yellow narration boxes, speech
+// bubbles, SFX lettering and starbursts. The art is generated comic
+// panels — reusable character references live under
+// shared/brands/itiha/characters/<era>/<person>/.
+//
+// Page structures (`page`):
+//   full        one panel fills the page (cover / closing), `title` sits
+//               on top of the art in logo lettering
+//   panel-text  image panel + a white text panel (title, body, menu chips)
+//   two         two stacked image panels, each with its own caption
+// Everything is a flex column inside the page margins, so the same slide
+// reflows for square formats. Bubbles, SFX and bursts are free-floating,
+// positioned in % of the slide.
+// Type: tweaks.comicType (per-slide `type_style` wins) — `comic` = Bangers
+// caps + Shantell Sans lettering; `serif` = Cormorant Garamond italic titles
+// and serif narration. SFX, bursts and source tags stay Bangers in both —
+// sound effects have to read as comics. Serif sizes are scaled up (_CX_SERIF_K)
+// because Cormorant's x-height is small, so one YAML works in both.
+const COMIC = {
+  ink: '#15110D',
+  paper: '#F3E6CB',
+  caption: '#FAD65A',
+  white: '#FFFDF7',
+  red: '#C0392B',   // fixed — comic pages keep their own look whatever the deck palette
+  title: "'Bangers', 'Bebas Neue', Impact, sans-serif",
+  letter: "'Shantell Sans', 'DM Sans', system-ui, sans-serif",
+  serif: "'Cormorant Garamond', 'DM Serif Display', Georgia, serif",
+};
+const _CX_SERIF_K = 1.26;
+
+if (typeof document !== 'undefined' && !document.getElementById('itiha-comic-styles')) {
+  const s = document.createElement('style');
+  s.id = 'itiha-comic-styles';
+  s.textContent = `
+    .cx-dots{position:absolute;inset:0;pointer-events:none;
+      background-image:radial-gradient(rgba(21,17,13,.12) 1.7px, transparent 2.1px);background-size:14px 14px}
+    .cx-panel{position:relative;border:7px solid ${COMIC.ink};overflow:hidden;background:#2a2521;min-height:0}
+    .cx-panel > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .cx-cap{position:absolute;z-index:3;background:${COMIC.caption};border:4px solid ${COMIC.ink};
+      box-shadow:6px 6px 0 ${COMIC.ink};padding:14px 20px 16px;font-family:var(--cx-letter);
+      font-weight:600;line-height:1.3;color:${COMIC.ink};text-wrap:pretty}
+    .cx-text{font-family:var(--cx-letter);font-weight:500;color:${COMIC.ink};text-wrap:pretty}
+    .cx-text p, .cx-cap p{margin:0}
+    .cx-text p + p, .cx-cap p + p{margin-top:.55em}
+    .cx-cap .key, .cx-text .key, .cx-bubble .key{color:${COMIC.red};font-weight:800}
+    .cx-title{font-family:var(--cx-title);font-weight:400;letter-spacing:1.5px;line-height:.95;
+      color:${COMIC.ink};text-transform:uppercase;margin:0}
+    .cx-title .accent{color:${COMIC.red}}
+    .cx-logo{color:${COMIC.caption};paint-order:stroke fill;-webkit-text-stroke:var(--cx-stroke,14px) ${COMIC.ink}}
+    .cx-logo .accent{color:#F2552C}
+    .cx-bubble{position:absolute;z-index:4;background:${COMIC.white};border:5px solid ${COMIC.ink};
+      font-family:var(--cx-letter);font-weight:700;color:${COMIC.ink};line-height:1.25;text-align:center;
+      text-transform:uppercase;letter-spacing:.3px;text-wrap:balance}
+    .cx-tag{position:absolute;z-index:3;background:${COMIC.ink};color:${COMIC.caption};font-family:${COMIC.title};
+      letter-spacing:2px;line-height:1;padding:9px 14px 7px;text-transform:uppercase}
+    .cx-chip{display:inline-block;background:${COMIC.white};border:3px solid ${COMIC.ink};
+      box-shadow:4px 4px 0 ${COMIC.ink};padding:6px 14px 8px;font-family:var(--cx-letter);font-weight:600;
+      color:${COMIC.ink};line-height:1.2}
+    .cx-root{--cx-title:${COMIC.title};--cx-letter:${COMIC.letter}}
+    .cx-root.cx-serif{--cx-title:${COMIC.serif};--cx-letter:${COMIC.serif}}
+    .cx-serif .cx-title{text-transform:none;font-style:italic;font-weight:700;letter-spacing:-0.5px;line-height:.9}
+    .cx-serif .cx-cap, .cx-serif .cx-text, .cx-serif .cx-chip{font-weight:600;line-height:1.22}
+    .cx-serif .cx-bubble{text-transform:none;font-weight:700;letter-spacing:0;line-height:1.12}
+    .cx-serif .cx-cap .key, .cx-serif .cx-text .key, .cx-serif .cx-bubble .key{font-weight:700;font-style:italic}
+  `;
+  document.head.appendChild(s);
+}
+
+const _CX_CAP_POS = {
+  'top-left':     { top: 22, left: 22 },
+  'top-right':    { top: 22, right: 22 },
+  'bottom-left':  { bottom: 22, left: 22 },
+  'bottom-right': { bottom: 22, right: 22 },
+  top:            { top: 22, left: 22, right: 22 },
+  bottom:         { bottom: 22, left: 22, right: 22 },
+};
+
+function ComicPanel({ src, position, zoom, caption, captionPos = 'top-left', captionW, captionSize = 32,
+                      tag, tagPos, tagSize = 28, style, k = 1 }) {
+  const isUrl = src && /^https?:\/\//.test(src);
+  const pos = _CX_CAP_POS[captionPos] || _CX_CAP_POS['top-left'];
+  const full = captionPos === 'top' || captionPos === 'bottom';
+  // The tag takes whichever corner the caption leaves free.
+  const tagSide = tagPos ? { ...(_CX_CAP_POS[tagPos] || _CX_CAP_POS['top-right']), left: /left/.test(tagPos) ? 22 : undefined, right: /left/.test(tagPos) ? undefined : 22 }
+                : captionPos === 'top' ? { bottom: 22, right: 22 }
+                : /right/.test(captionPos) ? { top: 22, left: 22 } : { top: 22, right: 22 };
+  return (
+    <div className="cx-panel" style={style}>
+      {src && (
+        <img src={isUrl ? src : `images/${src}`} style={{
+          objectPosition: position || 'center',
+          ...(Number(zoom) > 1 ? { transform: `scale(${Number(zoom)})`, transformOrigin: position || 'center' } : null),
+        }} />
+      )}
+      {caption && (
+        <div className="cx-cap" style={{ ...pos, fontSize: Math.round(captionSize * k),
+          maxWidth: full ? 'none' : (captionW ? captionW : '72%') }}>
+          {renderBody(caption)}
+        </div>
+      )}
+      {tag && (
+        <div className="cx-tag" style={{ ...tagSide, fontSize: tagSize }}>{tag}</div>
+      )}
+    </div>
+  );
+}
+
+// Speech / thought bubble. x,y = bubble centre in % of the slide.
+// tail: bottom-left | bottom-right | top-left | top-right | none
+function ComicBubble({ text, by, x = 50, y = 30, w = 440, size: size0 = 32, tail = 'bottom-left', kind = 'speech', k = 1 }) {
+  const size = Math.round(size0 * k);
+  const thought = kind === 'thought';
+  const down = /^bottom/.test(tail);
+  const right = /right$/.test(tail);
+  return (
+    <div className="cx-bubble" style={{
+      left: `${x}%`, top: `${y}%`, width: w, transform: 'translate(-50%,-50%)',
+      fontSize: size, padding: thought ? '34px 40px' : '20px 28px 22px',
+      borderRadius: thought ? '50%' : 44,
+    }}>
+      {renderBody(text)}
+      {by && <div style={{ marginTop: 10, fontSize: Math.round(size * 0.58), fontWeight: 600,
+        letterSpacing: 1, textTransform: 'none', opacity: 0.75 }}>— {by}</div>}
+      {tail !== 'none' && !thought && (
+        <svg width="60" height="70" viewBox="0 0 60 70" style={{
+          position: 'absolute', overflow: 'visible',
+          [down ? 'top' : 'bottom']: '100%',
+          [right ? 'right' : 'left']: '18%',
+          transform: `${down ? '' : 'scaleY(-1)'} ${right ? 'scaleX(-1)' : ''}`.trim() || undefined,
+          transformOrigin: down ? 'top center' : 'bottom center',
+        }}>
+          <polygon points="0,0 44,0 6,68" fill={COMIC.white} />
+          <polyline points="0,0 6,68 44,0" fill="none" stroke={COMIC.ink} strokeWidth="5" strokeLinejoin="round" />
+        </svg>
+      )}
+      {tail !== 'none' && thought && (
+        <>
+          <div style={{ position: 'absolute', [down ? 'top' : 'bottom']: 'calc(100% + 8px)', [right ? 'right' : 'left']: '22%',
+            width: 34, height: 26, borderRadius: '50%', background: COMIC.white, border: `4px solid ${COMIC.ink}` }} />
+          <div style={{ position: 'absolute', [down ? 'top' : 'bottom']: 'calc(100% + 42px)', [right ? 'right' : 'left']: '16%',
+            width: 20, height: 16, borderRadius: '50%', background: COMIC.white, border: `4px solid ${COMIC.ink}` }} />
+        </>
+      )}
+    </div>
+  );
+}
+
+function ComicSfx({ text, x = 50, y = 50, size = 120, rotate = -8, color = COMIC.caption }) {
+  return (
+    <div style={{
+      position: 'absolute', zIndex: 5, left: `${x}%`, top: `${y}%`,
+      transform: `translate(-50%,-50%) rotate(${rotate}deg)`,
+      fontFamily: COMIC.title, fontSize: size, lineHeight: 0.9, letterSpacing: 2, whiteSpace: 'pre',
+      textAlign: 'center', color, paintOrder: 'stroke fill',
+      WebkitTextStroke: `${Math.max(6, Math.round(size * 0.1))}px ${COMIC.ink}`,
+      textShadow: `${Math.round(size * 0.06)}px ${Math.round(size * 0.06)}px 0 ${COMIC.ink}`,
+    }}>{text}</div>
+  );
+}
+
+// Starburst callout — 16-point star with lettering inside.
+function ComicBurst({ text, x = 80, y = 70, size = 300, rotate = 8, color = COMIC.caption, textSize }) {
+  const N = 16, R = 50, r = 38;
+  const pts = Array.from({ length: N * 2 }, (_, i) => {
+    const rad = (Math.PI * i) / N - Math.PI / 2;
+    const rr = i % 2 ? r : R;
+    return `${(50 + rr * Math.cos(rad)).toFixed(2)},${(50 + rr * Math.sin(rad)).toFixed(2)}`;
+  }).join(' ');
+  return (
+    <div style={{ position: 'absolute', zIndex: 5, left: `${x}%`, top: `${y}%`, width: size, height: size,
+      transform: `translate(-50%,-50%) rotate(${rotate}deg)` }}>
+      <svg viewBox="-4 -4 108 108" width={size} height={size} style={{ position: 'absolute', inset: 0, overflow: 'visible' }}>
+        <polygon points={pts} transform="translate(2.2,2.2)" fill={COMIC.ink} />
+        <polygon points={pts} fill={color} stroke={COMIC.ink} strokeWidth="2" strokeLinejoin="round" />
+      </svg>
+      <div style={{ position: 'absolute', inset: '17%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        textAlign: 'center', fontFamily: COMIC.title, fontSize: textSize || Math.round(size * 0.13), lineHeight: 0.95,
+        letterSpacing: 1, color: COMIC.ink, textTransform: 'uppercase', whiteSpace: 'pre-line' }}>{text}</div>
+    </div>
+  );
+}
+
+function ComicMenu({ title, items, size = 27, k = 1 }) {
+  const list = (Array.isArray(items) ? items : String(items || '').split('\n'))
+    .map(s => String(s).trim()).filter(Boolean);
+  if (!list.length) return null;
+  return (
+    <div style={{ marginTop: 26 }}>
+      {title && <div className="cx-title" style={{ fontSize: 34, color: COMIC.red, letterSpacing: 3, marginBottom: 14 }}>{title}</div>}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px 12px' }}>
+        {list.map((it, i) => (
+          <span key={i} className="cx-chip" style={{ fontSize: Math.round(size * k), transform: `rotate(${[-1.2, 0.8, -0.4, 1.1][i % 4]}deg)` }}>{it}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Comic({ slide, index }) {
+  const {
+    page = 'panel-text', banner, banner_size = 46,
+    title, title_size, title_y = 0, title_align = 'center', kicker, kicker_size = 30,
+    body, body_size = 34, menu, menu_title, menu_size = 27, order = 'image-first',
+    image, image_position, image_zoom, caption, caption_pos, caption_w, caption_size = 32,
+    image_2, image_2_position, image_2_zoom, caption_2, caption_2_pos, caption_2_w,
+    tag, tag_pos, tag_2, tag_2_pos, panel_h = 640, split = 0.5,
+    bubble, bubble_by, bubble_x, bubble_y, bubble_w, bubble_size, bubble_tail, bubble_kind,
+    bubble_2, bubble_2_by, bubble_2_x, bubble_2_y, bubble_2_w, bubble_2_size, bubble_2_tail, bubble_2_kind,
+    sfx, sfx_x, sfx_y, sfx_size, sfx_rotate, sfx_color,
+    sfx_2, sfx_2_x, sfx_2_y, sfx_2_size, sfx_2_rotate, sfx_2_color,
+    burst, burst_x, burst_y, burst_size, burst_rotate, burst_color, burst_text_size,
+  } = slide;
+  const M = 36, G = 22;
+  const tw = useItiha();
+  const serif = (slide.type_style || (tw && tw.comicType) || 'comic') === 'serif';
+  const k = serif ? _CX_SERIF_K : 1;
+
+  const panel1 = (
+    <ComicPanel key="p1" src={image} position={image_position} zoom={image_zoom}
+      caption={caption} captionPos={caption_pos} captionW={caption_w} captionSize={caption_size} tag={tag} tagPos={tag_pos} k={k}
+      style={page === 'panel-text' ? { flex: `0 0 ${panel_h}px` }
+           : page === 'two' ? { flex: `${split} 1 0` } : { flex: '1 1 0' }} />
+  );
+  const logoTitle = page === 'full' && title && (
+    <div style={{ position: 'absolute', zIndex: 4, left: M + 30, right: M + 30, top: M + 34 + Number(title_y),
+      textAlign: title_align }}>
+      {kicker && (
+        <div className="cx-tag" style={{ position: 'relative', display: 'inline-block',
+          fontSize: kicker_size, marginBottom: Math.round(kicker_size * 0.73),
+          background: COMIC.red, color: COMIC.white, border: `4px solid ${COMIC.ink}` }}>{kicker}</div>
+      )}
+      <h1 className="cx-title cx-logo" style={{ fontSize: title_size || 150, letterSpacing: 3, lineHeight: 0.9,
+        '--cx-stroke': `${Math.round((title_size || 150) * 0.11)}px`,
+        textShadow: `${Math.round((title_size || 150) * 0.06)}px ${Math.round((title_size || 150) * 0.06)}px 0 ${COMIC.ink}` }}>
+        {renderHeadline(title)}
+      </h1>
+    </div>
+  );
+  const textPanel = page === 'panel-text' && (
+    <div key="tx" className="cx-panel" style={{ flex: '1 1 0', background: COMIC.white, padding: '30px 40px 34px' }}>
+      {title && <h2 className="cx-title" style={{ fontSize: Math.round((title_size || 78) * (serif ? 1.08 : 1)), marginBottom: 18 }}>{renderHeadline(title)}</h2>}
+      {body && <div className="cx-text" style={{ fontSize: Math.round(body_size * k), lineHeight: serif ? 1.22 : (body_size <= 34 ? 1.42 : 1.34) }}>{renderBody(body)}</div>}
+      <ComicMenu title={menu_title} items={menu} size={menu_size} k={k} />
+    </div>
+  );
+
+  let stack;
+  if (page === 'two') {
+    stack = [panel1, (
+      <ComicPanel key="p2" src={image_2} position={image_2_position} zoom={image_2_zoom}
+        caption={caption_2} captionPos={caption_2_pos || 'bottom-left'} captionW={caption_2_w} captionSize={caption_size}
+        tag={tag_2} tagPos={tag_2_pos} k={k} style={{ flex: `${1 - split} 1 0` }} />
+    )];
+  } else if (page === 'panel-text') {
+    stack = order === 'text-first' ? [textPanel, panel1] : [panel1, textPanel];
+  } else {
+    stack = [panel1];
+  }
+
+  return (
+    <div className={`itiha-slide cx-root${serif ? ' cx-serif' : ''}`} style={{ background: COMIC.paper, color: COMIC.ink }}>
+      <div className="cx-dots" />
+      {slide.texture && <TextureOverlay texture={slide.texture} slide={slide} above />}
+      <div style={{ position: 'absolute', top: M, left: M, right: M, bottom: 92,
+        display: 'flex', flexDirection: 'column', gap: G }}>
+        {banner && (
+          <div className="cx-title" style={{ flex: 'none', background: COMIC.ink, color: COMIC.caption,
+            fontSize: banner_size, letterSpacing: 3, padding: '16px 26px 12px', boxShadow: `6px 6px 0 ${COMIC.red}` }}>
+            {renderHeadline(banner)}
+          </div>
+        )}
+        {stack}
+      </div>
+      {logoTitle}
+      {bubble && <ComicBubble text={bubble} by={bubble_by} x={bubble_x} y={bubble_y} w={bubble_w}
+        size={bubble_size} tail={bubble_tail} kind={bubble_kind} k={k} />}
+      {bubble_2 && <ComicBubble text={bubble_2} by={bubble_2_by} x={bubble_2_x} y={bubble_2_y} w={bubble_2_w}
+        size={bubble_2_size} tail={bubble_2_tail} kind={bubble_2_kind} k={k} />}
+      {sfx && <ComicSfx text={sfx} x={sfx_x} y={sfx_y} size={sfx_size} rotate={sfx_rotate} color={sfx_color} />}
+      {sfx_2 && <ComicSfx text={sfx_2} x={sfx_2_x} y={sfx_2_y} size={sfx_2_size} rotate={sfx_2_rotate} color={sfx_2_color} />}
+      {burst && <ComicBurst text={burst} x={burst_x} y={burst_y} size={burst_size} rotate={burst_rotate}
+        color={burst_color} textSize={burst_text_size} />}
+      <MaybePageNum n={index + 1} color="rgba(21,17,13,0.62)" />
+      {/* Comic pages carry a bigger wordmark than the 24px house stamp. */}
+      {tw && tw.showStamp && (
+        <div className="itiha-stamp" style={{ '--stamp-fg': COMIC.ink, fontSize: 48, letterSpacing: 3, right: 40, bottom: 24 }}>
+          <span className="w">ITIHA</span><span className="d">.</span>
         </div>
       )}
     </div>
@@ -1943,6 +2306,8 @@ window.LAYOUTS = {
   'reel-title': ReelTitle,
   'youtube-thumbnail': YoutubeThumbnail,
   'end-card': EndCard,
+  // Illustrated graphic-history pages (2026-09-19)
+  comic: Comic,
 };
 
 // ═══ BAKE-OFF 2026-08-31 — three experimental cover directions ═══
@@ -1955,9 +2320,9 @@ function XCoverFile({ slide, index }) {
   return (
     <div className="itiha-slide" style={{ background: ITIHA.jet }}>
       <TextureOverlay texture={slide.texture} slide={slide} />
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 10, background: ITIHA.red }} />
-      <div style={{ position: 'absolute', top: 46, left: 56, right: 56, display: 'flex', justifyContent: 'space-between', fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 16, letterSpacing: 3.2, textTransform: 'uppercase', color: 'rgba(232,220,200,0.75)' }}>
-        <span><span style={{ color: ITIHA.red }}>Itiha Archive</span> · File 01 / 15</span>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 10, background: ITIHA.accent }} />
+      <div style={{ position: 'absolute', top: 46, left: 56, right: 56, display: 'flex', justifyContent: 'space-between', fontFamily: ITIHA.text, fontWeight: 600, fontSize: 16, letterSpacing: 3.2, textTransform: 'uppercase', color: 'rgba(232,220,200,0.75)' }}>
+        <span><span style={{ color: ITIHA.accent }}>Itiha Archive</span> · File 01 / 15</span>
         <span>{eyebrow_meta}</span>
       </div>
       <div style={{ position: 'absolute', top: 112, left: 56, right: 56, height: 620, border: '1.5px solid rgba(232,220,200,0.35)', padding: 12, boxSizing: 'border-box' }}>
@@ -1966,16 +2331,16 @@ function XCoverFile({ slide, index }) {
           <div className="itiha-tex itiha-tex--halftone" />
         </div>
       </div>
-      <div style={{ position: 'absolute', top: 752, left: 56, right: 140, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 15, letterSpacing: 2.8, textTransform: 'uppercase', color: 'rgba(232,220,200,0.55)' }}>
-        <span style={{ color: ITIHA.red }}>Plate I</span> · {plate_caption}
+      <div style={{ position: 'absolute', top: 752, left: 56, right: 140, fontFamily: ITIHA.text, fontWeight: 600, fontSize: 15, letterSpacing: 2.8, textTransform: 'uppercase', color: 'rgba(232,220,200,0.55)' }}>
+        <span style={{ color: ITIHA.accent }}>Plate I</span> · {plate_caption}
       </div>
-      <div style={{ position: 'absolute', right: 56, top: 742, width: 62, height: 62, border: `3px solid ${ITIHA.red}`, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.9 }}>
-        <span style={{ fontFamily: '"Noto Serif Devanagari", serif', fontSize: 30, color: ITIHA.red, lineHeight: 1 }}>इ</span>
+      <div style={{ position: 'absolute', right: 56, top: 742, width: 62, height: 62, border: `3px solid ${ITIHA.accent}`, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.9 }}>
+        <span style={{ fontFamily: '"Noto Serif Devanagari", serif', fontSize: 30, color: ITIHA.accent, lineHeight: 1 }}>इ</span>
       </div>
       <div style={{ position: 'absolute', left: 56, right: 56, bottom: 150 }}>
-        <div style={{ fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 18, letterSpacing: 3.6, textTransform: 'uppercase', color: ITIHA.red, marginBottom: 26 }}>{eyebrow}</div>
+        <div style={{ fontFamily: ITIHA.text, fontWeight: 600, fontSize: 18, letterSpacing: 3.6, textTransform: 'uppercase', color: ITIHA.accent, marginBottom: 26 }}>{eyebrow}</div>
         <Headline text={headline} size={100} />
-        {subline && <div style={{ marginTop: 22, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 17, letterSpacing: 2.4, textTransform: 'uppercase', color: 'rgba(232,220,200,0.6)' }}>{subline}</div>}
+        {subline && <div style={{ marginTop: 22, fontFamily: ITIHA.text, fontWeight: 600, fontSize: 17, letterSpacing: 2.4, textTransform: 'uppercase', color: 'rgba(232,220,200,0.6)' }}>{subline}</div>}
       </div>
       <MaybePageNum n={index + 1} color={t.pageNumColor} />
       <MaybeStamp color={t.stampFg} />
@@ -1994,10 +2359,10 @@ function XCoverPlate({ slide, index }) {
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(90% 70% at 50% 40%, transparent 40%, rgba(0,0,0,0.6) 100%)' }} />
         <div style={{ position: 'absolute', left: 56, right: 56, bottom: 110 }}>
           <Headline text={headline} size={110} />
-          {subline && <div style={{ marginTop: 20, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 17, letterSpacing: 2.6, textTransform: 'uppercase', color: 'rgba(232,220,200,0.65)' }}>{subline}</div>}
+          {subline && <div style={{ marginTop: 20, fontFamily: ITIHA.text, fontWeight: 600, fontSize: 17, letterSpacing: 2.6, textTransform: 'uppercase', color: 'rgba(232,220,200,0.65)' }}>{subline}</div>}
         </div>
       </div>
-      <div style={{ position: 'absolute', left: 0, right: 0, bottom: 20, textAlign: 'center', fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 14, letterSpacing: 4, textTransform: 'uppercase', color: 'rgba(232,220,200,0.5)' }}>{eyebrow_meta}</div>
+      <div style={{ position: 'absolute', left: 0, right: 0, bottom: 20, textAlign: 'center', fontFamily: ITIHA.text, fontWeight: 600, fontSize: 14, letterSpacing: 4, textTransform: 'uppercase', color: 'rgba(232,220,200,0.5)' }}>{eyebrow_meta}</div>
       <MaybeStamp color={t.stampFg} />
     </div>
   );
@@ -2013,13 +2378,13 @@ function XCoverScale({ slide, index }) {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(13,13,13,1) 0%, rgba(13,13,13,0.3) 20%, transparent 45%)' }} />
       </div>
       <TextureOverlay texture={slide.texture} slide={slide} />
-      <div style={{ position: 'absolute', top: -60, left: -24, fontFamily: ITIHA.bebas, fontSize: 540, lineHeight: 1, color: 'rgba(232,220,200,0.11)', letterSpacing: -6 }}>{year}</div>
+      <div style={{ position: 'absolute', top: -60, left: -24, ...ITIHA.dfont(540), lineHeight: 1, color: 'rgba(232,220,200,0.11)', letterSpacing: -6 }}>{year}</div>
       <div style={{ position: 'absolute', bottom: 620, left: 32, fontFamily: '"Noto Serif Devanagari", serif', fontSize: 150, color: 'rgba(192,57,43,0.16)', lineHeight: 1 }}>इतिहास</div>
-      <div style={{ position: 'absolute', top: 46, left: 56, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 16, letterSpacing: 3.2, textTransform: 'uppercase', color: 'rgba(232,220,200,0.75)' }}>{eyebrow_meta}</div>
+      <div style={{ position: 'absolute', top: 46, left: 56, fontFamily: ITIHA.text, fontWeight: 600, fontSize: 16, letterSpacing: 3.2, textTransform: 'uppercase', color: 'rgba(232,220,200,0.75)' }}>{eyebrow_meta}</div>
       <div style={{ position: 'absolute', left: 56, bottom: 150, width: '55%' }}>
-        <div style={{ fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 18, letterSpacing: 3.6, textTransform: 'uppercase', color: ITIHA.red, marginBottom: 24 }}>{eyebrow}</div>
+        <div style={{ fontFamily: ITIHA.text, fontWeight: 600, fontSize: 18, letterSpacing: 3.6, textTransform: 'uppercase', color: ITIHA.accent, marginBottom: 24 }}>{eyebrow}</div>
         <Headline text={headline} size={118} />
-        {subline && <div style={{ marginTop: 22, fontFamily: ITIHA.sans, fontWeight: 600, fontSize: 16, letterSpacing: 2.4, textTransform: 'uppercase', color: 'rgba(232,220,200,0.6)', lineHeight: 1.6 }}>{subline}</div>}
+        {subline && <div style={{ marginTop: 22, fontFamily: ITIHA.text, fontWeight: 600, fontSize: 16, letterSpacing: 2.4, textTransform: 'uppercase', color: ITIHA.rgba('fg', 0.6), lineHeight: 1.6 }}>{subline}</div>}
       </div>
       <MaybePageNum n={index + 1} color={t.pageNumColor} />
       <MaybeStamp color={t.stampFg} />

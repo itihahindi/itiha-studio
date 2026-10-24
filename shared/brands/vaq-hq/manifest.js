@@ -205,6 +205,11 @@ window.MANIFEST = {
       { key: "headline",   type: "textarea", label: "Headline", help: "*word* = highlighter emphasis." },
       { key: "subline",    type: "text",     label: "Subline" },
       { key: "credit",     type: "text",     label: "Credit", help: "e.g. via @channel — bottom-right of the panel." },
+      { key: "image",      type: "image",    label: "Card image (optional)",
+        help: "A screenshot or document pinned in the panel under the headline — e.g. the tweet the video answers. Hairline frame, natural height. Needs a tall panel (16:9 clips give ~1312 px)." },
+      { key: "image_width", type: "number",  label: "Card width (px)", default: 720, step: 20,
+        help: "Keep it near the screenshot's own pixel width — a 1× capture blown up to full width goes soft." },
+      { key: "image_caption", type: "text",  label: "Card caption" },
       { key: "headline_style", type: "select", label: "Headline style", options: ["plain", "label"], default: "plain",
         help: "label = sentence-case sans, each line boxed (poster label)." },
       { key: "bursts", type: "array", label: "Starbursts",
@@ -586,7 +591,7 @@ window.MANIFEST_META = {
   fields: [
     { key: "name",    type: "text",     label: "Project name",   help: "Title used internally and on the file system." },
     { key: "format",  type: "select",   label: "Output format",  options: [
-      "instagram-portrait", "instagram-square", "instagram-reel",
+      "instagram-portrait", "instagram-tall", "instagram-square", "instagram-reel",
       "instagram-landscape", "youtube-thumbnail", "youtube-end-card",
     ]},
     { key: "caption", type: "textarea", label: "IG caption" },

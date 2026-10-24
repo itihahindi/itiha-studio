@@ -58,9 +58,9 @@ Layout: cover
 Eyebrow: Series 02
 Eyebrow-Meta: Somnath · 4 Parts
 Headline: |
-  A Temple Older
-  Than The Empire
-  That Came For *It.*
+  A temple older
+  than the empire
+  that came for *it.*
 Subline: 1026 AD · Gujarat
 Swipe-Meta: Swipe ▸ · 4 Slides · 2 min read
 
@@ -68,7 +68,7 @@ Swipe-Meta: Swipe ▸ · 4 Slides · 2 min read
 Layout: story
 Chapter: Chapter 02 · The March
 Headline: |
-  The March Of
+  The march of
   *Mahmud.*
 Body: |
   In the winter of [1025-26], Mahmud of Ghazni turned south with a column of thirty thousand. He had crossed the [Thar] before. He had not crossed it for a temple.
@@ -77,8 +77,8 @@ Body: |
 Layout: stat
 Chapter: Chapter 03 · The Treasury
 Headline: |
-  The Gold
-  Of *Somnath.*
+  The gold
+  of *Somnath.*
 Stats:
   - Label: Recorded by Al-Biruni
     Value: 20 tons
@@ -93,8 +93,8 @@ Body: |
 ## Slide 4
 Layout: closing
 Headline: |
-  The Stone That
-  Broke An *Empire.*
+  The stone that
+  broke an *empire.*
 Body: |
   [Somnath] is now a pilgrimage site again. The story the [Ghaznavid] scribes recorded was not the story the temple remembered.
 Handle: Follow @itiha29 · itiha.info
@@ -110,8 +110,8 @@ Handle: Follow @itiha29 · itiha.info
 Layout: timeline
 Chapter: Chapter 03 · The Sequence
 Headline: |
-  A Hundred Years
-  Of *Plunder.*
+  A hundred years
+  of *plunder.*
 Items:
   - Date: 1025
     Headline: "*Somnath* sacked"
@@ -127,8 +127,8 @@ Items:
 Layout: map
 Chapter: Chapter 04 · The Geography
 Headline: |
-  The Three
-  *Strongholds.*
+  The three
+  *strongholds.*
 Markers:
   - X: 28
     Y: 40
@@ -148,8 +148,8 @@ Caption: Three nodes on the same overland route, struck across a [century].
 Layout: pie-chart
 Chapter: Chapter 02 · The Treasury
 Headline: |
-  Where The *Revenue*
-  Came From.
+  Where the *revenue*
+  came from.
 Segments:
   - Label: Land tax
     Value: 62
@@ -164,8 +164,8 @@ Caption: Most of the [East India Company's] income was drawn from the land it ta
 Layout: line-graph
 Chapter: Chapter 05 · The Drain
 Headline: |
-  Indian Cotton
-  *Exports* Collapse.
+  Indian cotton
+  *exports* collapse.
 Y-Suffix: M
 Points:
   - Label: 1820
@@ -182,8 +182,8 @@ Caption: Measured in [million pounds] - British mill competition gutted the [han
 Layout: bar-chart
 Chapter: Chapter 02 · The Toll
 Headline: |
-  Famine Deaths
-  By *Decade.*
+  Famine deaths
+  by *decade.*
 Value-Suffix: M
 Bars:
   - Label: 1770s
@@ -201,7 +201,7 @@ Layout: dynasty
 Chapter: Chapter 04 · The Line
 Headline: |
   The *Mughal*
-  Succession.
+  succession.
 Nodes:
   - Name: Babur
     Dates: 1526-30
@@ -216,8 +216,8 @@ Nodes:
 ## Slide N
 Layout: did-you-know
 Headline: |
-  Printing Reached India
-  In *1556.*
+  Printing reached India
+  in *1556.*
 Body: |
   It arrived with [Jesuit] priests at the [Portuguese] mission in Goa, which printed a Tamil _Cartilha_ within a [century] of Gutenberg.
 Source: A. K. Priolkar, The Printing Press In India
@@ -226,7 +226,7 @@ Source: A. K. Priolkar, The Printing Press In India
 Layout: document
 Chapter: Chapter 03 · The Record
 Headline: |
-  In His Own *Hand.*
+  In his own *hand.*
 Image: aurangzeb-farman.jpg
 Quote: |
   Let the temple be demolished, and a mosque
@@ -238,7 +238,7 @@ Attribution: Maasir-i-Alamgiri, c. 1710 · trans. Jadunath Sarkar
 Layout: annotated
 Chapter: Chapter 05 · The Scene
 Headline: |
-  Reading The *Durbar.*
+  Reading the *durbar.*
 Image: bahadur-shah-durbar.jpg
 Callouts:
   - X: 30
@@ -255,7 +255,7 @@ Callouts:
 Layout: sources
 Eyebrow: Sources
 Headline: |
-  The *Record.*
+  The *record.*
 Sources:
   - Title: Maasir-i-Alamgiri
     Author: Saqi Mustaad Khan

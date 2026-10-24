@@ -116,11 +116,15 @@ function BoolInput({ value, onChange }) {
   );
 }
 
+// Options are plain strings, or { value, label } when the stored value needs a
+// friendlier name in the picker (e.g. '' = "Same as deck Mode").
 function SelectInput({ value, onChange, options }) {
   return (
     <select value={value ?? ''} onChange={e => onChange(e.target.value)}
       style={{ ...inputBase, font: '13px "DM Sans", system-ui', cursor: 'pointer' }}>
-      {options.map(o => <option key={o} value={o}>{o}</option>)}
+      {options.map(o => typeof o === 'object'
+        ? <option key={o.value} value={o.value}>{o.label}</option>
+        : <option key={o} value={o}>{o}</option>)}
     </select>
   );
 }
@@ -945,6 +949,58 @@ function SlideForm({ slide, slideIndex, onChange, content, setContent }) {
   );
 }
 
+// ── Quick switches (pinned under the tab bar) ─────────────────
+// A brand pack can pin a few deck tweaks to the top of the panel as segmented
+// buttons via MANIFEST_TWEAKS.quick — Itiha uses it for its palette A/B
+// (palette + light/dark mode). Each option may carry a colour `swatch`, a
+// `muted` flag (shown smaller, for legacy choices) and a `hint(tweaks)` line.
+// `current(tweaks)` reports what the deck actually renders with, so an unset
+// tweak still lights the right button. Packs without `quick` get nothing.
+function QuickSwitches({ content, setContent }) {
+  const groups = (window.MANIFEST_TWEAKS && window.MANIFEST_TWEAKS.quick) || [];
+  if (!groups.length) return null;
+  const tw = content.tweaks || {};
+  const setTweak = (key, v) => setContent({ ...content, tweaks: { ...tw, [key]: v } });
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 18px', padding: '12px 18px', borderBottom: '1px solid #2c2c2c', background: '#070707' }}>
+      {groups.map(g => {
+        const cur = g.current ? g.current(tw) : tw[g.key];
+        return (
+          <div key={g.key} style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 0 }}>
+            <div style={{ fontSize: 10, letterSpacing: 1.6, textTransform: 'uppercase', color: '#777', fontWeight: 600 }}>{g.label}</div>
+            <div role="radiogroup" aria-label={g.label} style={{ display: 'flex', border: '1px solid #2c2c2c' }}>
+              {g.options.map(o => {
+                const on = cur === o.value;
+                const hint = o.hint ? o.hint(tw) : '';
+                return (
+                  <button key={o.value} type="button" role="radio" aria-checked={on}
+                    onClick={() => setTweak(g.key, o.value)}
+                    title={hint || o.label}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 7,
+                      padding: o.muted ? '7px 9px' : '7px 12px', border: 0, cursor: 'pointer',
+                      borderLeft: '1px solid #2c2c2c', marginLeft: -1,
+                      background: on ? '#E8DCC8' : 'transparent', color: on ? '#0a0a0a' : (o.muted ? '#666' : '#cfc6b6'),
+                      font: `${o.muted ? 11 : 12}px "DM Sans", system-ui`, fontWeight: 700,
+                    }}>
+                    {o.swatch && (
+                      <span aria-hidden="true" style={{ display: 'flex', border: '1px solid rgba(255,255,255,.25)' }}>
+                        {o.swatch.map(c => <span key={c} style={{ width: 8, height: 14, background: c }} />)}
+                      </span>
+                    )}
+                    <span>{o.label}</span>
+                    {hint && <span style={{ fontWeight: 500, opacity: 0.7 }}>{hint}</span>}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // ── Top-level (project) form ──────────────────────────────────
 
 function MetaForm({ content, onChange }) {
@@ -1285,7 +1341,8 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
       const r = await fetch('api/render', { method: 'POST' });
       if (!r.ok) throw new Error(await r.text());
       const result = await r.json();
-      setRenderState({ phase: 'done', count: result.count, output_dir: result.output_dir });
+      setRenderState({ phase: 'done', count: result.count, output_dir: result.output_dir,
+                       warnings: result.warnings || [] });
     } catch (e) {
       setRenderState({ phase: 'error', msg: String(e.message || e) });
     }
@@ -1399,6 +1456,8 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
         ))}
       </div>
 
+      <QuickSwitches content={content} setContent={setContent} />
+
       {tab === 'slide' && (
         <SlideStrip slides={content.slides} current={currentIdx} dims={content.format_dims}
           onPick={setCurrentIdx} onAdd={addSlide} onDuplicate={duplicateSlide}
@@ -1416,6 +1475,31 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
           <PasteTab content={content} setContent={setContent} setCurrentIdx={setCurrentIdx} />
         )}
       </div>
+
+      {/* Layout warnings from the render-time overflow probe: text past the
+          frame, clipped inside its box, or sitting on top of other text. */}
+      {renderState.phase === 'done' && (renderState.warnings || []).length > 0 && (
+        <div style={{
+          padding: '10px 14px', background: 'rgba(224,160,50,0.12)',
+          borderTop: '1px solid #2c2c2c', fontSize: 12, color: '#e8c583', letterSpacing: 0.3,
+        }}>
+          <div style={{ fontWeight: 600, marginBottom: 6 }}>
+            ⚠ {renderState.warnings.length} layout warning{renderState.warnings.length === 1 ? '' : 's'}
+          </div>
+          {renderState.warnings.slice(0, 5).map((w, i) => (
+            <div key={i} style={{ opacity: 0.9, lineHeight: 1.5 }}>
+              slide {String(w.slide).padStart(2, '0')} · {
+                w.kind === 'clipped' ? `box clips ${w.px}px of its text`
+                : w.kind === 'overlaps' ? 'text overlaps text'
+                : `text runs ${w.kind.replace('past-', 'past the ')} edge by ${w.px}px`
+              } — "{w.text}"
+            </div>
+          ))}
+          {renderState.warnings.length > 5 && (
+            <div style={{ opacity: 0.7 }}>…and {renderState.warnings.length - 5} more</div>
+          )}
+        </div>
+      )}
 
       {renderState.phase === 'done' && (
         <div style={{

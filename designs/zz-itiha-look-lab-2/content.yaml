@@ -1,0 +1,172 @@
+name: Itiha look lab 2
+brand: itiha
+format: instagram-portrait
+caption: Layout stress test for the 2026-10 Itiha redesign. Not for publishing.
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  seriesLabel: SOMNATH
+  emphasisV2: true
+slides:
+- layout: timeline
+  headline: 'A Hundred Years
+
+    Of *Plunder*
+
+    '
+  items:
+  - date: '1025'
+    headline: '*Somnath* sacked'
+    body: Mahmud razes the temple; the lingam is shipped to [Ghazni].
+  - date: '1175'
+    headline: '*Multan* annexed'
+    body: Ghurid expansion turns the northwest into a permanent corridor.
+  - date: '1192'
+    headline: '*Tarain* falls'
+    body: Prithviraj is defeated; the [Delhi Sultanate] is two years away.
+- layout: pie-chart
+  theme: dark
+  headline: 'Where The *Revenue*
+
+    Came From
+
+    '
+  segments:
+  - label: Land tax
+    value: 62
+  - label: Customs and trade
+    value: 21
+  - label: Salt monopoly
+    value: 17
+  center_label: '1858'
+  caption: Most of the [East India Company's] income was drawn from the land it taxed.
+- layout: line-graph
+  headline: 'Indian Cotton
+
+    *Exports* Collapse
+
+    '
+  y_suffix: M
+  points:
+  - label: '1820'
+    value: 42
+  - label: '1840'
+    value: 31
+  - label: '1860'
+    value: 18
+  - label: '1880'
+    value: 9
+  caption: Measured in [million pounds]. British mill competition gutted the [handloom] trade.
+- layout: bar-chart
+  theme: dark
+  headline: 'Famine Deaths
+
+    By *Decade*
+
+    '
+  value_suffix: M
+  bars:
+  - label: 1770s
+    value: 10
+  - label: 1870s
+    value: 6
+  - label: 1890s
+    value: 5
+  - label: 1940s
+    value: 3
+  caption: Each [million] is an estimate drawn from [colonial revenue records].
+- layout: dynasty
+  headline: 'The *Mughal*
+
+    Succession
+
+    '
+  nodes:
+  - name: Babur
+    dates: 1526-30
+  - name: Humayun
+    dates: 1530-56
+  - name: Akbar
+    dates: 1556-1605
+    highlight: true
+  - name: Jahangir
+    dates: 1605-27
+- layout: did-you-know
+  theme: dark
+  headline: 'Printing Reached India
+
+    In *1556*
+
+    '
+  body: 'It arrived with [Jesuit] priests at the [Portuguese] mission in Goa, which printed a Tamil _Cartilha_ within a [century] of Gutenberg.
+
+    '
+  source: A. K. Priolkar, The Printing Press In India
+- layout: comparison
+  headline: 'Myth And
+
+    *Record*
+
+    '
+  left_label: The myth
+  left_headline: A single raid
+  left_body: Somnath is remembered as one catastrophic sack in [1026].
+  right_label: The record
+  right_headline: Seventeen raids
+  right_body: Mahmud crossed into India [seventeen times] between 1000 and 1027.
+- layout: stat
+  headline: 'The Gold
+
+    Of *Somnath*
+
+    '
+  stats:
+  - label: Recorded by Al-Biruni
+    value: 20 tons
+    sublabel: Silver, gold, jewels removed
+  - label: Witnesses count
+    value: Higher.
+    value_red: true
+    sublabel: Sources suggest under-reporting
+  body: 'The treasury at Somnath rivalled the [Mughal] capital five centuries later, and [twenty tons] is the conservative estimate.
+
+    '
+- layout: sources
+  theme: dark
+  eyebrow: Sources
+  headline: 'The *Record*
+
+    '
+  sources:
+  - title: Maasir-i-Alamgiri
+    author: Saqi Mustaad Khan
+    detail: trans. Jadunath Sarkar, 1947
+  - title: A History of Aurangzib
+    author: Jadunath Sarkar
+    detail: 5 vols., 1912-24
+  handle: Follow @itiha29 · itiha.info
+- layout: closing
+  headline: 'The Stone That
+
+    Broke An *Empire*
+
+    '
+  stats:
+  - value: '1026'
+    label: The raid
+  - value: '1951'
+    label: Rebuilt
+  - value: 17
+    label: Raids in all
+  body: '[Somnath] is now a pilgrimage site again. The story the [Ghaznavid] scribes recorded was not the story the temple remembered.
+
+    '
+  handle: Follow @itiha29 · itiha.info
+- layout: cta-red
+  headline: 'Which Raid
+
+    Should We *Map* Next?
+
+    '
+  cta: Comment below

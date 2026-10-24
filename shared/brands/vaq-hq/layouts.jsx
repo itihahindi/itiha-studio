@@ -511,7 +511,17 @@ function ClosingSlide({ slide, index }) {
           <div className="vaq-measure" style={{ marginTop: 64, maxWidth: 840 }}>
             <div style={{ fontFamily: sFont, fontWeight: 600, fontSize: headline_size,
               lineHeight: 1.12, letterSpacing: '-.015em', color: ink.head, textWrap: 'balance' }}>
-              {String(headline).split('\n').map((l, i) => <div key={i}>{l}</div>)}
+              {/* The closing sets its own serif signature type rather than
+                  VHeadline's Archivo caps, so it has to parse `*word*` itself.
+                  Emphasis is the same print-refresh device: serif italic in
+                  orange, here already inside the serif. */}
+              {String(headline).split('\n').map((l, i) => (
+                <div key={i}>{l.split(/(\*[^*]+\*)/g).filter(Boolean).map((p, j) => (
+                  p.startsWith('*') && p.endsWith('*') && p.length > 2
+                    ? <span key={j} style={{ fontStyle: 'italic', color: VAQ.orange }}>{p.slice(1, -1)}</span>
+                    : <React.Fragment key={j}>{p}</React.Fragment>
+                ))}</div>
+              ))}
             </div>
           </div>
         )}
@@ -587,10 +597,11 @@ function ReelFrameSlide({ slide, index }) {
   const t = useTweaks();
   const v = verticalFor(slide, t);
   const surface = surfaceFor(slide, v, 'light');
+  const ink = inkFor(v, surface);
   const {
     headline = '', subline, kicker_meta, texture, credit, video_url, video_file,
     panel_height = 560, panel_fade = 120, headline_size = 66, headline_offset_y = 0,
-    headline_style, bursts,
+    headline_style, bursts, image, image_width = 720, image_caption,
   } = slide;
   const isLabel = headline_style === 'label';
   return (
@@ -623,6 +634,22 @@ function ReelFrameSlide({ slide, index }) {
                 marginTop: 26, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 34,
                 lineHeight: 1.4, color: VAQ.bodyL, maxWidth: 900,
               }}>{subline}</div>
+            )}
+            {/* Optional pinned card: the post or document the video answers
+                (a tweet screenshot, a letter). Hairline frame at natural height,
+                so a tall panel over a 16:9 clip has something to carry. */}
+            {image && (
+              <div style={{ marginTop: 40 }}>
+                <div style={{ width: image_width, maxWidth: '100%', border: `1px solid ${ink.hair}`,
+                  background: ink.well, lineHeight: 0 }}>
+                  <img src={image.startsWith('http') ? image : `images/${image}`}
+                    style={{ width: '100%', display: 'block' }} />
+                </div>
+                {image_caption && (
+                  <div style={{ marginTop: 14, fontFamily: metaFontFor(v), fontSize: 20,
+                    letterSpacing: '.08em', textTransform: 'uppercase', color: ink.muted }}>{image_caption}</div>
+                )}
+              </div>
             )}
           </div>
         </div>

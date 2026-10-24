@@ -1,0 +1,189 @@
+name: Itiha look lab
+brand: itiha
+format: instagram-portrait
+caption: Palette and type test deck for the 2026-10 Itiha redesign. Not for publishing.
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 75
+  seriesLabel: G. S. Sardesai
+  emphasisV2: true
+slides:
+- layout: cover
+  headline: 'G. S. Sardesai Opened
+
+    The *Peshwa* Archives
+
+    '
+  image: cover-sardesai-black.jpg
+  image_overlay: 0
+  texture: none
+  headline_size: 125
+  headline_offset_y: 470
+  theme: dark
+- layout: split-story
+  chapter: Chapter 01 · The Problem
+  headline: '27,000 Bundles
+
+    In *Modi* Script
+
+    '
+  body: 'The records of the Peshwas sat in the Alienation Office at Poona. Sardesai counted over [27,000 bundles] in Marathi, written in the Modi script, and about 8,000 files in English. Few scholars could
+    read the older Modi hand.
+
+    '
+  image: peshwa-accounts.jpg
+  image_position: 50% 45%
+  image_overlay: 0.9
+  headline_size: 92
+  body_size: 42
+  body_y: 46
+- layout: portrait
+  chapter: Chapter 02 · The Chronicler
+  image: sardesai-1938.jpg
+  image_position: 50% 12%
+  image_zoom: 1.3
+  name: 'G. S.
+
+    Sardesai
+
+    '
+  dates: 17 May 1865 – 29 Nov 1959
+  role: Schooled in Ratnagiri, with college in Pune and Bombay. Joined the Baroda state service in [1889] and became secretary to [Maharaja Sayajirao Gaekwad III], then tutor to the princes. His Marathi
+    histories, the Riyasats, gave him the name [Riyasatkar].
+  name_size: 112
+  body_size: 40
+  headline_offset_y: -140
+- layout: quote
+  chapter: Chapter 04 · The Letter
+  headline: 'A Letter From
+
+    *Jadunath Sarkar*
+
+    '
+  quote: 'I cannot close without acknowledging the great debt I owe to Sir Jadunath Sarkar, my lifelong friend and fellow-worker in history.
+
+    '
+  attribution: Sardesai, preface to The Main Currents of Maratha History, 1949
+  body: 'In [1904] Sarkar wrote to him at Baroda. He wanted Maratha papers for his work on Aurangzeb and offered Persian ones in return. Sardesai did not know Persian. They exchanged sources for [more than
+    fifty years].
+
+    '
+  image: sarkar.jpg
+  image_position: 50% 30%
+  image_overlay: 0.88
+  quote_size: 40
+  body_size: 42
+  headline_offset_y: -40
+- layout: stat
+  image: nizam-osman-ali-1926.jpg
+  image_position: 50% 20%
+  stat_size: 120
+  stats_offset_y: -130
+  headline: '*11%* Ruled
+
+    The *89%*
+
+    '
+  body: 'The seventh Nizam, [Mir Osman Ali Khan], was reputed the richest man alive. His administration placed every lever of power in the hands of an eleven per cent minority. The majority lived, in Ramananda
+    Tirtha''s phrase, under [a slave mentality].
+
+    '
+  stats:
+  - label: Ruling minority
+    value: 11%
+    sublabel: full administrative control
+  - label: Ruled majority
+    value: 89%
+    value_red: true
+    sublabel: locked out of office
+  - label: Nominated feudal seats
+    value: 56
+    value_red: true
+    sublabel: Ayyangar scheme
+- layout: split-story
+  chapter: Chapter 03 · Baroda
+  headline: 'Thirty-Six Years
+
+    In *Baroda*
+
+    '
+  body: 'The Maharaja''s library gave him books and historical papers. In Baroda he wrote the Riyasats in Marathi: [eight volumes] on the Marathas, three on the Muslim period and two on the British. He
+    retired in 1925 and settled at Kamshet, near Pune.
+
+    '
+  image: sayajirao-1919.jpg
+  image_position: 50% 25%
+  image_overlay: 0.8
+  headline_size: 92
+  body_size: 45
+  body_y: 46
+  theme: light
+- layout: document
+  chapter: Chapter 05 · Reading Modi
+  headline: 'Read It A
+
+    *Dozen* Times
+
+    '
+  image: modi-bajirao.jpg
+  image_position: 50% 40%
+  quote: 'One has to read a paper of that age more than a dozen times, sometimes to show it to various other people in order to see if they could decipher some of the difficult words or letters correctly.
+
+    '
+  attribution: Sardesai, The Main Currents of Maratha History, 3rd ed., 1949
+  quote_size: 38
+- layout: story
+  image: hsc-meeting-1940s.jpg
+  image_bw: true
+  headline: 'He Took *Sanyasa*
+
+    And Went To Work
+
+    '
+  body: '[Ramananda Tirtha] took the vow in the tradition of Swami Rama and refused the forest. He joined the [Hyderabad State Congress] and built it into the organising body of the resistance. His renunciation
+    became [public work] for equal rights for the majority in a theocratic state.'
+  image_overlay: 0.8
+- layout: numbered-list
+  chapter: Chapter 07 · Read Him
+  headline: 'His *Books*
+
+    '
+  image: plate-modi.jpg
+  image_overlay: 0
+  items:
+  - number: '1'
+    headline: New History of the Marathas
+    body: Three volumes in English, written at [eighty].
+  - number: '2'
+    headline: The Main Currents of Maratha History
+    body: His Patna University lectures of [1926].
+  - number: '3'
+    headline: Selections from the Peshwa Daftar
+    body: Forty-five volumes from the Peshwas' own papers.
+  item_size: 42
+  number_size: 50
+  body_offset_y: -190
+  theme: dark
+- layout: cover
+  cover_style: red
+  headline: 'A *Monk*
+
+    Against The Richest
+
+    *King* On Earth
+
+    '
+  headline_size: 120
+  headline_offset_y: 250
+  subline: Ramananda Tirtha vs. the seventh Nizam of Hyderabad
+  subline_size: 30
+- layout: closing
+  headline: 'He Read The
+
+    *Peshwas* Twice
+
+    '
+  body: Sardesai examined almost [35,000 documents] and published [45 volumes]. The Modi script is still read today because he did the work first.
+  handle: Follow @itiha29 · itiha.info

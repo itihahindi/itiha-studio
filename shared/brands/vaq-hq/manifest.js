@@ -591,7 +591,7 @@ window.MANIFEST_META = {
   fields: [
     { key: "name",    type: "text",     label: "Project name",   help: "Title used internally and on the file system." },
     { key: "format",  type: "select",   label: "Output format",  options: [
-      "instagram-portrait", "instagram-square", "instagram-reel",
+      "instagram-portrait", "instagram-tall", "instagram-square", "instagram-reel",
       "instagram-landscape", "youtube-thumbnail", "youtube-end-card",
     ]},
     { key: "caption", type: "textarea", label: "IG caption" },

@@ -5,6 +5,14 @@
 //   2. Add an entry here.
 // The editor picks it up automatically.
 
+// Per-slide override of the deck's Mode switch (tweaks.theme). '' is stored
+// when the slide follows the deck, so flipping Mode moves it with the rest.
+const SLIDE_GROUND = [
+  { value: "",      label: "Same as deck Mode" },
+  { value: "dark",  label: "Dark · this slide only" },
+  { value: "light", label: "Light · this slide only" },
+];
+
 window.MANIFEST = {
 
   // ─── Carousel layouts ────────────────────────────────────────
@@ -13,7 +21,7 @@ window.MANIFEST = {
     label: "Cover",
     summary: "Opening slide — image, eyebrow, big headline, swipe meta.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark", help: "Light = off-white background, near-black text." },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "cover_style",   type: "select",   label: "Cover style",    options: ["","red"], default: "", help: "red = Sindoor ground, white headline, ink accents. Image sits on the red with no veil — use a red-toned plate." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
@@ -27,7 +35,7 @@ window.MANIFEST = {
       { key: "swipe_meta",    type: "text",     label: "Footer meta",    help: "e.g. \"Swipe ▸ · 9 Slides · 4 min read\"" },
       { key: "image",         type: "image",    label: "Cover image" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop",  help: "Drag the sliders to reposition the image inside its frame. 0/0 = top-left, 50/50 = center." },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  step: 0.05 },
@@ -40,7 +48,7 @@ window.MANIFEST = {
     label: "Story",
     summary: "Image + a single text block (eyebrow, divider, headline, optional body).",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark", help: "Light = off-white background, near-black text." },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -51,7 +59,7 @@ window.MANIFEST = {
       { key: "block_y",       type: "select",   label: "Text position",   options: ["top","middle","bottom"], default: "bottom", help: "Superseded by Align ↕ when Align ↕ is set." },
       { key: "image",         type: "image",    label: "Image" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop" },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",   step: 0.05 },
@@ -65,7 +73,7 @@ window.MANIFEST = {
     label: "Split Story",
     summary: "Headline pinned high, body pinned low — image fills between them.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -75,7 +83,7 @@ window.MANIFEST = {
       { key: "body",          type: "textarea", label: "Body" },
       { key: "image",         type: "image",    label: "Image" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop",  help: "Drag the sliders to reposition the image inside its frame. 0/0 = top-left, 50/50 = center." },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0, step: 0.05 },
@@ -90,7 +98,7 @@ window.MANIFEST = {
     label: "Pull Quote",
     summary: "Serif quote under a giant red quote mark — optional headline up top, body below, die-cut author strip along the bottom. Same component as Quote Card.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -105,7 +113,7 @@ window.MANIFEST = {
       { key: "body",          type: "textarea", label: "Body" },
       { key: "image",         type: "image",    label: "Background image" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "text_y",        type: "number",   label: "Quote anchor Y (%)", help: "Blank = bottom-anchored (carousel classic). Set 35–55 for a card-style centered quote." },
       { key: "quote_size",    type: "number",   label: "Quote size (px)", default: 56 },
       { key: "body_size",     type: "number",   label: "Body size (px)",  default: 42 },
@@ -118,7 +126,7 @@ window.MANIFEST = {
     label: "Stat Comparison",
     summary: "Two-column number comparison with optional supporting body.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -138,7 +146,7 @@ window.MANIFEST = {
       { key: "body",          type: "textarea", label: "Body (below)" },
       { key: "image",         type: "image",    label: "Background image" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop",  help: "Drag the sliders to reposition the image inside its frame. 0/0 = top-left, 50/50 = center." },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)", default: 0.82, step: 0.05 },
@@ -155,7 +163,7 @@ window.MANIFEST = {
     label: "Dates Grid",
     summary: "2×2 grid of (date, fact) cells.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -172,7 +180,7 @@ window.MANIFEST = {
       },
       { key: "image",         type: "image",    label: "Background image" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop",  help: "Drag the sliders to reposition the image inside its frame. 0/0 = top-left, 50/50 = center." },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)", default: 0.84, step: 0.05 },
@@ -187,7 +195,7 @@ window.MANIFEST = {
     label: "Closing",
     summary: "Final slide: big headline, horizontal stats row, body, follow handle.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "", help: "Overlay style. Combine multiple with comma: \"grain,vignette\"." },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -206,7 +214,7 @@ window.MANIFEST = {
       { key: "handle",        type: "text",     label: "Follow handle",  help: "e.g. \"Follow @itiha29 · itiha.info\"" },
       { key: "image",         type: "image",    label: "Background image" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop",  help: "Drag the sliders to reposition the image inside its frame. 0/0 = top-left, 50/50 = center." },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)", default: 0.82, step: 0.05 },
@@ -221,7 +229,7 @@ window.MANIFEST = {
     label: "Numbered List",
     summary: "Vertical list of 3–5 items with big Bebas numerals. For \"N reasons / N truths\" slides.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -239,7 +247,7 @@ window.MANIFEST = {
       },
       { key: "image",         type: "image",    label: "Background image (optional)" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop",  help: "Drag the sliders to reposition the image inside its frame. 0/0 = top-left, 50/50 = center." },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.85, step: 0.05 },
@@ -255,7 +263,7 @@ window.MANIFEST = {
     label: "Comparison",
     summary: "Two-column side-by-side. For myth-vs-reality / claim-vs-counter slides.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -269,7 +277,7 @@ window.MANIFEST = {
       { key: "right_body",    type: "textarea", label: "Right · body" },
       { key: "image",         type: "image",    label: "Background image (optional)" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop",  help: "Drag the sliders to reposition the image inside its frame. 0/0 = top-left, 50/50 = center." },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.9, step: 0.05 },
@@ -285,14 +293,14 @@ window.MANIFEST = {
     label: "Hero Portrait",
     summary: "Subject-focused slide. Image on left half · big name in Bebas · dates · role · optional pull quote.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "image",         type: "image",    label: "Portrait image",  help: "Best with a BG-removed PNG or a tight portrait crop." },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.15, step: 0.05 },
       { key: "image_position",type: "image-position", label: "Image crop" },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
@@ -320,7 +328,7 @@ window.MANIFEST = {
       { key: "body",          type: "textarea", label: "Body" },
       { key: "image",         type: "image",    label: "Image (optional)", help: "Best with a bg-removed PNG so the subject sits cleanly on off-white." },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0, step: 0.05, help: "Keep at 0 for clean BG-removed PNGs." },
       { key: "image_position",type: "image-position", label: "Image crop" },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
@@ -341,7 +349,7 @@ window.MANIFEST = {
       { key: "cta",           type: "text",     label: "CTA line",       help: "e.g. \"↗ Link in bio · @itiha29\"" },
       { key: "image",         type: "image",    label: "Image (optional)", help: "Subtle photo behind the red. Set overlay high (0.85+) to keep red dominant." },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.85, step: 0.05 },
       { key: "image_position",type: "image-position", label: "Image crop" },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
@@ -363,7 +371,7 @@ window.MANIFEST = {
       { key: "channel_label", type: "text",     label: "Channel label",  default: "Itiha Documentaries" },
       { key: "cta",           type: "text",     label: "CTA",            default: "Watch on YouTube", help: "The word \"YouTube\" lights up in Sindoor red." },
       { key: "handle",        type: "text",     label: "Channel handle", help: "Blank = nothing shown under the CTA." },
-      { key: "url_label",     type: "text",     label: "URL label",      help: "Optional. e.g. \"youtube.com/@itihahindi\"." },
+      { key: "url_label",     type: "text",     label: "URL label",      help: "Optional. e.g. \"youtube.com/@itiha\"." },
       { key: "headline_size", type: "number",   label: "Video title size (px)", default: 84 },
       { key: "cta_size",      type: "number",   label: "CTA size (px)",  default: 64 },
       { key: "headline_offset_y", type: "number", label: "Block offset Y (px)", default: 0, step: 10, help: "Nudge the thumbnail + title block down (positive) or up (negative)." },
@@ -374,7 +382,7 @@ window.MANIFEST = {
     label: "Timeline",
     summary: "Vertical timeline — red axis with dated events. For dynasty progressions, conquest dates, indenture timelines.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -392,7 +400,7 @@ window.MANIFEST = {
       },
       { key: "image",         type: "image",    label: "Background image (optional)" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop" },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.88, step: 0.05 },
@@ -409,7 +417,7 @@ window.MANIFEST = {
     label: "Map",
     summary: "Map image with Sindoor-red markers. Drop a period-accurate map, place dots at (x%, y%).",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -417,7 +425,7 @@ window.MANIFEST = {
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "image",         type: "image",    label: "Map image",       help: "Period map, regional outline, or sketch. Use a high-contrast image for readability." },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Map crop",     help: "Drag to reposition the map inside its frame." },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Map dim (0–1)",  default: 0.25, step: 0.05, help: "Darken/lighten the map so markers stand out." },
@@ -446,7 +454,7 @@ window.MANIFEST = {
     label: "Did You Know?",
     summary: "Surprising-fact slide. Red-square stamp + parchment eyebrow, Bebas fact headline, body, optional source. Great for breather slides inside a longer carousel.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -457,7 +465,7 @@ window.MANIFEST = {
       { key: "show_mark",     type: "bool",     label: "Show '?' watermark", default: true, help: "Big translucent red question-mark in the corner. Auto-hidden when an image is present." },
       { key: "image",         type: "image",    label: "Background image (optional)" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop" },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.85, step: 0.05 },
@@ -472,7 +480,7 @@ window.MANIFEST = {
     label: "Pie / Donut",
     summary: "Proportion chart. Segments sized by value, Sindoor-red leads. Legend with auto-percentages. For shares, splits, breakdowns.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -502,7 +510,7 @@ window.MANIFEST = {
     label: "Line Graph",
     summary: "Single-series trend over time. Sindoor-red line + area fill, gridlines, axis labels. For exports, populations, casualties across years.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -549,7 +557,7 @@ window.MANIFEST = {
     label: "Bar Chart",
     summary: "Compare values across categories. Vertical bars, or horizontal for long labels / rankings. Sindoor-red bars, values in Bebas.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -578,7 +586,7 @@ window.MANIFEST = {
     label: "Dynasty / Tree",
     summary: "Succession or genealogy tree. Nodes flow top→bottom; group siblings on one row with a shared generation number. For dynasties, lineages, regnal lines.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -606,7 +614,7 @@ window.MANIFEST = {
     label: "Pyramid",
     summary: "Stratification. Tiers widen as they descend, so the shape carries the argument: few at the apex, many at the base. For varna orders, mansab ranks, army composition, landholding classes.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "" },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "" },
@@ -627,7 +635,7 @@ window.MANIFEST = {
       { key: "apex_width",    type: "number",   label: "Apex width (%)", default: 34, step: 2, help: "Width of the top tier. The base is always 100%." },
       { key: "image",         type: "image",    label: "Image (optional)" },
       { key: "image_bw",      type: "bool",     label: "Black & white" },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "" },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "" },
       { key: "image_position",type: "image-position", label: "Image crop" },
       { key: "image_zoom",    type: "number",   label: "Image zoom",     default: 1, step: 0.05 },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.82, step: 0.02 },
@@ -643,7 +651,7 @@ window.MANIFEST = {
     label: "Hierarchy",
     summary: "Chain of command — offices, not people. Nodes group into rungs by `level`, the way dynasty groups by generation. For mansabdari, Maurya administration, EIC command, revenue chains.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "" },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "" },
@@ -661,7 +669,7 @@ window.MANIFEST = {
       },
       { key: "image",         type: "image",    label: "Image (optional)" },
       { key: "image_bw",      type: "bool",     label: "Black & white" },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "" },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "" },
       { key: "image_position",type: "image-position", label: "Image crop" },
       { key: "image_zoom",    type: "number",   label: "Image zoom",     default: 1, step: 0.05 },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.82, step: 0.02 },
@@ -677,7 +685,7 @@ window.MANIFEST = {
     label: "Before / After",
     summary: "Two images split by a diagonal (or vertical) seam, each labelled. For ruins vs reconstruction, 1900 vs now, conquest vs aftermath.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -688,8 +696,8 @@ window.MANIFEST = {
       { key: "label_before",  type: "text",     label: "Before label",   default: "Before" },
       { key: "label_after",   type: "text",     label: "After label",    default: "After" },
       { key: "split",         type: "select",   label: "Split",          options: ["diagonal","vertical"], default: "diagonal" },
-      { key: "filter_before", type: "select",   label: "Before filter",  options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "e.g. archival/bw for the old era." },
-      { key: "filter_after",  type: "select",   label: "After filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "e.g. leave blank (colour) for the modern era." },
+      { key: "filter_before", type: "select",   label: "Before filter",  options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "e.g. archival/bw for the old era." },
+      { key: "filter_after",  type: "select",   label: "After filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "e.g. leave blank (colour) for the modern era." },
       { key: "caption",       type: "textarea", label: "Caption (optional)" },
       { key: "headline_size", type: "number",   label: "Headline size (px)", default: 88 },
       { key: "caption_size",  type: "number",   label: "Caption size (px)",  default: 24 },
@@ -701,14 +709,14 @@ window.MANIFEST = {
     label: "Primary Source",
     summary: "A framed scan of a document, manuscript, inscription or photograph, with a pulled key line + archival attribution. The documentary signature.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline",        help: "Use *word* for red accent." },
       { key: "image",         type: "image",    label: "Document scan / photo" },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "archival", help: "Defaults to archival for an aged look. Clear it for a clean scan." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "archival", help: "Defaults to archival for an aged look. Clear it for a clean scan." },
       { key: "image_position",type: "image-position", label: "Crop" },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "quote",         type: "textarea", label: "Pulled line",     help: "The key line from the source — original or translated. Newlines preserved." },
@@ -724,14 +732,14 @@ window.MANIFEST = {
     label: "Annotated Image",
     summary: "Numbered red markers on a painting or photo at (x%, y%), with a numbered legend. Visual close-reading of a source image.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
       { key: "chapter",       type: "text",     label: "Chapter eyebrow" },
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "image",         type: "image",    label: "Image (painting / photo)" },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "" },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "" },
       { key: "image_position",type: "image-position", label: "Crop" },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       {
@@ -755,7 +763,7 @@ window.MANIFEST = {
     label: "Sources",
     summary: "Bibliography slide — the books, documents and archives the carousel draws on. Makes the research visible. Usually near the end.",
     fields: [
-      { key: "theme",         type: "select",   label: "Theme",          options: ["dark","light"], default: "dark" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "Leave on \"Same as deck Mode\" unless this one slide needs the other ground, e.g. a slide on a dark photo in a light deck. The Mode switch at the top sets every other slide." },
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
       { key: "align_x",       type: "select",   label: "Align ↔",        options: ["","left","center","right"], default: "", help: "Horizontal alignment of the text blocks. Blank = this layout's default." },
       { key: "align_y",       type: "select",   label: "Align ↕",        options: ["","top","middle","bottom"], default: "", help: "Vertical anchor for the main text block. Blank = this layout's tuned position." },
@@ -794,7 +802,7 @@ window.MANIFEST = {
       { key: "handle",        type: "text",     label: "Handle",         default: "@itiha29" },
       { key: "image",         type: "image",    label: "Image (optional)" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.55, step: 0.05 },
       { key: "headline_size", type: "number",   label: "Headline size (px)", default: 180 },
       { key: "text_y",        type: "number",   label: "Text Y (%)",     default: 50, step: 5, help: "0=top, 50=center, 100=bottom. Use to dodge the IG cover crop." },
@@ -813,7 +821,7 @@ window.MANIFEST = {
       { key: "subline",       type: "text",     label: "Subline" },
       { key: "image",         type: "image",    label: "Image (optional)" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_position",type: "image-position", label: "Image crop",  help: "Drag the sliders to reposition the image inside its frame. 0/0 = top-left, 50/50 = center." },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.55, step: 0.05 },
@@ -900,22 +908,23 @@ window.MANIFEST = {
 
   "end-card": {
     label: "End Card",
-    summary: "Standalone 1920×1080 video outro.",
+    summary: "Outro card: the last carousel slide, or the 1920×1080 video end screen.",
     fields: [
       { key: "texture",       type: "select",   label: "Texture",        options: ["","house","none","grid","grain","noise","scanlines","paper","halftone","vignette"], default: "" },
-      { key: "tagline",       type: "text",     label: "Tagline",         default: "History Simplified" },
+      { key: "theme",         type: "select",   label: "Slide ground",   options: SLIDE_GROUND, default: "", help: "New looks only; the classic card is always black." },
+      { key: "tagline",       type: "text",     label: "Tagline",         default: "", help: "New looks: set as the headline, *word* goes wide; blank = 'History, simplified'. Classic: small caps line; blank = 'History Simplified'." },
       {
         key: "handles", type: "array", label: "Social handles",
         item: {
           fields: [
-            { key: "platform", type: "text", label: "Platform (short)",  help: "e.g. YT, IG, WEB" },
+            { key: "platform", type: "text", label: "Platform (short)",  help: "YT, IG, WEB, X, FB — spelled out in full on the new looks" },
             { key: "text",     type: "text", label: "Handle" },
           ],
         },
       },
       { key: "image",         type: "image",    label: "Background image (optional)" },
       { key: "image_bw",      type: "bool",     label: "Black & white",  help: "Quick B&W. Overridden by Image filter if set." },
-      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "Editorial treatment. Wins over Black & white." },
+      { key: "image_filter",  type: "select",   label: "Image filter",   options: ["","duotone","halftone","bw","sepia","archival","warm","cool","duotone-red","duotone-parchment","duotone-ink"], default: "", help: "duotone = photo printed in the palette's two inks · halftone = the same over a newspaper dot screen. Wins over Black & white." },
       { key: "image_overlay", type: "number",   label: "Overlay (0–1)",  default: 0.7, step: 0.05 },
       { key: "image_position",type: "image-position", label: "Image crop" },
       { key: "image_zoom",     type: "number",   label: "Image zoom",     default: 1, step: 0.05, help: "1 = fit. Above 1 scales the photo past the frame so the Y half of Image crop has room to move — a landscape photo in a portrait slide has no vertical overflow to pan against on its own." },
@@ -930,7 +939,7 @@ window.MANIFEST_META = {
   fields: [
     { key: "name",    type: "text",     label: "Project name",   help: "Title used internally and on the file system." },
     { key: "format",  type: "select",   label: "Output format",  options: [
-      "instagram-portrait", "instagram-square", "instagram-reel",
+      "instagram-portrait", "instagram-tall", "instagram-square", "instagram-reel",
       "instagram-landscape", "youtube-thumbnail", "youtube-end-card",
     ]},
     { key: "caption", type: "textarea", label: "IG caption",     help: "Post-level. Mention book + author for SEO when relevant. Used by bin/publish." },
@@ -939,6 +948,21 @@ window.MANIFEST_META = {
 };
 
 window.MANIFEST_TWEAKS = {
+  // Pinned to the top of the editor panel (any tab) as segmented switches.
+  // 2026-10 A/B: Neel vs Haldi, each in Dark or Light; Classic pins the old
+  // look on old decks. `current` reads what the deck actually renders with,
+  // so an unset tweak still lights the right button.
+  quick: [
+    { key: "palette", label: "Palette", current: tw => window.deckPalette(tw), options: [
+      { value: "neel",    label: "Neel",    swatch: ["#2323D6", "#FFF04D", "#FFC2E2"] },
+      { value: "haldi",   label: "Haldi",   swatch: ["#FFD23F", "#111111", "#1F2AD1"] },
+      { value: "classic", label: "Classic", swatch: ["#0D0D0D", "#E8DCC8", "#C0392B"], muted: true },
+    ] },
+    { key: "theme", label: "Mode", current: tw => window.slideTheme(null, tw), options: [
+      { value: "dark",  label: "Dark",  hint: tw => window.deckPalette(tw) === "haldi" ? "ink ground" : window.deckPalette(tw) === "neel" ? "blue ground" : "" },
+      { value: "light", label: "Light", hint: tw => window.deckPalette(tw) === "haldi" ? "yellow ground" : window.deckPalette(tw) === "neel" ? "lotus ground" : "" },
+    ] },
+  ],
   fields: [
     { key: "showChapterLabels", type: "bool",   label: "Show chapter eyebrows" },
     { key: "showStamp",         type: "bool",   label: "Show ITIHA. stamp" },

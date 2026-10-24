@@ -1,0 +1,200 @@
+name: Itiha look lab 3
+brand: itiha
+format: instagram-portrait
+caption: Remaining-layout study deck for the 2026-10 Itiha redesign. Not for publishing.
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  seriesLabel: Hyderabad
+  emphasisV2: true
+  palette: neel
+  theme: dark
+slides:
+- layout: cover
+  headline: |
+    A monk against
+    the richest *king*
+    on earth
+  subline: Ramananda Tirtha vs. the seventh Nizam of Hyderabad
+  subline_size: 30
+  swipe_meta: Swipe · 10 slides · 3 min read
+  texture: halftone
+- layout: story
+  headline: |
+    He took *sanyasa*
+    and went to work
+  body: |
+    [Ramananda Tirtha] took the vow in the tradition of Swami Rama and refused the forest. He joined the [Hyderabad State Congress] and built it into the organising body of the resistance.
+  theme: dark
+  texture: grid
+- layout: quote
+  quote: |
+    The fight for responsible government had no place for ill will in it.
+  attribution: Ramananda Tirtha, Memoirs of Hyderabad Freedom Struggle, 1967
+  text_y: 48
+- layout: portrait
+  image: sardesai-1938.jpg
+  image_position: 50% 12%
+  name: 'G. S.
+
+    Sardesai
+
+    '
+  dates: 17 May 1865 – 29 Nov 1959
+  role: Schooled in Ratnagiri, with college in Pune and Bombay. Joined the Baroda state service in [1889].
+  quote: A paper of that age has to be read a dozen times.
+  attribution: Sardesai, 1949
+- layout: dates-grid
+  headline: |
+    Four years
+    that *ended* a state
+  items:
+  - date: '1938'
+    text: Hyderabad State Congress banned on its founding.
+  - date: '1947'
+    text: Nizam declares independence from both dominions.
+  - date: '1948'
+    text: '[Operation Polo] ends the Nizam''s rule in five days.'
+  - date: '1956'
+    text: Hyderabad state dissolved on linguistic lines.
+- layout: numbered-list
+  headline: |
+    Three things
+    the *Nizam* owned
+  items:
+  - number: '1'
+    headline: The Jacob Diamond
+    body: Used as a paperweight, by the family's own account.
+  - number: '2'
+    headline: A private army
+    body: Twenty-two thousand men under arms by [1948].
+  - number: '3'
+    headline: Seven per cent of India's land
+    body: An area larger than England and Scotland together.
+- layout: before-after
+  headline: |
+    Bidar, *then*
+    and now
+  image_before: bidar-fort.jpg
+  image_after: osmania-arts-college.jpg
+  label_before: Bidar Fort, 1920s
+  label_after: Osmania University, 1939
+  caption: Two capitals of the Deccan, four hundred years apart.
+- layout: annotated
+  headline: |
+    Reading the
+    *meeting*
+  image: hsc-meeting-1940s.jpg
+  callouts:
+  - x: 30
+    y: 40
+    label: Congress workers in khadi
+  - x: 68
+    y: 52
+    label: 'The front row: [Ramananda Tirtha]''s inner circle.'
+  caption: Hyderabad State Congress, early 1940s.
+- layout: map
+  headline: |
+    Three *strongholds*
+  image: peshwa-accounts.jpg
+  markers:
+  - x: 28
+    y: 40
+    label: Ghazni
+    sublabel: Capital
+  - x: 54
+    y: 58
+    label: Multan
+    sublabel: '1175'
+  - x: 66
+    y: 72
+    label: Somnath
+    sublabel: '1025'
+  caption: Stand-in image; checking marker and label styling only.
+- layout: interior-light
+  num: '04'
+  eyebrow: The record
+  headline: |
+    What the
+    *Nizam* signed
+  body: |
+    The Standstill Agreement of [November 1947] kept Hyderabad's relations with India frozen for a year. It bought the Nizam time and the Razakars a free hand.
+- layout: pyramid
+  headline: |
+    Who held
+    *power*
+  tiers:
+  - label: The Nizam
+    value: '1'
+    highlight: true
+  - label: Nobles and jagirdars
+    note: about 1,500 families
+  - label: Officials
+    note: drawn from an 11% minority
+  - label: Ryots
+    note: the 89%
+- layout: hierarchy
+  headline: |
+    The *Asaf Jahi*
+    line
+  nodes:
+  - name: Mir Mahbub Ali Khan
+    level: 1
+    level_label: Sixth Nizam
+  - name: Mir Osman Ali Khan
+    level: 2
+    level_label: Seventh Nizam
+    highlight: true
+  - name: Azam Jah
+    level: 3
+    level_label: Heirs
+  - name: Moazzam Jah
+    level: 3
+- layout: youtube-cta
+  thumbnail: nizam-osman-ali-1926.jpg
+  headline: |
+    The richest
+    man on *earth*
+  duration: '18:42'
+  handle: '@itiha'
+- layout: end-card
+- layout: story
+  headline: |
+    He took *sanyasa*
+    and went to work
+  image: hsc-meeting-1940s.jpg
+  image_filter: duotone
+  body: '[Ramananda Tirtha] took the vow in the tradition of Swami Rama and refused the forest.'
+- layout: split-story
+  headline: |
+    Thirty-six years
+    in *Baroda*
+  image: sayajirao-1919.jpg
+  image_filter: halftone
+  image_position: 50% 25%
+  body: The Maharaja's library gave him books and historical papers. In Baroda he wrote the [Riyasats]
+    in Marathi.
+  body_y: 46
+  body_size: 45
+- layout: portrait
+  image: sardesai-1938.jpg
+  image_filter: duotone
+  image_position: 50% 12%
+  name: 'G. S.
+
+    Sardesai'
+  dates: 17 May 1865 – 29 Nov 1959
+  role: Schooled in Ratnagiri, with college in Pune and Bombay. Joined the Baroda state service in [1889].
+  theme: light
+- layout: cover
+  headline: |
+    The *Nizam*
+    who weighed
+    his jewels
+  image: nizam-osman-ali-1926.jpg
+  image_filter: halftone
+  image_position: 50% 20%
+  image_overlay: 0.35
+  headline_size: 150
+  headline_offset_y: 300

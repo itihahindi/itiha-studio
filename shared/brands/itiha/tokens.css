@@ -1,9 +1,14 @@
 /* ============================================================
    ITIHA — Core Tokens
-   Colors + Typography (Bebas Neue + DM Sans)
+   Slides do NOT read the :root palette below. Since the 2026-10
+   redesign every slide colour and face is a role variable (--it-*)
+   set per look in LOOK_CSS (slides-shared.jsx): palettes neel /
+   haldi (A/B, 2026-10) and classic; v2 type = Anek Latin +
+   Schibsted Grotesk. This file loads the fonts for all of them;
+   :root keeps the classic values for the legacy type presets.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@800;900&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Noto+Serif+Devanagari:wght@400;600&family=Bangers&family=Shantell+Sans:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Big+Shoulders+Display:wght@800;900&family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Noto+Serif+Devanagari:wght@400;600&family=Bangers&family=Shantell+Sans:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Anek+Latin:wdth,wght@75..125,400..800&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
   /* ---------- CORE PALETTE ---------- */

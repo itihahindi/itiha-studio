@@ -541,6 +541,18 @@ def _build_server() -> ThreadingHTTPServer:
                     output_dir = content_mod.output_dir_for(design_dir)
                     files = sorted(output_dir.glob("*-slide.png"))
 
+                    # render.py prints an OVERFLOW_JSON: tail when a slide has
+                    # text past the frame, clipped, or colliding with other
+                    # text. Hand it to the editor so the author sees it without
+                    # reading the daemon log.
+                    warnings = []
+                    for line in proc.stdout.splitlines():
+                        if line.startswith("OVERFLOW_JSON:"):
+                            try:
+                                warnings = json.loads(line[len("OVERFLOW_JSON:"):])
+                            except json.JSONDecodeError:
+                                pass
+
                     # If this design is linked to a Notion row, bump status + attach thumbnail.
                     notion_id = _read_notion_id(slug)
                     notion_synced = False
@@ -557,6 +569,7 @@ def _build_server() -> ThreadingHTTPServer:
                     self._send_bytes(json.dumps({
                         "ok": True, "count": len(files),
                         "output_dir": str(output_dir),
+                        "warnings": warnings,
                         "notion_synced": notion_synced,
                         "notion_error": notion_error,
                     }).encode(), "application/json")

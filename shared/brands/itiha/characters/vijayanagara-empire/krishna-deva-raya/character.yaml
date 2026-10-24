@@ -1,0 +1,39 @@
+# Krishnadevaraya (r. 1509–1529) — comic character sheet
+# Reference art for Itiha graphic-history decks (layout: comic).
+# Generated references live in references/; the same six images are
+# uploaded to Magnific under  Vijayanagara Empire / Krishna Deva Raya.
+
+name: Krishnadevaraya
+era: Vijayanagara Empire (Tuluva dynasty)
+look:
+  face: handlebar moustache, dark wavy shoulder-length hair, gold hoop earrings,
+    white Vaishnava namam (U-shape with red centre line) on the forehead
+  crown: tall cylindrical golden kulavi crown with a ruby-set band
+  dress: white full-sleeve angarkha with gold brocade armbands and cuffs,
+    red cummerbund sash, pearl strands + gold chains with pendant
+  props: palm-leaf manuscript (long narrow leaves bound between wooden boards, never a book),
+    iron stylus, curved sword, white horse
+
+references:
+  kdr-1.jpg: over a war map, palace chamber (face + costume, best for close-ups)
+  kdr-2.jpg: on a white horse leading the army at sunrise
+  kdr-3.png: sword clash, 9:16
+  kdr-4.png: charging with raised sword and red cape, 9:16
+  kdr-6.jpg: ten-panel storyboard (style reference for non-KDR scenes)
+  kdr-7.jpg: shouting in the royal court, 9:16
+
+# What worked (2026-09-19, vijayanagara-food-amuktamalyada):
+# - Model: Nano Banana Pro (imagen-nano-banana-2), 2k.
+# - Scenes WITH the emperor: pass kdr-1 + kdr-7 (+ kdr-3/4) as `image` references.
+# - Scenes WITHOUT him: pass kdr-6 + one single-scene ref as `style` references.
+# - Always end the prompt with "No text, no letters, no speech bubbles" — lettering
+#   is done by the layout. Even so, check for fake script on pots and modern
+#   props (glass jars, drinking straws); fix with a reference edit:
+#   "Reproduce this exact illustration unchanged ... with one fix: ...".
+# - Leave headroom in the prompt ("top 30% empty wall/sky for a title") for
+#   full-page covers, but expect the model to ignore it; the comic layout can
+#   letter around the figure (title top + SFX beside the head).
+style_prompt: >-
+  Indian comic book illustration, exactly the same art style and the same character
+  as the reference images: bold black ink outlines, flat cel-shaded colour, warm
+  saffron and ochre palette, Amar Chitra Katha inspired.

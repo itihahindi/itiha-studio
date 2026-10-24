@@ -276,6 +276,7 @@ KNOWN_LAYOUTS = {
     "line-chart", "pictogram", "city-map",   # vaq-hq chart pack
     "document", "annotated", "sources",
     "interior-light", "cta-red", "youtube-cta",
+    "comic",              # itiha graphic-history pages (panels, bubbles, SFX)
     # Standalone formats
     "x-cover-file", "x-cover-plate", "x-cover-scale",  # BAKE-OFF 2026-08-31 (temporary)
     "reel-title",         # 1080×1920
@@ -312,7 +313,7 @@ def load_content(design_dir: Path) -> dict:
         # through resolve_image (so URLs download to images/_cache/ and bare
         # filenames are verified). Extend this set when a new layout
         # introduces another image-typed field.
-        for field in ("image", "image_before", "image_after", "thumbnail", "author_image"):
+        for field in ("image", "image_2", "image_before", "image_after", "thumbnail", "author_image"):
             if field in out:
                 out[field] = resolve_image(out[field], design_dir)
         resolved_slides.append(out)

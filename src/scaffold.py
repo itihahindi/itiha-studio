@@ -31,7 +31,7 @@ tweaks:
   showChapterLabels: false
   showStamp: true
   showPageNum: true
-  overlayDarkness: 62
+  overlayDarkness: 75
   showGrain: true
 
 slides:

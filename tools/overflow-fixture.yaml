@@ -1,0 +1,35 @@
+name: Overflow probe test
+brand: vaq-hq
+format: instagram-portrait
+caption: |
+  Scratch deck for the render-time overflow probe.
+hashtags: |
+  #test
+tweaks:
+  vertical: briefing
+slides:
+- layout: story
+  kicker_meta: Should be clean
+  headline: A body that *fits*
+  body: |
+    Two short sentences that sit inside the frame. Nothing here should trip the probe.
+- layout: story
+  kicker_meta: Should warn
+  headline: A body far too *long*
+  body: |
+    This body is deliberately enormous so that it runs past the bottom edge of the slide frame and gets clipped by the overflow hidden on the slide root. It keeps going well beyond any sensible length for a VaqHQ interior slide, which caps bodies at about fifty words, and it should therefore be reported by the probe as text that has fallen off the bottom of the page. More filler follows so the overflow is unmistakable at render time. Still more filler, because the frame is tall and the type is large but not that large. And a final sentence to push it over.
+- layout: story
+  kicker_meta: Should warn (past edge)
+  headline: |
+    A headline pushed far
+    below the bottom edge
+    of the slide frame
+  headline_offset_y: 900
+  body: |
+    Short body.
+- layout: quote
+  kicker_meta: Should warn (clipped)
+  quote: |
+    A quote long enough that it cannot fit inside the frame it is given, so the layout clips it and the reader never sees the end of the sentence which keeps going and going well past any reasonable measure for a pull quote on a single slide.
+  quote_size: 96
+  attribution: Test

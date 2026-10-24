@@ -411,7 +411,7 @@ def _import_from_extracted(root: Path, name_hint: str) -> dict:
         "format": "instagram-portrait",
         "caption": "",
         "tweaks": {"showChapterLabels": False, "showStamp": True, "showPageNum": True,
-                   "overlayDarkness": 62, "showGrain": True},
+                   "overlayDarkness": 75, "showGrain": True},
         "slides": payload["slides"],
         "_images": payload["_images"],
     }

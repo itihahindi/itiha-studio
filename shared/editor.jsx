@@ -1285,7 +1285,8 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
       const r = await fetch('api/render', { method: 'POST' });
       if (!r.ok) throw new Error(await r.text());
       const result = await r.json();
-      setRenderState({ phase: 'done', count: result.count, output_dir: result.output_dir });
+      setRenderState({ phase: 'done', count: result.count, output_dir: result.output_dir,
+                       warnings: result.warnings || [] });
     } catch (e) {
       setRenderState({ phase: 'error', msg: String(e.message || e) });
     }
@@ -1416,6 +1417,31 @@ function Editor({ content, setContent, currentIdx, setCurrentIdx, onSave, savedA
           <PasteTab content={content} setContent={setContent} setCurrentIdx={setCurrentIdx} />
         )}
       </div>
+
+      {/* Layout warnings from the render-time overflow probe: text past the
+          frame, clipped inside its box, or sitting on top of other text. */}
+      {renderState.phase === 'done' && (renderState.warnings || []).length > 0 && (
+        <div style={{
+          padding: '10px 14px', background: 'rgba(224,160,50,0.12)',
+          borderTop: '1px solid #2c2c2c', fontSize: 12, color: '#e8c583', letterSpacing: 0.3,
+        }}>
+          <div style={{ fontWeight: 600, marginBottom: 6 }}>
+            ⚠ {renderState.warnings.length} layout warning{renderState.warnings.length === 1 ? '' : 's'}
+          </div>
+          {renderState.warnings.slice(0, 5).map((w, i) => (
+            <div key={i} style={{ opacity: 0.9, lineHeight: 1.5 }}>
+              slide {String(w.slide).padStart(2, '0')} · {
+                w.kind === 'clipped' ? `box clips ${w.px}px of its text`
+                : w.kind === 'overlaps' ? 'text overlaps text'
+                : `text runs ${w.kind.replace('past-', 'past the ')} edge by ${w.px}px`
+              } — "{w.text}"
+            </div>
+          ))}
+          {renderState.warnings.length > 5 && (
+            <div style={{ opacity: 0.7 }}>…and {renderState.warnings.length - 5} more</div>
+          )}
+        </div>
+      )}
 
       {renderState.phase === 'done' && (
         <div style={{

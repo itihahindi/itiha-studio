@@ -101,11 +101,14 @@ function Body({ text, size = 28, maxWidth = 880, style, className }) {
 function Cover({ slide, index }) {
   const { eyebrow, eyebrow_meta, headline, subline, swipe_meta, byline,
           image, image_bw, image_overlay, image_position, headline_size,
-          headline_offset_y = 0 } = slide;
+          headline_offset_y = 0, cover_style, subline_size } = slide;
   const t = themeFor(slide);
+  const red = cover_style === 'red';
   return (
-    <div className={`itiha-slide itiha-grain ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
+    <div className={`itiha-slide itiha-grain ${t.className}${red ? ' cover-red' : ''}`} style={{ background: red ? ITIHA.red : t.bg }}>
+      {red
+        ? (image && <ImageLayer url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay != null ? image_overlay : 0} position={image_position} zoom={slide.image_zoom} vignette={false} />)
+        : <ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
       <TextureOverlay texture={slide.texture} slide={slide} />
       {(eyebrow || eyebrow_meta) && (
         <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 84, right: 72, display: 'flex', alignItems: 'center', gap: 18 }, { stretch: true })}>
@@ -116,8 +119,8 @@ function Cover({ slide, index }) {
       )}
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: 360 + headline_offset_y, right: 72 },
                           { top: 200 + headline_offset_y, bottom: 380 - headline_offset_y })}>
-        <Divider style={{ marginBottom: 56 }} />
-        <Headline text={headline} size={headline_size || 156} style={{ textShadow: t.isLight ? 'none' : '0 2px 24px rgba(0,0,0,0.6)' }} />
+        <Divider color={red ? ITIHA.ink : ITIHA.red} style={{ marginBottom: 56 }} />
+        <Headline text={headline} size={headline_size || 156} style={{ textShadow: (t.isLight || red) ? 'none' : '0 2px 24px rgba(0,0,0,0.6)' }} />
       </div>
       <div {...alignBlock(slide, { position: 'absolute', left: 72, bottom: 220, right: 72 }, { stretch: true })}>
         {byline && (
@@ -128,7 +131,8 @@ function Cover({ slide, index }) {
             <span>{byline}</span>
           </div>
         )}
-        {subline && <div className="itiha-sub" style={{ marginBottom: 14 }}>{subline}</div>}
+        {/* subline_size opts into a readable hook line: bigger, near-full contrast. */}
+        {subline && <div className="itiha-sub" style={{ marginBottom: 14, ...(subline_size ? { fontSize: subline_size, letterSpacing: 1.5, lineHeight: 1.45, color: red ? ITIHA.white : (t.isLight ? ITIHA.nearBlack : 'rgba(232,220,200,0.9)') } : null) }}>{subline}</div>}
         {swipe_meta && <div className="itiha-meta" style={{ color: t.muted40 }}>{swipe_meta}</div>}
       </div>
       <MaybePageNum n={index + 1} color={t.pageNumColor} />
@@ -147,14 +151,18 @@ function Story({ slide, index }) {
   // align_y, when set, supersedes the older block_y knob — and the image
   // gradient has to follow the text, or the fade lands on the wrong edge.
   const anchor = slide.align_y || block_y;
-  // Light theme: fade image to off-white at the text edge instead of black.
-  const overlayCss = custom_overlay || (t.isLight
-    ? (anchor === 'bottom'
-        ? 'linear-gradient(180deg, rgba(250,245,238,0.0) 0%, rgba(250,245,238,0.0) 45%, rgba(250,245,238,0.55) 62%, rgba(250,245,238,0.92) 78%, rgba(250,245,238,1) 100%)'
-        : 'linear-gradient(180deg, rgba(250,245,238,0.55) 0%, rgba(250,245,238,0.4) 30%, rgba(250,245,238,0.7) 70%, rgba(250,245,238,0.95) 100%)')
-    : (anchor === 'bottom'
-        ? 'linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.0) 28%, rgba(0,0,0,0.0) 45%, rgba(0,0,0,0.55) 62%, rgba(13,13,13,0.92) 78%, rgba(13,13,13,1) 100%)'
-        : 'linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.7) 70%, rgba(13,13,13,0.95) 100%)'));
+  // Veil strength follows tweaks.overlayDarkness. A bottom-anchored block
+  // with a full body starts ~30% down, so the ramp must be dark by then —
+  // the old curve was fully clear from 28% to 45% and left headlines on
+  // bright photos at <1:1 contrast (audience "can't read it" complaints;
+  // measured 2026-10-02, now ≥3.5:1 worst-row at the default 75).
+  const ctx = useItiha();
+  const o = (ctx && ctx.overlayDarkness != null) ? ctx.overlayDarkness / 100 : 0.75;
+  const veil = t.isLight ? '250,245,238' : '0,0,0';
+  const foot = t.isLight ? '250,245,238' : '13,13,13';
+  const overlayCss = custom_overlay || (anchor === 'bottom'
+    ? `linear-gradient(180deg, rgba(${veil},${o * 0.6}) 0%, rgba(${veil},${o * 0.35}) 15%, rgba(${veil},${o * 0.85}) 32%, rgba(${veil},${o}) 48%, rgba(${foot},${Math.min(o + 0.17, 0.95)}) 72%, rgba(${foot},1) 100%)`
+    : `linear-gradient(180deg, rgba(${veil},${o * 0.85}) 0%, rgba(${veil},${o * 0.75}) 30%, rgba(${veil},${o}) 70%, rgba(${foot},0.95) 100%)`);
 
   const blockStyle = block_y === 'top'
     ? { position: 'absolute', left: 72, top: 130, right: 72 }
@@ -191,9 +199,19 @@ function SplitStory({ slide, index }) {
   // actually render — otherwise the divider hangs alone above the headline
   // and reads like a stray coat-lapel detail.
   const showEyebrowBlock = !!chapter && !!ctx.showChapterLabels;
+  // Text sits at BOTH ends here, so the shared top-light veil left headlines
+  // on the brightest part of the photo. Own veil: the headline band (top
+  // ~28%) and body band (bottom ~40%) never drop below 0.78, whatever
+  // image_overlay says; image_overlay only sets how open the middle window is.
+  const o = image_overlay != null ? image_overlay
+    : (ctx.overlayDarkness != null ? ctx.overlayDarkness / 100 : 0.75);
+  const band = Math.max(o, 0.78);
+  const veil = t.isLight ? '250,245,238' : '0,0,0';
+  const splitVeil = `linear-gradient(180deg, rgba(${veil},${band}) 0%, rgba(${veil},${band * 0.95}) 26%, rgba(${veil},${o * 0.45}) 40%, rgba(${veil},${o * 0.45}) 50%, rgba(${veil},${band}) 61%, rgba(${veil},${Math.min(band + 0.12, 0.96)}) 100%)`;
   return (
     <div className={`itiha-slide ${t.className}`} style={{ background: t.bg }}>
-      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={image_overlay} position={image_position} zoom={slide.image_zoom} />}
+      {<ImageLayer light={t.isLight} url={image} bw={image_bw} filter={slide.image_filter} overlay={0} position={image_position} zoom={slide.image_zoom} vignette={false} />}
+      {image && <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: splitVeil }} />}
       <TextureOverlay texture={slide.texture} slide={slide} />
       <div {...alignBlock(slide, { position: 'absolute', left: 72, top: headline_y, right: 72 },
                           { top: headline_y, bottom: body_y })}>
@@ -1909,6 +1927,302 @@ function Hierarchy({ slide, index }) {
   );
 }
 
+// ═══ Comic (2026-09-19) ══════════════════════════════════════════
+// A deliberate break from the cinematic Itiha look, for illustrated
+// "graphic history" decks (first: Vijayanagara food / Amuktamalyada).
+// Newsprint page, inked panel frames, yellow narration boxes, speech
+// bubbles, SFX lettering and starbursts. The art is generated comic
+// panels — reusable character references live under
+// shared/brands/itiha/characters/<era>/<person>/.
+//
+// Page structures (`page`):
+//   full        one panel fills the page (cover / closing), `title` sits
+//               on top of the art in logo lettering
+//   panel-text  image panel + a white text panel (title, body, menu chips)
+//   two         two stacked image panels, each with its own caption
+// Everything is a flex column inside the page margins, so the same slide
+// reflows for square formats. Bubbles, SFX and bursts are free-floating,
+// positioned in % of the slide.
+// Type: tweaks.comicType (per-slide `type_style` wins) — `comic` = Bangers
+// caps + Shantell Sans lettering; `serif` = Cormorant Garamond italic titles
+// and serif narration. SFX, bursts and source tags stay Bangers in both —
+// sound effects have to read as comics. Serif sizes are scaled up (_CX_SERIF_K)
+// because Cormorant's x-height is small, so one YAML works in both.
+const COMIC = {
+  ink: '#15110D',
+  paper: '#F3E6CB',
+  caption: '#FAD65A',
+  white: '#FFFDF7',
+  red: ITIHA.red,
+  title: "'Bangers', 'Bebas Neue', Impact, sans-serif",
+  letter: "'Shantell Sans', 'DM Sans', system-ui, sans-serif",
+  serif: "'Cormorant Garamond', 'DM Serif Display', Georgia, serif",
+};
+const _CX_SERIF_K = 1.26;
+
+if (typeof document !== 'undefined' && !document.getElementById('itiha-comic-styles')) {
+  const s = document.createElement('style');
+  s.id = 'itiha-comic-styles';
+  s.textContent = `
+    .cx-dots{position:absolute;inset:0;pointer-events:none;
+      background-image:radial-gradient(rgba(21,17,13,.12) 1.7px, transparent 2.1px);background-size:14px 14px}
+    .cx-panel{position:relative;border:7px solid ${COMIC.ink};overflow:hidden;background:#2a2521;min-height:0}
+    .cx-panel > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .cx-cap{position:absolute;z-index:3;background:${COMIC.caption};border:4px solid ${COMIC.ink};
+      box-shadow:6px 6px 0 ${COMIC.ink};padding:14px 20px 16px;font-family:var(--cx-letter);
+      font-weight:600;line-height:1.3;color:${COMIC.ink};text-wrap:pretty}
+    .cx-text{font-family:var(--cx-letter);font-weight:500;color:${COMIC.ink};text-wrap:pretty}
+    .cx-text p, .cx-cap p{margin:0}
+    .cx-text p + p, .cx-cap p + p{margin-top:.55em}
+    .cx-cap .key, .cx-text .key, .cx-bubble .key{color:${COMIC.red};font-weight:800}
+    .cx-title{font-family:var(--cx-title);font-weight:400;letter-spacing:1.5px;line-height:.95;
+      color:${COMIC.ink};text-transform:uppercase;margin:0}
+    .cx-title .accent{color:${COMIC.red}}
+    .cx-logo{color:${COMIC.caption};paint-order:stroke fill;-webkit-text-stroke:var(--cx-stroke,14px) ${COMIC.ink}}
+    .cx-logo .accent{color:#F2552C}
+    .cx-bubble{position:absolute;z-index:4;background:${COMIC.white};border:5px solid ${COMIC.ink};
+      font-family:var(--cx-letter);font-weight:700;color:${COMIC.ink};line-height:1.25;text-align:center;
+      text-transform:uppercase;letter-spacing:.3px;text-wrap:balance}
+    .cx-tag{position:absolute;z-index:3;background:${COMIC.ink};color:${COMIC.caption};font-family:${COMIC.title};
+      letter-spacing:2px;line-height:1;padding:9px 14px 7px;text-transform:uppercase}
+    .cx-chip{display:inline-block;background:${COMIC.white};border:3px solid ${COMIC.ink};
+      box-shadow:4px 4px 0 ${COMIC.ink};padding:6px 14px 8px;font-family:var(--cx-letter);font-weight:600;
+      color:${COMIC.ink};line-height:1.2}
+    .cx-root{--cx-title:${COMIC.title};--cx-letter:${COMIC.letter}}
+    .cx-root.cx-serif{--cx-title:${COMIC.serif};--cx-letter:${COMIC.serif}}
+    .cx-serif .cx-title{text-transform:none;font-style:italic;font-weight:700;letter-spacing:-0.5px;line-height:.9}
+    .cx-serif .cx-cap, .cx-serif .cx-text, .cx-serif .cx-chip{font-weight:600;line-height:1.22}
+    .cx-serif .cx-bubble{text-transform:none;font-weight:700;letter-spacing:0;line-height:1.12}
+    .cx-serif .cx-cap .key, .cx-serif .cx-text .key, .cx-serif .cx-bubble .key{font-weight:700;font-style:italic}
+  `;
+  document.head.appendChild(s);
+}
+
+const _CX_CAP_POS = {
+  'top-left':     { top: 22, left: 22 },
+  'top-right':    { top: 22, right: 22 },
+  'bottom-left':  { bottom: 22, left: 22 },
+  'bottom-right': { bottom: 22, right: 22 },
+  top:            { top: 22, left: 22, right: 22 },
+  bottom:         { bottom: 22, left: 22, right: 22 },
+};
+
+function ComicPanel({ src, position, zoom, caption, captionPos = 'top-left', captionW, captionSize = 32,
+                      tag, tagPos, tagSize = 28, style, k = 1 }) {
+  const isUrl = src && /^https?:\/\//.test(src);
+  const pos = _CX_CAP_POS[captionPos] || _CX_CAP_POS['top-left'];
+  const full = captionPos === 'top' || captionPos === 'bottom';
+  // The tag takes whichever corner the caption leaves free.
+  const tagSide = tagPos ? { ...(_CX_CAP_POS[tagPos] || _CX_CAP_POS['top-right']), left: /left/.test(tagPos) ? 22 : undefined, right: /left/.test(tagPos) ? undefined : 22 }
+                : captionPos === 'top' ? { bottom: 22, right: 22 }
+                : /right/.test(captionPos) ? { top: 22, left: 22 } : { top: 22, right: 22 };
+  return (
+    <div className="cx-panel" style={style}>
+      {src && (
+        <img src={isUrl ? src : `images/${src}`} style={{
+          objectPosition: position || 'center',
+          ...(Number(zoom) > 1 ? { transform: `scale(${Number(zoom)})`, transformOrigin: position || 'center' } : null),
+        }} />
+      )}
+      {caption && (
+        <div className="cx-cap" style={{ ...pos, fontSize: Math.round(captionSize * k),
+          maxWidth: full ? 'none' : (captionW ? captionW : '72%') }}>
+          {renderBody(caption)}
+        </div>
+      )}
+      {tag && (
+        <div className="cx-tag" style={{ ...tagSide, fontSize: tagSize }}>{tag}</div>
+      )}
+    </div>
+  );
+}
+
+// Speech / thought bubble. x,y = bubble centre in % of the slide.
+// tail: bottom-left | bottom-right | top-left | top-right | none
+function ComicBubble({ text, by, x = 50, y = 30, w = 440, size: size0 = 32, tail = 'bottom-left', kind = 'speech', k = 1 }) {
+  const size = Math.round(size0 * k);
+  const thought = kind === 'thought';
+  const down = /^bottom/.test(tail);
+  const right = /right$/.test(tail);
+  return (
+    <div className="cx-bubble" style={{
+      left: `${x}%`, top: `${y}%`, width: w, transform: 'translate(-50%,-50%)',
+      fontSize: size, padding: thought ? '34px 40px' : '20px 28px 22px',
+      borderRadius: thought ? '50%' : 44,
+    }}>
+      {renderBody(text)}
+      {by && <div style={{ marginTop: 10, fontSize: Math.round(size * 0.58), fontWeight: 600,
+        letterSpacing: 1, textTransform: 'none', opacity: 0.75 }}>— {by}</div>}
+      {tail !== 'none' && !thought && (
+        <svg width="60" height="70" viewBox="0 0 60 70" style={{
+          position: 'absolute', overflow: 'visible',
+          [down ? 'top' : 'bottom']: '100%',
+          [right ? 'right' : 'left']: '18%',
+          transform: `${down ? '' : 'scaleY(-1)'} ${right ? 'scaleX(-1)' : ''}`.trim() || undefined,
+          transformOrigin: down ? 'top center' : 'bottom center',
+        }}>
+          <polygon points="0,0 44,0 6,68" fill={COMIC.white} />
+          <polyline points="0,0 6,68 44,0" fill="none" stroke={COMIC.ink} strokeWidth="5" strokeLinejoin="round" />
+        </svg>
+      )}
+      {tail !== 'none' && thought && (
+        <>
+          <div style={{ position: 'absolute', [down ? 'top' : 'bottom']: 'calc(100% + 8px)', [right ? 'right' : 'left']: '22%',
+            width: 34, height: 26, borderRadius: '50%', background: COMIC.white, border: `4px solid ${COMIC.ink}` }} />
+          <div style={{ position: 'absolute', [down ? 'top' : 'bottom']: 'calc(100% + 42px)', [right ? 'right' : 'left']: '16%',
+            width: 20, height: 16, borderRadius: '50%', background: COMIC.white, border: `4px solid ${COMIC.ink}` }} />
+        </>
+      )}
+    </div>
+  );
+}
+
+function ComicSfx({ text, x = 50, y = 50, size = 120, rotate = -8, color = COMIC.caption }) {
+  return (
+    <div style={{
+      position: 'absolute', zIndex: 5, left: `${x}%`, top: `${y}%`,
+      transform: `translate(-50%,-50%) rotate(${rotate}deg)`,
+      fontFamily: COMIC.title, fontSize: size, lineHeight: 0.9, letterSpacing: 2, whiteSpace: 'pre',
+      textAlign: 'center', color, paintOrder: 'stroke fill',
+      WebkitTextStroke: `${Math.max(6, Math.round(size * 0.1))}px ${COMIC.ink}`,
+      textShadow: `${Math.round(size * 0.06)}px ${Math.round(size * 0.06)}px 0 ${COMIC.ink}`,
+    }}>{text}</div>
+  );
+}
+
+// Starburst callout — 16-point star with lettering inside.
+function ComicBurst({ text, x = 80, y = 70, size = 300, rotate = 8, color = COMIC.caption, textSize }) {
+  const N = 16, R = 50, r = 38;
+  const pts = Array.from({ length: N * 2 }, (_, i) => {
+    const rad = (Math.PI * i) / N - Math.PI / 2;
+    const rr = i % 2 ? r : R;
+    return `${(50 + rr * Math.cos(rad)).toFixed(2)},${(50 + rr * Math.sin(rad)).toFixed(2)}`;
+  }).join(' ');
+  return (
+    <div style={{ position: 'absolute', zIndex: 5, left: `${x}%`, top: `${y}%`, width: size, height: size,
+      transform: `translate(-50%,-50%) rotate(${rotate}deg)` }}>
+      <svg viewBox="-4 -4 108 108" width={size} height={size} style={{ position: 'absolute', inset: 0, overflow: 'visible' }}>
+        <polygon points={pts} transform="translate(2.2,2.2)" fill={COMIC.ink} />
+        <polygon points={pts} fill={color} stroke={COMIC.ink} strokeWidth="2" strokeLinejoin="round" />
+      </svg>
+      <div style={{ position: 'absolute', inset: '17%', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        textAlign: 'center', fontFamily: COMIC.title, fontSize: textSize || Math.round(size * 0.13), lineHeight: 0.95,
+        letterSpacing: 1, color: COMIC.ink, textTransform: 'uppercase', whiteSpace: 'pre-line' }}>{text}</div>
+    </div>
+  );
+}
+
+function ComicMenu({ title, items, size = 27, k = 1 }) {
+  const list = (Array.isArray(items) ? items : String(items || '').split('\n'))
+    .map(s => String(s).trim()).filter(Boolean);
+  if (!list.length) return null;
+  return (
+    <div style={{ marginTop: 26 }}>
+      {title && <div className="cx-title" style={{ fontSize: 34, color: COMIC.red, letterSpacing: 3, marginBottom: 14 }}>{title}</div>}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px 12px' }}>
+        {list.map((it, i) => (
+          <span key={i} className="cx-chip" style={{ fontSize: Math.round(size * k), transform: `rotate(${[-1.2, 0.8, -0.4, 1.1][i % 4]}deg)` }}>{it}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Comic({ slide, index }) {
+  const {
+    page = 'panel-text', banner, banner_size = 46,
+    title, title_size, title_y = 0, title_align = 'center', kicker, kicker_size = 30,
+    body, body_size = 34, menu, menu_title, menu_size = 27, order = 'image-first',
+    image, image_position, image_zoom, caption, caption_pos, caption_w, caption_size = 32,
+    image_2, image_2_position, image_2_zoom, caption_2, caption_2_pos, caption_2_w,
+    tag, tag_pos, tag_2, tag_2_pos, panel_h = 640, split = 0.5,
+    bubble, bubble_by, bubble_x, bubble_y, bubble_w, bubble_size, bubble_tail, bubble_kind,
+    bubble_2, bubble_2_by, bubble_2_x, bubble_2_y, bubble_2_w, bubble_2_size, bubble_2_tail, bubble_2_kind,
+    sfx, sfx_x, sfx_y, sfx_size, sfx_rotate, sfx_color,
+    sfx_2, sfx_2_x, sfx_2_y, sfx_2_size, sfx_2_rotate, sfx_2_color,
+    burst, burst_x, burst_y, burst_size, burst_rotate, burst_color, burst_text_size,
+  } = slide;
+  const M = 36, G = 22;
+  const tw = useItiha();
+  const serif = (slide.type_style || (tw && tw.comicType) || 'comic') === 'serif';
+  const k = serif ? _CX_SERIF_K : 1;
+
+  const panel1 = (
+    <ComicPanel key="p1" src={image} position={image_position} zoom={image_zoom}
+      caption={caption} captionPos={caption_pos} captionW={caption_w} captionSize={caption_size} tag={tag} tagPos={tag_pos} k={k}
+      style={page === 'panel-text' ? { flex: `0 0 ${panel_h}px` }
+           : page === 'two' ? { flex: `${split} 1 0` } : { flex: '1 1 0' }} />
+  );
+  const logoTitle = page === 'full' && title && (
+    <div style={{ position: 'absolute', zIndex: 4, left: M + 30, right: M + 30, top: M + 34 + Number(title_y),
+      textAlign: title_align }}>
+      {kicker && (
+        <div className="cx-tag" style={{ position: 'relative', display: 'inline-block',
+          fontSize: kicker_size, marginBottom: Math.round(kicker_size * 0.73),
+          background: COMIC.red, color: COMIC.white, border: `4px solid ${COMIC.ink}` }}>{kicker}</div>
+      )}
+      <h1 className="cx-title cx-logo" style={{ fontSize: title_size || 150, letterSpacing: 3, lineHeight: 0.9,
+        '--cx-stroke': `${Math.round((title_size || 150) * 0.11)}px`,
+        textShadow: `${Math.round((title_size || 150) * 0.06)}px ${Math.round((title_size || 150) * 0.06)}px 0 ${COMIC.ink}` }}>
+        {renderHeadline(title)}
+      </h1>
+    </div>
+  );
+  const textPanel = page === 'panel-text' && (
+    <div key="tx" className="cx-panel" style={{ flex: '1 1 0', background: COMIC.white, padding: '30px 40px 34px' }}>
+      {title && <h2 className="cx-title" style={{ fontSize: Math.round((title_size || 78) * (serif ? 1.08 : 1)), marginBottom: 18 }}>{renderHeadline(title)}</h2>}
+      {body && <div className="cx-text" style={{ fontSize: Math.round(body_size * k), lineHeight: serif ? 1.22 : (body_size <= 34 ? 1.42 : 1.34) }}>{renderBody(body)}</div>}
+      <ComicMenu title={menu_title} items={menu} size={menu_size} k={k} />
+    </div>
+  );
+
+  let stack;
+  if (page === 'two') {
+    stack = [panel1, (
+      <ComicPanel key="p2" src={image_2} position={image_2_position} zoom={image_2_zoom}
+        caption={caption_2} captionPos={caption_2_pos || 'bottom-left'} captionW={caption_2_w} captionSize={caption_size}
+        tag={tag_2} tagPos={tag_2_pos} k={k} style={{ flex: `${1 - split} 1 0` }} />
+    )];
+  } else if (page === 'panel-text') {
+    stack = order === 'text-first' ? [textPanel, panel1] : [panel1, textPanel];
+  } else {
+    stack = [panel1];
+  }
+
+  return (
+    <div className={`itiha-slide cx-root${serif ? ' cx-serif' : ''}`} style={{ background: COMIC.paper, color: COMIC.ink }}>
+      <div className="cx-dots" />
+      {slide.texture && <TextureOverlay texture={slide.texture} slide={slide} />}
+      <div style={{ position: 'absolute', top: M, left: M, right: M, bottom: 92,
+        display: 'flex', flexDirection: 'column', gap: G }}>
+        {banner && (
+          <div className="cx-title" style={{ flex: 'none', background: COMIC.ink, color: COMIC.caption,
+            fontSize: banner_size, letterSpacing: 3, padding: '16px 26px 12px', boxShadow: `6px 6px 0 ${COMIC.red}` }}>
+            {renderHeadline(banner)}
+          </div>
+        )}
+        {stack}
+      </div>
+      {logoTitle}
+      {bubble && <ComicBubble text={bubble} by={bubble_by} x={bubble_x} y={bubble_y} w={bubble_w}
+        size={bubble_size} tail={bubble_tail} kind={bubble_kind} k={k} />}
+      {bubble_2 && <ComicBubble text={bubble_2} by={bubble_2_by} x={bubble_2_x} y={bubble_2_y} w={bubble_2_w}
+        size={bubble_2_size} tail={bubble_2_tail} kind={bubble_2_kind} k={k} />}
+      {sfx && <ComicSfx text={sfx} x={sfx_x} y={sfx_y} size={sfx_size} rotate={sfx_rotate} color={sfx_color} />}
+      {sfx_2 && <ComicSfx text={sfx_2} x={sfx_2_x} y={sfx_2_y} size={sfx_2_size} rotate={sfx_2_rotate} color={sfx_2_color} />}
+      {burst && <ComicBurst text={burst} x={burst_x} y={burst_y} size={burst_size} rotate={burst_rotate}
+        color={burst_color} textSize={burst_text_size} />}
+      <MaybePageNum n={index + 1} color="rgba(21,17,13,0.62)" />
+      {/* Comic pages carry a bigger wordmark than the 24px house stamp. */}
+      {tw && tw.showStamp && (
+        <div className="itiha-stamp" style={{ '--stamp-fg': COMIC.ink, fontSize: 48, letterSpacing: 3, right: 40, bottom: 24 }}>
+          <span className="w">ITIHA</span><span className="d">.</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 window.LAYOUTS = {
   // Carousel layouts (full-bleed image + type)
   cover: Cover,
@@ -1943,6 +2257,8 @@ window.LAYOUTS = {
   'reel-title': ReelTitle,
   'youtube-thumbnail': YoutubeThumbnail,
   'end-card': EndCard,
+  // Illustrated graphic-history pages (2026-09-19)
+  comic: Comic,
 };
 
 // ═══ BAKE-OFF 2026-08-31 — three experimental cover directions ═══

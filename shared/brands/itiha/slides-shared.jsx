@@ -55,6 +55,16 @@ if (typeof document !== 'undefined' && !document.getElementById('itiha-slide-sty
     .itiha-slide.em-v2.light .itiha-h1 .accent{color:${ITIHA.red}}
     .itiha-slide.em-v2 .itiha-body .key{color:inherit;font-weight:700;text-decoration:underline;text-decoration-color:#E2604F;text-decoration-thickness:3.5px;text-underline-offset:7px}
     .itiha-slide.em-v2.light .itiha-body .key{text-decoration-color:${ITIHA.red}}
+    /* Sindoor cover (cover_style: red, 2026-10-04) — a break from the dark
+       look for feed fatigue. White on Sindoor ≈ 5.5:1, ink accents ≈ 3.5:1
+       (headline-size only). Red graphic marks flip to ink. */
+    .itiha-slide.cover-red .itiha-h1{color:${ITIHA.white}}
+    .itiha-slide.cover-red .itiha-h1 .accent,.itiha-slide.cover-red.em-v2 .itiha-h1 .accent{color:${ITIHA.ink}}
+    .itiha-slide.cover-red .itiha-sub{color:${ITIHA.white};font-size:24px;letter-spacing:1.5px;line-height:1.45}
+    .itiha-slide.cover-red .itiha-meta{color:rgba(255,255,255,0.85)!important}
+    .itiha-slide.cover-red .itiha-page{color:rgba(255,255,255,0.85)!important}
+    .itiha-slide.cover-red .itiha-stamp .w{color:${ITIHA.white}!important}
+    .itiha-slide.cover-red .itiha-stamp .d{color:${ITIHA.ink}}
     .itiha-meta{font-family:${ITIHA.sans};font-weight:500;font-size:15px;letter-spacing:2.4px;text-transform:uppercase;color:${ITIHA.midGray}}
     .itiha-pull{font-family:${ITIHA.quoteSerif};font-style:italic;font-size:64px;line-height:1.28;color:${ITIHA.parchment};letter-spacing:0}
     /* Light-theme per-slide overrides: triggered by .itiha-slide.light */
@@ -186,11 +196,21 @@ function StripedPlaceholder({ note, width = '100%', height = '100%', mono = true
   );
 }
 
+// Readability veil over full-bleed photos. Text blocks on Itiha slides sit
+// between ~30% and ~85% of the height, so the ramp reaches full strength by
+// 48% and only the top sixth stays light enough to show the photo. The old
+// curve (0.45·o at 38%) left headlines on bright photos at ~1.5:1 contrast;
+// this one holds ≥4:1 against parchment at the default o = 0.75 (measured
+// 2026-10-02 on the ramananda-tirtha-hyderabad photos, 95th-pct background).
+function veilGradient(veil, o) {
+  return `linear-gradient(180deg, rgba(${veil},${o * 0.55}) 0%, rgba(${veil},${o * 0.45}) 15%, rgba(${veil},${o * 0.85}) 30%, rgba(${veil},${o}) 48%, rgba(${veil},${Math.min(o + 0.2, 0.95)}) 100%)`;
+}
+
 // A full-bleed image-slot with cinematic dark overlay for Variation A.
 // `id` must be unique per slide so the drop persists.
 function FullBleedSlot({ id, placeholder, overlay, vignette = true, bw = false }) {
   const t = (typeof React !== 'undefined' && React.useContext) ? React.useContext(BrandContext) : null;
-  const o = overlay != null ? overlay : ((t && t.overlayDarkness != null) ? t.overlayDarkness / 100 : 0.62);
+  const o = overlay != null ? overlay : ((t && t.overlayDarkness != null) ? t.overlayDarkness / 100 : 0.75);
   const filter = bw ? 'grayscale(1) contrast(1.08)' : undefined;
   return (
     <div style={{ position: 'absolute', inset: 0 }}>
@@ -198,7 +218,7 @@ function FullBleedSlot({ id, placeholder, overlay, vignette = true, bw = false }
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', filter }}></image-slot>
       <div style={{
         position: 'absolute', inset: 0,
-        background: `linear-gradient(180deg, rgba(0,0,0,${o * 0.7}) 0%, rgba(0,0,0,${o * 0.45}) 38%, rgba(0,0,0,${o}) 70%, rgba(0,0,0,${Math.min(o + 0.15, 0.95)}) 100%)`,
+        background: veilGradient('0,0,0', o),
         pointerEvents: 'none',
       }} />
       {vignette && (
@@ -218,7 +238,7 @@ const BrandContext = React.createContext({
   showChapterLabels: false,
   showStamp: true,
   showPageNum: true,
-  overlayDarkness: 62,
+  overlayDarkness: 75,
   accentRed: true,
 });
 function useItiha() { return React.useContext(BrandContext); }
@@ -266,7 +286,7 @@ function _resolveImageFilter(filterKey, bw) {
 // so headless renderers wait on real network/decode events.
 function ImageLayer({ url, bw, filter, overlay, position = 'center', zoom, vignette = true, light = false }) {
   const t = useItiha();
-  const o = overlay != null ? overlay : ((t && t.overlayDarkness != null) ? t.overlayDarkness / 100 : 0.62);
+  const o = overlay != null ? overlay : ((t && t.overlayDarkness != null) ? t.overlayDarkness / 100 : 0.75);
   if (!url) {
     return <div style={{ position: 'absolute', inset: 0, background: light ? '#FAF5EE' : '#1a1a1a' }} />;
   }
@@ -304,7 +324,7 @@ function ImageLayer({ url, bw, filter, overlay, position = 'center', zoom, vigne
       )}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: `linear-gradient(180deg, rgba(${veil},${o * 0.7}) 0%, rgba(${veil},${o * 0.45}) 38%, rgba(${veil},${o}) 70%, rgba(${veil},${Math.min(o + 0.15, 0.95)}) 100%)`,
+        background: veilGradient(veil, o),
       }} />
       {vignette && (
         <div style={{

@@ -89,6 +89,8 @@
   <span class="spacer"></span>
   <button id="nav-save">Save</button>
   <button id="nav-render" class="primary">Render</button>
+  <button id="nav-zip" style="display:none">ZIP</button>
+  <button id="nav-folder" style="display:none">Folder</button>
 </nav>
 <div class="stage"><div id="root"></div></div>
 <div id="editor"></div>
@@ -363,6 +365,7 @@ function App() {
   });
 
   const [rendering, setRendering] = React.useState(false);
+  const [renderInfo, setRenderInfo] = React.useState(null);
 
   const render = async () => {
     setRendering(true);
@@ -370,6 +373,9 @@ function App() {
       if (dirty) await save();
       const r = await fetch('api/render', { method: 'POST' });
       if (!r.ok) throw new Error(await r.text());
+      // Keep the result: the nav needs it to offer the ZIP and the output
+      // folder, the way the editor panel's own Render button does.
+      setRenderInfo(await r.json());
     } catch (e) {
       setSaveError(String(e.message || e));
     } finally {
@@ -404,6 +410,18 @@ function App() {
     navRender.textContent = rendering ? 'Rendering…' : 'Render';
     navRender.onclick = render;
 
+    // The PNGs land outside the repo, so a finished render offers the same two
+    // ways out as the editor panel: the ZIP, or the folder itself.
+    const navZip = document.getElementById('nav-zip');
+    const navFolder = document.getElementById('nav-folder');
+    const rendered = renderInfo && renderInfo.count;
+    navZip.style.display = rendered ? '' : 'none';
+    navFolder.style.display = rendered ? '' : 'none';
+    navZip.title = rendered ? `Download ${renderInfo.count} PNG${renderInfo.count === 1 ? '' : 's'}` : '';
+    navFolder.title = rendered ? renderInfo.output_dir : '';
+    navZip.onclick = () => { window.location = 'api/download-zip'; };
+    navFolder.onclick = () => fetch('api/open-folder', { method: 'POST' }).catch(() => {});
+
     // Bottom toolbar
     const tb = document.getElementById('prev-toolbar');
     tb.style.display = 'flex';
@@ -412,6 +430,11 @@ function App() {
     if (content) lbl.textContent = `${String(idx + 1).padStart(2,'0')} / ${String(content.slides.length).padStart(2,'0')} · ${content.slides[idx]?.layout || ''}`;
     if (loadError) { status.textContent = loadError; status.style.color = '#c0392b'; }
     else if (saveError) { status.textContent = saveError; status.style.color = '#c0392b'; }
+    else if (rendering) { status.textContent = 'rendering…'; status.style.color = '#888'; }
+    else if (renderInfo && renderInfo.count) {
+      status.textContent = `rendered ${renderInfo.count} slide${renderInfo.count === 1 ? '' : 's'}`;
+      status.style.color = '#5a8';
+    }
     else { status.textContent = 'live'; status.style.color = '#5a8'; }
     document.getElementById('btn-prev').onclick = () => window.__step(-1);
     document.getElementById('btn-next').onclick = () => window.__step(+1);
@@ -487,7 +510,7 @@ function App() {
   const slide = content.slides[idx];
   const Comp = slide ? window.LAYOUTS[slide.layout] : null;
   const TWEAKS = Object.assign({
-    showChapterLabels: false, showStamp: true, showPageNum: true, overlayDarkness: 62, showGrain: true,
+    showChapterLabels: false, showStamp: true, showPageNum: true, overlayDarkness: 75, showGrain: true,
     seriesLabel: '', totalSlides: content.slides.length,
   }, content.tweaks || {});
 

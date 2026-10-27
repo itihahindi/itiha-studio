@@ -1,0 +1,251 @@
+name: romila-thapar-haldighati-flights-of-imagination
+brand: itiha
+format: instagram-portrait
+caption: |
+  On 25 October 2026, delivering the Second Sitaram Yechury Memorial Lecture in New Delhi, Romila Thapar again cited the Battle of Haldighati of 1576 as a struggle over territory, not religion. Rana Pratap's army, she noted, included Afghan soldiers under Hakim Khan Suri, while the Mughal army was commanded by the Rajput Raja Man Singh. Author Anurag Sharma traces such arguments to a unilinear Marxist framework that treats history as a political tool.
+
+  The pattern rests on a double standard: hyper-scepticism toward native texts, recorded traumas and traditional continuities, dismissed as fantasies, Brahmanical fabrications or class interests, and zero scepticism toward obscure or heterodox references. On Somanatha, Thapar attributed Mahmud of Ghazni's attack to greed for gold, though Ibnu'l-Athir recorded that Mahmud resolved to smash the idol because Hindus believed it invincible. Over 50,000 Hindus died at the temple gate, and the contemporary Jain text of Dhanapala recorded the destruction. Her portrait of peaceful Sufi conversion ignores the Tazkiras, which record Sufis such as Shaikh Sufi Sarmast and Pir Ma'bari Khandayat fighting as ghazis. Sayanacharya and Madhava wrote under the Vijayanagara kings Bukka I and Harihara II, and Prithviraja Raso, Prithviraja Vijaya and Hammira Mahakavya recorded Hindu identity centuries before the 19th century.
+
+  Political expediency across religious lines was operational necessity, not ideological consensus. Reclaiming a fact-based history requires seeing through these rhetorical distortions.
+
+  Images: Romila Thapar by Mukul Dube (CC BY-SA 4.0); Virupaksha Temple by Ingo Mehling (CC BY-SA 4.0); paintings and archive photos public domain or CC0, via Wikimedia Commons.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #RomilaThapar #AnuragSharma #Haldighati #MaharanaPratap #Somnath #Sufism #MedievalIndia
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 82
+  showGrain: true
+  seriesLabel: HALDIGHATI
+  palette: haldi
+  theme: light
+slides:
+- layout: cover
+  eyebrow: In The News
+  eyebrow_meta: New Delhi · 25 October 2026
+  headline: |
+    Thapar Returns
+    To *Battle of Haldighati*
+  subline: A battle of 1576, recast as a quarrel over land
+  swipe_meta: Swipe ▸ · 16 Slides · 5 min read
+  image: thapar.jpg
+  image_position: 42% 0%
+  image_overlay: 0.25
+  theme: dark
+  headline_offset_y: 300
+  image_bw: false
+  texture: halftone
+- layout: story
+  chapter: Chapter 01 · The lecture
+  headline: |
+    The Yechury
+    Memorial *Lecture*
+  body: |
+    On [25 October 2026], Romila Thapar delivered the [Second Sitaram Yechury Memorial Lecture] in New Delhi, on historiography and early Indian history.
+    She held that conflicts between Hindu and Muslim rulers could not be explained solely through religion, and named [Haldighati] as her example.
+  image: yechury.jpg
+  image_position: 50% 18%
+  theme: dark
+  texture: halftone
+- layout: comparison
+  chapter: Chapter 02 · Haldighati
+  headline: |
+    A Battle Reduced
+    To *Territory*
+  left_label: The Thapar reading
+  left_headline: A *territorial* contest
+  left_body: 'Rana Pratap''s army included [Afghan soldiers] under Hakim Khan Suri. The Mughal army was
+    commanded by the [Rajput] Raja Man Singh.
+
+    '
+  right_label: The erased conflict
+  right_headline: A *civilizational* war
+  right_body: The logic used tactical [battlefield alliances] to erase the deeper conflict between [native
+    kingdoms] and foreign expansionism.
+  image: haldighati-chokha.jpg
+  image_overlay: 0.86
+  theme: dark
+  texture: halftone
+- layout: story
+  chapter: Chapter 03 · The framework
+  headline: |
+    History As A
+    Political *Tool*
+  body: |
+    Author [Anurag Sharma] identified a [unilinear Marxist framework] in Thapar's work. Historical facts were forced into pre-determined molds of [class struggle] and [economic determinism].
+    The result was a political project, not an objective quest for **truth**.
+  texture: halftone
+- layout: comparison
+  headline: |
+    Two Standards
+    Of *Proof*
+  left_headline: 'Native evidence
+
+    *Hyper*-scepticism'
+  left_body: 'Native texts, recorded traumas and traditional continuities met an impossibly high threshold
+    of proof. They were labelled [fantasies], [Brahmanical fabrications] or [class interests].
+
+    '
+  right_headline: Convenient evidence
+  right_body: Obscure, minor or heterodox references, and sometimes the [absence of text], were accepted
+    outright. A single alternative story or an [atypical decree] became the definitive key to history.
+  headline_offset_y: -50
+  body_size: 45
+  body_offset_y: -240
+  texture: halftone
+- layout: story
+  chapter: Chapter 05 · Motive erased
+  headline: |
+    Zeal Rewritten
+    As *Economics*
+  body: |
+    Thapar systematically argued that medieval foreign Muslim rulers acted purely from [political] or [economic] considerations, not religious zeal.
+    Under this framework, any critical examination or recollection of medieval religious atrocities was labelled [un-secular].
+  image: mahmud-bhatiya.jpg
+  theme: dark
+  texture: halftone
+- layout: comparison
+  chapter: Chapter 06 · Somanatha
+  headline: |
+    Gold, Or
+    The *Idol*
+  left_label: The Thapar claim
+  left_headline: An insatiable *greed*
+  left_body: 'The attack of [Mahmud of Ghazni] on [Somanatha] was driven strictly by greed for gold.
+
+    '
+  right_label: The Islamic chronicle
+  right_headline: A deity to *smash*
+  right_body: '[Ibnu''l-Athir] recorded that Mahmud resolved to smash the deity specifically after hearing
+    that Hindus believed the idol [invincible].'
+  body_size: 45
+  image: somnath-1869.jpg
+  image_overlay: 0.86
+  theme: dark
+  texture: halftone
+- layout: stat
+  chapter: Chapter 07 · Memory
+  headline: |
+    The Silence That
+    Never *Was*
+  stats:
+  - label: Defenders at the temple gate
+    value: Over 50,000
+    sublabel: Hindus who sacrificed their lives at Somanatha
+  body: Thapar suggested the raid was [not very agonizing] for Hindus and left no lasting memory, as native
+    sources were silent. The contemporary Jain text _Satyapuriya Sri Mahavira Utsaha_ of [Dhanapala] explicitly
+    recorded the destruction wrought by the Turks.
+  headline_offset_y: -20
+  stats_offset_y: -210
+  texture: halftone
+- layout: story
+  chapter: Chapter 08 · Patronage
+  headline: |
+    The Masterworks
+    Of *Vijayanagara*
+  body: |
+    Thapar credited medieval Islamic rulers for the flourishing of Hindu literature and philosophy. The scholars she cited, [Sayanacharya] and [Madhava], produced their masterworks under the Hindu [Vijayanagara Empire].
+    Their patrons were the kings [Bukka I] and [Harihara II], completely independent of Islamic courts.
+  image: hampi-virupaksha.jpg
+  theme: dark
+  texture: halftone
+- layout: story
+  chapter: Chapter 09 · The Sufi rule
+  headline: |
+    The Myth Of
+    Peaceful *Conversion*
+  body: |
+    Thapar asserted that the bulk of medieval conversions to Islam occurred peacefully, under the spiritual influence of [Sufi saints] rather than [military force] or state power.
+    Sufism was presented as an exclusively peaceful, [syncretic] movement, and peaceful conversion as the norm.
+  image: jahangir-sufi.jpg
+  image_position: 50% 30%
+  theme: dark
+  texture: halftone
+- layout: story
+  chapter: Chapter 10 · The Tazkiras
+  headline: |
+    Saints Who Rode
+    With *Armies*
+  body: Thapar ignored the primary Sufi hagiographical accounts, the _Tazkiras_. These explicitly documented
+    many Sufis acting as [ghazis], holy warriors, alongside [invading armies].
+  image: mahmud-gharchistan.jpg
+  theme: dark
+  texture: halftone
+- layout: comparison
+  chapter: Chapter 11 · The counter-evidence
+  headline: |
+    The *Ghazi*
+    Sufis
+  left_label: Shaikh Sufi Sarmast
+  left_headline: War in the *Deccan*
+  left_body: 'Fought against the Deccan ruler [Kumaram], participating directly in [armed conflict].
+
+    '
+  right_label: Pir Ma'bari Khandayat
+  right_headline: With *Malik Kafur*
+  right_body: Accompanied the military campaign of [Malik Kafur] in South India, taking part in armed
+    conflict and [forced conversions].
+  body_size: 50
+  texture: halftone
+  body_offset_y: -170
+- layout: story
+  theme: dark
+  chapter: Chapter 12 · Composite culture
+  headline: |
+    Necessity Is Not
+    *Consensus*
+  body: |
+    Thapar isolated instances of [political expediency], such as cross-religious military appointments, tactical trade relations and localized administrative patronage, as proof of a harmonious [composite culture].
+    The fallacy treated **operational necessity** as ideological consensus.
+  image: man-singh.jpg
+  image_position: 50% 15%
+  texture: halftone
+- layout: story
+  headline: Exception as a rule
+  body: |
+    Pragmatic alliances for political survival became proof that the religious divide was a [colonial construct], while centuries of [Persian chronicles] defining the conflict as Hindu versus Muslim were ignored.
+  image: _cache/7d428a73ec33c01a.jpg
+  image_bw: false
+  theme: dark
+  texture: halftone
+- layout: story
+  chapter: Chapter 13 · Identity
+  headline: |
+    Hindu Long
+    Before The *1800s*
+  body: Thapar asserted that a unified Hindu identity did not exist in ancient India and was imagined
+    in the [19th century]. Yet _Prithviraja Raso_, _Prithviraja Vijaya_ and _Hammira Mahakavya_, written
+    [centuries earlier], explicitly recorded native leaders identifying as [Hindu] in battle against foreign
+    invaders.
+  image: prithviraj.jpg
+  image_position: 50% 30%
+  theme: dark
+  texture: halftone
+- layout: split-story
+  theme: dark
+  chapter: Chapter 14 · Civilization
+  headline: |
+    *Bharatavarsha*
+    Before Britain
+  body: |
+    Thapar claimed the idea of an Indian civilization was defined by [British colonial scholarship] and appropriated by 19th-century elites.
+    Ancient texts, foreign accounts and [inscriptions] recognized [Bharatavarsha] as a unified geographical and cultural entity millennia before British rule.
+  texture: halftone
+  image: https://montgomery.dartmouth.edu/sites/montgomery/files/tharpar-romila-2006-dart.jpg
+  image_bw: false
+  image_filter: halftone
+  body_y: 40
+- layout: closing
+  headline: |
+    The *Pushpaka*
+    Vimana
+  body: |
+    As Ravana's [Pushpaka Vimana] flew anywhere his mind willed, Thapar's history writing consisted of "flights of mental imagination" detached from [archaeological], [epigraphic] and textual evidence. Reclaiming a fact-based history requires seeing through these [rhetorical distortions].
+  handle: Follow @itiha29 · itiha.info
+  image: pushpaka.jpg
+  theme: dark
+- layout: end-card
+  headline: New slide

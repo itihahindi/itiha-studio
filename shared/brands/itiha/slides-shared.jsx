@@ -102,7 +102,7 @@ const LOOK_CSS = `
     --it-accent-d:#FFD23F; --it-accent-d-rgb:255,210,63; --it-hl-d:#FFD23F; --it-on-accent-d:#0A0A0A;
     --it-accent-l:#0A0A0A; --it-accent-l-rgb:10,10,10; --it-hl-l:#1F2AD1; --it-on-accent-l:#FFD23F;
     --it-solid:#FFD23F; --it-on-solid:#0A0A0A; --it-on-solid-rgb:10,10,10; --it-solid-accent:#1F2AD1;
-    --it-veil-rgb:17,17,17; --it-photo-filter:grayscale(1) contrast(1.12);
+    --it-veil-rgb:17,17,17; --it-photo-filter:none;
     --it-duo-lo-d:#111111; --it-duo-hi-d:#FFD23F; --it-duo-lo-l:#0A0A0A; --it-duo-hi-l:#FFD23F;
     --it-sd1:#FFD23F; --it-sd2:#FFF8E7; --it-sd3:#8C8C8C; --it-sd4:#B8921C; --it-sd5:#4A4A4A; --it-sd6:#FFE89A;
     --it-sl1:#0A0A0A; --it-sl2:#1F2AD1; --it-sl3:#FFF8E7; --it-sl4:#7A5F00; --it-sl5:#5A5A5A; --it-sl6:#9AA0F0;
@@ -149,6 +149,10 @@ const LOOK_CSS = `
   .itiha-slide.it-v2.cover-red .itiha-page{background:var(--it-on-solid);color:var(--it-solid)!important}
   .itiha-slide.it-v2 .itiha-stamp{font-size:32px;letter-spacing:0;bottom:44px;font-weight:var(--it-h-weight);font-stretch:var(--it-h-stretch)}
   .itiha-slide .it-photo{filter:var(--it-photo-filter, none)}
+  /* Haldi's yellow page muddies colour photos under its light veil, so only
+     there they go monochrome; on the ink ground they stay in colour (user,
+     2026-10-27: "use colors"). */
+  .itiha-slide.pal-haldi.light{--it-photo-filter:grayscale(1) contrast(1.12)}
 
   /* ── 2026-10 type: Anek Latin (Ek Type, Mumbai) condensed 800 for display,
      Schibsted Grotesk (cut for a news group) for reading; quotes take its
@@ -495,7 +499,7 @@ function ImageLayer({ url, bw, filter, overlay, position = 'center', zoom, vigne
           <img src={src} style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%',
             objectFit: 'cover', objectPosition: position,
-            filter: 'grayscale(1) contrast(1.1) blur(2.5px)',
+            filter: 'grayscale(1) brightness(1.25) contrast(1.15) blur(2.5px)',
             ...(Number(zoom) > 1 ? { transform: `scale(${Number(zoom)})`, transformOrigin: position } : null),
           }} />
           <div style={{

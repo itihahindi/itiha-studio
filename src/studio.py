@@ -8,6 +8,10 @@ Routes:
   GET  /                         → home.html (project grid + new-project form)
   GET  /api/projects             → list of {slug, name, format}
   POST /api/projects/new         → create a new design from {name, format}
+  GET  /api/outbox               → finished hand-made posts waiting to go out (outbox.py)
+  GET  /outbox/<slug>/<file>     → an outbox post's media (byte-range for video)
+  POST /api/outbox/status        → {slug, status: ready|posted}
+  POST /api/outbox/reveal        → show the post's folder in Finder
   GET  /d/<slug>/                → render-host.html for that design
   GET  /d/<slug>/<file>          → content.json, version.txt, error.txt,
                                    images/<rel>, or any shared/<file>
@@ -49,6 +53,7 @@ from scaffold import _slugify, make_starter_yaml
 from formats import FORMATS
 from brands import BRANDS, DEFAULT_BRAND
 import notion_sync
+import outbox
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -263,6 +268,26 @@ def _build_server() -> ThreadingHTTPServer:
                     json.dumps(_list_projects(), ensure_ascii=False).encode(),
                     "application/json"); return
 
+            if path == "/api/outbox":
+                try:
+                    payload = {"root": str(outbox.outbox_root()), "posts": outbox.list_posts()}
+                    self._send_bytes(json.dumps(payload, ensure_ascii=False).encode(), "application/json")
+                except Exception as e:
+                    self._send_bytes(f"outbox failed: {e}".encode(), "text/plain", code=500)
+                return
+
+            m = re.match(r"^/outbox/([^/]+)/([^/]+)$", path)
+            if m:
+                try:
+                    d = outbox.post_dir(urllib.parse.unquote(m.group(1)))
+                except (ValueError, FileNotFoundError):
+                    self.send_error(404); return
+                name = urllib.parse.unquote(m.group(2))
+                f = d / name
+                if name.startswith(".") or f.suffix.lower() not in outbox.MEDIA_EXT or not f.is_file():
+                    self.send_error(404); return
+                self._send_range_file(f); return
+
             if path == "/api/notion/backlog":
                 try:
                     payload = {
@@ -434,6 +459,9 @@ def _build_server() -> ThreadingHTTPServer:
             if path == "/api/notion/open":
                 return self._open_notion()
 
+            if path in ("/api/outbox/status", "/api/outbox/reveal"):
+                return self._outbox_post(path.rsplit("/", 1)[1])
+
             m = re.match(r"^/d/([^/]+)/api/(.+)$", path)
             if m:
                 slug, endpoint = m.group(1), m.group(2)
@@ -468,6 +496,29 @@ def _build_server() -> ThreadingHTTPServer:
                 self._send_bytes(str(e).encode(), "text/plain", code=400)
             except Exception as e:
                 self._send_bytes(f"delete failed: {e}".encode(), "text/plain", code=500)
+
+        def _outbox_post(self, action: str):
+            try:
+                body = self._read_json_body()
+                slug = (body.get("slug") or "").strip()
+                if action == "status":
+                    post = outbox.set_status(slug, (body.get("status") or "").strip())
+                    self._send_bytes(json.dumps(post, ensure_ascii=False).encode(), "application/json")
+                    return
+                d = outbox.post_dir(slug)
+                if sys.platform == "darwin":
+                    subprocess.Popen(["open", str(d)])
+                elif sys.platform == "win32":
+                    os.startfile(str(d))  # noqa: S606
+                else:
+                    subprocess.Popen(["xdg-open", str(d)])
+                self._send_bytes(b'{"ok":true}', "application/json")
+            except FileNotFoundError as e:
+                self._send_bytes(str(e).encode(), "text/plain", code=404)
+            except ValueError as e:
+                self._send_bytes(str(e).encode(), "text/plain", code=400)
+            except Exception as e:
+                self._send_bytes(f"outbox {action} failed: {e}".encode(), "text/plain", code=500)
 
         def _open_notion(self):
             """Create a Studio project from a Notion backlog row, link them both ways."""

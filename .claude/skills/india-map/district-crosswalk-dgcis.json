@@ -1,0 +1,134 @@
+{
+ "_about": "DGCI&S (niryat / TIA portal) district names -> shared/geo/india-districts.js names, keyed by IndiaMap state name. Built 2026-10-27 from FY 2024-25 district export tables. Several source districts may fold into one map district (new districts carved after ~2022): sum them.",
+ "_unmappable": {
+  "Andhra Pradesh": "DGCI&S reports the 13 pre-2022 districts; the map has the 26 post-2022 districts. Do not paint old totals on new shapes. Leave AP unshaded at district level and say so.",
+  "Assam|Tamulpur": "carved from Baksa in 2022; not in the map file. Drop, or fold into Baksa with a note.",
+  "Haryana|South": "not a district; tiny residual. Drop.",
+  "*|Unspecified": "exports without a district. Count them and disclose in the source line."
+ },
+ "map": {
+  "Gujarat": {
+   "Arvalli": "Aravalli",
+   "Chhotaudepur": "Chota Udaipur",
+   "Dang": "The Dangs"
+  },
+  "Maharashtra": {
+   "Raigad": "Raigarh",
+   "Ahmednagar": "Ahmadnagar",
+   "Gondia": "Gondiya",
+   "Buldhana": "Buldana",
+   "Beed": "Bid"
+  },
+  "Tamil Nadu": {
+   "Tuticorin": "Thoothukkudi",
+   "Villupuram": "Viluppuram"
+  },
+  "Karnataka": {
+   "Bengaluru Urban": "Bangalore",
+   "Davangere": "Davanagere"
+  },
+  "Uttar Pradesh": {
+   "Maharajganj": "Mahrajganj",
+   "Ayodhya": "Faizabad",
+   "Sant Kabeer Nagar": "Sant Kabir Nagar",
+   "Shravasti": "Shrawasti"
+  },
+  "West Bengal": {
+   "Medinipur East": "Purba Medinipur",
+   "24 Paraganas North": "North Twenty Four Pargan*",
+   "24 Paraganas South": "South Twenty Four Pargana",
+   "Darjeeling": "Darjiling",
+   "Purulia": "Puruliya",
+   "Dinajpur Uttar": "Uttar Dinajpur",
+   "Dinajpur Dakshin": "Dakshin Dinajpur"
+  },
+  "Rajasthan": {
+   "Chittorgarh": "Chittaurgarh",
+   "Jhunjhunu": "Jhunjhunun",
+   "Jalore": "Jalor",
+   "Dholpur": "Dhaulpur"
+  },
+  "Odisha": {
+   "Nabarangpur": "Nabarangapur",
+   "Boudh": "Baudh"
+  },
+  "Madhya Pradesh": {
+   "Khargone": "West Nimar",
+   "Narmadapuram": "Hoshangabad",
+   "Narsinghpur": "Narsimhapur"
+  },
+  "Punjab": {
+   "S.A.S NAGAR": "Sahibzada Ajit Singh Nag*",
+   "Ferozepur": "Firozpur"
+  },
+  "Chhattisgarh": {
+   "Dantewada": "Dakshin Bastar Dantewada",
+   "Gariyaband": "Gariaband",
+   "Kanker": "Uttar Bastar Kanker",
+   "Bemetara": "Bametara",
+   "Kabirdham": "Kabeerdham"
+  },
+  "Bihar": {
+   "Purbi Champaran": "Purba Champaran"
+  },
+  "Jharkhand": {
+   "East Singhbum": "Purbi Singhbhum",
+   "Koderma": "Kodarma",
+   "West Singhbhum": "Pashchimi Singhbhum",
+   "Sahebganj": "Sahibganj"
+  },
+  "Uttarakhand": {
+   "Udam Singh Nagar": "Udham Singh Nagar",
+   "Haridwar": "Hardwar",
+   "Pauri Garhwal": "Garhwal"
+  },
+  "Assam": {
+   "Kamrup Metro": "Kamrup Metropolitan",
+   "Marigaon": "Morigaon"
+  },
+  "Puducherry": {
+   "Pondicherry": "Puducherry"
+  },
+  "Jammu & Kashmir": {
+   "Budgam": "Badgam",
+   "Baramulla": "Baramula",
+   "Shopian": "Shupiyan"
+  },
+  "Sikkim": {
+   "Gangtok": "East District",
+   "Pakyong": "East District",
+   "Namchi": "South District",
+   "Gyalshing": "West District",
+   "Mangan": "North  District"
+  },
+  "Tripura": {
+   "Sepahijala": "Sipahijala",
+   "Unakoti": "Unokoti"
+  },
+  "Nagaland": {
+   "Chumoukedima": "Dimapur"
+  },
+  "Andaman & Nicobar": {
+   "South Andamans": "South Andaman"
+  },
+  "Lakshadweep": {
+   "Lakshadweep District": "Lakshadweep"
+  },
+  "Ladakh": {
+   "Leh Ladakh": "Leh"
+  },
+  "Telangana": {
+   "Warangal": "Warangal Rural",
+   "Hanumakonda": "Warangal Urban",
+   "Jayashankar Bhupalapally": "Jayashankar"
+  },
+  "Dadra and Nagar Haveli and Daman and Diu": {
+   "Dadra And Nagar Haveli": "Dadra & Nagar Haveli"
+  }
+ },
+ "_state_names": {
+  "Dadra,nh,daman,diu": "Dadra and Nagar Haveli and Daman and Diu",
+  "Andaman And Nicobar Islands": "Andaman & Nicobar",
+  "Jammu And Kashmir": "Jammu & Kashmir"
+ }
+}

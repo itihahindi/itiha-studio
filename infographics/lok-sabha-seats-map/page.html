@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Style: WIRE MAP (11), with the real India outline instead of a tile grid.
+     4:5, 1080×1350 CSS, exported at 2× (2160×2700). VAQ HQ. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800;900&display=block" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF; --ink: #121212; --dek: #444444; --muted: #6E6E6E; --rule: #E4E4E4;
+    --kicker: #C2410C; --orange: #EA580C;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #DDD; }
+  #canvas {
+    width: 1080px; height: 1350px; position: relative; overflow: hidden;
+    background: var(--bg); color: var(--ink);
+    font-family: 'Libre Franklin', sans-serif; font-variant-numeric: tabular-nums;
+    padding: 52px 56px 0;
+  }
+  .kicker { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 21px;
+    letter-spacing: 1.6px; text-transform: uppercase; color: var(--kicker); }
+  .kicker::before { content: ''; width: 15px; height: 15px; background: var(--orange); }
+  h1 { margin-top: 18px; font-weight: 800; font-size: 60px; line-height: 1.04; letter-spacing: -1.4px; }
+  .dek { margin-top: 18px; font-size: 27px; line-height: 1.36; color: var(--dek); max-width: 930px; }
+  #map { position: absolute; left: 56px; right: 56px; top: 340px; bottom: 112px; }
+  #map svg { position: absolute; inset: 0; }
+  .im-legend { position: absolute; font-size: 20px; color: var(--ink); }
+  .im-legend-title { font-weight: 700; font-size: 22px; }
+  .im-legend-ticks { color: var(--muted); }
+  .im-small { position: absolute; width: max-content; min-width: 214px; font-size: 21px; display: flex; flex-direction: column; gap: 9px; }
+  .im-small-title { font-weight: 700; font-size: 21px; margin-bottom: 3px; }
+  .im-small-val { font-weight: 700; padding-left: 16px; }
+  .note { position: absolute; font-size: 21px; line-height: 1.3; color: var(--ink); }
+  .note b { font-weight: 800; }
+  footer { position: absolute; left: 56px; right: 56px; bottom: 34px; display: flex;
+    justify-content: space-between; align-items: flex-end; gap: 40px;
+    border-top: 1px solid var(--rule); padding-top: 14px; font-size: 18px; line-height: 1.4; color: var(--muted); }
+  footer b { color: var(--ink); font-weight: 700; }
+  .mark { font-weight: 800; color: var(--ink); white-space: nowrap; letter-spacing: .3px; }
+</style>
+</head>
+<body>
+<div id="canvas">
+  <div class="kicker">Lok Sabha · Seats by state</div>
+  <h1>Four states elect 210 of India's 543 MPs</h1>
+  <p class="dek">Lok Sabha seats per state and union territory, fixed by the 2008 delimitation. Uttar Pradesh's 80 outnumber the 75 held by the 21 smallest states and UTs combined.</p>
+  <div id="map"><svg id="mapsvg"></svg></div>
+  <footer>
+    <div><b>Source:</b> Delimitation of Parliamentary and Assembly Constituencies Order, 2008; Election Commission of India. Map: DataMeet (CC BY 4.0)</div>
+    <div class="mark">VAQ HQ · @vaq_hq</div>
+  </footer>
+</div>
+
+<script>window.__ready = false;</script>
+<script src="@geo/india.js"></script>
+<script src="@map/india-map.js"></script>
+<script>
+const SEATS = {
+  'Uttar Pradesh': 80, 'Maharashtra': 48, 'West Bengal': 42, 'Bihar': 40, 'Tamil Nadu': 39,
+  'Madhya Pradesh': 29, 'Karnataka': 28, 'Gujarat': 26, 'Rajasthan': 25, 'Andhra Pradesh': 25,
+  'Odisha': 21, 'Kerala': 20, 'Telangana': 17, 'Assam': 14, 'Jharkhand': 14, 'Punjab': 13,
+  'Chhattisgarh': 11, 'Haryana': 10, 'Delhi': 7, 'Jammu & Kashmir': 5, 'Uttarakhand': 5,
+  'Himachal Pradesh': 4, 'Arunachal Pradesh': 2, 'Goa': 2, 'Manipur': 2, 'Meghalaya': 2,
+  'Tripura': 2, 'Dadra and Nagar Haveli and Daman and Diu': 2, 'Ladakh': 1, 'Mizoram': 1,
+  'Nagaland': 1, 'Sikkim': 1, 'Andaman & Nicobar': 1, 'Chandigarh': 1, 'Lakshadweep': 1,
+  'Puducherry': 1,
+};
+const TOP4 = ['Uttar Pradesh', 'Maharashtra', 'West Bengal', 'Bihar'];
+
+// Every number in the copy is recomputed here; a mismatch fails the render.
+const vals = Object.values(SEATS);
+const total = vals.reduce((a, b) => a + b, 0);
+const top4 = TOP4.reduce((a, s) => a + SEATS[s], 0);
+const asc = [...vals].sort((a, b) => a - b);
+const small21 = asc.slice(0, 21).reduce((a, b) => a + b, 0);
+if (total !== 543 || top4 !== 210 || small21 !== 75 || vals.length !== 36)
+  throw new Error(`copy numbers out of date: total ${total}, top4 ${top4}, small21 ${small21}`);
+
+const bins = [3, 10, 20, 30, 45];
+const colors = ['#FFF1E2', '#FDD0A2', '#FDA662', '#F47B2B', '#D9520B', '#9A3A06'];
+const box = document.getElementById('map');
+const W = box.clientWidth, H = box.clientHeight;
+const m = IndiaMap.draw(document.getElementById('mapsvg'), {
+  width: W, height: H, padding: 4, align: 'left', dx: 0, zoom: 0.96,
+  data: Object.entries(SEATS).map(([state, value]) => ({ state, value, emphasis: TOP4.includes(state),
+    // West Bengal's name won't fit inside it: name and value go out into the Bay.
+    callout: state === 'West Bengal' ? IndiaMap.SPOTS.bay : undefined })),
+  bins, colors,
+  inkDark: '#3A2412', inkLight: '#FFFFFF', calloutInk: '#121212', nameInk: '#555',
+  labelFont: "'Libre Franklin', sans-serif", labelSize: 23, nameSize: 19, labelWeight: 700,
+  border: '#FFFFFF', borderWidth: 1.4, emphasisInk: '#121212', emphasisWidth: 2.6,
+  names: ['Uttar Pradesh', 'Maharashtra', 'Bihar'], format: (v) => String(v),
+});
+
+// Legend in the blank north-east (Tibet). The small-UT table goes in the
+// bottom-right corner, east of the Andaman & Nicobar chain.
+const lg = IndiaMap.legend(box, { title: 'Lok Sabha seats', bins, colors, swatch: 52, format: String });
+const [lx, ly] = m.xy(84.6, 36.6);
+lg.style.left = lx + 'px'; lg.style.top = ly + 'px';
+const st = IndiaMap.smallTable(box, m.small);
+st.style.right = '0px'; st.style.bottom = '46px';
+
+window.__ready = true;
+</script>
+</body>
+</html>

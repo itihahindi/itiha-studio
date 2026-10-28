@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Recipe: SCIENCE NOTE beeswarm (styles-original.md §15), VAQ POSTER skin, BROADSHEET
+// fallback look (the headline is a long sentence). Data: gsva-2023-24-api.json, % of GSVA.
+window.POST = {
+  ground: 'haldi',
+  look: 'broadsheet',
+  tag: 'Economy · 2023-24',
+  headline: 'Only 13 of 34 states and UTs beat India\'s <em>factory</em> share',
+  dek: 'Manufacturing as a share of each state\'s economy. India: 14.3%. Each dot is one state or union territory.',
+  source: '<b>Source:</b> MoSPI state accounts, GSVA at current prices, 2011-12 base, 2023-24; NAS 2023-24 first revised estimate for India. DNH &amp; DD and Lakshadweep not published.',
+  data: [{"state": "Sikkim", "value": 37.79}, {"state": "Nagaland", "value": 0.86}, {"state": "Chhattisgarh", "value": 15.92}, {"state": "Maharashtra", "value": 15.99}, {"state": "Haryana", "value": 17.66}, {"state": "Gujarat", "value": 33.99}, {"state": "Madhya Pradesh", "value": 7.94}, {"state": "Bihar", "value": 7.84}, {"state": "Mizoram", "value": 0.41}, {"state": "Rajasthan", "value": 11.1}, {"state": "Ladakh", "value": 1.62}, {"state": "West Bengal", "value": 13.32}, {"state": "Kerala", "value": 9.12}, {"state": "Jammu & Kashmir", "value": 6.29}, {"state": "Telangana", "value": 9.04}, {"state": "Assam", "value": 10.45}, {"state": "Arunachal Pradesh", "value": 1.83}, {"state": "Tamil Nadu", "value": 18.32}, {"state": "Karnataka", "value": 12.3}, {"state": "Uttarakhand", "value": 27.59}, {"state": "Jharkhand", "value": 20.08}, {"state": "Andhra Pradesh", "value": 11.44}, {"state": "Uttar Pradesh", "value": 11.88}, {"state": "Chandigarh", "value": 2.86}, {"state": "Andaman & Nicobar Islands", "value": 0.72}, {"state": "Tripura", "value": 2.6}, {"state": "Himachal Pradesh", "value": 26.38}, {"state": "Goa", "value": 27.95}, {"state": "Punjab", "value": 16.94}, {"state": "Meghalaya", "value": 9.28}, {"state": "Manipur", "value": 1.52}, {"state": "Puducherry", "value": 22.52}, {"state": "Odisha", "value": 19.36}, {"state": "Delhi", "value": 4.33}],
+  INDIA: 14.31,
+  checks(d, PK) {
+    PK.check(d.length === 34, 'rows ' + d.length);
+    PK.check(d.filter((r) => r.value > POST.INDIA).length === 13, 'above India');
+  },
+};
+function draw(svg, box, PK) {
+  const d = POST.data, R = 20, x = PK.scale(0, 40, 30, box.w - 30), mid = box.h * 0.52;
+  // gridlines and axis
+  [0, 10, 20, 30, 40].forEach((t) => {
+    PK.el(svg, 'line', { x1: x(t), x2: x(t), y1: 60, y2: box.h - 70, stroke: 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: x(t), y: box.h - 40, 'text-anchor': 'middle', class: 'pk-axis' }, t + '%');
+  });
+  PK.el(svg, 'text', { x: x(0), y: box.h - 6, class: 'pk-note' }, '\u2190 Less manufacturing');
+  PK.el(svg, 'text', { x: x(40), y: box.h - 6, 'text-anchor': 'end', class: 'pk-note' }, 'More manufacturing \u2192');
+  // beeswarm: each dot at its x, nudged to the nearest free slot above/below the midline
+  const placed = [], pos = {};
+  d.slice().sort((a, b) => a.value - b.value).forEach((r) => {
+    const cx = x(r.value);
+    for (let k = 0; k < 40; k++) {
+      const dy = (k % 2 ? 1 : -1) * Math.ceil(k / 2) * (R * 2 + 3), cy = mid + dy;
+      if (placed.every((p) => Math.hypot(p[0] - cx, p[1] - cy) >= R * 2 + 3)) { placed.push([cx, cy]); pos[r.state] = [cx, cy]; break; }
+    }
+  });
+  // India line
+  PK.el(svg, 'line', { x1: x(POST.INDIA), x2: x(POST.INDIA), y1: 50, y2: box.h - 70, stroke: 'var(--navy)', 'stroke-width': 4 });
+  PK.el(svg, 'text', { x: x(POST.INDIA) + 10, y: 66, class: 'pk-value' }, 'India 14.3%');
+  d.forEach((r) => {
+    const [cx, cy] = pos[r.state], hot = r.value > POST.INDIA;
+    PK.el(svg, 'circle', { cx, cy, r: R, fill: hot ? 'var(--orange)' : 'var(--ctx)', stroke: 'var(--paper)', 'stroke-width': 2 });
+  });
+  // count callout and three named dots
+  const n = d.filter((r) => r.value > POST.INDIA).length;
+  PK.el(svg, 'text', { x: box.w - 10, y: 150, 'text-anchor': 'end', class: 'pk-big', 'font-size': 120 }, n);
+  PK.el(svg, 'text', { x: box.w - 10, y: 186, 'text-anchor': 'end', class: 'pk-label em' }, 'above India\'s share');
+  const tag = (state, label, dx, dy) => {
+    const [cx, cy] = pos[state]; const tx = cx + dx, ty = cy + dy;
+    PK.el(svg, 'line', { x1: cx, y1: cy + (dy < 0 ? -R : R), x2: tx, y2: ty + (dy < 0 ? 8 : -24), stroke: 'var(--ink)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: tx, y: ty, 'text-anchor': 'middle', class: 'pk-label em' }, label);
+  };
+  const v = Object.fromEntries(d.map((r) => [r.state, r.value]));
+  tag('Gujarat', 'Gujarat ' + Math.round(v['Gujarat']) + '%', -40, -150);
+  tag('Sikkim', 'Sikkim ' + Math.round(v['Sikkim']) + '%', 0, 160);
+  tag('Bihar', 'Bihar ' + v['Bihar'].toFixed(1) + '%', -10, -200);
+}
+PK.run();
+</script></body></html>

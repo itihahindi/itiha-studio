@@ -1,0 +1,42 @@
+name: zz-vaq-poster-reels-coal
+brand: vaq-hq
+format: instagram-reel
+tweaks:
+  look: poster
+  ground: coal
+  vertical: live
+  showStamp: true
+  showPageNum: true
+slides:
+- layout: reel-explainer
+  vertical: briefing
+  kicker_meta: New York · 29 Aug 2026
+  video_file: clip.mp4
+  chip: Madison Square Garden
+  headline_style: label
+  headline: 'Inside the Garden, Bhagwat''s
+
+    answer to the *protests outside*.
+
+    '
+  headline_size: 54
+  body_label: 'He said:'
+  body: Unity and diversity are both in Bharat's DNA. Every nation has a message,
+    a mission and a destiny. Bharat's is to remind the world that we are one, and
+    that diversity decorates that oneness.
+  body_size: 28
+  credit: 'Footage: Republic World'
+  panel_height: 520
+  panel_fade: 0
+- layout: reel-frame
+  vertical: ground
+  video_url: https://x.com/desishitposterr/status/2088602577432904117/video/1
+  headline: The *Vande Mataram* row
+  subline: A gesture, a claim, and a clarification
+  credit: 'Footage: Manorama News'
+  texture: signal
+  panel_height: 400
+  panel_fade: 200
+  align_x: left
+  align_y: bottom
+  headline_offset_y: 50

@@ -247,6 +247,40 @@
     background: #1a1a1a; color: var(--fg); border: 1px solid #2a2a2a;
   }
 
+  /* Outbox — finished hand-made posts (reels, maps, charts) waiting to go out. */
+  #outbox-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .post { background: var(--bg-card); border: 1px solid var(--border); display: flex; flex-direction: column; }
+  .post.stale { border-color: #5a2a22; }
+  .post .media { background: #050505; height: 380px; display: flex; align-items: center; justify-content: center; position: relative; }
+  .post .media img { max-width: 100%; max-height: 100%; display: block; }
+  .post .media video { height: 100%; max-width: 100%; display: block; background: #000; }
+  .post .thumbs { display: flex; gap: 6px; padding: 8px 12px 0; overflow-x: auto; }
+  .post .thumbs img { width: 44px; height: 55px; object-fit: cover; opacity: .5; cursor: pointer; border: 1px solid transparent; }
+  .post .thumbs img.on { opacity: 1; border-color: var(--fg-mute); }
+  .post .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .post .name { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 26px; letter-spacing: .5px; line-height: 1.05; text-transform: uppercase; }
+  .post[data-brand="vaq-hq"] .name { font-family: 'Hanken Grotesk', system-ui, sans-serif; font-weight: 800; font-size: 21px;
+    letter-spacing: -0.2px; line-height: 1.15; text-transform: none; }
+  .post .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--fg-mute); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .post .badge { display: inline-block; padding: 4px 9px; background: #0a0a0a; border: 1px solid var(--border); color: var(--fg); }
+  .post .badge.due { color: #ffd870; border-color: #4a4020; }
+  .post .badge.late { color: #ff9c8a; border-color: #5a2a22; }
+  .post .badge.done { color: #6cc88e; border-color: #2a4a35; }
+  .post .caption { font-size: 13px; line-height: 1.55; color: #cfc5b3; white-space: pre-wrap;
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; cursor: pointer; }
+  .post .caption.open { display: block; }
+  .post .caption.missing { color: #ff9c8a; cursor: default; }
+  .post .notes { font-size: 12px; line-height: 1.5; color: var(--fg-mute); }
+  .post .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: auto; }
+  .post .actions button { padding: 11px 12px; font-size: 10px; }
+  .post .actions button[data-a="copy"] { grid-column: 1 / -1; padding: 14px; }
+  .post .actions button.ghost { background: transparent; border: 1px solid var(--border); color: var(--fg); }
+  .post .actions button.ghost:hover { border-color: #444; background: #1a1a1a; }
+  #outbox-posted summary { cursor: pointer; list-style: none; }
+  #outbox-posted summary::-webkit-details-marker { display: none; }
+  #outbox-posted .post { opacity: .72; }
+
   .err {
     background: rgba(192,57,43,0.12); border: 1px solid var(--red);
     color: #fbb; padding: 12px 16px; margin-bottom: 16px;
@@ -301,6 +335,18 @@
     <button id="np-create">Create &amp; open</button>
   </div>
   <div id="np-err" class="err" style="display:none; margin-top:12px"></div>
+
+  <div id="outbox-wrap">
+    <div class="section-label" style="display:flex;align-items:baseline;gap:14px">
+      Ready to post
+      <span id="outbox-count" style="color:#666;font-size:10px;letter-spacing:2px"></span>
+    </div>
+    <div id="outbox-grid" class="grid"></div>
+    <details id="outbox-posted" style="display:none">
+      <summary class="section-label" style="margin:28px 0 18px">Posted <span id="posted-count" style="color:#666"></span> ▾</summary>
+      <div id="posted-grid" class="grid"></div>
+    </details>
+  </div>
 
   <div id="backlog-wrap" style="display:none">
     <div class="section-label" style="display:flex;align-items:baseline;gap:14px">
@@ -392,6 +438,7 @@ function setSearch(q) {
   wrap.classList.toggle('has-query', !!q.trim());
   renderGrid(allProjects);
   renderBacklog();
+  renderOutbox();
 }
 
 // Header brand switcher: filters the grid, pre-selects the New-project brand,
@@ -422,6 +469,7 @@ document.querySelectorAll('#brand-tabs button').forEach(btn => {
     applyBrandTabs();
     renderGrid(allProjects);
     renderBacklog();
+    renderOutbox();
   };
 });
 
@@ -501,6 +549,7 @@ function renderGrid(projects) {
       applyBrandTabs();
       renderGrid(allProjects);
       renderBacklog();
+      renderOutbox();
     };
   } else {
     hint.style.display = 'none';
@@ -688,6 +737,122 @@ async function openFromBacklog(row) {
 
 loadBacklog().then(renderBacklog).catch(e => {
   console.error('backlog load failed', e);
+});
+
+// ── Outbox ──────────────────────────────────────────────────────
+// Finished hand-made posts (HyperFrames reels, maps, charts): src/outbox.py
+// reads <outbox>/<slug>/post.yaml + media. Brand tabs and search filter it too.
+
+let outboxState = { root: '', posts: [] };
+
+async function loadOutbox() {
+  const r = await fetch('api/outbox');
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+function matchesPost(p, tokens) {
+  if (!tokens.length) return true;
+  const hay = [p.title, p.slug, p.brand, BRAND_LABELS[p.brand] || '', p.kind, p.caption, p.hashtags].join(' ').toLowerCase();
+  return tokens.every(t => hay.includes(t));
+}
+
+function fmtDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+}
+
+function postCard(p, tokens) {
+  const card = document.createElement('div');
+  card.className = 'post' + (p.stale ? ' stale' : '');
+  card.dataset.brand = p.brand;
+  const src = m => `outbox/${encodeURIComponent(p.slug)}/${encodeURIComponent(m.name)}`;
+  const mediaEl = m => m.video
+    ? `<video src="${src(m)}#t=0.1" controls muted playsinline preload="metadata"></video>`
+    : `<img src="${src(m)}" alt="">`;
+  const first = p.media[0];
+  let due = '';
+  if (p.status === 'posted') due = `<span class="badge done">Posted ${escapeHtml(fmtDate(p.posted_at))}</span>`;
+  else if (p.stale) due = `<span class="badge late">Stale since ${escapeHtml(fmtDate(p.post_by))}</span>`;
+  else if (p.post_by) due = `<span class="badge due">Post by ${escapeHtml(fmtDate(p.post_by))}</span>`;
+  card.innerHTML = `
+    <div class="media">${first ? mediaEl(first) : '<span class="notes">no media file</span>'}</div>
+    ${p.media.length > 1 ? `<div class="thumbs">${p.media.map((m, i) => m.video ? '' :
+      `<img src="${src(m)}" data-i="${i}" class="${i ? '' : 'on'}" alt="">`).join('')}</div>` : ''}
+    <div class="body">
+      <div class="meta">
+        <span class="badge" style="color:${BRAND_COLORS[p.brand] || '#888'}">${escapeHtml(BRAND_LABELS[p.brand] || p.brand)}</span>
+        <span class="badge">${escapeHtml(p.kind)}${p.media.length > 1 ? ' · ' + p.media.length : ''}</span>
+        ${due}
+      </div>
+      <div class="name">${highlight(p.title, tokens)}</div>
+      ${p.error ? `<div class="caption missing">${escapeHtml(p.error)}</div>` : p.caption
+        ? `<div class="caption" title="Click to expand">${escapeHtml(p.caption)}</div>`
+        : `<div class="caption missing">No caption yet. Add one to post.yaml.</div>`}
+      ${p.notes ? `<div class="notes">${escapeHtml(p.notes)}</div>` : ''}
+      <div class="actions">
+        <button type="button" data-a="copy" ${p.caption ? '' : 'disabled'}>Copy caption</button>
+        <button type="button" class="ghost" data-a="reveal">Reveal files</button>
+        <button type="button" class="ghost" data-a="status">${p.status === 'posted' ? 'Back to ready' : 'Mark posted'}</button>
+      </div>
+    </div>`;
+  card.querySelectorAll('.thumbs img').forEach(t => t.onclick = () => {
+    card.querySelectorAll('.thumbs img').forEach(x => x.classList.toggle('on', x === t));
+    card.querySelector('.media').innerHTML = mediaEl(p.media[+t.dataset.i]);
+  });
+  const cap = card.querySelector('.caption:not(.missing)');
+  if (cap) cap.onclick = () => cap.classList.toggle('open');
+  card.querySelector('[data-a="copy"]').onclick = async (e) => {
+    // Same shape as the editor's Copy caption: caption, blank line, hashtags.
+    const full = [p.caption, p.hashtags].filter(Boolean).join('\n\n');
+    await navigator.clipboard.writeText(full);
+    e.target.textContent = 'Copied ✓';
+    setTimeout(() => { e.target.textContent = 'Copy caption'; }, 1600);
+  };
+  card.querySelector('[data-a="reveal"]').onclick = () => outboxAction('reveal', { slug: p.slug });
+  card.querySelector('[data-a="status"]').onclick = async () => {
+    await outboxAction('status', { slug: p.slug, status: p.status === 'posted' ? 'ready' : 'posted' });
+    renderOutbox(await loadOutbox());
+  };
+  return card;
+}
+
+async function outboxAction(action, body) {
+  try {
+    const r = await fetch(`api/outbox/${action}`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+    });
+    if (!r.ok) throw new Error(await r.text());
+  } catch (e) {
+    alert(`${action} failed: ${e.message || e}`);
+  }
+}
+
+function renderOutbox(payload) {
+  if (payload) outboxState = payload;
+  const tokens = tokenize(searchQuery);
+  const inBrand = outboxState.posts.filter(p => brandFilter === 'all' || p.brand === brandFilter);
+  const shown = inBrand.filter(p => matchesPost(p, tokens));
+  const ready = shown.filter(p => p.status !== 'posted');
+  const posted = shown.filter(p => p.status === 'posted');
+  const grid = document.getElementById('outbox-grid');
+  const pgrid = document.getElementById('posted-grid');
+  grid.innerHTML = ''; pgrid.innerHTML = '';
+  const nReady = inBrand.filter(p => p.status !== 'posted').length;
+  document.getElementById('outbox-count').textContent = tokens.length ? `(${ready.length} of ${nReady})` : `(${nReady})`;
+  if (!ready.length) {
+    grid.innerHTML = `<div class="empty">${tokens.length ? 'Nothing ready matches this search.'
+      : `Nothing waiting. Finished reels, maps and charts land in <code style="color:#E8DCC8">${escapeHtml(outboxState.root)}</code>, one folder per post with a post.yaml.`}</div>`;
+  }
+  ready.forEach(p => grid.appendChild(postCard(p, tokens)));
+  posted.forEach(p => pgrid.appendChild(postCard(p, tokens)));
+  document.getElementById('outbox-posted').style.display = posted.length ? 'block' : 'none';
+  document.getElementById('posted-count').textContent = `(${posted.length})`;
+}
+
+loadOutbox().then(renderOutbox).catch(e => {
+  document.getElementById('outbox-grid').innerHTML = `<div class="err">outbox load failed: ${escapeHtml(String(e.message || e))}</div>`;
 });
 
 </script>

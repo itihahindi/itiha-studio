@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Fact card: Jio Platforms IPO in numbers. Issue terms: draft prospectus (SEBI, 19 Jun 2026) + price band (21-23 Oct
+// bidding); FY26 financials: DRHP (revenue from operations, EBITDA); customers: RIL Q1 FY27 release. Listing price not used
+// (unconfirmed at time of making).
+window.POST = {
+  ground: 'coal', hSize: 100,
+  tag: 'Jio Platforms · IPO',
+  headline: 'Jio\'s IPO in <em>five</em> numbers',
+  dek: 'Jio Platforms lists on NSE and BSE this week. All new shares.',
+  source: '<b>Source:</b> Jio Platforms draft prospectus (SEBI, June 2026) and price band announcement; Reliance Industries Q1 FY27 media release (17 Jul 2026). Revenue = revenue from operations, FY 2025-26.',
+  data: [
+    ['₹30,213 cr', 'raised, at most (₹1,065-1,119 a share)'],
+    ['₹1,46,885 cr', 'revenue, 2025-26'],
+    ['₹76,255 cr', 'operating profit (EBITDA), 2025-26'],
+    ['533 million', 'customers, June 2026'],
+    ['₹215.6', 'revenue per user, a month'],
+  ],
+  checks(d, PK) {
+    PK.check(27e7 * 1119 / 1e7 === 30213, 'issue size');
+    PK.check(d.length === 5, 'five numbers');
+  },
+};
+function draw(svg, box, PK) {
+  const d = POST.data, rowH = box.h / d.length;
+  d.forEach(([big, small], i) => {
+    const y0 = rowH * i;
+    if (i) PK.el(svg, 'line', { x1: 0, x2: box.w, y1: y0, y2: y0, stroke: 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: 0, y: y0 + rowH * 0.52, class: 'pk-big', style: 'font-size:' + (i ? 80 : 90) + 'px;fill:' + (i ? 'var(--orange)' : 'var(--orange-2)') }, big);
+    PK.el(svg, 'text', { x: 0, y: y0 + rowH * 0.52 + 44, class: 'pk-note' }, small);
+  });
+}
+
+PK.run();
+</script></body></html>

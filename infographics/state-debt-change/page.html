@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Dumbbell: state debt as % of GSDP, 2020-21 vs 2024-25, PRS State of State Finances (Oct 2025), Annexure
+// Table 4, "actual" column, whole percent. VAQ POSTER, haldi. Raw: ../state-debt-map/state_finances_prs.csv.
+window.POST = {
+  ground: 'haldi',
+  hSize: 96,
+  tag: 'State debt · 2020-21 to 2024-25',
+  headline: '26 of 28 states cut their debt since <em>Covid</em>',
+  dek: 'Debt as % of GSDP, 2020-21 (Covid year) vs 2024-25. The eight biggest cuts:',
+  source: '<b>Source:</b> PRS Legislative Research, State of State Finances (Oct 2025), Annexure Table 4, outstanding debt as % of GSDP. Rounded to whole percent. No figure for Delhi, J&amp;K, Puducherry.',
+  data: [{"state": "Andhra Pradesh", "y21": 36.0, "y25": 33.0}, {"state": "Arunachal Pradesh", "y21": 45.0, "y25": 42.0}, {"state": "Assam", "y21": 26.0, "y25": 25.0}, {"state": "Bihar", "y21": 40.0, "y25": 35.0}, {"state": "Chhattisgarh", "y21": 28.0, "y25": 27.0}, {"state": "Goa", "y21": 36.0, "y25": 29.0}, {"state": "Gujarat", "y21": 22.0, "y25": 17.0}, {"state": "Haryana", "y21": 34.0, "y25": 30.0}, {"state": "Himachal Pradesh", "y21": 45.0, "y25": 44.0}, {"state": "Jharkhand", "y21": 37.0, "y25": 24.0}, {"state": "Karnataka", "y21": 26.0, "y25": 26.0}, {"state": "Kerala", "y21": 40.0, "y25": 36.0}, {"state": "Madhya Pradesh", "y21": 31.0, "y25": 30.0}, {"state": "Maharashtra", "y21": 21.0, "y25": 18.0}, {"state": "Manipur", "y21": 43.0, "y25": 35.0}, {"state": "Meghalaya", "y21": 43.0, "y25": 36.0}, {"state": "Mizoram", "y21": 42.0, "y25": 27.0}, {"state": "Nagaland", "y21": 50.0, "y25": 38.0}, {"state": "Odisha", "y21": 26.0, "y25": 15.0}, {"state": "Punjab", "y21": 48.0, "y25": 46.0}, {"state": "Rajasthan", "y21": 40.0, "y25": 35.0}, {"state": "Sikkim", "y21": 29.0, "y25": 29.0}, {"state": "Tamil Nadu", "y21": 32.0, "y25": 30.0}, {"state": "Telangana", "y21": 29.0, "y25": 26.0}, {"state": "Tripura", "y21": 40.0, "y25": 25.0}, {"state": "Uttar Pradesh", "y21": 37.0, "y25": 31.0}, {"state": "Uttarakhand", "y21": 33.0, "y25": 23.0}, {"state": "West Bengal", "y21": 44.0, "y25": 37.0}],
+  checks(d, PK) {
+    const fell = d.filter((r) => r.y25 < r.y21).length, rose = d.filter((r) => r.y25 > r.y21).length;
+    PK.check(d.length === 28 && fell === 26 && rose === 0, `fell ${fell} rose ${rose} n ${d.length}`);
+    const top = d.slice().sort((a, b) => (a.y25 - a.y21) - (b.y25 - b.y21)).slice(0, 2).map((r) => r.state).sort();
+    PK.check(top.join() === 'Mizoram,Tripura' && d.find((r) => r.state === 'Mizoram').y21 - d.find((r) => r.state === 'Mizoram').y25 === 15, 'top cuts ' + top);
+  },
+};
+function draw(svg, box, PK) {
+  const all = POST.data.slice().sort((a, b) => (a.y25 - a.y21) - (b.y25 - b.y21)), rows = all.slice(0, 8);
+  const LBL = 290, CHG = 120, x = PK.scale(10, 50, LBL, box.w - CHG - 20);
+  const top = 110, foot = 60, rowH = (box.h - top - foot) / rows.length;
+  const k = PK.el(svg, 'g');
+  [['2020-21', 'var(--ctx)', 0], ['2024-25', 'var(--orange)', 240]].forEach(([t, c, dx]) => {
+    PK.el(k, 'circle', { cx: dx + 15, cy: 14, r: 15, fill: c });
+    PK.el(k, 'text', { x: dx + 42, y: 26, class: 'pk-key' }, t);
+  });
+  [20, 30, 40, 50].forEach((t) => {
+    PK.el(svg, 'line', { x1: x(t), x2: x(t), y1: top, y2: top + rowH * rows.length, stroke: t === 20 ? 'var(--orange-2)' : 'var(--grid)',
+      'stroke-width': t === 20 ? 3 : 2, 'stroke-dasharray': t === 20 ? '8 7' : null });
+    PK.el(svg, 'text', { x: x(t), y: top - 14, 'text-anchor': 'middle', class: 'pk-axis',
+      style: t === 20 ? 'fill:var(--orange-2)' : '' }, t + '%');
+  });
+  rows.forEach((r, i) => {
+    const cy = top + rowH * (i + 0.5), ch = r.y25 - r.y21;
+    PK.el(svg, 'text', { x: 0, y: cy + 14, class: 'pk-label' }, r.state);
+    PK.el(svg, 'line', { x1: x(r.y21), x2: x(r.y25), y1: cy, y2: cy, stroke: 'var(--orange)', 'stroke-width': 5 });
+    PK.el(svg, 'circle', { cx: x(r.y21), cy, r: 12, fill: 'var(--ctx)' });
+    PK.el(svg, 'circle', { cx: x(r.y25), cy, r: 15, fill: 'var(--orange)', stroke: 'var(--paper)', 'stroke-width': 3 });
+    PK.el(svg, 'text', { x: box.w, y: cy + 15, 'text-anchor': 'end', class: 'pk-value' }, PK.signed(ch, 0));
+  });
+  const rest = all.slice(8), fell = rest.filter((r) => r.y25 < r.y21).length, flat = rest.filter((r) => r.y25 === r.y21).length;
+  PK.el(svg, 'text', { x: 0, y: box.h - 8, class: 'pk-note' }, `+ ${fell} more states fell, ${flat} unchanged, none rose`);
+}
+PK.run();
+</script></body></html>

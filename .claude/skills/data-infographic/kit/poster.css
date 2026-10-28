@@ -1,0 +1,112 @@
+/* VAQ POSTER: the house look for every chart and map PNG (user's pick, 2026-10-27).
+   Fallback look: BROADSHEET (class look-broadsheet), for headlines too long or
+   too grave for poster caps. No other looks (user: keep it to these two).
+   GROUNDS (user, 2026-10-27: "white is looking basic"): two high-contrast
+   grounds that alternate in the feed: HALDI (turmeric page, coal type) and
+   COAL (coal page, haldi + cream type). Set POST.ground = 'haldi' | 'coal'.
+   The old white VAQ paper stays only as ground 'paper' for one-offs.
+   Colour = VAQ (paper, one orange, navy counterweight) on 'paper'. Type = Indian Type
+   Foundry via Fontshare: Tanker for headlines and hero numbers, Switzer for
+   everything else. Light only; no textures, no dashboard chrome. */
+@import url('https://api.fontshare.com/v2/css?f[]=tanker@400&f[]=switzer@400,500,600,700,800,900&f[]=zodiak@700,800&f[]=boska@900i&display=block');
+
+:root {
+  --paper: #F7F9FB;      /* page */
+  --ink: #0A1119;        /* text */
+  --navy: #0A1F3C;       /* headline, second series, "fell / below" pole */
+  --orange: #F4631E;     /* the story: one accent */
+  --orange-deep: #A23900;
+  --orange-pale: #FDEBE0;
+  --ctx: #94A7BA;        /* context marks (VAQ slate) */
+  --ctx-pale: #DCE3EA;   /* the "rest" in a waffle / highlight map */
+  --grid: rgba(10, 17, 25, .10);
+  --axis: rgba(10, 17, 25, .32);
+  --muted: #4A5868;
+  --display: 'Tanker', 'Arial Narrow', sans-serif;
+  --text: 'Switzer', 'Helvetica Neue', Arial, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #DDD; }
+
+#canvas {
+  --h-size: 112px;
+  width: 1080px; height: 1350px; position: relative; overflow: hidden;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--text); font-variant-numeric: tabular-nums;
+}
+#canvas.r-1x1 { height: 1080px; --h-size: 96px; }
+#canvas.r-9x16 { height: 1920px; }
+#canvas.r-16x9 { width: 1920px; height: 1080px; }
+
+/* ── anatomy: slug → headline → dek → chart → footer ── */
+.pk-slug { position: absolute; left: 56px; right: 56px; top: 44px; display: flex; align-items: center;
+  justify-content: space-between; font-size: 27px; }
+.pk-tag { background: var(--orange); color: var(--ink); padding: 6px 12px 5px; text-transform: uppercase;
+  letter-spacing: 1.4px; font-weight: 800; }
+.pk-issue { color: var(--muted); font-weight: 600; }
+.pk-h1 { position: absolute; left: 54px; right: 54px; top: 100px; font-family: var(--display); font-weight: 400;
+  font-size: var(--h-size); line-height: .86; text-transform: uppercase; color: var(--navy); }
+.pk-h1 em { font-style: normal; color: var(--orange); }
+/* text floor (user, 2026-10-28: "40px is readable, I use 45px"): a 1080 px post shows at ~1/3 on a phone.
+   Dek 40, labels 36, values 40, axis / notes / keys 31; source line 23 (user asked for -10% from 44/40/34,
+   2026-10-28: "too populated… no spacing"). Cut chart
+   elements to fit; never shrink type. */
+.pk-dek { position: absolute; left: 56px; width: 968px; font-size: 40px; line-height: 1.2; font-weight: 450; }
+.pk-dek b { font-weight: 800; }
+.pk-chart { position: absolute; left: 56px; right: 56px; }
+.pk-chart svg { display: block; overflow: visible; }
+.pk-footer { position: absolute; left: 56px; right: 56px; bottom: 30px; display: flex; justify-content: space-between;
+  align-items: flex-end; gap: 40px; border-top: 3px solid var(--ink); padding-top: 12px;
+  font-size: 23px; line-height: 1.28; color: var(--muted); }
+.pk-footer b { color: var(--ink); font-weight: 800; }
+.pk-mark { font-family: var(--display); font-size: 36px; line-height: 1; color: var(--navy); white-space: nowrap; }
+.pk-mark span { color: var(--orange); }
+
+/* ── grounds ── tokens only; every rule above reads them.
+   --navy = headline ink; --orange = the story colour (marks, hero numbers);
+   --orange-2 = second identity / "fell" pole; --em-bg/--em-fg = the slab
+   behind an <em> headline word. */
+#canvas { --em-bg: transparent; --em-fg: var(--orange); --tag-bg: var(--orange); --tag-fg: var(--ink);
+  --orange-2: var(--navy); --halo: #BDBDB8; --nodata: #E6E5E1; }
+#canvas.ground-haldi {
+  --paper: #FFD23F; --ink: #111111; --navy: #111111; --muted: #3B3216;
+  --orange: #111111; --orange-2: #C2410C; --orange-pale: #FFF3C4; --orange-deep: #111111;
+  --ctx: rgba(17,17,17,.46); --ctx-pale: rgba(17,17,17,.16);   /* .30 read as faint olive on haldi (2026-10-28) */
+  --grid: rgba(17,17,17,.16); --axis: rgba(17,17,17,.4);
+  --em-bg: #111111; --em-fg: #FFD23F; --tag-bg: #111111; --tag-fg: #FFD23F;
+  --halo: rgba(17,17,17,.38); --nodata: rgba(17,17,17,.12);
+}
+#canvas.ground-coal {
+  --paper: #111111; --ink: #FFF8E7; --navy: #FFF8E7; --muted: #C9C2B0;
+  --orange: #FFD23F; --orange-2: #F4631E; --orange-pale: #3B3631; --orange-deep: #FFD23F;
+  --ctx: rgba(255,248,231,.42); --ctx-pale: rgba(255,248,231,.16);
+  --grid: rgba(255,248,231,.14); --axis: rgba(255,248,231,.4);
+  --em-bg: #FFD23F; --em-fg: #111111; --tag-bg: #FFD23F; --tag-fg: #111111;
+  --halo: rgba(255,248,231,.4); --nodata: rgba(255,248,231,.13);
+}
+.pk-tag { background: var(--tag-bg); color: var(--tag-fg); }
+/* The slab covers the cap height only (a gradient, not the inline box,
+   which is taller than the tight poster leading and would clip the line above). */
+.pk-h1 em { color: var(--em-fg); -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  background: linear-gradient(var(--em-bg), var(--em-bg)) no-repeat center / 100% var(--slab-h, .9em); }
+.ground-haldi .pk-h1 em, .ground-coal .pk-h1 em { padding: 0 .07em; }
+.ground-haldi .pk-h1, .ground-coal .pk-h1 { line-height: .92; }
+.look-broadsheet .pk-h1 em { --slab-h: 1.02em; }
+.ground-haldi .pk-mark span, .ground-coal .pk-mark span { color: var(--paper); background: var(--ink); padding: 0 .1em; }
+
+/* ── fallback look: BROADSHEET (Zodiak serif headline, Boska italic accent) ── */
+#canvas.look-broadsheet { --display: 'Zodiak', Georgia, serif; --h-size: 84px; }
+.look-broadsheet .pk-h1 { font-weight: 800; text-transform: none; line-height: .98; letter-spacing: -2.6px; }
+.look-broadsheet .pk-h1 em { font-family: 'Boska', Georgia, serif; font-style: italic; font-weight: 900; letter-spacing: -1.5px; }
+.look-broadsheet .pk-mark { font-weight: 800; font-size: 26px; letter-spacing: -.5px; }
+.look-broadsheet .pk-big { font-weight: 800; letter-spacing: -2px; }
+
+/* ── chart text (SVG and HTML) — sizes are phone floors at 1080 wide ── */
+.pk-label { font: 700 36px var(--text); fill: var(--ink); color: var(--ink); }
+.pk-label.em { font-weight: 800; }
+.pk-value { font: 800 40px var(--text); fill: var(--ink); color: var(--ink); font-variant-numeric: tabular-nums; }
+.pk-axis { font: 600 31px var(--text); fill: var(--muted); color: var(--muted); }
+.pk-key { font: 800 31px var(--text); fill: var(--ink); color: var(--ink); text-transform: uppercase; letter-spacing: 1px; }
+.pk-note { font: 600 31px var(--text); fill: var(--muted); color: var(--muted); }
+.pk-big { font-family: var(--display); font-weight: 400; fill: var(--orange); color: var(--orange); line-height: .86; }
+.pk-big.navy { fill: var(--navy); color: var(--navy); }

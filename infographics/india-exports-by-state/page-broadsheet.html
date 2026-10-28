@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- POSTER MAP: the scroll-stopping India map post, VAQ colours.
+     4:5, 1080×1350 CSS, exported 2×. Thumbnail rules: one finding, one giant
+     number on the map, ≤ 8-word headline, everything else small.
+     Type is from the Indian Type Foundry's free Fontshare library, chosen
+     because it is NOT the Inter / Plex / Space Grotesk set every AI page uses.
+     Pick a look with POST.look: 'poster' (house default) | 'broadsheet' (fallback),
+     and a ground with POST.ground: 'haldi' (turmeric page, coal type, default)
+     | 'coal' (coal page, haldi type). Alternate grounds post to post so the
+     feed doesn't go flat (user, 2026-10-27). 'paper' = the old white.
+     Edit only the CONFIG block; layout knobs are CSS variables. -->
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=tanker@400&f[]=zodiak@400,700,800&f[]=boska@400i,700i,900i&f[]=switzer@400,500,600,700,800,900&display=block" rel="stylesheet">
+<style>
+  /* VAQ colours, unchanged: paper, the one orange, navy as counterweight. */
+  :root {
+    --paper: #F7F9FB; --ink: #0A1119; --orange: #F4631E; --navy: #0A1F3C;
+    --muted: #4A5868; --rule: #0A1119;
+    --display: 'Tanker', sans-serif; --text: 'Switzer', sans-serif; --italic: 'Boska', serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #DDD; }
+  #canvas {
+    --h-size: 112px; --h-lead: .86; --h-track: 0; --h-case: uppercase; --h-weight: 400;
+    --map-top: 404px; --map-bottom: 104px;
+    width: 1080px; height: 1350px; position: relative; overflow: hidden;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--text); font-variant-numeric: tabular-nums;
+  }
+  /* Looks: only type and chrome change; colour stays VAQ. */
+  #canvas.look-broadsheet { --display: 'Zodiak', serif; --h-size: 84px; --h-lead: .98; --h-track: -2.6px;
+    --h-case: none; --h-weight: 800; }
+
+  .slug { position: absolute; left: 56px; right: 56px; top: 44px; display: flex; align-items: center;
+    justify-content: space-between; font-weight: 700; font-size: 27px; letter-spacing: .3px; }
+  .slug .tag { background: var(--orange); color: var(--ink); padding: 6px 12px 5px; text-transform: uppercase; letter-spacing: 1.4px; font-weight: 800; }
+  .slug .issue { color: var(--muted); font-weight: 600; }
+  h1 { position: absolute; left: 54px; right: 54px; top: 100px; font-family: var(--display);
+    font-weight: var(--h-weight); font-size: var(--h-size); line-height: var(--h-lead);
+    letter-spacing: var(--h-track); text-transform: var(--h-case); color: var(--navy); }
+  h1 em { font-style: normal; color: var(--orange); }
+  .look-broadsheet h1 em { font-family: var(--italic); font-style: italic; font-weight: 900; letter-spacing: -1.5px; }
+  #map { position: absolute; left: 40px; right: 40px; top: var(--map-top); bottom: var(--map-bottom); }
+  #map svg { position: absolute; inset: 0; }
+  .dek { position: absolute; font-size: 40px; line-height: 1.2; color: var(--ink); font-weight: 450; }
+  .dek b { font-weight: 800; }
+  .im-legend { position: absolute; font-size: 31px; font-weight: 500; }
+  .im-legend-title { font-weight: 800; font-size: 27px; text-transform: uppercase; letter-spacing: 1px; }
+  .im-legend-ticks, .im-legend-ends, .im-legend-nodata { color: var(--muted); }
+  .im-small { position: absolute; width: max-content; min-width: 214px; font-size: 31px;
+    display: flex; flex-direction: column; gap: 8px; font-weight: 500; }
+  .im-small-title { font-weight: 800; font-size: 27px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+  .im-small-val { font-weight: 800; padding-left: 16px; }
+  footer { position: absolute; left: 56px; right: 56px; bottom: 30px; display: flex;
+    justify-content: space-between; align-items: flex-end; gap: 40px;
+    border-top: 3px solid var(--rule); padding-top: 12px; font-size: 23px; line-height: 1.28; color: var(--muted); }
+  footer b { color: var(--ink); font-weight: 800; }
+  .mark { font-family: var(--display); font-weight: var(--h-weight); font-size: 36px; color: var(--navy);
+    white-space: nowrap; line-height: 1; text-transform: uppercase; }
+  .look-broadsheet .mark { font-size: 26px; text-transform: none; letter-spacing: -.5px; }
+  .mark span { color: var(--orange); }
+
+  /* grounds: same tokens as data-infographic/kit/poster.css */
+  #canvas { --em-bg: transparent; --em-fg: var(--orange); --tag-bg: var(--orange); --tag-fg: var(--ink); }
+  #canvas.ground-haldi { --paper: #FFD23F; --ink: #111111; --navy: #111111; --muted: #3B3216; --rule: #111111;
+    --orange: #111111; --em-bg: #111111; --em-fg: #FFD23F; --tag-bg: #111111; --tag-fg: #FFD23F; }
+  #canvas.ground-coal { --paper: #111111; --ink: #FFF8E7; --navy: #FFF8E7; --muted: #C9C2B0; --rule: #FFF8E7;
+    --orange: #FFD23F; --em-bg: #FFD23F; --em-fg: #111111; --tag-bg: #FFD23F; --tag-fg: #111111; }
+  .slug .tag { background: var(--tag-bg); color: var(--tag-fg); }
+  /* slab = cap height only, so it never clips the line above (see kit/poster.css) */
+  h1 em { color: var(--em-fg); -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    background: linear-gradient(var(--em-bg), var(--em-bg)) no-repeat center / 100% var(--slab-h, .9em); }
+  .ground-haldi h1 em, .ground-coal h1 em { padding: 0 .07em; }
+  .ground-haldi h1, .ground-coal h1 { --h-lead: .92; }
+  .look-broadsheet h1 em { --slab-h: 1.02em; }
+  .ground-haldi .mark span, .ground-coal .mark span { color: var(--paper); background: var(--ink); padding: 0 .1em; }
+  .im-legend span[style*="background"] { box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+</style>
+</head>
+<body>
+<div id="canvas">
+  <div class="slug"><span class="tag" id="tag"></span><span class="issue" id="issue"></span></div>
+  <h1 id="headline"></h1>
+  <div id="map"><svg id="mapsvg"></svg></div>
+  <div class="dek" id="dek"></div>
+  <footer><div id="source"></div><div class="mark">VAQ <span>HQ</span></div></footer>
+</div>
+
+<script>window.__ready = false;</script>
+<script src="@geo/india.js"></script>
+<!-- add @geo/india-districts.js or @geo/india-pc.js for those levels -->
+<script src="@map/india-map.js"></script>
+<script>
+// ════ CONFIG ════════════════════════════════════════════════════════════
+const POST = {
+  look: 'broadsheet',
+  ground: 'coal',
+  tag: 'Exports · FY 2024-25', issue: '@vaq_hq',
+  headline: 'Three states ship <em>half</em><br>of India\'s exports',
+  dek: 'Goods exports by state of origin, 2024-25, US$ billion. <b>Gujarat</b> alone beats the 29 smallest combined.',
+  source: '<b>Source:</b> DGCI&amp;S exports by state of origin, FY 2024-25, provisional (Oct 2026), via Dept of Commerce TIA portal. 1.9% of exports are not tied to a state. Map: DataMeet (CC BY 4.0)',
+  level: 'state',
+  smallTable: false,   // labels off at the 2026-10 type sizes; tiny UTs are in the caption
+  // US$ billion, from dgcis-state-exports-2024-25.json (VALUE1, US$ million ÷ 1000)
+  data: [{"state": "Gujarat", "value": 116.346}, {"state": "Maharashtra", "value": 65.9128}, {"state": "Tamil Nadu", "value": 52.173}, {"state": "Karnataka", "value": 30.4819}, {"state": "Uttar Pradesh", "value": 21.9804}, {"state": "Andhra Pradesh", "value": 20.7828}, {"state": "Telangana", "value": 19.1269}, {"state": "Haryana", "value": 19.1024}, {"state": "West Bengal", "value": 12.6676}, {"state": "Rajasthan", "value": 11.4757}, {"state": "Delhi", "value": 10.5209}, {"state": "Odisha", "value": 10.098}, {"state": "Madhya Pradesh", "value": 7.8249}, {"state": "Punjab", "value": 7.0405}, {"state": "Kerala", "value": 4.7722}, {"state": "Dadra,nh,daman,diu", "value": 4.6457}, {"state": "Goa", "value": 2.4762}, {"state": "Himachal Pradesh", "value": 2.4276}, {"state": "Chhattisgarh", "value": 2.1889}, {"state": "Bihar", "value": 2.0412}, {"state": "Jharkhand", "value": 1.8978}, {"state": "Uttarakhand", "value": 1.7687}, {"state": "Assam", "value": 0.5506}, {"state": "Puducherry", "value": 0.5168}, {"state": "Jammu And Kashmir", "value": 0.228}, {"state": "Chandigarh", "value": 0.1169}, {"state": "Meghalaya", "value": 0.0423}, {"state": "Sikkim", "value": 0.0196}, {"state": "Tripura", "value": 0.0121}, {"state": "Arunachal Pradesh", "value": 0.0019}, {"state": "Nagaland", "value": 0.0016}, {"state": "Manipur", "value": 0.0012}, {"state": "Andaman And Nicobar Islands", "value": 0.0011}, {"state": "Lakshadweep", "value": 0.0008}, {"state": "Mizoram", "value": 0.0002}, {"state": "Ladakh", "value": 0.0001}].map((r) => ({ ...r,
+    emphasis: ['Gujarat', 'Maharashtra', 'Tamil Nadu'].includes(r.state),
+    hideLabel: ['Gujarat', 'Lakshadweep', 'Andaman & Nicobar'].includes(IndiaMap.resolve(r.state)), small: r.state === 'Goa' })),
+  bins: [0.5, 2, 5, 15, 40],
+  format: (v) => (v < 0.1 ? '<0.1' : v < 10 ? v.toFixed(1) : String(Math.round(v))),
+  legend: { title: 'US$ billion', format: String },
+  annotate: [{ state: 'Gujarat', title: 'Gujarat', value: '$116 bn', at: [59.9, 19.3], anchor: 'start' },
+             { state: 'Tamil Nadu', title: 'Tamil Nadu', value: '$52 bn', at: [91.4, 10.9], anchor: 'end' }],
+  names: [],
+  checks(rows) {
+    const v = Object.fromEntries(rows.map((r) => [r.state, r.value]));
+    const ALL_INDIA = 437.7;                       // PIB 15 Apr 2026, revised FY 2024-25
+    const top3 = v['Gujarat'] + v['Maharashtra'] + v['Tamil Nadu'];
+    const sorted = rows.map((r) => r.value).sort((a, b) => b - a);
+    const bottom29 = sorted.slice(7).reduce((a, b) => a + b, 0);
+    if (rows.length !== 36) throw new Error('expected 36 states/UTs');
+    if (!(top3 / ALL_INDIA > 0.5)) throw new Error(`top3 share ${top3 / ALL_INDIA}`);
+    if (!(v['Gujarat'] > bottom29) || sorted.length - 7 !== 29) throw new Error(`bottom29 ${bottom29}`);
+    if (Math.round(v['Gujarat']) !== 116) throw new Error('hero number');
+  },
+  legendAt: [82.0, 37.4],
+  dekAt: { left: 56, top: 'below-headline', width: 968 },
+  smallAt: [61.4, 36.7],
+  map: { align: 'right', dx: -60, zoom: 1, labels: false },
+};
+// ════════════════════════════════════════════════════════════════════════
+
+const $ = (id) => document.getElementById(id);
+$('canvas').classList.add('look-' + POST.look, 'ground-' + (POST.ground || 'haldi'));
+// Map colours per ground. Story = hero number; ramp runs light→dark on haldi,
+// dark→bright on coal (more = more contrast with the page, either way).
+const GROUND = {
+  haldi: { ramp: ['#FFF3C4', '#E8590C', '#111111'], paper: '#FFD23F', ink: '#111111', light: '#FFD23F',
+    story: '#111111', emph: '#C2410C', nodata: 'rgba(17,17,17,.12)', halo: 'rgba(17,17,17,.38)', name: '#3B3216' },
+  coal: { ramp: ['#3B3631', '#E8590C', '#FFD23F'], paper: '#111111', ink: '#FFF8E7', light: '#FFF8E7',
+    story: '#FFD23F', emph: '#FFF8E7', nodata: 'rgba(255,248,231,.13)', halo: 'rgba(255,248,231,.4)', name: '#C9C2B0' },
+  paper: { ramp: ['#FDEBE0', '#F4631E', '#6E2000'], paper: '#F7F9FB', ink: '#0A1119', light: '#FFFFFF',
+    story: '#F4631E', emph: '#0A1F3C', nodata: '#E6E5E1', halo: '#BDBDB8', name: '#4A5868' },
+}[POST.ground || 'haldi'];
+if (POST.hSize) $('canvas').style.setProperty('--h-size', POST.hSize + 'px');
+$('tag').textContent = POST.tag; $('issue').textContent = POST.issue;
+$('headline').innerHTML = POST.headline;
+$('dek').innerHTML = POST.dek;
+$('source').innerHTML = POST.source;
+const placeDek = () => {
+  const d = POST.dekAt, h = $('headline');
+  const top = d.top === 'below-headline' ? h.offsetTop + h.offsetHeight + 22 : d.top;
+  Object.assign($('dek').style, { left: d.left + 'px', width: d.width + 'px',
+    ...(top != null ? { top: top + 'px' } : { bottom: d.bottom + 'px' }) });
+};
+
+document.fonts.ready.then(() => {
+  placeDek();
+  POST.checks(POST.data);
+  const cs = getComputedStyle($('canvas'));
+  const display = cs.getPropertyValue('--display').trim();
+  const colors = IndiaMap.ramp(POST.ramp || GROUND.ramp, POST.bins.length + 1);
+  const box = $('map');
+  const m = IndiaMap.draw($('mapsvg'), {
+    width: box.clientWidth, height: box.clientHeight, padding: 4, ...POST.map,
+    level: POST.level, data: POST.data, bins: POST.bins, colors,
+    inkDark: '#111111', inkLight: GROUND.light, calloutInk: GROUND.ink, nameInk: GROUND.name, leaderInk: GROUND.ink,
+    labelFont: "'Switzer', sans-serif", labelSize: 31, nameSize: 27, labelWeight: 800,
+    heroFont: display, heroInk: GROUND.ink, heroSize: POST.look === 'broadsheet' ? 84 : 120,
+    heroTitleSize: 36, heroHalo: GROUND.paper, border: GROUND.paper, borderWidth: POST.level === 'state' ? 1.4 : undefined,
+    stateBorder: GROUND.paper, missingFill: GROUND.nodata, outline: GROUND.halo,
+    emphasisInk: GROUND.emph, emphasisWidth: 3,
+    names: POST.names, annotate: POST.annotate, format: POST.format,
+  });
+  // Anything the layout can't see (headline, dek) overlapping the map is
+  // caught by render.py's overlap check; keep the headline short.
+  // Hero callout: title/note lines in the text face, the number in the display face.
+  document.querySelectorAll('#mapsvg text').forEach((t) => {
+    const fs = +t.getAttribute('font-size');
+    if (fs >= 50) { t.setAttribute('font-family', display);
+      if (POST.look === 'poster') t.setAttribute('font-weight', 400);
+      t.setAttribute('fill', GROUND.story); }
+    else t.setAttribute('font-family', "'Switzer', sans-serif");
+  });
+  m.placeLeaders();                            // hero text changed face above: re-measure
+  if (m.unknown.length || m.fuzzy.length) console.warn('match problems', m.unknown, m.fuzzy);
+  const lg = IndiaMap.legend(box, { ...POST.legend, bins: POST.bins, colors, swatch: POST.legend.swatch || Math.min(100, Math.floor(440 / (POST.bins.length + 1))), noDataColor: GROUND.nodata });
+  const [lx, ly] = Array.isArray(POST.legendAt) ? m.xy(...POST.legendAt) : [POST.legendAt.left, POST.legendAt.top];
+  // never above the dek's last line (the dek can run long)
+  const dekLow = $('dek').offsetTop + $('dek').offsetHeight - box.offsetTop + 18;
+  const dekRight = $('dek').offsetLeft + $('dek').offsetWidth - box.offsetLeft;
+  lg.style.left = lx + 'px'; lg.style.top = (lx < dekRight ? Math.max(ly, dekLow) : ly) + 'px';
+  if (POST.level === 'state' && POST.smallTable !== false) {
+    const st = IndiaMap.smallTable(box, m.small);
+    if (st && Array.isArray(POST.smallAt)) {
+      const [sx, sy] = m.xy(...POST.smallAt);
+      // never above the dek's last line
+      const dekBottom = $('dek').offsetTop + $('dek').offsetHeight - box.offsetTop + 16;
+      st.style.left = sx + 'px'; st.style.top = Math.max(sy, dekBottom) + 'px';
+    }
+    else if (st) { st.style.right = POST.smallAt.right + 'px'; st.style.bottom = POST.smallAt.bottom + 'px'; }
+  }
+  window.__ready = true;
+});
+</script>
+</body>
+</html>

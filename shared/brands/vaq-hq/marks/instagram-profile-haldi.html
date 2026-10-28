@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@import url('https://api.fontshare.com/v2/css?f[]=tanker@400&f[]=switzer@600,700,800&display=block');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: transparent; }
+#canvas { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;
+  font-family: 'Tanker', 'Arial Narrow', sans-serif; text-transform: uppercase; }
+.vaq { line-height: .8; letter-spacing: -.01em; }
+/* A logo is one line, so the slab is a real box around the letters (tail of
+   the Q included), not the cap-height strip the multi-line headlines use. */
+.hq { display: inline-block; line-height: 1; padding: .04em .1em .1em; background: var(--slab); }
+.tag { font-family: 'Switzer', sans-serif; font-weight: 800; text-transform: none; letter-spacing: -.01em; }
+</style></head><body>
+<div id="canvas" style="width:1080px;height:1080px;background:#FFD23F"><div style="display:flex;flex-direction:column;align-items:center;gap:33px"><div class="vaq" style="font-size:480px;color:#111111">VAQ</div><div class="hq" style="font-size:268px;color:#FFD23F;--slab:#111111">HQ</div></div></div><script>document.fonts.ready.then(()=>{window.__ready=true});window.__ready=false;</script></body></html>

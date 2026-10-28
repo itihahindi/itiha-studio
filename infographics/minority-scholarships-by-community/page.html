@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Paired bars: each community's share of minority scholarships vs its share of the six notified minorities'
+// population. VAQ POSTER, haldi. The Union budget has no religion-wise split of Minority Affairs spending;
+// this scholarship count is the only official one (Rajya Sabha Q1414, via PIB 1805847, 14 Mar 2022).
+// Scholarships = pre-matric, post-matric, merit-cum-means and Begum Hazrat Mahal, sanctioned 2016-17 to 2020-21.
+// Population: Census 2011 C-01; Parsis from Rajya Sabha Q2038 (21 Mar 2022), not a separate C-01 column.
+const SCHOLARSHIPS = { Muslim: 23445123, Christian: 3722438, Sikh: 2540217, Buddhist: 741231, Jain: 404121, Parsi: 4828 };
+const POPULATION = { Muslim: 172245158, Christian: 27819588, Sikh: 20833116, Buddhist: 8442972, Jain: 4451753, Parsi: 57264 };
+const sum = (o) => Object.values(o).reduce((a, b) => a + b, 0);
+
+window.POST = {
+  ground: 'haldi',
+  tag: 'Minority Affairs · Scholarships',
+  headline: 'Minority scholarships followed <em>population</em>',
+  dek: 'Share of 3.09 crore scholarships (2016-21) against share of the minority population.',
+  source: '<b>Source:</b> Ministry of Minority Affairs, Rajya Sabha Q1414 (PIB, 14 Mar 2022): pre-matric, post-matric, merit-cum-means and Begum Hazrat Mahal scholarships sanctioned 2016-17 to 2020-21. Population: Census 2011 (C-01); Parsis, Rajya Sabha Q2038 (21 Mar 2022).',
+  data: Object.keys(SCHOLARSHIPS).map((c) => ({
+    c, n: SCHOLARSHIPS[c], s: SCHOLARSHIPS[c] / sum(SCHOLARSHIPS) * 100, p: POPULATION[c] / sum(POPULATION) * 100,
+  })),
+  checks(d, PK) {
+    PK.check(sum(SCHOLARSHIPS) === 30857958, 'total ' + sum(SCHOLARSHIPS));        // matches the RS answer's total
+    PK.check((sum(SCHOLARSHIPS) / 1e7).toFixed(2) === '3.09', 'crore');
+    PK.check(d.every((r) => Math.abs(r.s - r.p) < 2.5), 'a community is >2.5 pts off its population share');
+  },
+};
+
+function draw(svg, box, PK) {
+  const rows = POST.data, L = 250, V = 170;
+  const x = PK.scale(0, 80, L, box.w - V);
+  const top = 70, rowH = (box.h - top) / rows.length, bh = Math.min(34, rowH * 0.28);
+
+  const k = PK.el(svg, 'g');
+  PK.el(k, 'rect', { x: 0, y: 0, width: 26, height: 22, fill: 'var(--orange)' });
+  PK.el(k, 'text', { x: 38, y: 19, class: 'pk-key' }, 'Scholarships');
+  PK.el(k, 'rect', { x: 330, y: 0, width: 26, height: 22, fill: 'var(--ctx)' });
+  PK.el(k, 'text', { x: 368, y: 19, class: 'pk-key' }, 'Population');
+
+  [0, 20, 40, 60, 80].forEach((t) => {
+    PK.el(svg, 'line', { x1: x(t), x2: x(t), y1: top - 6, y2: box.h, stroke: 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: x(t), y: top - 16, 'text-anchor': 'middle', class: 'pk-axis' }, t + (t === 80 ? '%' : ''));
+  });
+
+  const pct = (v) => (v < 0.1 ? v.toFixed(2) : v.toFixed(1)) + '%';
+  rows.forEach((r, i) => {
+    const cy = top + rowH * (i + 0.5);
+    PK.el(svg, 'text', { x: 0, y: cy + 14, class: 'pk-label' }, r.c);
+    PK.el(svg, 'rect', { x: L, y: cy - bh - 3, width: Math.max(2, x(r.s) - L), height: bh, fill: 'var(--orange)' });
+    PK.el(svg, 'rect', { x: L, y: cy + 3, width: Math.max(2, x(r.p) - L), height: bh, fill: 'var(--ctx)' });
+    PK.el(svg, 'text', { x: x(r.s) + 10, y: cy - 6, class: 'pk-value', style: 'font-size:34px' }, pct(r.s));
+    PK.el(svg, 'text', { x: x(r.p) + 10, y: cy + bh + 2, class: 'pk-note' }, pct(r.p));
+  });
+}
+PK.run();
+</script></body></html>

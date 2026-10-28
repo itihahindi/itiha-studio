@@ -1,0 +1,5527 @@
+{
+"Gujarat": [
+{
+"DISTRICT": "Dadra And Nagar Haveli",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Virudhunagar",
+"GROWTH": 0.0,
+"PREVVAL": 0.02,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Hingoli",
+"GROWTH": 0.0,
+"PREVVAL": 0.03,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Dhule",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Jamnagar",
+"GROWTH": -35.05,
+"PREVVAL": 56273.67,
+"VALUE": 36547.12,
+"SHARE": 31.41
+},
+{
+"DISTRICT": "Ahmadabad",
+"GROWTH": 12.62,
+"PREVVAL": 10251.48,
+"VALUE": 11545.04,
+"SHARE": 9.92
+},
+{
+"DISTRICT": "Surat",
+"GROWTH": -17.06,
+"PREVVAL": 12731.8,
+"VALUE": 10559.44,
+"SHARE": 9.08
+},
+{
+"DISTRICT": "Kachchh",
+"GROWTH": -17.29,
+"PREVVAL": 12287.46,
+"VALUE": 10163.44,
+"SHARE": 8.74
+},
+{
+"DISTRICT": "Bharuch",
+"GROWTH": 0.28,
+"PREVVAL": 9423.57,
+"VALUE": 9450.17,
+"SHARE": 8.12
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 696480.67,
+"PREVVAL": 0.93,
+"VALUE": 6474.93,
+"SHARE": 5.57
+},
+{
+"DISTRICT": "Devbhumi Dwarka",
+"GROWTH": -29.45,
+"PREVVAL": 7990.39,
+"VALUE": 5637.21,
+"SHARE": 4.85
+},
+{
+"DISTRICT": "Vadodara",
+"GROWTH": 18.08,
+"PREVVAL": 4179.44,
+"VALUE": 4934.99,
+"SHARE": 4.24
+},
+{
+"DISTRICT": "Valsad",
+"GROWTH": -4.1,
+"PREVVAL": 4483.3,
+"VALUE": 4299.44,
+"SHARE": 3.7
+},
+{
+"DISTRICT": "Rajkot",
+"GROWTH": 5.54,
+"PREVVAL": 2948.67,
+"VALUE": 3111.98,
+"SHARE": 2.67
+},
+{
+"DISTRICT": "Morbi",
+"GROWTH": -7.83,
+"PREVVAL": 2734.61,
+"VALUE": 2520.39,
+"SHARE": 2.17
+},
+{
+"DISTRICT": "Mahesana",
+"GROWTH": -26.07,
+"PREVVAL": 3141.17,
+"VALUE": 2322.38,
+"SHARE": 2.0
+},
+{
+"DISTRICT": "Gandhinagar",
+"GROWTH": 57.22,
+"PREVVAL": 1003.65,
+"VALUE": 1577.93,
+"SHARE": 1.36
+},
+{
+"DISTRICT": "Panch Mahals",
+"GROWTH": 0.43,
+"PREVVAL": 1377.43,
+"VALUE": 1383.42,
+"SHARE": 1.19
+},
+{
+"DISTRICT": "Bhavnagar",
+"GROWTH": 11.16,
+"PREVVAL": 848.91,
+"VALUE": 943.61,
+"SHARE": 0.81
+},
+{
+"DISTRICT": "Gir Somnath",
+"GROWTH": 1.45,
+"PREVVAL": 592.35,
+"VALUE": 600.96,
+"SHARE": 0.52
+},
+{
+"DISTRICT": "Junagadh",
+"GROWTH": 7.21,
+"PREVVAL": 530.0,
+"VALUE": 568.19,
+"SHARE": 0.49
+},
+{
+"DISTRICT": "Amreli",
+"GROWTH": 13.9,
+"PREVVAL": 482.77,
+"VALUE": 549.85,
+"SHARE": 0.47
+},
+{
+"DISTRICT": "Anand",
+"GROWTH": 16.63,
+"PREVVAL": 469.08,
+"VALUE": 547.09,
+"SHARE": 0.47
+},
+{
+"DISTRICT": "Kheda",
+"GROWTH": -0.69,
+"PREVVAL": 527.18,
+"VALUE": 523.52,
+"SHARE": 0.45
+},
+{
+"DISTRICT": "Banas Kantha",
+"GROWTH": 9.48,
+"PREVVAL": 399.54,
+"VALUE": 437.44,
+"SHARE": 0.38
+},
+{
+"DISTRICT": "Surendranagar",
+"GROWTH": -5.83,
+"PREVVAL": 374.85,
+"VALUE": 353.01,
+"SHARE": 0.3
+},
+{
+"DISTRICT": "Navsari",
+"GROWTH": -31.9,
+"PREVVAL": 510.62,
+"VALUE": 347.75,
+"SHARE": 0.3
+},
+{
+"DISTRICT": "Sabar Kantha",
+"GROWTH": 41.1,
+"PREVVAL": 211.97,
+"VALUE": 299.1,
+"SHARE": 0.26
+},
+{
+"DISTRICT": "Patan",
+"GROWTH": -7.35,
+"PREVVAL": 247.79,
+"VALUE": 229.57,
+"SHARE": 0.2
+},
+{
+"DISTRICT": "Porbandar",
+"GROWTH": -1.73,
+"PREVVAL": 188.0,
+"VALUE": 184.74,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Botad",
+"GROWTH": 13.39,
+"PREVVAL": 77.66,
+"VALUE": 88.06,
+"SHARE": 0.08
+},
+{
+"DISTRICT": "Tapi",
+"GROWTH": 64.56,
+"PREVVAL": 37.32,
+"VALUE": 61.41,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Arvalli",
+"GROWTH": 20.38,
+"PREVVAL": 40.56,
+"VALUE": 48.82,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Narmada",
+"GROWTH": 101.3,
+"PREVVAL": 10.54,
+"VALUE": 21.22,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Mahisagar",
+"GROWTH": -19.51,
+"PREVVAL": 7.82,
+"VALUE": 6.3,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Dohad",
+"GROWTH": -14.19,
+"PREVVAL": 4.77,
+"VALUE": 4.09,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Chhotaudepur",
+"GROWTH": 3.69,
+"PREVVAL": 3.03,
+"VALUE": 3.14,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Dang",
+"GROWTH": 602.83,
+"PREVVAL": 0.03,
+"VALUE": 0.23,
+"SHARE": 0.0
+}
+],
+"Maharashtra": [
+{
+"DISTRICT": "Saharanpur",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Bengaluru Urban",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Siwan",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Pune",
+"GROWTH": 4.0,
+"PREVVAL": 13180.41,
+"VALUE": 13707.16,
+"SHARE": 20.8
+},
+{
+"DISTRICT": "Mumbai Suburban",
+"GROWTH": 7.45,
+"PREVVAL": 11873.21,
+"VALUE": 12757.53,
+"SHARE": 19.36
+},
+{
+"DISTRICT": "Mumbai",
+"GROWTH": -18.21,
+"PREVVAL": 13328.05,
+"VALUE": 10900.61,
+"SHARE": 16.54
+},
+{
+"DISTRICT": "Thane",
+"GROWTH": -5.46,
+"PREVVAL": 6391.61,
+"VALUE": 6042.74,
+"SHARE": 9.17
+},
+{
+"DISTRICT": "Raigad",
+"GROWTH": -19.13,
+"PREVVAL": 6242.65,
+"VALUE": 5048.5,
+"SHARE": 7.66
+},
+{
+"DISTRICT": "Palghar",
+"GROWTH": 4.22,
+"PREVVAL": 3415.86,
+"VALUE": 3559.99,
+"SHARE": 5.4
+},
+{
+"DISTRICT": "Aurangabad",
+"GROWTH": 10.31,
+"PREVVAL": 2921.93,
+"VALUE": 3223.27,
+"SHARE": 4.89
+},
+{
+"DISTRICT": "Nashik",
+"GROWTH": 2.21,
+"PREVVAL": 2805.14,
+"VALUE": 2867.16,
+"SHARE": 4.35
+},
+{
+"DISTRICT": "Nagpur",
+"GROWTH": 25.44,
+"PREVVAL": 1628.23,
+"VALUE": 2042.38,
+"SHARE": 3.1
+},
+{
+"DISTRICT": "Satara",
+"GROWTH": 3.65,
+"PREVVAL": 1386.44,
+"VALUE": 1437.07,
+"SHARE": 2.18
+},
+{
+"DISTRICT": "Ratnagiri",
+"GROWTH": 28.61,
+"PREVVAL": 688.86,
+"VALUE": 885.92,
+"SHARE": 1.34
+},
+{
+"DISTRICT": "Kolhapur",
+"GROWTH": 2.59,
+"PREVVAL": 711.32,
+"VALUE": 729.73,
+"SHARE": 1.11
+},
+{
+"DISTRICT": "Solapur",
+"GROWTH": 7.64,
+"PREVVAL": 392.51,
+"VALUE": 422.48,
+"SHARE": 0.64
+},
+{
+"DISTRICT": "Jalgaon",
+"GROWTH": -4.41,
+"PREVVAL": 367.31,
+"VALUE": 351.12,
+"SHARE": 0.53
+},
+{
+"DISTRICT": "Ahmednagar",
+"GROWTH": 14.74,
+"PREVVAL": 267.04,
+"VALUE": 306.41,
+"SHARE": 0.46
+},
+{
+"DISTRICT": "Sangli",
+"GROWTH": 1.36,
+"PREVVAL": 292.25,
+"VALUE": 296.21,
+"SHARE": 0.45
+},
+{
+"DISTRICT": "Gondia",
+"GROWTH": 20.82,
+"PREVVAL": 211.36,
+"VALUE": 255.36,
+"SHARE": 0.39
+},
+{
+"DISTRICT": "Dhule",
+"GROWTH": 14.68,
+"PREVVAL": 179.94,
+"VALUE": 206.36,
+"SHARE": 0.31
+},
+{
+"DISTRICT": "Chandrapur",
+"GROWTH": 17.69,
+"PREVVAL": 162.33,
+"VALUE": 191.04,
+"SHARE": 0.29
+},
+{
+"DISTRICT": "Wardha",
+"GROWTH": 29.41,
+"PREVVAL": 91.99,
+"VALUE": 119.04,
+"SHARE": 0.18
+},
+{
+"DISTRICT": "Buldhana",
+"GROWTH": 1.62,
+"PREVVAL": 101.59,
+"VALUE": 103.24,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Amravati",
+"GROWTH": -33.71,
+"PREVVAL": 83.16,
+"VALUE": 55.13,
+"SHARE": 0.08
+},
+{
+"DISTRICT": "Bhandara",
+"GROWTH": 193.77,
+"PREVVAL": 18.55,
+"VALUE": 54.51,
+"SHARE": 0.08
+},
+{
+"DISTRICT": "Latur",
+"GROWTH": 88.42,
+"PREVVAL": 25.65,
+"VALUE": 48.33,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Parbhani",
+"GROWTH": -48.82,
+"PREVVAL": 90.0,
+"VALUE": 46.06,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Akola",
+"GROWTH": 10.22,
+"PREVVAL": 37.11,
+"VALUE": 40.9,
+"SHARE": 0.06
+},
+{
+"DISTRICT": "Nanded",
+"GROWTH": 14.4,
+"PREVVAL": 31.14,
+"VALUE": 35.62,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Sindhudurg",
+"GROWTH": -56.91,
+"PREVVAL": 77.95,
+"VALUE": 33.59,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Hingoli",
+"GROWTH": 93.02,
+"PREVVAL": 17.21,
+"VALUE": 33.22,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Yavatmal",
+"GROWTH": -16.98,
+"PREVVAL": 38.14,
+"VALUE": 31.67,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Jalna",
+"GROWTH": -53.97,
+"PREVVAL": 67.45,
+"VALUE": 31.05,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 14.79,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Osmanabad",
+"GROWTH": -56.7,
+"PREVVAL": 33.38,
+"VALUE": 14.45,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Washim",
+"GROWTH": 57.86,
+"PREVVAL": 4.54,
+"VALUE": 7.17,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Beed",
+"GROWTH": -79.22,
+"PREVVAL": 28.91,
+"VALUE": 6.01,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Gadchiroli",
+"GROWTH": 176.51,
+"PREVVAL": 1.36,
+"VALUE": 3.77,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Nandurbar",
+"GROWTH": -55.31,
+"PREVVAL": 7.12,
+"VALUE": 3.18,
+"SHARE": 0.0
+}
+],
+"Tamil Nadu": [
+{
+"DISTRICT": "Pondicherry",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kanchipuram",
+"GROWTH": 31.53,
+"PREVVAL": 17396.17,
+"VALUE": 22881.01,
+"SHARE": 43.86
+},
+{
+"DISTRICT": "Chennai",
+"GROWTH": 14.73,
+"PREVVAL": 6731.92,
+"VALUE": 7723.71,
+"SHARE": 14.8
+},
+{
+"DISTRICT": "Tiruppur",
+"GROWTH": 17.32,
+"PREVVAL": 3991.66,
+"VALUE": 4682.93,
+"SHARE": 8.98
+},
+{
+"DISTRICT": "Coimbatore",
+"GROWTH": 6.36,
+"PREVVAL": 3305.65,
+"VALUE": 3515.76,
+"SHARE": 6.74
+},
+{
+"DISTRICT": "Thiruvallur",
+"GROWTH": 13.49,
+"PREVVAL": 2909.08,
+"VALUE": 3301.64,
+"SHARE": 6.33
+},
+{
+"DISTRICT": "Krishnagiri",
+"GROWTH": 16.37,
+"PREVVAL": 2641.9,
+"VALUE": 3074.27,
+"SHARE": 5.89
+},
+{
+"DISTRICT": "Vellore",
+"GROWTH": 6.1,
+"PREVVAL": 1008.48,
+"VALUE": 1070.05,
+"SHARE": 2.05
+},
+{
+"DISTRICT": "Karur",
+"GROWTH": 4.95,
+"PREVVAL": 768.67,
+"VALUE": 806.74,
+"SHARE": 1.55
+},
+{
+"DISTRICT": "Tuticorin",
+"GROWTH": 3.1,
+"PREVVAL": 703.43,
+"VALUE": 725.22,
+"SHARE": 1.39
+},
+{
+"DISTRICT": "Erode",
+"GROWTH": 8.39,
+"PREVVAL": 633.39,
+"VALUE": 686.55,
+"SHARE": 1.32
+},
+{
+"DISTRICT": "Madurai",
+"GROWTH": 7.7,
+"PREVVAL": 465.19,
+"VALUE": 501.0,
+"SHARE": 0.96
+},
+{
+"DISTRICT": "Tirunelveli",
+"GROWTH": -3.48,
+"PREVVAL": 410.26,
+"VALUE": 395.98,
+"SHARE": 0.76
+},
+{
+"DISTRICT": "Virudhunagar",
+"GROWTH": 3.71,
+"PREVVAL": 337.06,
+"VALUE": 349.57,
+"SHARE": 0.67
+},
+{
+"DISTRICT": "Dindigul",
+"GROWTH": 18.95,
+"PREVVAL": 279.53,
+"VALUE": 332.49,
+"SHARE": 0.64
+},
+{
+"DISTRICT": "Tiruvannamalai",
+"GROWTH": -8.42,
+"PREVVAL": 328.39,
+"VALUE": 300.75,
+"SHARE": 0.58
+},
+{
+"DISTRICT": "Theni",
+"GROWTH": 18.06,
+"PREVVAL": 235.7,
+"VALUE": 278.28,
+"SHARE": 0.53
+},
+{
+"DISTRICT": "Salem",
+"GROWTH": -5.38,
+"PREVVAL": 287.51,
+"VALUE": 272.04,
+"SHARE": 0.52
+},
+{
+"DISTRICT": "Namakkal",
+"GROWTH": 8.06,
+"PREVVAL": 208.34,
+"VALUE": 225.12,
+"SHARE": 0.43
+},
+{
+"DISTRICT": "Cuddalore",
+"GROWTH": -1.81,
+"PREVVAL": 180.04,
+"VALUE": 176.78,
+"SHARE": 0.34
+},
+{
+"DISTRICT": "Pudukkottai",
+"GROWTH": 4.29,
+"PREVVAL": 161.48,
+"VALUE": 168.41,
+"SHARE": 0.32
+},
+{
+"DISTRICT": "Tiruchirappalli",
+"GROWTH": 4.4,
+"PREVVAL": 136.92,
+"VALUE": 142.94,
+"SHARE": 0.27
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 16652.75,
+"PREVVAL": 0.67,
+"VALUE": 111.6,
+"SHARE": 0.21
+},
+{
+"DISTRICT": "Kanniyakumari",
+"GROWTH": -4.25,
+"PREVVAL": 105.59,
+"VALUE": 101.1,
+"SHARE": 0.19
+},
+{
+"DISTRICT": "Perambalur",
+"GROWTH": 1.8,
+"PREVVAL": 87.71,
+"VALUE": 89.28,
+"SHARE": 0.17
+},
+{
+"DISTRICT": "The Nilgiris",
+"GROWTH": 39.05,
+"PREVVAL": 55.96,
+"VALUE": 77.81,
+"SHARE": 0.15
+},
+{
+"DISTRICT": "Villupuram",
+"GROWTH": 11.17,
+"PREVVAL": 57.88,
+"VALUE": 64.35,
+"SHARE": 0.12
+},
+{
+"DISTRICT": "Dharmapuri",
+"GROWTH": -7.11,
+"PREVVAL": 49.12,
+"VALUE": 45.63,
+"SHARE": 0.09
+},
+{
+"DISTRICT": "Thanjavur",
+"GROWTH": -1.6,
+"PREVVAL": 23.12,
+"VALUE": 22.75,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Ramanathapuram",
+"GROWTH": -13.44,
+"PREVVAL": 22.56,
+"VALUE": 19.53,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Sivaganga",
+"GROWTH": 18.08,
+"PREVVAL": 14.11,
+"VALUE": 16.66,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Thiruvarur",
+"GROWTH": -14.04,
+"PREVVAL": 8.57,
+"VALUE": 7.37,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Nagapattinam",
+"GROWTH": -23.42,
+"PREVVAL": 5.39,
+"VALUE": 4.13,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Ariyalur",
+"GROWTH": -50.48,
+"PREVVAL": 3.09,
+"VALUE": 1.53,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Chengalpattu",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.02,
+"SHARE": 0.0
+}
+],
+"Karnataka": [
+{
+"DISTRICT": "Udam Singh Nagar",
+"GROWTH": 0.0,
+"PREVVAL": 0.02,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Bengaluru Urban",
+"GROWTH": 6.51,
+"PREVVAL": 8188.24,
+"VALUE": 8721.3,
+"SHARE": 28.61
+},
+{
+"DISTRICT": "Dakshina Kannada",
+"GROWTH": -11.8,
+"PREVVAL": 6760.54,
+"VALUE": 5962.48,
+"SHARE": 19.56
+},
+{
+"DISTRICT": "Kolar",
+"GROWTH": 122.57,
+"PREVVAL": 2409.5,
+"VALUE": 5362.84,
+"SHARE": 17.59
+},
+{
+"DISTRICT": "Bengaluru Rural",
+"GROWTH": 25.63,
+"PREVVAL": 3157.48,
+"VALUE": 3966.7,
+"SHARE": 13.01
+},
+{
+"DISTRICT": "Ramanagara",
+"GROWTH": 7.82,
+"PREVVAL": 846.29,
+"VALUE": 912.5,
+"SHARE": 2.99
+},
+{
+"DISTRICT": "Mysuru",
+"GROWTH": 7.18,
+"PREVVAL": 764.68,
+"VALUE": 819.55,
+"SHARE": 2.69
+},
+{
+"DISTRICT": "Ballari",
+"GROWTH": -32.86,
+"PREVVAL": 1061.62,
+"VALUE": 712.78,
+"SHARE": 2.34
+},
+{
+"DISTRICT": "Kodagu",
+"GROWTH": 66.59,
+"PREVVAL": 382.33,
+"VALUE": 636.93,
+"SHARE": 2.09
+},
+{
+"DISTRICT": "Tumakuru",
+"GROWTH": 16.63,
+"PREVVAL": 492.08,
+"VALUE": 573.9,
+"SHARE": 1.88
+},
+{
+"DISTRICT": "Hassan",
+"GROWTH": 13.79,
+"PREVVAL": 495.2,
+"VALUE": 563.48,
+"SHARE": 1.85
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 105871.59,
+"PREVVAL": 0.42,
+"VALUE": 446.5,
+"SHARE": 1.46
+},
+{
+"DISTRICT": "Belagavi",
+"GROWTH": 7.6,
+"PREVVAL": 369.68,
+"VALUE": 397.77,
+"SHARE": 1.3
+},
+{
+"DISTRICT": "Udupi",
+"GROWTH": -20.14,
+"PREVVAL": 368.24,
+"VALUE": 294.07,
+"SHARE": 0.96
+},
+{
+"DISTRICT": "Dharwad",
+"GROWTH": 5.99,
+"PREVVAL": 210.24,
+"VALUE": 222.83,
+"SHARE": 0.73
+},
+{
+"DISTRICT": "Raichur",
+"GROWTH": -5.63,
+"PREVVAL": 123.83,
+"VALUE": 116.86,
+"SHARE": 0.38
+},
+{
+"DISTRICT": "Bidar",
+"GROWTH": 39.42,
+"PREVVAL": 81.75,
+"VALUE": 113.97,
+"SHARE": 0.37
+},
+{
+"DISTRICT": "Chikkamagaluru",
+"GROWTH": 13.25,
+"PREVVAL": 90.3,
+"VALUE": 102.26,
+"SHARE": 0.34
+},
+{
+"DISTRICT": "Chitradurga",
+"GROWTH": -70.58,
+"PREVVAL": 319.72,
+"VALUE": 94.05,
+"SHARE": 0.31
+},
+{
+"DISTRICT": "Haveri",
+"GROWTH": -11.94,
+"PREVVAL": 76.43,
+"VALUE": 67.31,
+"SHARE": 0.22
+},
+{
+"DISTRICT": "Bagalkote",
+"GROWTH": -36.35,
+"PREVVAL": 92.97,
+"VALUE": 59.17,
+"SHARE": 0.19
+},
+{
+"DISTRICT": "Chamarajanagara",
+"GROWTH": 3.27,
+"PREVVAL": 56.94,
+"VALUE": 58.8,
+"SHARE": 0.19
+},
+{
+"DISTRICT": "Shivamogga",
+"GROWTH": 20.36,
+"PREVVAL": 43.85,
+"VALUE": 52.78,
+"SHARE": 0.17
+},
+{
+"DISTRICT": "Mandya",
+"GROWTH": 27.92,
+"PREVVAL": 40.8,
+"VALUE": 52.19,
+"SHARE": 0.17
+},
+{
+"DISTRICT": "Chikkaballapura",
+"GROWTH": 20.81,
+"PREVVAL": 40.35,
+"VALUE": 48.75,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Davangere",
+"GROWTH": -17.41,
+"PREVVAL": 54.46,
+"VALUE": 44.98,
+"SHARE": 0.15
+},
+{
+"DISTRICT": "Vijayapura",
+"GROWTH": 6.55,
+"PREVVAL": 19.23,
+"VALUE": 20.49,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Koppal",
+"GROWTH": -36.29,
+"PREVVAL": 32.07,
+"VALUE": 20.43,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Uttara Kannada",
+"GROWTH": -36.8,
+"PREVVAL": 18.91,
+"VALUE": 11.95,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Kalaburagi",
+"GROWTH": -26.07,
+"PREVVAL": 15.72,
+"VALUE": 11.62,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Gadag",
+"GROWTH": -39.15,
+"PREVVAL": 13.47,
+"VALUE": 8.2,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Yadgir",
+"GROWTH": 25.21,
+"PREVVAL": 3.58,
+"VALUE": 4.48,
+"SHARE": 0.01
+}
+],
+"Uttar Pradesh": [
+{
+"DISTRICT": "Rohtak",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Gurugram",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Baleshwar",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Panipat",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Gautam Buddha Nagar",
+"GROWTH": 9.16,
+"PREVVAL": 10199.1,
+"VALUE": 11133.24,
+"SHARE": 50.65
+},
+{
+"DISTRICT": "Ghaziabad",
+"GROWTH": 8.92,
+"PREVVAL": 1620.88,
+"VALUE": 1765.51,
+"SHARE": 8.03
+},
+{
+"DISTRICT": "Moradabad",
+"GROWTH": 0.5,
+"PREVVAL": 1223.26,
+"VALUE": 1229.42,
+"SHARE": 5.59
+},
+{
+"DISTRICT": "Kanpur Nagar",
+"GROWTH": 13.12,
+"PREVVAL": 1086.08,
+"VALUE": 1228.54,
+"SHARE": 5.59
+},
+{
+"DISTRICT": "Agra",
+"GROWTH": 4.88,
+"PREVVAL": 851.87,
+"VALUE": 893.42,
+"SHARE": 4.06
+},
+{
+"DISTRICT": "Aligarh",
+"GROWTH": -4.38,
+"PREVVAL": 891.75,
+"VALUE": 852.66,
+"SHARE": 3.88
+},
+{
+"DISTRICT": "Bhadohi",
+"GROWTH": 19.45,
+"PREVVAL": 504.66,
+"VALUE": 602.8,
+"SHARE": 2.74
+},
+{
+"DISTRICT": "Unnao",
+"GROWTH": 17.4,
+"PREVVAL": 497.07,
+"VALUE": 583.57,
+"SHARE": 2.65
+},
+{
+"DISTRICT": "Amroha",
+"GROWTH": 14.59,
+"PREVVAL": 290.46,
+"VALUE": 332.82,
+"SHARE": 1.51
+},
+{
+"DISTRICT": "Sambhal",
+"GROWTH": 6.31,
+"PREVVAL": 267.08,
+"VALUE": 283.94,
+"SHARE": 1.29
+},
+{
+"DISTRICT": "Meerut",
+"GROWTH": -2.33,
+"PREVVAL": 268.59,
+"VALUE": 262.32,
+"SHARE": 1.19
+},
+{
+"DISTRICT": "Sonbhadra",
+"GROWTH": -20.42,
+"PREVVAL": 282.06,
+"VALUE": 224.46,
+"SHARE": 1.02
+},
+{
+"DISTRICT": "Lucknow",
+"GROWTH": 27.46,
+"PREVVAL": 161.52,
+"VALUE": 205.87,
+"SHARE": 0.94
+},
+{
+"DISTRICT": "Hapur",
+"GROWTH": 32.1,
+"PREVVAL": 143.45,
+"VALUE": 189.5,
+"SHARE": 0.86
+},
+{
+"DISTRICT": "Rampur",
+"GROWTH": -28.81,
+"PREVVAL": 254.38,
+"VALUE": 181.09,
+"SHARE": 0.82
+},
+{
+"DISTRICT": "Bulandshahr",
+"GROWTH": -13.0,
+"PREVVAL": 197.53,
+"VALUE": 171.85,
+"SHARE": 0.78
+},
+{
+"DISTRICT": "Mathura",
+"GROWTH": -5.75,
+"PREVVAL": 153.83,
+"VALUE": 144.98,
+"SHARE": 0.66
+},
+{
+"DISTRICT": "Gonda",
+"GROWTH": -6.87,
+"PREVVAL": 148.39,
+"VALUE": 138.2,
+"SHARE": 0.63
+},
+{
+"DISTRICT": "Saharanpur",
+"GROWTH": -18.79,
+"PREVVAL": 151.81,
+"VALUE": 123.29,
+"SHARE": 0.56
+},
+{
+"DISTRICT": "Mirzapur",
+"GROWTH": 18.58,
+"PREVVAL": 103.78,
+"VALUE": 123.07,
+"SHARE": 0.56
+},
+{
+"DISTRICT": "Barabanki",
+"GROWTH": -11.22,
+"PREVVAL": 108.54,
+"VALUE": 96.36,
+"SHARE": 0.44
+},
+{
+"DISTRICT": "Kanpur Dehat",
+"GROWTH": 15.22,
+"PREVVAL": 75.76,
+"VALUE": 87.29,
+"SHARE": 0.4
+},
+{
+"DISTRICT": "Firozabad",
+"GROWTH": 1.21,
+"PREVVAL": 82.58,
+"VALUE": 83.58,
+"SHARE": 0.38
+},
+{
+"DISTRICT": "Bareilly",
+"GROWTH": 20.94,
+"PREVVAL": 67.36,
+"VALUE": 81.47,
+"SHARE": 0.37
+},
+{
+"DISTRICT": "Maharajganj",
+"GROWTH": 3.93,
+"PREVVAL": 73.72,
+"VALUE": 76.62,
+"SHARE": 0.35
+},
+{
+"DISTRICT": "Bahraich",
+"GROWTH": -0.27,
+"PREVVAL": 74.42,
+"VALUE": 74.21,
+"SHARE": 0.34
+},
+{
+"DISTRICT": "Chandauli",
+"GROWTH": 10.16,
+"PREVVAL": 67.23,
+"VALUE": 74.06,
+"SHARE": 0.34
+},
+{
+"DISTRICT": "Baghpat",
+"GROWTH": 17.23,
+"PREVVAL": 55.34,
+"VALUE": 64.87,
+"SHARE": 0.3
+},
+{
+"DISTRICT": "Shahjahanpur",
+"GROWTH": 500.89,
+"PREVVAL": 9.38,
+"VALUE": 56.37,
+"SHARE": 0.26
+},
+{
+"DISTRICT": "Kheri",
+"GROWTH": -23.96,
+"PREVVAL": 73.84,
+"VALUE": 56.15,
+"SHARE": 0.26
+},
+{
+"DISTRICT": "Varanasi",
+"GROWTH": -6.91,
+"PREVVAL": 54.62,
+"VALUE": 50.85,
+"SHARE": 0.23
+},
+{
+"DISTRICT": "Deoria",
+"GROWTH": -48.77,
+"PREVVAL": 91.48,
+"VALUE": 46.86,
+"SHARE": 0.21
+},
+{
+"DISTRICT": "Hardoi",
+"GROWTH": 46.38,
+"PREVVAL": 31.7,
+"VALUE": 46.4,
+"SHARE": 0.21
+},
+{
+"DISTRICT": "Hathras",
+"GROWTH": 55.4,
+"PREVVAL": 24.09,
+"VALUE": 37.43,
+"SHARE": 0.17
+},
+{
+"DISTRICT": "Budaun",
+"GROWTH": 191.16,
+"PREVVAL": 11.71,
+"VALUE": 34.11,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Muzaffarnagar",
+"GROWTH": -49.92,
+"PREVVAL": 58.95,
+"VALUE": 29.52,
+"SHARE": 0.13
+},
+{
+"DISTRICT": "Sitapur",
+"GROWTH": 13.12,
+"PREVVAL": 25.3,
+"VALUE": 28.62,
+"SHARE": 0.13
+},
+{
+"DISTRICT": "Etah",
+"GROWTH": 16.56,
+"PREVVAL": 23.39,
+"VALUE": 27.26,
+"SHARE": 0.12
+},
+{
+"DISTRICT": "Ayodhya",
+"GROWTH": 0.26,
+"PREVVAL": 26.84,
+"VALUE": 26.91,
+"SHARE": 0.12
+},
+{
+"DISTRICT": "Fatehpur",
+"GROWTH": 80.57,
+"PREVVAL": 13.03,
+"VALUE": 23.53,
+"SHARE": 0.11
+},
+{
+"DISTRICT": "Jhansi",
+"GROWTH": -0.07,
+"PREVVAL": 23.49,
+"VALUE": 23.48,
+"SHARE": 0.11
+},
+{
+"DISTRICT": "Siddharth Nagar",
+"GROWTH": -12.63,
+"PREVVAL": 25.19,
+"VALUE": 22.01,
+"SHARE": 0.1
+},
+{
+"DISTRICT": "Gorakhpur",
+"GROWTH": -10.34,
+"PREVVAL": 21.89,
+"VALUE": 19.63,
+"SHARE": 0.09
+},
+{
+"DISTRICT": "Prayagraj",
+"GROWTH": 39.31,
+"PREVVAL": 12.4,
+"VALUE": 17.28,
+"SHARE": 0.08
+},
+{
+"DISTRICT": "Bijnor",
+"GROWTH": -9.45,
+"PREVVAL": 19.08,
+"VALUE": 17.28,
+"SHARE": 0.08
+},
+{
+"DISTRICT": "Amethi",
+"GROWTH": 1757.65,
+"PREVVAL": 0.87,
+"VALUE": 16.23,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Shamli",
+"GROWTH": -23.6,
+"PREVVAL": 16.21,
+"VALUE": 12.38,
+"SHARE": 0.06
+},
+{
+"DISTRICT": "Pilibhit",
+"GROWTH": -38.78,
+"PREVVAL": 18.67,
+"VALUE": 11.43,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Etawah",
+"GROWTH": 84.17,
+"PREVVAL": 5.35,
+"VALUE": 9.85,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Jaunpur",
+"GROWTH": -3.66,
+"PREVVAL": 8.31,
+"VALUE": 8.01,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Kannauj",
+"GROWTH": -3.3,
+"PREVVAL": 7.35,
+"VALUE": 7.11,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Auraiya",
+"GROWTH": -41.53,
+"PREVVAL": 10.68,
+"VALUE": 6.24,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Mahoba",
+"GROWTH": 43.88,
+"PREVVAL": 4.34,
+"VALUE": 6.24,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Farrukhabad",
+"GROWTH": -45.43,
+"PREVVAL": 10.98,
+"VALUE": 5.99,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Sant Kabeer Nagar",
+"GROWTH": 8.31,
+"PREVVAL": 3.08,
+"VALUE": 3.33,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Pratapgarh",
+"GROWTH": 1146.46,
+"PREVVAL": 0.26,
+"VALUE": 3.26,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Rae Bareli",
+"GROWTH": -75.03,
+"PREVVAL": 11.84,
+"VALUE": 2.96,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Lalitpur",
+"GROWTH": -45.67,
+"PREVVAL": 4.2,
+"VALUE": 2.28,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Ghazipur",
+"GROWTH": -53.12,
+"PREVVAL": 4.57,
+"VALUE": 2.14,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Ambedkar Nagar",
+"GROWTH": 35.19,
+"PREVVAL": 1.3,
+"VALUE": 1.75,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Hamirpur",
+"GROWTH": 52.07,
+"PREVVAL": 0.98,
+"VALUE": 1.49,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Kasganj",
+"GROWTH": 46.41,
+"PREVVAL": 0.89,
+"VALUE": 1.31,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Sultanpur",
+"GROWTH": -2.31,
+"PREVVAL": 1.08,
+"VALUE": 1.05,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Mau",
+"GROWTH": -62.54,
+"PREVVAL": 1.89,
+"VALUE": 0.71,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kushi Nagar",
+"GROWTH": -87.53,
+"PREVVAL": 4.88,
+"VALUE": 0.61,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Balrampur",
+"GROWTH": -24.12,
+"PREVVAL": 0.77,
+"VALUE": 0.59,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Basti",
+"GROWTH": -65.74,
+"PREVVAL": 1.66,
+"VALUE": 0.57,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Mainpuri",
+"GROWTH": -16.85,
+"PREVVAL": 0.61,
+"VALUE": 0.51,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Ballia",
+"GROWTH": -19.97,
+"PREVVAL": 0.64,
+"VALUE": 0.51,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": -4.77,
+"PREVVAL": 0.51,
+"VALUE": 0.49,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Shravasti",
+"GROWTH": 147938.04,
+"PREVVAL": 0.0,
+"VALUE": 0.24,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Jalaun",
+"GROWTH": 7.26,
+"PREVVAL": 0.16,
+"VALUE": 0.17,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Banda",
+"GROWTH": 3155.89,
+"PREVVAL": 0.0,
+"VALUE": 0.11,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kaushambi",
+"GROWTH": -23.21,
+"PREVVAL": 0.13,
+"VALUE": 0.1,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Azamgarh",
+"GROWTH": -94.23,
+"PREVVAL": 1.24,
+"VALUE": 0.07,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Chitrakoot",
+"GROWTH": -99.44,
+"PREVVAL": 0.03,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Andhra Pradesh": [
+{
+"DISTRICT": "Visakhapatanam",
+"GROWTH": 13.21,
+"PREVVAL": 6126.95,
+"VALUE": 6936.04,
+"SHARE": 33.37
+},
+{
+"DISTRICT": "East Godavari",
+"GROWTH": -7.92,
+"PREVVAL": 3956.76,
+"VALUE": 3643.51,
+"SHARE": 17.53
+},
+{
+"DISTRICT": "Guntur",
+"GROWTH": 2.83,
+"PREVVAL": 1786.11,
+"VALUE": 1836.64,
+"SHARE": 8.84
+},
+{
+"DISTRICT": "Chittoor",
+"GROWTH": 4.5,
+"PREVVAL": 1710.93,
+"VALUE": 1787.99,
+"SHARE": 8.6
+},
+{
+"DISTRICT": "Spsr Nellore",
+"GROWTH": 7.15,
+"PREVVAL": 1483.52,
+"VALUE": 1589.61,
+"SHARE": 7.65
+},
+{
+"DISTRICT": "Prakasam",
+"GROWTH": 21.85,
+"PREVVAL": 1011.82,
+"VALUE": 1232.93,
+"SHARE": 5.93
+},
+{
+"DISTRICT": "West Godavari",
+"GROWTH": 4.6,
+"PREVVAL": 1063.81,
+"VALUE": 1112.74,
+"SHARE": 5.35
+},
+{
+"DISTRICT": "Anantapur",
+"GROWTH": -14.09,
+"PREVVAL": 1004.86,
+"VALUE": 863.25,
+"SHARE": 4.15
+},
+{
+"DISTRICT": "Srikakulam",
+"GROWTH": 7.91,
+"PREVVAL": 425.85,
+"VALUE": 459.56,
+"SHARE": 2.21
+},
+{
+"DISTRICT": "Krishna",
+"GROWTH": 7.84,
+"PREVVAL": 424.94,
+"VALUE": 458.27,
+"SHARE": 2.21
+},
+{
+"DISTRICT": "Vizianagaram",
+"GROWTH": 5.16,
+"PREVVAL": 417.03,
+"VALUE": 438.53,
+"SHARE": 2.11
+},
+{
+"DISTRICT": "Y.S.R.",
+"GROWTH": -25.3,
+"PREVVAL": 261.3,
+"VALUE": 195.18,
+"SHARE": 0.94
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 784355.13,
+"PREVVAL": 0.02,
+"VALUE": 164.19,
+"SHARE": 0.79
+},
+{
+"DISTRICT": "Kurnool",
+"GROWTH": -25.12,
+"PREVVAL": 85.96,
+"VALUE": 64.37,
+"SHARE": 0.31
+}
+],
+"Telangana": [
+{
+"DISTRICT": "Warangal Urban",
+"GROWTH": 0.0,
+"PREVVAL": 16.11,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Warangal Rural",
+"GROWTH": 0.0,
+"PREVVAL": 80.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Ranga Reddy",
+"GROWTH": 31.37,
+"PREVVAL": 4130.57,
+"VALUE": 5426.31,
+"SHARE": 28.37
+},
+{
+"DISTRICT": "Medchal Malkajgiri",
+"GROWTH": 8.13,
+"PREVVAL": 3073.19,
+"VALUE": 3322.97,
+"SHARE": 17.37
+},
+{
+"DISTRICT": "Sangareddy",
+"GROWTH": 9.91,
+"PREVVAL": 2649.77,
+"VALUE": 2912.24,
+"SHARE": 15.23
+},
+{
+"DISTRICT": "Hyderabad",
+"GROWTH": 16.9,
+"PREVVAL": 2347.07,
+"VALUE": 2743.81,
+"SHARE": 14.35
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 47264.77,
+"PREVVAL": 4.3,
+"VALUE": 2035.22,
+"SHARE": 10.64
+},
+{
+"DISTRICT": "Mahabubnagar",
+"GROWTH": 1072.98,
+"PREVVAL": 68.08,
+"VALUE": 798.59,
+"SHARE": 4.18
+},
+{
+"DISTRICT": "Yadadri Bhuvanagiri",
+"GROWTH": 123.52,
+"PREVVAL": 164.92,
+"VALUE": 368.64,
+"SHARE": 1.93
+},
+{
+"DISTRICT": "Medak",
+"GROWTH": -9.07,
+"PREVVAL": 281.18,
+"VALUE": 255.69,
+"SHARE": 1.34
+},
+{
+"DISTRICT": "Khammam",
+"GROWTH": -11.37,
+"PREVVAL": 249.86,
+"VALUE": 221.45,
+"SHARE": 1.16
+},
+{
+"DISTRICT": "Nalgonda",
+"GROWTH": -40.94,
+"PREVVAL": 357.5,
+"VALUE": 211.12,
+"SHARE": 1.1
+},
+{
+"DISTRICT": "Bhadradri Kothagudem",
+"GROWTH": 24.53,
+"PREVVAL": 152.25,
+"VALUE": 189.59,
+"SHARE": 0.99
+},
+{
+"DISTRICT": "Siddipet",
+"GROWTH": 22.45,
+"PREVVAL": 134.13,
+"VALUE": 164.24,
+"SHARE": 0.86
+},
+{
+"DISTRICT": "Karimnagar",
+"GROWTH": -12.39,
+"PREVVAL": 95.26,
+"VALUE": 83.46,
+"SHARE": 0.44
+},
+{
+"DISTRICT": "Warangal",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 63.82,
+"SHARE": 0.33
+},
+{
+"DISTRICT": "Mahabubabad",
+"GROWTH": 19.37,
+"PREVVAL": 44.22,
+"VALUE": 52.79,
+"SHARE": 0.28
+},
+{
+"DISTRICT": "Nizamabad",
+"GROWTH": 1.97,
+"PREVVAL": 46.46,
+"VALUE": 47.38,
+"SHARE": 0.25
+},
+{
+"DISTRICT": "Suryapet",
+"GROWTH": 94.65,
+"PREVVAL": 23.7,
+"VALUE": 46.13,
+"SHARE": 0.24
+},
+{
+"DISTRICT": "Kamareddy",
+"GROWTH": 178.17,
+"PREVVAL": 14.41,
+"VALUE": 40.09,
+"SHARE": 0.21
+},
+{
+"DISTRICT": "Hanumakonda",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 38.96,
+"SHARE": 0.2
+},
+{
+"DISTRICT": "Wanaparthy",
+"GROWTH": -25.12,
+"PREVVAL": 39.54,
+"VALUE": 29.61,
+"SHARE": 0.15
+},
+{
+"DISTRICT": "Adilabad",
+"GROWTH": 102.01,
+"PREVVAL": 11.13,
+"VALUE": 22.48,
+"SHARE": 0.12
+},
+{
+"DISTRICT": "Peddapalli",
+"GROWTH": 757.93,
+"PREVVAL": 2.06,
+"VALUE": 17.71,
+"SHARE": 0.09
+},
+{
+"DISTRICT": "Vikarabad",
+"GROWTH": -26.39,
+"PREVVAL": 15.08,
+"VALUE": 11.1,
+"SHARE": 0.06
+},
+{
+"DISTRICT": "Nagarkurnool",
+"GROWTH": -41.58,
+"PREVVAL": 10.97,
+"VALUE": 6.41,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Jagitial",
+"GROWTH": 305.16,
+"PREVVAL": 1.02,
+"VALUE": 4.15,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Jangoan",
+"GROWTH": 46.33,
+"PREVVAL": 1.88,
+"VALUE": 2.76,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Rajanna Sircilla",
+"GROWTH": -29.85,
+"PREVVAL": 3.34,
+"VALUE": 2.34,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Jogulamba Gadwal",
+"GROWTH": -37.14,
+"PREVVAL": 3.62,
+"VALUE": 2.28,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Kumuram Bheem Asifabad",
+"GROWTH": 135.24,
+"PREVVAL": 0.85,
+"VALUE": 2.0,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Narayanpet",
+"GROWTH": 12.01,
+"PREVVAL": 1.57,
+"VALUE": 1.76,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Mulugu",
+"GROWTH": 28.75,
+"PREVVAL": 1.3,
+"VALUE": 1.68,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Mancherial",
+"GROWTH": -57.04,
+"PREVVAL": 0.33,
+"VALUE": 0.14,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Jayashankar Bhupalapally",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.06,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Nirmal",
+"GROWTH": -99.85,
+"PREVVAL": 4.37,
+"VALUE": 0.01,
+"SHARE": 0.0
+}
+],
+"Haryana": [
+{
+"DISTRICT": "Chennai",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "North",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Gurugram",
+"GROWTH": 13.73,
+"PREVVAL": 6333.18,
+"VALUE": 7202.47,
+"SHARE": 37.7
+},
+{
+"DISTRICT": "Faridabad",
+"GROWTH": 9.02,
+"PREVVAL": 2466.9,
+"VALUE": 2689.33,
+"SHARE": 14.08
+},
+{
+"DISTRICT": "Karnal",
+"GROWTH": 3.08,
+"PREVVAL": 2528.15,
+"VALUE": 2606.1,
+"SHARE": 13.64
+},
+{
+"DISTRICT": "Sonipat",
+"GROWTH": 5.58,
+"PREVVAL": 1696.45,
+"VALUE": 1791.15,
+"SHARE": 9.38
+},
+{
+"DISTRICT": "Panipat",
+"GROWTH": 6.13,
+"PREVVAL": 1566.36,
+"VALUE": 1662.35,
+"SHARE": 8.7
+},
+{
+"DISTRICT": "Rewari",
+"GROWTH": 13.93,
+"PREVVAL": 487.34,
+"VALUE": 555.24,
+"SHARE": 2.91
+},
+{
+"DISTRICT": "Jhajjar",
+"GROWTH": 4.15,
+"PREVVAL": 446.33,
+"VALUE": 464.83,
+"SHARE": 2.43
+},
+{
+"DISTRICT": "Hisar",
+"GROWTH": -12.73,
+"PREVVAL": 360.14,
+"VALUE": 314.28,
+"SHARE": 1.65
+},
+{
+"DISTRICT": "Nuh",
+"GROWTH": -16.96,
+"PREVVAL": 375.3,
+"VALUE": 311.67,
+"SHARE": 1.63
+},
+{
+"DISTRICT": "Palwal",
+"GROWTH": -1.24,
+"PREVVAL": 276.77,
+"VALUE": 273.34,
+"SHARE": 1.43
+},
+{
+"DISTRICT": "Ambala",
+"GROWTH": 16.37,
+"PREVVAL": 214.51,
+"VALUE": 249.62,
+"SHARE": 1.31
+},
+{
+"DISTRICT": "Panchkula",
+"GROWTH": 23.62,
+"PREVVAL": 146.01,
+"VALUE": 180.5,
+"SHARE": 0.94
+},
+{
+"DISTRICT": "Yamunanagar",
+"GROWTH": -4.64,
+"PREVVAL": 158.17,
+"VALUE": 150.82,
+"SHARE": 0.79
+},
+{
+"DISTRICT": "Rohtak",
+"GROWTH": -14.76,
+"PREVVAL": 171.4,
+"VALUE": 146.11,
+"SHARE": 0.76
+},
+{
+"DISTRICT": "Bhiwani",
+"GROWTH": 18.44,
+"PREVVAL": 116.74,
+"VALUE": 138.26,
+"SHARE": 0.72
+},
+{
+"DISTRICT": "Kaithal",
+"GROWTH": 1.46,
+"PREVVAL": 121.42,
+"VALUE": 123.19,
+"SHARE": 0.64
+},
+{
+"DISTRICT": "Kurukshetra",
+"GROWTH": 15.19,
+"PREVVAL": 75.77,
+"VALUE": 87.28,
+"SHARE": 0.46
+},
+{
+"DISTRICT": "Sirsa",
+"GROWTH": 3.56,
+"PREVVAL": 57.81,
+"VALUE": 59.87,
+"SHARE": 0.31
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 362520.65,
+"PREVVAL": 0.01,
+"VALUE": 46.09,
+"SHARE": 0.24
+},
+{
+"DISTRICT": "Fatehabad",
+"GROWTH": -3.87,
+"PREVVAL": 30.4,
+"VALUE": 29.23,
+"SHARE": 0.15
+},
+{
+"DISTRICT": "Jind",
+"GROWTH": -20.37,
+"PREVVAL": 16.67,
+"VALUE": 13.27,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Mahendragarh",
+"GROWTH": -4.66,
+"PREVVAL": 6.6,
+"VALUE": 6.3,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Charki Dadri",
+"GROWTH": 15.2,
+"PREVVAL": 0.82,
+"VALUE": 0.94,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "South",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.16,
+"SHARE": 0.0
+}
+],
+"West Bengal": [
+{
+"DISTRICT": "Ahmadabad",
+"GROWTH": 0.0,
+"PREVVAL": 0.03,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kolkata",
+"GROWTH": 6.25,
+"PREVVAL": 4700.79,
+"VALUE": 4994.74,
+"SHARE": 39.43
+},
+{
+"DISTRICT": "Howrah",
+"GROWTH": 9.31,
+"PREVVAL": 1341.59,
+"VALUE": 1466.42,
+"SHARE": 11.58
+},
+{
+"DISTRICT": "Medinipur East",
+"GROWTH": 10.47,
+"PREVVAL": 1244.98,
+"VALUE": 1375.3,
+"SHARE": 10.86
+},
+{
+"DISTRICT": "Paschim Bardhaman",
+"GROWTH": 1.15,
+"PREVVAL": 858.17,
+"VALUE": 868.01,
+"SHARE": 6.85
+},
+{
+"DISTRICT": "24 Paraganas North",
+"GROWTH": 20.52,
+"PREVVAL": 504.94,
+"VALUE": 608.57,
+"SHARE": 4.8
+},
+{
+"DISTRICT": "24 Paraganas South",
+"GROWTH": 36.79,
+"PREVVAL": 370.6,
+"VALUE": 506.93,
+"SHARE": 4.0
+},
+{
+"DISTRICT": "Purba Bardhaman",
+"GROWTH": 29.38,
+"PREVVAL": 390.31,
+"VALUE": 505.0,
+"SHARE": 3.99
+},
+{
+"DISTRICT": "Hooghly",
+"GROWTH": 2.09,
+"PREVVAL": 494.08,
+"VALUE": 504.39,
+"SHARE": 3.98
+},
+{
+"DISTRICT": "Jalpaiguri",
+"GROWTH": 2.65,
+"PREVVAL": 348.87,
+"VALUE": 358.12,
+"SHARE": 2.83
+},
+{
+"DISTRICT": "Medinipur West",
+"GROWTH": -38.62,
+"PREVVAL": 326.53,
+"VALUE": 200.41,
+"SHARE": 1.58
+},
+{
+"DISTRICT": "Alipurduar",
+"GROWTH": 7.38,
+"PREVVAL": 171.63,
+"VALUE": 184.3,
+"SHARE": 1.45
+},
+{
+"DISTRICT": "Darjeeling",
+"GROWTH": 17.55,
+"PREVVAL": 149.6,
+"VALUE": 175.85,
+"SHARE": 1.39
+},
+{
+"DISTRICT": "Purulia",
+"GROWTH": 46.72,
+"PREVVAL": 116.61,
+"VALUE": 171.1,
+"SHARE": 1.35
+},
+{
+"DISTRICT": "Dinajpur Uttar",
+"GROWTH": 5.02,
+"PREVVAL": 148.43,
+"VALUE": 155.88,
+"SHARE": 1.23
+},
+{
+"DISTRICT": "Murshidabad",
+"GROWTH": 16.45,
+"PREVVAL": 123.53,
+"VALUE": 143.85,
+"SHARE": 1.14
+},
+{
+"DISTRICT": "Birbhum",
+"GROWTH": 10.6,
+"PREVVAL": 116.11,
+"VALUE": 128.42,
+"SHARE": 1.01
+},
+{
+"DISTRICT": "Bankura",
+"GROWTH": 18.66,
+"PREVVAL": 91.2,
+"VALUE": 108.21,
+"SHARE": 0.85
+},
+{
+"DISTRICT": "Maldah",
+"GROWTH": 8.78,
+"PREVVAL": 88.16,
+"VALUE": 95.9,
+"SHARE": 0.76
+},
+{
+"DISTRICT": "Dinajpur Dakshin",
+"GROWTH": 67.33,
+"PREVVAL": 31.33,
+"VALUE": 52.42,
+"SHARE": 0.41
+},
+{
+"DISTRICT": "Nadia",
+"GROWTH": 4.08,
+"PREVVAL": 32.34,
+"VALUE": 33.66,
+"SHARE": 0.27
+},
+{
+"DISTRICT": "Coochbehar",
+"GROWTH": 20.35,
+"PREVVAL": 18.62,
+"VALUE": 22.41,
+"SHARE": 0.18
+},
+{
+"DISTRICT": "Jhargram",
+"GROWTH": -62.94,
+"PREVVAL": 14.9,
+"VALUE": 5.52,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": -95.37,
+"PREVVAL": 28.52,
+"VALUE": 1.32,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Kalimpong",
+"GROWTH": -13.91,
+"PREVVAL": 0.93,
+"VALUE": 0.8,
+"SHARE": 0.01
+}
+],
+"Rajasthan": [
+{
+"DISTRICT": "Saharanpur",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Agra",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Jaipur",
+"GROWTH": 22.82,
+"PREVVAL": 3561.51,
+"VALUE": 4374.15,
+"SHARE": 38.12
+},
+{
+"DISTRICT": "Alwar",
+"GROWTH": 11.45,
+"PREVVAL": 2347.87,
+"VALUE": 2616.71,
+"SHARE": 22.8
+},
+{
+"DISTRICT": "Jodhpur",
+"GROWTH": 0.01,
+"PREVVAL": 1083.9,
+"VALUE": 1083.98,
+"SHARE": 9.45
+},
+{
+"DISTRICT": "Chittorgarh",
+"GROWTH": 5.14,
+"PREVVAL": 713.89,
+"VALUE": 750.58,
+"SHARE": 6.54
+},
+{
+"DISTRICT": "Bhilwara",
+"GROWTH": 12.98,
+"PREVVAL": 611.93,
+"VALUE": 691.34,
+"SHARE": 6.02
+},
+{
+"DISTRICT": "Udaipur",
+"GROWTH": 13.56,
+"PREVVAL": 504.04,
+"VALUE": 572.37,
+"SHARE": 4.99
+},
+{
+"DISTRICT": "Ajmer",
+"GROWTH": 2.8,
+"PREVVAL": 265.71,
+"VALUE": 273.14,
+"SHARE": 2.38
+},
+{
+"DISTRICT": "Kota",
+"GROWTH": -11.21,
+"PREVVAL": 249.93,
+"VALUE": 221.91,
+"SHARE": 1.93
+},
+{
+"DISTRICT": "Bikaner",
+"GROWTH": 11.03,
+"PREVVAL": 112.94,
+"VALUE": 125.4,
+"SHARE": 1.09
+},
+{
+"DISTRICT": "Banswara",
+"GROWTH": 16.69,
+"PREVVAL": 92.62,
+"VALUE": 108.08,
+"SHARE": 0.94
+},
+{
+"DISTRICT": "Rajsamand",
+"GROWTH": 14.47,
+"PREVVAL": 77.25,
+"VALUE": 88.43,
+"SHARE": 0.77
+},
+{
+"DISTRICT": "Sirohi",
+"GROWTH": 3.98,
+"PREVVAL": 80.29,
+"VALUE": 83.48,
+"SHARE": 0.73
+},
+{
+"DISTRICT": "Pali",
+"GROWTH": 9.53,
+"PREVVAL": 48.83,
+"VALUE": 53.48,
+"SHARE": 0.47
+},
+{
+"DISTRICT": "Barmer",
+"GROWTH": 92.36,
+"PREVVAL": 25.84,
+"VALUE": 49.7,
+"SHARE": 0.43
+},
+{
+"DISTRICT": "Bundi",
+"GROWTH": 47.29,
+"PREVVAL": 32.82,
+"VALUE": 48.34,
+"SHARE": 0.42
+},
+{
+"DISTRICT": "Churu",
+"GROWTH": -4.43,
+"PREVVAL": 46.67,
+"VALUE": 44.6,
+"SHARE": 0.39
+},
+{
+"DISTRICT": "Jhunjhunu",
+"GROWTH": -17.96,
+"PREVVAL": 52.18,
+"VALUE": 42.81,
+"SHARE": 0.37
+},
+{
+"DISTRICT": "Jhalawar",
+"GROWTH": -8.86,
+"PREVVAL": 46.7,
+"VALUE": 42.56,
+"SHARE": 0.37
+},
+{
+"DISTRICT": "Sikar",
+"GROWTH": 28.73,
+"PREVVAL": 25.76,
+"VALUE": 33.16,
+"SHARE": 0.29
+},
+{
+"DISTRICT": "Nagaur",
+"GROWTH": 8.43,
+"PREVVAL": 27.95,
+"VALUE": 30.31,
+"SHARE": 0.26
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 918324.5,
+"PREVVAL": 0.0,
+"VALUE": 18.89,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Tonk",
+"GROWTH": 78.72,
+"PREVVAL": 10.48,
+"VALUE": 18.74,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Ganganagar",
+"GROWTH": 42.05,
+"PREVVAL": 12.54,
+"VALUE": 17.81,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Jalore",
+"GROWTH": 8.28,
+"PREVVAL": 16.22,
+"VALUE": 17.56,
+"SHARE": 0.15
+},
+{
+"DISTRICT": "Bharatpur",
+"GROWTH": 37.05,
+"PREVVAL": 10.61,
+"VALUE": 14.54,
+"SHARE": 0.13
+},
+{
+"DISTRICT": "Hanumangarh",
+"GROWTH": -3.2,
+"PREVVAL": 14.97,
+"VALUE": 14.49,
+"SHARE": 0.13
+},
+{
+"DISTRICT": "Dholpur",
+"GROWTH": 52.9,
+"PREVVAL": 8.99,
+"VALUE": 13.74,
+"SHARE": 0.12
+},
+{
+"DISTRICT": "Dausa",
+"GROWTH": -0.18,
+"PREVVAL": 12.14,
+"VALUE": 12.12,
+"SHARE": 0.11
+},
+{
+"DISTRICT": "Karauli",
+"GROWTH": 47.15,
+"PREVVAL": 3.03,
+"VALUE": 4.46,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Baran",
+"GROWTH": -52.68,
+"PREVVAL": 5.91,
+"VALUE": 2.8,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Dungarpur",
+"GROWTH": -13.3,
+"PREVVAL": 2.16,
+"VALUE": 1.88,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Pratapgarh",
+"GROWTH": 30.1,
+"PREVVAL": 1.26,
+"VALUE": 1.64,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Jaisalmer",
+"GROWTH": 23.02,
+"PREVVAL": 1.15,
+"VALUE": 1.41,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Sawai Madhopur",
+"GROWTH": 58.79,
+"PREVVAL": 0.67,
+"VALUE": 1.06,
+"SHARE": 0.01
+}
+],
+"Delhi": [
+{
+"DISTRICT": "Rewari",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Gautam Buddha Nagar",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Haridwar",
+"GROWTH": 0.0,
+"PREVVAL": 0.04,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Moradabad",
+"GROWTH": 0.0,
+"PREVVAL": 0.04,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "South West",
+"GROWTH": 31.45,
+"PREVVAL": 3514.27,
+"VALUE": 4619.45,
+"SHARE": 43.91
+},
+{
+"DISTRICT": "New Delhi",
+"GROWTH": -21.29,
+"PREVVAL": 3644.25,
+"VALUE": 2868.51,
+"SHARE": 27.26
+},
+{
+"DISTRICT": "Central",
+"GROWTH": -19.92,
+"PREVVAL": 969.88,
+"VALUE": 776.68,
+"SHARE": 7.38
+},
+{
+"DISTRICT": "South",
+"GROWTH": 2.71,
+"PREVVAL": 649.69,
+"VALUE": 667.32,
+"SHARE": 6.34
+},
+{
+"DISTRICT": "North West",
+"GROWTH": 6.48,
+"PREVVAL": 504.41,
+"VALUE": 537.08,
+"SHARE": 5.1
+},
+{
+"DISTRICT": "West",
+"GROWTH": -11.57,
+"PREVVAL": 377.89,
+"VALUE": 334.16,
+"SHARE": 3.18
+},
+{
+"DISTRICT": "East",
+"GROWTH": 7.62,
+"PREVVAL": 279.15,
+"VALUE": 300.42,
+"SHARE": 2.86
+},
+{
+"DISTRICT": "North",
+"GROWTH": 13.98,
+"PREVVAL": 156.34,
+"VALUE": 178.2,
+"SHARE": 1.69
+},
+{
+"DISTRICT": "North East",
+"GROWTH": 102.56,
+"PREVVAL": 76.91,
+"VALUE": 155.78,
+"SHARE": 1.48
+},
+{
+"DISTRICT": "South East",
+"GROWTH": -17.81,
+"PREVVAL": 41.59,
+"VALUE": 34.18,
+"SHARE": 0.32
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 28558839.25,
+"PREVVAL": 0.0,
+"VALUE": 30.56,
+"SHARE": 0.29
+},
+{
+"DISTRICT": "Shahdara",
+"GROWTH": 17.74,
+"PREVVAL": 15.74,
+"VALUE": 18.53,
+"SHARE": 0.18
+}
+],
+"Odisha": [
+{
+"DISTRICT": "Jharsuguda",
+"GROWTH": -14.99,
+"PREVVAL": 3850.21,
+"VALUE": 3273.22,
+"SHARE": 32.41
+},
+{
+"DISTRICT": "Sundargarh",
+"GROWTH": -16.16,
+"PREVVAL": 1215.29,
+"VALUE": 1018.86,
+"SHARE": 10.09
+},
+{
+"DISTRICT": "Anugul",
+"GROWTH": 4.4,
+"PREVVAL": 886.6,
+"VALUE": 925.6,
+"SHARE": 9.17
+},
+{
+"DISTRICT": "Jajapur",
+"GROWTH": -16.97,
+"PREVVAL": 1085.14,
+"VALUE": 900.99,
+"SHARE": 8.92
+},
+{
+"DISTRICT": "Jagatsinghapur",
+"GROWTH": -41.19,
+"PREVVAL": 1246.22,
+"VALUE": 732.92,
+"SHARE": 7.26
+},
+{
+"DISTRICT": "Sambalpur",
+"GROWTH": -13.83,
+"PREVVAL": 762.67,
+"VALUE": 657.23,
+"SHARE": 6.51
+},
+{
+"DISTRICT": "Kendujhar",
+"GROWTH": -44.75,
+"PREVVAL": 843.72,
+"VALUE": 466.19,
+"SHARE": 4.62
+},
+{
+"DISTRICT": "Dhenkanal",
+"GROWTH": -4.38,
+"PREVVAL": 458.72,
+"VALUE": 438.65,
+"SHARE": 4.34
+},
+{
+"DISTRICT": "Khordha",
+"GROWTH": 16.71,
+"PREVVAL": 369.2,
+"VALUE": 430.91,
+"SHARE": 4.27
+},
+{
+"DISTRICT": "Rayagada",
+"GROWTH": 33.66,
+"PREVVAL": 275.21,
+"VALUE": 367.85,
+"SHARE": 3.64
+},
+{
+"DISTRICT": "Baleshwar",
+"GROWTH": -3.38,
+"PREVVAL": 289.03,
+"VALUE": 279.27,
+"SHARE": 2.77
+},
+{
+"DISTRICT": "Cuttack",
+"GROWTH": -15.84,
+"PREVVAL": 315.83,
+"VALUE": 265.8,
+"SHARE": 2.63
+},
+{
+"DISTRICT": "Kalahandi",
+"GROWTH": 1926.5,
+"PREVVAL": 4.92,
+"VALUE": 99.65,
+"SHARE": 0.99
+},
+{
+"DISTRICT": "Ganjam",
+"GROWTH": -27.2,
+"PREVVAL": 127.56,
+"VALUE": 92.87,
+"SHARE": 0.92
+},
+{
+"DISTRICT": "Balangir",
+"GROWTH": -31.39,
+"PREVVAL": 67.48,
+"VALUE": 46.3,
+"SHARE": 0.46
+},
+{
+"DISTRICT": "Bhadrak",
+"GROWTH": -33.81,
+"PREVVAL": 55.55,
+"VALUE": 36.77,
+"SHARE": 0.36
+},
+{
+"DISTRICT": "Mayurbhanj",
+"GROWTH": -8.33,
+"PREVVAL": 19.75,
+"VALUE": 18.1,
+"SHARE": 0.18
+},
+{
+"DISTRICT": "Puri",
+"GROWTH": 113.66,
+"PREVVAL": 7.76,
+"VALUE": 16.58,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Nabarangpur",
+"GROWTH": 43.69,
+"PREVVAL": 5.9,
+"VALUE": 8.48,
+"SHARE": 0.08
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 6.72,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Bargarh",
+"GROWTH": -39.84,
+"PREVVAL": 10.38,
+"VALUE": 6.24,
+"SHARE": 0.06
+},
+{
+"DISTRICT": "Koraput",
+"GROWTH": -68.91,
+"PREVVAL": 6.74,
+"VALUE": 2.1,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Nayagarh",
+"GROWTH": -90.48,
+"PREVVAL": 21.79,
+"VALUE": 2.08,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Kandhamal",
+"GROWTH": -22.62,
+"PREVVAL": 1.94,
+"VALUE": 1.5,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Deogarh",
+"GROWTH": 10.4,
+"PREVVAL": 1.14,
+"VALUE": 1.26,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Boudh",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.59,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Malkangiri",
+"GROWTH": 7.17,
+"PREVVAL": 0.41,
+"VALUE": 0.44,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kendrapara",
+"GROWTH": -77.85,
+"PREVVAL": 1.34,
+"VALUE": 0.3,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Nuapada",
+"GROWTH": -20.5,
+"PREVVAL": 0.3,
+"VALUE": 0.24,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Gajapati",
+"GROWTH": 52.66,
+"PREVVAL": 0.14,
+"VALUE": 0.22,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Sonepur",
+"GROWTH": 9.05,
+"PREVVAL": 0.05,
+"VALUE": 0.06,
+"SHARE": 0.0
+}
+],
+"Madhya Pradesh": [
+{
+"DISTRICT": "Hoshangabad",
+"GROWTH": 0.0,
+"PREVVAL": 56.91,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Jharsuguda",
+"GROWTH": 0.0,
+"PREVVAL": 0.11,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Banas Kantha",
+"GROWTH": 0.0,
+"PREVVAL": 0.1,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Dhar",
+"GROWTH": 58.54,
+"PREVVAL": 1325.22,
+"VALUE": 2101.07,
+"SHARE": 26.85
+},
+{
+"DISTRICT": "Indore",
+"GROWTH": -34.62,
+"PREVVAL": 2445.15,
+"VALUE": 1598.59,
+"SHARE": 20.43
+},
+{
+"DISTRICT": "Raisen",
+"GROWTH": -5.9,
+"PREVVAL": 913.23,
+"VALUE": 859.34,
+"SHARE": 10.98
+},
+{
+"DISTRICT": "Singrauli",
+"GROWTH": 13.54,
+"PREVVAL": 478.45,
+"VALUE": 543.22,
+"SHARE": 6.94
+},
+{
+"DISTRICT": "Sehore",
+"GROWTH": -6.48,
+"PREVVAL": 488.37,
+"VALUE": 456.73,
+"SHARE": 5.84
+},
+{
+"DISTRICT": "Dewas",
+"GROWTH": -2.73,
+"PREVVAL": 464.71,
+"VALUE": 452.04,
+"SHARE": 5.78
+},
+{
+"DISTRICT": "Ujjain",
+"GROWTH": 46.56,
+"PREVVAL": 184.07,
+"VALUE": 269.78,
+"SHARE": 3.45
+},
+{
+"DISTRICT": "Bhind",
+"GROWTH": 77.42,
+"PREVVAL": 127.24,
+"VALUE": 225.76,
+"SHARE": 2.89
+},
+{
+"DISTRICT": "Bhopal",
+"GROWTH": 21.76,
+"PREVVAL": 158.21,
+"VALUE": 192.64,
+"SHARE": 2.46
+},
+{
+"DISTRICT": "Ratlam",
+"GROWTH": -2.33,
+"PREVVAL": 154.5,
+"VALUE": 150.91,
+"SHARE": 1.93
+},
+{
+"DISTRICT": "Morena",
+"GROWTH": 0.16,
+"PREVVAL": 143.99,
+"VALUE": 144.22,
+"SHARE": 1.84
+},
+{
+"DISTRICT": "Gwalior",
+"GROWTH": -18.65,
+"PREVVAL": 131.9,
+"VALUE": 107.3,
+"SHARE": 1.37
+},
+{
+"DISTRICT": "Khargone",
+"GROWTH": -13.92,
+"PREVVAL": 114.67,
+"VALUE": 98.71,
+"SHARE": 1.26
+},
+{
+"DISTRICT": "Jabalpur",
+"GROWTH": -48.58,
+"PREVVAL": 172.1,
+"VALUE": 88.5,
+"SHARE": 1.13
+},
+{
+"DISTRICT": "Chhindwara",
+"GROWTH": -10.34,
+"PREVVAL": 87.89,
+"VALUE": 78.8,
+"SHARE": 1.01
+},
+{
+"DISTRICT": "Narmadapuram",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 69.47,
+"SHARE": 0.89
+},
+{
+"DISTRICT": "Neemuch",
+"GROWTH": 3.78,
+"PREVVAL": 57.72,
+"VALUE": 59.9,
+"SHARE": 0.77
+},
+{
+"DISTRICT": "Balaghat",
+"GROWTH": 14.94,
+"PREVVAL": 48.04,
+"VALUE": 55.22,
+"SHARE": 0.71
+},
+{
+"DISTRICT": "Mandsaur",
+"GROWTH": -16.0,
+"PREVVAL": 27.57,
+"VALUE": 23.16,
+"SHARE": 0.3
+},
+{
+"DISTRICT": "Satna",
+"GROWTH": 0.25,
+"PREVVAL": 22.07,
+"VALUE": 22.13,
+"SHARE": 0.28
+},
+{
+"DISTRICT": "Katni",
+"GROWTH": -53.74,
+"PREVVAL": 46.51,
+"VALUE": 21.52,
+"SHARE": 0.27
+},
+{
+"DISTRICT": "Barwani",
+"GROWTH": -58.54,
+"PREVVAL": 50.29,
+"VALUE": 20.85,
+"SHARE": 0.27
+},
+{
+"DISTRICT": "East Nimar",
+"GROWTH": 5.06,
+"PREVVAL": 18.84,
+"VALUE": 19.79,
+"SHARE": 0.25
+},
+{
+"DISTRICT": "Rewa",
+"GROWTH": -56.66,
+"PREVVAL": 39.12,
+"VALUE": 16.96,
+"SHARE": 0.22
+},
+{
+"DISTRICT": "Shivpuri",
+"GROWTH": 231.68,
+"PREVVAL": 4.86,
+"VALUE": 16.11,
+"SHARE": 0.21
+},
+{
+"DISTRICT": "Harda",
+"GROWTH": 13.01,
+"PREVVAL": 13.48,
+"VALUE": 15.24,
+"SHARE": 0.19
+},
+{
+"DISTRICT": "Chhatarpur",
+"GROWTH": -9.79,
+"PREVVAL": 14.54,
+"VALUE": 13.12,
+"SHARE": 0.17
+},
+{
+"DISTRICT": "Mandla",
+"GROWTH": 79.73,
+"PREVVAL": 6.81,
+"VALUE": 12.24,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Rajgarh",
+"GROWTH": -12.4,
+"PREVVAL": 12.59,
+"VALUE": 11.03,
+"SHARE": 0.14
+},
+{
+"DISTRICT": "Shahdol",
+"GROWTH": 23.47,
+"PREVVAL": 8.23,
+"VALUE": 10.17,
+"SHARE": 0.13
+},
+{
+"DISTRICT": "Datia",
+"GROWTH": 1569.42,
+"PREVVAL": 0.57,
+"VALUE": 9.45,
+"SHARE": 0.12
+},
+{
+"DISTRICT": "Vidisha",
+"GROWTH": -24.86,
+"PREVVAL": 11.72,
+"VALUE": 8.81,
+"SHARE": 0.11
+},
+{
+"DISTRICT": "Guna",
+"GROWTH": -32.55,
+"PREVVAL": 12.69,
+"VALUE": 8.56,
+"SHARE": 0.11
+},
+{
+"DISTRICT": "Betul",
+"GROWTH": 226.33,
+"PREVVAL": 2.59,
+"VALUE": 8.45,
+"SHARE": 0.11
+},
+{
+"DISTRICT": "Burhanpur",
+"GROWTH": 13.2,
+"PREVVAL": 6.06,
+"VALUE": 6.86,
+"SHARE": 0.09
+},
+{
+"DISTRICT": "Niwari",
+"GROWTH": -40.29,
+"PREVVAL": 9.46,
+"VALUE": 5.65,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 6078.02,
+"PREVVAL": 0.06,
+"VALUE": 3.53,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Seoni",
+"GROWTH": 318.32,
+"PREVVAL": 0.82,
+"VALUE": 3.43,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Shajapur",
+"GROWTH": -64.5,
+"PREVVAL": 7.94,
+"VALUE": 2.82,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Sagar",
+"GROWTH": 458.24,
+"PREVVAL": 0.46,
+"VALUE": 2.58,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Ashoknagar",
+"GROWTH": 385.45,
+"PREVVAL": 0.5,
+"VALUE": 2.41,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Tikamgarh",
+"GROWTH": 22.72,
+"PREVVAL": 1.62,
+"VALUE": 1.98,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Narsinghpur",
+"GROWTH": -70.14,
+"PREVVAL": 5.29,
+"VALUE": 1.58,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Jhabua",
+"GROWTH": 48.98,
+"PREVVAL": 1.02,
+"VALUE": 1.52,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Umaria",
+"GROWTH": 3203.54,
+"PREVVAL": 0.04,
+"VALUE": 1.18,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Damoh",
+"GROWTH": 39687.13,
+"PREVVAL": 0.0,
+"VALUE": 0.49,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Panna",
+"GROWTH": -53.01,
+"PREVVAL": 0.63,
+"VALUE": 0.3,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Agar Malwa",
+"GROWTH": -24.78,
+"PREVVAL": 0.38,
+"VALUE": 0.28,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Anuppur",
+"GROWTH": -62.97,
+"PREVVAL": 0.75,
+"VALUE": 0.28,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Dindori",
+"GROWTH": 49.72,
+"PREVVAL": 0.12,
+"VALUE": 0.17,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Sidhi",
+"GROWTH": 496.54,
+"PREVVAL": 0.0,
+"VALUE": 0.02,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Alirajpur",
+"GROWTH": -88.8,
+"PREVVAL": 0.02,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Sheopur",
+"GROWTH": -51.77,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Punjab": [
+{
+"DISTRICT": "Chandigarh",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Sonipat",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Firozepur",
+"GROWTH": 0.0,
+"PREVVAL": 143.93,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kanpur Nagar",
+"GROWTH": 0.0,
+"PREVVAL": 0.39,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Ludhiana",
+"GROWTH": 5.43,
+"PREVVAL": 2432.57,
+"VALUE": 2564.67,
+"SHARE": 36.43
+},
+{
+"DISTRICT": "Jalandhar",
+"GROWTH": 9.31,
+"PREVVAL": 809.7,
+"VALUE": 885.07,
+"SHARE": 12.57
+},
+{
+"DISTRICT": "S.A.S NAGAR",
+"GROWTH": -2.25,
+"PREVVAL": 900.11,
+"VALUE": 879.85,
+"SHARE": 12.5
+},
+{
+"DISTRICT": "Amritsar",
+"GROWTH": -7.72,
+"PREVVAL": 429.25,
+"VALUE": 396.13,
+"SHARE": 5.63
+},
+{
+"DISTRICT": "Hoshiarpur",
+"GROWTH": -8.71,
+"PREVVAL": 411.49,
+"VALUE": 375.64,
+"SHARE": 5.34
+},
+{
+"DISTRICT": "Bathinda",
+"GROWTH": 39.79,
+"PREVVAL": 178.22,
+"VALUE": 249.14,
+"SHARE": 3.54
+},
+{
+"DISTRICT": "Sangrur",
+"GROWTH": 16.46,
+"PREVVAL": 193.71,
+"VALUE": 225.58,
+"SHARE": 3.2
+},
+{
+"DISTRICT": "Shahid Bhagat Singh Nagar",
+"GROWTH": 28.5,
+"PREVVAL": 175.5,
+"VALUE": 225.52,
+"SHARE": 3.2
+},
+{
+"DISTRICT": "Patiala",
+"GROWTH": -4.2,
+"PREVVAL": 229.41,
+"VALUE": 219.78,
+"SHARE": 3.12
+},
+{
+"DISTRICT": "Ferozepur",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 193.15,
+"SHARE": 2.74
+},
+{
+"DISTRICT": "Barnala",
+"GROWTH": 1.76,
+"PREVVAL": 173.97,
+"VALUE": 177.04,
+"SHARE": 2.51
+},
+{
+"DISTRICT": "Kapurthala",
+"GROWTH": -2.97,
+"PREVVAL": 162.41,
+"VALUE": 157.6,
+"SHARE": 2.24
+},
+{
+"DISTRICT": "Tarn Taran",
+"GROWTH": -11.25,
+"PREVVAL": 154.21,
+"VALUE": 136.86,
+"SHARE": 1.94
+},
+{
+"DISTRICT": "Moga",
+"GROWTH": -3.41,
+"PREVVAL": 131.02,
+"VALUE": 126.55,
+"SHARE": 1.8
+},
+{
+"DISTRICT": "Fazilka",
+"GROWTH": 4.56,
+"PREVVAL": 73.8,
+"VALUE": 77.17,
+"SHARE": 1.1
+},
+{
+"DISTRICT": "Fatehgarh Sahib",
+"GROWTH": 42.58,
+"PREVVAL": 31.03,
+"VALUE": 44.25,
+"SHARE": 0.63
+},
+{
+"DISTRICT": "Rupnagar",
+"GROWTH": 18.07,
+"PREVVAL": 29.59,
+"VALUE": 34.93,
+"SHARE": 0.5
+},
+{
+"DISTRICT": "Sri Muktsar Sahib",
+"GROWTH": -23.34,
+"PREVVAL": 30.55,
+"VALUE": 23.42,
+"SHARE": 0.33
+},
+{
+"DISTRICT": "Gurdaspur",
+"GROWTH": -33.57,
+"PREVVAL": 31.85,
+"VALUE": 21.16,
+"SHARE": 0.3
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 13651.63,
+"PREVVAL": 0.09,
+"VALUE": 12.46,
+"SHARE": 0.18
+},
+{
+"DISTRICT": "Faridkot",
+"GROWTH": 14.06,
+"PREVVAL": 8.12,
+"VALUE": 9.26,
+"SHARE": 0.13
+},
+{
+"DISTRICT": "Pathankot",
+"GROWTH": -64.36,
+"PREVVAL": 7.6,
+"VALUE": 2.71,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Mansa",
+"GROWTH": -61.64,
+"PREVVAL": 6.64,
+"VALUE": 2.55,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Malerkotla",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.04,
+"SHARE": 0.0
+}
+],
+"Kerala": [
+{
+"DISTRICT": "Ernakulam",
+"GROWTH": -55.17,
+"PREVVAL": 6158.75,
+"VALUE": 2760.88,
+"SHARE": 57.85
+},
+{
+"DISTRICT": "Alappuzha",
+"GROWTH": -0.73,
+"PREVVAL": 632.39,
+"VALUE": 627.79,
+"SHARE": 13.16
+},
+{
+"DISTRICT": "Thrissur",
+"GROWTH": 51.77,
+"PREVVAL": 188.16,
+"VALUE": 285.57,
+"SHARE": 5.98
+},
+{
+"DISTRICT": "Kollam",
+"GROWTH": -6.19,
+"PREVVAL": 246.44,
+"VALUE": 231.19,
+"SHARE": 4.84
+},
+{
+"DISTRICT": "Palakkad",
+"GROWTH": -9.48,
+"PREVVAL": 194.54,
+"VALUE": 176.1,
+"SHARE": 3.69
+},
+{
+"DISTRICT": "Thiruvananthapuram",
+"GROWTH": -28.92,
+"PREVVAL": 204.14,
+"VALUE": 145.09,
+"SHARE": 3.04
+},
+{
+"DISTRICT": "Kottayam",
+"GROWTH": 21.04,
+"PREVVAL": 116.25,
+"VALUE": 140.71,
+"SHARE": 2.95
+},
+{
+"DISTRICT": "Kozhikode",
+"GROWTH": -0.64,
+"PREVVAL": 123.46,
+"VALUE": 122.67,
+"SHARE": 2.57
+},
+{
+"DISTRICT": "Malappuram",
+"GROWTH": 9.4,
+"PREVVAL": 85.77,
+"VALUE": 93.83,
+"SHARE": 1.97
+},
+{
+"DISTRICT": "Idukki",
+"GROWTH": 32.6,
+"PREVVAL": 50.11,
+"VALUE": 66.44,
+"SHARE": 1.39
+},
+{
+"DISTRICT": "Kannur",
+"GROWTH": -9.33,
+"PREVVAL": 70.65,
+"VALUE": 64.06,
+"SHARE": 1.34
+},
+{
+"DISTRICT": "Wayanad",
+"GROWTH": -55.38,
+"PREVVAL": 83.77,
+"VALUE": 37.38,
+"SHARE": 0.78
+},
+{
+"DISTRICT": "Pathanamthitta",
+"GROWTH": 41.22,
+"PREVVAL": 10.4,
+"VALUE": 14.68,
+"SHARE": 0.31
+},
+{
+"DISTRICT": "Kasaragod",
+"GROWTH": -23.02,
+"PREVVAL": 7.57,
+"VALUE": 5.83,
+"SHARE": 0.12
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Dadra,nh,daman,diu": [
+{
+"DISTRICT": "Dadra And Nagar Haveli",
+"GROWTH": 0.3,
+"PREVVAL": 4508.9,
+"VALUE": 4522.27,
+"SHARE": 97.34
+},
+{
+"DISTRICT": "Daman",
+"GROWTH": -19.39,
+"PREVVAL": 148.68,
+"VALUE": 119.85,
+"SHARE": 2.58
+},
+{
+"DISTRICT": "Diu",
+"GROWTH": 59.25,
+"PREVVAL": 2.23,
+"VALUE": 3.55,
+"SHARE": 0.08
+}
+],
+"Goa": [
+{
+"DISTRICT": "Chittoor",
+"GROWTH": 0.0,
+"PREVVAL": 0.04,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "South Goa",
+"GROWTH": 3.97,
+"PREVVAL": 1323.27,
+"VALUE": 1375.8,
+"SHARE": 55.56
+},
+{
+"DISTRICT": "North Goa",
+"GROWTH": 3.05,
+"PREVVAL": 1067.9,
+"VALUE": 1100.44,
+"SHARE": 44.44
+}
+],
+"Himachal Pradesh": [
+{
+"DISTRICT": "Solan",
+"GROWTH": 2.05,
+"PREVVAL": 1897.93,
+"VALUE": 1936.77,
+"SHARE": 79.78
+},
+{
+"DISTRICT": "Sirmaur",
+"GROWTH": 12.84,
+"PREVVAL": 343.1,
+"VALUE": 387.17,
+"SHARE": 15.95
+},
+{
+"DISTRICT": "Una",
+"GROWTH": 30.82,
+"PREVVAL": 48.8,
+"VALUE": 63.84,
+"SHARE": 2.63
+},
+{
+"DISTRICT": "Mandi",
+"GROWTH": 41.93,
+"PREVVAL": 7.41,
+"VALUE": 10.52,
+"SHARE": 0.43
+},
+{
+"DISTRICT": "Shimla",
+"GROWTH": -13.58,
+"PREVVAL": 11.23,
+"VALUE": 9.7,
+"SHARE": 0.4
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 7.58,
+"SHARE": 0.31
+},
+{
+"DISTRICT": "Kangra",
+"GROWTH": 35.48,
+"PREVVAL": 4.46,
+"VALUE": 6.04,
+"SHARE": 0.25
+},
+{
+"DISTRICT": "Kullu",
+"GROWTH": 15.31,
+"PREVVAL": 2.35,
+"VALUE": 2.71,
+"SHARE": 0.11
+},
+{
+"DISTRICT": "Hamirpur",
+"GROWTH": 726.25,
+"PREVVAL": 0.27,
+"VALUE": 2.24,
+"SHARE": 0.09
+},
+{
+"DISTRICT": "Bilaspur",
+"GROWTH": 354.52,
+"PREVVAL": 0.18,
+"VALUE": 0.83,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Kinnaur",
+"GROWTH": -84.39,
+"PREVVAL": 0.84,
+"VALUE": 0.13,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Chamba",
+"GROWTH": -72.18,
+"PREVVAL": 0.35,
+"VALUE": 0.1,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Lahul And Spiti",
+"GROWTH": 95.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Chhattisgarh": [
+{
+"DISTRICT": "Kota",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Raipur",
+"GROWTH": 38.67,
+"PREVVAL": 1065.31,
+"VALUE": 1477.27,
+"SHARE": 67.49
+},
+{
+"DISTRICT": "Raigarh",
+"GROWTH": -36.68,
+"PREVVAL": 447.57,
+"VALUE": 283.4,
+"SHARE": 12.95
+},
+{
+"DISTRICT": "Korba",
+"GROWTH": -42.89,
+"PREVVAL": 234.97,
+"VALUE": 134.2,
+"SHARE": 6.13
+},
+{
+"DISTRICT": "Dhamtari",
+"GROWTH": 22.23,
+"PREVVAL": 88.75,
+"VALUE": 108.49,
+"SHARE": 4.96
+},
+{
+"DISTRICT": "Durg",
+"GROWTH": -16.66,
+"PREVVAL": 87.91,
+"VALUE": 73.27,
+"SHARE": 3.35
+},
+{
+"DISTRICT": "Mahasamund",
+"GROWTH": -4.35,
+"PREVVAL": 27.99,
+"VALUE": 26.77,
+"SHARE": 1.22
+},
+{
+"DISTRICT": "Rajnandgaon",
+"GROWTH": 115.84,
+"PREVVAL": 10.23,
+"VALUE": 22.07,
+"SHARE": 1.01
+},
+{
+"DISTRICT": "Bilaspur",
+"GROWTH": 98.94,
+"PREVVAL": 10.85,
+"VALUE": 21.58,
+"SHARE": 0.99
+},
+{
+"DISTRICT": "Janjgir-champa",
+"GROWTH": 15.54,
+"PREVVAL": 17.18,
+"VALUE": 19.85,
+"SHARE": 0.91
+},
+{
+"DISTRICT": "Bastar",
+"GROWTH": 167.74,
+"PREVVAL": 2.4,
+"VALUE": 6.42,
+"SHARE": 0.29
+},
+{
+"DISTRICT": "Balod",
+"GROWTH": 39.67,
+"PREVVAL": 4.57,
+"VALUE": 6.39,
+"SHARE": 0.29
+},
+{
+"DISTRICT": "Dantewada",
+"GROWTH": -74.15,
+"PREVVAL": 7.49,
+"VALUE": 1.93,
+"SHARE": 0.09
+},
+{
+"DISTRICT": "Gariyaband",
+"GROWTH": 135.42,
+"PREVVAL": 0.69,
+"VALUE": 1.62,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Kondagaon",
+"GROWTH": 33.85,
+"PREVVAL": 0.92,
+"VALUE": 1.23,
+"SHARE": 0.06
+},
+{
+"DISTRICT": "Kanker",
+"GROWTH": 150.31,
+"PREVVAL": 0.48,
+"VALUE": 1.2,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Surajpur",
+"GROWTH": 71.24,
+"PREVVAL": 0.59,
+"VALUE": 1.0,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Bemetara",
+"GROWTH": 742.29,
+"PREVVAL": 0.1,
+"VALUE": 0.81,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Baloda Bazar",
+"GROWTH": -36.39,
+"PREVVAL": 0.84,
+"VALUE": 0.54,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Bijapur",
+"GROWTH": -71.59,
+"PREVVAL": 1.06,
+"VALUE": 0.3,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Surguja",
+"GROWTH": -91.71,
+"PREVVAL": 2.77,
+"VALUE": 0.23,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Jashpur",
+"GROWTH": 234.96,
+"PREVVAL": 0.04,
+"VALUE": 0.14,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Mungeli",
+"GROWTH": -97.28,
+"PREVVAL": 3.7,
+"VALUE": 0.1,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Balrampur",
+"GROWTH": 139.84,
+"PREVVAL": 0.03,
+"VALUE": 0.07,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kabirdham",
+"GROWTH": -43.38,
+"PREVVAL": 0.13,
+"VALUE": 0.07,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Korea",
+"GROWTH": -99.68,
+"PREVVAL": 0.25,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Bihar": [
+{
+"DISTRICT": "Sheohar",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Begusarai",
+"GROWTH": -4.57,
+"PREVVAL": 1317.25,
+"VALUE": 1256.99,
+"SHARE": 61.58
+},
+{
+"DISTRICT": "Purbi Champaran",
+"GROWTH": 41.43,
+"PREVVAL": 155.51,
+"VALUE": 219.93,
+"SHARE": 10.77
+},
+{
+"DISTRICT": "Araria",
+"GROWTH": -10.99,
+"PREVVAL": 203.73,
+"VALUE": 181.35,
+"SHARE": 8.88
+},
+{
+"DISTRICT": "Patna",
+"GROWTH": -1.1,
+"PREVVAL": 97.95,
+"VALUE": 96.87,
+"SHARE": 4.75
+},
+{
+"DISTRICT": "Kishanganj",
+"GROWTH": 1.35,
+"PREVVAL": 83.96,
+"VALUE": 85.09,
+"SHARE": 4.17
+},
+{
+"DISTRICT": "Nalanda",
+"GROWTH": 2103.98,
+"PREVVAL": 2.62,
+"VALUE": 57.75,
+"SHARE": 2.83
+},
+{
+"DISTRICT": "Sitamarhi",
+"GROWTH": 38.78,
+"PREVVAL": 26.92,
+"VALUE": 37.35,
+"SHARE": 1.83
+},
+{
+"DISTRICT": "Purnia",
+"GROWTH": -37.62,
+"PREVVAL": 27.99,
+"VALUE": 17.46,
+"SHARE": 0.86
+},
+{
+"DISTRICT": "Saharsa",
+"GROWTH": 37.51,
+"PREVVAL": 11.19,
+"VALUE": 15.39,
+"SHARE": 0.75
+},
+{
+"DISTRICT": "Munger",
+"GROWTH": 202.51,
+"PREVVAL": 3.52,
+"VALUE": 10.65,
+"SHARE": 0.52
+},
+{
+"DISTRICT": "Bhagalpur",
+"GROWTH": -8.24,
+"PREVVAL": 10.35,
+"VALUE": 9.49,
+"SHARE": 0.47
+},
+{
+"DISTRICT": "Supaul",
+"GROWTH": -28.95,
+"PREVVAL": 9.14,
+"VALUE": 6.5,
+"SHARE": 0.32
+},
+{
+"DISTRICT": "Vaishali",
+"GROWTH": 14.17,
+"PREVVAL": 5.17,
+"VALUE": 5.91,
+"SHARE": 0.29
+},
+{
+"DISTRICT": "Muzaffarpur",
+"GROWTH": -15.18,
+"PREVVAL": 6.72,
+"VALUE": 5.7,
+"SHARE": 0.28
+},
+{
+"DISTRICT": "Khagaria",
+"GROWTH": -24.73,
+"PREVVAL": 7.18,
+"VALUE": 5.4,
+"SHARE": 0.26
+},
+{
+"DISTRICT": "Aurangabad",
+"GROWTH": -61.56,
+"PREVVAL": 13.85,
+"VALUE": 5.32,
+"SHARE": 0.26
+},
+{
+"DISTRICT": "Pashchim Champaran",
+"GROWTH": -18.86,
+"PREVVAL": 6.5,
+"VALUE": 5.28,
+"SHARE": 0.26
+},
+{
+"DISTRICT": "Katihar",
+"GROWTH": -79.97,
+"PREVVAL": 16.61,
+"VALUE": 3.33,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Arwal",
+"GROWTH": 62.98,
+"PREVVAL": 1.51,
+"VALUE": 2.46,
+"SHARE": 0.12
+},
+{
+"DISTRICT": "Madhubani",
+"GROWTH": -5.84,
+"PREVVAL": 2.59,
+"VALUE": 2.44,
+"SHARE": 0.12
+},
+{
+"DISTRICT": "Rohtas",
+"GROWTH": 154.71,
+"PREVVAL": 0.74,
+"VALUE": 1.89,
+"SHARE": 0.09
+},
+{
+"DISTRICT": "Gopalganj",
+"GROWTH": -38.52,
+"PREVVAL": 2.78,
+"VALUE": 1.71,
+"SHARE": 0.08
+},
+{
+"DISTRICT": "Darbhanga",
+"GROWTH": -10.38,
+"PREVVAL": 1.61,
+"VALUE": 1.45,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Siwan",
+"GROWTH": -49.05,
+"PREVVAL": 2.43,
+"VALUE": 1.24,
+"SHARE": 0.06
+},
+{
+"DISTRICT": "Gaya",
+"GROWTH": 11.61,
+"PREVVAL": 0.92,
+"VALUE": 1.02,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "Bhojpur",
+"GROWTH": 216.4,
+"PREVVAL": 0.28,
+"VALUE": 0.89,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Madhepura",
+"GROWTH": -77.36,
+"PREVVAL": 2.88,
+"VALUE": 0.65,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Saran",
+"GROWTH": 2.47,
+"PREVVAL": 0.38,
+"VALUE": 0.39,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Kaimur (bhabua)",
+"GROWTH": -64.97,
+"PREVVAL": 1.01,
+"VALUE": 0.35,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Nawada",
+"GROWTH": 0.51,
+"PREVVAL": 0.29,
+"VALUE": 0.3,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Lakhisarai",
+"GROWTH": 28.12,
+"PREVVAL": 0.22,
+"VALUE": 0.28,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Samastipur",
+"GROWTH": -38.07,
+"PREVVAL": 0.4,
+"VALUE": 0.25,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Jamui",
+"GROWTH": -70.7,
+"PREVVAL": 0.23,
+"VALUE": 0.07,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Buxar",
+"GROWTH": -61.89,
+"PREVVAL": 0.15,
+"VALUE": 0.06,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Banka",
+"GROWTH": -24.26,
+"PREVVAL": 0.03,
+"VALUE": 0.02,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Sheikhpura",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.01,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Jehanabad",
+"GROWTH": -99.62,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Jharkhand": [
+{
+"DISTRICT": "Mysuru",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Latehar",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Godda",
+"GROWTH": 15.74,
+"PREVVAL": 702.67,
+"VALUE": 813.26,
+"SHARE": 42.85
+},
+{
+"DISTRICT": "East Singhbum",
+"GROWTH": -31.71,
+"PREVVAL": 412.37,
+"VALUE": 281.6,
+"SHARE": 14.84
+},
+{
+"DISTRICT": "Saraikela Kharsawan",
+"GROWTH": -11.75,
+"PREVVAL": 268.62,
+"VALUE": 237.05,
+"SHARE": 12.49
+},
+{
+"DISTRICT": "Ranchi",
+"GROWTH": 59.74,
+"PREVVAL": 141.79,
+"VALUE": 226.49,
+"SHARE": 11.93
+},
+{
+"DISTRICT": "Bokaro",
+"GROWTH": -27.38,
+"PREVVAL": 79.94,
+"VALUE": 58.05,
+"SHARE": 3.06
+},
+{
+"DISTRICT": "Giridih",
+"GROWTH": -6.72,
+"PREVVAL": 61.89,
+"VALUE": 57.73,
+"SHARE": 3.04
+},
+{
+"DISTRICT": "Ramgarh",
+"GROWTH": -24.84,
+"PREVVAL": 69.5,
+"VALUE": 52.24,
+"SHARE": 2.75
+},
+{
+"DISTRICT": "Pakur",
+"GROWTH": -19.4,
+"PREVVAL": 50.1,
+"VALUE": 40.38,
+"SHARE": 2.13
+},
+{
+"DISTRICT": "Jamtara",
+"GROWTH": 56.5,
+"PREVVAL": 23.28,
+"VALUE": 36.44,
+"SHARE": 1.92
+},
+{
+"DISTRICT": "Dhanbad",
+"GROWTH": 96.52,
+"PREVVAL": 13.27,
+"VALUE": 26.07,
+"SHARE": 1.37
+},
+{
+"DISTRICT": "Koderma",
+"GROWTH": 20.39,
+"PREVVAL": 18.22,
+"VALUE": 21.94,
+"SHARE": 1.16
+},
+{
+"DISTRICT": "West Singhbhum",
+"GROWTH": -59.29,
+"PREVVAL": 29.24,
+"VALUE": 11.91,
+"SHARE": 0.63
+},
+{
+"DISTRICT": "Khunti",
+"GROWTH": 27.43,
+"PREVVAL": 8.82,
+"VALUE": 11.24,
+"SHARE": 0.59
+},
+{
+"DISTRICT": "Deoghar",
+"GROWTH": 45.75,
+"PREVVAL": 7.7,
+"VALUE": 11.23,
+"SHARE": 0.59
+},
+{
+"DISTRICT": "Palamu",
+"GROWTH": 28.74,
+"PREVVAL": 5.02,
+"VALUE": 6.47,
+"SHARE": 0.34
+},
+{
+"DISTRICT": "Hazaribagh",
+"GROWTH": 39.38,
+"PREVVAL": 1.4,
+"VALUE": 1.95,
+"SHARE": 0.1
+},
+{
+"DISTRICT": "Sahebganj",
+"GROWTH": -0.23,
+"PREVVAL": 1.4,
+"VALUE": 1.39,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Lohardaga",
+"GROWTH": 5.17,
+"PREVVAL": 0.69,
+"VALUE": 0.73,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Simdega",
+"GROWTH": 112.99,
+"PREVVAL": 0.26,
+"VALUE": 0.55,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Dumka",
+"GROWTH": -40.23,
+"PREVVAL": 0.75,
+"VALUE": 0.45,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Garhwa",
+"GROWTH": 77.91,
+"PREVVAL": 0.23,
+"VALUE": 0.4,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Gumla",
+"GROWTH": -76.89,
+"PREVVAL": 0.67,
+"VALUE": 0.15,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Chatra",
+"GROWTH": -70.23,
+"PREVVAL": 0.19,
+"VALUE": 0.06,
+"SHARE": 0.0
+}
+],
+"Uttarakhand": [
+{
+"DISTRICT": "24 Paraganas North",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kheri",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Udam Singh Nagar",
+"GROWTH": 2.08,
+"PREVVAL": 593.41,
+"VALUE": 605.74,
+"SHARE": 34.25
+},
+{
+"DISTRICT": "Dehradun",
+"GROWTH": -7.44,
+"PREVVAL": 587.66,
+"VALUE": 543.96,
+"SHARE": 30.76
+},
+{
+"DISTRICT": "Haridwar",
+"GROWTH": -0.48,
+"PREVVAL": 513.56,
+"VALUE": 511.07,
+"SHARE": 28.9
+},
+{
+"DISTRICT": "Nainital",
+"GROWTH": 2.29,
+"PREVVAL": 60.02,
+"VALUE": 61.4,
+"SHARE": 3.47
+},
+{
+"DISTRICT": "Rudra Prayag",
+"GROWTH": -29.07,
+"PREVVAL": 17.59,
+"VALUE": 12.48,
+"SHARE": 0.71
+},
+{
+"DISTRICT": "Pauri Garhwal",
+"GROWTH": 0.26,
+"PREVVAL": 10.69,
+"VALUE": 10.72,
+"SHARE": 0.61
+},
+{
+"DISTRICT": "Champawat",
+"GROWTH": 16.72,
+"PREVVAL": 5.46,
+"VALUE": 6.37,
+"SHARE": 0.36
+},
+{
+"DISTRICT": "Pithoragarh",
+"GROWTH": -42.41,
+"PREVVAL": 10.28,
+"VALUE": 5.92,
+"SHARE": 0.33
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 4.17,
+"SHARE": 0.24
+},
+{
+"DISTRICT": "Almora",
+"GROWTH": -14.69,
+"PREVVAL": 4.41,
+"VALUE": 3.77,
+"SHARE": 0.21
+},
+{
+"DISTRICT": "Uttar Kashi",
+"GROWTH": 56.85,
+"PREVVAL": 1.67,
+"VALUE": 2.62,
+"SHARE": 0.15
+},
+{
+"DISTRICT": "Bageshwar",
+"GROWTH": 921.44,
+"PREVVAL": 0.02,
+"VALUE": 0.23,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Tehri Garhwal",
+"GROWTH": 17.75,
+"PREVVAL": 0.17,
+"VALUE": 0.2,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Chamoli",
+"GROWTH": 56.82,
+"PREVVAL": 0.01,
+"VALUE": 0.01,
+"SHARE": 0.0
+}
+],
+"Assam": [
+{
+"DISTRICT": "Kamrup",
+"GROWTH": 34.71,
+"PREVVAL": 126.01,
+"VALUE": 169.75,
+"SHARE": 30.83
+},
+{
+"DISTRICT": "Tinsukia",
+"GROWTH": 20.22,
+"PREVVAL": 67.36,
+"VALUE": 80.97,
+"SHARE": 14.71
+},
+{
+"DISTRICT": "Dibrugarh",
+"GROWTH": 21.34,
+"PREVVAL": 52.92,
+"VALUE": 64.21,
+"SHARE": 11.66
+},
+{
+"DISTRICT": "Golaghat",
+"GROWTH": 74.73,
+"PREVVAL": 32.65,
+"VALUE": 57.05,
+"SHARE": 10.36
+},
+{
+"DISTRICT": "Charaideo",
+"GROWTH": -29.25,
+"PREVVAL": 47.84,
+"VALUE": 33.85,
+"SHARE": 6.15
+},
+{
+"DISTRICT": "Kamrup Metro",
+"GROWTH": 23.06,
+"PREVVAL": 22.19,
+"VALUE": 27.31,
+"SHARE": 4.96
+},
+{
+"DISTRICT": "Bongaigaon",
+"GROWTH": 21.84,
+"PREVVAL": 19.71,
+"VALUE": 24.01,
+"SHARE": 4.36
+},
+{
+"DISTRICT": "Sonitpur",
+"GROWTH": 36.87,
+"PREVVAL": 13.82,
+"VALUE": 18.91,
+"SHARE": 3.43
+},
+{
+"DISTRICT": "Cachar",
+"GROWTH": -5.94,
+"PREVVAL": 18.62,
+"VALUE": 17.51,
+"SHARE": 3.18
+},
+{
+"DISTRICT": "Dhubri",
+"GROWTH": 2748.02,
+"PREVVAL": 0.39,
+"VALUE": 11.06,
+"SHARE": 2.01
+},
+{
+"DISTRICT": "Jorhat",
+"GROWTH": -4.83,
+"PREVVAL": 8.17,
+"VALUE": 7.78,
+"SHARE": 1.41
+},
+{
+"DISTRICT": "Karimganj",
+"GROWTH": 42.18,
+"PREVVAL": 5.39,
+"VALUE": 7.67,
+"SHARE": 1.39
+},
+{
+"DISTRICT": "Lakhimpur",
+"GROWTH": 108.74,
+"PREVVAL": 3.6,
+"VALUE": 7.51,
+"SHARE": 1.36
+},
+{
+"DISTRICT": "Barpeta",
+"GROWTH": 48.34,
+"PREVVAL": 4.22,
+"VALUE": 6.26,
+"SHARE": 1.14
+},
+{
+"DISTRICT": "Baksa",
+"GROWTH": -35.14,
+"PREVVAL": 8.86,
+"VALUE": 5.75,
+"SHARE": 1.04
+},
+{
+"DISTRICT": "Nalbari",
+"GROWTH": 89.26,
+"PREVVAL": 1.52,
+"VALUE": 2.88,
+"SHARE": 0.52
+},
+{
+"DISTRICT": "Goalpara",
+"GROWTH": 81.64,
+"PREVVAL": 0.67,
+"VALUE": 1.23,
+"SHARE": 0.22
+},
+{
+"DISTRICT": "Udalguri",
+"GROWTH": 94.06,
+"PREVVAL": 0.6,
+"VALUE": 1.16,
+"SHARE": 0.21
+},
+{
+"DISTRICT": "Sivasagar",
+"GROWTH": -52.05,
+"PREVVAL": 1.85,
+"VALUE": 0.89,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Nagaon",
+"GROWTH": 210.9,
+"PREVVAL": 0.28,
+"VALUE": 0.87,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Chirang",
+"GROWTH": 866.56,
+"PREVVAL": 0.09,
+"VALUE": 0.85,
+"SHARE": 0.15
+},
+{
+"DISTRICT": "Darrang",
+"GROWTH": -38.76,
+"PREVVAL": 1.22,
+"VALUE": 0.74,
+"SHARE": 0.14
+},
+{
+"DISTRICT": "Kokrajhar",
+"GROWTH": -67.87,
+"PREVVAL": 2.31,
+"VALUE": 0.74,
+"SHARE": 0.13
+},
+{
+"DISTRICT": "Hojai",
+"GROWTH": 9.83,
+"PREVVAL": 0.39,
+"VALUE": 0.43,
+"SHARE": 0.08
+},
+{
+"DISTRICT": "Majuli",
+"GROWTH": 102324.31,
+"PREVVAL": 0.0,
+"VALUE": 0.26,
+"SHARE": 0.05
+},
+{
+"DISTRICT": "South Salmara Mancachar",
+"GROWTH": 1043.89,
+"PREVVAL": 0.02,
+"VALUE": 0.23,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Karbi Anglong",
+"GROWTH": -28.27,
+"PREVVAL": 0.3,
+"VALUE": 0.22,
+"SHARE": 0.04
+},
+{
+"DISTRICT": "Hailakandi",
+"GROWTH": -30.21,
+"PREVVAL": 0.2,
+"VALUE": 0.14,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Biswanath",
+"GROWTH": -54.15,
+"PREVVAL": 0.18,
+"VALUE": 0.08,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Marigaon",
+"GROWTH": -87.97,
+"PREVVAL": 0.65,
+"VALUE": 0.08,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Dhemaji",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.07,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Dima Hasao",
+"GROWTH": -59.63,
+"PREVVAL": 0.14,
+"VALUE": 0.06,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Tamulpur",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.05,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "West Karbi Anglong",
+"GROWTH": -99.92,
+"PREVVAL": 0.08,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Puducherry": [
+{
+"DISTRICT": "Coimbatore",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Alappuzha",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Pondicherry",
+"GROWTH": -0.48,
+"PREVVAL": 505.8,
+"VALUE": 503.36,
+"SHARE": 97.4
+},
+{
+"DISTRICT": "Karaikal",
+"GROWTH": 22.17,
+"PREVVAL": 7.19,
+"VALUE": 8.78,
+"SHARE": 1.7
+},
+{
+"DISTRICT": "Yanam",
+"GROWTH": 20.19,
+"PREVVAL": 3.85,
+"VALUE": 4.62,
+"SHARE": 0.89
+},
+{
+"DISTRICT": "Mahe",
+"GROWTH": -89.1,
+"PREVVAL": 0.48,
+"VALUE": 0.05,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Jammu And Kashmir": [
+{
+"DISTRICT": "Kulgam",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Jammu",
+"GROWTH": 25.98,
+"PREVVAL": 54.48,
+"VALUE": 68.63,
+"SHARE": 30.1
+},
+{
+"DISTRICT": "Kathua",
+"GROWTH": 3.88,
+"PREVVAL": 57.19,
+"VALUE": 59.41,
+"SHARE": 26.06
+},
+{
+"DISTRICT": "Samba",
+"GROWTH": 33.09,
+"PREVVAL": 36.83,
+"VALUE": 49.02,
+"SHARE": 21.5
+},
+{
+"DISTRICT": "Srinagar",
+"GROWTH": 12.68,
+"PREVVAL": 42.87,
+"VALUE": 48.31,
+"SHARE": 21.19
+},
+{
+"DISTRICT": "Pulwama",
+"GROWTH": 367.72,
+"PREVVAL": 0.2,
+"VALUE": 0.92,
+"SHARE": 0.4
+},
+{
+"DISTRICT": "Budgam",
+"GROWTH": 1.55,
+"PREVVAL": 0.85,
+"VALUE": 0.86,
+"SHARE": 0.38
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.36,
+"SHARE": 0.16
+},
+{
+"DISTRICT": "Rajouri",
+"GROWTH": 2039.77,
+"PREVVAL": 0.01,
+"VALUE": 0.16,
+"SHARE": 0.07
+},
+{
+"DISTRICT": "Baramulla",
+"GROWTH": 738.96,
+"PREVVAL": 0.02,
+"VALUE": 0.13,
+"SHARE": 0.06
+},
+{
+"DISTRICT": "Ramban",
+"GROWTH": 279.03,
+"PREVVAL": 0.02,
+"VALUE": 0.06,
+"SHARE": 0.03
+},
+{
+"DISTRICT": "Anantnag",
+"GROWTH": -49.82,
+"PREVVAL": 0.11,
+"VALUE": 0.06,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Ganderbal",
+"GROWTH": -3.22,
+"PREVVAL": 0.04,
+"VALUE": 0.04,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Shopian",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.02,
+"SHARE": 0.01
+},
+{
+"DISTRICT": "Udhampur",
+"GROWTH": -97.94,
+"PREVVAL": 0.17,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Poonch",
+"GROWTH": 1884.62,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kishtwar",
+"GROWTH": -89.13,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Doda",
+"GROWTH": -89.44,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Reasi",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kupwara",
+"GROWTH": -99.61,
+"PREVVAL": 0.05,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Bandipora",
+"GROWTH": -98.55,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Chandigarh": [
+{
+"DISTRICT": "Chandigarh",
+"GROWTH": 6.68,
+"PREVVAL": 108.88,
+"VALUE": 116.16,
+"SHARE": 99.4
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.71,
+"SHARE": 0.6
+}
+],
+"Meghalaya": [
+{
+"DISTRICT": "East Khasi Hills",
+"GROWTH": 543.49,
+"PREVVAL": 2.16,
+"VALUE": 13.9,
+"SHARE": 32.82
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 77.9,
+"PREVVAL": 5.33,
+"VALUE": 9.49,
+"SHARE": 22.41
+},
+{
+"DISTRICT": "East Jaintia Hills",
+"GROWTH": 182.46,
+"PREVVAL": 2.09,
+"VALUE": 5.89,
+"SHARE": 13.92
+},
+{
+"DISTRICT": "Ri Bhoi",
+"GROWTH": -6.74,
+"PREVVAL": 5.91,
+"VALUE": 5.51,
+"SHARE": 13.01
+},
+{
+"DISTRICT": "West Jaintia Hills",
+"GROWTH": 15439.21,
+"PREVVAL": 0.02,
+"VALUE": 3.73,
+"SHARE": 8.8
+},
+{
+"DISTRICT": "South Garo Hills",
+"GROWTH": 45171.3,
+"PREVVAL": 0.01,
+"VALUE": 2.7,
+"SHARE": 6.37
+},
+{
+"DISTRICT": "West Garo Hills",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.39,
+"SHARE": 0.93
+},
+{
+"DISTRICT": "East Garo Hills",
+"GROWTH": 1732.14,
+"PREVVAL": 0.02,
+"VALUE": 0.28,
+"SHARE": 0.67
+},
+{
+"DISTRICT": "South West Khasi Hills",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.15,
+"SHARE": 0.34
+},
+{
+"DISTRICT": "West Khasi Hills",
+"GROWTH": 7512.07,
+"PREVVAL": 0.0,
+"VALUE": 0.13,
+"SHARE": 0.31
+},
+{
+"DISTRICT": "South West Garo Hills",
+"GROWTH": 5297.04,
+"PREVVAL": 0.0,
+"VALUE": 0.13,
+"SHARE": 0.31
+},
+{
+"DISTRICT": "North Garo Hills",
+"GROWTH": 979.3,
+"PREVVAL": 0.0,
+"VALUE": 0.04,
+"SHARE": 0.1
+}
+],
+"Sikkim": [
+{
+"DISTRICT": "West District",
+"GROWTH": 0.0,
+"PREVVAL": 0.06,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "North District",
+"GROWTH": 0.0,
+"PREVVAL": 0.31,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "South District",
+"GROWTH": 0.0,
+"PREVVAL": 2.21,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.07,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "East District",
+"GROWTH": 0.0,
+"PREVVAL": 14.66,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Gangtok",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 15.62,
+"SHARE": 79.57
+},
+{
+"DISTRICT": "Namchi",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 3.06,
+"SHARE": 15.58
+},
+{
+"DISTRICT": "Gyalshing",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.56,
+"SHARE": 2.86
+},
+{
+"DISTRICT": "Mangan",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.35,
+"SHARE": 1.76
+},
+{
+"DISTRICT": "Pakyong",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.05,
+"SHARE": 0.23
+}
+],
+"Tripura": [
+{
+"DISTRICT": "New Delhi",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Gomati",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 10.94,
+"SHARE": 90.2
+},
+{
+"DISTRICT": "West Tripura",
+"GROWTH": -34.39,
+"PREVVAL": 0.77,
+"VALUE": 0.5,
+"SHARE": 4.16
+},
+{
+"DISTRICT": "Sepahijala",
+"GROWTH": -4.1,
+"PREVVAL": 0.25,
+"VALUE": 0.24,
+"SHARE": 1.98
+},
+{
+"DISTRICT": "North Tripura",
+"GROWTH": -32.21,
+"PREVVAL": 0.21,
+"VALUE": 0.15,
+"SHARE": 1.2
+},
+{
+"DISTRICT": "Dhalai",
+"GROWTH": 356.19,
+"PREVVAL": 0.03,
+"VALUE": 0.14,
+"SHARE": 1.14
+},
+{
+"DISTRICT": "Unakoti",
+"GROWTH": -3.25,
+"PREVVAL": 0.1,
+"VALUE": 0.1,
+"SHARE": 0.8
+},
+{
+"DISTRICT": "South Tripura",
+"GROWTH": -73.35,
+"PREVVAL": 0.23,
+"VALUE": 0.06,
+"SHARE": 0.5
+},
+{
+"DISTRICT": "Khowai",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.03
+}
+],
+"Arunachal Pradesh": [
+{
+"DISTRICT": "Shi Yomi",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "East Kameng",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Upper Siang",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Tirap",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "West Kameng",
+"GROWTH": -64.32,
+"PREVVAL": 2.04,
+"VALUE": 0.73,
+"SHARE": 37.61
+},
+{
+"DISTRICT": "Papum Pare",
+"GROWTH": 71.0,
+"PREVVAL": 0.37,
+"VALUE": 0.63,
+"SHARE": 32.46
+},
+{
+"DISTRICT": "East Siang",
+"GROWTH": 11247.8,
+"PREVVAL": 0.0,
+"VALUE": 0.3,
+"SHARE": 15.31
+},
+{
+"DISTRICT": "Namsai",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.06,
+"SHARE": 3.28
+},
+{
+"DISTRICT": "Anjaw",
+"GROWTH": 7333.6,
+"PREVVAL": 0.0,
+"VALUE": 0.06,
+"SHARE": 2.88
+},
+{
+"DISTRICT": "Lohit",
+"GROWTH": 19.71,
+"PREVVAL": 0.04,
+"VALUE": 0.05,
+"SHARE": 2.6
+},
+{
+"DISTRICT": "Lower Subansiri",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.04,
+"SHARE": 2.03
+},
+{
+"DISTRICT": "Siang",
+"GROWTH": 76.1,
+"PREVVAL": 0.02,
+"VALUE": 0.03,
+"SHARE": 1.65
+},
+{
+"DISTRICT": "Changlang",
+"GROWTH": -56.48,
+"PREVVAL": 0.06,
+"VALUE": 0.03,
+"SHARE": 1.37
+},
+{
+"DISTRICT": "Kamle",
+"GROWTH": 62908.7,
+"PREVVAL": 0.0,
+"VALUE": 0.01,
+"SHARE": 0.75
+},
+{
+"DISTRICT": "Pakke Kessang",
+"GROWTH": -99.71,
+"PREVVAL": 0.36,
+"VALUE": 0.0,
+"SHARE": 0.05
+}
+],
+"Nagaland": [
+{
+"DISTRICT": "Tuensang",
+"GROWTH": 0.0,
+"PREVVAL": 0.04,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Dimapur",
+"GROWTH": -11.17,
+"PREVVAL": 1.14,
+"VALUE": 1.01,
+"SHARE": 63.25
+},
+{
+"DISTRICT": "Mon",
+"GROWTH": 602.51,
+"PREVVAL": 0.06,
+"VALUE": 0.45,
+"SHARE": 28.1
+},
+{
+"DISTRICT": "Mokokchung",
+"GROWTH": 26.67,
+"PREVVAL": 0.1,
+"VALUE": 0.13,
+"SHARE": 8.04
+},
+{
+"DISTRICT": "Chumoukedima",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.01,
+"SHARE": 0.53
+},
+{
+"DISTRICT": "Wokha",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.06
+},
+{
+"DISTRICT": "Kohima",
+"GROWTH": -99.47,
+"PREVVAL": 0.04,
+"VALUE": 0.0,
+"SHARE": 0.01
+}
+],
+"Manipur": [
+{
+"DISTRICT": "Ukhrul",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Noney",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Imphal West",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.44,
+"SHARE": 36.37
+},
+{
+"DISTRICT": "Bishnupur",
+"GROWTH": 2397.43,
+"PREVVAL": 0.01,
+"VALUE": 0.25,
+"SHARE": 20.57
+},
+{
+"DISTRICT": "Imphal East",
+"GROWTH": 2144.55,
+"PREVVAL": 0.01,
+"VALUE": 0.19,
+"SHARE": 15.55
+},
+{
+"DISTRICT": "Jiribam",
+"GROWTH": -10.53,
+"PREVVAL": 0.19,
+"VALUE": 0.17,
+"SHARE": 14.18
+},
+{
+"DISTRICT": "Tamenglong",
+"GROWTH": 4283.87,
+"PREVVAL": 0.0,
+"VALUE": 0.08,
+"SHARE": 6.67
+},
+{
+"DISTRICT": "Tengnoupal",
+"GROWTH": 277.2,
+"PREVVAL": 0.01,
+"VALUE": 0.05,
+"SHARE": 4.52
+},
+{
+"DISTRICT": "Churachandpur",
+"GROWTH": -71.07,
+"PREVVAL": 0.06,
+"VALUE": 0.02,
+"SHARE": 1.45
+},
+{
+"DISTRICT": "Chandel",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.01,
+"SHARE": 0.46
+},
+{
+"DISTRICT": "Kangpokpi",
+"GROWTH": 685.78,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.14
+},
+{
+"DISTRICT": "Thoubal",
+"GROWTH": -90.99,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.06
+},
+{
+"DISTRICT": "Kakching",
+"GROWTH": 252.11,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.02
+},
+{
+"DISTRICT": "Kamjong",
+"GROWTH": -99.87,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Andaman And Nicobar Islands": [
+{
+"DISTRICT": "South Andamans",
+"GROWTH": 64.6,
+"PREVVAL": 0.61,
+"VALUE": 1.01,
+"SHARE": 95.85
+},
+{
+"DISTRICT": "Nicobars",
+"GROWTH": -85.64,
+"PREVVAL": 0.3,
+"VALUE": 0.04,
+"SHARE": 4.15
+},
+{
+"DISTRICT": "North And Middle Andaman",
+"GROWTH": -99.97,
+"PREVVAL": 0.08,
+"VALUE": 0.0,
+"SHARE": 0.0
+}
+],
+"Lakshadweep": [
+{
+"DISTRICT": "Ballari",
+"GROWTH": 0.0,
+"PREVVAL": 0.05,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Bengaluru Rural",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Bengaluru Urban",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Dakshina Kannada",
+"GROWTH": 0.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kolar",
+"GROWTH": 0.0,
+"PREVVAL": 0.06,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Lakshadweep District",
+"GROWTH": 1682.1,
+"PREVVAL": 0.04,
+"VALUE": 0.75,
+"SHARE": 100.0
+}
+],
+"Mizoram": [
+{
+"DISTRICT": "Champhai",
+"GROWTH": 0.0,
+"PREVVAL": 0.01,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Unspecified",
+"GROWTH": 0.0,
+"PREVVAL": 0.02,
+"VALUE": 0.0,
+"SHARE": 0.0
+},
+{
+"DISTRICT": "Kolasib",
+"GROWTH": 297.85,
+"PREVVAL": 0.06,
+"VALUE": 0.23,
+"SHARE": 99.7
+},
+{
+"DISTRICT": "Aizawl",
+"GROWTH": 6740.0,
+"PREVVAL": 0.0,
+"VALUE": 0.0,
+"SHARE": 0.3
+}
+],
+"Ladakh": [
+{
+"DISTRICT": "Leh Ladakh",
+"GROWTH": 749.59,
+"PREVVAL": 0.01,
+"VALUE": 0.08,
+"SHARE": 99.69
+},
+{
+"DISTRICT": "Kargil",
+"GROWTH": -98.78,
+"PREVVAL": 0.02,
+"VALUE": 0.0,
+"SHARE": 0.31
+}
+]
+}

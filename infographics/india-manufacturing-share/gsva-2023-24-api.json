@@ -1,0 +1,138 @@
+{
+"Sikkim": {
+"mfg": 1711622.0,
+"total": 4529595.0
+},
+"Nagaland": {
+"mfg": 32425.0,
+"total": 3785682.0
+},
+"Chhattisgarh": {
+"mfg": 7503102.0,
+"total": 47121267.0
+},
+"Maharashtra": {
+"mfg": 57672181.0,
+"total": 360765478.0
+},
+"Haryana": {
+"mfg": 16950293.0,
+"total": 95993406.0
+},
+"Gujarat": {
+"mfg": 74393028.0,
+"total": 218856954.0
+},
+"Madhya Pradesh": {
+"mfg": 10239959.0,
+"total": 128902460.0
+},
+"Bihar": {
+"mfg": 6669206.0,
+"total": 85091170.0
+},
+"Mizoram": {
+"mfg": 12952.0,
+"total": 3188431.0
+},
+"Rajasthan": {
+"mfg": 15739277.0,
+"total": 141752289.0
+},
+"Ladakh": {
+"mfg": 11353.0,
+"total": 699026.0
+},
+"West Bengal": {
+"mfg": 20479980.0,
+"total": 153739275.0
+},
+"Kerala": {
+"mfg": 9242707.0,
+"total": 101379261.0
+},
+"Jammu & Kashmir": {
+"mfg": 1363267.0,
+"total": 21682635.0
+},
+"Telangana": {
+"mfg": 12133093.0,
+"total": 134244147.0
+},
+"Assam": {
+"mfg": 5439873.0,
+"total": 52070489.0
+},
+"Arunachal Pradesh": {
+"mfg": 64145.0,
+"total": 3514564.0
+},
+"Tamil Nadu": {
+"mfg": 45291629.0,
+"total": 247274869.0
+},
+"Karnataka": {
+"mfg": 29241116.0,
+"total": 237665173.0
+},
+"Uttarakhand": {
+"mfg": 8010401.0,
+"total": 29033308.0
+},
+"Jharkhand": {
+"mfg": 8543097.0,
+"total": 42540576.0
+},
+"Andhra Pradesh": {
+"mfg": 15098479.0,
+"total": 131992326.0
+},
+"Uttar Pradesh": {
+"mfg": 28955337.0,
+"total": 243653715.0
+},
+"Chandigarh": {
+"mfg": 166607.0,
+"total": 5825243.0
+},
+"Andaman & Nicobar Islands": {
+"mfg": 8342.0,
+"total": 1153189.0
+},
+"Tripura": {
+"mfg": 194185.0,
+"total": 7456549.0
+},
+"Himachal Pradesh": {
+"mfg": 5114771.0,
+"total": 19388061.0
+},
+"Goa": {
+"mfg": 2398671.0,
+"total": 8581698.0
+},
+"Punjab": {
+"mfg": 11684424.0,
+"total": 68964793.0
+},
+"Meghalaya": {
+"mfg": 448259.0,
+"total": 4832835.0
+},
+"Manipur": {
+"mfg": 63956.0,
+"total": 4211353.0
+},
+"Puducherry": {
+"mfg": 943676.0,
+"total": 4191299.0
+},
+"Odisha": {
+"mfg": 14013526.0,
+"total": 72393310.0
+},
+"Delhi": {
+"mfg": 4320895.0,
+"total": 99769226.0
+}
+}

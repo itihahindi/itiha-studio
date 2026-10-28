@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Recipe: BOLD WEEKLY waffle + lollipop ranking (styles-original.md §08), VAQ POSTER skin.
+// Data: asi-2024-25-table4.json (copied from ../india-factories-asi), registered factories.
+window.POST = {
+  ground: 'haldi',
+  hSize: 100,
+  tag: 'Industry · ASI 2024-25',
+  headline: '38 of every 100 factories are in <em>three states</em>',
+  dek: 'Registered factories by state. Tamil Nadu alone has 41,221, the most of any state.',
+  source: '<b>Source:</b> MoSPI, Annual Survey of Industries 2024-25, Table 4 (released 30 Sep 2026). Registered factories only, including units not operating that year.',
+  data: { total: 266931, rows: [{"state": "Andaman & Nicobar", "value": 12}, {"state": "Andhra Pradesh", "value": 15602}, {"state": "Arunachal Pradesh", "value": 205}, {"state": "Assam", "value": 6056}, {"state": "Bihar", "value": 3426}, {"state": "Chandigarh", "value": 215}, {"state": "Chhattisgarh", "value": 5749}, {"state": "DNH & Daman Diu", "value": 2597}, {"state": "Delhi", "value": 2718}, {"state": "Goa", "value": 684}, {"state": "Gujarat", "value": 33084}, {"state": "Haryana", "value": 10940}, {"state": "Himachal Pradesh", "value": 2650}, {"state": "Jammu & Kashmir", "value": 1045}, {"state": "Jharkhand", "value": 2880}, {"state": "Karnataka", "value": 15629}, {"state": "Kerala", "value": 7497}, {"state": "Ladakh", "value": 26}, {"state": "Madhya Pradesh", "value": 5332}, {"state": "Maharashtra", "value": 27379}, {"state": "Manipur", "value": 249}, {"state": "Meghalaya", "value": 201}, {"state": "Mizoram", "value": 204}, {"state": "Nagaland", "value": 189}, {"state": "Odisha", "value": 3427}, {"state": "Puducherry", "value": 742}, {"state": "Punjab", "value": 13376}, {"state": "Rajasthan", "value": 11062}, {"state": "Sikkim", "value": 87}, {"state": "Tamil Nadu", "value": 41221}, {"state": "Telangana", "value": 13937}, {"state": "Tripura", "value": 703}, {"state": "Uttar Pradesh", "value": 24964}, {"state": "Uttarakhand", "value": 2944}, {"state": "West Bengal", "value": 9895}] },
+  checks(d, PK) {
+    const v = Object.fromEntries(d.rows.map((r) => [r.state, r.value]));
+    const three = v['Tamil Nadu'] + v['Gujarat'] + v['Maharashtra'];
+    PK.check(Math.round(100 * three / d.total) === 38, 'share ' + three / d.total);
+    PK.check(v['Tamil Nadu'] === 41221 && Math.max(...d.rows.map((r) => r.value)) === 41221, 'TN max');
+  },
+};
+function draw(svg, box, PK) {
+  const d = POST.data, THREE = ['Tamil Nadu', 'Gujarat', 'Maharashtra'];
+  const share = Math.round(100 * THREE.reduce((a, s) => a + d.rows.find((r) => r.state === s).value, 0) / d.total);
+  // waffle: 10 × 10, filled row by row from the top-left
+  const cell = 31, gap = 4, W = 10 * cell + 9 * gap;
+  for (let i = 0; i < 100; i++) {
+    const cx = (i % 10) * (cell + gap), cy = Math.floor(i / 10) * (cell + gap);
+    PK.el(svg, 'rect', { x: cx, y: cy, width: cell, height: cell, fill: i < share ? 'var(--orange)' : 'var(--ctx-pale)' });
+  }
+  PK.el(svg, 'text', { x: 0, y: W + 140, class: 'pk-big', 'font-size': 150 }, share + '%');
+  ['of ' + PK.num(d.total) + ' factories', 'are in Tamil Nadu,', 'Gujarat, Maharashtra'].forEach((t, i) =>
+    PK.el(svg, 'text', { x: 0, y: W + 192 + i * 40, class: 'pk-label', style: 'font-size:31px' }, t));
+  PK.el(svg, 'text', { x: 0, y: W + 330, class: 'pk-note' }, '1 square = 1%');
+  // lollipop: top 10 states
+  const rows = d.rows.slice().sort((a, b) => b.value - a.value).slice(0, 7);
+  const L0 = W + 56, NAME = 262, x = PK.scale(0, 45000, L0 + NAME, box.w - 140);
+  PK.el(svg, 'text', { x: L0, y: 10, class: 'pk-key' }, 'Top 7 states');
+  const rowH = (Math.min(box.h, W + 330) - 50) / rows.length;
+  rows.forEach((r, i) => {
+    const cy = 50 + rowH * (i + 0.5), hot = THREE.includes(r.state), col = hot ? 'var(--orange)' : 'var(--ctx)';
+    PK.el(svg, 'text', { x: L0, y: cy + 12, class: 'pk-label' + (hot ? ' em' : ''), style: 'font-size:31px' }, r.state === 'Uttar Pradesh' ? 'UP' : r.state === 'Maharashtra' ? 'Maharashtra' : r.state);
+    PK.el(svg, 'line', { x1: x(0), x2: x(r.value), y1: cy, y2: cy, stroke: col, 'stroke-width': 4 });
+    PK.el(svg, 'circle', { cx: x(r.value), cy, r: 11, fill: col });
+    PK.el(svg, 'text', { x: x(r.value) + 18, y: cy + 12, class: 'pk-value', style: 'font-size:34px' }, PK.num(r.value));
+  });
+}
+PK.run();
+</script></body></html>

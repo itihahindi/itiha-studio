@@ -13,6 +13,93 @@ Read that one before writing a deck.
 
 ---
 
+## ⟶ DIRECTION CHANGE 2026-10-27: VAQ POSTER, two grounds (shipped in the pack)
+
+The user picked a new house look on the data-graphics work and asked for **all
+VAQ work** (carousels, single posts, quote cards, reels, charts) to move to it:
+*"white is looking basic… Haldi yellow with coal black… two designs so my feed
+won't get burned out."* The live spec, with built examples, is
+[../../../.claude/skills/data-infographic/styles.md](../../../.claude/skills/data-infographic/styles.md);
+the tokens are in `.claude/skills/data-infographic/kit/poster.css`. **The pack renders it
+as `tweaks.look: poster` (see "How the pack does it" below); the rest of this
+README after this section describes the `classic` look**, which old decks keep
+because they carry no `look`.
+
+**Target spec**
+
+| | Haldi ground (default) | Coal ground |
+|---|---|---|
+| page | `#FFD23F` | `#111111` |
+| text / headline | coal `#111111` | cream `#FFF8E7` |
+| story colour (hero numbers, key marks) | coal | haldi `#FFD23F` |
+| second colour ("fell", second series) | burnt orange `#C2410C` | VAQ orange `#F4631E` |
+| `*word*` emphasis | haldi letters on a coal slab (cap height only) | coal letters on a haldi slab |
+| context marks | coal at 30% | cream at 32% |
+
+- **Alternate grounds post to post** in the feed. A deck uses one ground; a
+  single slide may flip to the other for a poster beat.
+- **Type (Indian Type Foundry, Fontshare CSS:**
+  `https://api.fontshare.com/v2/css?f[]=tanker@400&f[]=switzer@400,500,600,700,800,900&f[]=zodiak@700,800&f[]=boska@900i&display=block`**)**
+  - Headlines and hero numbers: **Tanker** caps (the "poster" look).
+  - Everything else: **Switzer**. Body ≥ the current VAQ sizes; labels ≥ 20px at 1080.
+  - Fallback look **"broadsheet"** for long or grave headlines and quote slides:
+    **Zodiak** 800 sentence case, **Boska** 900 italic for the emphasis word.
+  - Retired: Archivo, Hanken Grotesk, Space Mono, Newsreader (and never Inter,
+    Plex, Space Grotesk, Red Hat, Figtree). Keep **Noto Serif Devanagari** for
+    Hindi lines until a Devanagari face is chosen.
+- No white or near-white grounds. No textures by default (the look is flat
+  colour and type; `texture:` stays as an opt-in). No dashboard chrome.
+- Contrast: coal on haldi ≈ 13:1, haldi on coal ≈ 13:1, cream on coal ≈ 17:1.
+  Orange **text** on haldi fails (≈ 2:1): that's why haldi uses the slab and
+  burnt orange.
+
+**How the pack does it** (built 2026-10-27 on `feat/vaq-poster-pack`)
+
+- **Deck switches**: `tweaks.look: poster | broadsheet | classic` and
+  `tweaks.ground: haldi | coal`, pinned above the slide strip as editor quick
+  switches. **Unset look = classic**, so every deck made before the switch
+  re-renders pixel-identically (verified on vaq-demo, vaq-chart-kit,
+  ram-mandir-donation-theft and pojk-52-days: 31/31 slides identical) with no
+  pinning. New VAQ projects get `look: poster` + `ground: haldi` from
+  `src/scaffold.py`; AUTHORING.md tells Claude Code to set both on new decks.
+- **Surfaces**: on a poster deck, blank / `light` = the deck ground,
+  `dark` or `solid` = the other ground (the orange tile is retired, user
+  2026-10-27), `haldi` / `coal` name one. Layout fallbacks (the cover's tile,
+  the explainer's navy panel) are ignored: a deck holds one ground.
+- **Per slide**: `look: broadsheet` for a grave or long headline inside a
+  poster deck.
+- **Mechanism**: `verticalFor` returns the vertical with `look`, `ground` and
+  the poster faces on the existing `bodyFont` / `metaFont` / `quoteFont` /
+  `numFont` hooks; `surfaceFor`, `inkFor` and `vizFor` resolve every colour
+  from `GROUNDS` in `slides-shared.jsx` (ink, muted, story `em`, second `em2`,
+  slab, rule, hair, well, ctx, ramp). Classic verticals carry no `look`, and
+  every poster branch keys on `isPoster(v)`, which is what keeps classic
+  untouched. Don't write a hex into a layout; add a key to `GROUNDS`.
+- **Chrome**: tag-box slug + meta + `@vaq_hq` (`tweaks.handle` overrides);
+  footer = 3px rule, `03 / 09` folio, the approved Tanker mark with HQ in a
+  box (same lockup as [marks/make.py](marks/make.py)). Jump line = Switzer
+  "NEXT …". Closing = the mark at 190px, tagline, headline, handle tag.
+- **Type**: Tanker 400 headlines (default sizes cover 156, inner 112, chart
+  100, list 88), `*word*` on a cap-height slab; Switzer 500 body with
+  `[key]` = full-ink 800 + second-colour underline (never a coloured word);
+  quotes in Zodiak 700 under a Boska mark. Broadsheet: Zodiak 800 sentence
+  case, Boska 900 italic on the slab.
+- **Charts and maps**: story = `em`, context = `ctx` (a solid mix, not an
+  alpha), second series / "fell" pole / diverge negatives = `em2`. Pie slots
+  are story, second, then ink-to-page steps (no third hue). `geo` defaults to
+  the page as sea, a context tint for land, borders cut in the page colour;
+  authored `ocean` / `land_color` / country colours still win. `city-map`
+  keeps a dark field (coal) with haldi marks.
+- **Textures** are off unless a slide or `tweaks.texture` asks.
+- **Test decks**: `designs/zz-vaq-poster-lab-{haldi,coal}` (all 13 carousel
+  layouts + label cover) and `zz-vaq-poster-reels-{haldi,coal}`.
+
+Open: the user hasn't yet judged the lab renders; Devanagari lines still fall
+back to Noto Serif Devanagari; the reel-frame lab slide carries a pre-existing
+subline/credit collision from its source deck (also in classic).
+
+---
+
 ## The two-tone rule
 
 Since the **2026-07-27 consolidation** there is exactly one visual system:

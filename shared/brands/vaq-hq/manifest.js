@@ -10,8 +10,15 @@ const _VERTICAL_FIELD = {
 };
 const _SURFACE_FIELD = {
   key: "surface", type: "select", label: "Surface",
-  options: ["", "light", "solid", "dark"], default: "",
-  help: "Blank = the layout's default. light = paper interior with the orange top rule. solid = orange poster tile (breaking / photo-less slides). dark = navy poster or cinematic photo hero.",
+  options: ["", "light", "solid", "dark", "haldi", "coal"], default: "",
+  help: "Poster / broadsheet decks: blank = the deck ground; dark or solid = flip this slide to the other ground; haldi / coal = name it. Classic decks: blank = the layout's default, light = paper interior, solid = orange poster tile, dark = navy poster or cinematic photo hero.",
+};
+// Per-slide look (2026-10-27): a broadsheet beat inside a poster deck, e.g. a
+// grave headline or a long quote. Blank = the deck look (Look switch above).
+const _LOOK_FIELD = {
+  key: "look", type: "select", label: "Look (this slide)",
+  options: ["", "poster", "broadsheet", "classic"], default: "",
+  help: "Blank = the deck's Look. broadsheet = Zodiak sentence-case headline, for lines too long or too grave for poster caps.",
 };
 const _TEXTURE_FIELD = {
   key: "texture", type: "select", label: "Texture",
@@ -44,7 +51,7 @@ window.MANIFEST = {
     summary: "Poster-tile opener — ghost index, badge row, huge vertical-voice headline.",
     fields: [
       _VERTICAL_FIELD,
-      { ..._SURFACE_FIELD, help: "Covers default to solid (accent poster tile); light = newsroom cover." },
+      { ..._SURFACE_FIELD, help: "Poster decks: blank = the deck ground. Classic: covers default to solid (accent poster tile); light = newsroom cover." },
       _KICKER_META,
       _ALIGN_X_FIELD,
       _ALIGN_Y_FIELD,
@@ -69,7 +76,7 @@ window.MANIFEST = {
       { key: "bursts", type: "array", label: "Starbursts",
         item: { fields: [
           { key: "pos", type: "select", label: "Position", options: ["top-left","top-right","bottom-left","bottom-right","left","right","top","bottom","center"], default: "top-right" },
-          { key: "color", type: "select", label: "Colour", options: ["orange","navy","ink","paper","white","slate","tint"], default: "orange" },
+          { key: "color", type: "select", label: "Colour", options: ["orange","haldi","coal","cream","navy","ink","paper","white","slate","tint"], default: "orange" },
           { key: "size", type: "number", label: "Size (px)", default: 300, step: 20 },
           { key: "points", type: "number", label: "Points", default: 10 },
           { key: "rotate", type: "number", label: "Rotate (deg)", default: 0, step: 5 },
@@ -81,6 +88,7 @@ window.MANIFEST = {
       { key: "tag", type: "text", label: "Poster tag line", help: "Small mono line above the poster headline, e.g. 2028-29." },
       { key: "show_index", type: "bool",     label: "Ghost index numeral", default: false, help: "Opt-in oversized 01/02 on poster tiles." },
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       { key: "headline_size",     type: "number", label: "Headline size (px)", help: "Blank = per-vertical default (106–118)." },
       { key: "headline_offset_y", type: "number", label: "Headline offset Y (px)", default: 0, step: 10 },
     ],
@@ -116,7 +124,7 @@ window.MANIFEST = {
       { key: "bursts", type: "array", label: "Starbursts",
         item: { fields: [
           { key: "pos", type: "select", label: "Position", options: ["top-left","top-right","bottom-left","bottom-right","left","right","top","bottom","center"], default: "top-right" },
-          { key: "color", type: "select", label: "Colour", options: ["orange","navy","ink","paper","white","slate","tint"], default: "orange" },
+          { key: "color", type: "select", label: "Colour", options: ["orange","haldi","coal","cream","navy","ink","paper","white","slate","tint"], default: "orange" },
           { key: "size", type: "number", label: "Size (px)", default: 300, step: 20 },
           { key: "points", type: "number", label: "Points", default: 10 },
           { key: "rotate", type: "number", label: "Rotate (deg)", default: 0, step: 5 },
@@ -124,6 +132,7 @@ window.MANIFEST = {
         ] },
         help: "Zine starbursts. YAML: bursts: [{pos: right, color: orange, size: 360}]." },
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       { key: "headline_size",     type: "number", label: "Headline size (px)", help: "Blank = per-vertical default (84–92)." },
       { key: "body_size",         type: "number", label: "Body size (px)", default: 46 },
       { key: "headline_offset_y", type: "number", label: "Headline offset Y (px)", default: 0, step: 10 },
@@ -145,6 +154,7 @@ window.MANIFEST = {
       { key: "image_height",  type: "number",   label: "Image height (px)", default: 580, step: 20 },
       { key: "image_credit",  type: "text",     label: "Image credit", help: "Pill overlay, bottom-right of the photo." },
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       { key: "headline",      type: "textarea", label: "Headline" },
       { key: "body",          type: "textarea", label: "Body" },
       { key: "headline_size", type: "number",   label: "Headline size (px)" },
@@ -161,6 +171,7 @@ window.MANIFEST = {
       _SURFACE_FIELD,
       _KICKER_META,
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       _ALIGN_X_FIELD,
       _ALIGN_Y_FIELD,
       { key: "quote",        type: "textarea", label: "Quote" },
@@ -178,6 +189,7 @@ window.MANIFEST = {
       _SURFACE_FIELD,
       _KICKER_META,
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       _ALIGN_X_FIELD,
       _ALIGN_Y_FIELD,
       { key: "label",    type: "text",     label: "Label (above, mono)" },
@@ -215,7 +227,7 @@ window.MANIFEST = {
       { key: "bursts", type: "array", label: "Starbursts",
         item: { fields: [
           { key: "pos", type: "select", label: "Position", options: ["top-left","top-right","bottom-left","bottom-right","left","right","top","bottom","center"], default: "top-right" },
-          { key: "color", type: "select", label: "Colour", options: ["orange","navy","ink","paper","white","slate","tint"], default: "orange" },
+          { key: "color", type: "select", label: "Colour", options: ["orange","haldi","coal","cream","navy","ink","paper","white","slate","tint"], default: "orange" },
           { key: "size", type: "number", label: "Size (px)", default: 300, step: 20 },
           { key: "points", type: "number", label: "Points", default: 10 },
           { key: "rotate", type: "number", label: "Rotate (deg)", default: 0, step: 5 },
@@ -223,6 +235,7 @@ window.MANIFEST = {
         ] } },
 
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       { key: "panel_height",      type: "number", label: "Panel height (px)", default: 560, step: 20,
         help: "The video fills everything below this line." },
       { key: "panel_fade",        type: "number", label: "Panel fade (px)", default: 120, step: 20,
@@ -251,7 +264,7 @@ window.MANIFEST = {
       { key: "bursts", type: "array", label: "Starbursts",
         item: { fields: [
           { key: "pos", type: "select", label: "Position", options: ["top-left","top-right","bottom-left","bottom-right","left","right","top","bottom","center"], default: "top-right" },
-          { key: "color", type: "select", label: "Colour", options: ["orange","navy","ink","paper","white","slate","tint"], default: "orange" },
+          { key: "color", type: "select", label: "Colour", options: ["orange","haldi","coal","cream","navy","ink","paper","white","slate","tint"], default: "orange" },
           { key: "size", type: "number", label: "Size (px)", default: 300, step: 20 },
           { key: "points", type: "number", label: "Points", default: 10 },
           { key: "rotate", type: "number", label: "Rotate (deg)", default: 0, step: 5 },
@@ -259,6 +272,7 @@ window.MANIFEST = {
         ] } },
 
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       { key: "panel_height", type: "number", label: "Panel height (px)", default: 760, step: 20,
         help: "Height of the BOTTOM caption strip. The video fills everything above it." },
       { key: "panel_fade",   type: "number", label: "Fade (px)", default: 160, step: 20,
@@ -280,6 +294,7 @@ window.MANIFEST = {
       { ..._ALIGN_Y_FIELD, help: "Where the table sits in the column. Blank = centred, as tuned." },
       { key: "headline", type: "textarea", label: "Headline (optional)" },
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       { key: "row_size", type: "number", label: "Row text size (px)", help: "Blank = auto by row count (13+ → 34)." },
       { key: "headline_size", type: "number", label: "Headline size (px)", default: 58 },
     ],
@@ -364,6 +379,7 @@ window.MANIFEST = {
       { key: "map_caption", type: "text", label: "Map caption", help: "Mono caption under the frame (left)." },
       { key: "map_credit",  type: "text", label: "Map credit",  help: "Mono, under the frame (right)." },
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       { key: "map_height", type: "number", label: "Map height (px)", step: 20,
         help: "Blank = auto (300–470) from the region's aspect. Setting it stretches the map." },
       { key: "marker_size", type: "number", label: "Pin size (px)", default: 16 },
@@ -389,6 +405,7 @@ window.MANIFEST = {
       _SURFACE_FIELD,
       _KICKER_META,
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       _ALIGN_X_FIELD,
       { key: "headline", type: "textarea", label: "Headline" },
       { key: "mode", type: "select", label: "Mode", options: ["emphasis", "sequence", "stack", "diverge"], default: "emphasis",
@@ -424,6 +441,7 @@ window.MANIFEST = {
       _SURFACE_FIELD,
       _KICKER_META,
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       _ALIGN_X_FIELD,
       { key: "headline", type: "textarea", label: "Headline" },
       { key: "series", type: "array", label: "Series (max 2)",
@@ -457,6 +475,7 @@ window.MANIFEST = {
       _SURFACE_FIELD,
       _KICKER_META,
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       _ALIGN_X_FIELD,
       { key: "headline", type: "textarea", label: "Headline" },
       { key: "value", type: "number", label: "Value", step: 0.1, help: "The share. With total 100 this is a percentage." },
@@ -488,6 +507,7 @@ window.MANIFEST = {
       _SURFACE_FIELD,
       _KICKER_META,
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       _ALIGN_X_FIELD,
       { key: "headline", type: "textarea", label: "Headline" },
       { key: "rows", type: "array", label: "Slices (max 6)",
@@ -525,6 +545,7 @@ window.MANIFEST = {
       _VERTICAL_FIELD,
       _KICKER_META,
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       { key: "headline", type: "textarea", label: "Headline" },
       { key: "center_lat", type: "number", label: "Centre latitude", default: 12.9794, step: 0.001,
         help: "Default is Vidhana Soudha, Bengaluru." },
@@ -574,6 +595,7 @@ window.MANIFEST = {
     summary: "Paper channel signature — mark, wordmark, four accent dots, follow line.",
     fields: [
       _TEXTURE_FIELD,
+      _LOOK_FIELD,
       // The signature is centred by brand, so this one layout gets a blank
       // option: "left" would mean re-aligning, not "leave it as it renders".
       { ..._ALIGN_X_FIELD, options: ["", "left", "center", "right"], default: "",
@@ -600,7 +622,26 @@ window.MANIFEST_META = {
 };
 
 window.MANIFEST_TWEAKS = {
+  // VAQ POSTER (2026-10-27): look + ground, pinned above the slide strip.
+  // Unset look = classic, so decks made before the switch keep rendering as
+  // they were; new decks set look: poster (scaffold + AUTHORING.md).
+  quick: [
+    { key: "look", label: "Look", current: tw => window.lookFor(null, tw), options: [
+      { value: "poster",     label: "Poster",     swatch: ["#FFD23F", "#111111"] },
+      { value: "broadsheet", label: "Broadsheet", swatch: ["#111111", "#FFF8E7"] },
+      { value: "classic",    label: "Classic",    swatch: ["#F7F9FB", "#F4631E", "#15263B"], muted: true },
+    ] },
+    { key: "ground", label: "Ground", current: tw => window.deckGround(tw), options: [
+      { value: "haldi", label: "Haldi", hint: () => "yellow" },
+      { value: "coal",  label: "Coal",  hint: () => "black" },
+    ] },
+  ],
   fields: [
+    { key: "look",        type: "select", label: "Look", options: ["classic", "poster", "broadsheet"], default: "classic",
+      help: "poster = Tanker caps on haldi / coal (the house look since 2026-10-27). broadsheet = the Zodiak fallback. classic = the old paper / orange / navy pack." },
+    { key: "ground",      type: "select", label: "Ground (poster looks)", options: ["haldi", "coal"], default: "haldi",
+      help: "Alternate post to post so the feed never shows the same ground twice in a row." },
+    { key: "handle",      type: "text",   label: "Handle (poster slug)", help: "Top-right of every poster slide. Default @vaq_hq." },
     { key: "vertical",    type: "select", label: "Default vertical (show)",
       options: ["live", "briefing", "longview", "ground", "sports", "legal", "tech"], default: "live",
       help: "Per-slide Vertical overrides this." },
@@ -609,7 +650,7 @@ window.MANIFEST_TWEAKS = {
     { key: "seriesLabel", type: "text",   label: "Series label", help: "Appended after the page number." },
     { key: "texture",      type: "text",   label: "Deck texture (all slides)",
       help: "e.g. house · newsprint · file:Texturelabs_Paper_290L.jpg:50. A slide's own Texture overrides; texture: none opts out." },
-    { key: "textureDark",  type: "text",   label: "…on navy surfaces", help: "Overrides the deck texture on dark slides, e.g. halftone, file:Texturelabs_Film_197M.jpg:40" },
+    { key: "textureDark",  type: "text",   label: "…on navy / coal surfaces", help: "Overrides the deck texture on dark slides, e.g. halftone, file:Texturelabs_Film_197M.jpg:40" },
     { key: "textureSolid", type: "text",   label: "…on orange tiles",  help: "Overrides the deck texture on solid slides, e.g. halftone" },
   ],
 };

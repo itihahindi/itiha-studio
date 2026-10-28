@@ -3,6 +3,13 @@
 **Read this before building anything for `brand: vaq-hq`.**
 
 `README.md` next door is the *design system* (colours, charts, gotchas).
+**Look changed 2026-10-27:** VAQ moves to the two-ground "VAQ POSTER" look
+(haldi / coal, Tanker + Switzer), and the studio pack now renders it: set
+`tweaks.look: poster` and `tweaks.ground: haldi | coal` on every new deck (see
+the top of README.md). This playbook's editorial rules (voice, arcs, lengths,
+captions, verification) are unchanged; one addition: **alternate the ground
+post to post**, so the feed never shows two of the same in a row. Check the
+ground of the last published VAQ post before picking one.
 This file is the *editorial system*: what to write, how to structure it, and what
 the user expects to receive when they paste a link.
 
@@ -181,10 +188,12 @@ Real arcs from built decks:
 **Put the numbers early.** Evidence before argument. A reader who bounces on
 slide 3 should already have seen the strongest checkable fact.
 
-**Surface is the variety knob, not colour.** Pick one dominant surface for the
-deck and break it deliberately: `bidadi-ai-city` runs light with a `dark` stat
-and a `solid` payoff slide. A deck that is `dark` end to end is fine and often
-the best choice for a hard-news topic.
+**Surface is the variety knob, not colour.** Poster decks: the deck holds one
+ground (`tweaks.ground`), and `surface: dark` flips a single slide to the other
+ground for a poster beat (the stat, the payoff). Flip one or two slides, not
+half the deck. `look: broadsheet` on one slide gives a Zodiak sentence-case
+headline for a line too long or too grave for poster caps. (Classic decks:
+`bidadi-ai-city` runs light with a `dark` stat and a `solid` payoff slide.)
 
 **One layout should not repeat three times in a row** unless the repetition is
 the point (`drdo` alternates pictogram/stat deliberately).
@@ -229,6 +238,8 @@ caption: |
 hashtags: |
   #VaqHQ #<Topic> #<Place>
 tweaks:
+  look: poster                      # poster | broadsheet (classic = old decks only)
+  ground: haldi                     # haldi | coal, alternate post to post
   vertical: ground                  # deck default; per-slide override allowed
   showStamp: true
   showPageNum: true
@@ -238,9 +249,10 @@ slides:
   ...
 ```
 
-Every slide accepts `vertical`, `surface` (`light|solid|dark`), `kicker_meta`,
-`texture` (`grid|riso|dots|signal`), `align_x`, `align_y` — with the exceptions
-noted below.
+Every slide accepts `vertical`, `surface` (`light|solid|dark`, plus
+`haldi|coal` on poster decks), `look` (`poster|broadsheet`), `kicker_meta`,
+`texture` (`grid|riso|dots|signal`; poster decks run without one),
+`align_x`, `align_y` — with the exceptions noted below.
 
 | Layout | Content fields |
 |---|---|

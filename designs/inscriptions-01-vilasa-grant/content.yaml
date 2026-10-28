@@ -1,0 +1,142 @@
+name: History from Inscriptions 01 · The Vilasa grant
+brand: itiha
+format: instagram-tall
+caption: |
+  History from Inscriptions, No. 1: the Vilasa grant of Prolaya Nayaka.
+
+  In 1323 the armies of the Delhi Sultanate took Warangal. The Kakatiya king Prataparudra was captured and died on the way to Delhi, and the Telugu country was laid waste. In the Godavari delta, Prolaya Nayaka of the Musunuri family, a minor chieftain, gathered the local Telugu lords into a coalition and rose against the Sultanate.
+
+  Around 1330 he issued a copper-plate grant gifting the village of Vilasa, on the Godavari, to a Brahmin. Its verses also describe what the land had lived through: the rich tortured for money, temples destroyed and idols broken, the agraharas of the learned taken away, cultivators robbed of their harvest. The land of Tilinga, it says, "was in flames like a forest surrounded by wild fire."
+
+  The seven plates were found by brick-kiln diggers at Kandarada, near Pithapuram in East Godavari, and are now in the Government Museum, Madras. The translation quoted here is from M. Somasekhara Sarma, A Forgotten Chapter of Andhra History (Andhra University, 1945). The full text was edited by N. Venkataramanayya and M. Somasekhara Sarma in Epigraphia Indica, Vol. 32.
+
+  Images: Warangal ruins, 1875 photograph, public domain; Warangal Fort by Kavali Chandrakanth (CC BY-SA 4.0); Puvvada plates of Prolaya Vema, public domain, via Wikimedia Commons.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #HistoryFromInscriptions #Telangana #Kakatiya #Warangal #ProlayaNayaka #Musunuri #CopperPlate #Epigraphy #AndhraHistory
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 80
+  showGrain: true
+  seriesLabel: History from Inscriptions
+  emphasisV2: true
+  footer: site
+  palette: neel
+  theme: dark
+slides:
+- layout: cover
+  eyebrow: History from Inscriptions
+  headline: |
+    The copper plate that
+    saw the Telugu
+    land *burn*
+  headline_size: 150
+  subline: A chieftain's land grant from the Godavar Delta, and what it remembered
+  subline_size: 50
+  swipe_meta: Swipe ▸ · 11 slides
+  image: warangal-1875.jpg
+  image_position: 72% 50%
+  image_overlay: 0.4
+  theme: dark
+  texture: halftone
+- layout: story
+  chapter: Chapter 01 · 1323
+  headline: |
+    After the fall
+    of *Warangal*
+  body: |
+    In 1323 the Delhi Sultanate took Warangal. The Kakatiya king [Prataparudra] was captured and died on the way to Delhi, and Sultanate armies laid waste to the Telugu country.
+
+    In the Godavari delta, a minor chieftain, [Prolaya Nayaka], gathered the local Telugu lords and rose against them.
+  image: warangal-ruins.jpg
+  image_position: 58% 50%
+  theme: dark
+- layout: split-story
+  chapter: Chapter 02 · The grant
+  headline: |
+    A gift of land,
+    and a *testimony*
+  body: |
+    Around [1330], Prolaya Nayaka gave the village of Vilasa on the Godavari to a Brahmin, engraved on seven copper plates. Its verses also record what Sultanate rule had done to the land.
+  image: puvvada-crop.jpg
+  image_filter: archival
+  image_position: 50% 50%
+- layout: quote
+  chapter: The grant speaks · I
+  headline: |
+    In a hundred
+    sinful *ways*
+  quote: |
+    In a hundred sinful ways the rich were tortured for the sake of money. Merely on beholding the Parasīkas (Mussalmans) some abandoned their lives, Brahmans and rituals.
+  attribution: Vilasa grant of Prolaya Nayaka, c. 1330
+  quote_size: 66
+- layout: quote
+  chapter: The grant speaks · II
+  headline: |
+    Temples *broken*,
+    agrahāras taken
+  quote: |
+    Temples were destroyed and idols were desecrated and broken. All the agrahāras, which had long been in the enjoyment of the most learned, were taken away.
+  attribution: Vilasa grant of Prolaya Nayaka, c. 1330
+  quote_size: 66
+  theme: light
+- layout: quote
+  chapter: The grant speaks · III
+  headline: |
+    The *harvest*
+    seized
+  quote: |
+    Forcibly deprived of the fruits of their cultivation the husbandmen, both the rich and the poor, got ruined. In that great calamity people could not regard their money, wives, and other earthly belongings as their own.
+  attribution: Vilasa grant of Prolaya Nayaka, c. 1330
+  quote_size: 66
+- layout: quote
+  chapter: The grant speaks · IV
+  headline: |
+    How could the
+    world *exist*?
+  quote: |
+    The wretched yavanas (Mussalmans) revelled always in drinking wine, eating cows' flesh, sporting in amour, and killing the brahmans. When such is the case how could the world of living beings exist?
+  attribution: Vilasa grant of Prolaya Nayaka, c. 1330
+  quote_size: 66
+  theme: light
+- layout: quote
+  chapter: The grant speaks · V
+  headline: |
+    Tilinga in
+    *flames*
+  quote: |
+    Situated as the country was without the possibility of a saviour being conceived even in imagination, the land of Tilinga, tormented in this way by those yavana warriors who were exactly like Rakṣasas, was in flames like a forest surrounded by wild fire.
+  attribution: Vilasa grant of Prolaya Nayaka, c. 1330
+  quote_size: 66
+  image: warangal-1875.jpg
+  image_overlay: 0.85
+- layout: quote
+  chapter: Chapter 03 · The historian
+  headline: |
+    A *contemporary*
+    account
+  quote: |
+    The Muslim rule in Telingānā was very oppressive and tyrannical. What it was like can be better understood from the contemporary account furnished by the Vilasa grant.
+  attribution: M. Somasekhara Sarma, A Forgotten Chapter of Andhra History, 1945
+  quote_size: 66
+  theme: light
+- layout: sources
+  eyebrow: Sources
+  headline: |
+    Read the
+    *grant*
+  sources:
+  - title: A Forgotten Chapter of Andhra History
+    author: M. Somasekhara Sarma
+    detail: Andhra University, 1945
+  - title: The Vilasa Grant of Prolaya-Nayaka
+    author: N. Venkataramanayya & M. Somasekhara Sarma
+    detail: Epigraphia Indica, Vol. 32
+  - title: The seven Vilasa plates
+    detail: Found at Kandarada, near Pithapuram · Government Museum, Madras
+  note: The translations on slides 4 to 9 are quoted from Somasekhara Sarma. Pictured on slide 3, the
+    Puvvada plates of Prolaya Vema Reddi, a grant of the same years.
+- layout: end-card

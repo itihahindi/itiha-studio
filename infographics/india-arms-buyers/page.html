@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css">
+<style>
+  #canvas::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 14px; z-index: 5;
+    background: linear-gradient(#FF9933 0 33.4%, #FFFFFF 0 66.7%, #138808 0); }
+  .cut { position: absolute; pointer-events: none; filter: drop-shadow(0 12px 14px rgba(17,17,17,.35)); }
+</style></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Ranking: recipients of Indian major arms, SIPRI TIV, deliveries 2021-2025. VAQ POSTER, haldi.
+// Data: recip_2021_2025.csv, SIPRI Arms Transfers Database (generated 28 Oct 2026, supplier India).
+// TIV is SIPRI's volume index for major conventional arms, not money; it leaves out ammunition, parts and
+// sub-systems, which is why the US and France (named by MoD as destinations) are not in it.
+// Cut-outs: BrahMos (delivered to the Philippines) and Akash (Armenia), GODL-India photos, img/credits.json.
+const ROWS = [
+  ['Philippines', 116, 'BrahMos coastal batteries'], ['Armenia', 88, 'Akash, Pinaka, Swathi radars'],
+  ['Viet Nam', 30, 'Corvette INS Khukri'], ['Seychelles', 19, 'Patrol vessels'], ['Myanmar', 8, 'Sonars, radars'],
+  ['5 others', 16, 'Mauritius 5, Guyana 4, Sri Lanka 3, Maldives 2, Morocco 2'],
+].map(([c, v, what]) => ({ c, v, what }));
+const TOTAL = 277;   // "Total imports from India", 2021-2025
+
+window.POST = {
+  ground: 'haldi',
+  hSize: 90,
+  tag: 'Defence · Who buys India\'s weapons',
+  headline: 'Two countries take <em>74%</em> of India\'s big&nbsp;weapons',
+  dek: 'Deliveries of major Indian weapons, 2021-25 (SIPRI volume index, not money).',
+  source: '<b>Source:</b> SIPRI Arms Transfers Database, supplier India, deliveries 2021-25 (data generated 28 Oct 2026). Counts major weapons systems only, not ammunition, parts or components. Photos: Ministry of Defence / PIB (GODL-India).',
+  data: ROWS,
+  checks(d, PK) {
+    PK.check(d.reduce((a, r) => a + r.v, 0) === TOTAL, 'rows sum ' + d.reduce((a, r) => a + r.v, 0));
+    PK.check(Math.round((d[0].v + d[1].v) / TOTAL * 100) === 74, 'top-two share');
+    PK.check(d[0].c === 'Philippines' && d[1].c === 'Armenia', 'top two');
+  },
+};
+
+function draw(svg, box, PK, chart) {
+  const rows = POST.data, L = 270, top = 8;
+  const x = PK.scale(0, 130, L, box.w - 90);
+  const rowH = (box.h - top) / rows.length, bh = rowH * 0.5;
+  rows.forEach((r, i) => {
+    const cy = top + rowH * (i + 0.5), hot = i < 2;
+    PK.el(svg, 'text', { x: 0, y: cy + 14, class: 'pk-label' + (hot ? ' em' : '') }, r.c);
+    PK.el(svg, 'rect', { x: L, y: cy - bh / 2, width: Math.max(3, x(r.v) - L), height: bh,
+      fill: hot ? 'var(--orange)' : 'var(--ctx)' });
+    PK.el(svg, 'text', { x: x(r.v) + 14, y: cy + 14, class: hot ? 'pk-value' : 'pk-note' }, hot ? Math.round(r.v / TOTAL * 100) + '%' : String(r.v));
+  });
+  // the hardware the top two bought, climbing through the empty lower right toward their bars
+  const img = (src, css) => { const e = document.createElement('img'); e.src = src; e.className = 'cut';
+    Object.assign(e.style, css); chart.appendChild(e); return e; };
+  const rowY = (i) => top + rowH * (i + 0.5);
+  img('img/brahmos-h.png', { width: '480px', left: (box.w - 500) + 'px', top: (rowY(2) + 10) + 'px', transform: 'rotate(-22deg)' });
+  PK.el(svg, 'text', { x: box.w, y: rowY(3) + 40, 'text-anchor': 'end', class: 'pk-note' }, 'BrahMos → Philippines');
+  img('img/akash.png', { width: '380px', left: (box.w - 420) + 'px', top: (rowY(4) - 10) + 'px', transform: 'rotate(-10deg)' });
+  PK.el(svg, 'text', { x: box.w, y: rowY(5) + 30, 'text-anchor': 'end', class: 'pk-note' }, 'Akash → Armenia');
+}
+PK.run();
+</script></body></html>

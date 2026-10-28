@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Real GSDP growth (constant 2011-12 prices), 2024-25, MoSPI NAS API indicator 26. India on the same base: 6.4%.
+// India 6.5%: MoSPI press note, First Advance Estimates 2025-26 (7 Jan 2026), 2024-25 PE, 2011-12 base.
+// (The API's own growth row says 6.4, computed against an older 2023-24 level; the levels give 6.5.)
+const INDIA = 6.5;
+window.POST = {
+  ground: 'haldi', hSize: 100,
+  tag: 'State growth · 2024-25',
+  headline: 'Arunachal grew <em>13.8%</em>, the fastest state',
+  dek: 'Real GSDP growth, 2024-25. India: 6.5% on the same base. States compile their own figures.',
+  source: '<b>Source:</b> MoSPI state accounts via the eSankhyiki NAS API (2011-12 base), pulled 28 Oct 2026; 2024-25 estimates are state-supplied. India: MoSPI, 2011-12 base, provisional. Not published for Assam, Haryana, Nagaland, Ladakh.',
+  data: [{"s": "Andaman & Nicobar Islands", "v": 4.5}, {"s": "Andhra Pradesh", "v": 8.3}, {"s": "Arunachal Pradesh", "v": 13.8}, {"s": "Bihar", "v": 8.4}, {"s": "Chandigarh", "v": 6.1}, {"s": "Chhattisgarh", "v": 6.4}, {"s": "Delhi", "v": 6.2}, {"s": "Goa", "v": 12.0}, {"s": "Gujarat", "v": 7.4}, {"s": "Himachal Pradesh", "v": 6.4}, {"s": "Jammu & Kashmir", "v": 6.1}, {"s": "Jharkhand", "v": 7.0}, {"s": "Karnataka", "v": 7.3}, {"s": "Kerala", "v": 6.2}, {"s": "Madhya Pradesh", "v": 7.0}, {"s": "Maharashtra", "v": 7.3}, {"s": "Manipur", "v": 10.4}, {"s": "Meghalaya", "v": 9.7}, {"s": "Mizoram", "v": 11.3}, {"s": "Odisha", "v": 7.2}, {"s": "Puducherry", "v": 7.9}, {"s": "Punjab", "v": 6.3}, {"s": "Rajasthan", "v": 8.8}, {"s": "Sikkim", "v": 6.3}, {"s": "Tamil Nadu", "v": 11.2}, {"s": "Telangana", "v": 6.5}, {"s": "Tripura", "v": 9.0}, {"s": "Uttar Pradesh", "v": 10.8}, {"s": "Uttarakhand", "v": 6.4}, {"s": "West Bengal", "v": 7.0}],
+  checks(d, PK) {
+    const top = d.slice().sort((a, b) => b.v - a.v)[0];
+    PK.check(top.s === 'Arunachal Pradesh' && top.v === 13.8, 'top ' + top.s + top.v);
+    PK.check(d.length === 30, 'gap label says 19 more of 30');
+    PK.check(INDIA === 6.5, 'India ' + INDIA);
+  },
+};
+function draw(svg, box, PK) {
+  const SHORT = { 'Arunachal Pradesh': 'Arunachal', 'Andaman & Nicobar Islands': 'A&N Islands', 'Jammu & Kashmir': 'J&K', 'Uttar Pradesh': 'Uttar Pradesh' };
+  const all = POST.data.slice().sort((a, b) => b.v - a.v), rows = [...all.slice(0, 8), null, ...all.slice(-3)];
+  const L = 300, x = PK.scale(0, 15, L, box.w - 110), top = 60, rowH = (box.h - top) / rows.length;
+  [0, 5, 10, 15].forEach((t) => {
+    PK.el(svg, 'line', { x1: x(t), x2: x(t), y1: top - 6, y2: box.h, stroke: 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: x(t), y: top - 18, 'text-anchor': 'middle', class: 'pk-axis' }, t + '%');
+  });
+  rows.forEach((r, i) => {
+    const cy = top + rowH * (i + 0.5);
+    if (!r) { PK.el(svg, 'text', { x: 0, y: cy + 12, class: 'pk-note' }, '… 19 more states …'); return; }
+    PK.el(svg, 'text', { x: 0, y: cy + 14, class: 'pk-label' + (i === 0 ? ' em' : '') }, SHORT[r.s] || r.s);
+    PK.el(svg, 'rect', { x: L, y: cy - rowH * 0.3, width: x(r.v) - L, height: rowH * 0.6, fill: r.v >= INDIA ? 'var(--orange)' : 'var(--ctx)' });
+    PK.el(svg, 'text', { x: x(r.v) + 12, y: cy + 14, class: i === 0 ? 'pk-value' : 'pk-note', style: i === 0 ? '' : 'font-weight:800;fill:var(--ink)' }, r.v.toFixed(1));
+  });
+  PK.el(svg, 'line', { x1: x(INDIA), x2: x(INDIA), y1: top - 6, y2: box.h, stroke: 'var(--orange-2)', 'stroke-width': 4, 'stroke-dasharray': '10 8' });
+  PK.el(svg, 'text', { x: x(INDIA) + 10, y: top + rowH * 8.5 + 12, class: 'pk-note', style: 'fill:var(--orange-2);font-weight:800' }, 'India 6.5%');
+}
+PK.run();
+</script></body></html>

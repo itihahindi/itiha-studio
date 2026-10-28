@@ -1,0 +1,88 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css">
+<style>
+  /* tricolour edge: the one patriotic cue in the chrome; the hardware does the rest */
+  #canvas::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 14px; z-index: 5;
+    background: linear-gradient(#FF9933 0 33.4%, #FFFFFF 0 66.7%, #138808 0); }
+  .cut { position: absolute; pointer-events: none; filter: drop-shadow(0 18px 22px rgba(0,0,0,.55)); }
+  /* BrahMos exhaust: the cut-out lost its flame, so a soft glow stands in under the nozzle */
+  .glow { position: absolute; pointer-events: none; border-radius: 50%;
+    background: radial-gradient(closest-side, #FFF3C4, #FF9933 45%, rgba(232,89,12,.35) 70%, transparent); }
+</style></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Columns: India's recorded defence exports, ₹ crore, FY 2013-14 to FY 2025-26, with the ₹50,000 cr target.
+// VAQ POSTER, coal. Data: defence-exports.csv (sources per row). Verified by hand: FY26 38,424 and FY25 23,622
+// (MoD release, 2 Apr 2026, via All India Radio); FY14 686 (Defence Minister's office, May 2025).
+// Exports = value of export authorisations, as MoD counts them ("recorded exports").
+// Photos: cut-outs (rembg) of exported hardware only (user, 2026-10-28): BrahMos (Philippines), Akash and Pinaka
+// (Armenia, reported), Dhruv ALH (several countries). GODL-India MoD/PIB photos + one public-domain Dhruv; img/credits.json.
+const ROWS = [
+  ['2013-14', 686], ['2014-15', 1941], ['2015-16', 2059], ['2016-17', 1522], ['2017-18', 4682], ['2018-19', 10746],
+  ['2019-20', 9116], ['2020-21', 8435], ['2021-22', 12815], ['2022-23', 15920], ['2023-24', 21083],
+  ['2024-25', 23622], ['2025-26', 38424],
+].map(([fy, v]) => ({ fy, v }));
+const TARGET = 50000;
+
+window.POST = {
+  ground: 'coal',
+  hSize: 92,
+  tag: 'Defence · Exports',
+  headline: 'India\'s defence exports<br>grew <em>56×</em> in 12&nbsp;years',
+  dek: 'Recorded defence exports, ₹ crore. From ₹686 crore in 2013-14 to ₹38,424 crore in 2025-26.',
+  source: '<b>Source:</b> Ministry of Defence (release of 2 Apr 2026; Defence Minister\'s office, May 2025); earlier years from Parliament replies. Exports counted by the value of export authorisations. Photos: Ministry of Defence / PIB (GODL-India); Dhruv, Arpingstone (public domain).',
+  data: ROWS,
+  checks(d, PK) {
+    const by = Object.fromEntries(d.map((r) => [r.fy, r.v]));
+    PK.check(Math.round(by['2025-26'] / by['2013-14']) === 56, 'multiple ' + by['2025-26'] / by['2013-14']);
+    PK.check(+by['2025-26'].toString().slice(0, 2) === 38 && by['2013-14'] === 686, 'dek numbers');
+    PK.check(2025 - 2013 === 12, 'years');
+    PK.check(Math.max(...d.map((r) => r.v)) === by['2025-26'], 'record year');
+  },
+};
+
+function draw(svg, box, PK, chart) {
+  const rows = POST.data, n = rows.length;
+  const L = 300, RG = 120, top = 40, base = box.h - 44;     // L: room for the Pinaka; RG: the BrahMos's gutter
+  const y = PK.scale(0, 52000, base, top);
+  const slot = (box.w - L - RG) / n, bw = slot * 0.66;
+  const cx = (i) => L + slot * (i + 0.5);
+
+  [0, 10000, 20000, 30000, 40000].forEach((t) => {
+    PK.el(svg, 'line', { x1: L, x2: box.w, y1: y(t), y2: y(t), stroke: 'var(--grid)', 'stroke-width': 2 });
+    if (t) PK.el(svg, 'text', { x: L + 4, y: y(t) - 10, class: 'pk-axis' }, PK.num(t / 1000) + 'k');
+  });
+  // target
+  PK.el(svg, 'line', { x1: L, x2: box.w, y1: y(TARGET), y2: y(TARGET), stroke: 'var(--orange)', 'stroke-width': 3,
+    'stroke-dasharray': '10 9' });
+  PK.el(svg, 'text', { x: box.w - RG - 10, y: y(TARGET) - 14, 'text-anchor': 'end', class: 'pk-note', style: 'fill:var(--orange)' }, 'Goal: ₹50,000 cr by 2029');
+
+  rows.forEach((r, i) => {
+    const last = i === n - 1;
+    PK.el(svg, 'rect', { x: cx(i) - bw / 2, y: y(r.v), width: bw, height: base - y(r.v), fill: 'var(--orange)',
+      opacity: last ? 1 : 0.78 });
+    if ((i % 4 === 0 && i < n - 2) || last) PK.el(svg, 'text', { x: cx(i), y: base + 40, 'text-anchor': 'middle', class: 'pk-axis' },
+      "'" + r.fy.slice(2));
+  });
+  const f = rows[0], l = rows[n - 1];
+  PK.el(svg, 'text', { x: cx(0), y: y(f.v) - 12, 'text-anchor': 'middle', class: 'pk-value' }, '686');
+  PK.el(svg, 'text', { x: cx(n - 1) + bw / 2, y: y(l.v) - 14, 'text-anchor': 'end', class: 'pk-value', style: 'font-size:43px' }, '38,424');
+
+  // exported hardware, placed where the chart is empty: BrahMos lifts off in the right gutter past the goal line,
+  // Akash flies through the empty upper chart, Dhruv hovers over the small early years, Pinaka stands at left.
+  const img = (src, css) => { const e = document.createElement('img'); e.src = src; e.className = 'cut';
+    Object.assign(e.style, css); chart.appendChild(e); return e; };
+  const bx = box.w - RG / 2, bh = base - y(51000) - 40, bwid = bh * 115 / 940;
+  const g = document.createElement('div'); g.className = 'glow';
+  Object.assign(g.style, { width: '150px', height: '150px', left: (bx - 75) + 'px', top: (y(51000) + bh - 70) + 'px' });
+  chart.appendChild(g);
+  img('img/brahmos.png', { height: bh + 'px', left: (bx - bwid / 2) + 'px', top: y(51000) + 'px',
+    // its black bands vanish into coal: a thin cream rim + a faint haldi halo keep the silhouette
+    filter: 'drop-shadow(0 0 1.5px rgba(255,248,231,.85)) drop-shadow(0 0 16px rgba(255,210,63,.35))' });
+  img('img/akash.png', { width: '360px', left: (L + 30) + 'px', top: y(47500) + 'px', transform: 'rotate(-6deg)' });
+  img('img/dhruv.png', { width: '240px', left: (L + 6) + 'px', top: y(24000) + 'px', transform: 'rotate(-3deg)' });
+  img('img/pinaka.png', { width: '250px', left: '-30px', top: (base - 128) + 'px' });
+}
+PK.run();
+</script></body></html>

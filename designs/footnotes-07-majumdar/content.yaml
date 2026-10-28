@@ -29,13 +29,13 @@ tweaks:
 slides:
 - layout: cover
   headline: |
-    The Government Shelved
-    R. C. Majumdar's *Draft*
+    The Govt of India  Censored
+    *R. C. Majumdar's* Draft
   image: cover-majumdar-black.jpg
   image_overlay: 0
   texture: halftone
-  headline_size: 140
-  headline_offset_y: 450
+  headline_size: 120
+  headline_offset_y: 470
   theme: dark
   align_x: center
 - layout: portrait
@@ -50,11 +50,11 @@ slides:
 
     '
   dates: 4 Dec 1888 – 11 Feb 1980
-  role: Born at Khandarpara, now in Bangladesh. He spent forty years on [ancient India], wrote histories of
-    Champa, Suvarnadvipa and Kambuja, and was Vice-Chancellor of [Dacca University] from 1937 to 1942.
+  role: Born at Khandarpara, now in Bangladesh. He spent forty years on [ancient India], wrote histories
+    of Champa, Suvarnadvipa and Kambuja, and was Vice-Chancellor of [Dacca University] from 1937 to 1942.
   name_size: 112
-  body_size: 40
-  headline_offset_y: -140
+  body_size: 45
+  headline_offset_y: -100
   texture: halftone
 - layout: split-story
   chapter: Chapter 02 · The Board
@@ -68,7 +68,7 @@ slides:
   image_position: 50% 30%
   image_overlay: 0.85
   headline_size: 92
-  body_size: 42
+  body_size: 49
   body_y: 46
   texture: halftone
 - layout: split-story
@@ -83,7 +83,7 @@ slides:
   image_position: 50% 50%
   image_overlay: 0.85
   headline_size: 92
-  body_size: 42
+  body_size: 45
   body_y: 46
   texture: halftone
 - layout: split-story
@@ -92,13 +92,13 @@ slides:
     The Argument
     Over *1857*
   body: |
-    The Board's Secretary, a Congressman, held that 1857 was a planned war to drive out the British. Majumdar wrote that he wanted only the records that supported this, since others would [“thoroughly upset our purpose”]. Majumdar told his staff to collect everything.
+    The Board's Secretary, a Congressman, held that 1857 was a planned war to drive out the British. By Majumdar's account he wanted only the records that backed this, as others would [“thoroughly upset our purpose”]. Majumdar ordered that everything be collected.
   image: secundra-bagh.jpg
   image_filter: archival
   image_position: 62% 50%
   image_overlay: 0.85
   headline_size: 92
-  body_size: 42
+  body_size: 45
   body_y: 46
   texture: halftone
 - layout: split-story
@@ -108,12 +108,12 @@ slides:
     To *Tara Chand*
   body: |
     In March 1955 Tara Chand, a former Education Secretary, told the Board the draft [“could not be regarded as a historical text at all.”] The Board was dissolved at the end of 1955 and the history went to him. His first volume came out in [1961].
-  image: tarachand-1961-cover.jpg
+  image: tarachand-plate.jpg
   image_filter: archival
-  image_position: 50% 30%
-  image_overlay: 0.85
+  image_position: 50% 50%
+  image_overlay: 0.2
   headline_size: 92
-  body_size: 42
+  body_size: 45
   body_y: 46
   texture: halftone
 - layout: document
@@ -138,11 +138,7 @@ slides:
     Real history, on the other hand, teaches us that the major part of India lost independence about five centuries before, and merely changed masters in the eighteenth century.
   attribution: Majumdar, preface to History of the Freedom Movement in India, Vol. I, 1962
   body: |
-    Working alone, he published the three volumes of his own [History of the Freedom Movement in India] in 1962–63. In the preface he set it against the official version, which began with India losing its independence in the 18th century.
-  image: sepoy-1957-title.jpg
-  image_filter: archival
-  image_position: 50% 30%
-  image_overlay: 0.88
+    Working alone, he published his own [History of the Freedom Movement in India] in three volumes, 1962–63. The official version, he wrote, assumed India lost its independence only in the 18th century.
   quote_size: 40
   body_size: 40
   headline_offset_y: -40
@@ -151,8 +147,6 @@ slides:
   chapter: Chapter 08 · Read Him
   headline: |
     His *Books*
-  image: preface-1962-p12.jpg
-  image_overlay: 0.9
   items:
   - number: '1'
     headline: History of the Freedom Movement in India

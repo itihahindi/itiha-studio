@@ -9,8 +9,8 @@ window.POST = {
   ground: 'coal',
   tag: 'Exports · FY 2024-25',
   headline: 'Gujarat\'s exports fell <em>$18 bn</em> in a year',
-  dek: 'Goods exports by state, US$ billion, FY 2023-24 to FY 2024-25. <b>Tamil Nadu</b> added $8.6 bn, the biggest gain of any state.',
-  source: '<b>Source:</b> DGCI&amp;S exports by state of origin, FY 2023-24 and FY 2024-25, provisional (Oct 2026), via Dept of Commerce TIA portal. Top 12 states by FY 2024-25 exports.',
+  dek: 'Goods exports by state, US$ billion, 2023-24 vs 2024-25. <b>Tamil Nadu</b> added $8.6 bn.',
+  source: '<b>Source:</b> DGCI&amp;S exports by state of origin, FY 2023-24 and FY 2024-25, provisional (Oct 2026), via Dept of Commerce TIA portal. Top 10 states by FY 2024-25 exports.',
   data: [{"state": "Gujarat", "fy24": 134.392, "fy25": 116.346}, {"state": "Maharashtra", "fy24": 67.202, "fy25": 65.913}, {"state": "Tamil Nadu", "fy24": 43.555, "fy25": 52.173}, {"state": "Karnataka", "fy24": 26.631, "fy25": 30.482}, {"state": "Uttar Pradesh", "fy24": 20.572, "fy25": 21.98}, {"state": "Andhra Pradesh", "fy24": 19.76, "fy25": 20.783}, {"state": "Telangana", "fy24": 14.03, "fy25": 19.127}, {"state": "Haryana", "fy24": 17.653, "fy25": 19.102}, {"state": "West Bengal", "fy24": 11.713, "fy25": 12.668}, {"state": "Rajasthan", "fy24": 10.109, "fy25": 11.476}, {"state": "Delhi", "fy24": 10.23, "fy25": 10.521}, {"state": "Odisha", "fy24": 11.931, "fy25": 10.098}, {"state": "Madhya Pradesh", "fy24": 7.88, "fy25": 7.825}, {"state": "Punjab", "fy24": 6.745, "fy25": 7.041}, {"state": "Kerala", "fy24": 8.172, "fy25": 4.772}, {"state": "Dadra,nh,daman,diu", "fy24": 4.66, "fy25": 4.646}, {"state": "Goa", "fy24": 2.391, "fy25": 2.476}, {"state": "Himachal Pradesh", "fy24": 2.317, "fy25": 2.428}, {"state": "Chhattisgarh", "fy24": 2.017, "fy25": 2.189}, {"state": "Bihar", "fy24": 2.025, "fy25": 2.041}, {"state": "Jharkhand", "fy24": 1.898, "fy25": 1.898}, {"state": "Uttarakhand", "fy24": 1.805, "fy25": 1.769}, {"state": "Assam", "fy24": 0.442, "fy25": 0.551}, {"state": "Puducherry", "fy24": 0.517, "fy25": 0.517}, {"state": "Jammu And Kashmir", "fy24": 0.193, "fy25": 0.228}, {"state": "Chandigarh", "fy24": 0.109, "fy25": 0.117}, {"state": "Meghalaya", "fy24": 0.016, "fy25": 0.042}, {"state": "Sikkim", "fy24": 0.017, "fy25": 0.02}, {"state": "Tripura", "fy24": 0.002, "fy25": 0.012}, {"state": "Arunachal Pradesh", "fy24": 0.003, "fy25": 0.002}, {"state": "Nagaland", "fy24": 0.001, "fy25": 0.002}, {"state": "Manipur", "fy24": 0.0, "fy25": 0.001}, {"state": "Andaman And Nicobar Islands", "fy24": 0.001, "fy25": 0.001}, {"state": "Lakshadweep", "fy24": 0.0, "fy25": 0.001}, {"state": "Mizoram", "fy24": 0.0, "fy25": 0.0}, {"state": "Ladakh", "fy24": 0.0, "fy25": 0.0}],
   checks(d, PK) {
     const by = Object.fromEntries(d.map((r) => [r.state, r.fy25 - r.fy24]));
@@ -20,29 +20,29 @@ window.POST = {
   },
 };
 function draw(svg, box, PK) {
-  const rows = POST.data.slice().sort((a, b) => b.fy25 - a.fy25).slice(0, 12);
-  const LBL = 230, CHG = 120, x = PK.scale(0, 140, LBL, box.w - CHG - 20);
+  const rows = POST.data.slice().sort((a, b) => b.fy25 - a.fy25).slice(0, 10);
+  const LBL = 270, CHG = 150, x = PK.scale(0, 140, LBL, box.w - CHG - 30);
   const top = 92, rowH = (box.h - top - 10) / rows.length;
   // key
   const k = PK.el(svg, 'g');
-  [['FY 2023-24', 'var(--ctx)', 0], ['FY 2024-25, rose', 'var(--orange)', 230], ['fell', 'var(--orange-2)', 480]].forEach(([t, c, dx]) => {
+  [['2023-24', 'var(--ctx)', 0], ['2024-25: rose', 'var(--orange)', 210], ['fell', 'var(--orange-2)', 470]].forEach(([t, c, dx]) => {
     PK.el(k, 'circle', { cx: dx + 11, cy: 11, r: 11, fill: c });
     PK.el(k, 'text', { x: dx + 30, y: 18, class: 'pk-key' }, t);
   });
   // axis on top
-  [0, 20, 40, 60, 80, 100, 120, 140].forEach((t) => {
+  [0, 40, 80, 120].forEach((t) => {
     PK.el(svg, 'line', { x1: x(t), x2: x(t), y1: top - 8, y2: box.h - 10, stroke: 'var(--grid)', 'stroke-width': 2 });
-    PK.el(svg, 'text', { x: x(t), y: top - 18, 'text-anchor': 'middle', class: 'pk-axis' }, t === 140 ? '$140 bn' : t);
+    PK.el(svg, 'text', { x: x(t), y: top - 18, 'text-anchor': 'middle', class: 'pk-axis' }, t === 0 ? '$0' : t);
   });
   PK.el(svg, 'text', { x: box.w, y: top - 18, 'text-anchor': 'end', class: 'pk-key' }, 'Change');
   rows.forEach((r, i) => {
     const cy = top + rowH * (i + 0.5), up = r.fy25 >= r.fy24, col = up ? 'var(--orange)' : 'var(--orange-2)';
     if (i % 2 === 0) PK.el(svg, 'rect', { x: 0, y: cy - rowH / 2, width: box.w, height: rowH, fill: 'rgba(10,17,25,.04)' });
-    PK.el(svg, 'text', { x: 0, y: cy + 7, class: 'pk-label' + (r.state === 'Gujarat' || r.state === 'Tamil Nadu' ? ' em' : '') }, r.state);
+    PK.el(svg, 'text', { x: 0, y: cy + 12, class: 'pk-label' + (r.state === 'Gujarat' || r.state === 'Tamil Nadu' ? ' em' : '') }, r.state);
     PK.el(svg, 'line', { x1: x(r.fy24), x2: x(r.fy25), y1: cy, y2: cy, stroke: col, 'stroke-width': 4 });
     PK.el(svg, 'circle', { cx: x(r.fy24), cy, r: 10, fill: 'var(--ctx)', stroke: 'var(--paper)', 'stroke-width': 3 });
     PK.el(svg, 'circle', { cx: x(r.fy25), cy, r: 12, fill: col, stroke: 'var(--paper)', 'stroke-width': 3 });
-    PK.el(svg, 'text', { x: box.w, y: cy + 8, 'text-anchor': 'end', class: 'pk-value', fill: col, style: 'fill:' + col },
+    PK.el(svg, 'text', { x: box.w, y: cy + 13, 'text-anchor': 'end', class: 'pk-value', fill: col, style: 'fill:' + col },
       PK.signed(r.fy25 - r.fy24, 1));
   });
 }

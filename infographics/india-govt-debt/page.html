@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Debt as % of GDP, 2011-12 base: general government (centre + states, net of what they owe each other),
+// centre, states combined. RBI Handbook stocks / MoSPI GDP (derived), 2025-26 RE/BE. Data: india_macro.csv.
+window.POST = {
+  ground: 'coal', hSize: 96,
+  tag: 'India · Government debt',
+  headline: 'Government debt is down from its Covid peak of <em>89%</em>',
+  dek: 'Debt as % of GDP. Centre and states together: 89% in 2020-21, 82% now.',
+  source: '<b>Source:</b> RBI Handbook of Statistics on the Indian Economy (outstanding liabilities) ÷ MoSPI GDP, 2011-12 base; 2025-26 revised / budget estimates. Total nets out what the centre and states owe each other.',
+  data: {"gg": [{"y": "2010-11", "v": 66.9}, {"y": "2011-12", "v": 67.4}, {"y": "2012-13", "v": 66.7}, {"y": "2013-14", "v": 67.1}, {"y": "2014-15", "v": 66.6}, {"y": "2015-16", "v": 68.5}, {"y": "2016-17", "v": 68.8}, {"y": "2017-18", "v": 69.6}, {"y": "2018-19", "v": 70.5}, {"y": "2019-20", "v": 75.1}, {"y": "2020-21", "v": 89.2}, {"y": "2021-22", "v": 84.2}, {"y": "2022-23", "v": 82.9}, {"y": "2023-24", "v": 82.1}, {"y": "2024-25", "v": 81.1}, {"y": "2025-26", "v": 81.8}], "ce": [{"y": "2010-11", "v": 53.2}, {"y": "2011-12", "v": 53.5}, {"y": "2012-13", "v": 52.5}, {"y": "2013-14", "v": 52.2}, {"y": "2014-15", "v": 51.4}, {"y": "2015-16", "v": 51.5}, {"y": "2016-17", "v": 49.5}, {"y": "2017-18", "v": 49.5}, {"y": "2018-19", "v": 49.6}, {"y": "2019-20", "v": 52.5}, {"y": "2020-21", "v": 62.6}, {"y": "2021-22", "v": 58.9}, {"y": "2022-23", "v": 58.1}, {"y": "2023-24", "v": 57.6}, {"y": "2024-25", "v": 56.5}, {"y": "2025-26", "v": 56.2}], "st": [{"y": "2010-11", "v": 24.0}, {"y": "2011-12", "v": 22.8}, {"y": "2012-13", "v": 22.2}, {"y": "2013-14", "v": 22.0}, {"y": "2014-15", "v": 21.7}, {"y": "2015-16", "v": 23.4}, {"y": "2016-17", "v": 24.7}, {"y": "2017-18", "v": 25.1}, {"y": "2018-19", "v": 25.3}, {"y": "2019-20", "v": 26.6}, {"y": "2020-21", "v": 31.0}, {"y": "2021-22", "v": 29.1}, {"y": "2022-23", "v": 28.2}, {"y": "2023-24", "v": 28.1}, {"y": "2024-25", "v": 28.4}, {"y": "2025-26", "v": 29.2}]},
+  checks(d, PK) {
+    const gg = d.gg, peak = Math.max(...gg.map((r) => r.v));
+    PK.check(Math.round(peak) === 89 && gg.find((r) => r.v === peak).y === '2020-21', 'peak');
+    PK.check(Math.round(gg[gg.length - 1].v) === 82 && Math.round(gg.find((r) => r.y === '2019-20').v) === 75, 'latest / pre-covid');
+  },
+};
+function draw(svg, box, PK) {
+  const L = 96, top = 60, base = box.h - 52, d = POST.data, n = d.gg.length;
+  const y = PK.scale(0, 100, base, top), x = (i) => L + (box.w - L - 220) * i / (n - 1);
+  [0, 50, 100].forEach((t) => {
+    PK.el(svg, 'line', { x1: L, x2: box.w - 220, y1: y(t), y2: y(t), stroke: 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: L - 14, y: y(t) + 12, 'text-anchor': 'end', class: 'pk-axis' }, t + '%');
+  });
+  d.gg.forEach((r, i) => { if ((i % 5 === 0 && i < n - 3) || i === n - 1) PK.el(svg, 'text', { x: x(i), y: base + 44, 'text-anchor': 'middle', class: 'pk-axis' }, "'" + r.y.slice(2, 4) + '-' + r.y.slice(5)); });
+  [['gg', 'Both', 'var(--orange)', 8], ['ce', 'Centre', 'var(--orange-2)', 6], ['st', 'States', 'var(--ctx)', 6]].forEach(([k, name, c, w]) => {
+    const pts = d[k].map((r, i) => x(i) + ',' + y(r.v)).join(' ');
+    PK.el(svg, 'polyline', { points: pts, fill: 'none', stroke: c, 'stroke-width': w, 'stroke-linejoin': 'round' });
+    const last = d[k][n - 1];
+    PK.el(svg, 'text', { x: x(n - 1) + 16, y: y(last.v) + 4, class: 'pk-value', style: 'fill:' + c }, Math.round(last.v) + '%');
+    PK.el(svg, 'text', { x: x(n - 1) + 16, y: y(last.v) + 42, class: 'pk-note' }, name);
+  });
+  const pi = d.gg.findIndex((r) => r.y === '2020-21');
+  PK.el(svg, 'circle', { cx: x(pi), cy: y(d.gg[pi].v), r: 10, fill: 'var(--orange)', stroke: 'var(--paper)', 'stroke-width': 3 });
+  PK.el(svg, 'text', { x: x(pi), y: y(d.gg[pi].v) - 26, 'text-anchor': 'middle', class: 'pk-value' }, '89%');
+}
+
+PK.run();
+</script></body></html>

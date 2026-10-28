@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- POSTER MAP: the scroll-stopping India map post, VAQ colours.
+     4:5, 1080×1350 CSS, exported 2×. Thumbnail rules: one finding, one giant
+     number on the map, ≤ 8-word headline, everything else small.
+     Type is from the Indian Type Foundry's free Fontshare library, chosen
+     because it is NOT the Inter / Plex / Space Grotesk set every AI page uses.
+     Pick a look with POST.look: 'poster' (house default) | 'broadsheet' (fallback),
+     and a ground with POST.ground: 'haldi' (turmeric page, coal type, default)
+     | 'coal' (coal page, haldi type). Alternate grounds post to post so the
+     feed doesn't go flat (user, 2026-10-27). 'paper' = the old white.
+     Edit only the CONFIG block; layout knobs are CSS variables. -->
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=tanker@400&f[]=zodiak@400,700,800&f[]=boska@400i,700i,900i&f[]=switzer@400,500,600,700,800,900&display=block" rel="stylesheet">
+<style>
+  /* VAQ colours, unchanged: paper, the one orange, navy as counterweight. */
+  :root {
+    --paper: #F7F9FB; --ink: #0A1119; --orange: #F4631E; --navy: #0A1F3C;
+    --muted: #4A5868; --rule: #0A1119;
+    --display: 'Tanker', sans-serif; --text: 'Switzer', sans-serif; --italic: 'Boska', serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #DDD; }
+  #canvas {
+    --h-size: 112px; --h-lead: .86; --h-track: 0; --h-case: uppercase; --h-weight: 400;
+    --map-top: 404px; --map-bottom: 104px;
+    width: 1080px; height: 1350px; position: relative; overflow: hidden;
+    background: var(--paper); color: var(--ink);
+    font-family: var(--text); font-variant-numeric: tabular-nums;
+  }
+  /* Looks: only type and chrome change; colour stays VAQ. */
+  #canvas.look-broadsheet { --display: 'Zodiak', serif; --h-size: 84px; --h-lead: .98; --h-track: -2.6px;
+    --h-case: none; --h-weight: 800; }
+
+  .slug { position: absolute; left: 56px; right: 56px; top: 44px; display: flex; align-items: center;
+    justify-content: space-between; font-weight: 700; font-size: 27px; letter-spacing: .3px; }
+  .slug .tag { background: var(--orange); color: var(--ink); padding: 6px 12px 5px; text-transform: uppercase; letter-spacing: 1.4px; font-weight: 800; }
+  .slug .issue { color: var(--muted); font-weight: 600; }
+  h1 { position: absolute; left: 54px; right: 54px; top: 100px; font-family: var(--display);
+    font-weight: var(--h-weight); font-size: var(--h-size); line-height: var(--h-lead);
+    letter-spacing: var(--h-track); text-transform: var(--h-case); color: var(--navy); }
+  h1 em { font-style: normal; color: var(--orange); }
+  .look-broadsheet h1 em { font-family: var(--italic); font-style: italic; font-weight: 900; letter-spacing: -1.5px; }
+  #map { position: absolute; left: 40px; right: 40px; top: var(--map-top); bottom: var(--map-bottom); }
+  #map svg { position: absolute; inset: 0; }
+  .dek { position: absolute; font-size: 40px; line-height: 1.2; color: var(--ink); font-weight: 450; }
+  .dek b { font-weight: 800; }
+  .im-legend { position: absolute; font-size: 20px; font-weight: 500; }
+  .im-legend-title { font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
+  .im-legend-ticks, .im-legend-ends, .im-legend-nodata { color: var(--muted); }
+  .im-small { position: absolute; width: max-content; min-width: 214px; font-size: 20px;
+    display: flex; flex-direction: column; gap: 8px; font-weight: 500; }
+  .im-small-title { font-weight: 800; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+  .im-small-val { font-weight: 800; padding-left: 16px; }
+  footer { position: absolute; left: 56px; right: 56px; bottom: 30px; display: flex;
+    justify-content: space-between; align-items: flex-end; gap: 40px;
+    border-top: 3px solid var(--rule); padding-top: 12px; font-size: 23px; line-height: 1.28; color: var(--muted); }
+  footer b { color: var(--ink); font-weight: 800; }
+  .mark { font-family: var(--display); font-weight: var(--h-weight); font-size: 36px; color: var(--navy);
+    white-space: nowrap; line-height: 1; text-transform: uppercase; }
+  .look-broadsheet .mark { font-size: 26px; text-transform: none; letter-spacing: -.5px; }
+  .mark span { color: var(--orange); }
+
+  /* grounds: same tokens as data-infographic/kit/poster.css */
+  #canvas { --em-bg: transparent; --em-fg: var(--orange); --tag-bg: var(--orange); --tag-fg: var(--ink); }
+  #canvas.ground-haldi { --paper: #FFD23F; --ink: #111111; --navy: #111111; --muted: #3B3216; --rule: #111111;
+    --orange: #111111; --em-bg: #111111; --em-fg: #FFD23F; --tag-bg: #111111; --tag-fg: #FFD23F; }
+  #canvas.ground-coal { --paper: #111111; --ink: #FFF8E7; --navy: #FFF8E7; --muted: #C9C2B0; --rule: #FFF8E7;
+    --orange: #FFD23F; --em-bg: #FFD23F; --em-fg: #111111; --tag-bg: #FFD23F; --tag-fg: #111111; }
+  .slug .tag { background: var(--tag-bg); color: var(--tag-fg); }
+  /* slab = cap height only, so it never clips the line above (see kit/poster.css) */
+  h1 em { color: var(--em-fg); -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    background: linear-gradient(var(--em-bg), var(--em-bg)) no-repeat center / 100% var(--slab-h, .9em); }
+  .ground-haldi h1 em, .ground-coal h1 em { padding: 0 .07em; }
+  .ground-haldi h1, .ground-coal h1 { --h-lead: .92; }
+  .look-broadsheet h1 em { --slab-h: 1.02em; }
+  .ground-haldi .mark span, .ground-coal .mark span { color: var(--paper); background: var(--ink); padding: 0 .1em; }
+  .im-legend span[style*="background"] { box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+  #key { position: absolute; left: 56px; right: 56px; display: flex; justify-content: space-between; }
+  #key svg { position: static; flex: none; }
+  #key .k { display: flex; align-items: center; gap: 14px; }
+  #key span { display: flex; flex-direction: column; line-height: 1.15; }
+  #key b { font-weight: 800; font-size: 31px; color: var(--ink); }
+  #key i { font-style: normal; font-weight: 600; font-size: 28px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div id="canvas">
+  <div class="slug"><span class="tag" id="tag"></span><span class="issue" id="issue"></span></div>
+  <h1 id="headline"></h1>
+  <div id="map"><svg id="mapsvg"></svg></div>
+  <div class="dek" id="dek"></div>
+  <footer><div id="source"></div><div class="mark">VAQ <span>HQ</span></div></footer>
+</div>
+
+<script>window.__ready = false;</script>
+<script src="@geo/india.js"></script>
+<!-- add @geo/india-districts.js or @geo/india-pc.js for those levels -->
+<script src="@map/india-map.js"></script>
+<script>
+// ════ CONFIG ════════════════════════════════════════════════════════════
+// Route map, not a choropleth: every state is plain land (no data), the corridors
+// are drawn over it in drawRoutes() below. Lines are schematic: straight between
+// the cities each corridor is officially named by, not surveyed alignments.
+const CITY = {
+  Mumbai: [72.88, 19.08], Surat: [72.83, 21.17], Vadodara: [73.18, 22.31], Ahmedabad: [72.57, 23.02],
+  Pune: [73.86, 18.52], Hyderabad: [78.47, 17.39], Bengaluru: [77.59, 12.97], Chennai: [80.27, 13.08],
+  Delhi: [77.21, 28.61], Varanasi: [82.97, 25.32], Siliguri: [88.43, 26.73],
+  Jaipur: [75.79, 26.91], Udaipur: [73.71, 24.59], Nashik: [73.79, 20.00], Nagpur: [79.09, 21.15],
+  Chandigarh: [76.78, 30.73], Ludhiana: [75.86, 30.90], Jalandhar: [75.58, 31.33], Amritsar: [74.87, 31.63],
+  Patna: [85.14, 25.59], Howrah: [88.26, 22.59], Mysuru: [76.64, 12.30],
+};
+const ROUTES = {
+  // Under construction (NHSRCL): 508 km; Surat-Bilimora first, 2027; whole line 2029 (Railway Minister, Oct 2026).
+  building: [['Mumbai', 'Surat', 'Vadodara', 'Ahmedabad']],
+  // Union Budget 2026-27 (1 Feb 2026): seven "growth connector" corridors, ~4,000 km. Not yet sanctioned.
+  budget: [['Mumbai', 'Pune'], ['Pune', 'Hyderabad'], ['Hyderabad', 'Bengaluru'], ['Hyderabad', 'Chennai'],
+           ['Chennai', 'Bengaluru'], ['Delhi', 'Varanasi'], ['Varanasi', 'Patna', 'Siliguri']],   // via Patna: a straight line would graze Nepal
+  // Earlier NHSRCL DPR list (Lok Sabha reply), corridors NOT in the Budget 2026 seven.
+  studied: [['Delhi', 'Jaipur', 'Udaipur', 'Ahmedabad'], ['Mumbai', 'Nashik', 'Nagpur'],
+            ['Delhi', 'Chandigarh', 'Ludhiana', 'Jalandhar', 'Amritsar'], ['Varanasi', 'Patna', 'Howrah'],
+            ['Bengaluru', 'Mysuru']],
+};
+// label side per city: [dx, dy, anchor]
+const LABEL_SCALE = 1.45;
+const LABEL = {
+  Mumbai: [-18, 8, 'end'], Ahmedabad: [-18, -6, 'end'], Surat: [-18, 6, 'end'], Pune: [16, 26, 'start'],
+  Hyderabad: [18, 8, 'start'], Bengaluru: [-18, -10, 'end'], Chennai: [18, 8, 'start'], Mysuru: [-16, 22, 'end'],
+  Delhi: [16, 22, 'start'], Varanasi: [0, 34, 'middle'], Siliguri: [16, -14, 'start'], Nagpur: [18, 8, 'start'],
+  Amritsar: [-16, -8, 'end'], Howrah: [16, 22, 'start'],
+};
+const POST = {
+  look: 'poster',
+  ground: 'haldi',                             // user asked for light mode (2026-10-28); 'coal' also renders
+  hSize: 104,
+  tag: 'Bullet trains', issue: '@vaq_hq',
+  // whitepill framing (user, 2026-10-28): what is being built, and how much more is lined up
+  headline: 'Bullet train: from 508&nbsp;km to <em>4,500&nbsp;km</em>',
+  dek: 'Mumbai to Ahmedabad opens from 2027. Budget 2026 lined up <b>seven</b> more corridors, about <b>4,000 km</b>.',
+  source: '<b>Sources:</b> Union Budget 2026-27 (Business Standard, Business Today, 1 Feb 2026); Railway Minister via PTI (Oct 2026); NHSRCL DPR list (Lok Sabha reply). Routes are schematic straight lines between named cities, not alignments. Map: DataMeet (CC BY 4.0)',
+  level: 'state',
+  data: [], bins: [], ramp: null,
+  format: (v) => String(v),
+  legend: null,
+  annotate: [], names: [],
+  checks() {
+    if (ROUTES.budget.length !== 7) throw new Error('Budget list is not seven corridors');
+    if (!/508/.test(this.headline) || !/4,000/.test(this.dek)) throw new Error('copy numbers drifted');
+    if (Math.round((508 + 4000) / 500) * 500 !== 4500) throw new Error('headline total drifted');
+  },
+  dekAt: { left: 56, top: 'below-headline', width: 968 },
+  map: { align: 'right', dx: -40, labels: false },
+};
+// ════════════════════════════════════════════════════════════════════════
+
+const $ = (id) => document.getElementById(id);
+$('canvas').classList.add('look-' + POST.look, 'ground-' + (POST.ground || 'haldi'));
+// Map colours per ground. Story = hero number; ramp runs light→dark on haldi,
+// dark→bright on coal (more = more contrast with the page, either way).
+const GROUND = {
+  haldi: { ramp: ['#FFF3C4', '#E8590C', '#111111'], paper: '#FFD23F', ink: '#111111', light: '#FFD23F',
+    story: '#111111', emph: '#C2410C', nodata: 'rgba(17,17,17,.12)', halo: 'rgba(17,17,17,.38)', name: '#3B3216' },
+  coal: { ramp: ['#3B3631', '#E8590C', '#FFD23F'], paper: '#111111', ink: '#FFF8E7', light: '#FFF8E7',
+    story: '#FFD23F', emph: '#FFF8E7', nodata: 'rgba(255,248,231,.13)', halo: 'rgba(255,248,231,.4)', name: '#C9C2B0' },
+  paper: { ramp: ['#FDEBE0', '#F4631E', '#6E2000'], paper: '#F7F9FB', ink: '#0A1119', light: '#FFFFFF',
+    story: '#F4631E', emph: '#0A1F3C', nodata: '#E6E5E1', halo: '#BDBDB8', name: '#4A5868' },
+}[POST.ground || 'haldi'];
+if (POST.hSize) $('canvas').style.setProperty('--h-size', POST.hSize + 'px');
+$('tag').textContent = POST.tag; $('issue').textContent = POST.issue;
+$('headline').innerHTML = POST.headline;
+$('dek').innerHTML = POST.dek;
+$('source').innerHTML = POST.source;
+const placeDek = () => {
+  const d = POST.dekAt, h = $('headline');
+  const top = d.top === 'below-headline' ? h.offsetTop + h.offsetHeight + 22 : d.top;
+  Object.assign($('dek').style, { left: d.left + 'px', width: d.width + 'px',
+    ...(top != null ? { top: top + 'px' } : { bottom: d.bottom + 'px' }) });
+};
+
+// ── routes ──────────────────────────────────────────────────────────────
+// Route inks per ground: the built line takes the strongest ink (haldi on coal, coal on haldi),
+// the announced corridors the orange that reads on that ground.
+const RC = {
+  // land: the whole country is 'no data' here, so the choropleth no-data tint would melt into haldi;
+  // on haldi India is a cream cutout with a solid coal outline (user, 2026-10-28: "blending into yellow").
+  coal:  { built: '#FFD23F', plan: '#E8590C', studied: '#FFF8E7', studiedOp: .72, dot: '#FFF8E7', text: '#FFF8E7', muted: '#C9C2B0',
+           land: null, outline: null, border: null },
+  haldi: { built: '#111111', plan: '#C2410C', studied: '#111111', studiedOp: .6, dot: '#111111', text: '#111111', muted: '#3B3216',
+           land: '#FFF8E7', outline: '#111111', border: 'rgba(17,17,17,.22)' },
+}[POST.ground];
+const TIER = {
+  studied:  { stroke: RC.studied, width: 4, dash: '2 11', opacity: RC.studiedOp, cap: 'round' },
+  budget:   { stroke: RC.plan, width: 8, dash: null, opacity: 1, cap: 'round' },
+  building: { stroke: RC.built, width: 13, dash: null, opacity: 1, cap: 'round' },
+};
+function drawRoutes(m, box) {
+  const NS = 'http://www.w3.org/2000/svg', svg = $('mapsvg');
+  const el = (tag, at, parent) => { const e = document.createElementNS(NS, tag);
+    Object.entries(at).forEach(([k, v]) => v != null && e.setAttribute(k, v)); (parent || svg).appendChild(e); return e; };
+  const P = (c) => m.xy(...CITY[c]);
+  const g = el('g', { id: 'routes' });
+  ['studied', 'budget', 'building'].forEach((tier) => {
+    const t = TIER[tier];
+    ROUTES[tier].forEach((r) => {
+      const d = r.map((c, i) => (i ? 'L' : 'M') + P(c).map((v) => v.toFixed(1)).join(' ')).join(' ');
+      if (tier !== 'studied') el('path', { d, fill: 'none', stroke: RC.land || GROUND.paper, 'stroke-width': t.width + 6,
+        'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, g);           // coal casing so crossings read
+      el('path', { d, fill: 'none', stroke: t.stroke, 'stroke-width': t.width, 'stroke-dasharray': t.dash,
+        opacity: t.opacity, 'stroke-linecap': t.cap, 'stroke-linejoin': 'round' }, g);
+    });
+  });
+  // end-point cities (via-cities stay unmarked)
+  const ends = new Set();
+  Object.values(ROUTES).flat().forEach((r) => { ends.add(r[0]); ends.add(r[r.length - 1]); });
+  ends.add('Surat');
+  ends.forEach((c) => {
+    const [x, y] = P(c);
+    el('circle', { cx: x, cy: y, r: 9, fill: RC.dot, stroke: RC.land || GROUND.paper, 'stroke-width': 4 }, g);
+    const [dx0, dy0, anchor] = LABEL[c] || [14, 6, 'start'], dx = dx0 * LABEL_SCALE, dy = dy0 * LABEL_SCALE;
+    const t = el('text', { x: x + dx, y: y + dy, 'text-anchor': anchor, 'font-family': "'Switzer', sans-serif",
+      'font-weight': 800, 'font-size': 31, fill: RC.text, stroke: RC.land || GROUND.paper, 'stroke-width': 8,
+      'paint-order': 'stroke', 'letter-spacing': '.3' }, g);
+    t.textContent = c;
+  });
+  // hero: open sea off the Konkan coast; the haldi number and the haldi line share a colour, no leader
+  const hx = 16, hy = m.xy(70, 14.5)[1];
+  const hero = el('text', { x: hx, y: hy, 'font-family': getComputedStyle($('canvas')).getPropertyValue('--display').trim(),
+    'font-size': 116, fill: RC.built }, g); hero.textContent = '508 KM';
+  // second hero: +4,000 km announced, in the open ground north-west of Gujarat
+  const ax = 16, ay = m.xy(70, 29.0)[1];
+  const plus = el('text', { x: ax, y: ay, 'font-family': getComputedStyle($('canvas')).getPropertyValue('--display').trim(),
+    'font-size': 80, fill: RC.plan }, g); plus.textContent = '+4,000 KM';
+  [['announced in', 700, RC.text, 40], ['Budget 2026', 700, RC.text, 76]]
+    .forEach(([txt, w, fill, dy]) => { const t = el('text', { x: ax + 2, y: ay + dy, 'font-family': "'Switzer', sans-serif",
+      'font-weight': w, 'font-size': 31, fill }, g); t.textContent = txt; });
+  [['being built', 700, RC.text, 40], ['opens 2027-29', 700, RC.muted, 76]]
+    .forEach(([txt, w, fill, dy]) => { const t = el('text', { x: hx + 2, y: hy + dy, 'font-family': "'Switzer', sans-serif",
+      'font-weight': w, 'font-size': 31, fill }, g); t.textContent = txt; });
+  if (ROUTES.studied.length !== 5) throw new Error('key says 5 studied corridors');
+}
+
+function placeKey() {
+  const key = document.createElement('div'); key.id = 'key';
+  key.innerHTML = [
+    ['building', 'Being built', '1 line'],
+    ['budget', 'Budget 2026', '7 corridors'],
+    ['studied', 'Studied earlier', '5 corridors'],
+  ].map(([tier, a, b]) => { const t = TIER[tier];
+    return `<div class="k"><svg width="62" height="20"><line x1="6" y1="10" x2="56" y2="10" stroke="${t.stroke}" stroke-width="${t.width}"
+      ${t.dash ? `stroke-dasharray="${t.dash}"` : ''} stroke-linecap="round" opacity="${t.opacity}"/></svg><span><b>${a}</b><i>${b}</i></span></div>`; }).join('');
+  $('canvas').appendChild(key);
+  const top = $('dek').offsetTop + $('dek').offsetHeight + 26;
+  key.style.top = top + 'px';
+  $('map').style.top = (top + key.offsetHeight + 8) + 'px';
+}
+
+document.fonts.ready.then(() => {
+  placeDek();
+  placeKey();
+  POST.checks(POST.data);
+  const cs = getComputedStyle($('canvas'));
+  const display = cs.getPropertyValue('--display').trim();
+  const colors = IndiaMap.ramp(POST.ramp || GROUND.ramp, POST.bins.length + 1);
+  const box = $('map');
+  const m = IndiaMap.draw($('mapsvg'), {
+    width: box.clientWidth, height: box.clientHeight, padding: 4, ...POST.map,
+    level: POST.level, data: POST.data, bins: POST.bins, colors,
+    inkDark: '#111111', inkLight: GROUND.light, calloutInk: GROUND.ink, nameInk: GROUND.name, leaderInk: GROUND.ink,
+    labelFont: "'Switzer', sans-serif", labelSize: 22, nameSize: 18, labelWeight: 800,
+    heroFont: display, heroInk: GROUND.ink, heroSize: POST.look === 'broadsheet' ? 84 : 120,
+    heroTitleSize: 24, heroHalo: GROUND.paper, border: RC.border || GROUND.paper, borderWidth: POST.level === 'state' ? 1.4 : undefined,
+    stateBorder: RC.border || GROUND.paper, missingFill: RC.land || GROUND.nodata, outline: RC.outline || GROUND.halo,
+    emphasisInk: GROUND.emph, emphasisWidth: 3,
+    names: POST.names, annotate: POST.annotate, format: POST.format,
+  });
+  // Anything the layout can't see (headline, dek) overlapping the map is
+  // caught by render.py's overlap check; keep the headline short.
+  // Hero callout: title/note lines in the text face, the number in the display face.
+  document.querySelectorAll('#mapsvg text').forEach((t) => {
+    const fs = +t.getAttribute('font-size');
+    if (fs >= 50) { t.setAttribute('font-family', display);
+      if (POST.look === 'poster') t.setAttribute('font-weight', 400);
+      t.setAttribute('fill', GROUND.story); }
+    else t.setAttribute('font-family', "'Switzer', sans-serif");
+  });
+  m.placeLeaders();                            // hero text changed face above: re-measure
+  if (m.unknown.length || m.fuzzy.length) console.warn('match problems', m.unknown, m.fuzzy);
+  if (POST.legend) {
+  const lg = IndiaMap.legend(box, { ...POST.legend, bins: POST.bins, colors, swatch: POST.legend.swatch || 58, noDataColor: GROUND.nodata });
+  const [lx, ly] = Array.isArray(POST.legendAt) ? m.xy(...POST.legendAt) : [POST.legendAt.left, POST.legendAt.top];
+  // never above the dek's last line (the dek can run long)
+  const dekLow = $('dek').offsetTop + $('dek').offsetHeight - box.offsetTop + 18;
+  const dekRight = $('dek').offsetLeft + $('dek').offsetWidth - box.offsetLeft;
+  lg.style.left = lx + 'px'; lg.style.top = (lx < dekRight ? Math.max(ly, dekLow) : ly) + 'px';
+  }
+  drawRoutes(m, box);
+  if (POST.level === 'state' && false) {
+    const st = IndiaMap.smallTable(box, m.small);
+    if (st && Array.isArray(POST.smallAt)) {
+      const [sx, sy] = m.xy(...POST.smallAt);
+      // never above the dek's last line
+      const dekBottom = $('dek').offsetTop + $('dek').offsetHeight - box.offsetTop + 16;
+      st.style.left = sx + 'px'; st.style.top = Math.max(sy, dekBottom) + 'px';
+    }
+    else if (st) { st.style.right = POST.smallAt.right + 'px'; st.style.bottom = POST.smallAt.bottom + 'px'; }
+  }
+  window.__ready = true;
+});
+</script>
+</body>
+</html>

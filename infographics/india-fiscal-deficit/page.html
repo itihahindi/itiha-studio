@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Centre's fiscal deficit, % of GDP, 2010-11 to 2026-27 BE. 2011-12 base; 2024-25 actual and 2026-27 BE are as the
+// Budget documents print them (on the Budget's GDP projection). Data: india_macro.csv.
+window.POST = {
+  ground: 'haldi', hSize: 100,
+  tag: 'India · Fiscal deficit',
+  headline: 'The Centre\'s deficit has halved since <em>Covid</em>',
+  dek: 'The Centre\'s fiscal deficit, % of GDP. The 2026-27 budget aims for 4.3%.',
+  source: '<b>Source:</b> Union Budget documents (Budget at a Glance, FRBM statements) and RBI Handbook; GDP 2011-12 base. 2025-26 revised estimate, 2026-27 budget estimate.',
+  data: [{"y": "2010-11", "v": 4.9}, {"y": "2011-12", "v": 5.9}, {"y": "2012-13", "v": 4.9}, {"y": "2013-14", "v": 4.5}, {"y": "2014-15", "v": 4.1}, {"y": "2015-16", "v": 3.9}, {"y": "2016-17", "v": 3.5}, {"y": "2017-18", "v": 3.5}, {"y": "2018-19", "v": 3.4}, {"y": "2019-20", "v": 4.6}, {"y": "2020-21", "v": 9.2}, {"y": "2021-22", "v": 6.7}, {"y": "2022-23", "v": 6.5}, {"y": "2023-24", "v": 5.5}, {"y": "2024-25", "v": 4.8}, {"y": "2025-26", "v": 4.4}, {"y": "2026-27", "v": 4.3}],
+  checks(d, PK) {
+    const by = Object.fromEntries(d.map((r) => [r.y, r.v]));
+    PK.check(by['2020-21'] === 9.2 && by['2025-26'] === 4.4 && by['2026-27'] === 4.3, 'figures');
+    PK.check(by['2025-26'] / by['2020-21'] <= 0.5, 'halved');
+  },
+};
+
+// shared: one column per fiscal year, labels every third year + the last
+function columns(svg, box, PK, rows, opt) {
+  const L = 96, top = opt.top || 60, base = box.h - 52;
+  const y = PK.scale(opt.min, opt.max, base, top), slot = (box.w - L) / rows.length, bw = slot * 0.66;
+  const cx = (i) => L + slot * (i + 0.5), zero = y(Math.max(0, opt.min));
+  opt.ticks.forEach((t) => {
+    PK.el(svg, 'line', { x1: L, x2: box.w, y1: y(t), y2: y(t), stroke: t === 0 ? 'var(--axis)' : 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: L - 14, y: y(t) + 12, 'text-anchor': 'end', class: 'pk-axis' }, opt.tick(t));
+  });
+  rows.forEach((r, i) => {
+    const v = r.v, hot = opt.hot(r, i);
+    PK.el(svg, 'rect', { x: cx(i) - bw / 2, y: Math.min(y(v), zero), width: bw, height: Math.abs(y(v) - zero),
+      fill: hot ? 'var(--orange-2)' : 'var(--orange)', opacity: opt.dim && opt.dim(r) ? 0.55 : 1 });
+    if ((i % 5 === 0 && i < rows.length - 3) || i === rows.length - 1) PK.el(svg, 'text', { x: cx(i), y: base + 44, 'text-anchor': 'middle', class: 'pk-axis' },
+      "'" + r.y.slice(2, 4) + '-' + r.y.slice(5));
+    if (opt.label(r, i)) PK.el(svg, 'text', { x: cx(i), y: v < 0 ? y(v) + 46 : y(v) - 14, 'text-anchor': 'middle', class: 'pk-value' }, opt.label(r, i));
+  });
+  return { y, cx, base, bw };
+}
+
+function draw(svg, box, PK) {
+  columns(svg, box, PK, POST.data, { min: 0, max: 10, ticks: [0, 5, 10], tick: (t) => t + '%',
+    hot: (r) => r.y === '2020-21', dim: (r) => r.y === '2026-27' || r.y === '2025-26',
+    label: (r) => ['2020-21', '2025-26'].includes(r.y) ? PK.num(r.v, 1) : '' });
+}
+
+PK.run();
+</script></body></html>

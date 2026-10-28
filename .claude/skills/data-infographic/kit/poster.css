@@ -40,22 +40,26 @@ body { background: #DDD; }
 
 /* ── anatomy: slug → headline → dek → chart → footer ── */
 .pk-slug { position: absolute; left: 56px; right: 56px; top: 44px; display: flex; align-items: center;
-  justify-content: space-between; font-size: 21px; }
+  justify-content: space-between; font-size: 27px; }
 .pk-tag { background: var(--orange); color: var(--ink); padding: 6px 12px 5px; text-transform: uppercase;
   letter-spacing: 1.4px; font-weight: 800; }
 .pk-issue { color: var(--muted); font-weight: 600; }
 .pk-h1 { position: absolute; left: 54px; right: 54px; top: 100px; font-family: var(--display); font-weight: 400;
   font-size: var(--h-size); line-height: .86; text-transform: uppercase; color: var(--navy); }
 .pk-h1 em { font-style: normal; color: var(--orange); }
-.pk-dek { position: absolute; left: 56px; width: 760px; font-size: 25px; line-height: 1.3; font-weight: 450; }
+/* text floor (user, 2026-10-28: "40px is readable, I use 45px"): a 1080 px post shows at ~1/3 on a phone.
+   Dek 40, labels 36, values 40, axis / notes / keys 31; source line 23 (user asked for -10% from 44/40/34,
+   2026-10-28: "too populated… no spacing"). Cut chart
+   elements to fit; never shrink type. */
+.pk-dek { position: absolute; left: 56px; width: 968px; font-size: 40px; line-height: 1.2; font-weight: 450; }
 .pk-dek b { font-weight: 800; }
 .pk-chart { position: absolute; left: 56px; right: 56px; }
 .pk-chart svg { display: block; overflow: visible; }
 .pk-footer { position: absolute; left: 56px; right: 56px; bottom: 30px; display: flex; justify-content: space-between;
   align-items: flex-end; gap: 40px; border-top: 3px solid var(--ink); padding-top: 12px;
-  font-size: 17px; line-height: 1.38; color: var(--muted); }
+  font-size: 23px; line-height: 1.28; color: var(--muted); }
 .pk-footer b { color: var(--ink); font-weight: 800; }
-.pk-mark { font-family: var(--display); font-size: 30px; line-height: 1; color: var(--navy); white-space: nowrap; }
+.pk-mark { font-family: var(--display); font-size: 36px; line-height: 1; color: var(--navy); white-space: nowrap; }
 .pk-mark span { color: var(--orange); }
 
 /* ── grounds ── tokens only; every rule above reads them.
@@ -67,7 +71,7 @@ body { background: #DDD; }
 #canvas.ground-haldi {
   --paper: #FFD23F; --ink: #111111; --navy: #111111; --muted: #3B3216;
   --orange: #111111; --orange-2: #C2410C; --orange-pale: #FFF3C4; --orange-deep: #111111;
-  --ctx: rgba(17,17,17,.30); --ctx-pale: rgba(17,17,17,.14);
+  --ctx: rgba(17,17,17,.46); --ctx-pale: rgba(17,17,17,.16);   /* .30 read as faint olive on haldi (2026-10-28) */
   --grid: rgba(17,17,17,.16); --axis: rgba(17,17,17,.4);
   --em-bg: #111111; --em-fg: #FFD23F; --tag-bg: #111111; --tag-fg: #FFD23F;
   --halo: rgba(17,17,17,.38); --nodata: rgba(17,17,17,.12);
@@ -75,7 +79,7 @@ body { background: #DDD; }
 #canvas.ground-coal {
   --paper: #111111; --ink: #FFF8E7; --navy: #FFF8E7; --muted: #C9C2B0;
   --orange: #FFD23F; --orange-2: #F4631E; --orange-pale: #3B3631; --orange-deep: #FFD23F;
-  --ctx: rgba(255,248,231,.32); --ctx-pale: rgba(255,248,231,.14);
+  --ctx: rgba(255,248,231,.42); --ctx-pale: rgba(255,248,231,.16);
   --grid: rgba(255,248,231,.14); --axis: rgba(255,248,231,.4);
   --em-bg: #FFD23F; --em-fg: #111111; --tag-bg: #FFD23F; --tag-fg: #111111;
   --halo: rgba(255,248,231,.4); --nodata: rgba(255,248,231,.13);
@@ -98,11 +102,11 @@ body { background: #DDD; }
 .look-broadsheet .pk-big { font-weight: 800; letter-spacing: -2px; }
 
 /* ── chart text (SVG and HTML) — sizes are phone floors at 1080 wide ── */
-.pk-label { font: 600 21px var(--text); fill: var(--ink); color: var(--ink); }
+.pk-label { font: 700 36px var(--text); fill: var(--ink); color: var(--ink); }
 .pk-label.em { font-weight: 800; }
-.pk-value { font: 800 22px var(--text); fill: var(--ink); color: var(--ink); font-variant-numeric: tabular-nums; }
-.pk-axis { font: 500 18px var(--text); fill: var(--muted); color: var(--muted); }
-.pk-key { font: 800 18px var(--text); fill: var(--ink); color: var(--ink); text-transform: uppercase; letter-spacing: 1px; }
-.pk-note { font: 500 19px var(--text); fill: var(--muted); color: var(--muted); }
+.pk-value { font: 800 40px var(--text); fill: var(--ink); color: var(--ink); font-variant-numeric: tabular-nums; }
+.pk-axis { font: 600 31px var(--text); fill: var(--muted); color: var(--muted); }
+.pk-key { font: 800 31px var(--text); fill: var(--ink); color: var(--ink); text-transform: uppercase; letter-spacing: 1px; }
+.pk-note { font: 600 31px var(--text); fill: var(--muted); color: var(--muted); }
 .pk-big { font-family: var(--display); font-weight: 400; fill: var(--orange); color: var(--orange); line-height: .86; }
 .pk-big.navy { fill: var(--navy); color: var(--navy); }

@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Columns: allotted (BE) vs spent, Ministry of Minority Affairs, 2010-11 to 2026-27. VAQ POSTER, coal.
+// Data: moma-budget.csv (Union Budget, Notes on Demands for Grants, MoMA; each row's sources in the file).
+// "Spent" = gross actual expenditure where the budget prints it (2015-16 on), net before that (no gross line
+// printed). Gross is the basis the ministry and the Standing Committee quote; 2023-24 and 2024-25 net figures
+// fall further after "recoveries" the documents don't explain.
+const ROWS = [
+  // year, BE, spent, basis
+  ['2010-11', 2615.37, 2020.28, 'net'], ['2011-12', 2866.00, 2297.53, 'net'], ['2012-13', 3154.70, 2174.29, 'net'],
+  ['2013-14', 3530.98, 3026.70, 'net'], ['2014-15', 3734.01, 3088.57, 'net'], ['2015-16', 3738.11, 3654.86, 'gross'],
+  ['2016-17', 3827.25, 3049.15, 'gross'], ['2017-18', 4195.48, 4139.31, 'gross'], ['2018-19', 4700.00, 3853.03, 'gross'],
+  ['2019-20', 4700.00, 4505.10, 'gross'], ['2020-21', 5029.00, 3998.57, 'gross'], ['2021-22', 4810.77, 4325.24, 'gross'],
+  ['2022-23', 5020.50, 837.68, 'gross'], ['2023-24', 3097.60, 1032.64, 'gross'], ['2024-25', 3183.24, 1396.01, 'gross'],
+  ['2025-26', 3350.00, null, ''], ['2026-27', 3400.00, null, ''],
+].map(([year, be, spent, basis]) => ({ year, be, spent, basis }));
+const UNION_2026_27 = 5347315;   // total Union expenditure, BE 2026-27, ₹ crore (Budget at a Glance 2026-27)
+
+window.POST = {
+  ground: 'coal',
+  hSize: 88,
+  tag: 'Minority Affairs · Union Budget',
+  headline: 'Minority Affairs spending<br>fell <em>81%</em> in a&nbsp;year',
+  dek: '₹ crore, allotted vs spent. 2026-27 allots ₹3,400 crore, 0.06% of the Union budget.',
+  source: '<b>Source:</b> Union Budget, Notes on Demands for Grants, Ministry of Minority Affairs, 2011-12 to 2026-27 (allotted = budget estimate; spent = actuals, two years later). Spent is gross from 2015-16, net before. Net spending in 2023-24 and 2024-25 was lower (₹154 cr, ₹715 cr) after recoveries. Union total: Budget at a Glance 2026-27.',
+  data: ROWS,
+  checks(d, PK) {
+    const by = Object.fromEntries(d.map((r) => [r.year, r]));
+    const drop = 1 - by['2022-23'].spent / by['2021-22'].spent;
+    PK.check(Math.round(drop * 100) === 81, 'drop ' + drop);
+    PK.check(Math.round(by['2021-22'].spent) === 4325 && Math.round(by['2022-23'].spent) === 838, 'dek crore figures');
+    PK.check((by['2026-27'].be / UNION_2026_27 * 100).toFixed(2) === '0.06', 'share of Union budget');
+  },
+};
+
+function draw(svg, box, PK) {
+  const rows = POST.data, n = rows.length;
+  const L = 92, top = 70, base = box.h - 46;            // L: axis-label gutter
+  const y = PK.scale(0, 5600, base, top);
+  const slot = (box.w - L) / n, bw = slot * 0.74, sw = slot * 0.42;
+  const cx = (i) => L + slot * (i + 0.5);
+
+  // key
+  const k = PK.el(svg, 'g');
+  PK.el(k, 'rect', { x: 0, y: 0, width: 26, height: 22, fill: 'none', stroke: 'var(--ctx)', 'stroke-width': 3 });
+  PK.el(k, 'text', { x: 38, y: 19, class: 'pk-key' }, 'Allotted');
+  PK.el(k, 'rect', { x: 230, y: 0, width: 26, height: 22, fill: 'var(--orange)' });
+  PK.el(k, 'text', { x: 268, y: 19, class: 'pk-key' }, 'Actually spent');
+
+  // grid, labels in the left gutter
+  [0, 1000, 2000, 3000, 4000, 5000].forEach((t) => {
+    PK.el(svg, 'line', { x1: L - 6, x2: box.w, y1: y(t), y2: y(t), stroke: 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: L - 14, y: y(t) + 7, 'text-anchor': 'end', class: 'pk-axis' }, PK.num(t / 1000) + (t ? 'k' : ''));
+  });
+  PK.el(svg, 'text', { x: box.w, y: 19, 'text-anchor': 'end', class: 'pk-axis' }, '₹ crore');
+
+  rows.forEach((r, i) => {
+    const x = cx(i);
+    PK.el(svg, 'rect', { x: x - bw / 2, y: y(r.be), width: bw, height: base - y(r.be), fill: 'none',
+      stroke: 'var(--ctx)', 'stroke-width': 3 });
+    if (r.spent != null) PK.el(svg, 'rect', { x: x - sw / 2, y: y(r.spent), width: sw, height: base - y(r.spent), fill: 'var(--orange)' });
+    if (i % 4 === 0) PK.el(svg, 'text', { x, y: base + 40, 'text-anchor': 'middle', class: 'pk-axis' }, "'" + r.year.slice(2));
+  });
+
+  // the fall: 2021-22 → 2022-23
+  const a = rows.findIndex((r) => r.year === '2021-22'), b = a + 1;
+  PK.el(svg, 'text', { x: cx(a), y: y(rows[a].spent) - 14, 'text-anchor': 'middle', class: 'pk-value' }, PK.num(rows[a].spent));
+  PK.el(svg, 'text', { x: cx(b), y: y(rows[b].spent) - 14, 'text-anchor': 'middle', class: 'pk-value' }, PK.num(rows[b].spent));
+  PK.el(svg, 'text', { x: cx(n - 1) + bw / 2, y: y(rows[b].be) - 16, 'text-anchor': 'end', class: 'pk-note' }, '−81% in 2022-23');
+
+  // where it stands now, above the low 2023-24 to 2026-27 columns
+  const last = n - 1, R = cx(last) + bw / 2;
+  PK.el(svg, 'text', { x: R, y: y(rows[last].be) - 16, 'text-anchor': 'end', class: 'pk-value' }, '3,400');
+}
+PK.run();
+</script></body></html>

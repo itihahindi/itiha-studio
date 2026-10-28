@@ -46,8 +46,7 @@ function draw(svg, box, PK) {
   });
   // count callout and three named dots
   const n = d.filter((r) => r.value > POST.INDIA).length;
-  PK.el(svg, 'text', { x: box.w - 10, y: 150, 'text-anchor': 'end', class: 'pk-big', 'font-size': 120 }, n);
-  PK.el(svg, 'text', { x: box.w - 10, y: 186, 'text-anchor': 'end', class: 'pk-label em' }, 'above India\'s share');
+  // (the count is in the headline; a second big "13" here collided with the Gujarat tag at 2026-10 text sizes)
   const tag = (state, label, dx, dy) => {
     const [cx, cy] = pos[state]; const tx = cx + dx, ty = cy + dy;
     PK.el(svg, 'line', { x1: cx, y1: cy + (dy < 0 ? -R : R), x2: tx, y2: ty + (dy < 0 ? 8 : -24), stroke: 'var(--ink)', 'stroke-width': 2 });

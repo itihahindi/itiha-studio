@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Waffle: share of India's GDP, current prices, 2024-25 (2011-12 base). Each state's GSDP ÷ India GDP 33068145.0 cr.
+const INDIA_GDP = 33068145.0;
+window.POST = {
+  ground: 'coal', hSize: 100,
+  tag: 'Economy · 2024-25',
+  headline: 'Five states make nearly <em>half</em> of India\'s GDP',
+  dek: 'Share of India\'s GDP, 2024-25. Each square is 1% of India.',
+  source: '<b>Source:</b> MoSPI state accounts via the eSankhyiki NAS API (2011-12 base), pulled 28 Oct 2026; 2024-25 estimates are state-supplied. India GDP: ₹3,30,68,145 crore (MoSPI, 2011-12 base, provisional).',
+  data: [{"s": "Maharashtra", "v": 4622138.0}, {"s": "Tamil Nadu", "v": 3118590.0}, {"s": "Uttar Pradesh", "v": 3024621.0}, {"s": "Karnataka", "v": 2906063.0}, {"s": "Gujarat", "v": 2703518.0}],
+  checks(d, PK) {
+    const share = d.reduce((a, r) => a + r.v, 0) / INDIA_GDP * 100;
+    PK.check(share > 49 && share < 50, 'top five ' + share);
+    PK.check(Math.round(d[0].v / INDIA_GDP * 100) === 14 && d[0].s === 'Maharashtra', 'Maharashtra');
+  },
+};
+function draw(svg, box, PK) {
+  const d = POST.data, S = Math.min(box.h - 20, 500), cell = S / 10, gap = 6;
+  const tints = ['var(--orange)', '#F6A13A', '#E8590C', '#C9C2B0', '#FFF8E7'];
+  const cells = []; d.forEach((r, i) => { const n = Math.round(r.v / INDIA_GDP * 100); for (let k = 0; k < n; k++) cells.push(i); });
+  for (let k = 0; k < 100; k++) {
+    const row = Math.floor(k / 10), col = k % 10, i = cells[k];
+    PK.el(svg, 'rect', { x: col * cell, y: (box.h - S) / 2 + row * cell, width: cell - gap, height: cell - gap,
+      fill: i == null ? 'var(--ctx-pale)' : tints[i] });
+  }
+  const lx = S + 44; let ly = (box.h - 6 * 104) / 2 + 40;
+  d.forEach((r, i) => {
+    PK.el(svg, 'rect', { x: lx, y: ly - 30, width: 34, height: 34, fill: tints[i] });
+    PK.el(svg, 'text', { x: lx + 48, y: ly, class: 'pk-label' }, r.s);
+    PK.el(svg, 'text', { x: lx + 48, y: ly + 46, class: 'pk-value' }, (r.v / INDIA_GDP * 100).toFixed(1) + '%');
+    ly += 104;
+  });
+  PK.el(svg, 'rect', { x: lx, y: ly - 30, width: 34, height: 34, fill: 'var(--ctx-pale)' });
+  PK.el(svg, 'text', { x: lx + 48, y: ly, class: 'pk-label' }, 'Rest');
+}
+
+PK.run();
+</script></body></html>

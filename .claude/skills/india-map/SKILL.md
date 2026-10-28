@@ -131,6 +131,22 @@ the side table), `showName`, `callout` (e.g. `IndiaMap.SPOTS.bay`).
 
 ## 5. Layout that works at 4:5 (learned the hard way)
 
+**Pattern maps by default (2026-10-28).** At the house type sizes (legend 31px,
+dek 40px, labels 31px), numbers printed inside 28 states either collide or sit
+in small states nobody can read. The template now ships with:
+- `map: { labels: false }` and `smallTable: false`;
+- the legend, with its swatch width sized to the number of colours
+  (≤ about 440px; set `legend.swatch` to override);
+- two or three **heroes** that carry the story: the highest and the lowest, or
+  the headline state and a contrast. Hero titles are 36px.
+
+Turn labels back on only when the per-state number *is* the story, as on the
+Lok Sabha seats map. Then `hideLabel` everything under a threshold (and the
+hero's own state, which the callout already shows). Legends with six or more
+bins label every other tick. Anchor the legend at about `[82, 37.4]` so it
+stays on the canvas.
+
+
 - Map `align: 'right', dx: -60`. That opens the **Arabian Sea** (lower left)
   for the hero number and the **Pakistan-side blank** (upper left) for the
   small-UT table (`smallAt: [61.4, 36.7]`). `dx: -60` keeps the NE callouts

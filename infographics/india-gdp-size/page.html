@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Real GDP (constant 2011-12 prices), ₹ lakh crore, 2010-11 to 2025-26 AE. Data: india_macro.csv gdp_constant_cr.
+window.POST = {
+  ground: 'haldi', hSize: 100,
+  tag: 'India · Size of the economy',
+  headline: 'India\'s economy is <em>2.4×</em> its 2010-11 size',
+  dek: 'Real GDP, ₹ lakh crore at 2011-12 prices, so inflation is taken out.',
+  source: '<b>Source:</b> MoSPI national accounts (2011-12 base) via eSankhyiki and NSO press notes; 2024-25 provisional, 2025-26 first advance estimate.',
+  data: [{"y": "2010-11", "v": 83.01}, {"y": "2011-12", "v": 87.36}, {"y": "2012-13", "v": 92.13}, {"y": "2013-14", "v": 98.01}, {"y": "2014-15", "v": 105.28}, {"y": "2015-16", "v": 113.69}, {"y": "2016-17", "v": 123.08}, {"y": "2017-18", "v": 131.45}, {"y": "2018-19", "v": 139.93}, {"y": "2019-20", "v": 145.35}, {"y": "2020-21", "v": 136.95}, {"y": "2021-22", "v": 150.22}, {"y": "2022-23", "v": 161.65}, {"y": "2023-24", "v": 176.51}, {"y": "2024-25", "v": 187.97}, {"y": "2025-26", "v": 201.9}],
+  checks(d, PK) {
+    const a = d[0].v, b = d[d.length - 1].v;
+    PK.check((b / a).toFixed(1) === '2.4' && Math.round(a) === 83 && Math.round(b) === 202, 'multiple ' + b / a);
+  },
+};
+
+// shared: one column per fiscal year, labels every third year + the last
+function columns(svg, box, PK, rows, opt) {
+  const L = 96, top = opt.top || 60, base = box.h - 52;
+  const y = PK.scale(opt.min, opt.max, base, top), slot = (box.w - L) / rows.length, bw = slot * 0.66;
+  const cx = (i) => L + slot * (i + 0.5), zero = y(Math.max(0, opt.min));
+  opt.ticks.forEach((t) => {
+    PK.el(svg, 'line', { x1: L, x2: box.w, y1: y(t), y2: y(t), stroke: t === 0 ? 'var(--axis)' : 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: L - 14, y: y(t) + 12, 'text-anchor': 'end', class: 'pk-axis' }, opt.tick(t));
+  });
+  rows.forEach((r, i) => {
+    const v = r.v, hot = opt.hot(r, i);
+    PK.el(svg, 'rect', { x: cx(i) - bw / 2, y: Math.min(y(v), zero), width: bw, height: Math.abs(y(v) - zero),
+      fill: hot ? 'var(--orange-2)' : 'var(--orange)', opacity: opt.dim && opt.dim(r) ? 0.55 : 1 });
+    if ((i % 5 === 0 && i < rows.length - 3) || i === rows.length - 1) PK.el(svg, 'text', { x: cx(i), y: base + 44, 'text-anchor': 'middle', class: 'pk-axis' },
+      "'" + r.y.slice(2, 4) + '-' + r.y.slice(5));
+    if (opt.label(r, i)) PK.el(svg, 'text', { x: cx(i), y: v < 0 ? y(v) + 46 : y(v) - 14, 'text-anchor': 'middle', class: 'pk-value' }, opt.label(r, i));
+  });
+  return { y, cx, base, bw };
+}
+
+function draw(svg, box, PK) {
+  columns(svg, box, PK, POST.data, { min: 0, max: 220, ticks: [0, 100, 200], tick: (t) => String(t),
+    hot: (r, i) => i === POST.data.length - 1, dim: () => false,
+    label: (r, i) => (i === 0 || i === POST.data.length - 1) ? PK.num(r.v, 0) : '' });
+}
+
+PK.run();
+</script></body></html>

@@ -24,26 +24,26 @@ function draw(svg, box, PK) {
   const d = POST.data, THREE = ['Tamil Nadu', 'Gujarat', 'Maharashtra'];
   const share = Math.round(100 * THREE.reduce((a, s) => a + d.rows.find((r) => r.state === s).value, 0) / d.total);
   // waffle: 10 × 10, filled row by row from the top-left
-  const cell = 36, gap = 5, W = 10 * cell + 9 * gap;
+  const cell = 31, gap = 4, W = 10 * cell + 9 * gap;
   for (let i = 0; i < 100; i++) {
     const cx = (i % 10) * (cell + gap), cy = Math.floor(i / 10) * (cell + gap);
     PK.el(svg, 'rect', { x: cx, y: cy, width: cell, height: cell, fill: i < share ? 'var(--orange)' : 'var(--ctx-pale)' });
   }
-  PK.el(svg, 'text', { x: 0, y: W + 150, class: 'pk-big', 'font-size': 168 }, share + '%');
-  ['of India\'s ' + PK.num(d.total) + ' factories', 'are in Tamil Nadu, Gujarat', 'and Maharashtra'].forEach((t, i) =>
-    PK.el(svg, 'text', { x: 0, y: W + 196 + i * 30, class: 'pk-label' }, t));
-  PK.el(svg, 'text', { x: 0, y: W + 300, class: 'pk-note' }, 'Each square = 1% of factories');
+  PK.el(svg, 'text', { x: 0, y: W + 140, class: 'pk-big', 'font-size': 150 }, share + '%');
+  ['of ' + PK.num(d.total) + ' factories', 'are in Tamil Nadu,', 'Gujarat, Maharashtra'].forEach((t, i) =>
+    PK.el(svg, 'text', { x: 0, y: W + 192 + i * 40, class: 'pk-label', style: 'font-size:31px' }, t));
+  PK.el(svg, 'text', { x: 0, y: W + 330, class: 'pk-note' }, '1 square = 1%');
   // lollipop: top 10 states
-  const rows = d.rows.slice().sort((a, b) => b.value - a.value).slice(0, 10);
-  const L0 = W + 70, NAME = 196, x = PK.scale(0, 45000, L0 + NAME, box.w - 70);
-  PK.el(svg, 'text', { x: L0, y: 6, class: 'pk-key' }, 'Factories, top 10 states');
-  const rowH = (Math.min(box.h, W + 300) - 40) / rows.length;
+  const rows = d.rows.slice().sort((a, b) => b.value - a.value).slice(0, 7);
+  const L0 = W + 56, NAME = 262, x = PK.scale(0, 45000, L0 + NAME, box.w - 140);
+  PK.el(svg, 'text', { x: L0, y: 10, class: 'pk-key' }, 'Top 7 states');
+  const rowH = (Math.min(box.h, W + 330) - 50) / rows.length;
   rows.forEach((r, i) => {
-    const cy = 40 + rowH * (i + 0.5), hot = THREE.includes(r.state), col = hot ? 'var(--orange)' : 'var(--ctx)';
-    PK.el(svg, 'text', { x: L0, y: cy + 7, class: 'pk-label' + (hot ? ' em' : '') }, r.state);
+    const cy = 50 + rowH * (i + 0.5), hot = THREE.includes(r.state), col = hot ? 'var(--orange)' : 'var(--ctx)';
+    PK.el(svg, 'text', { x: L0, y: cy + 12, class: 'pk-label' + (hot ? ' em' : ''), style: 'font-size:31px' }, r.state === 'Uttar Pradesh' ? 'UP' : r.state === 'Maharashtra' ? 'Maharashtra' : r.state);
     PK.el(svg, 'line', { x1: x(0), x2: x(r.value), y1: cy, y2: cy, stroke: col, 'stroke-width': 4 });
     PK.el(svg, 'circle', { cx: x(r.value), cy, r: 11, fill: col });
-    PK.el(svg, 'text', { x: x(r.value) + 20, y: cy + 8, class: 'pk-value' }, PK.num(r.value));
+    PK.el(svg, 'text', { x: x(r.value) + 18, y: cy + 12, class: 'pk-value', style: 'font-size:34px' }, PK.num(r.value));
   });
 }
 PK.run();

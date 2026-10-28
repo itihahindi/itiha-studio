@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Scatter: debt (% of GSDP, PRS SOSF Oct 2025 Table 4) vs real GSDP growth (MoSPI), both 2024-25. 25 states with both.
+// India 6.5%: MoSPI press note, First Advance Estimates 2025-26 (7 Jan 2026), 2024-25 PE, 2011-12 base.
+// (The API's own growth row says 6.4, computed against an older 2023-24 level; the levels give 6.5.)
+const INDIA = 6.5;
+window.POST = {
+  ground: 'haldi', hSize: 96,
+  tag: 'State debt × growth · 2024-25',
+  headline: 'High debt, slow growth: <em>Punjab</em>, Himachal, Kerala',
+  dek: 'Debt (% of GSDP) against real growth, 2024-25. Each dot is a state.',
+  source: '<b>Source:</b> Debt: PRS, State of State Finances (Oct 2025), Annexure Table 4. Growth: MoSPI state accounts (2011-12 base), state-supplied estimates. 25 states with both figures.',
+  data: [{"s": "Andhra Pradesh", "d": 33.0, "g": 8.3}, {"s": "Arunachal Pradesh", "d": 42.0, "g": 13.8}, {"s": "Bihar", "d": 35.0, "g": 8.4}, {"s": "Chhattisgarh", "d": 27.0, "g": 6.4}, {"s": "Goa", "d": 29.0, "g": 12.0}, {"s": "Gujarat", "d": 17.0, "g": 7.4}, {"s": "Himachal Pradesh", "d": 44.0, "g": 6.4}, {"s": "Jharkhand", "d": 24.0, "g": 7.0}, {"s": "Karnataka", "d": 26.0, "g": 7.3}, {"s": "Kerala", "d": 36.0, "g": 6.2}, {"s": "Madhya Pradesh", "d": 30.0, "g": 7.0}, {"s": "Maharashtra", "d": 18.0, "g": 7.3}, {"s": "Manipur", "d": 35.0, "g": 10.4}, {"s": "Meghalaya", "d": 36.0, "g": 9.7}, {"s": "Mizoram", "d": 27.0, "g": 11.3}, {"s": "Odisha", "d": 15.0, "g": 7.2}, {"s": "Punjab", "d": 46.0, "g": 6.3}, {"s": "Rajasthan", "d": 35.0, "g": 8.8}, {"s": "Sikkim", "d": 29.0, "g": 6.3}, {"s": "Tamil Nadu", "d": 30.0, "g": 11.2}, {"s": "Telangana", "d": 26.0, "g": 6.5}, {"s": "Tripura", "d": 25.0, "g": 9.0}, {"s": "Uttar Pradesh", "d": 31.0, "g": 10.8}, {"s": "Uttarakhand", "d": 23.0, "g": 6.4}, {"s": "West Bengal", "d": 37.0, "g": 7.0}],
+  checks(d, PK) {
+    const q = d.filter((r) => r.d >= 30 && r.g < INDIA).map((r) => r.s).sort();
+    PK.check(q.join() === 'Himachal Pradesh,Kerala,Punjab', 'quadrant ' + q);
+  },
+};
+function draw(svg, box, PK) {
+  const d = POST.data, L = 84, B = box.h - 56;
+  const x = PK.scale(10, 50, L, box.w - 20), y = PK.scale(4, 15, B, 20);
+  PK.el(svg, 'rect', { x: x(30), y: y(INDIA), width: x(50) - x(30), height: B - y(INDIA), fill: 'var(--orange-2)', opacity: 0.14 });
+  PK.el(svg, 'text', { x: x(50) - 10, y: B - 14, 'text-anchor': 'end', class: 'pk-note', style: 'fill:var(--orange-2);font-weight:800' }, 'High debt, slow growth');
+  [10, 20, 30, 40, 50].forEach((t) => {
+    PK.el(svg, 'line', { x1: x(t), x2: x(t), y1: 20, y2: B, stroke: 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: x(t), y: B + 42, 'text-anchor': 'middle', class: 'pk-axis' }, t + '%');
+  });
+  [4, 8, 12].forEach((t) => {
+    PK.el(svg, 'line', { x1: L, x2: box.w - 20, y1: y(t), y2: y(t), stroke: 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: L - 12, y: y(t) + 7, 'text-anchor': 'end', class: 'pk-axis' }, t + '%');
+  });
+  PK.el(svg, 'line', { x1: L, x2: box.w - 20, y1: y(INDIA), y2: y(INDIA), stroke: 'var(--orange-2)', 'stroke-width': 3, 'stroke-dasharray': '8 7' });
+  PK.el(svg, 'text', { x: x(20), y: y(INDIA) + 44, class: 'pk-note', style: 'fill:var(--orange-2);font-weight:800' }, 'India 6.5%');
+  PK.el(svg, 'text', { x: box.w - 20, y: 10, 'text-anchor': 'end', class: 'pk-key' }, 'Debt →');
+  PK.el(svg, 'text', { x: L, y: 10, class: 'pk-key' }, '↑ Growth');
+  const LBL = { 'Punjab': [0, -26, 'middle'], 'Kerala': [-18, 44, 'end'], 'Himachal Pradesh': [-30, 50, 'middle'],
+    'Arunachal Pradesh': [-18, 12, 'end'], 'Goa': [18, 12], 'Odisha': [-20, 38, 'end'], 'Gujarat': [14, -22, 'start'] };
+  const SH = { 'Himachal Pradesh': 'Himachal', 'Arunachal Pradesh': 'Arunachal' };
+  d.forEach((r) => {
+    const hot = ['Punjab', 'Kerala', 'Himachal Pradesh'].includes(r.s);
+    PK.el(svg, 'circle', { cx: x(r.d), cy: y(r.g), r: hot ? 17 : 12, fill: hot ? 'var(--orange)' : 'var(--ctx)', stroke: 'var(--paper)', 'stroke-width': 2 });
+    const l = LBL[r.s]; if (l) PK.el(svg, 'text', { x: x(r.d) + l[0], y: y(r.g) + l[1], 'text-anchor': l[2] || 'start',
+      class: hot ? 'pk-label' : 'pk-note' }, SH[r.s] || r.s);
+  });
+}
+
+PK.run();
+</script></body></html>

@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Jio customers (company-reported, all RJIL customers), year-ends Mar 2017 to Mar 2026 + Jun 2026.
+// Data: .claude/skills/india-economy/data/jio/jio_subscribers.csv (RIL annual reports and media releases).
+window.POST = {
+  ground: 'coal', hSize: 96,
+  tag: 'Jio · Customers',
+  headline: 'Jio: from launch to <em>533 million</em> customers',
+  dek: 'Jio customers, millions. Launched September 2016; its parent lists this week.',
+  source: '<b>Source:</b> Reliance Industries annual reports and quarterly media releases (customers at period end; Mar 2022 dip = clean-up of inactive users). IPO: Jio Platforms draft prospectus (SEBI, Jun 2026).',
+  data: [{"p": "Mar 2017", "v": 108.9}, {"p": "Mar 2018", "v": 186.6}, {"p": "Mar 2019", "v": 306.7}, {"p": "Mar 2020", "v": 387.5}, {"p": "Mar 2021", "v": 426.2}, {"p": "Mar 2022", "v": 410.2}, {"p": "Mar 2023", "v": 439.3}, {"p": "Mar 2024", "v": 481.8}, {"p": "Mar 2025", "v": 488.2}, {"p": "Mar 2026", "v": 524.4}, {"p": "Jun 2026", "v": 533.3}],
+  checks(d, PK) {
+    PK.check(d[d.length - 1].v === 533.3 && d[d.length - 1].p === 'Jun 2026', 'latest');
+  },
+};
+function draw(svg, box, PK) {
+  const d = POST.data, L = 96, top = 60, base = box.h - 52;
+  const y = PK.scale(0, 600, base, top), slot = (box.w - L) / d.length, bw = slot * 0.66, cx = (i) => L + slot * (i + 0.5);
+  [0, 250, 500].forEach((t) => {
+    PK.el(svg, 'line', { x1: L, x2: box.w, y1: y(t), y2: y(t), stroke: 'var(--grid)', 'stroke-width': 2 });
+    PK.el(svg, 'text', { x: L - 14, y: y(t) + 12, 'text-anchor': 'end', class: 'pk-axis' }, t ? t + 'M' : '0');
+  });
+  d.forEach((r, i) => {
+    const last = i === d.length - 1;
+    PK.el(svg, 'rect', { x: cx(i) - bw / 2, y: y(r.v), width: bw, height: base - y(r.v), fill: last ? 'var(--orange-2)' : 'var(--orange)' });
+    if ((i % 3 === 0 && i < d.length - 2) || last) PK.el(svg, 'text', { x: cx(i), y: base + 44, 'text-anchor': last ? 'end' : 'middle', class: 'pk-axis' },
+      r.p.startsWith('Jun') ? "Jun '26" : r.p.slice(-4));
+    if (i === 0 || last) PK.el(svg, 'text', { x: last ? cx(i) + bw / 2 : cx(i), y: y(r.v) - 14, 'text-anchor': last ? 'end' : 'middle', class: 'pk-value' }, PK.num(r.v, 0));
+  });
+}
+
+PK.run();
+</script></body></html>

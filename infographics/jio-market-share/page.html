@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="@kit/poster.css"></head>
+<body><div id="canvas"></div>
+<script src="@kit/poster.js"></script>
+<script>
+// Slope: wireless subscriber share, TRAI, Mar 2017 vs Aug 2026. Vodafone + Idea added for Mar 2017 (merged 2018).
+// Shares as TRAI publishes them (Mar 2017: Jio counted under LTE; the rest of the 2017 market was Aircel, Telenor, RCom, others).
+// Data: .claude/skills/india-economy/data/jio/jio_subscribers.csv (TRAI subscription reports; Aug 2026 = press release 125/2026).
+window.POST = {
+  ground: 'haldi', hSize: 96,
+  tag: 'Telecom · Mobile market share',
+  headline: 'Jio went from 9% to <em>39%</em> of India\'s mobiles',
+  dek: 'Share of wireless subscribers, March 2017 vs August 2026.',
+  source: '<b>Source:</b> TRAI telecom subscription data, March 2017 and August 2026 (press release 125/2026). March 2017 Vodafone and Idea added together; they merged in 2018. Other operators not shown.',
+  data: [{"o": "Jio", "a": 9.39, "b": 39.31}, {"o": "Airtel", "a": 23.64, "b": 38.01}, {"o": "Vodafone Idea", "a": 34.94, "b": 15.43}, {"o": "BSNL", "a": 8.66, "b": 7.24}],
+  checks(d, PK) {
+    const j = d.find((r) => r.o === 'Jio');
+    PK.check(Math.round(j.a) === 9 && Math.round(j.b) === 39, 'Jio');
+    PK.check(d[0].b + d[1].b > 75, 'top two > 75');
+  },
+};
+function draw(svg, box, PK) {
+  const d = POST.data, top = 80, base = box.h - 20, xa = 300, xb = box.w - 330;
+  const y = PK.scale(0, 42, base, top);
+  PK.el(svg, 'text', { x: xa, y: top - 36, 'text-anchor': 'middle', class: 'pk-key' }, '2017');
+  PK.el(svg, 'text', { x: xb, y: top - 36, 'text-anchor': 'middle', class: 'pk-key' }, '2026');
+  [xa, xb].forEach((x) => PK.el(svg, 'line', { x1: x, x2: x, y1: top, y2: base, stroke: 'var(--grid)', 'stroke-width': 3 }));
+  const dyA = { Jio: 36, BSNL: -16 }, dyB = { Jio: -30, Airtel: 34 };
+  d.forEach((r) => {
+    const hot = r.o === 'Jio', c = hot ? 'var(--orange)' : 'var(--ctx)';
+    PK.el(svg, 'line', { x1: xa, x2: xb, y1: y(r.a), y2: y(r.b), stroke: c, 'stroke-width': hot ? 10 : 6 });
+    PK.el(svg, 'circle', { cx: xa, cy: y(r.a), r: hot ? 15 : 11, fill: c, stroke: 'var(--paper)', 'stroke-width': 3 });
+    PK.el(svg, 'circle', { cx: xb, cy: y(r.b), r: hot ? 15 : 11, fill: c, stroke: 'var(--paper)', 'stroke-width': 3 });
+    PK.el(svg, 'text', { x: xa - 24, y: y(r.a) + 14 + (dyA[r.o] || 0), 'text-anchor': 'end', class: hot ? 'pk-value' : 'pk-note',
+      style: hot ? '' : 'font-weight:800;fill:var(--ink)' }, (r.o === 'Vodafone Idea' ? 'Vi' : r.o) + ' ' + Math.round(r.a) + '%');
+    PK.el(svg, 'text', { x: xb + 26, y: y(r.b) + 14 + (dyB[r.o] || 0), class: hot ? 'pk-value' : 'pk-label' },
+      Math.round(r.b) + '% ' + (r.o === 'Vodafone Idea' ? 'Vi' : r.o));
+  });
+}
+PK.run();
+</script></body></html>

@@ -44,9 +44,33 @@ those; don't restate the tokens in a page.
 | **poster** (default) | Tanker, condensed caps, `--h-size` 112 (100 for long lines) | almost everything; the thumbnail look |
 | **broadsheet** (fallback) | Zodiak 800 sentence case, Boska 900 italic for the `<em>` word | headlines too long or too grave for caps, or with "UTs"-style mixed case |
 
-Everything else in both looks is **Switzer** (labels 600 21px, values 800
-22px, axis 500 18px, notes 500 19px, dek 25px). Hero numbers use the display
-face at 100–170px in the story colour. All four faces are Indian Type Foundry,
+Everything else in both looks is **Switzer**. Hero numbers use the display
+face at 90–170px in the story colour.
+
+**Type sizes (user, 2026-10-28).** A 1080 px post shows at about a third of its
+size on a phone. The user first set a floor ("40px is readable, I use 45px"),
+then took 10% off everything but the headline when that felt "too populated,
+no spacing". These are the settled sizes, set in `kit/poster.css` and the
+poster-map template:
+
+| Text | Size |
+|---|---|
+| Dek | 40px |
+| Labels | 700 36px |
+| Values | 800 40px |
+| Axis, notes, keys, legend | 31px |
+| Slug | 27px |
+| Source line | 23px, the only small text |
+| VAQ HQ mark | 36px |
+
+**Fit the chart to the type, never the type to the chart:**
+- At most about 12 rows. A 28- or 30-state list becomes the top few, a
+  "… N more …" row and the bottom few, or the biggest movers plus a one-line
+  summary ("+ 18 more fell, none rose").
+- Short names: Arunachal, J&K, A&N Islands, UP.
+- Three to four axis ticks. Label every fourth or fifth year, plus the last.
+- Label only the values the story needs.
+- The dek is one or two lines; the detail goes in the caption. All four faces are Indian Type Foundry,
 free from Fontshare. Never use Inter, IBM Plex, Red Hat, Space Grotesk,
 Figtree, Bricolage, DM Sans or Archivo: those read as the AI default.
 
@@ -55,7 +79,7 @@ Figtree, Bricolage, DM Sans or Archivo: those read as the AI default.
 1. **Slug**: tag box (`Topic · year`, uppercase) left, `@vaq_hq` right.
 2. **Headline**: the finding, with its number, ≤ 8 words in poster. One
    `<em>` word or number gets the slab.
-3. **Dek**: one or two sentences: what is measured, unit, year, the second fact.
+3. **Dek**: one or two lines at 40px: what is measured, unit, year. Everything else goes in the caption.
 4. **Chart**: one hero chart; one giant number on it or beside it.
 5. **Footer**: 3px rule; `Source:` with year, vintage and coverage caveats on
    the left; the **VAQ HQ** mark on the right.
@@ -67,7 +91,7 @@ Format: 4:5, 1080×1350 CSS, rendered 2× (2160×2700). `ratio: '1x1' | '9x16' |
 
 - **Story** marks (`var(--orange)`, which is coal on haldi and haldi on coal):
   the subject, the states in the headline, the bars that matter.
-- **Context** marks (`var(--ctx)`): everything else, translucent ink.
+- **Context** marks (`var(--ctx)`): everything else, translucent ink. They are 46% coal on haldi and 42% cream on coal; 30% read as faint olive on phones (2026-10-28).
 - **Second identity** (`var(--orange-2)`): a second series or the "fell /
   below" pole. Two colours plus context, never more.
 - Label directly; legend only for three or more encoded categories.

@@ -81,7 +81,10 @@ Slug → headline → dek → chart → footer (styles.md §3).
   and the script `throw`s if it doesn't match. A failed check is a render error,
   which is the point. See the reference build.
 - VAQ voice: no em dashes, direct, no "not X, it's Y", no slogan triplets.
-  Dek ≤ 2 sentences.
+  Dek ≤ 2 lines at 40px.
+- Type sizes are fixed (styles.md §2, user 2026-10-28): dek 40, labels 36,
+  values 40, secondary 31, source 23. Cut chart elements to fit, never
+  shrink type.
 - Footer left: `Source: …`. Add `Map: DataMeet (CC BY 4.0)` on any India map;
   the licence requires it. Footer right: the brand mark, **VAQ HQ · @vaq_hq** or
   **Itiha · @itiha29**. (The guide bans *real publication* names because they

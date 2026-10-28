@@ -1,0 +1,293 @@
+name: zz-vaq-poster-lab-coal
+brand: vaq-hq
+format: instagram-portrait
+tweaks:
+  look: poster
+  ground: coal
+  vertical: live
+  showStamp: true
+  showPageNum: true
+slides:
+- layout: cover
+  vertical: live
+  surface: solid
+  headline: 'Parliament
+
+    *Erupts* Over
+
+    Budget Vote
+
+    '
+  subline: What the floor test means, in five slides
+- layout: cover
+  vertical: live
+  surface: ''
+  headline: Parliament *erupts* over the budget vote
+  subline: What the floor test means, in five slides
+  cover_style: label
+- layout: story
+  vertical: briefing
+  headline: 'Why the region
+
+    watches *Delhi*
+
+    '
+  body: 'Three capitals adjusted policy within [48 hours] of the announcement. The
+    pattern is not deference — it is [hedging], and it has a price.
+
+    '
+  image: https://upload.wikimedia.org/wikipedia/commons/9/9c/Ferdinand_Magellan.jpg
+  image_caption: South Block, New Delhi
+  image_credit: PTI
+- layout: story
+  vertical: ground
+  surface: solid
+  headline: 'The coalition
+
+    math *nobody*
+
+    will say aloud
+
+    '
+  body: 'Every ally has a [price list]. The question is not who joins — it is [what
+    it costs] and **who pays**.
+
+    '
+- layout: quote
+  vertical: longview
+  quote: The midnight that made a republic was drafted at noon, in committee, by men
+    who disagreed.
+  attribution: The Long View, Ep. 12
+- layout: stat
+  vertical: ground
+  label: The number that decides it
+  value: '272'
+  sublabel: seats to a simple majority
+  body: 'Every coalition script this year is written against [one number]. Cross it
+    and the rest is ceremony.
+
+    '
+- layout: split-story
+  vertical: briefing
+  image: https://upload.wikimedia.org/wikipedia/commons/9/9c/Ferdinand_Magellan.jpg
+  image_credit: REUTERS
+  headline: 'The map is not
+
+    the *territory*
+
+    '
+  body: 'Placeholder image — split-story pairs a flat photo block with the paper text
+    block below the accent divider.
+
+    '
+- layout: geo
+  surface: dark
+  kicker_meta: The Chokepoint
+  headline: Nearly *80%* of it through one strait
+  region: asia
+  center_lon: 88
+  center_lat: 22
+  zoom: 1.15
+  labels: false
+  countries:
+  - name: China
+    color: '#FF3333'
+  - name: Saudi Arabia
+    color: '#0FA08C'
+  - name: Iraq
+    color: '#0FA08C'
+  - name: United Arab Emirates
+    color: '#0FA08C'
+  links:
+  - from: Saudi Arabia
+    to: Malaysia
+    curve: -0.12
+    color: '#F7F9FB'
+  - from: Malaysia
+    to: China
+    curve: -0.12
+  markers:
+  - lon: 102.9
+    lat: 1.43
+    label: Strait of Malacca
+    ring: true
+    align: left
+  - lon: 105
+    lat: 35
+    label: China
+  - lon: 45
+    lat: 24
+    label: Gulf suppliers
+  body: 'Nearly **80%** of China''s energy imports transit the Malacca Strait, a channel
+    it neither owns nor patrols. Every pillar below is an answer to [this map].
+
+    '
+  map_caption: Principal crude route from the Gulf to Chinese refineries.
+  body_size: 36
+  headline_size: 56
+- layout: roster
+  surface: solid
+  kicker_meta: The Week Outside
+  headline: 'Four days,
+
+    *four fronts*
+
+    '
+  row_size: 40
+  rows:
+  - flag: 1️⃣
+    name: Mamdani says he is not supportive
+    year: 26 AUG
+  - flag: 2️⃣
+    name: USCIRF asks for his visa to be revoked
+    year: 27 AUG
+  - flag: 3️⃣
+    name: HAF asks about city grants to the protesters
+    year: 28 AUG
+  - flag: 4️⃣
+    name: HfHR protests outside. He speaks inside.
+    year: 29 AUG
+    featured: true
+  vertical: live
+- layout: pictogram
+  kicker_meta: Pictogram
+  headline: The number the *whole policy* rests on
+  value: 88.5
+  decimals: 1
+  total: 100
+  columns: 10
+  grid_height: 500
+  unit_label: of the crude India burns is imported
+  sublabel: Each block is one percent of national crude consumption.
+  source: PIB factsheet, Ethanol Blending in India, 5 July 2026.
+- layout: bar-chart
+  kicker_meta: Bar · emphasis
+  headline: What a litre of *ethanol* costs, by feedstock
+  mode: emphasis
+  value_prefix: ₹
+  decimals: 2
+  rows:
+  - label: Maize
+    value: 71.86
+    emphasis: true
+    note: The costliest route, and the fastest growing
+  - label: Cane juice and syrup
+    value: 65.61
+  - label: Damaged foodgrains
+    value: 64.0
+  - label: B-heavy molasses
+    value: 60.73
+  - label: Surplus FCI rice
+    value: 60.32
+  - label: C-heavy molasses
+    value: 57.97
+  source: Cabinet ex-mill prices, Ethanol Supply Year 2025-26. Excludes GST and transport.
+  bar_size: 46
+  label_size: 27
+  headline_size: 60
+- layout: line-chart
+  kicker_meta: Line · trend
+  headline: Blending went to *20%*, five years early
+  series:
+  - name: Ethanol blended into petrol
+    values:
+    - 8.1
+    - 10
+    - 12.06
+    - 14.6
+    - 19.2
+    - 20
+  x_labels:
+  - 2020-21
+  - 2022-23
+  - 2025-26
+  y_min: 0
+  y_max: 22
+  value_suffix: '%'
+  area: true
+  source: Ethanol Supply Year. Target was 20% by 2030.
+  headline_size: 62
+- layout: pie-chart
+  surface: dark
+  kicker_meta: Pillar One · The Mix
+  headline: Coal is now the *minority* of the grid
+  rows:
+  - label: Thermal
+    value: 1500
+  - label: Solar
+    value: 1200
+  - label: Wind
+    value: 640
+  - label: Hydro
+    value: 450
+  - label: Nuclear
+    value: 63
+  - label: Biomass and other
+    value: 37
+  value_suffix: ' GW'
+  decimals: 0
+  donut: 0.5
+  size: 450
+  center_value: 3,890
+  center_label: GW INSTALLED
+  source: China's National Energy Administration, end-2025. Component figures rounded.
+  body: 'The first time the balance has tipped. Non-fossil sources now hold [60.4%]
+    of installed capacity against **39.6%** for thermal.
+
+    '
+  headline_size: 54
+- layout: city-map
+  kicker_meta: Where It Is
+  headline: Thirty kilometres out, and *past the metro*
+  center_lat: 12.98
+  center_lon: 77.58
+  span_km: 78
+  rings:
+  - 10
+  - 20
+  - 30
+  places:
+  - name: Bengaluru CBD
+    lat: 12.9794
+    lon: 77.5912
+    note: Vidhana Soudha
+    align: left
+  - name: Bidadi
+    lat: 12.7988
+    lon: 77.3853
+    note: The AI City site, 30 km
+    emphasis: true
+  - name: Challaghatta
+    lat: 12.935
+    lon: 77.465
+    note: Purple Line ends here
+    align: left
+  - name: Whitefield
+    lat: 12.9698
+    lon: 77.75
+    note: 17 km · +23%
+    align: left
+  - name: Devanahalli
+    lat: 13.1986
+    lon: 77.7066
+    note: Airport, 2008
+    align: left
+  routes:
+  - from:
+    - 12.935
+    - 77.465
+    to:
+    - 12.7988
+    - 77.3853
+    label: 17 KM OF NO METRO
+    label_offset: -46
+  map_caption: Straight-line distances from Vidhana Soudha. Bidadi is about 40 km
+    by road.
+  source: Rings are true distance circles. Metro extension to Bidadi is still a feasibility
+    study.
+  headline_size: 52
+- layout: closing
+  headline: 'Politics, decoded — live.
+
+    '
+  handle: '@vaq_hq'

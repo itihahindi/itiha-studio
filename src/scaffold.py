@@ -134,7 +134,15 @@ def make_starter_yaml(title: str, fmt: str = "instagram-portrait",
                       brand: str = "itiha") -> str:
     """Return the starter content.yaml text for a (title, format, brand)."""
     template = _STARTERS_BY_FORMAT.get(fmt, _CAROUSEL_STARTER)
-    return template.format(title=title, fmt=fmt, brand=brand)
+    text = template.format(title=title, fmt=fmt, brand=brand)
+    if brand == "vaq-hq":
+        # New VAQ decks start on the VAQ POSTER look (2026-10-27). Decks without
+        # a look stay classic, so nothing made before the switch re-renders.
+        if "\ntweaks:\n" in text:
+            text = text.replace("\ntweaks:\n", "\ntweaks:\n  look: poster\n  ground: haldi\n", 1)
+        else:
+            text = text.replace("\nslides:\n", "\ntweaks:\n  look: poster\n  ground: haldi\n\nslides:\n", 1)
+    return text
 
 
 # Legacy alias — old code referenced this directly.

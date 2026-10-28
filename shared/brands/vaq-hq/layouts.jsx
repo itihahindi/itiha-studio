@@ -25,16 +25,19 @@ function PosterCover({ slide, index, v, surface, t }) {
     image_tilt = 0, image_halftone = false, image_width, image_height = 900, image_align = 'right',
     headline_size = 210, headline_offset_y = 0, texture, bursts, tag,
   } = slide;
+  const P = isPoster(v);
+  const ink = inkFor(v, surface);
   const dark = surface.onDark || surface.onSolid;
   const bg = surface.bg;
-  const backdrop = dark
+  // Poster grounds are flat colour: no studio backdrop glow.
+  const backdrop = P ? null : dark
     ? 'radial-gradient(70% 55% at 50% 38%, rgba(255,255,255,.20) 0%, rgba(255,255,255,0) 70%)'
     : 'radial-gradient(70% 55% at 50% 38%, rgba(10,17,25,.10) 0%, rgba(10,17,25,0) 70%)';
-  const headColor = dark ? '#FFFFFF' : VAQ.inkL;
+  const headColor = P ? ink.head : dark ? '#FFFFFF' : VAQ.inkL;
   const imgAlign = { left: 'flex-start', center: 'center', right: 'flex-end' }[image_align] || 'flex-end';
   return (
     <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
-      <div style={{ position: 'absolute', inset: 0, background: backdrop }} />
+      {backdrop && <div style={{ position: 'absolute', inset: 0, background: backdrop }} />}
       {image && (
         <div style={{ position: 'absolute', left: PAD, right: PAD, bottom: 0, height: image_height, zIndex: 2,
           display: 'flex', alignItems: 'flex-end', justifyContent: imgAlign }}>
@@ -43,18 +46,24 @@ function PosterCover({ slide, index, v, surface, t }) {
         </div>
       )}
       <div style={{ position: 'absolute', left: PAD, right: PAD, top: PAD + 80 + headline_offset_y, zIndex: 3 }}>
-        {tag && (
+        {tag && (P ? (
+          <div style={{ marginBottom: 26 }}>
+            <span style={{ fontFamily: POSTER.text, fontWeight: 800, fontSize: 24, lineHeight: 1,
+              letterSpacing: '.06em', textTransform: 'uppercase', background: ink.slabBg, color: ink.slabFg,
+              padding: '8px 14px 7px', display: 'inline-block' }}>{tag}</span>
+          </div>
+        ) : (
           <div style={{ fontFamily: VAQ.mono, fontWeight: 700, fontSize: 24, letterSpacing: '.16em',
             textTransform: 'uppercase', color: dark ? 'rgba(255,255,255,.75)' : VAQ.mutedL, marginBottom: 22 }}>{tag}</div>
-        )}
-        <VPosterHeadline text={headline} size={headline_size} color={headColor} />
+        ))}
+        <VPosterHeadline text={headline} size={headline_size} color={headColor} v={v} onDark={surface.onDark} />
         {subline && (
-          <div className="vaq-measure" style={{ marginTop: 28, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 36,
-            lineHeight: 1.4, color: dark ? 'rgba(255,255,255,.86)' : VAQ.bodyL, maxWidth: 760 }}>{subline}</div>
+          <div className="vaq-measure" style={{ marginTop: 28, fontFamily: bodyFontFor(v), fontWeight: 600, fontSize: 36,
+            lineHeight: 1.4, color: P ? ink.body : dark ? 'rgba(255,255,255,.86)' : VAQ.bodyL, maxWidth: 760 }}>{subline}</div>
         )}
       </div>
       <div style={{ position: 'absolute', top: PAD - 20, right: PAD - 8, zIndex: 4 }}>
-        {t.showStamp !== false && <VWordmark size={30} onDark={dark} />}
+        {t.showStamp !== false && <VWordmark size={30} onDark={dark} v={v} />}
       </div>
     </VSlide>
   );
@@ -77,8 +86,9 @@ function LabelCover({ slide, index, v, surface, t }) {
         <VHeadline text={headline} v={v} size={headline_size} onSolid={surface.onSolid} onDark={dark} label
           style={{ textAlign: align_x }} />
         {subline && (
-          <div className="vaq-measure" style={{ marginTop: 26, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 34,
-            lineHeight: 1.4, color: dark ? 'rgba(255,255,255,.86)' : (surface.onSolid ? '#3A1402' : VAQ.bodyL),
+          <div className="vaq-measure" style={{ marginTop: 26, fontFamily: bodyFontFor(v), fontWeight: 600, fontSize: 34,
+            lineHeight: 1.4, color: isPoster(v) ? inkFor(v, surface).body
+              : dark ? 'rgba(255,255,255,.86)' : (surface.onSolid ? '#3A1402' : VAQ.bodyL),
             maxWidth: 820, marginLeft: align_x === 'center' ? 'auto' : 0, marginRight: align_x === 'center' ? 'auto' : 0 }}>{subline}</div>
         )}
       </div>
@@ -90,7 +100,7 @@ function LabelCover({ slide, index, v, surface, t }) {
         </div>
       )}
       <div style={{ position: 'absolute', right: PAD, bottom: 56, zIndex: 4 }}>
-        {t.showStamp !== false && <VWordmark size={30} onSolid={surface.onSolid} onDark={dark} />}
+        {t.showStamp !== false && <VWordmark size={30} onSolid={surface.onSolid} onDark={dark} v={v} />}
       </div>
     </VSlide>
   );
@@ -123,7 +133,11 @@ function CoverSlide({ slide, index }) {
   // Dark hero. With an image it's the cinematic sports cover (edge-to-edge photo
   // + scrim). With no image it's The Docket's text poster, so the headline block
   // balances mid-slide instead of hugging a scrim that isn't there.
-  if (surface.onDark) {
+  // The poster look has no cinematic full-bleed hero: both grounds take the
+  // framed cover below, so a coal cover and a haldi cover are the same shape.
+  const P = isPoster(v);
+  const ink = inkFor(v, surface);
+  if (surface.onDark && !P) {
     const dSize = headline_size || headlineDefaultSize(v, 'cover');
     const dInk = inkFor(v, surface);
     return (
@@ -180,7 +194,7 @@ function CoverSlide({ slide, index }) {
   const coverOff = headline_offset_y - (image ? 20 : 40);
   return (
     <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
-      {show_index === true && <VGhostIndex n={index + 1} v={v} onSolid={surface.onSolid} />}
+      {show_index === true && <VGhostIndex n={index + 1} v={v} onSolid={surface.onSolid} onDark={surface.onDark} />}
       <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column', zIndex: 2 }}>
         {cover_style !== 'label' && (
           <VKicker v={v} onSolid={surface.onSolid} onDark={surface.onDark} meta={kicker_meta} style={kickerAlign(slide)} />
@@ -194,20 +208,14 @@ function CoverSlide({ slide, index }) {
         {image && !isCut && (
           <div style={{
             marginTop: 44, position: 'relative', borderRadius: 0, overflow: 'hidden',
-            border: `1px solid ${surface.onSolid ? 'rgba(255,255,255,.35)' : VAQ.hairL}`,
-            height: image_height, background: 'rgba(0,0,0,.15)',
+            border: P ? `3px solid ${ink.rule}` : `1px solid ${surface.onSolid ? 'rgba(255,255,255,.35)' : VAQ.hairL}`,
+            height: image_height, background: P ? ink.well : 'rgba(0,0,0,.15)',
           }}>
             <img src={image.startsWith('http') ? image : `images/${image}`} style={{
               width: '100%', height: '100%', objectFit: 'cover',
               objectPosition: image_position || 'center',
             }} />
-            {image_credit && (
-              <div style={{
-                position: 'absolute', right: 18, bottom: 18,
-                fontFamily: VAQ.mono, fontSize: 18, letterSpacing: '.1em', textTransform: 'uppercase',
-                color: '#fff', background: 'rgba(10,17,25,.55)', padding: '5px 12px', borderRadius: 6,
-              }}>{image_credit}</div>
-            )}
+            {image_credit && <ImageCredit v={v} ink={ink} text={image_credit} right={18} bottom={18} />}
           </div>
         )}
         <div style={{ flex: 1 }} />
@@ -217,18 +225,38 @@ function CoverSlide({ slide, index }) {
           <VHeadline text={headline} v={v} size={hSize} onSolid={surface.onSolid} onDark={surface.onDark} label={isLabel} />
           {subline && (
             <div className="vaq-measure" style={{
-              marginTop: 36, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 38, lineHeight: 1.4,
-              color: surface.onSolid ? pal.body : VAQ.bodyL,
+              marginTop: 36, fontFamily: bodyFontFor(v), fontWeight: 600, fontSize: 38, lineHeight: 1.4,
+              color: P ? ink.body : surface.onSolid ? pal.body : VAQ.bodyL,
               maxWidth: 840,
             }}>{subline}</div>
           )}
         </div>
         <div style={{ height: CHROME_H - 20 }} />
       </div>
-      <VChrome n={null} onSolid={surface.onSolid} v={v} />
+      <VChrome n={null} onSolid={surface.onSolid} onDark={surface.onDark} v={v} />
     </VSlide>
   );
 }
+
+// Credit chip over a photo. Poster: a slab tag; classic: the translucent
+// navy pill in Space Mono.
+function ImageCredit({ v, ink, text, right, bottom }) {
+  if (isPoster(v)) return (
+    <div style={{ position: 'absolute', right, bottom, fontFamily: POSTER.text, fontWeight: 700, fontSize: 18,
+      lineHeight: 1, letterSpacing: '.04em', textTransform: 'uppercase',
+      color: ink.slabFg, background: ink.slabBg, padding: '7px 11px 6px' }}>{text}</div>
+  );
+  return (
+    <div style={{
+      position: 'absolute', right, bottom,
+      fontFamily: VAQ.mono, fontSize: 18, letterSpacing: '.1em', textTransform: 'uppercase',
+      color: '#fff', background: 'rgba(10,17,25,.55)', padding: '5px 12px', borderRadius: 6,
+    }}>{text}</div>
+  );
+}
+
+// Photo frame: the classic hairline, or the posters' 3px ink rule.
+const frameBorder = (v, ink) => isPoster(v) ? `3px solid ${ink.rule}` : `1px solid ${ink.hair}`;
 
 // ── STORY ─────────────────────────────────────────────────────
 // The light interior workhorse: kicker, headline, body, optional contained
@@ -283,7 +311,7 @@ function StorySlide({ slide, index }) {
             <div style={{ marginTop: 44 }}>
               <div style={{
                 borderRadius: 0, overflow: 'hidden',
-                border: `1px solid ${ink.hair}`,
+                border: frameBorder(v, ink),
                 height: image_height, background: ink.well,
               }}>
                 <img src={image.startsWith('http') ? image : `images/${image}`} style={{
@@ -294,7 +322,8 @@ function StorySlide({ slide, index }) {
               {capParts.length > 0 && (
                 <div style={{
                   marginTop: 16, display: 'flex', justifyContent: 'space-between', gap: 20,
-                  fontFamily: metaFontFor(v), fontSize: 20, letterSpacing: '.08em',
+                  fontFamily: metaFontFor(v), fontWeight: isPoster(v) ? 600 : undefined,
+                  fontSize: 20, letterSpacing: trk(v, 0.08),
                   color: ink.muted,
                 }}>
                   <span>{image_caption || ''}</span>
@@ -340,15 +369,10 @@ function SplitStorySlide({ slide, index }) {
             objectPosition: image_position || 'center',
           }} />
         )}
-        {image_credit && (
-          <div style={{
-            position: 'absolute', right: 20, bottom: 22,
-            fontFamily: VAQ.mono, fontSize: 18, letterSpacing: '.1em', textTransform: 'uppercase',
-            color: '#fff', background: 'rgba(10,17,25,.55)', padding: '5px 12px', borderRadius: 6,
-          }}>{image_credit}</div>
-        )}
+        {image_credit && <ImageCredit v={v} ink={ink} text={image_credit} right={20} bottom={22} />}
         <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 10, background: 'transparent',
-          borderBottom: `1px solid ${surface.onDark ? 'rgba(255,255,255,.35)' : 'rgba(10,17,25,.5)'}` }} />
+          borderBottom: isPoster(v) ? `3px solid ${ink.rule}`
+            : `1px solid ${surface.onDark ? 'rgba(255,255,255,.35)' : 'rgba(10,17,25,.5)'}` }} />
       </div>
       <div style={{
         position: 'absolute', top: image_height + 10, left: 0, right: 0, bottom: 0,
@@ -387,6 +411,8 @@ function QuoteSlide({ slide, index }) {
   // upright); the default is the reading serif, italic.
   const qFont = v.quoteFont || v.bodyFont || VAQ.serif;
   const qItalic = v.quoteItalic === false ? 'normal' : 'italic';
+  // Poster quotes are set broadsheet (Zodiak, upright) under a Boska mark.
+  const P = isPoster(v);
   // -40 is the block's own tuned nudge against the centred flow position, not
   // an author offset — so it stays in the transform and is kept out of the
   // align_y insets. Only quote_offset_y follows the block when it re-anchors.
@@ -402,20 +428,22 @@ function QuoteSlide({ slide, index }) {
                { left: 0, right: 0, transform: `translateY(${qOff}px)` },
                { top: 150 + quote_offset_y, bottom: (CHROME_H - 50) - quote_offset_y })}>
           <div style={{
-            fontFamily: qFont, fontSize: 210, lineHeight: 0.4, fontWeight: 600,
+            fontFamily: P ? POSTER.italic : qFont, fontStyle: P ? 'italic' : undefined,
+            fontSize: 210, lineHeight: 0.4, fontWeight: P ? 900 : 600,
             color: ink.em, height: 96,
           }}>“</div>
           <div style={{
-            fontFamily: qFont, fontStyle: qItalic, fontWeight: 500,
-            fontSize: quote_size, lineHeight: 1.24, letterSpacing: '-.01em',
+            fontFamily: qFont, fontStyle: qItalic, fontWeight: P ? 700 : 500,
+            fontSize: quote_size, lineHeight: P ? 1.16 : 1.24, letterSpacing: P ? '-.02em' : '-.01em',
             color: ink.head, textWrap: 'balance',
           }}>{quote}</div>
           {attribution && (
             <div style={{
-              marginTop: 44, fontFamily: metaFontFor(v), fontSize: 25, letterSpacing: '.14em',
+              marginTop: 44, fontFamily: metaFontFor(v), fontWeight: P ? 800 : undefined,
+              fontSize: 25, letterSpacing: trk(v, 0.14),
               textTransform: 'uppercase',
               color: ink.muted,
-            }}>— {attribution}</div>
+            }}>{P ? '' : '— '}{attribution}</div>
           )}
         </div>
         <div style={{ flex: 1 }} />
@@ -433,7 +461,7 @@ function StatSlide({ slide, index }) {
   const surface = surfaceFor(slide, v);
   const {
     label, value = '', sublabel, body, kicker_meta, texture,
-    stat_size = 250, body_size = 43, stats_offset_y = 0,
+    stat_size = isPoster(v) ? 300 : 250, body_size = 43, stats_offset_y = 0,
   } = slide;
   const ink = inkFor(v, surface);
   return (
@@ -445,13 +473,14 @@ function StatSlide({ slide, index }) {
                { left: 0, right: 0, transform: `translateY(${stats_offset_y}px)` },
                { top: 110 + stats_offset_y, bottom: (CHROME_H - 50) - stats_offset_y })}>
           {label && (
-            <div style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 26, letterSpacing: '.18em',
+            <div style={{ fontFamily: metaFontFor(v), fontWeight: isPoster(v) ? 800 : 700, fontSize: 26,
+              letterSpacing: trk(v, 0.18),
               textTransform: 'uppercase', color: ink.muted,
               marginBottom: 26 }}>{label}</div>
           )}
           <div style={{
-            fontFamily: v.numFont || VAQ.display, fontWeight: 900, fontSize: stat_size, lineHeight: 0.92,
-            letterSpacing: '-.03em', color: surface.onSolid ? ink.head : v.accent,
+            ...numStyle(v), fontSize: stat_size, lineHeight: 0.92,
+            color: isPoster(v) ? ink.em : surface.onSolid ? ink.head : v.accent,
           }}>{value}</div>
           {sublabel && (
             <div style={{ marginTop: 30, fontFamily: bodyFontFor(v), fontWeight: 700, fontSize: 42,
@@ -476,7 +505,7 @@ function StatSlide({ slide, index }) {
 function ClosingSlide({ slide, index }) {
   const t = useTweaks();
   const v = verticalFor(slide, t);
-  const { headline, body, handle, headline_size = 58, texture } = slide;
+  const { headline, body, handle, headline_size = 58, texture } = slide;   // poster reads slide.headline_size itself
   // Follows the vertical's surface so a dark show (The Docket) doesn't end on a
   // white card. Still light for every daylight vertical.
   const surface = surfaceFor(slide, v);
@@ -490,6 +519,45 @@ function ClosingSlide({ slide, index }) {
     ...(slide.align_x ? { alignItems: a.flexAlign, textAlign: a.textAlign } : null),
     ...(a.ay ? { justifyContent: a.ay === 'top' ? 'flex-start' : a.ay === 'bottom' ? 'flex-end' : 'center' } : null),
   };
+  if (isPoster(v)) {
+    // The poster sign-off: the mark set huge, a 3px rule with the channel
+    // line, then the closing headline in the deck's face and the handle tag.
+    const bs = v.look === 'broadsheet';
+    return (
+      <VSlide v={v} surface={surface} texture={texture}>
+        <div data-align-x={slide.align_x || undefined} style={{
+          position: 'absolute', inset: `${PAD}px`, display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center', textAlign: 'center',
+          ...closeAlign,
+        }}>
+          <VWordmark size={190} onDark={surface.onDark} v={v} />
+          {/* Tagline as on the approved banner lockup: Switzer 800 in ink. */}
+          <div style={{ marginTop: 30, width: 520, borderTop: `3px solid ${ink.rule}`, paddingTop: 16,
+            fontFamily: POSTER.text, fontWeight: 800, fontSize: 34, letterSpacing: '-.01em',
+            color: ink.head }}>Politics, decoded.</div>
+          {headline && (
+            <div className="vaq-measure" style={{ marginTop: 70, maxWidth: 880 }}>
+              <VHeadline text={headline} v={v} size={slide.headline_size || (bs ? 68 : 92)} onDark={surface.onDark}
+                style={{ textAlign: slide.align_x || 'center' }} />
+            </div>
+          )}
+          {body && (
+            <div className="vaq-measure" style={{ marginTop: 34, maxWidth: 760 }}>
+              <VBody text={body} v={v} size={38} onDark={surface.onDark}
+                style={{ textAlign: slide.align_x || 'center' }} />
+            </div>
+          )}
+          {handle && (
+            <div style={{ marginTop: 60 }}>
+              <span style={{ fontFamily: POSTER.text, fontWeight: 800, fontSize: 28, lineHeight: 1,
+                letterSpacing: '.04em', background: ink.slabBg, color: ink.slabFg,
+                padding: '10px 16px 9px', display: 'inline-block' }}>{handle}</span>
+            </div>
+          )}
+        </div>
+      </VSlide>
+    );
+  }
   return (
     <VSlide v={v} surface={surface} texture={texture}>
       <div data-align-x={slide.align_x || undefined} style={{
@@ -604,6 +672,7 @@ function ReelFrameSlide({ slide, index }) {
     headline_style, bursts, image, image_width = 720, image_caption,
   } = slide;
   const isLabel = headline_style === 'label';
+  const P = isPoster(v);
   return (
     <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
       {/* Video zone. In the live preview this plays the downloaded source
@@ -618,9 +687,10 @@ function ReelFrameSlide({ slide, index }) {
         display: 'flex', flexDirection: 'column',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          paddingBottom: 14, borderBottom: '4px double rgba(10,17,25,.5)' }}>
-          <VWordmark size={34} />
-          <VKicker v={v} onSolid={false} meta={kicker_meta} style={{ borderBottom: 'none', paddingBottom: 0 }} />
+          paddingBottom: 14, borderBottom: P ? `3px solid ${ink.rule}` : '4px double rgba(10,17,25,.5)' }}>
+          <VWordmark size={P ? 40 : 34} onDark={P && surface.onDark} v={v} />
+          <VKicker v={v} onSolid={false} onDark={P && surface.onDark} meta={kicker_meta} handle={false}
+            style={{ borderBottom: 'none', paddingBottom: 0 }} />
         </div>
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           {/* Inner wrapper so the headline keeps stretching to the panel width
@@ -628,11 +698,12 @@ function ReelFrameSlide({ slide, index }) {
           <div {...alignBlock(slide,
                  { left: PAD - 8, right: PAD - 8, transform: `translateY(${headline_offset_y}px)` },
                  { top: 110 + headline_offset_y, bottom: 70 - headline_offset_y })}>
-            <VHeadline text={headline} v={v} size={headline_size} label={isLabel} />
+            <VHeadline text={headline} v={v} size={P && !slide.headline_size ? 76 : headline_size}
+              onDark={P && surface.onDark} label={isLabel} />
             {subline && (
               <div className="vaq-measure" style={{
-                marginTop: 26, fontFamily: VAQ.sans, fontWeight: 600, fontSize: 34,
-                lineHeight: 1.4, color: VAQ.bodyL, maxWidth: 900,
+                marginTop: 26, fontFamily: bodyFontFor(v), fontWeight: 600, fontSize: 34,
+                lineHeight: 1.4, color: P ? ink.body : VAQ.bodyL, maxWidth: 900,
               }}>{subline}</div>
             )}
             {/* Optional pinned card: the post or document the video answers
@@ -640,14 +711,14 @@ function ReelFrameSlide({ slide, index }) {
                 so a tall panel over a 16:9 clip has something to carry. */}
             {image && (
               <div style={{ marginTop: 40 }}>
-                <div style={{ width: image_width, maxWidth: '100%', border: `1px solid ${ink.hair}`,
+                <div style={{ width: image_width, maxWidth: '100%', border: frameBorder(v, ink),
                   background: ink.well, lineHeight: 0 }}>
                   <img src={image.startsWith('http') ? image : `images/${image}`}
                     style={{ width: '100%', display: 'block' }} />
                 </div>
                 {image_caption && (
-                  <div style={{ marginTop: 14, fontFamily: metaFontFor(v), fontSize: 20,
-                    letterSpacing: '.08em', textTransform: 'uppercase', color: ink.muted }}>{image_caption}</div>
+                  <div style={{ marginTop: 14, fontFamily: metaFontFor(v), fontWeight: P ? 700 : undefined, fontSize: 20,
+                    letterSpacing: trk(v, 0.08), textTransform: 'uppercase', color: ink.muted }}>{image_caption}</div>
                 )}
               </div>
             )}
@@ -655,8 +726,8 @@ function ReelFrameSlide({ slide, index }) {
         </div>
         {credit && (
           <div style={{
-            fontFamily: VAQ.mono, fontSize: 20, letterSpacing: '.1em',
-            textTransform: 'uppercase', color: VAQ.mutedL, textAlign: 'right',
+            fontFamily: metaFontFor(v), fontWeight: P ? 700 : undefined, fontSize: 20, letterSpacing: trk(v, 0.1),
+            textTransform: 'uppercase', color: P ? ink.muted : VAQ.mutedL, textAlign: 'right',
           }}>{credit}</div>
         )}
       </div>
@@ -689,6 +760,7 @@ function ReelExplainerSlide({ slide, index }) {
     headline_style, bursts,
   } = slide;
   const isLabel = headline_style === 'label';
+  const P = isPoster(v);
   return (
     <VSlide v={v} surface={surface} texture={texture} bursts={bursts}>
       {/* Video occupies everything ABOVE the panel. Anchored off the BOTTOM, not
@@ -698,7 +770,8 @@ function ReelExplainerSlide({ slide, index }) {
         <ReelVideoZone top={0} videoUrl={video_url} videoFile={video_file} />
         {/* Wordmark watermark, over the video, top-right. */}
         <div style={{ position: 'absolute', top: PAD - 24, right: PAD - 8, opacity: .82 }}>
-          <VWordmark size={30} onDark />
+          {/* Over video the poster mark always wears the coal ink set. */}
+          <VWordmark size={30} onDark v={v} />
         </div>
       </div>
       {/* Bottom panel — the strip the composer keeps. The gradient sits INSIDE
@@ -716,7 +789,20 @@ function ReelExplainerSlide({ slide, index }) {
             pointerEvents: 'none',
           }} />
         )}
-        {(chip || kicker_meta) && (
+        {(chip || kicker_meta) && P && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 18, marginBottom: 28 }}>
+            {chip && (
+              <span style={{ fontFamily: POSTER.text, fontWeight: 800, fontSize: 22, lineHeight: 1,
+                letterSpacing: '.06em', textTransform: 'uppercase', background: ink.slabBg, color: ink.slabFg,
+                padding: '8px 13px 7px' }}>{chip}</span>
+            )}
+            {kicker_meta && (
+              <span style={{ fontFamily: POSTER.text, fontWeight: 700, fontSize: 22, lineHeight: 1,
+                letterSpacing: '.04em', textTransform: 'uppercase', color: ink.muted }}>{kicker_meta}</span>
+            )}
+          </div>
+        )}
+        {(chip || kicker_meta) && !P && (
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 24, marginBottom: 26,
             paddingBottom: 14, borderBottom: '4px double rgba(255,255,255,.42)' }}>
             {chip && (
@@ -734,7 +820,8 @@ function ReelExplainerSlide({ slide, index }) {
             )}
           </div>
         )}
-        <VHeadline text={headline} v={v} size={headline_size} onDark label={isLabel} />
+        <VHeadline text={headline} v={v} size={P && !slide.headline_size ? 84 : headline_size}
+          onDark={P ? surface.onDark : true} label={isLabel} />
         {/* The label is a run-in float rather than a sibling: VBody emits <p>,
             so a plain span before it would break onto its own line. Floating it
             shortens only the first line box, which is the effect wanted, and it
@@ -745,17 +832,18 @@ function ReelExplainerSlide({ slide, index }) {
             {body_label && (
               <span style={{
                 float: 'left', marginRight: 12,
-                fontFamily: VAQ.mono, fontWeight: 700, color: VAQ.orange,
-                fontSize: body_size, lineHeight: body_size <= 38 ? 1.65 : 1.58,
-                letterSpacing: '.06em', textTransform: 'uppercase',
+                fontFamily: metaFontFor(v), fontWeight: P ? 800 : 700, color: P ? ink.em2 : VAQ.orange,
+                fontSize: body_size, lineHeight: P ? (body_size <= 38 ? 1.6 : 1.5) : (body_size <= 38 ? 1.65 : 1.58),
+                letterSpacing: trk(v, 0.06), textTransform: 'uppercase',
               }}>{body_label}</span>
             )}
-            <VBody text={body} v={v} size={body_size} onDark color={ink.body} />
+            <VBody text={body} v={v} size={body_size} onDark={P ? surface.onDark : true} color={ink.body} />
           </div>
         )}
         {credit && (
           <div style={{
-            marginTop: 'auto', fontFamily: VAQ.mono, fontSize: 19, letterSpacing: '.1em',
+            marginTop: 'auto', fontFamily: metaFontFor(v), fontWeight: P ? 700 : undefined,
+            fontSize: 19, letterSpacing: trk(v, 0.1),
             textTransform: 'uppercase', color: ink.muted,
           }}>{credit}</div>
         )}
@@ -795,7 +883,7 @@ function RosterSlide({ slide, index }) {
           // stretch: the table below owns the column, so the headline takes
           // align_x only — re-anchoring it would drop it onto the rows.
           <div {...alignBlock(slide, { marginTop: 28, marginBottom: 10 }, { stretch: true })}>
-            <VHeadline text={headline} v={v} size={headline_size || 58}
+            <VHeadline text={headline} v={v} size={headline_size || headlineDefaultSize(v, 'list')}
               onSolid={surface.onSolid} onDark={surface.onDark} />
           </div>
         )}
@@ -806,6 +894,22 @@ function RosterSlide({ slide, index }) {
           justifyContent: rosterY }}>
           {rows.map((r, i) => {
             const feat = !!r.featured;
+            // Poster: the featured row is the slab — the whole row inverted.
+            if (isPoster(v)) return (
+              <div key={i} style={{
+                display: 'flex', alignItems: 'center', gap: 20,
+                padding: `${rowPad}px ${feat ? 18 : 0}px`, marginLeft: feat ? -18 : 0, marginRight: feat ? -18 : 0,
+                borderTop: i === 0 || feat || (rows[i - 1] && rows[i - 1].featured) ? 'none' : `2px solid ${ink.hair}`,
+                background: feat ? ink.slabBg : 'transparent',
+              }}>
+                <span style={{ fontSize: Math.round(rSize * 1.04), lineHeight: 1,
+                  width: Math.round(rSize * 1.5), flex: 'none', textAlign: 'center' }}>{r.flag}</span>
+                <span style={{ fontFamily: POSTER.text, fontWeight: feat ? 800 : 600, fontSize: rSize,
+                  letterSpacing: '-.01em', color: feat ? ink.slabFg : ink.head, flex: 1 }}>{r.name}</span>
+                <span style={{ fontFamily: POSTER.text, fontWeight: 800, fontSize: Math.round(rSize * 0.84),
+                  fontVariantNumeric: 'tabular-nums', color: feat ? ink.slabFg : ink.muted }}>{r.year}</span>
+              </div>
+            );
             const nameColor = feat
               ? (surface.onSolid ? '#FFFFFF' : VAQ.inkL)
               : ink.head;
@@ -958,11 +1062,21 @@ function GeoSlide({ slide, index }) {
     map_pan, center_lon, center_lat,
     countries = [], links = [], markers = [],
     graticule = false, borders = true, labels = true,
-    ocean = _OCEAN_DEFAULT, land_color = _LANDC_DEFAULT, border_color = _BORDER_DEFAULT,
     map_height, marker_size = 16, label_size = 26,
     headline_size, body_size = 42, headline_offset_y = 0, body_offset_y = 0,
   } = slide;
   const ink = inkFor(v, surface);
+  const P = isPoster(v);
+  // Poster maps sit on the ground itself: the sea is the page, land a
+  // context tint, borders cut in the page colour, the story country in the
+  // story colour. A per-slide ocean / land_color / border_color still wins.
+  // (Classic keeps destructuring-default semantics: only a missing key falls back.)
+  // Poster defaults are thunks: classic ink has no `bg` to mix from.
+  const pick = (k, poster, classic) => P ? (slide[k] || poster()) : (slide[k] === undefined ? classic : slide[k]);
+  const ocean = pick('ocean', () => ink.bg, _OCEAN_DEFAULT);
+  const land_color = pick('land_color', () => _mix(ink.head, ink.bg, surface.onDark ? 0.2 : 0.16), _LANDC_DEFAULT);
+  const border_color = pick('border_color', () => ink.bg, _BORDER_DEFAULT);
+  const gratInk = P ? ink.head : '#FFFFFF';
   const hSize = headline_size || headlineDefaultSize(v, 'inner');
 
   // 'auto' (the default) frames whatever the slide references and falls back to
@@ -1026,13 +1140,19 @@ function GeoSlide({ slide, index }) {
   // dot sized in raw px balloons into a blob as soon as the crop zooms in —
   // convert px→degrees instead. (Strokes escape this via non-scaling-stroke.)
   const uPerPx = spanX / PANEL_W;
-  const onWater = _isDark(ocean) ? '#FFFFFF' : '#0A1F3C';
+  const onWater = P && !slide.ocean ? ink.head : (_isDark(ocean) ? '#FFFFFF' : '#0A1F3C');
   const capParts = [map_caption, map_credit].filter(Boolean);
+  // Label halo: dark water gets a drop shadow, light water a white glow; the
+  // poster ground gets a glow in its own colour.
+  const halo = P && !slide.ocean ? `0 0 6px ${ink.bg}, 0 0 3px ${ink.bg}, 0 0 1px ${ink.bg}`
+    : _isDark(ocean) ? '0 1px 3px rgba(0,0,0,.85), 0 0 10px rgba(0,0,0,.6)' : '0 0 6px rgba(255,255,255,.95)';
 
   // Countries may be authored as bare strings ("India") or objects with their
   // own colour/label. Unspecified colours walk the brand cycle, starting from
   // the vertical's own accent so a single selection looks native to the show.
-  const cycle = [v.accent].concat(_BRAND_CYCLE.filter((c) => c !== v.accent));
+  // Poster: story, second, then two context steps — never a third hue.
+  const cycle = P ? [ink.em, ink.em2, _mix(ink.head, ink.bg, 0.55), _mix(ink.head, ink.bg, 0.36)]
+    : [v.accent].concat(_BRAND_CYCLE.filter((c) => c !== v.accent));
   const picked = (Array.isArray(countries) ? countries : []).map((c, i) => {
     const o = typeof c === 'string' ? { name: c } : (c || {});
     return {
@@ -1052,10 +1172,10 @@ function GeoSlide({ slide, index }) {
   if (graticule) {
     for (let lon = Math.ceil(lonMin / 30) * 30; lon <= lonMax; lon += 30)
       grat.push(<line key={`m${lon}`} x1={_px(lon)} y1={_py(latMax)} x2={_px(lon)} y2={_py(latMin)}
-        stroke="#FFFFFF" strokeOpacity={0.1} strokeWidth={1} vectorEffect="non-scaling-stroke" />);
+        stroke={gratInk} strokeOpacity={0.1} strokeWidth={1} vectorEffect="non-scaling-stroke" />);
     for (let lat = Math.ceil(latMin / 30) * 30; lat <= latMax; lat += 30)
       grat.push(<line key={`p${lat}`} x1={_px(lonMin)} y1={_py(lat)} x2={_px(lonMax)} y2={_py(lat)}
-        stroke="#FFFFFF" strokeOpacity={0.1} strokeWidth={1} vectorEffect="non-scaling-stroke" />);
+        stroke={gratInk} strokeOpacity={0.1} strokeWidth={1} vectorEffect="non-scaling-stroke" />);
   }
 
   // Flow lines. Endpoints resolve through the same country index, so links are
@@ -1099,7 +1219,7 @@ function GeoSlide({ slide, index }) {
           <div style={{ marginTop: 44 }}>
             <div style={{
               position: 'relative', borderRadius: 0, overflow: 'hidden',
-              border: `1px solid ${ink.hair}`, height: mH, background: ocean,
+              border: frameBorder(v, ink), height: mH, background: ocean,
             }}>
               <svg viewBox={`${_px(lonMin)} ${_py(latMax)} ${spanX} ${spanY}`} preserveAspectRatio="none"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block' }}>
@@ -1131,9 +1251,7 @@ function GeoSlide({ slide, index }) {
                   position: 'absolute', left: `${pctX(c.c[0])}%`, top: `${pctY(c.c[1])}%`,
                   transform: 'translate(-50%,-50%)', whiteSpace: 'nowrap', pointerEvents: 'none',
                   fontFamily: bodyFontFor(v), fontWeight: 800, fontSize: label_size,
-                  letterSpacing: '-.01em', color: onWater,
-                  textShadow: _isDark(ocean) ? '0 1px 3px rgba(0,0,0,.85), 0 0 10px rgba(0,0,0,.6)'
-                                             : '0 0 6px rgba(255,255,255,.95)',
+                  letterSpacing: '-.01em', color: onWater, textShadow: halo,
                 }}>{c.label}</div>
               ))}
 
@@ -1142,9 +1260,7 @@ function GeoSlide({ slide, index }) {
                 const my = m.y != null ? Number(m.y) : pctY(Number(m.lat));
                 if (!isFinite(mx) || !isFinite(my)) return null;
                 const leftSide = m.align === 'left';
-                const pin = m.color || v.accent;
-                const halo = _isDark(ocean) ? '0 1px 3px rgba(0,0,0,.85), 0 0 10px rgba(0,0,0,.6)'
-                                           : '0 0 6px rgba(255,255,255,.95)';
+                const pin = m.color || (P ? ink.em2 : v.accent);
                 return (
                   <div key={i} style={{ position: 'absolute', left: `${mx}%`, top: `${my}%`, transform: 'translate(-50%,-50%)' }}>
                     {m.ring && [3.1, 1.95].map((k, ri) => (
@@ -1157,7 +1273,7 @@ function GeoSlide({ slide, index }) {
                     ))}
                     <div style={{
                       position: 'relative', width: marker_size, height: marker_size, borderRadius: '50%',
-                      background: pin, boxShadow: `0 0 0 4px rgba(0,0,0,.45)`,
+                      background: pin, boxShadow: P ? `0 0 0 4px ${ink.bg}` : `0 0 0 4px rgba(0,0,0,.45)`,
                     }} />
                     {(m.label || m.sublabel) && (
                       <div style={{
@@ -1173,9 +1289,9 @@ function GeoSlide({ slide, index }) {
                         )}
                         {m.sublabel && (
                           <div style={{
-                            marginTop: 3, fontFamily: metaFontFor(v), fontSize: 17,
-                            letterSpacing: '.1em', textTransform: 'uppercase',
-                            color: pin, textShadow: halo,
+                            marginTop: 3, fontFamily: metaFontFor(v), fontWeight: P ? 800 : undefined, fontSize: P ? 19 : 17,
+                            letterSpacing: trk(v, 0.1), textTransform: 'uppercase',
+                            color: P ? ink.muted : pin, textShadow: halo,
                           }}>{m.sublabel}</div>
                         )}
                       </div>
@@ -1197,7 +1313,8 @@ function GeoSlide({ slide, index }) {
             {capParts.length > 0 && (
               <div style={{
                 marginTop: 16, display: 'flex', justifyContent: 'space-between', gap: 20,
-                fontFamily: metaFontFor(v), fontSize: 20, letterSpacing: '.08em', color: ink.muted,
+                fontFamily: metaFontFor(v), fontWeight: P ? 600 : undefined, fontSize: 20,
+                letterSpacing: trk(v, 0.08), color: ink.muted,
               }}>
                 <span>{map_caption || ''}</span>
                 <span style={{ textTransform: 'uppercase' }}>{map_credit || ''}</span>
@@ -1230,7 +1347,7 @@ function VChartSlide({ slide, index, children, legend }) {
     headline_size, body_size = 38, chart_offset_y = 0,
   } = slide;
   const viz = vizFor(v, surface);
-  const hSize = headline_size || 68;
+  const hSize = headline_size || headlineDefaultSize(v, 'chart');
   return (
     <VSlide v={v} surface={surface} texture={texture}>
       <div style={{ position: 'absolute', inset: `${PAD - 8}px ${PAD}px`, display: 'flex', flexDirection: 'column' }}>
@@ -1303,7 +1420,7 @@ function BarChartSlide({ slide, index }) {
             return (
               <div key={i} style={{ width: `${pct}%`, background: fill, display: 'flex',
                 alignItems: 'center', justifyContent: 'center', flex: 'none' }}>
-                {fits && <span style={vizNum(v, label_size, i >= 2 ? '#FFFFFF' : '#3A1402', 700)}>{txt}</span>}
+                {fits && <span style={vizNum(v, label_size, isPoster(v) ? _pieInk(fill) : (i >= 2 ? '#FFFFFF' : '#3A1402'), isPoster(v) ? 800 : 700)}>{txt}</span>}
               </div>
             );
           })}
@@ -1338,7 +1455,7 @@ function BarChartSlide({ slide, index }) {
                     background: viz.axis }} />
                   <div style={{ position: 'absolute', top: 0, height: bar_size,
                     left: neg ? `${50 - w}%` : '50%', width: `${w}%`,
-                    background: neg ? viz.ctx : viz.accent,
+                    background: neg ? (viz.second || viz.ctx) : viz.accent,
                     borderRadius: neg ? `${VIZ.round}px 0 0 ${VIZ.round}px` : `0 ${VIZ.round}px ${VIZ.round}px 0` }} />
                 </div>
                 {r.note && (
@@ -1408,7 +1525,7 @@ function LineChartSlide({ slide, index }) {
   const sets = (Array.isArray(series) ? series : []).slice(0, 2).map((s, i) => ({
     name: s.name || '',
     values: (Array.isArray(s.values) ? s.values : []).map(Number),
-    color: i === 0 ? viz.accent : viz.ctx,
+    color: i === 0 ? viz.accent : (viz.second || viz.ctx),
   })).filter(s => s.values.length > 1);
   if (!sets.length) return <VChartSlide slide={slide} index={index}><div /></VChartSlide>;
 
@@ -1514,8 +1631,8 @@ function PictogramSlide({ slide, index }) {
               rule: Archivo display numerals ARE the VAQ voice (the `stat`
               layout is built on them), so the sans would read as the foreign
               element here — the inverse of what that rule guards against. */}
-          <span style={{ fontFamily: VAQ.display, fontWeight: 900, fontSize: figure_size, lineHeight: 0.9,
-            letterSpacing: '-.03em', color: surface.onSolid ? viz.ink.head : viz.accent }}>
+          <span style={{ ...numStyle(v), fontFamily: displayFontFor(v), fontSize: figure_size, lineHeight: 0.9,
+            color: surface.onSolid ? viz.ink.head : viz.accent }}>
             {vizFmt(value, value_prefix, value_suffix, decimals)}
           </span>
           {unit_label && (
@@ -1576,6 +1693,14 @@ function PictogramSlide({ slide, index }) {
 // put violet beside blue (ΔE 1.9 under protanopia) and red beside magenta.
 const PIE_SLOTS_DARK  = ['#8A97A3', '#c98500', '#199e70', '#3987e5', '#d55181', '#008300'];
 const PIE_SLOTS_LIGHT = ['#6B7A88', '#eda100', '#1baf7a', '#2a78d6', '#e87ba4', '#008300'];
+// The poster look does NOT leave its system for a pie: "two colours plus
+// context, never more" (styles.md §4). Story and second colour carry the two
+// slices that matter; the rest step down from ink toward the page, so they
+// separate on lightness. Past three or four slices, use a bar.
+function posterPieSlots(g) {
+  return [g.em, g.em2, _mix(g.head, g.bg, 0.6), _mix(g.head, g.bg, 0.4),
+          _mix(g.em2, g.bg, 0.5), _mix(g.head, g.bg, 0.22)];
+}
 
 function PieChartSlide({ slide, index }) {
   const t = useTweaks();
@@ -1590,7 +1715,7 @@ function PieChartSlide({ slide, index }) {
   const data = vizRows(rows).slice(0, 6);
   if (!data.length) return <VChartSlide slide={slide} index={index}><div /></VChartSlide>;
 
-  const slots = surface.onDark ? PIE_SLOTS_DARK : PIE_SLOTS_LIGHT;
+  const slots = isPoster(v) ? posterPieSlots(viz.ink) : surface.onDark ? PIE_SLOTS_DARK : PIE_SLOTS_LIGHT;
   const total = data.reduce((a, r) => a + r.value, 0) || 1;
   const R = size / 2, r = R * Math.max(0, Math.min(0.85, donut));
   const C = size / 2 + 10;                 // a little air for the gap stroke
@@ -1656,13 +1781,13 @@ function PieChartSlide({ slide, index }) {
             <g>
               {center_value && (
                 <text x={C} y={C + (center_label ? 4 : 14)} textAnchor="middle"
-                  style={{ fontFamily: VAQ.display, fontWeight: 900, fontSize: 62,
-                    letterSpacing: '-.02em', fill: viz.ink.head }}>{center_value}</text>
+                  style={{ ...numStyle(v), fontFamily: displayFontFor(v), fontSize: isPoster(v) ? 72 : 62,
+                    letterSpacing: isPoster(v) ? numStyle(v).letterSpacing : '-.02em', fill: viz.ink.head }}>{center_value}</text>
               )}
               {center_label && (
                 <text x={C} y={C + 44} textAnchor="middle"
-                  style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 21,
-                    letterSpacing: '.12em', fill: viz.ink.muted }}>{center_label}</text>
+                  style={{ fontFamily: metaFontFor(v), fontWeight: isPoster(v) ? 800 : 700, fontSize: 21,
+                    letterSpacing: trk(v, 0.12), fill: viz.ink.muted }}>{center_label}</text>
               )}
             </g>
           )}
@@ -1714,7 +1839,13 @@ function CityMapSlide({ slide, index }) {
   const Y = (lat) => H / 2 - (lat - lat0) * K;
   const kmToPx = (km) => (km / KM_PER_DEG) * K;
 
-  const field = field_color || '#0A1F3C';
+  // The map panel is always a dark field (rings and pins read on it); poster
+  // swaps the navy for coal and its marks for haldi + cream.
+  const P = isPoster(v);
+  const field = field_color || (P ? (surface.onDark ? '#1F1D1A' : '#111111') : '#0A1F3C');
+  const C = P
+    ? { accent: '#FFD23F', text: '#FFF8E7', soft: 'rgba(255,248,231,', pin: '#C9C2B0' }
+    : { accent: viz.accent, text: '#FFFFFF', soft: 'rgba(255,255,255,', pin: '#B3C7DA' };
   const ringList = (Array.isArray(rings) ? rings : [10, 20, 30]).map(Number).filter(n => n > 0);
   const pts = (Array.isArray(places) ? places : []).map(p => ({
     name: p.name || '', lat: Number(p.lat), lon: Number(p.lon),
@@ -1733,7 +1864,7 @@ function CityMapSlide({ slide, index }) {
           <rect x={0} y={0} width={W} height={H} fill={field} />
           {/* faint local grid — orientation only, never a data gridline */}
           {Array.from({ length: 9 }).map((_, i) => (
-            <g key={i} stroke="rgba(255,255,255,.055)" strokeWidth={VIZ.hair}>
+            <g key={i} stroke={`${C.soft}.055)`} strokeWidth={VIZ.hair}>
               <line x1={(i + 1) * W / 10} x2={(i + 1) * W / 10} y1={0} y2={H} />
               {i < 6 && <line x1={0} x2={W} y1={(i + 1) * H / 7} y2={(i + 1) * H / 7} />}
             </g>
@@ -1747,11 +1878,11 @@ function CityMapSlide({ slide, index }) {
             return (
               <g key={i}>
                 <circle cx={X(lon0)} cy={Y(lat0)} r={rr} fill="none"
-                  stroke="rgba(255,255,255,.26)" strokeWidth={VIZ.hair} />
+                  stroke={`${C.soft}.26)`} strokeWidth={VIZ.hair} />
                 {ring_label && (
                   <text x={X(lon0) - rr * D} y={Y(lat0) - rr * D - 10} textAnchor="middle"
-                    style={{ fontFamily: metaFontFor(v), fontSize: 19, fill: 'rgba(255,255,255,.5)',
-                      letterSpacing: '.08em' }}>{km} KM</text>
+                    style={{ fontFamily: metaFontFor(v), fontWeight: P ? 700 : undefined, fontSize: 19, fill: `${C.soft}.5)`,
+                      letterSpacing: trk(v, 0.08) }}>{km} KM</text>
                 )}
               </g>
             );
@@ -1766,12 +1897,12 @@ function CityMapSlide({ slide, index }) {
             return (
               <g key={i}>
                 <line x1={X(r.from[1])} y1={Y(r.from[0])} x2={X(r.to[1])} y2={Y(r.to[0])}
-                  stroke={viz.accent} strokeWidth={VIZ.line} strokeLinecap="round"
+                  stroke={C.accent} strokeWidth={VIZ.line} strokeLinecap="round"
                   strokeDasharray={`1 ${VIZ.line * 2.6}`} />
                 {r.label && (
                   <text x={mx + (-dy / len) * off} y={my + (dx / len) * off + 7}
                     textAnchor="middle" style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 21,
-                      fill: '#FFFFFF', letterSpacing: '.04em' }}>{r.label}</text>
+                      fill: C.text, letterSpacing: trk(v, 0.04) }}>{r.label}</text>
                 )}
               </g>
             );
@@ -1782,7 +1913,7 @@ function CityMapSlide({ slide, index }) {
               centre, where its arms would poke out from under that pin. */}
           {ringList.length > 0
             && !pts.some(p => Math.hypot(X(p.lon) - X(lon0), Y(p.lat) - Y(lat0)) < pin_size + 8) && (
-            <g stroke="rgba(255,255,255,.55)" strokeWidth={VIZ.hair}>
+            <g stroke={`${C.soft}.55)`} strokeWidth={VIZ.hair}>
               <line x1={X(lon0) - 13} x2={X(lon0) + 13} y1={Y(lat0)} y2={Y(lat0)} />
               <line x1={X(lon0)} x2={X(lon0)} y1={Y(lat0) - 13} y2={Y(lat0) + 13} />
             </g>
@@ -1793,19 +1924,19 @@ function CityMapSlide({ slide, index }) {
             return (
               <g key={i}>
                 {p.emphasis && (
-                  <circle cx={cx} cy={cy} r={r + 13} fill="none" stroke={viz.accent}
+                  <circle cx={cx} cy={cy} r={r + 13} fill="none" stroke={C.accent}
                     strokeWidth={VIZ.hair} opacity={0.7} />
                 )}
-                <circle cx={cx} cy={cy} r={r} fill={p.emphasis ? viz.accent : '#B3C7DA'}
+                <circle cx={cx} cy={cy} r={r} fill={p.emphasis ? C.accent : C.pin}
                   stroke={field} strokeWidth={VIZ.gap} />
                 <text x={left ? cx - r - 14 : cx + r + 14} y={cy + 8} textAnchor={left ? 'end' : 'start'}
                   style={{ fontFamily: bodyFontFor(v), fontWeight: 800, fontSize: label_size,
-                    fill: '#FFFFFF', letterSpacing: '-.01em' }}>{p.name}</text>
+                    fill: C.text, letterSpacing: '-.01em' }}>{p.name}</text>
                 {p.note && (
                   <text x={left ? cx - r - 14 : cx + r + 14} y={cy + 8 + label_size + 4}
                     textAnchor={left ? 'end' : 'start'}
                     style={{ fontFamily: metaFontFor(v), fontSize: label_size - 6,
-                      fill: 'rgba(255,255,255,.66)', letterSpacing: '.03em' }}>{p.note}</text>
+                      fill: `${C.soft}.66)`, letterSpacing: trk(v, 0.03) }}>{p.note}</text>
                 )}
               </g>
             );
@@ -1820,16 +1951,16 @@ function CityMapSlide({ slide, index }) {
             return (
               <g>
                 <line x1={26} y1={H - 30} x2={26 + kmToPx(km)} y2={H - 30}
-                  stroke="rgba(255,255,255,.7)" strokeWidth={VIZ.hair * 1.6} strokeLinecap="square" />
-                <text x={26} y={H - 42} style={{ fontFamily: metaFontFor(v), fontSize: 19,
-                  fill: 'rgba(255,255,255,.7)', letterSpacing: '.08em' }}>{km} KM</text>
+                  stroke={`${C.soft}.7)`} strokeWidth={VIZ.hair * 1.6} strokeLinecap="square" />
+                <text x={26} y={H - 42} style={{ fontFamily: metaFontFor(v), fontWeight: P ? 700 : undefined, fontSize: 19,
+                  fill: `${C.soft}.7)`, letterSpacing: trk(v, 0.08) }}>{km} KM</text>
               </g>
             );
           })()}
         </svg>
         {map_caption && (
-          <div style={{ marginTop: 16, fontFamily: metaFontFor(v), fontSize: 21,
-            letterSpacing: '.04em', color: viz.ink.muted }}>{map_caption}</div>
+          <div style={{ marginTop: 16, fontFamily: metaFontFor(v), fontWeight: P ? 600 : undefined, fontSize: 21,
+            letterSpacing: trk(v, 0.04), color: viz.ink.muted }}>{map_caption}</div>
         )}
       </div>
     </VChartSlide>

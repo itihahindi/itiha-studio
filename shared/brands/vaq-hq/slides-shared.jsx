@@ -27,6 +27,80 @@ const VAQ = {
   deva:    "'Noto Serif Devanagari', serif",
 };
 
+// ── LOOKS (2026-10-27) ────────────────────────────────────────
+// VAQ POSTER, the user's pick on the data graphics, moved to the whole pack:
+// two grounds that alternate post to post — HALDI (turmeric, coal type) and
+// COAL (coal, cream type) — Tanker caps headlines, Switzer for everything
+// else, `*word*` on a slab. BROADSHEET is the fallback look for long or grave
+// headlines and quotes (Zodiak sentence case, Boska italic emphasis).
+// Spec: .claude/skills/data-infographic/styles.md (tokens: kit/poster.css).
+//   tweaks.look:   poster | broadsheet | classic (unset = classic, so decks
+//                  made before the switch re-render pixel-identically)
+//   tweaks.ground: haldi | coal — the deck's ground. `surface: dark | solid`
+//                  flips one slide to the other ground; `surface: haldi | coal`
+//                  names one. No white grounds, no orange tile, no texture by
+//                  default (`texture:` still opts in).
+// Classic verticals carry no `look`, which is what every poster branch keys on.
+const POSTER = {
+  display: "'Tanker', 'Arial Narrow', sans-serif",
+  text:    "'Switzer', 'Helvetica Neue', Arial, sans-serif",
+  serif:   "'Zodiak', Georgia, serif",
+  italic:  "'Boska', Georgia, serif",
+  handle:  '@vaq_hq',
+};
+// Every colour a poster slide uses, per ground. All hex where a layout might
+// parse or alpha-suffix the value (fills, surface.bg); rgba only for lines.
+//   em = the story colour (hero numbers, key marks) · em2 = the second colour
+//   (second series, "fell" pole) · slab = the `*word*` / tag-box block ·
+//   ctx = context marks, pre-mixed onto the ground so they stay one solid hex.
+const GROUNDS = {
+  haldi: {
+    key: 'haldi', bg: '#FFD23F', head: '#111111', body: '#111111', muted: '#3B3216',
+    em: '#111111', em2: '#C2410C', slabBg: '#111111', slabFg: '#FFD23F', rule: '#111111',
+    hair: 'rgba(17,17,17,.28)', well: 'rgba(17,17,17,.12)',
+    ctx: '#B89831', grid: 'rgba(17,17,17,.16)', axis: 'rgba(17,17,17,.4)',
+    ramp: ['#E8590C', '#C2410C', '#7C2D12', '#111111'],
+  },
+  coal: {
+    key: 'coal', bg: '#111111', head: '#FFF8E7', body: '#FFF8E7', muted: '#C9C2B0',
+    em: '#FFD23F', em2: '#F4631E', slabBg: '#FFD23F', slabFg: '#111111', rule: '#FFF8E7',
+    hair: 'rgba(255,248,231,.26)', well: 'rgba(255,248,231,.08)',
+    ctx: '#5D5B55', grid: 'rgba(255,248,231,.14)', axis: 'rgba(255,248,231,.4)',
+    ramp: ['#9A3412', '#F4631E', '#FFA53D', '#FFD23F'],
+  },
+};
+const _LOOKS = ['poster', 'broadsheet'];
+// A slide may set its own `look` (a broadsheet beat inside a poster deck).
+function lookFor(slide, t) {
+  const l = (slide && slide.look) || (t && t.look);
+  return _LOOKS.includes(l) ? l : 'classic';
+}
+function deckGround(t) { return t && t.ground === 'coal' ? 'coal' : 'haldi'; }
+function isPoster(v) { return !!(v && v.look); }
+// On a poster slide onDark ⇔ coal: there is no third ground.
+function groundOf(onDark) { return GROUNDS[onDark ? 'coal' : 'haldi']; }
+// Letter-spacing for small caps labels. The classic pack tracks its Space Mono
+// meta wide; Switzer caps tracked that wide read as template, so clamp it.
+function trk(v, em) { return `${isPoster(v) ? Math.min(em, 0.05) : em}em`; }
+function displayFontFor(v) {
+  if (!isPoster(v)) return VAQ.display;
+  return v.look === 'broadsheet' ? POSTER.serif : POSTER.display;
+}
+// Display numerals (stat, pictogram, pie centre). Tanker ships one weight, so
+// asking it for 900 would fake-bold it.
+function numStyle(v) {
+  if (!isPoster(v)) return { fontFamily: v.numFont || VAQ.display, fontWeight: 900, letterSpacing: '-.03em' };
+  return v.look === 'broadsheet'
+    ? { fontFamily: POSTER.serif, fontWeight: 800, letterSpacing: '-.04em' }
+    : { fontFamily: POSTER.display, fontWeight: 400, letterSpacing: '0' };
+}
+// Hex mix, for deriving extra context steps from the two inks of a ground.
+function _mix(a, b, t) {
+  const p = (h) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const [x, y] = [p(a), p(b)];
+  return '#' + x.map((c, i) => Math.round(c * t + y[i] * (1 - t)).toString(16).padStart(2, '0')).join('').toUpperCase();
+}
+
 // ── The verticals ─────────────────────────────────────────────
 // TWO-TONE CONSOLIDATION, 2026-07-27. Audience feedback: the seven per-
 // vertical liveries (accents, typefaces, and the Docket/Cathode sub-kits)
@@ -107,7 +181,17 @@ function useTweaks() { return React.useContext(BrandContext); }
 
 function verticalFor(slide, t) {
   const key = (slide && slide.vertical) || (t && t.vertical) || 'live';
-  return VERTICALS[key] || VERTICALS.live;
+  const base = VERTICALS[key] || VERTICALS.live;
+  const look = lookFor(slide, t);
+  if (look === 'classic') return base;
+  // The existing per-vertical font hooks (bodyFont / metaFont / quoteFont /
+  // numFont) are how the poster look reaches layouts that already honour them.
+  return {
+    ...base, look, ground: deckGround(t), face: look,
+    bodyFont: POSTER.text, metaFont: POSTER.text,
+    quoteFont: POSTER.serif, quoteItalic: false,
+    numFont: look === 'broadsheet' ? POSTER.serif : POSTER.display,
+  };
 }
 
 // Surface: 'light' (paper interior, A), 'solid' (accent poster tile, B), or
@@ -115,6 +199,15 @@ function verticalFor(slide, t) {
 // whole show off the daylight default — The Docket runs dark throughout, so
 // layouts pass no fallback and let the vertical decide.
 function surfaceFor(slide, v, fallback) {
+  if (isPoster(v)) {
+    // A layout's built-in fallback (the cover's orange tile, the explainer's
+    // navy panel) is ignored: a poster deck holds one ground, and only an
+    // explicit slide `surface:` flips to the other one.
+    const mode = (slide && slide.surface) || 'light';
+    const other = v.ground === 'coal' ? 'haldi' : 'coal';
+    const ground = GROUNDS[mode] ? mode : (mode === 'dark' || mode === 'solid') ? other : v.ground;
+    return { mode, ground, bg: GROUNDS[ground].bg, onSolid: false, onDark: ground === 'coal' };
+  }
   const base = fallback || (v && v.interiorSurface) || 'light';
   const mode = (slide && slide.surface) || base;
   if (mode === 'solid') return { mode, bg: v.accent, onSolid: true };
@@ -128,6 +221,7 @@ function surfaceFor(slide, v, fallback) {
 // call this instead of reaching for VAQ.inkL & friends, which is what allows a
 // vertical to be dark end-to-end without every layout growing a light/dark fork.
 function inkFor(v, surface) {
+  if (isPoster(v)) return { ...groundOf(surface.onDark) };
   if (surface.onSolid) {
     const p = solidPalette(v);
     return { head: p.head, body: p.body, muted: p.muted, em: p.em,
@@ -167,10 +261,17 @@ function solidPalette(v) {
 // The switch stays only so a stray/legacy face degrades to the sans default
 // instead of crashing.
 function headlineStyle(v, size, onSolid, onDark) {
-  const color = onDark ? ((v.dark && v.dark.head) || '#FFFFFF')
+  const color = isPoster(v) ? groundOf(onDark).head
+              : onDark ? ((v.dark && v.dark.head) || '#FFFFFF')
                        : (onSolid ? solidPalette(v).head : ((v.light && v.light.head) || VAQ.inkL));
   const base = { margin: 0, color, textWrap: 'balance' };
   switch (v.face) {
+    case 'poster':
+      return { ...base, fontFamily: POSTER.display, fontWeight: 400, fontSize: size,
+               lineHeight: 0.92, letterSpacing: '.005em', textTransform: 'uppercase' };
+    case 'broadsheet':
+      return { ...base, fontFamily: POSTER.serif, fontWeight: 800, fontSize: size,
+               lineHeight: 0.98, letterSpacing: '-.031em', textTransform: 'none' };
     case 'display':
       return { ...base, fontFamily: VAQ.display, fontWeight: 900, fontSize: size,
                lineHeight: 0.97, letterSpacing: '-.02em', textTransform: 'uppercase' };
@@ -180,10 +281,16 @@ function headlineStyle(v, size, onSolid, onDark) {
   }
 }
 
+// kind: cover | inner | chart | list. Tanker is condensed, so the poster look
+// sets bigger than Archivo for the same line length (112 = the posters' size).
 function headlineDefaultSize(v, kind) {
-  const cover = { display: 118 };
-  const inner = { display: 88 };
-  return (kind === 'cover' ? cover : inner)[v.face] || 96;
+  const sizes = {
+    cover:  { display: 118, poster: 156, broadsheet: 108 },
+    inner:  { display: 88,  poster: 112, broadsheet: 84 },
+    chart:  { display: 68,  poster: 100, broadsheet: 72 },
+    list:   { display: 58,  poster: 88,  broadsheet: 62 },
+  };
+  return (sizes[kind] || sizes.inner)[v.face] || 96;
 }
 
 // ── Micro-syntax ──────────────────────────────────────────────
@@ -191,7 +298,22 @@ function headlineDefaultSize(v, kind) {
 //   light + display face  → accent block, white text (A cover)
 //   light + serif/sans    → tint block, navy text (highlighter)
 //   solid                 → white (dark-ink tiles) / tint (white tiles)
+// Poster `*word*`: ground-coloured letters on an ink slab that covers the cap
+// height only — a gradient, not the inline box, which is taller than the
+// tight poster leading and would clip the line above (kit/poster.css).
+function posterEm(v, onDark) {
+  const g = groundOf(onDark);
+  const bs = v.look === 'broadsheet';
+  return {
+    color: g.slabFg, padding: '0 .07em',
+    background: `linear-gradient(${g.slabBg}, ${g.slabBg}) no-repeat center / 100% ${bs ? '1.02em' : '.9em'}`,
+    boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone',
+    ...(bs ? { fontFamily: POSTER.italic, fontStyle: 'italic', fontWeight: 900, letterSpacing: '-.018em' } : null),
+  };
+}
+
 function VHeadline({ text, v, size, onSolid, onDark, style, label }) {
+  if (isPoster(v)) return <PosterHeadline text={text} v={v} size={size} onDark={onDark} style={style} label={label} />;
   const st0 = headlineStyle(v, size, onSolid, onDark);
   // Collage vocabulary (2026-08-29): `label` sets the headline in sentence-case
   // sans, each line boxed in navy — the poster-label device from the GRIDD
@@ -228,8 +350,41 @@ function VHeadline({ text, v, size, onSolid, onDark, style, label }) {
   return <h2 style={{ ...st, ...style }}>{out}</h2>;
 }
 
+// The poster/broadsheet headline. `label` = the collage label-block, which in
+// this look IS the slab: Switzer sentence case, each line on an ink block.
+function PosterHeadline({ text, v, size, onDark, style, label }) {
+  const g = groundOf(onDark);
+  const st0 = headlineStyle(v, size, false, onDark);
+  const st = label
+    ? { ...st0, fontFamily: POSTER.text, fontWeight: 800, textTransform: 'none',
+        letterSpacing: '-.02em', lineHeight: 1.3, fontSize: Math.round((size || 100) * 0.62) }
+    : st0;
+  const em = label ? { color: onDark ? '#C2410C' : '#F4631E' } : posterEm(v, onDark);
+  const parts = String(text || '').split(/(\*[^*]+\*)/g).filter(Boolean);
+  const out = [];
+  parts.forEach((p, i) => {
+    const isEm = p.startsWith('*') && p.endsWith('*') && p.length > 2;
+    const chunk = isEm ? p.slice(1, -1) : p;
+    chunk.split('\n').forEach((seg, j) => {
+      if (j > 0) out.push(<br key={`b${i}-${j}`} />);
+      if (seg) out.push(<span key={`${i}-${j}`} style={isEm ? em : undefined}>{seg}</span>);
+    });
+  });
+  if (label) return (
+    <h2 style={{ ...st, ...style }}>
+      <span style={{ background: g.head, color: g.bg, padding: '.06em .26em',
+        boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone' }}>{out}</span>
+    </h2>
+  );
+  return <h2 style={{ ...st, ...style }}>{out}</h2>;
+}
+
 // Body: [word] → accent emphasis · _word_ → italic · **word** → bold ink.
+// Poster: [word] is full-ink bold with a second-colour underline — never a
+// coloured word (orange text fails on haldi, and a lone coloured word is the
+// AI-template tell the user keeps flagging).
 function VBody({ text, v, size = 40, onSolid, onDark, color, style }) {
+  if (isPoster(v)) return <PosterBody text={text} v={v} size={size} onDark={onDark} color={color} style={style} />;
   const pal = onSolid ? solidPalette(v) : null;
   const dk = (v && v.dark) || {};
   const base = {
@@ -262,8 +417,63 @@ function VBody({ text, v, size = 40, onSolid, onDark, color, style }) {
   );
 }
 
+function PosterBody({ text, v, size, onDark, color, style }) {
+  const g = groundOf(onDark);
+  const base = {
+    margin: 0, fontFamily: POSTER.text, fontWeight: 500, fontSize: size,
+    lineHeight: size <= 38 ? 1.6 : size <= 50 ? 1.5 : 1.4,
+    color: color || g.body, textWrap: 'pretty',
+  };
+  const key = { color: g.head, fontWeight: 800, textDecorationLine: 'underline',
+    textDecorationColor: g.em2, textDecorationThickness: '.1em', textUnderlineOffset: '.16em',
+    textDecorationSkipInk: 'none' };
+  const paras = String(text || '').split(/\n\n+/);
+  const renderInline = (str, keyBase) =>
+    str.split(/(\[[^\]]+\]|\*\*[^*]+\*\*|_[^_]+_)/g).filter(Boolean).map((p, i) => {
+      if (p.startsWith('[') && p.endsWith(']'))
+        return <span key={`${keyBase}-${i}`} style={key}>{p.slice(1, -1)}</span>;
+      if (p.startsWith('**') && p.endsWith('**'))
+        return <strong key={`${keyBase}-${i}`} style={{ color: g.head, fontWeight: 800 }}>{p.slice(2, -2)}</strong>;
+      if (p.startsWith('_') && p.endsWith('_') && p.length > 2)
+        return <em key={`${keyBase}-${i}`}>{p.slice(1, -1)}</em>;
+      return <span key={`${keyBase}-${i}`}>{p.replace(/\n/g, ' ')}</span>;
+    });
+  return (
+    <div className="vaq-body" style={{ ...base, ...style }}>
+      {paras.map((p, i) => (
+        <p key={i} style={{ margin: i === 0 ? 0 : `${Math.round(size * 0.8)}px 0 0` }}>
+          {renderInline(p, i)}
+        </p>
+      ))}
+    </div>
+  );
+}
+
 // ── Kicker row ────────────────────────────────────────────────
-function VKicker({ v, onSolid, onDark, meta, style }) {
+// Poster: the posters' slug — a tag box (the vertical's label), the meta
+// beside it, the handle on the right. `handle={false}` where the row already
+// sits next to a wordmark (reel-frame).
+function VKicker({ v, onSolid, onDark, meta, style, handle }) {
+  const t = useTweaks();   // unconditional: the editor can flip the look live
+  if (isPoster(v)) {
+    const g = groundOf(onDark);
+    const metaText = String(meta || v.show);
+    const dup = metaText.trim().toLowerCase() === String(v.kicker).trim().toLowerCase();
+    const centred = style && style.justifyContent && style.justifyContent !== 'flex-start';
+    const lab = { fontFamily: POSTER.text, fontSize: 22, lineHeight: 1, textTransform: 'uppercase' };
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: 18, paddingBottom: 16, ...style }}>
+        <span style={{ ...lab, fontWeight: 800, letterSpacing: '.06em', background: g.slabBg, color: g.slabFg,
+          padding: '8px 13px 7px' }}>{String(v.kicker).replace(/^●\s*/, '')}</span>
+        {!dup && <span style={{ ...lab, fontWeight: 700, letterSpacing: '.04em', color: g.muted }}>{metaText}</span>}
+        {handle !== false && !centred && (
+          <span style={{ ...lab, marginLeft: 'auto', fontWeight: 700, textTransform: 'none', color: g.muted }}>
+            {(t && t.handle) || POSTER.handle}
+          </span>
+        )}
+      </div>
+    );
+  }
   const pal = onSolid ? solidPalette(v) : null;
   // Print refresh: the section head is a newspaper slug — Archivo caps in ink
   // with a short accent underline — never a pill / chip / eyebrow.
@@ -310,7 +520,24 @@ function VMark({ size = 44, mono = false }) {
   );
 }
 
-function VWordmark({ size = 30, onSolid = false, onDark = false, withMark = true }) {
+function VWordmark({ size = 30, onSolid = false, onDark = false, withMark = true, v }) {
+  const t = useTweaks();
+  const look = (v && v.look) || lookFor(null, t);
+  if (look !== 'classic') {
+    // The approved mark (user, 2026-10-27), same in both looks: Tanker VAQ
+    // beside HQ in a real box — the row lockup from marks/make.py, so the
+    // slide chrome matches the profile pictures and banners.
+    const g = groundOf(onDark);
+    return (
+      <span style={{ display: 'inline-flex', alignItems: 'center', gap: Math.round(size * 0.12),
+        fontFamily: POSTER.display, fontWeight: 400, fontSize: size, textTransform: 'uppercase',
+        whiteSpace: 'nowrap' }}>
+        <span style={{ lineHeight: 0.8, letterSpacing: '-.01em', color: g.head }}>VAQ</span>
+        <span style={{ display: 'inline-block', lineHeight: 1, padding: '.04em .1em .1em',
+          background: g.slabBg, color: g.slabFg }}>HQ</span>
+      </span>
+    );
+  }
   // Any non-paper ground gets the mono wordmark. Keeping HQ orange on a dark
   // slide would put a second accent next to the vertical's own — the exact thing
   // The Docket's kit forbids — and would clash with the white cover stamp.
@@ -333,6 +560,29 @@ function VChrome({ n, onSolid, onDark, v }) {
   const t = useTweaks();
   const total = (t && t.totalSlides) || 9;
   const lbl = (t && t.seriesLabel) || '';
+  if (isPoster(v)) {
+    // The posters' footer: a 3px rule, folio left, mark right.
+    const g = groundOf(onDark);
+    const folio = t.showPageNum !== false && n != null;
+    const stamp = t.showStamp !== false;
+    if (!folio && !stamp) return null;
+    const pad2 = (x) => String(x).padStart(2, '0');
+    return (
+      <div style={{
+        position: 'absolute', left: 72, right: 72, bottom: 52,
+        display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+        borderTop: `3px solid ${g.rule}`, paddingTop: 12,
+      }}>
+        {folio ? (
+          <span style={{ fontFamily: POSTER.text, fontWeight: 800, fontSize: 22, lineHeight: 1,
+            letterSpacing: '.04em', textTransform: 'uppercase', color: g.muted }}>
+            {pad2(n)} / {pad2(total)}{lbl ? ` · ${lbl}` : ''}
+          </span>
+        ) : <span />}
+        {stamp ? <VWordmark size={30} onDark={onDark} v={v} /> : <span />}
+      </div>
+    );
+  }
   const pageColor = onSolid ? solidPalette(v).muted
                   : onDark ? ((v && v.dark && v.dark.muted) || 'rgba(255,255,255,.55)')
                   : VAQ.mutedL;
@@ -502,14 +752,16 @@ function VTexture({ texture, v, onSolid, onDark }) {
 }
 
 // Oversized ghost index numeral (poster tiles + covers).
-function VGhostIndex({ n, v, onSolid }) {
+function VGhostIndex({ n, v, onSolid, onDark }) {
   if (n == null) return null;
-  const color = onSolid ? 'rgba(255,255,255,.16)' : `${v.accent}1A`;
+  const P = isPoster(v);
+  const color = P ? (onDark ? 'rgba(255,248,231,.10)' : 'rgba(17,17,17,.10)')
+              : onSolid ? 'rgba(255,255,255,.16)' : `${v.accent}1A`;
   return (
     <div style={{
       position: 'absolute', top: 30, right: 44, pointerEvents: 'none',
-      fontFamily: VAQ.display, fontWeight: 900, fontSize: 300, lineHeight: 1,
-      letterSpacing: '-.04em', color,
+      fontFamily: displayFontFor(v), fontWeight: P ? numStyle(v).fontWeight : 900, fontSize: 300, lineHeight: 1,
+      letterSpacing: P ? 0 : '-.04em', color,
     }}>{String(n).padStart(2, '0')}</div>
   );
 }
@@ -525,7 +777,15 @@ const _BURST_POS = {
   'center': { top: '40%', left: '38%' },
   'top': { top: -40, left: '38%' }, 'bottom': { bottom: -40, left: '38%' },
 };
-function _burstColor(c, onSolid) {
+function _burstColor(c, onSolid, poster, onDark) {
+  if (poster) {
+    // Retired colour names land on the nearest poster ink.
+    const g = groundOf(onDark);
+    const map = { orange: '#F4631E', navy: '#111111', ink: '#111111', coal: '#111111', paper: '#FFF8E7',
+                  white: '#FFF8E7', cream: '#FFF8E7', slate: g.ctx, tint: '#FFD23F', haldi: '#FFD23F' };
+    const col = map[c] || c || '#F4631E';
+    return col === g.bg ? g.head : col;   // never a burst in the ground's own colour
+  }
   const map = { orange: VAQ.orange, navy: '#15263B', ink: VAQ.inkL, paper: VAQ.paper, white: '#FFFFFF',
                 slate: VAQ.slate, tint: '#FFD8C4' };
   if (onSolid && (c === 'orange' || !c)) return VAQ.paper;
@@ -542,7 +802,7 @@ function burstPath(points = 10, inner = 0.42) {
 }
 // bursts: [{pos, color, size, points, rotate, inner, x, y}] — pos names above;
 // x/y (px) override pos for hand placement.
-function VBursts({ bursts, onSolid }) {
+function VBursts({ bursts, onSolid, poster, onDark }) {
   if (!bursts || !bursts.length) return null;
   return (
     <>
@@ -556,7 +816,7 @@ function VBursts({ bursts, onSolid }) {
           <svg key={i} viewBox="0 0 100 100" width={size} height={size}
             style={{ position: 'absolute', zIndex: b.front ? 4 : 1, pointerEvents: 'none',
               transform: `rotate(${b.rotate || 0}deg)`, ...pos }}>
-            <polygon points={burstPath(b.points || 10, b.inner || 0.42)} fill={_burstColor(b.color, onSolid)} />
+            <polygon points={burstPath(b.points || 10, b.inner || 0.42)} fill={_burstColor(b.color, onSolid, poster, onDark)} />
           </svg>
         );
       })}
@@ -599,7 +859,9 @@ function VCutout({ src, imageStyle = 'plain', tint = 'orange', halftone = false,
 }
 // Condensed poster face (Archivo wdth 62): the giant white display of the
 // .ties covers. *word* → orange.
-function VPosterHeadline({ text, size = 200, color = '#FFFFFF', accent = VAQ.orange, align = 'left', style }) {
+function VPosterHeadline({ text, size = 200, color = '#FFFFFF', accent = VAQ.orange, align = 'left', style, v, onDark }) {
+  if (isPoster(v)) return <PosterHeadline text={text} v={v} size={size} onDark={onDark}
+    style={{ textAlign: align, lineHeight: 0.88, ...style }} />;
   const parts = String(text || '').split(/(\*[^*]+\*)/g).filter(Boolean);
   const out = [];
   parts.forEach((p, i) => {
@@ -654,12 +916,16 @@ function VSlide({ v, surface, texture, bursts, children }) {
   const [foot, setFoot] = React.useState(null);
   const t = useTweaks();
   const tex = resolveTexture(texture, t, surface);
+  const P = isPoster(v);
+  // Poster slides carry their look + ground as classes, for hand-written CSS
+  // and for the overflow probe's logs; the foot slot clears the 3px footer rule.
+  const cls = P ? ` vaq-look-${v.look} vaq-g-${surface.ground}` : '';
   return (
-    <div className="itiha-slide vaq-slide" style={{ background: surface.bg }}>
+    <div className={`itiha-slide vaq-slide${cls}`} style={{ background: surface.bg }}>
       <VTexture texture={tex} v={v} onSolid={surface.onSolid} onDark={surface.onDark} />
-      <VBursts bursts={bursts} onSolid={surface.onSolid} />
+      <VBursts bursts={bursts} onSolid={surface.onSolid} poster={P} onDark={surface.onDark} />
       <VFootContext.Provider value={foot}>{children}</VFootContext.Provider>
-      <div ref={setFoot} style={{ position: 'absolute', left: 72, right: 72, bottom: 104, zIndex: 5 }} />
+      <div ref={setFoot} style={{ position: 'absolute', left: 72, right: 72, bottom: P ? 112 : 104, zIndex: 5 }} />
     </div>
   );
 }
@@ -760,7 +1026,15 @@ function VLoop({ text, v, onSolid, onDark }) {
   const hair = onSolid ? 'rgba(58,20,2,.35)' : (onDark ? 'rgba(255,255,255,.28)' : 'rgba(10,17,25,.25)');
   const color = onSolid ? '#3A1402' : (onDark ? 'rgba(255,255,255,.82)' : VAQ.bodyL);
   const foot = React.useContext(VFootContext);
-  const line = (
+  const g = isPoster(v) ? groundOf(onDark) : null;
+  const line = g ? (
+    <div style={{ display: 'flex', justifyContent: 'flex-end', lineHeight: 1.1 }}>
+      <span style={{ fontFamily: POSTER.text, fontWeight: 600, fontSize: 26, color: g.body }}>
+        <span style={{ fontWeight: 800, textTransform: 'uppercase', letterSpacing: '.04em', marginRight: 10 }}>Next</span>
+        {text}
+      </span>
+    </div>
+  ) : (
     <div style={{ paddingTop: 10, borderTop: `1px solid ${hair}`,
       display: 'flex', justifyContent: 'flex-end', lineHeight: 1.1 }}>
       <span style={{ fontFamily: VAQ.serif, fontStyle: 'italic', fontWeight: 500, fontSize: 26,
@@ -825,6 +1099,11 @@ const VIZ = {
 // marks wear the data colour.
 function vizFor(v, surface) {
   const ink = inkFor(v, surface);
+  if (isPoster(v)) {
+    // Story / second / context, straight from the ground (styles.md §4).
+    const g = groundOf(surface.onDark);
+    return { accent: g.em, second: g.em2, ctx: g.ctx, ramp: g.ramp, grid: g.grid, axis: g.axis, ink };
+  }
   if (surface.onSolid) return {
     accent: VAQ_VIZ.onSolidFill, ctx: VAQ_VIZ.onSolidCtx, ramp: [VAQ_VIZ.onSolidFill],
     grid: 'rgba(58,20,2,.18)', axis: 'rgba(58,20,2,.34)', ink,
@@ -854,8 +1133,8 @@ function vizNum(v, size, color, weight = 700) {
 function VSource({ text, v, viz }) {
   if (!text) return null;
   return (
-    <div style={{ marginTop: 30, fontFamily: metaFontFor(v), fontWeight: 400, fontSize: 21,
-      letterSpacing: '.04em', color: viz.ink.muted, lineHeight: 1.45 }}>{text}</div>
+    <div style={{ marginTop: 30, fontFamily: metaFontFor(v), fontWeight: isPoster(v) ? 500 : 400, fontSize: 21,
+      letterSpacing: trk(v, 0.04), color: viz.ink.muted, lineHeight: 1.45 }}>{text}</div>
   );
 }
 
@@ -868,7 +1147,7 @@ function VLegend({ items, v, viz, style }) {
       {items.map((it, i) => (
         <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <span style={{ width: 26, height: 14, borderRadius: 3, background: it.color, flex: 'none' }} />
-          <span style={{ fontFamily: metaFontFor(v), fontWeight: 700, fontSize: 22, letterSpacing: '.06em',
+          <span style={{ fontFamily: metaFontFor(v), fontWeight: isPoster(v) ? 800 : 700, fontSize: 22, letterSpacing: trk(v, 0.06),
             textTransform: 'uppercase', color: viz.ink.body }}>{it.name}</span>
         </div>
       ))}
@@ -899,6 +1178,8 @@ function vizFmt(n, prefix = '', suffix = '', decimals) {
 }
 
 Object.assign(window, {
+  POSTER, GROUNDS, lookFor, deckGround, isPoster, groundOf, trk, displayFontFor, numStyle, posterEm, _mix,
+  PosterHeadline, PosterBody,
   VAQ, VERTICALS, BrandContext, useTweaks, verticalFor, surfaceFor, solidPalette,
   headlineStyle, headlineDefaultSize, VHeadline, VBody, VKicker,
   VMark, VWordmark, VChrome, VTexture, VGhostIndex, VSlide,

@@ -1,0 +1,69 @@
+name: Amuktamalyada 01 · Temple and treasury
+brand: itiha
+format: instagram-portrait
+caption: |
+  Around 1520, the emperor of Vijayanagara set & wrote Political Treatise Not a law he enacted. Counsel, inside a poem. Nuggets from Amuktamalyada, No. 1.
+
+  What this is, and is not. Amuktamalyada is Krishnadevaraya's Telugu poem on Andal and her father Vishnuchitta, and it is also a work of statecraft. This passage is not an order issued in Vijayanagara and there is no evidence it was enforced as policy. It belongs to Yamunacharya's Rajaneeti, the political treatise set inside the poem and spoken in Yamunacharya's voice, running from verse 204 to verse 285 of the fourth canto. Verse 218 is about who may be trusted with a shrine.
+
+  "Never entrust both the treasury and the temple to the same hands. A man charged with filling the king's vaults will plunder sacred shrines to cover his losses, staining the crown with sacrilege. Entrust holy affairs only to one without power over state revenue; if he strays, the guilt remains his alone, and no unholy wealth shall corrupt the realm."
+
+  What he is actually arguing. Not that temples should be left alone, and not that the king has no interest in them. The argument is narrower and sharper: the office that has to raise revenue must never be the office that holds sacred wealth, because a man under pressure to balance the books will reach for whatever is nearest. Separate the two and a dishonest custodian damages only himself. Combine them and the crown itself is implicated.
+
+  Five centuries later the same question is open. Who should manage a temple, the state or the tradition that built it?
+
+  On the text. The translation here came to us from a historian, not from a published scholarly edition, so treat the English as a rendering rather than a literal line. The citation checks out structurally: verse 218 falls inside Yamunacharya's discourse in canto four, which is where the rajaneeti sits.
+
+  Art: original illustration in the Itiha Vijayanagara character style.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Amuktamalyada #Krishnadevaraya #Vijayanagara #Hampi #TempleAdministration #Rajaneeti #Statecraft #TeluguLiterature
+tweaks:
+  showStamp: true
+  showPageNum: true
+  comicType: comic
+  seriesLabel: Amuktamalyada
+slides:
+- layout: comic
+  page: full
+  kicker: Krishna Deva Raya
+  kicker_size: 70
+  title: 'Temple
+
+    And *State*
+
+    '
+  title_size: 140
+  title_y: -40
+  title_align: left
+  image: kdr-counsel.jpg
+  image_position: 50% 34%
+  caption: |
+    Today the Indian state runs Hindu temples. In 1520, Krishnadevaraya wrote down thoughts of state  & temple
+  caption_pos: bottom-right
+  caption_w: 490
+  tag: Amuktamalyada · Canto 4
+  tag_pos: top-right
+  order: image-first
+  caption_size: 45
+- layout: comic
+  page: full
+  kicker: The verse in full
+  title: 'Verse *218*
+
+    '
+  title_size: 124
+  title_y: -30
+  title_align: left
+  image: kdr-counsel-2.jpg
+  image_position: 50% 24%
+  caption: |
+    Never entrust both the [treasury] and the [temple] to the same hands. A man charged with filling the king's vaults will plunder sacred shrines to cover his losses, staining the crown with sacrilege. Entrust holy affairs only to one without power over state revenue; if he strays, the guilt remains his alone, and no unholy wealth shall corrupt the realm.
+  caption_pos: bottom
+  caption_w: 960
+  caption_size: 43
+  tag: Krishnadevaraya · Amuktamalyada 4.218
+  tag_pos: top-right
+  bubble_kind: speech
+  texture: paper

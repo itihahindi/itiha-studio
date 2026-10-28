@@ -1,0 +1,164 @@
+name: ramananda-tirtha-hyderabad
+brand: itiha
+format: instagram-portrait
+caption: |
+  On 15 August 1947, as the rest of India raised the tricolour, the Nizam of Hyderabad refused the Union and declared his own sovereignty. That night Ramananda Tirtha arranged for the Indian flag to be hoisted at Sultan Bazar in the heart of the Nizam's capital. He was arrested at three in the morning. The Hyderabad State Congress he had built across fifteen years was already strangling the Nizam's administration from the inside.
+
+  The regime he fought ran on a precise arithmetic. An eleven per cent minority held full administrative control over the eighty-nine per cent majority. The ruler was Mir Osman Ali Khan, the seventh Nizam, reputed the richest man alive. His enforcer on the ground was Kasim Razvi of the Ittehad-ul-Muslimeen, whose Razakar militia drilled openly and whose leader told followers to march with the Koran in one hand and the sword in the other. Ramananda Tirtha was explicit in his own writings that the fight was not against Islam or Muslims as a community. It was against the Nizam's feudal autocracy, the communal lock on power, and the Razakars.
+
+  He led the boycott of the Ayyangar reforms. He intervened in Chanchalguda Jail when Satyagrahis' sacred threads were cut. He backed students flogged on the tiktiki for singing Vande Mataram. After the Bidar bazaar burned while the District Collector and DSP stood by, he broke the police cordon, walked the ruins, and reported to Mahatma Gandhi, who later endorsed his authorisation of village self-defence as an act of bravery. By the time of the Police Action in September 1948, 21,000 Satyagrahis filled the Nizam's prisons.
+
+  Images: India Post 1999 stamp (GODL-India); LIFE, September 1948; Hyderabad State Congress meeting, 1940s; Wikimedia Commons contributors TheAafi, IM3847 and Adbh266 (CC BY-SA).
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #RamanandaTirtha #Hyderabad #OperationPolo #Razakars #Telangana #Nizam
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 75
+  showGrain: true
+  seriesLabel: HYDERABAD
+slides:
+- layout: cover
+  image: cover-stamp-plate.jpg
+  image_overlay: 0.1
+  headline: |
+    A *Monk*
+    Against The Richest
+    *King* On Earth
+  headline_size: 120
+  headline_offset_y: 250
+  subline: Ramananda Tirtha vs. the seventh Nizam of Hyderabad
+  swipe_meta: Swipe ▸ · 10 Slides · 3 min read
+- layout: story
+  image: hsc-meeting-1940s.jpg
+  image_bw: true
+  headline: |
+    He Took *Sanyasa*
+    And Went To Work
+  body: '[Ramananda Tirtha] took the vow in the tradition of Swami Rama and refused the forest. He joined
+    the [Hyderabad State Congress] and built it into the organising body of the resistance. His renunciation
+    became [public work] for equal rights for the majority in a theocratic state.'
+  image_overlay: 0.8
+- layout: stat
+  image: nizam-osman-ali-1926.jpg
+  image_position: 50% 20%
+  stat_size: 120
+  stats_offset_y: -130
+  headline: |
+    *11%* Ruled
+    The *89%*
+  body: |
+    The seventh Nizam, [Mir Osman Ali Khan], was reputed the richest man alive. His administration placed every lever of power in the hands of an eleven per cent minority. The majority lived, in Ramananda Tirtha's phrase, under [a slave mentality].
+  stats:
+  - label: Ruling minority
+    value: 11%
+    sublabel: full administrative control
+  - label: Ruled majority
+    value: 89%
+    value_red: true
+    sublabel: locked out of office
+  - label: Nominated feudal seats
+    value: 56
+    value_red: true
+    sublabel: Ayyangar scheme
+- layout: split-story
+  image: ramananda-statue.jpg
+  image_filter: bw
+  headline: |
+    He Wrote To The *Nizam*
+    In His Own Words
+  body: In his formal communication to the Nizam's government, Ramananda Tirtha set the terms of the struggle.
+    The fight for responsible government, he wrote, had [no place for ill will in it], and it was a fight
+    [for all irrespective of caste or religion]. He named the autocracy as the target.
+  image_overlay: 0.8
+  body_offset_y: 50
+  texture: halftone
+  body_y: 50
+- layout: split-story
+  image: osmania-arts-college.jpg
+  image_filter: bw
+  headline: |
+    Flogged For Singing
+    *Vande Mataram*
+  body: The state banned the song. Students and prisoners sang it anyway. Those caught were tied to a
+    wooden frame called the [tiktiki] and flogged until blood ran. Others were held in [solitary dungeon
+    confinement]. Ramananda Tirtha backed every one of them and made their punishment public.
+  body_offset_y: 40
+  body_y: 35
+- layout: split-story
+  image: bidar-fort.jpg
+  image_filter: bw
+  headline: |
+    The *Bidar* Bazaar
+    Burned
+  body: Armed mobs set fire to the entire Bidar bazaar. The [District Collector] and the [DSP] supported
+    rioting crowds. Ramananda Tirtha breached the police cordon, walked the smoking ruins, and reported
+    the atrocity directly to [Mahatma Gandhi], demanding an open judicial inquiry. No help came.
+  body_y: 55
+- layout: quote
+  image: kasim-razvi-1948.jpg
+  image_position: 60% 30%
+  quote: |
+    Hold the Koran in one hand and the sword in the other.
+  attribution: Kasim Razvi · leader of the Ittehad-ul-Muslimeen and the Razakars
+- layout: stat
+  image: razakars-1948.jpg
+  headline: |
+    Twenty-One Thousand
+    In The *Prisons*
+  body: |
+    Razakars moved through the villages. Ramananda Tirtha authorised armed [self-defence units] to meet them. Gandhi called the decision an act of bravery. The jails filled.
+  stat_size: 140
+  stats_offset_y: -120
+  stats:
+  - label: Satyagrahis imprisoned
+    value: 21,000
+    value_red: true
+    sublabel: by 1948
+  - label: Regions, one demand
+    value: 3
+    sublabel: Telangana, Marathwada, Karnatak
+  body_size: 45
+- layout: split-story
+  image: operation-polo-crowds-1948.jpg
+  headline: |
+    Arrested At *3 AM*
+    On Independence *Day*
+  body: On [15 August 1947] the Nizam refused the Union. That night Ramananda Tirtha arranged for the
+    tricolour to be raised at [Sultan Bazar]. He was arrested before dawn. Once he was  once kept in an
+    8' x 4' dark dungeon for 111 days without light or water
+  handle: Follow @itiha29 · itiha.info
+  body_y: 38
+- layout: split-story
+  image: chanchalguda-jail.jpg
+  image_filter: bw
+  headline: |
+    Inside *Chanchalguda*
+    Jail
+  body: State authorities were cutting the sacred threads (_yajnopavita_) off arrested Hindu Satyagrahis.
+    Ramananda Tirtha entered [Chanchalguda Jail] and performed the rites to restore them. The cutting
+    stopped after he arrived.
+  body_y: 50
+- layout: split-story
+  headline: |
+    *Resistance* continued
+    From jail
+  body: '[Swamiji] rejected the Nizam''s conditional compromise offers while in detention, With over 21,000
+    Satyagrahis jailed. Every prison in Hyderabad State was full. Savarkar endured tortures in prison
+    for freedom of either state. '
+  image: https://upload.wikimedia.org/wikipedia/commons/e/e3/Swami_Ramananda_Tirtha_Portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled
+  image_overlay: 0.8
+  body_y: 65
+- layout: split-story
+  headline: |
+    Freedom by
+    *Force*
+  image: https://scontent-xxc1-1.xx.fbcdn.net/v/t39.30808-6/506614085_23890112917309423_434744853821125207_n.jpg?stp=dst-jpg_tt6&cstp=mx1280x1280&ctp=s1280x1280&_nc_cat=106&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=O25lyjmrTv4Q7kNvwGIR9-2&_nc_oc=AdrOu7jugDjGxYJF12Oh1G0OiGhn6Jg9_JL2YOJxIGnRTSNOs7H4kMj4RFBlx2DDqus&_nc_zt=23&_nc_ht=scontent-xxc1-1.xx&_nc_gid=RUEMx9mnHhjz1EulU8IWlA&_nc_ss=7b2a8&oh=00_AQMVEA5hMfLnfG7shH1nRcncYl44ENyhWXI6klatwRYehg&oe=6AC6667E
+  body: |2
+     The Indian Government led by Home Minister [Sardar Patel] launched [Police Action in September 1948], dismantling the autocracy and integrating Hyderabad into Free India. Swamiji was released from Prison.
+  body_y: 70
+- layout: end-card
+  headline: New slide

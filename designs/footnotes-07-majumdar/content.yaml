@@ -1,0 +1,172 @@
+name: Footnotes 07 · R. C. Majumdar
+brand: itiha
+format: instagram-portrait
+caption: |
+  The Government of India shelved R. C. Majumdar's history of the freedom movement. Footnotes, No. 7 of 15, is about Ramesh Chandra Majumdar (1888–1980).
+
+  He had spent forty years on ancient India when, in 1948, he asked the Government of India to commission a history of the freedom movement. In December 1952 the Ministry of Education set up a Board of Editors. Nilakanta Sastri was one of its nine members. In 1953 the Board made Majumdar its Director, to collect the records and write the draft.
+
+  He circulated the first volume at the end of 1954. At Ahmedabad in January 1955 the Board generally approved its lay-out, and on 22 March 1955 the government told Parliament the volume was "practically ready". Maulana Azad, the Education Minister, told him the draft looked very satisfactory, but that he had received complaints that Bengal's role had been exaggerated. A week after the Parliament answer, Tara Chand, a former Education Secretary who was not on the Board, brought a new plan to it and said the draft "could not be regarded as a historical text at all."
+
+  Majumdar left the Board in October 1955. The government dissolved it at the end of the year, and the official history went to Tara Chand. Its first volume came out on 26 January 1961, and its preface did not mention the Board. Majumdar wrote his own: The Sepoy Mutiny and the Revolt of 1857 in 1957, and the three-volume History of the Freedom Movement in India in 1962–63, worked on single-handed. In its preface he wrote that his labours "were lost by the unceremonious rejection of my draft, not by the Board … but by the Government of India", and that "it is an ominous sign of the time that Indian history is being viewed in official circles in the perspective of recent politics."
+
+  Read him: History of the Freedom Movement in India (3 vols), The Sepoy Mutiny and the Revolt of 1857, and The History and Culture of the Indian People (11 vols, general editor). His own words here are from the 1957 and 1962 prefaces and the 1962 appendix. Book pages: archive.org. Portrait: Wikimedia Commons. Secundra Bagh, Lucknow, by Felice Beato, 1858: Cleveland Museum of Art (CC0). National Archives of India reading room: DiplomatTesterMan, CC BY-SA 4.0.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Footnotes #RCMajumdar #FreedomMovement #1857 #Historiography #Historian #BookRecommendation
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 75
+  showGrain: true
+  seriesLabel: R. C. Majumdar
+  emphasisV2: true
+  footer: site
+  palette: neel
+  theme: dark
+slides:
+- layout: cover
+  headline: |
+    The Government Shelved
+    R. C. Majumdar's *Draft*
+  image: cover-majumdar-black.jpg
+  image_overlay: 0
+  texture: halftone
+  headline_size: 140
+  headline_offset_y: 450
+  theme: dark
+  align_x: center
+- layout: portrait
+  chapter: Chapter 01 · The Historian
+  image: majumdar-1960.jpg
+  image_filter: archival
+  image_position: 50% 20%
+  image_zoom: 1.1
+  name: 'R. C.
+
+    Majumdar
+
+    '
+  dates: 4 Dec 1888 – 11 Feb 1980
+  role: Born at Khandarpara, now in Bangladesh. He spent forty years on [ancient India], wrote histories of
+    Champa, Suvarnadvipa and Kambuja, and was Vice-Chancellor of [Dacca University] from 1937 to 1942.
+  name_size: 112
+  body_size: 40
+  headline_offset_y: -140
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 02 · The Board
+  headline: |
+    A Board Of
+    *Editors*
+  body: |
+    In 1948 Majumdar asked the Government of India to commission a history of the freedom movement. On [30 December 1952] the Ministry of Education set up a Board of Editors. In 1953 the Board made him its [Director], to collect the records and write the draft.
+  image: azad.jpg
+  image_filter: archival
+  image_position: 50% 30%
+  image_overlay: 0.85
+  headline_size: 92
+  body_size: 42
+  body_y: 46
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 03 · The Draft
+  headline: |
+    Volume One Was
+    *Practically* Ready
+  body: |
+    He circulated the first volume at the end of 1954. At Ahmedabad in January 1955 the Board [generally approved] its lay-out. On 22 March 1955 the government told Parliament the volume was “practically ready” and waiting for revision only.
+  image: national-archives.jpg
+  image_filter: archival
+  image_position: 50% 50%
+  image_overlay: 0.85
+  headline_size: 92
+  body_size: 42
+  body_y: 46
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 04 · 1857
+  headline: |
+    The Argument
+    Over *1857*
+  body: |
+    The Board's Secretary, a Congressman, held that 1857 was a planned war to drive out the British. Majumdar wrote that he wanted only the records that supported this, since others would [“thoroughly upset our purpose”]. Majumdar told his staff to collect everything.
+  image: secundra-bagh.jpg
+  image_filter: archival
+  image_position: 62% 50%
+  image_overlay: 0.85
+  headline_size: 92
+  body_size: 42
+  body_y: 46
+  texture: halftone
+- layout: split-story
+  chapter: Chapter 05 · The Official History
+  headline: |
+    The Work Went
+    To *Tara Chand*
+  body: |
+    In March 1955 Tara Chand, a former Education Secretary, told the Board the draft [“could not be regarded as a historical text at all.”] The Board was dissolved at the end of 1955 and the history went to him. His first volume came out in [1961].
+  image: tarachand-1961-cover.jpg
+  image_filter: archival
+  image_position: 50% 30%
+  image_overlay: 0.85
+  headline_size: 92
+  body_size: 42
+  body_y: 46
+  texture: halftone
+- layout: document
+  chapter: Chapter 06 · His Account
+  headline: |
+    Majumdar's
+    *Explanation*
+  image: preface-1957-p6.jpg
+  image_filter: archival
+  image_position: 50% 20%
+  quote: |
+    A theme round which strong emotions have gathered for years, and which involves … a judgment on the views and actions of persons who occupy, for the time being, high places … this seems to me to be the main reason why the draft prepared by me was not destined to see the light of the day.
+  attribution: Majumdar, preface to The Sepoy Mutiny and the Revolt of 1857, 1957
+  quote_size: 36
+  texture: halftone
+- layout: quote
+  chapter: Chapter 07 · His Own History
+  headline: |
+    He Wrote It
+    *Himself*
+  quote: |
+    Real history, on the other hand, teaches us that the major part of India lost independence about five centuries before, and merely changed masters in the eighteenth century.
+  attribution: Majumdar, preface to History of the Freedom Movement in India, Vol. I, 1962
+  body: |
+    Working alone, he published the three volumes of his own [History of the Freedom Movement in India] in 1962–63. In the preface he set it against the official version, which began with India losing its independence in the 18th century.
+  image: sepoy-1957-title.jpg
+  image_filter: archival
+  image_position: 50% 30%
+  image_overlay: 0.88
+  quote_size: 40
+  body_size: 40
+  headline_offset_y: -40
+  texture: halftone
+- layout: numbered-list
+  chapter: Chapter 08 · Read Him
+  headline: |
+    His *Books*
+  image: preface-1962-p12.jpg
+  image_overlay: 0.9
+  items:
+  - number: '1'
+    headline: History of the Freedom Movement in India
+    body: Three volumes, [1962–63], written single-handed.
+  - number: '2'
+    headline: The Sepoy Mutiny and the Revolt of 1857
+    body: His case on 1857, published in [1957].
+  - number: '3'
+    headline: The History and Culture of the Indian People
+    body: Eleven volumes he edited from 1951 to 1977.
+  item_size: 42
+  number_size: 50
+  body_offset_y: -190
+  texture: halftone
+- layout: end-card
+  headline: New slide
+  texture: halftone

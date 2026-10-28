@@ -1,0 +1,166 @@
+name: Footnotes 04 · V. S. Sukthankar
+brand: itiha
+format: instagram-portrait
+caption: |
+  There is no single Mahabharata. There are hundreds of them, copied by hand across eight scripts and two thousand years, and no two agree. Footnotes, No. 4 of 15, is about the man who spent his life working out what the oldest recoverable version said: Vishnu Sitaram Sukthankar (1887–1943), general editor of the critical edition at the Bhandarkar Oriental Research Institute in Poona.
+
+  He was not trained for it. Sukthankar read mathematics at St John's College, Cambridge, and passed the Mathematical Tripos, then went to Berlin for a doctorate in Sanskrit under Heinrich Lüders. He joined the Archaeological Survey in 1915. BORI had opened the Mahabharata project in April 1919, when R. G. Bhandarkar inaugurated it by formally collating a single opening mantra. Sukthankar became general editor in 1925.
+
+  The method was collation and subtraction. Every stanza of the received text was written out and the reading of each manuscript recorded against it. Lines present across independent branches were old. Lines found in one region only were marked as later growth and kept in the apparatus rather than thrown away. The first two chapters of the Adiparvan alone were collated from no fewer than sixty manuscripts, in Sarada, Nepali, Maithili, Bengali, Telugu, Grantha and Malayalam besides Devanagari. Work ran at Poona, at Tagore's Visva-Bharati and at the Saraswathi Mahal in Tanjore.
+
+  The Adiparvan appeared in 1933 with his Prolegomena, a hundred pages setting out the manuscripts and the reasoning. He died of cerebral thrombosis on 21 January 1943, aged 55, on the eve of a lecture. Others finished the work. The last volume was released on 22 September 1966 by President Radhakrishnan: 19 volumes, 18 parvans, more than 89,000 verses in the constituted text, drawing on 1,259 manuscripts. Almost every serious translation and study of the Mahabharata since runs on that text.
+
+  Read him: Prolegomena to the Adiparvan (BORI, 1933), Critical Studies in the Mahabharata (1944) and On the Meaning of the Mahabharata (1957), all free on archive.org. Figures from BORI's own account of the edition and from the Prolegomena itself. Portrait: Wikimedia Commons, public domain. Grantha-script Mahabharata folio and the Institute building: Wikimedia Commons, CC BY-SA 4.0 and CC BY 4.0.
+
+  @itiha29 · itiha.info
+hashtags: |
+  #IndianHistory #Itiha #Footnotes #Mahabharata #Sukthankar #Sanskrit #BORI #TextualCriticism #Pune #Indology #BookRecommendation
+tweaks:
+  showChapterLabels: false
+  showStamp: true
+  showPageNum: true
+  overlayDarkness: 62
+  showGrain: true
+  seriesLabel: V. S. Sukthankar
+  emphasisV2: true
+  footer: site
+slides:
+- layout: cover
+  eyebrow: Footnotes · 04 / 15
+  eyebrow_meta: Vishnu Sitaram Sukthankar · 1887–1943
+  headline: |
+    Sukthankar Rebuilt
+    The *Mahabharata*
+  subline: From 1,259 manuscripts in eight scripts. He began in 1925 and did not live to finish.
+  swipe_meta: Swipe ▸ · 9 Slides · 3 min read
+  image: sukthankar.jpg
+  image_position: 52% 18%
+  image_overlay: 0.73
+  texture: vignette
+  headline_size: 124
+  headline_offset_y: 380
+- layout: split-story
+  chapter: Chapter 01 · The Problem
+  headline: |
+    No Two Copies
+    Ever *Agreed*
+  body: |
+    Every region kept its own Mahabharata. The [Northern] and [Southern] recensions parted company early, and inside them the Sarada, Nepali, Maithili, Bengali, Telugu, Grantha and Malayalam manuscripts each carried a different text. Printed editions simply followed whichever copies were nearest to hand.
+  image: grantha-folio.jpg
+  image_filter: archival
+  image_position: 50% 50%
+  image_overlay: 0.3
+  headline_size: 94
+  body_size: 42
+  body_y: 48
+- layout: portrait
+  chapter: Chapter 02 · The Editor
+  image: sukthankar.jpg
+  image_filter: archival
+  image_position: 52% 20%
+  name: 'V. S.
+
+    Sukthankar
+
+    '
+  dates: 4 May 1887 – 21 Jan 1943
+  role: Read mathematics at [St John's College, Cambridge] and passed the Mathematical Tripos, then took
+    a doctorate in Sanskrit at Berlin under [Heinrich Lüders]. Joined the Archaeological Survey in 1915.
+    The Bhandarkar Institute made him general editor of the Mahabharata in [1925].
+  name_size: 112
+  body_size: 39
+  headline_offset_y: -160
+- layout: split-story
+  chapter: Chapter 03 · The Method
+  headline: |
+    Collate, Then
+    *Subtract*
+  body: |
+    Each stanza was written out and every manuscript's reading set against it. A line carried by independent branches was old. A line found in one region alone was marked as later growth and kept in the [apparatus] rather than deleted. The aim was the [oldest recoverable] text, not the best one.
+  image: prolegomena-mss-list.jpg
+  image_filter: archival
+  image_position: 50% 22%
+  image_zoom: 1.5
+  image_overlay: 0.9
+  headline_size: 94
+  body_size: 45
+  body_y: 46
+  texture: vignette
+- layout: timeline
+  chapter: Chapter 04 · Forty-Seven Years
+  headline: |
+    One Text,
+    *Two Generations*
+  items:
+  - date: '1919'
+    headline: R. G. Bhandarkar opens the work by collating a single opening mantra
+  - date: '1925'
+    headline: Sukthankar is appointed general editor at Poona
+  - date: '1933'
+    headline: The Adiparvan appears, with his hundred-page Prolegomena
+  - date: '1943'
+    headline: He dies at 55, the edition nowhere near done
+  - date: '1966'
+    headline: The last of 19 volumes is released by President Radhakrishnan
+  date_size: 75
+  item_headline_size: 45
+  body_offset_y: -140
+- layout: document
+  chapter: Chapter 05 · His Own Account
+  headline: |
+    What He Found
+    In The *Chaos*
+  image: prolegomena-mss-list.jpg
+  image_filter: archival
+  image_position: 34% 35%
+  image_zoom: 1.5
+  quote: |
+    Two facts emerge rather clearly out of the chaos: firstly, the text was originally committed to memory and recited freely; secondly, different rhapsodists recited differently.
+  attribution: Sukthankar, Prolegomena to the Adiparvan · Bhandarkar Oriental Research Institute, Poona,
+    1933
+  quote_size: 40
+- layout: quote
+  chapter: Chapter 06 · The Scale
+  headline: |
+    He Knew What He
+    Had *Taken On*
+  quote: |
+    The herculean task of cleansing the Augean stables would be child's play compared to a systematic purification of the Mahabharata text.
+  attribution: Prolegomena to the Adiparvan, 1933
+  body: |
+    The first two chapters of the Adiparvan alone were collated from no fewer than [sixty] manuscripts. The finished edition drew on [1,259], across eighteen parvans and more than [89,000] verses.
+  quote_size: 40
+  body_size: 40
+  headline_offset_y: -40
+- layout: split-story
+  chapter: Chapter 07 · The Credit
+  headline: |
+    The Text Everyone
+    Quotes Is *His*
+  body: |
+    The final volume was released on [22 September 1966], twenty-three years after Sukthankar died. Modern translations, concordances and scholarly argument all run on the constituted text he shaped. His name is rarely on the cover of any of them.
+  image: bori.jpg
+  image_filter: archival
+  image_position: 50% 55%
+  image_zoom: 1.2
+  image_overlay: 0.9
+  headline_size: 90
+  body_size: 42
+  body_y: 47
+- layout: numbered-list
+  chapter: Chapter 08 · Read Him
+  headline: |
+    His *Books*
+  items:
+  - number: '1'
+    headline: Prolegomena to the Adiparvan
+    body: His account of the manuscripts and the method. BORI, [1933]. Free on archive.org.
+  - number: '2'
+    headline: Critical Studies in the Mahabharata
+    body: The collected papers, published the year after his death, [1944]. Free on archive.org.
+  - number: '3'
+    headline: On the Meaning of the Mahabharata
+    body: The Bombay lectures he did not live to finish delivering, printed in [1957].
+  item_size: 42
+  number_size: 50
+  body_offset_y: -150
